@@ -83,7 +83,7 @@ extension Color {
         hue /= 360
 
         // Adjust saturation
-        let newSaturation = min(1.0, saturation * amount)
+        let newSaturation = Swift.min(1.0, saturation * amount)
 
         return Color(hue: Double(hue), saturation: Double(newSaturation), brightness: Double(brightness))
     }

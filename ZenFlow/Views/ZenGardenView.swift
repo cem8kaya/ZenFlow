@@ -93,7 +93,7 @@ struct ZenGardenView: View {
 
     private var headerView: some View {
         Text("Zen Bahçem")
-            .font(ZenTheme.title)
+            .font(ZenTheme.zenTitle)
             .foregroundColor(ZenTheme.lightLavender)
             .padding(.top, 60)
     }
@@ -146,7 +146,7 @@ struct ZenGardenView: View {
 
             // Aşama adı
             Text(gardenManager.currentStage.title)
-                .font(ZenTheme.headline)
+                .font(ZenTheme.zenHeadline)
                 .foregroundColor(ZenTheme.lightLavender)
                 .transition(.opacity)
 
@@ -160,7 +160,7 @@ struct ZenGardenView: View {
 
             // Toplam süre
             Text(gardenManager.formattedTotalTime())
-                .font(ZenTheme.body)
+                .font(ZenTheme.zenBody)
                 .foregroundColor(ZenTheme.softPurple)
         }
         .padding(.vertical, 40)
@@ -235,11 +235,11 @@ struct ZenGardenView: View {
                 .foregroundColor(ZenTheme.lightLavender)
 
             Text("Maksimum Seviye!")
-                .font(ZenTheme.headline)
+                .font(ZenTheme.zenHeadline)
                 .foregroundColor(ZenTheme.lightLavender)
 
             Text("Efsanevi bir yolculuk tamamladın!")
-                .font(ZenTheme.body)
+                .font(ZenTheme.zenBody)
                 .foregroundColor(ZenTheme.softPurple)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 40)

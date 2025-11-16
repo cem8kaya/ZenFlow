@@ -75,11 +75,11 @@ struct ThemeSelectionView: View {
     private var headerSection: some View {
         VStack(spacing: 8) {
             Text("Temalar")
-                .font(ZenTheme.largeTitle)
+                .font(ZenTheme.zenLargeTitle)
                 .foregroundColor(currentTheme.textHighlight)
 
             Text("Meditasyon deneyiminizi kişiselleştirin")
-                .font(ZenTheme.body)
+                .font(ZenTheme.zenBody)
                 .foregroundColor(currentTheme.textHighlight.opacity(0.7))
         }
         .accessibilityElement(children: .combine)
@@ -92,7 +92,7 @@ struct ThemeSelectionView: View {
         VStack(alignment: .leading, spacing: 16) {
             HStack {
                 Text("Nefes Gradyanı")
-                    .font(ZenTheme.headline)
+                    .font(ZenTheme.zenHeadline)
                     .foregroundColor(currentTheme.textHighlight)
 
                 Spacer()
@@ -113,7 +113,7 @@ struct ThemeSelectionView: View {
                     // Color palette picker
                     VStack(alignment: .leading, spacing: 8) {
                         Text("Renk Paleti")
-                            .font(ZenTheme.subheadline)
+                            .font(ZenTheme.zenSubheadline)
                             .foregroundColor(currentTheme.textHighlight.opacity(0.8))
 
                         ScrollView(.horizontal, showsIndicators: false) {
@@ -129,13 +129,13 @@ struct ThemeSelectionView: View {
                     VStack(alignment: .leading, spacing: 8) {
                         HStack {
                             Text("Opaklık")
-                                .font(ZenTheme.subheadline)
+                                .font(ZenTheme.zenSubheadline)
                                 .foregroundColor(currentTheme.textHighlight.opacity(0.8))
 
                             Spacer()
 
                             Text("\(Int(featureFlag.breathingGradientOpacity * 100))%")
-                                .font(ZenTheme.subheadline)
+                                .font(ZenTheme.zenSubheadline)
                                 .foregroundColor(currentTheme.accent)
                         }
 
@@ -160,7 +160,7 @@ struct ThemeSelectionView: View {
         VStack(alignment: .leading, spacing: 16) {
             HStack {
                 Text("Parçacık Efektleri")
-                    .font(ZenTheme.headline)
+                    .font(ZenTheme.zenHeadline)
                     .foregroundColor(currentTheme.textHighlight)
 
                 Spacer()
@@ -181,7 +181,7 @@ struct ThemeSelectionView: View {
                     // Intensity picker
                     VStack(alignment: .leading, spacing: 8) {
                         Text("Yoğunluk")
-                            .font(ZenTheme.subheadline)
+                            .font(ZenTheme.zenSubheadline)
                             .foregroundColor(currentTheme.textHighlight.opacity(0.8))
 
                         Picker("Yoğunluk", selection: $featureFlag.particleIntensity) {
@@ -198,7 +198,7 @@ struct ThemeSelectionView: View {
                     // Color theme picker
                     VStack(alignment: .leading, spacing: 8) {
                         Text("Renk Teması")
-                            .font(ZenTheme.subheadline)
+                            .font(ZenTheme.zenSubheadline)
                             .foregroundColor(currentTheme.textHighlight.opacity(0.8))
 
                         Picker("Renk Teması", selection: $featureFlag.particleColorTheme) {
@@ -229,7 +229,7 @@ struct ThemeSelectionView: View {
                 .accessibilityHidden(true)
 
             Text(featureFlag.isPremium ? "Premium Üye" : "Ücretsiz Üye")
-                .font(ZenTheme.headline)
+                .font(ZenTheme.zenHeadline)
                 .foregroundColor(currentTheme.textHighlight)
 
             Spacer()
@@ -280,7 +280,7 @@ struct ThemeSelectionView: View {
     private var premiumBenefitsSection: some View {
         VStack(alignment: .leading, spacing: 16) {
             Text("Premium Avantajları")
-                .font(ZenTheme.headline)
+                .font(ZenTheme.zenHeadline)
                 .foregroundColor(currentTheme.textHighlight)
 
             VStack(alignment: .leading, spacing: 12) {
@@ -296,7 +296,7 @@ struct ThemeSelectionView: View {
                 HStack {
                     Image(systemName: "crown.fill")
                     Text("Premium'a Geç")
-                        .font(ZenTheme.headline)
+                        .font(ZenTheme.zenHeadline)
                 }
                 .foregroundColor(.white)
                 .frame(maxWidth: .infinity)
@@ -374,7 +374,7 @@ struct ThemeSelectionView: View {
                 .accessibilityHidden(true)
 
             Text(text)
-                .font(ZenTheme.body)
+                .font(ZenTheme.zenBody)
                 .foregroundColor(currentTheme.textHighlight.opacity(0.9))
         }
         .accessibilityElement(children: .combine)
