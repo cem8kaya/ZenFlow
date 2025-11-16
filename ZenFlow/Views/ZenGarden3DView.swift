@@ -96,7 +96,7 @@ struct ZenGarden3DView: UIViewRepresentable {
             setupEnvironment()
 
             // Initial tree
-            updateTree(for: gardenManager.currentStage, shouldCelebrate: false)
+            updateTree(for: gardenManager.currentStage, shouldCelebrate: false, reduceMotion: false)
         }
 
         // MARK: - Scene Setup

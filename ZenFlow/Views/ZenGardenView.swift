@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SceneKit
+import Metal
 
 // MARK: - Particle Model
 
@@ -41,7 +42,7 @@ struct ZenGardenView: View {
 
     // Metal availability check
     private var isMetalAvailable: Bool {
-        return SCNView.defaultMetalDevice != nil
+        return MTLCreateSystemDefaultDevice() != nil
     }
 
     // MARK: - Body
