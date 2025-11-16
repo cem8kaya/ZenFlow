@@ -76,10 +76,11 @@ struct BreathingView: View {
                     palette: featureFlag.breathingGradientPalette,
                     opacity: featureFlag.breathingGradientOpacity
                 )
+                .ignoresSafeArea(.all)
             } else {
                 // Static gradient
                 ZenTheme.backgroundGradient
-                    .ignoresSafeArea()
+                    .ignoresSafeArea(.all)
             }
 
             // Particle effects layer (if enabled)

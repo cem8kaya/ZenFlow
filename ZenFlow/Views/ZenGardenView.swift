@@ -155,6 +155,8 @@ struct ZenGardenView: View {
                 .font(.system(size: 14, weight: .regular))
                 .foregroundColor(ZenTheme.softPurple.opacity(0.8))
                 .multilineTextAlignment(.center)
+                .lineLimit(nil)
+                .fixedSize(horizontal: false, vertical: true)
                 .padding(.horizontal, 40)
                 .transition(.opacity)
 
