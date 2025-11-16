@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SceneKit
 
 // MARK: - Particle Model
 
@@ -34,6 +35,15 @@ struct ZenGardenView: View {
     @State private var particles: [Particle] = []
     @State private var showCelebrationText: Bool = false
 
+    // 3D View Toggle
+    @AppStorage("zen_garden_3d_enabled") private var is3DEnabled: Bool = false
+    @State private var showMetalWarning: Bool = false
+
+    // Metal availability check
+    private var isMetalAvailable: Bool {
+        return SCNView.defaultMetalDevice != nil
+    }
+
     // MARK: - Body
 
     var body: some View {
@@ -42,36 +52,125 @@ struct ZenGardenView: View {
             backgroundGradient
 
             // Main Content
-            VStack(spacing: 40) {
-                Spacer()
+            if is3DEnabled && isMetalAvailable {
+                // 3D View
+                ZenGarden3DView(gardenManager: gardenManager, is3DEnabled: $is3DEnabled)
+                    .ignoresSafeArea()
+            } else {
+                // 2D View
+                VStack(spacing: 40) {
+                    Spacer()
 
-                // Başlık
-                headerView
+                    // Başlık
+                    headerView
 
-                Spacer()
+                    Spacer()
 
-                // Ağaç gösterimi
-                treeDisplayArea
+                    // Ağaç gösterimi
+                    treeDisplayArea
 
-                Spacer()
+                    Spacer()
 
-                // İlerleme göstergesi
-                progressSection
+                    // İlerleme göstergesi
+                    progressSection
+
+                    Spacer()
+                }
+
+                // Celebration overlay
+                if gardenManager.shouldCelebrate {
+                    celebrationOverlay
+                }
+            }
+
+            // Settings button (top-right)
+            VStack {
+                HStack {
+                    Spacer()
+
+                    Button(action: {
+                        toggleViewMode()
+                    }) {
+                        Image(systemName: is3DEnabled ? "square.fill" : "cube.fill")
+                            .font(.system(size: 24))
+                            .foregroundColor(ZenTheme.lightLavender)
+                            .padding()
+                            .background(
+                                Circle()
+                                    .fill(Color.white.opacity(0.1))
+                                    .shadow(color: ZenTheme.mysticalViolet.opacity(0.3), radius: 10)
+                            )
+                    }
+                    .padding(.trailing, 20)
+                    .padding(.top, 60)
+                }
 
                 Spacer()
             }
 
-            // Celebration overlay
-            if gardenManager.shouldCelebrate {
-                celebrationOverlay
+            // Metal warning alert
+            if showMetalWarning {
+                VStack {
+                    Spacer()
+
+                    HStack {
+                        VStack(alignment: .leading, spacing: 12) {
+                            HStack {
+                                Image(systemName: "exclamationmark.triangle.fill")
+                                    .foregroundColor(.yellow)
+                                Text("3D Görünüm Kullanılamıyor")
+                                    .font(.headline)
+                                    .foregroundColor(.white)
+                            }
+
+                            Text("Bu cihaz Metal rendering desteklemiyor. 2D görünüm kullanılacak.")
+                                .font(.subheadline)
+                                .foregroundColor(.white.opacity(0.8))
+
+                            Button("Tamam") {
+                                showMetalWarning = false
+                            }
+                            .padding(.top, 8)
+                            .foregroundColor(ZenTheme.lightLavender)
+                        }
+                        .padding()
+                        .background(
+                            RoundedRectangle(cornerRadius: 16)
+                                .fill(Color.black.opacity(0.9))
+                                .shadow(radius: 20)
+                        )
+                        .padding(.horizontal, 30)
+                    }
+                    .padding(.bottom, 100)
+                }
+                .transition(.move(edge: .bottom))
+                .animation(.spring(), value: showMetalWarning)
             }
         }
         .preferredColorScheme(.dark)
         .onChange(of: gardenManager.shouldCelebrate) { shouldCelebrate in
-            if shouldCelebrate {
+            if shouldCelebrate && !is3DEnabled {
                 startCelebrationAnimation()
             }
         }
+    }
+
+    // MARK: - Toggle View Mode
+
+    private func toggleViewMode() {
+        if !is3DEnabled && !isMetalAvailable {
+            // Attempting to enable 3D but Metal not available
+            showMetalWarning = true
+            return
+        }
+
+        withAnimation(.spring()) {
+            is3DEnabled.toggle()
+        }
+
+        // Haptic feedback
+        let generator = UIImpactFeedbackGenerator(style: .medium)
+        generator.impactOccurred()
     }
 
     // MARK: - Background
