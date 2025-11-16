@@ -7,285 +7,384 @@
 
 import SwiftUI
 
-/// Ağaç büyüme aşamaları
-enum TreeStage: Int, CaseIterable {
-    case seed = 0       // 0-10 dakika
-    case sprout = 10    // 10-30 dakika
-    case young = 30     // 30-60 dakika
-    case mature = 60    // 60-120 dakika
-    case ancient = 120  // 120+ dakika
+// MARK: - Particle Model
 
-    var title: String {
-        switch self {
-        case .seed:
-            return "Tohum"
-        case .sprout:
-            return "Fidan"
-        case .young:
-            return "Genç Ağaç"
-        case .mature:
-            return "Olgun Ağaç"
-        case .ancient:
-            return "Çınar"
-        }
-    }
-
-    var symbolName: String {
-        switch self {
-        case .seed:
-            return "circle.fill"
-        case .sprout:
-            return "leaf.fill"
-        case .young:
-            return "tree"
-        case .mature:
-            return "tree.fill"
-        case .ancient:
-            return "tree.fill"
-        }
-    }
-
-    var size: CGFloat {
-        switch self {
-        case .seed:
-            return 40
-        case .sprout:
-            return 80
-        case .young:
-            return 140
-        case .mature:
-            return 200
-        case .ancient:
-            return 260
-        }
-    }
-
-    var nextStageMinutes: Int? {
-        let allStages = TreeStage.allCases
-        guard let currentIndex = allStages.firstIndex(of: self),
-              currentIndex < allStages.count - 1 else {
-            return nil
-        }
-        return allStages[currentIndex + 1].rawValue
-    }
-
-    var color: Color {
-        switch self {
-        case .seed:
-            return Color.brown.opacity(0.8)
-        case .sprout:
-            return Color.green.opacity(0.6)
-        case .young:
-            return Color.green.opacity(0.8)
-        case .mature:
-            return ZenTheme.mysticalViolet
-        case .ancient:
-            return ZenTheme.lightLavender
-        }
-    }
-
-    static func stage(for minutes: Int) -> TreeStage {
-        if minutes >= ancient.rawValue {
-            return .ancient
-        } else if minutes >= mature.rawValue {
-            return .mature
-        } else if minutes >= young.rawValue {
-            return .young
-        } else if minutes >= sprout.rawValue {
-            return .sprout
-        } else {
-            return .seed
-        }
-    }
+struct Particle: Identifiable {
+    let id = UUID()
+    var x: CGFloat
+    var y: CGFloat
+    var scale: CGFloat
+    var opacity: Double
+    var rotation: Double
+    var color: Color
 }
 
+// MARK: - ZenGardenView
+
 struct ZenGardenView: View {
-    @StateObject private var localDataManager = LocalDataManager.shared
-    @State private var currentStage: TreeStage = .seed
-    @State private var progress: Double = 0.0
+    // MARK: - State
 
-    private var totalMinutes: Int {
-        localDataManager.totalMinutes
-    }
+    @StateObject private var gardenManager = ZenGardenManager()
 
-    private var minutesUntilNextStage: Int {
-        guard let nextStageMinutes = currentStage.nextStageMinutes else {
-            return 0
-        }
-        return max(0, nextStageMinutes - totalMinutes)
-    }
+    @State private var treeScale: CGFloat = 1.0
+    @State private var treeRotation: Double = 0.0
+    @State private var treeOpacity: Double = 1.0
+    @State private var glowOpacity: Double = 0.3
+
+    @State private var particles: [Particle] = []
+    @State private var showCelebrationText: Bool = false
+
+    // MARK: - Body
 
     var body: some View {
         ZStack {
-            // Dark gradient background (mor-mavi-siyah)
-            LinearGradient(
-                colors: [
-                    ZenTheme.deepIndigo,
-                    Color(red: 0.12, green: 0.08, blue: 0.25),
-                    Color.black
-                ],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-            .ignoresSafeArea()
+            // Background
+            backgroundGradient
 
+            // Main Content
             VStack(spacing: 40) {
                 Spacer()
 
                 // Başlık
-                Text("Zen Bahçem")
-                    .font(ZenTheme.title)
-                    .foregroundColor(ZenTheme.lightLavender)
-                    .padding(.top, 60)
+                headerView
 
                 Spacer()
 
-                // Ağaç gösterim alanı (merkezi, büyük)
-                VStack(spacing: 30) {
-                    // Ağaç ikonu
-                    ZStack {
-                        // Glow efekti
-                        Circle()
-                            .fill(
-                                RadialGradient(
-                                    colors: [
-                                        currentStage.color.opacity(0.3),
-                                        Color.clear
-                                    ],
-                                    center: .center,
-                                    startRadius: 0,
-                                    endRadius: currentStage.size
-                                )
-                            )
-                            .frame(width: currentStage.size * 2, height: currentStage.size * 2)
-
-                        // Ağaç
-                        Image(systemName: currentStage.symbolName)
-                            .font(.system(size: currentStage.size))
-                            .foregroundStyle(
-                                LinearGradient(
-                                    colors: [
-                                        currentStage.color,
-                                        currentStage.color.opacity(0.7)
-                                    ],
-                                    startPoint: .top,
-                                    endPoint: .bottom
-                                )
-                            )
-                            .shadow(color: currentStage.color.opacity(0.5), radius: 20)
-                    }
-                    .animation(.spring(response: 0.8, dampingFraction: 0.6), value: currentStage)
-
-                    // Aşama adı
-                    Text(currentStage.title)
-                        .font(ZenTheme.headline)
-                        .foregroundColor(ZenTheme.lightLavender)
-
-                    // Toplam süre
-                    Text("\(totalMinutes) dakika")
-                        .font(ZenTheme.body)
-                        .foregroundColor(ZenTheme.softPurple)
-                }
-                .padding(.vertical, 40)
+                // Ağaç gösterimi
+                treeDisplayArea
 
                 Spacer()
 
                 // İlerleme göstergesi
-                VStack(spacing: 20) {
-                    if let nextStageMinutes = currentStage.nextStageMinutes {
-                        // Sonraki aşama bilgisi
-                        VStack(spacing: 8) {
-                            Text("Sonraki Aşamaya")
-                                .font(.system(size: 14, weight: .medium))
-                                .foregroundColor(ZenTheme.softPurple)
-
-                            Text("\(minutesUntilNextStage) dakika")
-                                .font(.system(size: 24, weight: .semibold))
-                                .foregroundColor(ZenTheme.lightLavender)
-                        }
-
-                        // İlerleme çubuğu
-                        VStack(spacing: 8) {
-                            GeometryReader { geometry in
-                                ZStack(alignment: .leading) {
-                                    // Arka plan
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .fill(Color.white.opacity(0.1))
-                                        .frame(height: 12)
-
-                                    // İlerleme
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .fill(
-                                            LinearGradient(
-                                                colors: [
-                                                    ZenTheme.calmBlue,
-                                                    ZenTheme.mysticalViolet
-                                                ],
-                                                startPoint: .leading,
-                                                endPoint: .trailing
-                                            )
-                                        )
-                                        .frame(width: geometry.size.width * progress, height: 12)
-                                        .animation(.easeInOut(duration: 0.5), value: progress)
-                                }
-                            }
-                            .frame(height: 12)
-
-                            // Yüzde göstergesi
-                            Text("\(Int(progress * 100))%")
-                                .font(.system(size: 12, weight: .medium))
-                                .foregroundColor(ZenTheme.softPurple.opacity(0.8))
-                        }
-                        .padding(.horizontal, 40)
-
-                    } else {
-                        // Maksimum seviyeye ulaşıldı
-                        VStack(spacing: 12) {
-                            Image(systemName: "crown.fill")
-                                .font(.system(size: 40))
-                                .foregroundColor(ZenTheme.lightLavender)
-
-                            Text("Maksimum Seviye!")
-                                .font(ZenTheme.headline)
-                                .foregroundColor(ZenTheme.lightLavender)
-
-                            Text("Harika bir yolculuk!")
-                                .font(ZenTheme.body)
-                                .foregroundColor(ZenTheme.softPurple)
-                        }
-                    }
-                }
-                .padding(.bottom, 60)
+                progressSection
 
                 Spacer()
             }
+
+            // Celebration overlay
+            if gardenManager.shouldCelebrate {
+                celebrationOverlay
+            }
         }
         .preferredColorScheme(.dark)
-        .onAppear {
-            updateTreeStage()
-        }
-        .onChange(of: totalMinutes) { _ in
-            updateTreeStage()
+        .onChange(of: gardenManager.shouldCelebrate) { shouldCelebrate in
+            if shouldCelebrate {
+                startCelebrationAnimation()
+            }
         }
     }
 
-    // MARK: - Helper Methods
+    // MARK: - Background
 
-    private func updateTreeStage() {
-        let newStage = TreeStage.stage(for: totalMinutes)
-        currentStage = newStage
+    private var backgroundGradient: some View {
+        LinearGradient(
+            colors: [
+                ZenTheme.deepIndigo,
+                Color(red: 0.12, green: 0.08, blue: 0.25),
+                Color.black
+            ],
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
+        .ignoresSafeArea()
+    }
 
-        // İlerleme hesapla
-        if let nextStageMinutes = currentStage.nextStageMinutes {
-            let currentStageMinutes = currentStage.rawValue
-            let stageRange = nextStageMinutes - currentStageMinutes
-            let progressInStage = totalMinutes - currentStageMinutes
-            progress = min(1.0, Double(progressInStage) / Double(stageRange))
-        } else {
-            progress = 1.0
+    // MARK: - Header
+
+    private var headerView: some View {
+        Text("Zen Bahçem")
+            .font(ZenTheme.title)
+            .foregroundColor(ZenTheme.lightLavender)
+            .padding(.top, 60)
+    }
+
+    // MARK: - Tree Display
+
+    private var treeDisplayArea: some View {
+        VStack(spacing: 30) {
+            // Ağaç ikonu ve glow efekti
+            ZStack {
+                // Glow efekti
+                Circle()
+                    .fill(
+                        RadialGradient(
+                            colors: [
+                                gardenManager.currentStage.glowColor.opacity(glowOpacity),
+                                Color.clear
+                            ],
+                            center: .center,
+                            startRadius: 0,
+                            endRadius: gardenManager.currentStage.glowRadius
+                        )
+                    )
+                    .frame(
+                        width: gardenManager.currentStage.glowRadius * 2,
+                        height: gardenManager.currentStage.glowRadius * 2
+                    )
+                    .scaleEffect(treeScale)
+                    .animation(.easeInOut(duration: 0.8), value: glowOpacity)
+
+                // Ağaç ikonu
+                Image(systemName: gardenManager.currentStage.symbolName)
+                    .font(.system(size: gardenManager.currentStage.iconSize))
+                    .foregroundStyle(
+                        LinearGradient(
+                            colors: gardenManager.currentStage.colors,
+                            startPoint: .top,
+                            endPoint: .bottom
+                        )
+                    )
+                    .shadow(
+                        color: gardenManager.currentStage.glowColor.opacity(0.5),
+                        radius: 20
+                    )
+                    .scaleEffect(treeScale)
+                    .rotationEffect(.degrees(treeRotation))
+                    .opacity(treeOpacity)
+            }
+            .animation(.spring(response: 0.8, dampingFraction: 0.6), value: gardenManager.currentStage)
+
+            // Aşama adı
+            Text(gardenManager.currentStage.title)
+                .font(ZenTheme.headline)
+                .foregroundColor(ZenTheme.lightLavender)
+                .transition(.opacity)
+
+            // Aşama açıklaması
+            Text(gardenManager.currentStage.description)
+                .font(.system(size: 14, weight: .regular))
+                .foregroundColor(ZenTheme.softPurple.opacity(0.8))
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 40)
+                .transition(.opacity)
+
+            // Toplam süre
+            Text(gardenManager.formattedTotalTime())
+                .font(ZenTheme.body)
+                .foregroundColor(ZenTheme.softPurple)
+        }
+        .padding(.vertical, 40)
+    }
+
+    // MARK: - Progress Section
+
+    private var progressSection: some View {
+        VStack(spacing: 20) {
+            if let timeRemaining = gardenManager.formattedTimeUntilNextStage() {
+                // Sonraki aşama bilgisi
+                VStack(spacing: 8) {
+                    Text("Sonraki Aşamaya")
+                        .font(.system(size: 14, weight: .medium))
+                        .foregroundColor(ZenTheme.softPurple)
+
+                    Text(timeRemaining)
+                        .font(.system(size: 24, weight: .semibold))
+                        .foregroundColor(ZenTheme.lightLavender)
+                }
+
+                // İlerleme çubuğu
+                progressBar
+
+            } else {
+                // Maksimum seviyeye ulaşıldı
+                maximumLevelView
+            }
+        }
+        .padding(.bottom, 60)
+    }
+
+    private var progressBar: some View {
+        VStack(spacing: 8) {
+            GeometryReader { geometry in
+                ZStack(alignment: .leading) {
+                    // Arka plan
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(Color.white.opacity(0.1))
+                        .frame(height: 12)
+
+                    // İlerleme
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(
+                            LinearGradient(
+                                colors: gardenManager.currentStage.colors,
+                                startPoint: .leading,
+                                endPoint: .trailing
+                            )
+                        )
+                        .frame(
+                            width: geometry.size.width * gardenManager.stageProgress,
+                            height: 12
+                        )
+                        .animation(.easeInOut(duration: 0.5), value: gardenManager.stageProgress)
+                }
+            }
+            .frame(height: 12)
+
+            // Yüzde göstergesi
+            Text(gardenManager.formattedProgress())
+                .font(.system(size: 12, weight: .medium))
+                .foregroundColor(ZenTheme.softPurple.opacity(0.8))
+        }
+        .padding(.horizontal, 40)
+    }
+
+    private var maximumLevelView: some View {
+        VStack(spacing: 12) {
+            Image(systemName: "crown.fill")
+                .font(.system(size: 40))
+                .foregroundColor(ZenTheme.lightLavender)
+
+            Text("Maksimum Seviye!")
+                .font(ZenTheme.headline)
+                .foregroundColor(ZenTheme.lightLavender)
+
+            Text("Efsanevi bir yolculuk tamamladın!")
+                .font(ZenTheme.body)
+                .foregroundColor(ZenTheme.softPurple)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 40)
+        }
+    }
+
+    // MARK: - Celebration Overlay
+
+    private var celebrationOverlay: some View {
+        ZStack {
+            // Particles
+            ForEach(particles) { particle in
+                Circle()
+                    .fill(particle.color)
+                    .frame(width: 8, height: 8)
+                    .scaleEffect(particle.scale)
+                    .opacity(particle.opacity)
+                    .rotationEffect(.degrees(particle.rotation))
+                    .position(x: particle.x, y: particle.y)
+            }
+
+            // Celebration text
+            if showCelebrationText {
+                VStack(spacing: 16) {
+                    Text("🎉")
+                        .font(.system(size: 60))
+
+                    Text("Yeni Aşama!")
+                        .font(.system(size: 32, weight: .bold))
+                        .foregroundColor(.white)
+
+                    Text(gardenManager.currentStage.title)
+                        .font(.system(size: 24, weight: .semibold))
+                        .foregroundStyle(
+                            LinearGradient(
+                                colors: gardenManager.currentStage.colors,
+                                startPoint: .leading,
+                                endPoint: .trailing
+                            )
+                        )
+                }
+                .padding(40)
+                .background(
+                    RoundedRectangle(cornerRadius: 20)
+                        .fill(Color.black.opacity(0.7))
+                        .shadow(color: gardenManager.currentStage.glowColor.opacity(0.5), radius: 20)
+                )
+                .scaleEffect(showCelebrationText ? 1.0 : 0.5)
+                .opacity(showCelebrationText ? 1.0 : 0.0)
+                .animation(.spring(response: 0.6, dampingFraction: 0.7), value: showCelebrationText)
+            }
+        }
+        .allowsHitTesting(false)
+    }
+
+    // MARK: - Celebration Animation
+
+    private func startCelebrationAnimation() {
+        // Tree scale animation
+        withAnimation(.spring(response: 0.6, dampingFraction: 0.5)) {
+            treeScale = 1.2
+            glowOpacity = 0.8
+        }
+
+        withAnimation(.spring(response: 0.6, dampingFraction: 0.5).delay(0.2)) {
+            treeScale = 1.0
+            glowOpacity = 0.3
+        }
+
+        // Rotation animation
+        withAnimation(.easeInOut(duration: 0.4)) {
+            treeRotation = 10
+        }
+
+        withAnimation(.easeInOut(duration: 0.4).delay(0.2)) {
+            treeRotation = -10
+        }
+
+        withAnimation(.easeInOut(duration: 0.4).delay(0.4)) {
+            treeRotation = 0
+        }
+
+        // Show celebration text
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            showCelebrationText = true
+        }
+
+        // Hide celebration text
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            withAnimation {
+                showCelebrationText = false
+            }
+        }
+
+        // Generate particles
+        generateParticles()
+    }
+
+    private func generateParticles() {
+        particles.removeAll()
+
+        let screenWidth = UIScreen.main.bounds.width
+        let screenHeight = UIScreen.main.bounds.height
+        let colors = gardenManager.currentStage.colors
+
+        // 30 particle oluştur
+        for _ in 0..<30 {
+            let startX = screenWidth / 2
+            let startY = screenHeight / 2
+
+            let particle = Particle(
+                x: startX,
+                y: startY,
+                scale: Double.random(in: 0.5...1.5),
+                opacity: 1.0,
+                rotation: Double.random(in: 0...360),
+                color: colors.randomElement() ?? .white
+            )
+
+            particles.append(particle)
+        }
+
+        // Animate particles
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+            withAnimation(.easeOut(duration: 2.0)) {
+                for i in 0..<particles.count {
+                    let angle = Double.random(in: 0...(2 * .pi))
+                    let distance = CGFloat.random(in: 100...300)
+
+                    particles[i].x += cos(angle) * distance
+                    particles[i].y += sin(angle) * distance
+                    particles[i].opacity = 0.0
+                    particles[i].scale *= 0.5
+                }
+            }
+        }
+
+        // Clean up particles
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+            particles.removeAll()
         }
     }
 }
+
+// MARK: - Preview
 
 #Preview {
     ZenGardenView()
