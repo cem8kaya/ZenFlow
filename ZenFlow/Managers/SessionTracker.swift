@@ -76,6 +76,9 @@ class SessionTracker: ObservableObject {
             // Save to HealthKit
             saveToHealthKit(startDate: sessionStartDate, endDate: sessionEndDate)
 
+            // Save to LocalDataManager
+            saveToLocalStorage(startDate: sessionStartDate, endDate: sessionEndDate, duration: duration)
+
             // Call completion handler
             completion?(duration)
         }
@@ -160,6 +163,26 @@ class SessionTracker: ObservableObject {
                 print("❌ Failed to save session to HealthKit: \(error?.localizedDescription ?? "Unknown error")")
             }
         }
+    }
+
+    // MARK: - LocalDataManager Integration
+
+    /// Save the session to local storage
+    /// - Parameters:
+    ///   - startDate: Session start date
+    ///   - endDate: Session end date
+    ///   - duration: Session duration in seconds
+    private func saveToLocalStorage(startDate: Date, endDate: Date, duration: TimeInterval) {
+        let durationMinutes = Int(duration / 60)
+
+        // Only save sessions that are at least 1 minute long
+        guard durationMinutes >= 1 else {
+            print("⚠️ Session too short to save (\(Int(duration))s)")
+            return
+        }
+
+        LocalDataManager.shared.saveSession(durationMinutes: durationMinutes, date: endDate)
+        print("✅ Session saved to local storage (\(durationMinutes) minutes)")
     }
 
     // MARK: - Helper Methods

@@ -51,10 +51,10 @@ struct ZenTheme {
         endPoint: .bottom
     )
 
-    // MARK: - Typography
+    // MARK: - Typography (SF Pro Display)
 
-    static let largeTitle: Font = .system(size: 48, weight: .light, design: .rounded)
-    static let title: Font = .system(size: 34, weight: .regular, design: .rounded)
-    static let headline: Font = .system(size: 24, weight: .medium, design: .rounded)
-    static let body: Font = .system(size: 17, weight: .regular, design: .rounded)
+    static let largeTitle: Font = .system(size: 48, weight: .light, design: .default)
+    static let title: Font = .system(size: 34, weight: .regular, design: .default)
+    static let headline: Font = .system(size: 24, weight: .medium, design: .default)
+    static let body: Font = .system(size: 17, weight: .regular, design: .default)
 }
