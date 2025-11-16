@@ -40,6 +40,9 @@ struct ThemeSelectionView: View {
                     // Particle effects settings
                     particleEffectsSection
 
+                    // Breathing gradient settings
+                    breathingGradientSection
+
                     // Theme grid
                     themeGridSection
 
@@ -81,6 +84,74 @@ struct ThemeSelectionView: View {
         }
         .accessibilityElement(children: .combine)
         .accessibilityLabel("Temalar. Meditasyon deneyiminizi kişiselleştirin")
+    }
+
+    // MARK: - Breathing Gradient Section
+
+    private var breathingGradientSection: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            HStack {
+                Text("Nefes Gradyanı")
+                    .font(ZenTheme.headline)
+                    .foregroundColor(currentTheme.textHighlight)
+
+                Spacer()
+
+                Toggle("", isOn: $featureFlag.breathingGradientEnabled)
+                    .labelsHidden()
+                    .tint(currentTheme.accent)
+                    .onChange(of: featureFlag.breathingGradientEnabled) { _ in
+                        hapticManager.playImpact(style: .light)
+                    }
+            }
+            .accessibilityElement(children: .combine)
+            .accessibilityLabel("Nefes gradyanı arka plan")
+            .accessibilityValue(featureFlag.breathingGradientEnabled ? "Açık" : "Kapalı")
+
+            if featureFlag.breathingGradientEnabled {
+                VStack(spacing: 16) {
+                    // Color palette picker
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Renk Paleti")
+                            .font(ZenTheme.subheadline)
+                            .foregroundColor(currentTheme.textHighlight.opacity(0.8))
+
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 12) {
+                                ForEach(ZenColorPalette.allCases) { palette in
+                                    gradientPaletteButton(palette)
+                                }
+                            }
+                        }
+                    }
+
+                    // Opacity slider
+                    VStack(alignment: .leading, spacing: 8) {
+                        HStack {
+                            Text("Opaklık")
+                                .font(ZenTheme.subheadline)
+                                .foregroundColor(currentTheme.textHighlight.opacity(0.8))
+
+                            Spacer()
+
+                            Text("\(Int(featureFlag.breathingGradientOpacity * 100))%")
+                                .font(ZenTheme.subheadline)
+                                .foregroundColor(currentTheme.accent)
+                        }
+
+                        Slider(value: $featureFlag.breathingGradientOpacity, in: 0.3...0.8, step: 0.05)
+                            .tint(currentTheme.accent)
+                            .onChange(of: featureFlag.breathingGradientOpacity) { _ in
+                                hapticManager.playImpact(style: .light)
+                            }
+                    }
+                }
+                .transition(.opacity.combined(with: .move(edge: .top)))
+            }
+        }
+        .padding()
+        .background(currentTheme.cardGradient)
+        .cornerRadius(16)
     }
 
     // MARK: - Particle Effects Section
@@ -242,6 +313,58 @@ struct ThemeSelectionView: View {
     }
 
     // MARK: - Helper Views
+
+    private func gradientPaletteButton(_ palette: ZenColorPalette) -> some View {
+        Button {
+            featureFlag.breathingGradientPalette = palette
+            hapticManager.playImpact(style: .medium)
+        } label: {
+            VStack(spacing: 8) {
+                // Gradient preview
+                ZStack {
+                    LinearGradient(
+                        colors: palette.colors,
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                    .frame(width: 80, height: 80)
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 12)
+                            .stroke(
+                                featureFlag.breathingGradientPalette == palette ? currentTheme.accent : Color.clear,
+                                lineWidth: 3
+                            )
+                    )
+
+                    // Checkmark for selected palette
+                    if featureFlag.breathingGradientPalette == palette {
+                        Image(systemName: "checkmark.circle.fill")
+                            .font(.title2)
+                            .foregroundColor(.white)
+                            .background(
+                                Circle()
+                                    .fill(currentTheme.accent)
+                                    .frame(width: 32, height: 32)
+                            )
+                    }
+                }
+
+                // Palette name
+                Text(palette.displayName)
+                    .font(.caption)
+                    .foregroundColor(currentTheme.textHighlight)
+                    .lineLimit(2)
+                    .multilineTextAlignment(.center)
+                    .frame(width: 80)
+            }
+        }
+        .buttonStyle(ScaleButtonStyle())
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel(palette.displayName)
+        .accessibilityHint(featureFlag.breathingGradientPalette == palette ? "Seçili palet" : "Paleti seçmek için dokunun")
+        .accessibilityAddTraits(featureFlag.breathingGradientPalette == palette ? [.isSelected] : [])
+    }
 
     private func benefitRow(icon: String, text: String) -> some View {
         HStack(spacing: 12) {

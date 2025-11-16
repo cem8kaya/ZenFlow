@@ -231,5 +231,6 @@ struct ZenTheme {
     static let largeTitle: Font = .system(size: 48, weight: .light, design: .default)
     static let title: Font = .system(size: 34, weight: .regular, design: .default)
     static let headline: Font = .system(size: 24, weight: .medium, design: .default)
+    static let subheadline: Font = .system(size: 18, weight: .regular, design: .default)
     static let body: Font = .system(size: 17, weight: .regular, design: .default)
 }

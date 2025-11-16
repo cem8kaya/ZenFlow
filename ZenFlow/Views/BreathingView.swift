@@ -69,8 +69,18 @@ struct BreathingView: View {
     var body: some View {
         ZStack {
             // Background gradient
-            ZenTheme.backgroundGradient
-                .ignoresSafeArea()
+            if featureFlag.breathingGradientEnabled {
+                // Animated breathing-synchronized gradient
+                AnimatedGradientView(
+                    breathingPhase: $currentPhase,
+                    palette: featureFlag.breathingGradientPalette,
+                    opacity: featureFlag.breathingGradientOpacity
+                )
+            } else {
+                // Static gradient
+                ZenTheme.backgroundGradient
+                    .ignoresSafeArea()
+            }
 
             // Particle effects layer (if enabled)
             if featureFlag.particleEffectsEnabled {
