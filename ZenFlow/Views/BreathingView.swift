@@ -37,6 +37,7 @@ struct BreathingView: View {
     @State private var isAnimating = false
     @State private var isPaused = false
     @State private var animationTimer: Timer?
+    @StateObject private var sessionTracker = SessionTracker.shared
 
     private let animationDuration: Double = 4.0
 
@@ -125,6 +126,9 @@ struct BreathingView: View {
         scale = 1.0
         currentPhase = .exhale
 
+        // Start meditation session tracking
+        sessionTracker.startSession()
+
         // Start haptic engine
         HapticManager.shared.startEngine()
 
@@ -136,6 +140,12 @@ struct BreathingView: View {
         isPaused = false
         animationTimer?.invalidate()
         animationTimer = nil
+
+        // End meditation session tracking
+        sessionTracker.endSession { duration in
+            let minutes = Int(duration / 60)
+            print("✅ Meditation session completed: \(minutes) minutes")
+        }
 
         // Stop haptic engine
         HapticManager.shared.stopEngine()
