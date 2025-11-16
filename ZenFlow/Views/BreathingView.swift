@@ -213,7 +213,7 @@ struct BreathingView: View {
 
         // End meditation session tracking
         sessionTracker.endSession { duration in
-            let minutes = Int(duration / AppConstants.TimeFormat.secondsPerMinute)
+            let minutes = Int(duration / Double(AppConstants.TimeFormat.secondsPerMinute))
             print("✅ Meditation session completed: \(minutes) minutes")
 
             // Accessibility announcement for completion
