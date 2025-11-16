@@ -98,7 +98,7 @@ struct BreathingView: View {
                 // Session duration indicator
                 if isAnimating || sessionTracker.duration > 0 {
                     Text(sessionTracker.getFormattedDuration())
-                        .font(ZenTheme.headline)
+                        .font(ZenTheme.zenHeadline)
                         .foregroundColor(ZenTheme.lightLavender.opacity(0.7))
                         .accessibilityLabel("Meditasyon süresi: \(sessionTracker.getFormattedDuration())")
                 }
@@ -125,7 +125,7 @@ struct BreathingView: View {
 
                 // Dynamic breathing text
                 Text(currentPhase.text)
-                    .font(ZenTheme.largeTitle)
+                    .font(ZenTheme.zenLargeTitle)
                     .foregroundColor(ZenTheme.lightLavender)
                     .transition(.opacity.combined(with: .scale))
                     .id(currentPhase.text)
