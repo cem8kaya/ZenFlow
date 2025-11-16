@@ -388,39 +388,42 @@ struct BadgeDetailView: View {
                                         .foregroundColor(.white.opacity(0.9))
 
                                     // Progress bar
-                                    VStack(spacing: 8) {
-                                        ZStack(alignment: .leading) {
-                                            RoundedRectangle(cornerRadius: 8)
-                                                .fill(Color.white.opacity(0.2))
-                                                .frame(height: 12)
+                                    GeometryReader { geometry in
+                                        VStack(spacing: 8) {
+                                            ZStack(alignment: .leading) {
+                                                RoundedRectangle(cornerRadius: 8)
+                                                    .fill(Color.white.opacity(0.2))
+                                                    .frame(height: 12)
 
-                                            RoundedRectangle(cornerRadius: 8)
-                                                .fill(
-                                                    LinearGradient(
-                                                        gradient: Gradient(colors: [.purple, .blue]),
-                                                        startPoint: .leading,
-                                                        endPoint: .trailing
+                                                RoundedRectangle(cornerRadius: 8)
+                                                    .fill(
+                                                        LinearGradient(
+                                                            gradient: Gradient(colors: [.purple, .blue]),
+                                                            startPoint: .leading,
+                                                            endPoint: .trailing
+                                                        )
                                                     )
-                                                )
-                                                .frame(width: UIScreen.main.bounds.width * 0.7 * CGFloat(min(progress / 100, 1.0)), height: 12)
-                                                .animation(.easeInOut, value: progress)
+                                                    .frame(width: geometry.size.width * CGFloat(min(progress / 100, 1.0)), height: 12)
+                                                    .animation(.easeInOut, value: progress)
+                                            }
+                                            .frame(height: 12)
+
+                                            HStack {
+                                                Text("\(currentValue) / \(badge.requiredValue)")
+                                                    .font(.subheadline)
+                                                    .foregroundColor(.white.opacity(0.8))
+
+                                                Spacer()
+
+                                                Text(String(format: "%.0f%%", progress))
+                                                    .font(.subheadline)
+                                                    .fontWeight(.semibold)
+                                                    .foregroundColor(.white)
+                                            }
                                         }
-                                        .frame(width: UIScreen.main.bounds.width * 0.7)
-
-                                        HStack {
-                                            Text("\(currentValue) / \(badge.requiredValue)")
-                                                .font(.subheadline)
-                                                .foregroundColor(.white.opacity(0.8))
-
-                                            Spacer()
-
-                                            Text(String(format: "%.0f%%", progress))
-                                                .font(.subheadline)
-                                                .fontWeight(.semibold)
-                                                .foregroundColor(.white)
-                                        }
-                                        .frame(width: UIScreen.main.bounds.width * 0.7)
                                     }
+                                    .frame(height: 36)
+                                    .padding(.horizontal)
 
                                     Text(requirementText)
                                         .font(.caption)

@@ -102,7 +102,6 @@ struct ZenGarden3DView: UIViewRepresentable {
         // MARK: - Scene Setup
         private func setupScene() {
             // Gradient background
-            let background = SCNScene()
             scene.background.contents = createGradientBackground()
         }
 

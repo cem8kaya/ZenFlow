@@ -38,18 +38,12 @@ struct ParticleCanvasView: View {
                         emitter.screenBounds = CGRect(origin: .zero, size: size)
                     }
 
-                    // Calculate delta time
-                    let now = timeline.date
-                    let deltaTime = now.timeIntervalSince(lastUpdate)
-
-                    // Update particles (done in next onChange)
-
                     // Draw all particles
                     for particle in emitter.particles {
                         drawParticle(particle, in: context, size: size)
                     }
                 }
-                .onChange(of: timeline.date) { newDate in
+                .onChange(of: timeline.date) { _, newDate in
                     // Update particles with delta time
                     let deltaTime = newDate.timeIntervalSince(lastUpdate)
                     lastUpdate = newDate
@@ -67,16 +61,16 @@ struct ParticleCanvasView: View {
                 emitter.adjustForDevicePerformance()
                 lastUpdate = Date()
             }
-            .onChange(of: currentPhase) { newPhase in
+            .onChange(of: currentPhase) { _, newPhase in
                 emitter.setPhase(newPhase)
             }
-            .onChange(of: intensity) { newIntensity in
+            .onChange(of: intensity) { _, newIntensity in
                 emitter.intensity = newIntensity
             }
-            .onChange(of: colorTheme) { newTheme in
+            .onChange(of: colorTheme) { _, newTheme in
                 emitter.colorTheme = newTheme
             }
-            .onChange(of: isAnimating) { animating in
+            .onChange(of: isAnimating) { _, animating in
                 if !animating {
                     emitter.clearParticles()
                 }

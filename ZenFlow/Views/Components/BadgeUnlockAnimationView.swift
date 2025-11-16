@@ -36,97 +36,101 @@ struct BadgeUnlockAnimationView: View {
     @State private var glowOpacity: Double = 0.0
     @State private var confettiParticles: [ConfettiParticle] = []
     @State private var showText: Bool = false
+    @State private var viewSize: CGSize = .zero
 
     var body: some View {
-        ZStack {
-            // Semi-transparent background
-            Color.black.opacity(0.7)
-                .ignoresSafeArea()
-                .opacity(opacity)
+        GeometryReader { geometry in
+            ZStack {
+                // Semi-transparent background
+                Color.black.opacity(0.7)
+                    .ignoresSafeArea()
+                    .opacity(opacity)
 
-            // Confetti particles
-            ForEach(confettiParticles) { particle in
-                Circle()
-                    .fill(particle.color)
-                    .frame(width: 8, height: 8)
-                    .scaleEffect(particle.scale)
-                    .opacity(particle.opacity)
-                    .rotationEffect(.degrees(particle.rotation))
-                    .position(particle.position)
-            }
-
-            // Badge icon with animations
-            VStack(spacing: 24) {
-                ZStack {
-                    // Glow effect
+                // Confetti particles
+                ForEach(confettiParticles) { particle in
                     Circle()
-                        .fill(
-                            RadialGradient(
-                                colors: [
-                                    Color.purple.opacity(glowOpacity),
-                                    Color.clear
-                                ],
-                                center: .center,
-                                startRadius: 0,
-                                endRadius: 100
-                            )
-                        )
-                        .frame(width: 200, height: 200)
-
-                    // Badge circle background
-                    Circle()
-                        .fill(
-                            LinearGradient(
-                                gradient: Gradient(colors: [.purple.opacity(0.8), .blue.opacity(0.8)]),
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            )
-                        )
-                        .frame(width: 150, height: 150)
-                        .overlay(
-                            Circle()
-                                .stroke(Color.white.opacity(0.5), lineWidth: 3)
-                        )
-                        .shadow(color: .purple.opacity(0.6), radius: 20, x: 0, y: 10)
-
-                    // Badge icon
-                    Image(systemName: badge.iconName)
-                        .font(.system(size: 72))
-                        .foregroundColor(.white)
+                        .fill(particle.color)
+                        .frame(width: 8, height: 8)
+                        .scaleEffect(particle.scale)
+                        .opacity(particle.opacity)
+                        .rotationEffect(.degrees(particle.rotation))
+                        .position(particle.position)
                 }
-                .scaleEffect(scale)
-                .rotationEffect(.degrees(rotation))
 
-                // Badge unlocked text
-                if showText {
-                    VStack(spacing: 12) {
-                        Text("Rozet Kazanıldı!")
-                            .font(.system(size: 28, weight: .bold))
-                            .foregroundColor(.white)
-
-                        Text(badge.name)
-                            .font(.system(size: 22, weight: .semibold))
-                            .foregroundStyle(
-                                LinearGradient(
-                                    gradient: Gradient(colors: [.purple, .blue]),
-                                    startPoint: .leading,
-                                    endPoint: .trailing
+                // Badge icon with animations
+                VStack(spacing: 24) {
+                    ZStack {
+                        // Glow effect
+                        Circle()
+                            .fill(
+                                RadialGradient(
+                                    colors: [
+                                        Color.purple.opacity(glowOpacity),
+                                        Color.clear
+                                    ],
+                                    center: .center,
+                                    startRadius: 0,
+                                    endRadius: 100
                                 )
                             )
+                            .frame(width: 200, height: 200)
 
-                        Text(badge.description)
-                            .font(.body)
-                            .foregroundColor(.white.opacity(0.9))
-                            .multilineTextAlignment(.center)
-                            .padding(.horizontal, 40)
+                        // Badge circle background
+                        Circle()
+                            .fill(
+                                LinearGradient(
+                                    gradient: Gradient(colors: [.purple.opacity(0.8), .blue.opacity(0.8)]),
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing
+                                )
+                            )
+                            .frame(width: 150, height: 150)
+                            .overlay(
+                                Circle()
+                                    .stroke(Color.white.opacity(0.5), lineWidth: 3)
+                            )
+                            .shadow(color: .purple.opacity(0.6), radius: 20, x: 0, y: 10)
+
+                        // Badge icon
+                        Image(systemName: badge.iconName)
+                            .font(.system(size: 72))
+                            .foregroundColor(.white)
                     }
-                    .transition(.opacity.combined(with: .scale))
+                    .scaleEffect(scale)
+                    .rotationEffect(.degrees(rotation))
+
+                    // Badge unlocked text
+                    if showText {
+                        VStack(spacing: 12) {
+                            Text("Rozet Kazanıldı!")
+                                .font(.system(size: 28, weight: .bold))
+                                .foregroundColor(.white)
+
+                            Text(badge.name)
+                                .font(.system(size: 22, weight: .semibold))
+                                .foregroundStyle(
+                                    LinearGradient(
+                                        gradient: Gradient(colors: [.purple, .blue]),
+                                        startPoint: .leading,
+                                        endPoint: .trailing
+                                    )
+                                )
+
+                            Text(badge.description)
+                                .font(.body)
+                                .foregroundColor(.white.opacity(0.9))
+                                .multilineTextAlignment(.center)
+                                .padding(.horizontal, 40)
+                        }
+                        .transition(.opacity.combined(with: .scale))
+                    }
                 }
+                .opacity(opacity)
             }
-            .opacity(opacity)
-        }
-        .onAppear {
-            startAnimationSequence()
+            .onAppear {
+                viewSize = geometry.size
+                startAnimationSequence()
+            }
         }
     }
 
@@ -196,8 +200,8 @@ struct BadgeUnlockAnimationView: View {
     // MARK: - Confetti Generation
 
     private func generateConfetti() {
-        let centerX = UIScreen.main.bounds.width / 2
-        let centerY = UIScreen.main.bounds.height / 2
+        let centerX = viewSize.width / 2
+        let centerY = viewSize.height / 2
         let colors: [Color] = [.purple, .blue, .pink, .cyan, .yellow, .green]
 
         // Generate 50 confetti particles
