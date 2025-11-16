@@ -9,7 +9,7 @@ import CoreHaptics
 import UIKit
 import Combine
 
-class HapticManager {
+class HapticManager: ObservableObject {
     // MARK: - Singleton
 
     static let shared = HapticManager()
@@ -221,5 +221,25 @@ class HapticManager {
         }
 
         playPattern(pattern)
+    }
+
+    // MARK: - Simple Haptic Feedback
+
+    /// Play impact haptic feedback
+    /// - Parameter style: The impact style (light, medium, heavy, soft, rigid)
+    func playImpact(style: UIImpactFeedbackGenerator.FeedbackStyle) {
+        let generator = UIImpactFeedbackGenerator(style: style)
+        generator.prepare()
+        generator.impactOccurred()
+        print("▶️ Playing impact haptic: \(style)")
+    }
+
+    /// Play notification haptic feedback
+    /// - Parameter type: The notification type (success, warning, error)
+    func playNotification(type: UINotificationFeedbackGenerator.FeedbackType) {
+        let generator = UINotificationFeedbackGenerator()
+        generator.prepare()
+        generator.notificationOccurred(type)
+        print("▶️ Playing notification haptic: \(type)")
     }
 }
