@@ -29,6 +29,9 @@ final class FeatureFlag: ObservableObject {
         static let particleEffectsEnabled = "zenflow_particle_effects_enabled"
         static let particleIntensity = "zenflow_particle_intensity"
         static let particleColorTheme = "zenflow_particle_color_theme"
+        static let breathingGradientEnabled = "zenflow_breathing_gradient_enabled"
+        static let breathingGradientPalette = "zenflow_breathing_gradient_palette"
+        static let breathingGradientOpacity = "zenflow_breathing_gradient_opacity"
     }
 
     // MARK: - Published Properties
@@ -74,6 +77,30 @@ final class FeatureFlag: ObservableObject {
         }
     }
 
+    /// Indicates whether breathing gradient background is enabled
+    @Published var breathingGradientEnabled: Bool {
+        didSet {
+            UserDefaults.standard.set(breathingGradientEnabled, forKey: Keys.breathingGradientEnabled)
+            objectWillChange.send()
+        }
+    }
+
+    /// Selected breathing gradient color palette
+    @Published var breathingGradientPalette: ZenColorPalette {
+        didSet {
+            UserDefaults.standard.set(breathingGradientPalette.rawValue, forKey: Keys.breathingGradientPalette)
+            objectWillChange.send()
+        }
+    }
+
+    /// Breathing gradient background opacity (0.0 to 1.0)
+    @Published var breathingGradientOpacity: Double {
+        didSet {
+            UserDefaults.standard.set(breathingGradientOpacity, forKey: Keys.breathingGradientOpacity)
+            objectWillChange.send()
+        }
+    }
+
     // MARK: - Initialization
 
     private init() {
@@ -99,6 +126,25 @@ final class FeatureFlag: ObservableObject {
         // Load particle color theme, defaulting to zen
         let savedColorThemeRaw = UserDefaults.standard.string(forKey: Keys.particleColorTheme) ?? ParticleColorTheme.zen.rawValue
         self.particleColorTheme = ParticleColorTheme(rawValue: savedColorThemeRaw) ?? .zen
+
+        // Load breathing gradient settings
+        // Default to enabled if not previously set
+        if UserDefaults.standard.object(forKey: Keys.breathingGradientEnabled) == nil {
+            self.breathingGradientEnabled = true
+        } else {
+            self.breathingGradientEnabled = UserDefaults.standard.bool(forKey: Keys.breathingGradientEnabled)
+        }
+
+        // Load breathing gradient palette, defaulting to serene
+        let savedPaletteRaw = UserDefaults.standard.string(forKey: Keys.breathingGradientPalette) ?? ZenColorPalette.serene.rawValue
+        self.breathingGradientPalette = ZenColorPalette(rawValue: savedPaletteRaw) ?? .serene
+
+        // Load breathing gradient opacity, defaulting to 0.5
+        if UserDefaults.standard.object(forKey: Keys.breathingGradientOpacity) == nil {
+            self.breathingGradientOpacity = 0.5
+        } else {
+            self.breathingGradientOpacity = UserDefaults.standard.double(forKey: Keys.breathingGradientOpacity)
+        }
 
         // If user is not premium but has a premium theme selected, reset to free
         if !isPremium && selectedThemeType.isPremium {
@@ -140,6 +186,9 @@ final class FeatureFlag: ObservableObject {
         particleEffectsEnabled = true
         particleIntensity = .medium
         particleColorTheme = .zen
+        breathingGradientEnabled = true
+        breathingGradientPalette = .serene
+        breathingGradientOpacity = 0.5
     }
 
     // MARK: - Future StoreKit Integration
