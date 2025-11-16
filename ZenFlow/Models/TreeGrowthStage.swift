@@ -3,18 +3,24 @@
 //  ZenFlow
 //
 //  Created by Cem Kaya on 11/16/25.
+//  Updated by Claude AI on 16.11.2025.
+//
+//  Tree growth stage model representing the user's meditation progress
+//  through a visual metaphor of a growing tree. Each stage requires
+//  progressively more meditation time and provides visual feedback.
 //
 
 import SwiftUI
 
-/// Ağaç büyüme aşamaları
+/// Tree growth stages representing meditation progress milestones
+/// Raw values represent required minutes for each stage
 enum TreeGrowthStage: Int, CaseIterable, Identifiable {
-    case seed = 0           // Tohum - 0 dakika
-    case sprout = 30        // Filiz - 30 dakika
-    case sapling = 120      // Fidan - 2 saat (120 dakika)
-    case youngTree = 300    // Genç Ağaç - 5 saat (300 dakika)
-    case matureTree = 600   // Olgun Ağaç - 10 saat (600 dakika)
-    case ancientTree = 1200 // Kadim Ağaç - 20 saat (1200 dakika)
+    case seed = 0           // Seed - 0 minutes (starting point)
+    case sprout = 30        // Sprout - 30 minutes
+    case sapling = 120      // Sapling - 2 hours (120 minutes)
+    case youngTree = 300    // Young Tree - 5 hours (300 minutes)
+    case matureTree = 600   // Mature Tree - 10 hours (600 minutes)
+    case ancientTree = 1200 // Ancient Tree - 20 hours (1200 minutes)
 
     var id: Int { rawValue }
 
@@ -76,39 +82,39 @@ enum TreeGrowthStage: Int, CaseIterable, Identifiable {
         }
     }
 
-    /// İkon boyutu
+    /// İkon boyutu (defined in AppConstants.TreeGrowth)
     var iconSize: CGFloat {
         switch self {
         case .seed:
-            return 50
+            return AppConstants.TreeGrowth.seedSize
         case .sprout:
-            return 90
+            return AppConstants.TreeGrowth.sproutSize
         case .sapling:
-            return 140
+            return AppConstants.TreeGrowth.saplingSize
         case .youngTree:
-            return 190
+            return AppConstants.TreeGrowth.youngTreeSize
         case .matureTree:
-            return 240
+            return AppConstants.TreeGrowth.matureTreeSize
         case .ancientTree:
-            return 280
+            return AppConstants.TreeGrowth.ancientTreeSize
         }
     }
 
-    /// Glow yarıçapı
+    /// Glow yarıçapı (defined in AppConstants.TreeGrowth)
     var glowRadius: CGFloat {
         switch self {
         case .seed:
-            return 60
+            return AppConstants.TreeGrowth.seedGlow
         case .sprout:
-            return 100
+            return AppConstants.TreeGrowth.sproutGlow
         case .sapling:
-            return 150
+            return AppConstants.TreeGrowth.saplingGlow
         case .youngTree:
-            return 200
+            return AppConstants.TreeGrowth.youngTreeGlow
         case .matureTree:
-            return 260
+            return AppConstants.TreeGrowth.matureTreeGlow
         case .ancientTree:
-            return 320
+            return AppConstants.TreeGrowth.ancientTreeGlow
         }
     }
 
