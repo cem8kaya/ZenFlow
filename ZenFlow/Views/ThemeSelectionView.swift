@@ -100,7 +100,7 @@ struct ThemeSelectionView: View {
                 Toggle("", isOn: $featureFlag.breathingGradientEnabled)
                     .labelsHidden()
                     .tint(currentTheme.accent)
-                    .onChange(of: featureFlag.breathingGradientEnabled) { _ in
+                    .onChange(of: featureFlag.breathingGradientEnabled) { _, _ in
                         hapticManager.playImpact(style: .light)
                     }
             }
@@ -141,7 +141,7 @@ struct ThemeSelectionView: View {
 
                         Slider(value: $featureFlag.breathingGradientOpacity, in: 0.3...0.8, step: 0.05)
                             .tint(currentTheme.accent)
-                            .onChange(of: featureFlag.breathingGradientOpacity) { _ in
+                            .onChange(of: featureFlag.breathingGradientOpacity) { _, _ in
                                 hapticManager.playImpact(style: .light)
                             }
                     }
@@ -168,7 +168,7 @@ struct ThemeSelectionView: View {
                 Toggle("", isOn: $featureFlag.particleEffectsEnabled)
                     .labelsHidden()
                     .tint(currentTheme.accent)
-                    .onChange(of: featureFlag.particleEffectsEnabled) { _ in
+                    .onChange(of: featureFlag.particleEffectsEnabled) { _, _ in
                         hapticManager.playImpact(style: .light)
                     }
             }
@@ -190,7 +190,7 @@ struct ThemeSelectionView: View {
                             }
                         }
                         .pickerStyle(.segmented)
-                        .onChange(of: featureFlag.particleIntensity) { _ in
+                        .onChange(of: featureFlag.particleIntensity) { _, _ in
                             hapticManager.playImpact(style: .light)
                         }
                     }
@@ -207,7 +207,7 @@ struct ThemeSelectionView: View {
                             }
                         }
                         .pickerStyle(.segmented)
-                        .onChange(of: featureFlag.particleColorTheme) { _ in
+                        .onChange(of: featureFlag.particleColorTheme) { _, _ in
                             hapticManager.playImpact(style: .light)
                         }
                     }

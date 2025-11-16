@@ -35,6 +35,7 @@ struct ZenGardenView: View {
 
     @State private var particles: [Particle] = []
     @State private var showCelebrationText: Bool = false
+    @State private var viewSize: CGSize = .zero
 
     // 3D View Toggle
     @AppStorage("zen_garden_3d_enabled") private var is3DEnabled: Bool = false
@@ -48,110 +49,118 @@ struct ZenGardenView: View {
     // MARK: - Body
 
     var body: some View {
-        ZStack {
-            // Background
-            backgroundGradient
+        GeometryReader { geometry in
+            ZStack {
+                // Background
+                backgroundGradient
 
-            // Main Content
-            if is3DEnabled && isMetalAvailable {
-                // 3D View
-                ZenGarden3DView(gardenManager: gardenManager, is3DEnabled: $is3DEnabled)
-                    .ignoresSafeArea()
-            } else {
-                // 2D View
-                VStack(spacing: 40) {
-                    Spacer()
+                // Main Content
+                if is3DEnabled && isMetalAvailable {
+                    // 3D View
+                    ZenGarden3DView(gardenManager: gardenManager, is3DEnabled: $is3DEnabled)
+                        .ignoresSafeArea()
+                } else {
+                    // 2D View
+                    VStack(spacing: 40) {
+                        Spacer()
 
-                    // Başlık
-                    headerView
+                        // Başlık
+                        headerView
 
-                    Spacer()
+                        Spacer()
 
-                    // Ağaç gösterimi
-                    treeDisplayArea
+                        // Ağaç gösterimi
+                        treeDisplayArea
 
-                    Spacer()
+                        Spacer()
 
-                    // İlerleme göstergesi
-                    progressSection
+                        // İlerleme göstergesi
+                        progressSection
+
+                        Spacer()
+                    }
+
+                    // Celebration overlay
+                    if gardenManager.shouldCelebrate {
+                        celebrationOverlay
+                    }
+                }
+
+                // Settings button (top-right)
+                VStack {
+                    HStack {
+                        Spacer()
+
+                        Button(action: {
+                            toggleViewMode()
+                        }) {
+                            Image(systemName: is3DEnabled ? "square.fill" : "cube.fill")
+                                .font(.system(size: 24))
+                                .foregroundColor(ZenTheme.lightLavender)
+                                .padding()
+                                .background(
+                                    Circle()
+                                        .fill(Color.white.opacity(0.1))
+                                        .shadow(color: ZenTheme.mysticalViolet.opacity(0.3), radius: 10)
+                                )
+                        }
+                        .padding(.trailing, 20)
+                        .padding(.top, 60)
+                    }
 
                     Spacer()
                 }
 
-                // Celebration overlay
-                if gardenManager.shouldCelebrate {
-                    celebrationOverlay
-                }
-            }
+                // Metal warning alert
+                if showMetalWarning {
+                    VStack {
+                        Spacer()
 
-            // Settings button (top-right)
-            VStack {
-                HStack {
-                    Spacer()
+                        HStack {
+                            VStack(alignment: .leading, spacing: 12) {
+                                HStack {
+                                    Image(systemName: "exclamationmark.triangle.fill")
+                                        .foregroundColor(.yellow)
+                                    Text("3D Görünüm Kullanılamıyor")
+                                        .font(.headline)
+                                        .foregroundColor(.white)
+                                }
 
-                    Button(action: {
-                        toggleViewMode()
-                    }) {
-                        Image(systemName: is3DEnabled ? "square.fill" : "cube.fill")
-                            .font(.system(size: 24))
-                            .foregroundColor(ZenTheme.lightLavender)
+                                Text("Bu cihaz Metal rendering desteklemiyor. 2D görünüm kullanılacak.")
+                                    .font(.subheadline)
+                                    .foregroundColor(.white.opacity(0.8))
+
+                                Button("Tamam") {
+                                    showMetalWarning = false
+                                }
+                                .padding(.top, 8)
+                                .foregroundColor(ZenTheme.lightLavender)
+                            }
                             .padding()
                             .background(
-                                Circle()
-                                    .fill(Color.white.opacity(0.1))
-                                    .shadow(color: ZenTheme.mysticalViolet.opacity(0.3), radius: 10)
+                                RoundedRectangle(cornerRadius: 16)
+                                    .fill(Color.black.opacity(0.9))
+                                    .shadow(radius: 20)
                             )
-                    }
-                    .padding(.trailing, 20)
-                    .padding(.top, 60)
-                }
-
-                Spacer()
-            }
-
-            // Metal warning alert
-            if showMetalWarning {
-                VStack {
-                    Spacer()
-
-                    HStack {
-                        VStack(alignment: .leading, spacing: 12) {
-                            HStack {
-                                Image(systemName: "exclamationmark.triangle.fill")
-                                    .foregroundColor(.yellow)
-                                Text("3D Görünüm Kullanılamıyor")
-                                    .font(.headline)
-                                    .foregroundColor(.white)
-                            }
-
-                            Text("Bu cihaz Metal rendering desteklemiyor. 2D görünüm kullanılacak.")
-                                .font(.subheadline)
-                                .foregroundColor(.white.opacity(0.8))
-
-                            Button("Tamam") {
-                                showMetalWarning = false
-                            }
-                            .padding(.top, 8)
-                            .foregroundColor(ZenTheme.lightLavender)
+                            .padding(.horizontal, 30)
                         }
-                        .padding()
-                        .background(
-                            RoundedRectangle(cornerRadius: 16)
-                                .fill(Color.black.opacity(0.9))
-                                .shadow(radius: 20)
-                        )
-                        .padding(.horizontal, 30)
+                        .padding(.bottom, 100)
                     }
-                    .padding(.bottom, 100)
+                    .transition(.move(edge: .bottom))
+                    .animation(.spring(), value: showMetalWarning)
                 }
-                .transition(.move(edge: .bottom))
-                .animation(.spring(), value: showMetalWarning)
             }
-        }
-        .preferredColorScheme(.dark)
-        .onChange(of: gardenManager.shouldCelebrate) { shouldCelebrate in
-            if shouldCelebrate && !is3DEnabled {
-                startCelebrationAnimation()
+            .onAppear {
+                viewSize = geometry.size
+            }
+            .onChange(of: geometry.size) { _, newSize in
+                viewSize = newSize
+            }
+            .preferredColorScheme(.dark)
+            .onChange(of: gardenManager.shouldCelebrate) { _, shouldCelebrate in
+                if shouldCelebrate && !is3DEnabled {
+                    startCelebrationAnimation()
+                }
             }
         }
     }
@@ -443,8 +452,8 @@ struct ZenGardenView: View {
     private func generateParticles() {
         particles.removeAll()
 
-        let screenWidth = UIScreen.main.bounds.width
-        let screenHeight = UIScreen.main.bounds.height
+        let screenWidth = viewSize.width
+        let screenHeight = viewSize.height
         let colors = gardenManager.currentStage.colors
 
         // 30 particle oluştur

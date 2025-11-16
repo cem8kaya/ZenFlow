@@ -27,7 +27,7 @@ struct ZenButtonStyle: ButtonStyle {
                 .spring(response: 0.3, dampingFraction: 0.6),
                 value: configuration.isPressed
             )
-            .onChange(of: configuration.isPressed) { isPressed in
+            .onChange(of: configuration.isPressed) { _, isPressed in
                 if isPressed && isEnabled {
                     // Play haptic feedback on press
                     HapticManager.shared.playImpact(style: hapticStyle)
@@ -48,7 +48,7 @@ struct ZenPrimaryButtonStyle: ButtonStyle {
                 .spring(response: 0.3, dampingFraction: 0.6),
                 value: configuration.isPressed
             )
-            .onChange(of: configuration.isPressed) { isPressed in
+            .onChange(of: configuration.isPressed) { _, isPressed in
                 if isPressed && isEnabled {
                     HapticManager.shared.playImpact(style: .medium)
                 }
@@ -68,7 +68,7 @@ struct ZenSecondaryButtonStyle: ButtonStyle {
                 .spring(response: 0.3, dampingFraction: 0.6),
                 value: configuration.isPressed
             )
-            .onChange(of: configuration.isPressed) { isPressed in
+            .onChange(of: configuration.isPressed) { _, isPressed in
                 if isPressed && isEnabled {
                     HapticManager.shared.playImpact(style: .light)
                 }
@@ -88,7 +88,7 @@ struct ZenIconButtonStyle: ButtonStyle {
                 .spring(response: 0.25, dampingFraction: 0.7),
                 value: configuration.isPressed
             )
-            .onChange(of: configuration.isPressed) { isPressed in
+            .onChange(of: configuration.isPressed) { _, isPressed in
                 if isPressed && isEnabled {
                     HapticManager.shared.playImpact(style: .light)
                 }

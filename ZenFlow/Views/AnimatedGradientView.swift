@@ -179,6 +179,7 @@ struct AnimatedGradientView: View {
 // MARK: - Preview
 
 #Preview("Serene Palette") {
+    @MainActor
     struct PreviewWrapper: View {
         @State private var phase: AnimationPhase = .exhale
         @State private var isAnimating = false
