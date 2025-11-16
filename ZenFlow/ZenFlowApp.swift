@@ -14,8 +14,9 @@ struct ZenFlowApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            BreathingView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .preferredColorScheme(.dark)
         }
     }
 }
