@@ -10,9 +10,22 @@
 		8775A7292EC9EBD1002EF46A /* ZenFlow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZenFlow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		8775A74D2EC9EBD1002EF46A /* Exceptions for "ZenFlow" folder in "ZenFlow" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 8775A7282EC9EBD1002EF46A /* ZenFlow */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		8775A72B2EC9EBD1002EF46A /* ZenFlow */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				8775A74D2EC9EBD1002EF46A /* Exceptions for "ZenFlow" folder in "ZenFlow" target */,
+			);
 			path = ZenFlow;
 			sourceTree = "<group>";
 		};
