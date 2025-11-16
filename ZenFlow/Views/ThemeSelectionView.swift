@@ -238,7 +238,6 @@ struct ThemeSelectionView: View {
             #if DEBUG
             Button {
                 featureFlag.setPremiumStatus(!featureFlag.isPremium)
-                hapticManager.playImpact(style: .medium)
             } label: {
                 Text(featureFlag.isPremium ? "Test: Free'ye Geç" : "Test: Premium'a Geç")
                     .font(.caption)
@@ -247,6 +246,7 @@ struct ThemeSelectionView: View {
                     .background(currentTheme.accent.opacity(0.3))
                     .cornerRadius(8)
             }
+            .zenSecondaryButtonStyle()
             .accessibilityLabel(featureFlag.isPremium ? "Test modunda ücretsiz üyeliğe geç" : "Test modunda premium üyeliğe geç")
             #endif
         }
@@ -291,7 +291,6 @@ struct ThemeSelectionView: View {
 
             Button {
                 // TODO: Trigger StoreKit purchase flow
-                hapticManager.playImpact(style: .medium)
             } label: {
                 HStack {
                     Image(systemName: "crown.fill")
@@ -304,6 +303,7 @@ struct ThemeSelectionView: View {
                 .background(currentTheme.progressGradient)
                 .cornerRadius(12)
             }
+            .zenPrimaryButtonStyle()
             .accessibilityLabel("Premium üyeliğe geç")
             .accessibilityHint("Premium özelliklerin kilidini açmak için dokunun")
         }
@@ -317,7 +317,6 @@ struct ThemeSelectionView: View {
     private func gradientPaletteButton(_ palette: ZenColorPalette) -> some View {
         Button {
             featureFlag.breathingGradientPalette = palette
-            hapticManager.playImpact(style: .medium)
         } label: {
             VStack(spacing: 8) {
                 // Gradient preview
@@ -359,7 +358,7 @@ struct ThemeSelectionView: View {
                     .frame(width: 80)
             }
         }
-        .buttonStyle(ScaleButtonStyle())
+        .zenSecondaryButtonStyle()
         .accessibilityElement(children: .combine)
         .accessibilityLabel(palette.displayName)
         .accessibilityHint(featureFlag.breathingGradientPalette == palette ? "Seçili palet" : "Paleti seçmek için dokunun")
@@ -482,7 +481,7 @@ struct ThemeCard: View {
             )
             .opacity(isLocked ? 0.6 : 1.0)
         }
-        .buttonStyle(ScaleButtonStyle())
+        .zenSecondaryButtonStyle()
         .accessibilityElement(children: .combine)
         .accessibilityLabel("\(themeType.displayName) teması")
         .accessibilityHint(isLocked ? "Kilitli, premium gerektirir" : isSelected ? "Seçili tema" : "Temayı seçmek için dokunun")

@@ -73,6 +73,17 @@ struct BadgesView: View {
                     )
                 }
             }
+            .overlay(
+                Group {
+                    if gamificationManager.showBadgeUnlockAnimation,
+                       let badge = gamificationManager.newlyUnlockedBadge {
+                        BadgeUnlockAnimationView(badge: badge) {
+                            gamificationManager.dismissBadgeAlert()
+                        }
+                        .transition(.opacity)
+                    }
+                }
+            )
         }
     }
 
@@ -139,7 +150,7 @@ struct BadgesView: View {
                         isUnlocked: isUnlocked,
                         progress: gamificationManager.getProgress(for: badge)
                     )
-                    .onTapGesture {
+                    .zenCardPress {
                         selectedBadge = badge
                         showingBadgeDetail = true
                     }
@@ -460,6 +471,7 @@ struct BadgeDetailView: View {
                         dismiss()
                     }
                     .foregroundColor(.white)
+                    .zenSecondaryButtonStyle()
                 }
             }
         }

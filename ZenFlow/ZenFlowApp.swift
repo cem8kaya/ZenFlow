@@ -71,23 +71,32 @@ struct SwipeableTabView: View {
         }
     }
 
-    /// Kaydırma gesture'ı
+    /// Enhanced swipe gesture with velocity-based animations and haptic feedback
     private var swipeGesture: some Gesture {
         DragGesture(minimumDistance: 50, coordinateSpace: .local)
             .onEnded { value in
                 let horizontalAmount = value.translation.width
                 let verticalAmount = value.translation.height
 
+                // Calculate velocity for dynamic animation
+                let velocity = value.predictedEndTranslation.width - value.translation.width
+
                 // Yatay kaydırma dikey kaydırmadan fazlaysa (gerçek bir swipe)
                 if abs(horizontalAmount) > abs(verticalAmount) {
-                    if horizontalAmount < 0 {
+                    // Determine animation speed based on velocity
+                    let animationSpeed = min(abs(velocity) / 1000, 0.5)
+                    let springResponse = max(0.3 - animationSpeed, 0.15)
+
+                    if horizontalAmount < 0 && selection < 3 {
                         // Sola kaydırma - sonraki tab
-                        withAnimation {
+                        HapticManager.shared.playImpact(style: .light)
+                        withAnimation(.spring(response: springResponse, dampingFraction: 0.75)) {
                             selection = min(selection + 1, 3)
                         }
-                    } else {
+                    } else if horizontalAmount > 0 && selection > 0 {
                         // Sağa kaydırma - önceki tab
-                        withAnimation {
+                        HapticManager.shared.playImpact(style: .light)
+                        withAnimation(.spring(response: springResponse, dampingFraction: 0.75)) {
                             selection = max(selection - 1, 0)
                         }
                     }

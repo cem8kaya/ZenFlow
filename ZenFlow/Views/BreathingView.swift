@@ -142,6 +142,7 @@ struct BreathingView: View {
                             .font(.system(size: 60))
                             .foregroundColor(ZenTheme.lightLavender)
                     }
+                    .zenIconButtonStyle()
                     .accessibilityLabel(isAnimating ? "Meditasyonu durdur" : "Meditasyonu başlat")
                     .accessibilityHint(isAnimating ? "Meditasyon seansını sonlandırır ve kaydeder" : "Nefes egzersizi ile meditasyonu başlatır")
 
@@ -152,6 +153,7 @@ struct BreathingView: View {
                                 .font(.system(size: 50))
                                 .foregroundColor(ZenTheme.softPurple)
                         }
+                        .zenSecondaryButtonStyle()
                         .transition(.scale.combined(with: .opacity))
                         .accessibilityLabel(isPaused ? "Devam et" : "Duraklat")
                         .accessibilityHint(isPaused ? "Meditasyona devam eder" : "Meditasyonu geçici olarak duraklatır")
@@ -166,9 +168,7 @@ struct BreathingView: View {
     // MARK: - Animation Control
 
     private func toggleAnimation() {
-        // Haptic feedback for button press
-        hapticManager.playImpact(style: .medium)
-
+        // Button style handles haptic feedback automatically
         if isAnimating {
             stopAnimation()
         } else {
@@ -177,9 +177,7 @@ struct BreathingView: View {
     }
 
     private func togglePause() {
-        // Haptic feedback for button press
-        hapticManager.playImpact(style: .light)
-
+        // Button style handles haptic feedback automatically
         isPaused.toggle()
         if isPaused {
             pauseAnimation()
