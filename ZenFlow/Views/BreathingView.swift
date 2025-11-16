@@ -60,6 +60,7 @@ struct BreathingView: View {
     @State private var animationTimer: Timer?
     @StateObject private var sessionTracker = SessionTracker.shared
     @StateObject private var hapticManager = HapticManager.shared
+    @StateObject private var featureFlag = FeatureFlag.shared
 
     // MARK: - Constants
 
@@ -70,6 +71,16 @@ struct BreathingView: View {
             // Background gradient
             ZenTheme.backgroundGradient
                 .ignoresSafeArea()
+
+            // Particle effects layer (if enabled)
+            if featureFlag.particleEffectsEnabled {
+                ParticleCanvasView(
+                    isAnimating: isAnimating && !isPaused,
+                    currentPhase: currentPhase == .inhale ? .inhale : .exhale,
+                    intensity: featureFlag.particleIntensity,
+                    colorTheme: featureFlag.particleColorTheme
+                )
+            }
 
             VStack(spacing: 80) {
                 Spacer()

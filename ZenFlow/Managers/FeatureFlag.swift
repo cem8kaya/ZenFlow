@@ -26,6 +26,9 @@ final class FeatureFlag: ObservableObject {
     private enum Keys {
         static let isPremium = "zenflow_is_premium"
         static let selectedThemeType = "zenflow_selected_theme_type"
+        static let particleEffectsEnabled = "zenflow_particle_effects_enabled"
+        static let particleIntensity = "zenflow_particle_intensity"
+        static let particleColorTheme = "zenflow_particle_color_theme"
     }
 
     // MARK: - Published Properties
@@ -47,6 +50,30 @@ final class FeatureFlag: ObservableObject {
         }
     }
 
+    /// Indicates whether particle effects are enabled
+    @Published var particleEffectsEnabled: Bool {
+        didSet {
+            UserDefaults.standard.set(particleEffectsEnabled, forKey: Keys.particleEffectsEnabled)
+            objectWillChange.send()
+        }
+    }
+
+    /// Particle effect intensity level
+    @Published var particleIntensity: ParticleIntensity {
+        didSet {
+            UserDefaults.standard.set(particleIntensity.rawValue, forKey: Keys.particleIntensity)
+            objectWillChange.send()
+        }
+    }
+
+    /// Particle color theme
+    @Published var particleColorTheme: ParticleColorTheme {
+        didSet {
+            UserDefaults.standard.set(particleColorTheme.rawValue, forKey: Keys.particleColorTheme)
+            objectWillChange.send()
+        }
+    }
+
     // MARK: - Initialization
 
     private init() {
@@ -56,6 +83,22 @@ final class FeatureFlag: ObservableObject {
         // Load selected theme, defaulting to free theme
         let savedThemeRaw = UserDefaults.standard.string(forKey: Keys.selectedThemeType) ?? ThemeType.free.rawValue
         self.selectedThemeType = ThemeType(rawValue: savedThemeRaw) ?? .free
+
+        // Load particle effects settings
+        // Default to true if not previously set
+        if UserDefaults.standard.object(forKey: Keys.particleEffectsEnabled) == nil {
+            self.particleEffectsEnabled = true
+        } else {
+            self.particleEffectsEnabled = UserDefaults.standard.bool(forKey: Keys.particleEffectsEnabled)
+        }
+
+        // Load particle intensity, defaulting to medium
+        let savedIntensityRaw = UserDefaults.standard.string(forKey: Keys.particleIntensity) ?? ParticleIntensity.medium.rawValue
+        self.particleIntensity = ParticleIntensity(rawValue: savedIntensityRaw) ?? .medium
+
+        // Load particle color theme, defaulting to zen
+        let savedColorThemeRaw = UserDefaults.standard.string(forKey: Keys.particleColorTheme) ?? ParticleColorTheme.zen.rawValue
+        self.particleColorTheme = ParticleColorTheme(rawValue: savedColorThemeRaw) ?? .zen
 
         // If user is not premium but has a premium theme selected, reset to free
         if !isPremium && selectedThemeType.isPremium {
@@ -94,6 +137,9 @@ final class FeatureFlag: ObservableObject {
     func reset() {
         isPremium = false
         selectedThemeType = .free
+        particleEffectsEnabled = true
+        particleIntensity = .medium
+        particleColorTheme = .zen
     }
 
     // MARK: - Future StoreKit Integration
