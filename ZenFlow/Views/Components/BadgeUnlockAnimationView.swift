@@ -12,6 +12,7 @@
 //
 
 import SwiftUI
+import Combine
 
 /// Confetti particle for badge unlock celebration
 struct ConfettiParticle: Identifiable {
