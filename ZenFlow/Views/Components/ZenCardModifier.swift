@@ -122,20 +122,18 @@ struct ZenCardPressModifier: ViewModifier {
                 .spring(response: 0.3, dampingFraction: 0.6),
                 value: isPressed
             )
-            .simultaneousGesture(
-                DragGesture(minimumDistance: 0)
-                    .onChanged { _ in
-                        isPressed = true
-                    }
-                    .onEnded { value in
-                        isPressed = false
-                        // Check if it was a tap
-                        if abs(value.translation.width) < 10 && abs(value.translation.height) < 10 {
-                            HapticManager.shared.playImpact(style: .medium)
-                            onTap?()
-                        }
-                    }
-            )
+            .onTapGesture {
+                // Play haptic feedback
+                HapticManager.shared.playImpact(style: .medium)
+                // Trigger press animation
+                isPressed = true
+                // Reset press state after animation
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    isPressed = false
+                }
+                // Execute tap action
+                onTap?()
+            }
     }
 }
 

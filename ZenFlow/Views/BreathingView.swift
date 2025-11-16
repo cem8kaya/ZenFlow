@@ -76,10 +76,12 @@ struct BreathingView: View {
                     palette: featureFlag.breathingGradientPalette,
                     opacity: featureFlag.breathingGradientOpacity
                 )
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .ignoresSafeArea(.all)
             } else {
                 // Static gradient
                 ZenTheme.backgroundGradient
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .ignoresSafeArea(.all)
             }
 
@@ -91,6 +93,7 @@ struct BreathingView: View {
                     intensity: featureFlag.particleIntensity,
                     colorTheme: featureFlag.particleColorTheme
                 )
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
 
             VStack(spacing: 80) {
