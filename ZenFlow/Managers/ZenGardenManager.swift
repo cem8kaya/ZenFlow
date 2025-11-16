@@ -13,7 +13,9 @@ class ZenGardenManager: ObservableObject {
     // MARK: - Properties
 
     private let localDataManager = LocalDataManager.shared
+    private let sessionTracker = SessionTracker.shared
     private var cancellables = Set<AnyCancellable>()
+    private var updateTimer: Timer?
 
     // MARK: - Published Properties
 
@@ -48,6 +50,40 @@ class ZenGardenManager: ObservableObject {
                 self?.handleDataManagerUpdate()
             }
             .store(in: &cancellables)
+
+        // SessionTracker'ı dinle - aktif meditasyon sırasında güncelleme için
+        sessionTracker.$isActive
+            .sink { [weak self] isActive in
+                self?.handleSessionStateChange(isActive: isActive)
+            }
+            .store(in: &cancellables)
+
+        // Saniyede bir güncelleme yap (aktif session varsa)
+        startUpdateTimer()
+    }
+
+    deinit {
+        updateTimer?.invalidate()
+    }
+
+    // MARK: - Timer Management
+
+    /// Güncelleme timer'ını başlat
+    private func startUpdateTimer() {
+        // Her saniye güncelle
+        updateTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
+            self?.updateTreeStateWithActiveSession()
+        }
+    }
+
+    /// Session durumu değiştiğinde çağrılır
+    private func handleSessionStateChange(isActive: Bool) {
+        if isActive {
+            print("🌳 Active meditation session detected - starting real-time updates")
+        } else {
+            print("🌳 Meditation session ended - updating final state")
+        }
+        updateTreeStateWithActiveSession()
     }
 
     // MARK: - Data Updates
@@ -95,6 +131,34 @@ class ZenGardenManager: ObservableObject {
             print("   - Minutes until next stage: \(remaining)")
         } else {
             print("   - Maximum stage reached!")
+        }
+    }
+
+    /// Aktif session dahil ağaç durumunu güncelle
+    private func updateTreeStateWithActiveSession() {
+        // Toplam dakikayı al (kayıtlı + aktif session)
+        let savedMinutes = localDataManager.totalMinutes
+        let activeMinutes = sessionTracker.isActive ? Int(sessionTracker.duration / 60.0) : 0
+        let effectiveTotalMinutes = savedMinutes + activeMinutes
+
+        // Eski aşamayı sakla
+        let oldStage = currentStage
+
+        // Mevcut aşamayı hesapla
+        currentStage = TreeGrowthStage.stage(for: effectiveTotalMinutes)
+
+        // İlerleme yüzdesini hesapla
+        stageProgress = currentStage.progress(for: effectiveTotalMinutes)
+
+        // Bir sonraki aşamaya kalan süreyi hesapla
+        minutesUntilNextStage = currentStage.minutesUntilNextStage(currentMinutes: effectiveTotalMinutes)
+
+        // Toplam dakikayı güncelle (görüntüleme için)
+        totalMinutes = effectiveTotalMinutes
+
+        // Aşama değişimi oldu mu kontrol et
+        if oldStage != currentStage && activeMinutes > 0 {
+            handleStageTransition(from: oldStage, to: currentStage)
         }
     }
 

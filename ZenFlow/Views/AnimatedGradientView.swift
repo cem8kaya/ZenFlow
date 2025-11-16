@@ -50,7 +50,7 @@ struct AnimatedGradientView: View {
                 linearGradientView
             }
         }
-        .ignoresSafeArea()
+        .ignoresSafeArea(.all, edges: .all)
         .opacity(opacity)
         .onChange(of: breathingPhase) { oldPhase, newPhase in
             handlePhaseChange(from: oldPhase, to: newPhase)
