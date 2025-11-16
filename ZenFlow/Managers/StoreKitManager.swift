@@ -12,6 +12,7 @@
 
 import Foundation
 import StoreKit
+import Combine
 
 /// Manages in-app purchases and subscription validation using StoreKit 2
 /// Currently a placeholder for future implementation
