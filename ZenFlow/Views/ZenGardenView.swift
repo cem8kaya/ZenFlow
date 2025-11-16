@@ -34,6 +34,7 @@ struct ZenGardenView: View {
     @State private var particles: [Particle] = []
     @State private var showCelebrationText: Bool = false
     @State private var viewSize: CGSize = .zero
+    @State private var showSparkleAnimation: Bool = false
 
 
     // MARK: - Body
@@ -47,6 +48,17 @@ struct ZenGardenView: View {
                 // 2D Watercolor View
                 ZStack {
                     WatercolorZenGardenView(gardenManager: gardenManager)
+
+                    // Sparkle Growth Animation Overlay
+                    if showSparkleAnimation {
+                        SparkleLottieView {
+                            // Animation completed
+                            withAnimation {
+                                showSparkleAnimation = false
+                            }
+                        }
+                        .allowsHitTesting(false)
+                    }
 
                     // Overlay UI
                     VStack(spacing: 40) {
@@ -312,6 +324,11 @@ struct ZenGardenView: View {
     // MARK: - Celebration Animation
 
     private func startCelebrationAnimation() {
+        // Show Lottie sparkle animation
+        withAnimation {
+            showSparkleAnimation = true
+        }
+
         // Tree scale animation
         withAnimation(.spring(response: 0.6, dampingFraction: 0.5)) {
             treeScale = 1.2
