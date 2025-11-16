@@ -37,6 +37,9 @@ struct ThemeSelectionView: View {
                     // Premium status indicator
                     premiumStatusSection
 
+                    // Particle effects settings
+                    particleEffectsSection
+
                     // Theme grid
                     themeGridSection
 
@@ -78,6 +81,72 @@ struct ThemeSelectionView: View {
         }
         .accessibilityElement(children: .combine)
         .accessibilityLabel("Temalar. Meditasyon deneyiminizi kişiselleştirin")
+    }
+
+    // MARK: - Particle Effects Section
+
+    private var particleEffectsSection: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            HStack {
+                Text("Parçacık Efektleri")
+                    .font(ZenTheme.headline)
+                    .foregroundColor(currentTheme.textHighlight)
+
+                Spacer()
+
+                Toggle("", isOn: $featureFlag.particleEffectsEnabled)
+                    .labelsHidden()
+                    .tint(currentTheme.accent)
+                    .onChange(of: featureFlag.particleEffectsEnabled) { _ in
+                        hapticManager.playImpact(style: .light)
+                    }
+            }
+            .accessibilityElement(children: .combine)
+            .accessibilityLabel("Parçacık efektleri")
+            .accessibilityValue(featureFlag.particleEffectsEnabled ? "Açık" : "Kapalı")
+
+            if featureFlag.particleEffectsEnabled {
+                VStack(spacing: 16) {
+                    // Intensity picker
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Yoğunluk")
+                            .font(ZenTheme.subheadline)
+                            .foregroundColor(currentTheme.textHighlight.opacity(0.8))
+
+                        Picker("Yoğunluk", selection: $featureFlag.particleIntensity) {
+                            ForEach(ParticleIntensity.allCases, id: \.self) { intensity in
+                                Text(intensity.displayName).tag(intensity)
+                            }
+                        }
+                        .pickerStyle(.segmented)
+                        .onChange(of: featureFlag.particleIntensity) { _ in
+                            hapticManager.playImpact(style: .light)
+                        }
+                    }
+
+                    // Color theme picker
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Renk Teması")
+                            .font(ZenTheme.subheadline)
+                            .foregroundColor(currentTheme.textHighlight.opacity(0.8))
+
+                        Picker("Renk Teması", selection: $featureFlag.particleColorTheme) {
+                            ForEach(ParticleColorTheme.allCases, id: \.self) { theme in
+                                Text(theme.displayName).tag(theme)
+                            }
+                        }
+                        .pickerStyle(.segmented)
+                        .onChange(of: featureFlag.particleColorTheme) { _ in
+                            hapticManager.playImpact(style: .light)
+                        }
+                    }
+                }
+                .transition(.opacity.combined(with: .move(edge: .top)))
+            }
+        }
+        .padding()
+        .background(currentTheme.cardGradient)
+        .cornerRadius(16)
     }
 
     // MARK: - Premium Status Section
