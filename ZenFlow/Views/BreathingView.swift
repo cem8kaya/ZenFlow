@@ -58,6 +58,8 @@ struct BreathingView: View {
     @State private var isAnimating = false
     @State private var isPaused = false
     @State private var animationTimer: Timer?
+    @State private var showSessionComplete = false
+    @State private var completedDurationMinutes = 0
     @StateObject private var sessionTracker = SessionTracker.shared
     @StateObject private var hapticManager = HapticManager.shared
     @StateObject private var featureFlag = FeatureFlag.shared
@@ -164,6 +166,13 @@ struct BreathingView: View {
                 }
                 .padding(.bottom, 60)
             }
+
+            // Session Complete Overlay
+            if showSessionComplete {
+                SessionCompleteView(durationMinutes: completedDurationMinutes) {
+                    showSessionComplete = false
+                }
+            }
         }
         .preferredColorScheme(.dark)
     }
@@ -218,6 +227,12 @@ struct BreathingView: View {
             let minutes = Int(duration / Double(AppConstants.TimeFormat.secondsPerMinute))
             print("✅ Meditation session completed: \(minutes) minutes")
 
+            // Only show success animation for sessions >= 1 minute
+            if minutes >= 1 {
+                completedDurationMinutes = minutes
+                showSessionComplete = true
+            }
+
             // Accessibility announcement for completion
             DispatchQueue.main.asyncAfter(deadline: .now() + AppConstants.Accessibility.announcementDelay) {
                 UIAccessibility.post(notification: .announcement, argument: "Meditasyon tamamlandı. \(minutes) dakika.")
@@ -226,9 +241,6 @@ struct BreathingView: View {
 
         // Stop haptic engine
         hapticManager.stopEngine()
-
-        // Success haptic feedback
-        hapticManager.playNotification(type: .success)
 
         withAnimation(.easeInOut(duration: AppConstants.Animation.transitionDuration)) {
             scale = AppConstants.Breathing.exhaleScale

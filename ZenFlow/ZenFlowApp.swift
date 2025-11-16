@@ -16,11 +16,25 @@ import CoreData
 struct ZenFlowApp: App {
     let persistenceController = PersistenceController.shared
     @State private var selectedTab: Int = 0
+    @State private var showSplash: Bool = true
 
     var body: some Scene {
         WindowGroup {
-            SwipeableTabView(selection: $selectedTab, persistenceController: persistenceController)
-                .preferredColorScheme(.dark)
+            ZStack {
+                SwipeableTabView(selection: $selectedTab, persistenceController: persistenceController)
+                    .preferredColorScheme(.dark)
+
+                // Splash screen overlay
+                if showSplash {
+                    SplashScreenView(isActive: $showSplash)
+                        .transition(.opacity)
+                        .zIndex(1)
+                }
+            }
+            .onAppear {
+                // Preload Lottie animations on app launch
+                _ = LottieAnimationManager.shared
+            }
         }
     }
 }

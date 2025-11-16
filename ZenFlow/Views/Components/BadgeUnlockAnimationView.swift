@@ -13,6 +13,7 @@
 
 import SwiftUI
 import Combine
+import Lottie
 
 /// Confetti particle for badge unlock celebration
 struct ConfettiParticle: Identifiable {
@@ -37,6 +38,7 @@ struct BadgeUnlockAnimationView: View {
     @State private var confettiParticles: [ConfettiParticle] = []
     @State private var showText: Bool = false
     @State private var viewSize: CGSize = .zero
+    @State private var showLottieConfetti: Bool = false
 
     var body: some View {
         GeometryReader { geometry in
@@ -46,7 +48,13 @@ struct BadgeUnlockAnimationView: View {
                     .ignoresSafeArea()
                     .opacity(opacity)
 
-                // Confetti particles
+                // Lottie Confetti Animation
+                if showLottieConfetti {
+                    ConfettiLottieView()
+                        .allowsHitTesting(false)
+                }
+
+                // Legacy Confetti particles (fallback)
                 ForEach(confettiParticles) { particle in
                     Circle()
                         .fill(particle.color)
@@ -180,8 +188,12 @@ struct BadgeUnlockAnimationView: View {
             }
         }
 
-        // Step 5: Confetti burst
+        // Step 5: Lottie Confetti burst
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+            withAnimation {
+                showLottieConfetti = true
+            }
+            // Also generate legacy confetti for extra visual impact
             generateConfetti()
         }
 
