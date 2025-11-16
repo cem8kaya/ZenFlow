@@ -26,6 +26,12 @@ struct ZenFlowApp: App {
                     .tabItem {
                         Label("Zen Bahçem", systemImage: "tree.fill")
                     }
+
+                BadgesView()
+                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                    .tabItem {
+                        Label("Rozetler", systemImage: "trophy.fill")
+                    }
             }
             .preferredColorScheme(.dark)
         }
