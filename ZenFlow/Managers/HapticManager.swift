@@ -7,6 +7,7 @@
 
 import CoreHaptics
 import UIKit
+import Combine
 
 class HapticManager {
     // MARK: - Singleton

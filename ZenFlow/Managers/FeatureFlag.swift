@@ -11,6 +11,7 @@
 //
 
 import Foundation
+import Combine
 
 /// Manages feature flags and premium status for the application
 /// Singleton pattern ensures consistent state across the app
