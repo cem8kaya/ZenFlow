@@ -19,6 +19,7 @@ class GamificationManager: ObservableObject {
     @Published var badges: [Badge] = []
     @Published var newlyUnlockedBadge: Badge?
     @Published var showBadgeAlert: Bool = false
+    @Published var showBadgeUnlockAnimation: Bool = false
 
     // MARK: - Private Properties
 
@@ -148,7 +149,10 @@ class GamificationManager: ObservableObject {
     private func showBadgeUnlockNotification(badge: Badge) {
         DispatchQueue.main.async { [weak self] in
             self?.newlyUnlockedBadge = badge
-            self?.showBadgeAlert = true
+            self?.showBadgeUnlockAnimation = true
+
+            // Play heavy haptic for important achievement
+            HapticManager.shared.playNotification(type: .success)
 
             print("🎉 BADGE UNLOCKED: \(badge.name)")
             print("📝 \(badge.description)")
@@ -158,6 +162,7 @@ class GamificationManager: ObservableObject {
     /// Bildirim penceresini kapat
     func dismissBadgeAlert() {
         showBadgeAlert = false
+        showBadgeUnlockAnimation = false
         newlyUnlockedBadge = nil
     }
 
