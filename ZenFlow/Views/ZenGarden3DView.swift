@@ -244,17 +244,61 @@ struct ZenGarden3DView: UIViewRepresentable {
             let particleSystem = SCNParticleSystem()
             particleSystem.birthRate = 2
             particleSystem.particleLifeSpan = 8
-            particleSystem.particleSize = 0.05
-            particleSystem.particleColor = UIColor(red: 0.85, green: 0.80, blue: 0.95, alpha: 0.6)
+            particleSystem.particleSize = 0.1
+            particleSystem.particleColor = UIColor(red: 0.85, green: 0.80, blue: 0.95, alpha: 0.8)
             particleSystem.emitterShape = SCNBox(width: 10, height: 5, length: 10, chamferRadius: 0)
             particleSystem.particleVelocity = 0.2
             particleSystem.particleVelocityVariation = 0.3
             particleSystem.acceleration = SCNVector3(0, 0.1, 0)
 
+            // Create a soft glowing particle image instead of default square
+            particleSystem.particleImage = createParticleImage()
+
+            // Blend mode for soft glow effect
+            particleSystem.blendMode = .additive
+
+            // Subtle size variation for more organic feel
+            particleSystem.particleSizeVariation = 0.03
+
             let particleNode = SCNNode()
             particleNode.position = SCNVector3(0, 0, 0)
             particleNode.addParticleSystem(particleSystem)
             environmentNode.addChildNode(particleNode)
+        }
+
+        // MARK: - Particle Image Helper
+
+        private func createParticleImage() -> UIImage {
+            let size: CGFloat = 64
+            let renderer = UIGraphicsImageRenderer(size: CGSize(width: size, height: size))
+
+            return renderer.image { context in
+                let center = CGPoint(x: size / 2, y: size / 2)
+                let radius = size / 2
+
+                // Create radial gradient for soft glow effect
+                let colors = [
+                    UIColor.white.withAlphaComponent(1.0).cgColor,
+                    UIColor.white.withAlphaComponent(0.6).cgColor,
+                    UIColor.white.withAlphaComponent(0.2).cgColor,
+                    UIColor.clear.cgColor
+                ]
+
+                let gradient = CGGradient(
+                    colorsSpace: CGColorSpaceCreateDeviceRGB(),
+                    colors: colors as CFArray,
+                    locations: [0.0, 0.3, 0.6, 1.0]
+                )!
+
+                context.cgContext.drawRadialGradient(
+                    gradient,
+                    startCenter: center,
+                    startRadius: 0,
+                    endCenter: center,
+                    endRadius: radius,
+                    options: []
+                )
+            }
         }
 
         // MARK: - Tree Updates
