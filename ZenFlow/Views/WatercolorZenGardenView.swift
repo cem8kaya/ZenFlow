@@ -716,7 +716,7 @@ struct WatercolorZenGardenView: View {
             let glowPath = Path(
                 ellipseIn: CGRect(x: x - 20, y: y - 5, width: 40, height: 35)
             )
-            context.fill(glowPath, with: .color(Color(red: 1.0, green: 0.95, blue: 0.85, alpha: 0.6)))
+            context.fill(glowPath, with: .color(Color(red: 1.0, green: 0.95, blue: 0.85).opacity(0.6)))
             context.opacity = 1.0
 
             // Roof
@@ -766,7 +766,7 @@ struct WatercolorZenGardenView: View {
                 let ringPath = Path(
                     ellipseIn: CGRect(
                         x: bamboo.x + sway - 2,
-                        y: size.height - y - 3,
+                        y: size.height - y - CGFloat(3),
                         width: 16,
                         height: 6
                     )
