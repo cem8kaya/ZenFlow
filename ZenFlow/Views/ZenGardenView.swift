@@ -37,7 +37,7 @@ struct ZenGardenView: View {
     @State private var showCelebrationText: Bool = false
     @State private var viewSize: CGSize = .zero
 
-    // 3D View Toggle
+    // 3D View Toggle (default to 2D watercolor view)
     @AppStorage("zen_garden_3d_enabled") private var is3DEnabled: Bool = false
     @State private var showMetalWarning: Bool = false
 
@@ -60,29 +60,31 @@ struct ZenGardenView: View {
                     ZenGarden3DView(gardenManager: gardenManager, is3DEnabled: $is3DEnabled)
                         .ignoresSafeArea()
                 } else {
-                    // 2D View
-                    VStack(spacing: 40) {
-                        Spacer()
+                    // 2D Watercolor View
+                    ZStack {
+                        WatercolorZenGardenView(gardenManager: gardenManager)
 
-                        // Başlık
-                        headerView
+                        // Overlay UI
+                        VStack(spacing: 40) {
+                            Spacer()
 
-                        Spacer()
+                            // Başlık
+                            headerView
+                                .shadow(color: .black.opacity(0.3), radius: 5)
 
-                        // Ağaç gösterimi
-                        treeDisplayArea
+                            Spacer()
+                            Spacer()
 
-                        Spacer()
+                            // İlerleme göstergesi
+                            progressSection
+                                .background(
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .fill(Color.black.opacity(0.3))
+                                        .blur(radius: 10)
+                                )
 
-                        // İlerleme göstergesi
-                        progressSection
-
-                        Spacer()
-                    }
-
-                    // Celebration overlay
-                    if gardenManager.shouldCelebrate {
-                        celebrationOverlay
+                            Spacer()
+                        }
                     }
                 }
 
