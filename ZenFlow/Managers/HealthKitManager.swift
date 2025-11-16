@@ -91,22 +91,58 @@ class HealthKitManager {
 
     // MARK: - Save Mindful Session
 
-    /// Save a mindful session to HealthKit
+    /// Custom error types for HealthKit operations
+    enum HealthKitError: LocalizedError {
+        case healthKitNotAvailable
+        case mindfulSessionTypeNotAvailable
+        case invalidDateRange
+        case saveFailed(Error)
+        case notAuthorized
+
+        var errorDescription: String? {
+            switch self {
+            case .healthKitNotAvailable:
+                return "HealthKit bu cihazda kullanılamıyor"
+            case .mindfulSessionTypeNotAvailable:
+                return "Mindful Session veri tipi alınamadı"
+            case .invalidDateRange:
+                return "Geçersiz tarih aralığı: Başlangıç zamanı bitiş zamanından sonra olamaz"
+            case .saveFailed(let error):
+                return "Veri kaydedilemedi: \(error.localizedDescription)"
+            case .notAuthorized:
+                return "HealthKit izni verilmedi. Lütfen Ayarlar'dan izin verin"
+            }
+        }
+    }
+
+    /// Save a mindful session to HealthKit (async/await version)
     /// - Parameters:
     ///   - startDate: The start date of the session
     ///   - endDate: The end date of the session
-    ///   - completion: Completion handler with success status and optional error
-    func saveMindfulSession(startDate: Date, endDate: Date, completion: @escaping (Bool, Error?) -> Void) {
+    /// - Throws: HealthKitError if the operation fails
+    func saveMindfulSession(startDate: Date, endDate: Date) async throws {
+        // Validate HealthKit availability
         guard isHealthKitAvailable else {
             print("⚠️ HealthKit is not available")
-            completion(false, NSError(domain: "HealthKitManager", code: 1, userInfo: [NSLocalizedDescriptionKey: "HealthKit is not available on this device"]))
-            return
+            throw HealthKitError.healthKitNotAvailable
         }
 
+        // Validate authorization
+        guard isAuthorized() else {
+            print("⚠️ HealthKit authorization not granted")
+            throw HealthKitError.notAuthorized
+        }
+
+        // Validate date range
+        guard startDate < endDate else {
+            print("⚠️ Invalid date range: start(\(startDate)) >= end(\(endDate))")
+            throw HealthKitError.invalidDateRange
+        }
+
+        // Get mindful session type
         guard let mindfulSessionType = HKObjectType.categoryType(forIdentifier: .mindfulSession) else {
             print("❌ Failed to get mindful session type")
-            completion(false, NSError(domain: "HealthKitManager", code: 2, userInfo: [NSLocalizedDescriptionKey: "Failed to get mindful session type"]))
-            return
+            throw HealthKitError.mindfulSessionTypeNotAvailable
         }
 
         // Create the mindful session sample
@@ -117,16 +153,31 @@ class HealthKitManager {
             end: endDate
         )
 
-        // Save to HealthKit
-        healthStore.save(mindfulSession) { success, error in
-            if success {
-                let duration = endDate.timeIntervalSince(startDate)
-                print("✅ Mindful session saved to HealthKit (duration: \(duration)s)")
-            } else {
-                print("❌ Failed to save mindful session: \(error?.localizedDescription ?? "Unknown error")")
-            }
+        // Save to HealthKit using async/await
+        do {
+            try await healthStore.save(mindfulSession)
+            let duration = endDate.timeIntervalSince(startDate)
+            let minutes = Int(duration / 60)
+            print("✅ Mindful session saved to HealthKit (duration: \(minutes) dakika)")
+        } catch {
+            print("❌ Failed to save mindful session: \(error.localizedDescription)")
+            throw HealthKitError.saveFailed(error)
+        }
+    }
 
-            completion(success, error)
+    /// Save a mindful session to HealthKit (completion handler version for backward compatibility)
+    /// - Parameters:
+    ///   - startDate: The start date of the session
+    ///   - endDate: The end date of the session
+    ///   - completion: Completion handler with success status and optional error
+    func saveMindfulSession(startDate: Date, endDate: Date, completion: @escaping (Bool, Error?) -> Void) {
+        Task {
+            do {
+                try await saveMindfulSession(startDate: startDate, endDate: endDate)
+                completion(true, nil)
+            } catch {
+                completion(false, error)
+            }
         }
     }
 }
