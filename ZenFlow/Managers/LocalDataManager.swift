@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import Combine
 
-class LocalDataManager {
+class LocalDataManager: ObservableObject {
     // MARK: - Singleton
 
     static let shared = LocalDataManager()
@@ -59,6 +60,7 @@ class LocalDataManager {
             return defaults.integer(forKey: Keys.totalMinutes)
         }
         set {
+            objectWillChange.send()
             defaults.set(newValue, forKey: Keys.totalMinutes)
             print("💾 Total minutes updated: \(newValue)")
         }
@@ -70,6 +72,7 @@ class LocalDataManager {
             return defaults.integer(forKey: Keys.totalSessions)
         }
         set {
+            objectWillChange.send()
             defaults.set(newValue, forKey: Keys.totalSessions)
             print("💾 Total sessions updated: \(newValue)")
         }
@@ -81,6 +84,7 @@ class LocalDataManager {
             return defaults.object(forKey: Keys.lastSessionDate) as? Date
         }
         set {
+            objectWillChange.send()
             defaults.set(newValue, forKey: Keys.lastSessionDate)
             if let date = newValue {
                 print("💾 Last session date updated: \(date)")
@@ -94,6 +98,7 @@ class LocalDataManager {
             return defaults.integer(forKey: Keys.currentStreak)
         }
         set {
+            objectWillChange.send()
             defaults.set(newValue, forKey: Keys.currentStreak)
 
             // En uzun seriyi güncelle
@@ -111,6 +116,7 @@ class LocalDataManager {
             return defaults.integer(forKey: Keys.longestStreak)
         }
         set {
+            objectWillChange.send()
             defaults.set(newValue, forKey: Keys.longestStreak)
             print("💾 Longest streak updated: \(newValue)")
         }
@@ -126,6 +132,7 @@ class LocalDataManager {
             return sessions
         }
         set {
+            objectWillChange.send()
             if let data = try? JSONEncoder().encode(newValue) {
                 defaults.set(data, forKey: Keys.sessionHistory)
                 print("💾 Session history updated: \(newValue.count) sessions")
