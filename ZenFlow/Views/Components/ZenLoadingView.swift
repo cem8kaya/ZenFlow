@@ -223,8 +223,8 @@ struct SkeletonView: View {
             .fill(Color.white.opacity(0.1))
             .frame(height: height)
             .overlay(
-                RoundedRectangle(cornerRadius: cornerRadius)
-                    .fill(ShimmerView())
+                ShimmerView()
+                    .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
             )
             .clipped()
     }
