@@ -175,8 +175,8 @@ struct WatercolorZenGardenView: View {
 
             // Watercolor effect with gradient
             let gradient = Gradient(colors: [
-                Color(red: 0.45, green: 0.50, blue: 0.60, alpha: 0.4),
-                Color(red: 0.55, green: 0.60, blue: 0.70, alpha: 0.2)
+                Color(red: 0.45, green: 0.50, blue: 0.60).opacity(0.4),
+                Color(red: 0.55, green: 0.60, blue: 0.70).opacity(0.2)
             ])
 
             context.fill(
@@ -225,7 +225,7 @@ struct WatercolorZenGardenView: View {
             let pillarWidth: CGFloat = 12
 
             // Torii color (vermillion/red-orange)
-            let toriiColor = Color(red: 0.85, green: 0.35, blue: 0.25, alpha: 0.7)
+            let toriiColor = Color(red: 0.85, green: 0.35, blue: 0.25).opacity(0.7)
 
             // Left pillar
             let leftPillar = Path(
@@ -350,8 +350,8 @@ struct WatercolorZenGardenView: View {
 
                 // Water gradient
                 let waterGradient = Gradient(colors: [
-                    Color(red: 0.40, green: 0.60, blue: 0.70, alpha: 0.7),
-                    Color(red: 0.25, green: 0.45, blue: 0.60, alpha: 0.8)
+                    Color(red: 0.40, green: 0.60, blue: 0.70).opacity(0.7),
+                    Color(red: 0.25, green: 0.45, blue: 0.60).opacity(0.8)
                 ])
 
                 context.fill(
@@ -470,7 +470,7 @@ struct WatercolorZenGardenView: View {
                 )
                 context.fill(
                     padPath,
-                    with: .color(Color(red: 0.3, green: 0.6, blue: 0.4, alpha: 0.7))
+                    with: .color(Color(red: 0.3, green: 0.6, blue: 0.4).opacity(0.7))
                 )
 
                 // Lotus flower (simple)
@@ -490,7 +490,7 @@ struct WatercolorZenGardenView: View {
 
                     context.fill(
                         petalPath,
-                        with: .color(Color(red: 0.98, green: 0.85, blue: 0.90, alpha: 0.9))
+                        with: .color(Color(red: 0.98, green: 0.85, blue: 0.90).opacity(0.9))
                     )
                 }
 
@@ -505,7 +505,7 @@ struct WatercolorZenGardenView: View {
                 )
                 context.fill(
                     centerPath,
-                    with: .color(Color(red: 0.95, green: 0.85, blue: 0.3, alpha: 0.8))
+                    with: .color(Color(red: 0.95, green: 0.85, blue: 0.3).opacity(0.8))
                 )
             }
         }
@@ -561,7 +561,7 @@ struct WatercolorZenGardenView: View {
                             height: 18
                         )
                     )
-                    context.fill(leafPath, with: .color(Color(red: 0.5, green: 0.8, blue: 0.4, alpha: 0.8)))
+                    context.fill(leafPath, with: .color(Color(red: 0.5, green: 0.8, blue: 0.4).opacity(0.8)))
                 }
 
             case .sapling:
@@ -592,7 +592,7 @@ struct WatercolorZenGardenView: View {
         trunkPath.addLine(to: CGPoint(x: centerX + trunkWidth/2, y: baseY))
         trunkPath.closeSubpath()
 
-        context.fill(trunkPath, with: .color(Color(red: 0.35, green: 0.25, blue: 0.20, alpha: 0.8)))
+        context.fill(trunkPath, with: .color(Color(red: 0.35, green: 0.25, blue: 0.20).opacity(0.8)))
 
         // Branches
         let branches: [(angle: Double, length: CGFloat, y: CGFloat)] = [
@@ -613,7 +613,7 @@ struct WatercolorZenGardenView: View {
             branchPath.move(to: CGPoint(x: startX, y: startY))
             branchPath.addLine(to: CGPoint(x: endX, y: endY))
 
-            context.stroke(branchPath, with: .color(Color(red: 0.40, green: 0.30, blue: 0.25, alpha: 0.7)), lineWidth: 4 * size)
+            context.stroke(branchPath, with: .color(Color(red: 0.40, green: 0.30, blue: 0.25).opacity(0.7)), lineWidth: 4 * size)
 
             // Blossoms on branch
             if blossomAmount > 0 {
@@ -663,9 +663,8 @@ struct WatercolorZenGardenView: View {
             let petalColor = Color(
                 red: 1.0,
                 green: Double.random(in: 0.75...0.85),
-                blue: Double.random(in: 0.80...0.90),
-                alpha: 0.8
-            )
+                blue: Double.random(in: 0.80...0.90)
+            ).opacity(0.8)
 
             context.fill(petalPath, with: .color(petalColor))
         }
@@ -679,7 +678,7 @@ struct WatercolorZenGardenView: View {
                 height: size * 0.4
             )
         )
-        context.fill(centerPath, with: .color(Color(red: 0.95, green: 0.85, blue: 0.3, alpha: 0.9)))
+        context.fill(centerPath, with: .color(Color(red: 0.95, green: 0.85, blue: 0.3).opacity(0.9)))
     }
 
     // MARK: - Stone Lantern
@@ -689,7 +688,7 @@ struct WatercolorZenGardenView: View {
             let x: CGFloat = 100
             let y: CGFloat = 80
 
-            let stoneColor = Color(red: 0.50, green: 0.48, blue: 0.45, alpha: 0.8)
+            let stoneColor = Color(red: 0.50, green: 0.48, blue: 0.45).opacity(0.8)
 
             // Base
             let basePath = Path(
@@ -710,7 +709,7 @@ struct WatercolorZenGardenView: View {
                 roundedRect: CGRect(x: x - 15, y: y, width: 30, height: 25),
                 cornerRadius: 3
             )
-            context.fill(lightBoxPath, with: .color(Color(red: 0.95, green: 0.93, blue: 0.88, alpha: 0.7)))
+            context.fill(lightBoxPath, with: .color(Color(red: 0.95, green: 0.93, blue: 0.88).opacity(0.7)))
 
             // Glow effect
             context.opacity = lanternGlow
@@ -727,7 +726,7 @@ struct WatercolorZenGardenView: View {
             roofPath.addLine(to: CGPoint(x: x + 25, y: y))
             roofPath.closeSubpath()
 
-            context.fill(roofPath, with: .color(Color(red: 0.35, green: 0.33, blue: 0.30, alpha: 0.8)))
+            context.fill(roofPath, with: .color(Color(red: 0.35, green: 0.33, blue: 0.30).opacity(0.8)))
         }
         .frame(width: 200, height: 150)
         .blur(radius: 0.8)
@@ -758,9 +757,8 @@ struct WatercolorZenGardenView: View {
                 let bambooColor = Color(
                     red: 0.45,
                     green: 0.62,
-                    blue: 0.35,
-                    alpha: 0.7
-                )
+                    blue: 0.35
+                ).opacity(0.7)
 
                 context.fill(segmentPath, with: .color(bambooColor))
 
@@ -774,7 +772,7 @@ struct WatercolorZenGardenView: View {
                     )
                 )
 
-                context.fill(ringPath, with: .color(Color(red: 0.35, green: 0.52, blue: 0.25, alpha: 0.8)))
+                context.fill(ringPath, with: .color(Color(red: 0.35, green: 0.52, blue: 0.25).opacity(0.8)))
             }
 
             // Leaves at top
@@ -797,7 +795,7 @@ struct WatercolorZenGardenView: View {
 
                 context.stroke(
                     leafPath,
-                    with: .color(Color(red: 0.40, green: 0.70, blue: 0.30, alpha: 0.7)),
+                    with: .color(Color(red: 0.40, green: 0.70, blue: 0.30).opacity(0.7)),
                     lineWidth: 3
                 )
             }
@@ -821,7 +819,7 @@ struct WatercolorZenGardenView: View {
                 ellipseIn: CGRect(x: -4, y: -6, width: 8, height: 12)
             )
 
-            let petalColor = Color(red: 1.0, green: 0.80, blue: 0.85, alpha: 0.9)
+            let petalColor = Color(red: 1.0, green: 0.80, blue: 0.85).opacity(0.9)
             context.fill(petalPath, with: .color(petalColor))
         }
     }
@@ -838,9 +836,9 @@ struct WatercolorZenGardenView: View {
                 speed: CGFloat.random(in: 0.3...0.8),
                 size: CGFloat.random(in: 25...40),
                 color: [
-                    Color(red: 1.0, green: 0.6, blue: 0.2, alpha: 0.8),
-                    Color(red: 1.0, green: 0.95, blue: 0.95, alpha: 0.9),
-                    Color(red: 0.9, green: 0.3, blue: 0.2, alpha: 0.85)
+                    Color(red: 1.0, green: 0.6, blue: 0.2).opacity(0.8),
+                    Color(red: 1.0, green: 0.95, blue: 0.95).opacity(0.9),
+                    Color(red: 0.9, green: 0.3, blue: 0.2).opacity(0.85)
                 ].randomElement()!,
                 phase: Double(i) * 0.5
             )

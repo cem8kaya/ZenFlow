@@ -6,8 +6,6 @@
 //
 
 import SwiftUI
-import SceneKit
-import Metal
 
 // MARK: - Particle Model
 
@@ -37,14 +35,6 @@ struct ZenGardenView: View {
     @State private var showCelebrationText: Bool = false
     @State private var viewSize: CGSize = .zero
 
-    // 3D View Toggle (default to 2D watercolor view)
-    @AppStorage("zen_garden_3d_enabled") private var is3DEnabled: Bool = false
-    @State private var showMetalWarning: Bool = false
-
-    // Metal availability check
-    private var isMetalAvailable: Bool {
-        return MTLCreateSystemDefaultDevice() != nil
-    }
 
     // MARK: - Body
 
@@ -54,102 +44,31 @@ struct ZenGardenView: View {
                 // Background
                 backgroundGradient
 
-                // Main Content
-                if is3DEnabled && isMetalAvailable {
-                    // 3D View
-                    ZenGarden3DView(gardenManager: gardenManager, is3DEnabled: $is3DEnabled)
-                        .ignoresSafeArea()
-                } else {
-                    // 2D Watercolor View
-                    ZStack {
-                        WatercolorZenGardenView(gardenManager: gardenManager)
+                // 2D Watercolor View
+                ZStack {
+                    WatercolorZenGardenView(gardenManager: gardenManager)
 
-                        // Overlay UI
-                        VStack(spacing: 40) {
-                            Spacer()
-
-                            // Başlık
-                            headerView
-                                .shadow(color: .black.opacity(0.3), radius: 5)
-
-                            Spacer()
-                            Spacer()
-
-                            // İlerleme göstergesi
-                            progressSection
-                                .background(
-                                    RoundedRectangle(cornerRadius: 20)
-                                        .fill(Color.black.opacity(0.3))
-                                        .blur(radius: 10)
-                                )
-
-                            Spacer()
-                        }
-                    }
-                }
-
-                // Settings button (top-right)
-                VStack {
-                    HStack {
+                    // Overlay UI
+                    VStack(spacing: 40) {
                         Spacer()
 
-                        Button(action: {
-                            toggleViewMode()
-                        }) {
-                            Image(systemName: is3DEnabled ? "square.fill" : "cube.fill")
-                                .font(.system(size: 24))
-                                .foregroundColor(ZenTheme.lightLavender)
-                                .padding()
-                                .background(
-                                    Circle()
-                                        .fill(Color.white.opacity(0.1))
-                                        .shadow(color: ZenTheme.mysticalViolet.opacity(0.3), radius: 10)
-                                )
-                        }
-                        .padding(.trailing, 20)
-                        .padding(.top, 60)
-                    }
+                        // Başlık
+                        headerView
+                            .shadow(color: .black.opacity(0.3), radius: 5)
 
-                    Spacer()
-                }
-
-                // Metal warning alert
-                if showMetalWarning {
-                    VStack {
+                        Spacer()
                         Spacer()
 
-                        HStack {
-                            VStack(alignment: .leading, spacing: 12) {
-                                HStack {
-                                    Image(systemName: "exclamationmark.triangle.fill")
-                                        .foregroundColor(.yellow)
-                                    Text("3D Görünüm Kullanılamıyor")
-                                        .font(.headline)
-                                        .foregroundColor(.white)
-                                }
-
-                                Text("Bu cihaz Metal rendering desteklemiyor. 2D görünüm kullanılacak.")
-                                    .font(.subheadline)
-                                    .foregroundColor(.white.opacity(0.8))
-
-                                Button("Tamam") {
-                                    showMetalWarning = false
-                                }
-                                .padding(.top, 8)
-                                .foregroundColor(ZenTheme.lightLavender)
-                            }
-                            .padding()
+                        // İlerleme göstergesi
+                        progressSection
                             .background(
-                                RoundedRectangle(cornerRadius: 16)
-                                    .fill(Color.black.opacity(0.9))
-                                    .shadow(radius: 20)
+                                RoundedRectangle(cornerRadius: 20)
+                                    .fill(Color.black.opacity(0.3))
+                                    .blur(radius: 10)
                             )
-                            .padding(.horizontal, 30)
-                        }
-                        .padding(.bottom, 100)
+
+                        Spacer()
                     }
-                    .transition(.move(edge: .bottom))
-                    .animation(.spring(), value: showMetalWarning)
                 }
             }
             .onAppear {
@@ -160,29 +79,11 @@ struct ZenGardenView: View {
             }
             .preferredColorScheme(.dark)
             .onChange(of: gardenManager.shouldCelebrate) { _, shouldCelebrate in
-                if shouldCelebrate && !is3DEnabled {
+                if shouldCelebrate {
                     startCelebrationAnimation()
                 }
             }
         }
-    }
-
-    // MARK: - Toggle View Mode
-
-    private func toggleViewMode() {
-        if !is3DEnabled && !isMetalAvailable {
-            // Attempting to enable 3D but Metal not available
-            showMetalWarning = true
-            return
-        }
-
-        withAnimation(.spring()) {
-            is3DEnabled.toggle()
-        }
-
-        // Haptic feedback
-        let generator = UIImpactFeedbackGenerator(style: .medium)
-        generator.impactOccurred()
     }
 
     // MARK: - Background
