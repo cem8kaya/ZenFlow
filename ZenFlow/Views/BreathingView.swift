@@ -3,24 +3,31 @@
 //  ZenFlow
 //
 //  Created by Cem Kaya on 11/16/25.
+//  Updated by Claude AI on 16.11.2025.
+//
+//  Main meditation view featuring a guided breathing exercise with
+//  animated visual feedback, haptic patterns, and session tracking.
+//  Integrates with HealthKit and local data persistence.
 //
 
 import SwiftUI
 
-/// Animation phase enum for breathing cycle
+/// Animation phase for the breathing cycle
 enum AnimationPhase {
     case inhale
     case exhale
 
+    /// Scale factor for the breathing circles
     var scale: CGFloat {
         switch self {
         case .inhale:
-            return 1.5
+            return AppConstants.Breathing.inhaleScale
         case .exhale:
-            return 1.0
+            return AppConstants.Breathing.exhaleScale
         }
     }
 
+    /// Display text for current breathing phase
     var text: String {
         switch self {
         case .inhale:
@@ -29,17 +36,34 @@ enum AnimationPhase {
             return "Nefes Ver"
         }
     }
+
+    /// Accessibility announcement for VoiceOver
+    var accessibilityAnnouncement: String {
+        switch self {
+        case .inhale:
+            return "Nefes alın"
+        case .exhale:
+            return "Nefes verin"
+        }
+    }
 }
 
+/// Main breathing meditation view with animated guidance
 struct BreathingView: View {
+
+    // MARK: - State
+
     @State private var currentPhase: AnimationPhase = .exhale
-    @State private var scale: CGFloat = 1.0
+    @State private var scale: CGFloat = AppConstants.Breathing.exhaleScale
     @State private var isAnimating = false
     @State private var isPaused = false
     @State private var animationTimer: Timer?
     @StateObject private var sessionTracker = SessionTracker.shared
+    @StateObject private var hapticManager = HapticManager.shared
 
-    private let animationDuration: Double = 4.0
+    // MARK: - Constants
+
+    private let animationDuration: Double = AppConstants.Animation.breathingCycleDuration
 
     var body: some View {
         ZStack {
@@ -50,29 +74,41 @@ struct BreathingView: View {
             VStack(spacing: 80) {
                 Spacer()
 
+                // Session duration indicator
+                if isAnimating || sessionTracker.duration > 0 {
+                    Text(sessionTracker.getFormattedDuration())
+                        .font(ZenTheme.headline)
+                        .foregroundColor(ZenTheme.lightLavender.opacity(0.7))
+                        .accessibilityLabel("Meditasyon süresi: \(sessionTracker.getFormattedDuration())")
+                }
+
                 // Breathing circles
                 ZStack {
                     // Outer circle
                     Circle()
                         .fill(ZenTheme.breathingOuterGradient)
-                        .frame(width: 200, height: 200)
+                        .frame(width: AppConstants.Breathing.outerCircleSize, height: AppConstants.Breathing.outerCircleSize)
                         .scaleEffect(scale)
-                        .blur(radius: 20)
+                        .blur(radius: AppConstants.Breathing.circleBlurRadius)
 
                     // Inner circle
                     Circle()
                         .fill(ZenTheme.breathingInnerGradient)
-                        .frame(width: 150, height: 150)
+                        .frame(width: AppConstants.Breathing.innerCircleSize, height: AppConstants.Breathing.innerCircleSize)
                         .scaleEffect(scale)
                         .blur(radius: 5)
                 }
+                .accessibilityElement(children: .ignore)
+                .accessibilityLabel("Nefes alma animasyonu")
+                .accessibilityValue(currentPhase.accessibilityAnnouncement)
 
                 // Dynamic breathing text
                 Text(currentPhase.text)
                     .font(ZenTheme.largeTitle)
                     .foregroundColor(ZenTheme.lightLavender)
                     .transition(.opacity.combined(with: .scale))
-                    .id(currentPhase.text) // Force view update on phase change
+                    .id(currentPhase.text)
+                    .accessibilityHidden(true) // Announced via circle accessibilityValue
 
                 Spacer()
 
@@ -84,6 +120,8 @@ struct BreathingView: View {
                             .font(.system(size: 60))
                             .foregroundColor(ZenTheme.lightLavender)
                     }
+                    .accessibilityLabel(isAnimating ? "Meditasyonu durdur" : "Meditasyonu başlat")
+                    .accessibilityHint(isAnimating ? "Meditasyon seansını sonlandırır ve kaydeder" : "Nefes egzersizi ile meditasyonu başlatır")
 
                     // Pause/Resume button
                     if isAnimating {
@@ -93,6 +131,8 @@ struct BreathingView: View {
                                 .foregroundColor(ZenTheme.softPurple)
                         }
                         .transition(.scale.combined(with: .opacity))
+                        .accessibilityLabel(isPaused ? "Devam et" : "Duraklat")
+                        .accessibilityHint(isPaused ? "Meditasyona devam eder" : "Meditasyonu geçici olarak duraklatır")
                     }
                 }
                 .padding(.bottom, 60)
@@ -104,6 +144,9 @@ struct BreathingView: View {
     // MARK: - Animation Control
 
     private func toggleAnimation() {
+        // Haptic feedback for button press
+        hapticManager.playImpact(style: .medium)
+
         if isAnimating {
             stopAnimation()
         } else {
@@ -112,6 +155,9 @@ struct BreathingView: View {
     }
 
     private func togglePause() {
+        // Haptic feedback for button press
+        hapticManager.playImpact(style: .light)
+
         isPaused.toggle()
         if isPaused {
             pauseAnimation()
@@ -123,14 +169,17 @@ struct BreathingView: View {
     private func startAnimation() {
         isAnimating = true
         isPaused = false
-        scale = 1.0
+        scale = AppConstants.Breathing.exhaleScale
         currentPhase = .exhale
 
         // Start meditation session tracking
         sessionTracker.startSession()
 
         // Start haptic engine
-        HapticManager.shared.startEngine()
+        hapticManager.startEngine()
+
+        // Accessibility announcement
+        UIAccessibility.post(notification: .announcement, argument: "Meditasyon başladı")
 
         performBreathingCycle()
     }
@@ -143,15 +192,23 @@ struct BreathingView: View {
 
         // End meditation session tracking
         sessionTracker.endSession { duration in
-            let minutes = Int(duration / 60)
+            let minutes = Int(duration / AppConstants.TimeFormat.secondsPerMinute)
             print("✅ Meditation session completed: \(minutes) minutes")
+
+            // Accessibility announcement for completion
+            DispatchQueue.main.asyncAfter(deadline: .now() + AppConstants.Accessibility.announcementDelay) {
+                UIAccessibility.post(notification: .announcement, argument: "Meditasyon tamamlandı. \(minutes) dakika.")
+            }
         }
 
         // Stop haptic engine
-        HapticManager.shared.stopEngine()
+        hapticManager.stopEngine()
 
-        withAnimation(.easeInOut(duration: 1.0)) {
-            scale = 1.0
+        // Success haptic feedback
+        hapticManager.playNotification(type: .success)
+
+        withAnimation(.easeInOut(duration: AppConstants.Animation.transitionDuration)) {
+            scale = AppConstants.Breathing.exhaleScale
             currentPhase = .exhale
         }
     }
@@ -161,12 +218,18 @@ struct BreathingView: View {
         animationTimer = nil
 
         // Stop haptic engine when paused
-        HapticManager.shared.stopEngine()
+        hapticManager.stopEngine()
+
+        // Accessibility announcement
+        UIAccessibility.post(notification: .announcement, argument: "Meditasyon duraklatıldı")
     }
 
     private func resumeAnimation() {
         // Restart haptic engine when resumed
-        HapticManager.shared.startEngine()
+        hapticManager.startEngine()
+
+        // Accessibility announcement
+        UIAccessibility.post(notification: .announcement, argument: "Meditasyon devam ediyor")
 
         performBreathingCycle()
     }
