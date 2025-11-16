@@ -110,14 +110,16 @@ struct ZenGarden3DView: UIViewRepresentable {
             let renderer = UIGraphicsImageRenderer(size: size)
 
             return renderer.image { context in
+                // Natural sky gradient - soft blue to warm horizon
                 let colors = [
-                    UIColor(red: 0.18, green: 0.15, blue: 0.35, alpha: 1.0).cgColor, // deepIndigo
-                    UIColor(red: 0.45, green: 0.35, blue: 0.65, alpha: 1.0).cgColor  // softPurple
+                    UIColor(red: 0.53, green: 0.81, blue: 0.92, alpha: 1.0).cgColor, // Sky blue
+                    UIColor(red: 0.85, green: 0.92, blue: 0.95, alpha: 1.0).cgColor, // Light blue
+                    UIColor(red: 0.98, green: 0.94, blue: 0.88, alpha: 1.0).cgColor  // Warm horizon
                 ]
 
                 let gradient = CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(),
                                          colors: colors as CFArray,
-                                         locations: [0.0, 1.0])!
+                                         locations: [0.0, 0.5, 1.0])!
 
                 context.cgContext.drawLinearGradient(gradient,
                                                      start: CGPoint(x: 0, y: 0),
@@ -145,45 +147,50 @@ struct ZenGarden3DView: UIViewRepresentable {
         }
 
         private func setupLighting() {
-            // Ambient light - soft overall illumination
+            // Ambient light - natural daylight
             let ambientLight = SCNNode()
             ambientLight.light = SCNLight()
             ambientLight.light?.type = .ambient
-            ambientLight.light?.color = UIColor(white: 0.4, alpha: 1.0)
+            ambientLight.light?.color = UIColor(red: 0.95, green: 0.95, blue: 1.0, alpha: 1.0) // Slight cool tint
+            ambientLight.light?.intensity = 400
             scene.rootNode.addChildNode(ambientLight)
 
-            // Directional light - sun-like with soft shadows
+            // Directional light - warm sunlight with soft shadows
             let directionalLight = SCNNode()
             directionalLight.light = SCNLight()
             directionalLight.light?.type = .directional
-            directionalLight.light?.color = UIColor(white: 0.8, alpha: 1.0)
+            directionalLight.light?.color = UIColor(red: 1.0, green: 0.98, blue: 0.92, alpha: 1.0) // Warm sunlight
+            directionalLight.light?.intensity = 800
             directionalLight.light?.castsShadow = true
             directionalLight.light?.shadowMode = .deferred
-            directionalLight.light?.shadowRadius = 3.0
+            directionalLight.light?.shadowRadius = 4.0
             directionalLight.light?.shadowSampleCount = 16
-            directionalLight.light?.shadowColor = UIColor(white: 0, alpha: 0.3)
-            directionalLight.position = SCNVector3(x: 5, y: 10, z: 5)
+            directionalLight.light?.shadowColor = UIColor(white: 0, alpha: 0.25)
+            directionalLight.position = SCNVector3(x: 8, y: 12, z: 6)
             directionalLight.look(at: SCNVector3(x: 0, y: 0, z: 0))
             scene.rootNode.addChildNode(directionalLight)
 
-            // Accent light - subtle highlight from opposite side
-            let accentLight = SCNNode()
-            accentLight.light = SCNLight()
-            accentLight.light?.type = .omni
-            accentLight.light?.color = UIColor(red: 0.55, green: 0.40, blue: 0.75, alpha: 1.0) // mysticalViolet
-            accentLight.light?.intensity = 200
-            accentLight.position = SCNVector3(x: -3, y: 2, z: -3)
-            scene.rootNode.addChildNode(accentLight)
+            // Fill light - subtle bounce light from opposite side
+            let fillLight = SCNNode()
+            fillLight.light = SCNLight()
+            fillLight.light?.type = .omni
+            fillLight.light?.color = UIColor(red: 0.85, green: 0.90, blue: 0.95, alpha: 1.0) // Cool fill
+            fillLight.light?.intensity = 150
+            fillLight.position = SCNVector3(x: -5, y: 3, z: -5)
+            scene.rootNode.addChildNode(fillLight)
         }
 
         private func setupEnvironment() {
             environmentNode = SCNNode()
 
-            // Ground plane with stone texture
+            // Ground plane with white sand texture
             let ground = SCNPlane(width: 20, height: 20)
             let groundMaterial = SCNMaterial()
-            groundMaterial.diffuse.contents = UIColor(red: 0.4, green: 0.35, blue: 0.3, alpha: 1.0) // Sand color
-            groundMaterial.roughness.contents = 0.9
+            // Natural white/beige sand color
+            groundMaterial.diffuse.contents = createSandTexture()
+            groundMaterial.roughness.contents = 0.95
+            groundMaterial.normal.contents = createSandNormalMap()
+            groundMaterial.normal.intensity = 0.3
             ground.materials = [groundMaterial]
 
             let groundNode = SCNNode(geometry: ground)
@@ -191,19 +198,37 @@ struct ZenGarden3DView: UIViewRepresentable {
             groundNode.position = SCNVector3(0, 0, 0)
             environmentNode.addChildNode(groundNode)
 
+            // Sand rake patterns
+            addRakePatterns()
+
             // Scattered rocks
             addRocks()
+
+            // Bamboo elements
+            addBamboo()
+
+            // Japanese stone lantern
+            addStoneLantern()
 
             // Water element
             addWater()
 
-            // Particle system (fireflies)
+            // Particle system (subtle ambient particles)
             addParticleSystem()
 
             scene.rootNode.addChildNode(environmentNode)
         }
 
         private func addRocks() {
+            // Natural rock colors - mix of grey and brown tones
+            let rockColors = [
+                UIColor(red: 0.45, green: 0.45, blue: 0.45, alpha: 1.0), // Medium grey
+                UIColor(red: 0.55, green: 0.50, blue: 0.45, alpha: 1.0), // Warm grey
+                UIColor(red: 0.40, green: 0.38, blue: 0.35, alpha: 1.0), // Dark grey-brown
+                UIColor(red: 0.60, green: 0.55, blue: 0.50, alpha: 1.0), // Light grey-brown
+                UIColor(red: 0.35, green: 0.35, blue: 0.38, alpha: 1.0)  // Cool grey
+            ]
+
             let rockPositions: [(x: Float, z: Float, size: Float)] = [
                 (-3.0, 2.0, 0.4),
                 (2.5, -2.5, 0.3),
@@ -212,26 +237,215 @@ struct ZenGarden3DView: UIViewRepresentable {
                 (0.5, 3.5, 0.25)
             ]
 
-            for (x, z, size) in rockPositions {
+            for (index, (x, z, size)) in rockPositions.enumerated() {
                 let rock = SCNSphere(radius: CGFloat(size))
                 let rockMaterial = SCNMaterial()
-                rockMaterial.diffuse.contents = UIColor(white: 0.3, alpha: 1.0)
-                rockMaterial.roughness.contents = 0.95
+                rockMaterial.diffuse.contents = rockColors[index % rockColors.count]
+                rockMaterial.roughness.contents = 0.85
+                rockMaterial.metalness.contents = 0.1
                 rock.materials = [rockMaterial]
 
                 let rockNode = SCNNode(geometry: rock)
-                rockNode.position = SCNVector3(x: x, y: size * 0.7, z: z)
-                rockNode.scale = SCNVector3(1.0, 0.8, 1.0) // Slightly flatten
+                rockNode.position = SCNVector3(x: x, y: size * 0.6, z: z)
+                // Random variations for natural look
+                rockNode.scale = SCNVector3(
+                    1.0 + Float.random(in: -0.15...0.15),
+                    0.7 + Float.random(in: -0.1...0.1),
+                    1.0 + Float.random(in: -0.15...0.15)
+                )
+                rockNode.rotation = SCNVector4(0, 1, 0, Float.random(in: 0...(2 * .pi)))
                 environmentNode.addChildNode(rockNode)
             }
+        }
+
+        // MARK: - Sand Texture Helpers
+
+        private func createSandTexture() -> UIImage {
+            let size: CGFloat = 512
+            let renderer = UIGraphicsImageRenderer(size: CGSize(width: size, height: size))
+
+            return renderer.image { context in
+                // Base sand color - natural beige/white
+                let baseColor = UIColor(red: 0.96, green: 0.94, blue: 0.88, alpha: 1.0)
+                baseColor.setFill()
+                context.fill(CGRect(x: 0, y: 0, width: size, height: size))
+
+                // Add subtle noise for texture
+                for _ in 0..<1000 {
+                    let x = CGFloat.random(in: 0...size)
+                    let y = CGFloat.random(in: 0...size)
+                    let brightness = CGFloat.random(in: 0.85...0.98)
+                    UIColor(white: brightness, alpha: 0.3).setFill()
+                    context.cgContext.fillEllipse(in: CGRect(x: x, y: y, width: 2, height: 2))
+                }
+            }
+        }
+
+        private func createSandNormalMap() -> UIImage {
+            let size: CGFloat = 256
+            let renderer = UIGraphicsImageRenderer(size: CGSize(width: size, height: size))
+
+            return renderer.image { context in
+                // Neutral normal (pointing up)
+                UIColor(red: 0.5, green: 0.5, blue: 1.0, alpha: 1.0).setFill()
+                context.fill(CGRect(x: 0, y: 0, width: size, height: size))
+
+                // Add subtle bumps
+                for _ in 0..<100 {
+                    let x = CGFloat.random(in: 0...size)
+                    let y = CGFloat.random(in: 0...size)
+                    let radius = CGFloat.random(in: 2...8)
+
+                    let colors = [
+                        UIColor(red: 0.5, green: 0.5, blue: 1.0, alpha: 1.0).cgColor,
+                        UIColor(red: 0.48, green: 0.52, blue: 1.0, alpha: 1.0).cgColor
+                    ]
+
+                    let gradient = CGGradient(
+                        colorsSpace: CGColorSpaceCreateDeviceRGB(),
+                        colors: colors as CFArray,
+                        locations: [0.0, 1.0]
+                    )!
+
+                    context.cgContext.drawRadialGradient(
+                        gradient,
+                        startCenter: CGPoint(x: x, y: y),
+                        startRadius: 0,
+                        endCenter: CGPoint(x: x, y: y),
+                        endRadius: radius,
+                        options: []
+                    )
+                }
+            }
+        }
+
+        private func addRakePatterns() {
+            // Create zen rake patterns in the sand
+            let patternPositions: [(centerX: Float, centerZ: Float, radius: Float, rings: Int)] = [
+                (0.0, 0.0, 2.5, 8),    // Center pattern around tree
+                (-4.0, -3.0, 1.5, 5),  // Small pattern
+                (3.0, 4.0, 1.8, 6)     // Another pattern
+            ]
+
+            for pattern in patternPositions {
+                for ring in 0..<pattern.rings {
+                    let radius = Float(ring) * (pattern.radius / Float(pattern.rings))
+                    let segments = max(12, ring * 8)
+
+                    for segment in 0..<segments {
+                        let angle = Float(segment) * (2 * .pi / Float(segments))
+                        let x = pattern.centerX + radius * cos(angle)
+                        let z = pattern.centerZ + radius * sin(angle)
+
+                        // Small cylinder to represent rake line
+                        let line = SCNCylinder(radius: 0.01, height: 0.005)
+                        let lineMaterial = SCNMaterial()
+                        lineMaterial.diffuse.contents = UIColor(red: 0.88, green: 0.86, blue: 0.80, alpha: 1.0)
+                        line.materials = [lineMaterial]
+
+                        let lineNode = SCNNode(geometry: line)
+                        lineNode.position = SCNVector3(x: x, y: 0.002, z: z)
+                        lineNode.rotation = SCNVector4(1, 0, 0, -Float.pi / 2)
+                        environmentNode.addChildNode(lineNode)
+                    }
+                }
+            }
+        }
+
+        private func addBamboo() {
+            // Add bamboo stalks near the edges
+            let bambooPositions: [(x: Float, z: Float, height: Float)] = [
+                (-5.5, 5.0, 3.0),
+                (-5.0, 4.5, 2.8),
+                (-5.8, 5.3, 3.2),
+                (5.5, -5.0, 2.9),
+                (5.3, -5.5, 3.1)
+            ]
+
+            for (x, z, height) in bambooPositions {
+                let bamboo = SCNCylinder(radius: 0.08, height: CGFloat(height))
+                let bambooMaterial = SCNMaterial()
+                bambooMaterial.diffuse.contents = UIColor(red: 0.45, green: 0.62, blue: 0.35, alpha: 1.0)
+                bambooMaterial.roughness.contents = 0.6
+                bamboo.materials = [bambooMaterial]
+
+                let bambooNode = SCNNode(geometry: bamboo)
+                bambooNode.position = SCNVector3(x: x, y: height / 2, z: z)
+
+                // Add bamboo segments (rings)
+                for i in 0..<Int(height * 3) {
+                    let segment = SCNTorus(ringRadius: 0.09, pipeRadius: 0.015)
+                    let segmentMaterial = SCNMaterial()
+                    segmentMaterial.diffuse.contents = UIColor(red: 0.35, green: 0.52, blue: 0.25, alpha: 1.0)
+                    segment.materials = [segmentMaterial]
+
+                    let segmentNode = SCNNode(geometry: segment)
+                    segmentNode.position = SCNVector3(0, Float(i) * 0.35 - height / 2 + 0.2, 0)
+                    bambooNode.addChildNode(segmentNode)
+                }
+
+                environmentNode.addChildNode(bambooNode)
+            }
+        }
+
+        private func addStoneLantern() {
+            // Traditional Japanese stone lantern (simplified)
+            let lanternX: Float = -4.5
+            let lanternZ: Float = 1.5
+
+            // Base
+            let base = SCNBox(width: 0.5, height: 0.15, length: 0.5, chamferRadius: 0.02)
+            let baseMaterial = SCNMaterial()
+            baseMaterial.diffuse.contents = UIColor(red: 0.50, green: 0.48, blue: 0.45, alpha: 1.0)
+            baseMaterial.roughness.contents = 0.9
+            base.materials = [baseMaterial]
+
+            let baseNode = SCNNode(geometry: base)
+            baseNode.position = SCNVector3(x: lanternX, y: 0.075, z: lanternZ)
+            environmentNode.addChildNode(baseNode)
+
+            // Post
+            let post = SCNCylinder(radius: 0.1, height: 1.0)
+            let postMaterial = SCNMaterial()
+            postMaterial.diffuse.contents = UIColor(red: 0.48, green: 0.46, blue: 0.43, alpha: 1.0)
+            postMaterial.roughness.contents = 0.85
+            post.materials = [postMaterial]
+
+            let postNode = SCNNode(geometry: post)
+            postNode.position = SCNVector3(x: lanternX, y: 0.65, z: lanternZ)
+            environmentNode.addChildNode(postNode)
+
+            // Light box
+            let lightBox = SCNBox(width: 0.4, height: 0.4, length: 0.4, chamferRadius: 0.02)
+            let lightBoxMaterial = SCNMaterial()
+            lightBoxMaterial.diffuse.contents = UIColor(red: 0.95, green: 0.93, blue: 0.88, alpha: 0.8)
+            lightBoxMaterial.emission.contents = UIColor(red: 1.0, green: 0.95, blue: 0.85, alpha: 0.3)
+            lightBoxMaterial.roughness.contents = 0.3
+            lightBox.materials = [lightBoxMaterial]
+
+            let lightBoxNode = SCNNode(geometry: lightBox)
+            lightBoxNode.position = SCNVector3(x: lanternX, y: 1.35, z: lanternZ)
+            environmentNode.addChildNode(lightBoxNode)
+
+            // Roof (pyramid)
+            let roof = SCNPyramid(width: 0.6, height: 0.4, length: 0.6)
+            let roofMaterial = SCNMaterial()
+            roofMaterial.diffuse.contents = UIColor(red: 0.35, green: 0.33, blue: 0.30, alpha: 1.0)
+            roofMaterial.roughness.contents = 0.95
+            roof.materials = [roofMaterial]
+
+            let roofNode = SCNNode(geometry: roof)
+            roofNode.position = SCNVector3(x: lanternX, y: 1.75, z: lanternZ)
+            environmentNode.addChildNode(roofNode)
         }
 
         private func addWater() {
             let water = SCNPlane(width: 3.0, height: 2.0)
             let waterMaterial = SCNMaterial()
-            waterMaterial.diffuse.contents = UIColor(red: 0.2, green: 0.3, blue: 0.5, alpha: 0.6)
-            waterMaterial.metalness.contents = 0.8
-            waterMaterial.roughness.contents = 0.2
+            // More natural water color
+            waterMaterial.diffuse.contents = UIColor(red: 0.25, green: 0.35, blue: 0.45, alpha: 0.7)
+            waterMaterial.metalness.contents = 0.7
+            waterMaterial.roughness.contents = 0.3
             water.materials = [waterMaterial]
 
             let waterNode = SCNNode(geometry: water)
@@ -241,24 +455,26 @@ struct ZenGarden3DView: UIViewRepresentable {
         }
 
         private func addParticleSystem() {
+            // Subtle floating particles - like dust motes in sunlight or petals
             let particleSystem = SCNParticleSystem()
-            particleSystem.birthRate = 2
-            particleSystem.particleLifeSpan = 8
-            particleSystem.particleSize = 0.1
-            particleSystem.particleColor = UIColor(red: 0.85, green: 0.80, blue: 0.95, alpha: 0.8)
-            particleSystem.emitterShape = SCNBox(width: 10, height: 5, length: 10, chamferRadius: 0)
-            particleSystem.particleVelocity = 0.2
-            particleSystem.particleVelocityVariation = 0.3
-            particleSystem.acceleration = SCNVector3(0, 0.1, 0)
+            particleSystem.birthRate = 1.5
+            particleSystem.particleLifeSpan = 10
+            particleSystem.particleSize = 0.08
+            // Natural soft white/cream color for subtle ambiance
+            particleSystem.particleColor = UIColor(red: 1.0, green: 0.98, blue: 0.95, alpha: 0.6)
+            particleSystem.emitterShape = SCNBox(width: 12, height: 6, length: 12, chamferRadius: 0)
+            particleSystem.particleVelocity = 0.15
+            particleSystem.particleVelocityVariation = 0.2
+            particleSystem.acceleration = SCNVector3(0, 0.05, 0)
 
-            // Create a soft glowing particle image instead of default square
+            // Create a soft glowing particle image
             particleSystem.particleImage = createParticleImage()
 
             // Blend mode for soft glow effect
-            particleSystem.blendMode = .additive
+            particleSystem.blendMode = .alpha
 
             // Subtle size variation for more organic feel
-            particleSystem.particleSizeVariation = 0.03
+            particleSystem.particleSizeVariation = 0.04
 
             let particleNode = SCNNode()
             particleNode.position = SCNVector3(0, 0, 0)
