@@ -14,9 +14,20 @@ struct ZenFlowApp: App {
 
     var body: some Scene {
         WindowGroup {
-            BreathingView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                .preferredColorScheme(.dark)
+            TabView {
+                BreathingView()
+                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                    .tabItem {
+                        Label("Meditasyon", systemImage: "leaf.circle.fill")
+                    }
+
+                ZenGardenView()
+                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                    .tabItem {
+                        Label("Zen Bahçem", systemImage: "tree.fill")
+                    }
+            }
+            .preferredColorScheme(.dark)
         }
     }
 }
