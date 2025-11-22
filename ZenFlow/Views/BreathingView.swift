@@ -235,12 +235,15 @@ struct BreathingView: View {
     @State private var sessionStartTime: Date?
     @State private var pausedTimeRemaining: TimeInterval = 0
     @State private var showExerciseSelection = false
+    @State private var showSoundPicker = false
     @State private var phaseTimeRemaining: TimeInterval = 0
     @State private var pulseScale: CGFloat = 1.0
+    @State private var volumeBeforePause: Float = 0.0
     @StateObject private var sessionTracker = SessionTracker.shared
     @StateObject private var hapticManager = HapticManager.shared
     @StateObject private var featureFlag = FeatureFlag.shared
     @StateObject private var exerciseManager = BreathingExerciseManager.shared
+    @StateObject private var soundManager = AmbientSoundManager.shared
 
     // MARK: - Constants
 
@@ -380,6 +383,14 @@ struct BreathingView: View {
 
                 Spacer()
 
+                // Sound selector (visible only when not animating)
+                if !isAnimating {
+                    compactSoundSelector
+                        .transition(.opacity.combined(with: .scale))
+                        .padding(.horizontal, 20)
+                        .padding(.bottom, 16)
+                }
+
                 // Duration picker (visible only when not animating)
                 if !isAnimating {
                     durationPickerView
@@ -429,6 +440,9 @@ struct BreathingView: View {
                 handleExerciseChange(to: selectedExercise)
             }
         }
+        .sheet(isPresented: $showSoundPicker) {
+            SoundPickerSheet()
+        }
     }
 
     // MARK: - Duration Picker View
@@ -467,6 +481,70 @@ struct BreathingView: View {
                 }
             }
         }
+    }
+
+    // MARK: - Compact Sound Selector
+
+    private var compactSoundSelector: some View {
+        Button(action: {
+            showSoundPicker = true
+            HapticManager.shared.playImpact(style: .light)
+        }) {
+            HStack(spacing: 12) {
+                // Icon
+                ZStack {
+                    Circle()
+                        .fill(Color.white.opacity(0.1))
+                        .frame(width: 44, height: 44)
+
+                    if soundManager.activeSounds.isEmpty || soundManager.activeSounds.first?.fileName == "" {
+                        Image(systemName: "speaker.slash.fill")
+                            .font(.system(size: 20))
+                            .foregroundColor(ZenTheme.softPurple)
+                    } else {
+                        Image(systemName: soundManager.activeSounds.first!.iconName)
+                            .font(.system(size: 20))
+                            .foregroundColor(soundManager.activeSounds.first!.category.color)
+                    }
+                }
+
+                // Label
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("Ses")
+                        .font(.system(size: 14, weight: .medium))
+                        .foregroundColor(ZenTheme.lightLavender.opacity(0.7))
+
+                    if soundManager.activeSounds.isEmpty || soundManager.activeSounds.first?.fileName == "" {
+                        Text("Sessiz")
+                            .font(.system(size: 16, weight: .semibold))
+                            .foregroundColor(ZenTheme.lightLavender)
+                    } else {
+                        Text(soundManager.activeSounds.map { $0.name }.joined(separator: ", "))
+                            .font(.system(size: 16, weight: .semibold))
+                            .foregroundColor(ZenTheme.lightLavender)
+                            .lineLimit(1)
+                    }
+                }
+
+                Spacer()
+
+                Image(systemName: "chevron.right")
+                    .font(.system(size: 14, weight: .semibold))
+                    .foregroundColor(ZenTheme.softPurple)
+            }
+            .padding(.horizontal, 16)
+            .padding(.vertical, 12)
+            .background(
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(Color.white.opacity(0.05))
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 16)
+                    .stroke(ZenTheme.softPurple.opacity(0.3), lineWidth: 1)
+            )
+        }
+        .accessibilityLabel("Ses seçimi")
+        .accessibilityHint("Arka plan sesi seçmek için dokunun")
     }
 
     // MARK: - Animation Control
@@ -519,6 +597,13 @@ struct BreathingView: View {
             completeSessionAutomatically()
         }
 
+        // Start ambient sounds with fade in
+        if soundManager.isEnabled && !soundManager.activeSounds.isEmpty {
+            for sound in soundManager.activeSounds where !sound.fileName.isEmpty {
+                soundManager.playSound(sound, fadeInDuration: 2.0)
+            }
+        }
+
         // Accessibility announcement
         UIAccessibility.post(notification: .announcement, argument: "\(currentExercise.name) egzersizi başladı. \(selectedDurationMinutes) dakika.")
 
@@ -533,6 +618,9 @@ struct BreathingView: View {
         sessionTimer?.invalidate()
         sessionTimer = nil
         currentPhaseIndex = 0
+
+        // Stop ambient sounds with fade out
+        soundManager.stopAllSounds(fadeOutDuration: 3.0)
 
         // End meditation session tracking
         sessionTracker.endSession { duration in
@@ -585,6 +673,12 @@ struct BreathingView: View {
             pausedTimeRemaining = max(0, pausedTimeRemaining - elapsedTime)
         }
 
+        // Reduce ambient sound volume to 50% when paused
+        volumeBeforePause = soundManager.volume
+        withAnimation(.easeInOut(duration: 0.5)) {
+            soundManager.volume = volumeBeforePause * 0.5
+        }
+
         // Stop haptic engine when paused
         hapticManager.stopEngine()
 
@@ -599,6 +693,11 @@ struct BreathingView: View {
             sessionTimer = Timer.scheduledTimer(withTimeInterval: pausedTimeRemaining, repeats: false) { [self] _ in
                 completeSessionAutomatically()
             }
+        }
+
+        // Restore ambient sound volume to normal
+        withAnimation(.easeInOut(duration: 0.5)) {
+            soundManager.volume = volumeBeforePause
         }
 
         // Restart haptic engine when resumed
@@ -721,6 +820,98 @@ struct BreathingView: View {
             notification: .announcement,
             argument: "\(exercise.name) egzersizine geçildi"
         )
+    }
+}
+
+// MARK: - Sound Picker Sheet
+
+/// Bottom sheet for selecting ambient sounds and adjusting volume
+private struct SoundPickerSheet: View {
+    @Environment(\.dismiss) private var dismiss
+    @StateObject private var soundManager = AmbientSoundManager.shared
+
+    var body: some View {
+        NavigationView {
+            ZStack {
+                // Background
+                ZenTheme.backgroundGradient
+                    .ignoresSafeArea()
+
+                ScrollView {
+                    VStack(spacing: 24) {
+                        // Sound Picker
+                        AmbientSoundPicker(
+                            selectedSounds: $soundManager.activeSounds,
+                            onSoundToggle: { sound in
+                                // Auto-play on selection if enabled
+                                if soundManager.isEnabled && !sound.fileName.isEmpty {
+                                    soundManager.toggleSound(sound)
+                                }
+                            }
+                        )
+                        .padding(.top, 8)
+
+                        // Volume Slider (only show if sounds are selected)
+                        if !soundManager.activeSounds.isEmpty && soundManager.activeSounds.first?.fileName != "" {
+                            VolumeSliderView(volume: $soundManager.volume)
+                                .padding(.horizontal, 20)
+                                .transition(.opacity.combined(with: .scale))
+                        }
+
+                        // Enable/Disable Toggle
+                        Toggle(isOn: $soundManager.isEnabled) {
+                            HStack(spacing: 12) {
+                                Image(systemName: soundManager.isEnabled ? "speaker.wave.2.fill" : "speaker.slash.fill")
+                                    .font(.system(size: 20))
+                                    .foregroundColor(soundManager.isEnabled ? ZenTheme.calmBlue : ZenTheme.softPurple)
+
+                                VStack(alignment: .leading, spacing: 4) {
+                                    Text("Arka Plan Sesleri")
+                                        .font(.system(size: 16, weight: .semibold))
+                                        .foregroundColor(ZenTheme.lightLavender)
+
+                                    Text(soundManager.isEnabled ? "Etkin" : "Devre Dışı")
+                                        .font(.system(size: 14))
+                                        .foregroundColor(ZenTheme.softPurple)
+                                }
+
+                                Spacer()
+                            }
+                        }
+                        .tint(ZenTheme.calmBlue)
+                        .padding(20)
+                        .background(
+                            RoundedRectangle(cornerRadius: 16)
+                                .fill(Color.white.opacity(0.05))
+                        )
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 16)
+                                .stroke(ZenTheme.softPurple.opacity(0.3), lineWidth: 1)
+                        )
+                        .padding(.horizontal, 20)
+
+                        // Info text
+                        Text("Seçili sesler meditasyon sırasında arka planda çalacak. En fazla 2 ses aynı anda seçebilirsiniz.")
+                            .font(.system(size: 14))
+                            .foregroundColor(ZenTheme.softPurple.opacity(0.8))
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal, 40)
+                            .padding(.bottom, 20)
+                    }
+                }
+            }
+            .navigationTitle("Ses Ayarları")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Tamam") {
+                        dismiss()
+                    }
+                    .foregroundColor(ZenTheme.lightLavender)
+                }
+            }
+        }
+        .preferredColorScheme(.dark)
     }
 }
 
