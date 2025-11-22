@@ -84,6 +84,16 @@ class ParticleEmitter: ObservableObject {
             let y = height * 0.9 // Near bottom
             return CGPoint(x: x, y: y)
 
+        case .hold, .holdAfterExhale:
+            // Spawn in circular pattern around center
+            let centerX = width / 2
+            let centerY = height / 2
+            let angle = Double.random(in: 0...2 * .pi)
+            let radius = CGFloat.random(in: 80...120)
+            let x = centerX + cos(angle) * radius
+            let y = centerY + sin(angle) * radius
+            return CGPoint(x: x, y: y)
+
         case .exhale:
             // Spawn from center
             let centerX = width / 2
@@ -100,6 +110,14 @@ class ParticleEmitter: ObservableObject {
             // Particles rise upward with slight horizontal spread
             let angle = emissionAngle + Double.random(in: -emissionSpread/2...emissionSpread/2)
             let speed = Double.random(in: 50...100)
+            let dx = cos(angle) * speed
+            let dy = sin(angle) * speed
+            return CGVector(dx: dx, dy: dy)
+
+        case .hold, .holdAfterExhale:
+            // Particles slowly orbit around center with minimal movement
+            let angle = Double.random(in: 0...2 * .pi)
+            let speed = Double.random(in: 15...30) // Much slower for hold
             let dx = cos(angle) * speed
             let dy = sin(angle) * speed
             return CGVector(dx: dx, dy: dy)
@@ -139,6 +157,11 @@ class ParticleEmitter: ObservableObject {
             emissionAngle = .pi / 2 // Upward
             emissionSpread = .pi / 4 // 45 degree spread
             gravity = CGVector(dx: 0, dy: -30) // Gentle upward drift
+
+        case .hold, .holdAfterExhale:
+            emissionAngle = 0 // Circular pattern
+            emissionSpread = 2 * .pi // Full circle
+            gravity = CGVector(dx: 0, dy: 0) // No gravity - particles float
 
         case .exhale:
             emissionAngle = 0 // Radial (handled in getSpawnVelocity)

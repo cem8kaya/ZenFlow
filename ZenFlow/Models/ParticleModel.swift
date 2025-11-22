@@ -10,7 +10,9 @@ import SwiftUI
 /// Breathing phases for particle emission
 enum BreathingPhase {
     case inhale
+    case hold
     case exhale
+    case holdAfterExhale
 }
 
 /// Represents a single particle in the particle system
