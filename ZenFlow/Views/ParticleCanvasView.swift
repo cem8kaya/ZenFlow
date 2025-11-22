@@ -13,13 +13,13 @@ struct ParticleCanvasView: View {
     @State private var lastUpdate = Date()
 
     let isAnimating: Bool
-    let currentPhase: BreathingPhase
+    let currentPhase: AnimationPhase
     let intensity: ParticleIntensity
     let colorTheme: ParticleColorTheme
 
     init(
         isAnimating: Bool,
-        currentPhase: BreathingPhase,
+        currentPhase: AnimationPhase,
         intensity: ParticleIntensity = .medium,
         colorTheme: ParticleColorTheme = .zen
     ) {
@@ -27,6 +27,20 @@ struct ParticleCanvasView: View {
         self.currentPhase = currentPhase
         self.intensity = intensity
         self.colorTheme = colorTheme
+    }
+
+    /// Convert AnimationPhase to BreathingPhase
+    private var breathingPhase: BreathingPhase {
+        switch currentPhase {
+        case .inhale:
+            return .inhale
+        case .hold:
+            return .hold
+        case .exhale:
+            return .exhale
+        case .holdAfterExhale:
+            return .holdAfterExhale
+        }
     }
 
     var body: some View {
@@ -57,12 +71,12 @@ struct ParticleCanvasView: View {
                 // Initialize emitter settings
                 emitter.intensity = intensity
                 emitter.colorTheme = colorTheme
-                emitter.setPhase(currentPhase)
+                emitter.setPhase(breathingPhase)
                 emitter.adjustForDevicePerformance()
                 lastUpdate = Date()
             }
-            .onChange(of: currentPhase) { _, newPhase in
-                emitter.setPhase(newPhase)
+            .onChange(of: currentPhase) { _, _ in
+                emitter.setPhase(breathingPhase)
             }
             .onChange(of: intensity) { _, newIntensity in
                 emitter.intensity = newIntensity
@@ -116,7 +130,7 @@ struct ParticleCanvasView_Previews: PreviewProvider {
 /// Container for preview with state management
 private struct ParticlePreviewContainer: View {
     @State private var isAnimating = true
-    @State private var currentPhase: BreathingPhase = .inhale
+    @State private var currentPhase: AnimationPhase = .inhale
     @State private var intensity: ParticleIntensity = .medium
     @State private var colorTheme: ParticleColorTheme = .zen
 

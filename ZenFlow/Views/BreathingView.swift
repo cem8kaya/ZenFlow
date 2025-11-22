@@ -47,6 +47,30 @@ enum AnimationPhase {
         }
     }
 
+    /// Primary color for the phase (affects circle color)
+    var color: Color {
+        switch self {
+        case .inhale:
+            return ZenTheme.calmBlue
+        case .hold:
+            return ZenTheme.mysticalViolet
+        case .exhale:
+            return ZenTheme.serenePurple
+        case .holdAfterExhale:
+            return ZenTheme.softPurple
+        }
+    }
+
+    /// Whether this phase should have pulsing animation
+    var shouldPulse: Bool {
+        switch self {
+        case .inhale, .exhale:
+            return false // Moving phases don't pulse
+        case .hold, .holdAfterExhale:
+            return true // Hold phases pulse gently
+        }
+    }
+
     /// Accessibility announcement for VoiceOver
     var accessibilityAnnouncement: String {
         switch self {
@@ -76,6 +100,122 @@ enum AnimationPhase {
     }
 }
 
+/// Controller for breathing animation phases with countdown timer
+class BreathingAnimationController: ObservableObject {
+    @Published var currentPhase: AnimationPhase = .exhale
+    @Published var currentPhaseIndex: Int = 0
+    @Published var phaseTimeRemaining: TimeInterval = 0
+    @Published var isActive: Bool = false
+
+    private var currentExercise: BreathingExercise
+    private var phaseTimer: Timer?
+    private var countdownTimer: Timer?
+    private var onPhaseChange: ((AnimationPhase, TimeInterval) -> Void)?
+
+    init(exercise: BreathingExercise, onPhaseChange: ((AnimationPhase, TimeInterval) -> Void)? = nil) {
+        self.currentExercise = exercise
+        self.onPhaseChange = onPhaseChange
+
+        // Set initial phase
+        if let firstPhase = exercise.phases.first {
+            self.currentPhase = AnimationPhase(from: firstPhase.phase)
+            self.phaseTimeRemaining = firstPhase.duration
+        }
+    }
+
+    /// Start the breathing cycle
+    func start() {
+        guard !currentExercise.phases.isEmpty else { return }
+        isActive = true
+        currentPhaseIndex = 0
+        advanceToPhase(at: currentPhaseIndex)
+    }
+
+    /// Stop the breathing cycle
+    func stop() {
+        isActive = false
+        phaseTimer?.invalidate()
+        countdownTimer?.invalidate()
+        phaseTimer = nil
+        countdownTimer = nil
+    }
+
+    /// Pause the breathing cycle
+    func pause() {
+        phaseTimer?.invalidate()
+        countdownTimer?.invalidate()
+        phaseTimer = nil
+        countdownTimer = nil
+    }
+
+    /// Resume the breathing cycle with remaining time
+    func resume() {
+        guard isActive, phaseTimeRemaining > 0 else { return }
+        startCountdownTimer()
+        scheduleNextPhase(after: phaseTimeRemaining)
+    }
+
+    /// Update the exercise (called when user selects a different exercise)
+    func updateExercise(_ exercise: BreathingExercise) {
+        let wasActive = isActive
+        stop()
+        currentExercise = exercise
+        currentPhaseIndex = 0
+
+        if let firstPhase = exercise.phases.first {
+            currentPhase = AnimationPhase(from: firstPhase.phase)
+            phaseTimeRemaining = firstPhase.duration
+        }
+
+        if wasActive {
+            start()
+        }
+    }
+
+    /// Advance to a specific phase
+    private func advanceToPhase(at index: Int) {
+        guard index < currentExercise.phases.count else { return }
+
+        let phaseConfig = currentExercise.phases[index]
+        currentPhase = AnimationPhase(from: phaseConfig.phase)
+        phaseTimeRemaining = phaseConfig.duration
+
+        // Notify delegate
+        onPhaseChange?(currentPhase, phaseConfig.duration)
+
+        // Start countdown
+        startCountdownTimer()
+
+        // Schedule next phase
+        scheduleNextPhase(after: phaseConfig.duration)
+    }
+
+    /// Start countdown timer (updates every 0.1 second for smooth UI)
+    private func startCountdownTimer() {
+        countdownTimer?.invalidate()
+        countdownTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] _ in
+            guard let self = self, self.isActive else { return }
+            self.phaseTimeRemaining = max(0, self.phaseTimeRemaining - 0.1)
+        }
+    }
+
+    /// Schedule next phase transition
+    private func scheduleNextPhase(after duration: TimeInterval) {
+        phaseTimer?.invalidate()
+        phaseTimer = Timer.scheduledTimer(withTimeInterval: duration, repeats: false) { [weak self] _ in
+            guard let self = self, self.isActive else { return }
+
+            // Move to next phase
+            self.currentPhaseIndex = (self.currentPhaseIndex + 1) % self.currentExercise.phases.count
+            self.advanceToPhase(at: self.currentPhaseIndex)
+        }
+    }
+
+    deinit {
+        stop()
+    }
+}
+
 /// Main breathing meditation view with animated guidance
 struct BreathingView: View {
 
@@ -93,6 +233,9 @@ struct BreathingView: View {
     @State private var sessionTimer: Timer?
     @State private var sessionStartTime: Date?
     @State private var pausedTimeRemaining: TimeInterval = 0
+    @State private var showExerciseSelection = false
+    @State private var phaseTimeRemaining: TimeInterval = 0
+    @State private var pulseScale: CGFloat = 1.0
     @StateObject private var sessionTracker = SessionTracker.shared
     @StateObject private var hapticManager = HapticManager.shared
     @StateObject private var featureFlag = FeatureFlag.shared
@@ -127,7 +270,7 @@ struct BreathingView: View {
             if featureFlag.particleEffectsEnabled {
                 ParticleCanvasView(
                     isAnimating: isAnimating && !isPaused,
-                    currentPhase: currentPhase == .inhale ? .inhale : .exhale,
+                    currentPhase: currentPhase,
                     intensity: featureFlag.particleIntensity,
                     colorTheme: featureFlag.particleColorTheme
                 )
@@ -135,6 +278,42 @@ struct BreathingView: View {
             }
 
             VStack(spacing: 80) {
+                // Exercise selection button (only when not animating)
+                if !isAnimating {
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            showExerciseSelection = true
+                        }) {
+                            HStack(spacing: 8) {
+                                Image(systemName: currentExercise.iconName)
+                                    .font(.system(size: 16))
+                                Text(currentExercise.name)
+                                    .font(.system(size: 16, weight: .semibold))
+                                Image(systemName: "chevron.down")
+                                    .font(.system(size: 12, weight: .semibold))
+                            }
+                            .foregroundColor(ZenTheme.lightLavender)
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 12)
+                            .background(
+                                Capsule()
+                                    .fill(Color.white.opacity(0.1))
+                            )
+                            .overlay(
+                                Capsule()
+                                    .stroke(ZenTheme.softPurple.opacity(0.3), lineWidth: 1)
+                            )
+                        }
+                        .zenSecondaryButtonStyle()
+                        .accessibilityLabel("Egzersiz seç: \(currentExercise.name)")
+                        .accessibilityHint("Farklı bir nefes egzersizi seçmek için dokunun")
+                        Spacer()
+                    }
+                    .padding(.top, 20)
+                    .transition(.opacity.combined(with: .move(edge: .top)))
+                }
+
                 Spacer()
 
                 // Session duration indicator
@@ -151,27 +330,52 @@ struct BreathingView: View {
                     Circle()
                         .fill(ZenTheme.breathingOuterGradient)
                         .frame(width: AppConstants.Breathing.outerCircleSize, height: AppConstants.Breathing.outerCircleSize)
-                        .scaleEffect(scale)
+                        .scaleEffect(scale * pulseScale)
                         .blur(radius: AppConstants.Breathing.circleBlurRadius)
 
-                    // Inner circle
+                    // Inner circle with phase-based color
                     Circle()
-                        .fill(ZenTheme.breathingInnerGradient)
+                        .fill(
+                            LinearGradient(
+                                colors: [currentPhase.color, currentPhase.color.opacity(0.6)],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            )
+                        )
                         .frame(width: AppConstants.Breathing.innerCircleSize, height: AppConstants.Breathing.innerCircleSize)
-                        .scaleEffect(scale)
+                        .scaleEffect(scale * pulseScale)
                         .blur(radius: 5)
+
+                    // Phase countdown (only when animating)
+                    if isAnimating && !isPaused {
+                        VStack(spacing: 8) {
+                            // Countdown number
+                            Text("\(Int(ceil(phaseTimeRemaining)))")
+                                .font(.system(size: 72, weight: .ultraLight, design: .rounded))
+                                .foregroundColor(.white)
+                                .monospacedDigit()
+
+                            // Phase text
+                            Text(currentPhase.text)
+                                .font(.system(size: 18, weight: .medium))
+                                .foregroundColor(.white.opacity(0.8))
+                        }
+                        .transition(.opacity)
+                    }
                 }
                 .accessibilityElement(children: .ignore)
                 .accessibilityLabel("Nefes alma animasyonu")
                 .accessibilityValue(currentPhase.accessibilityAnnouncement)
 
-                // Dynamic breathing text
-                Text(currentPhase.text)
-                    .font(ZenTheme.zenLargeTitle)
-                    .foregroundColor(ZenTheme.lightLavender)
-                    .transition(.opacity.combined(with: .scale))
-                    .id(currentPhase.text)
-                    .accessibilityHidden(true) // Announced via circle accessibilityValue
+                // Dynamic breathing text (when not animating)
+                if !isAnimating {
+                    Text(currentPhase.text)
+                        .font(ZenTheme.zenLargeTitle)
+                        .foregroundColor(ZenTheme.lightLavender)
+                        .transition(.opacity.combined(with: .scale))
+                        .id(currentPhase.text)
+                        .accessibilityHidden(true)
+                }
 
                 Spacer()
 
@@ -218,6 +422,12 @@ struct BreathingView: View {
             }
         }
         .preferredColorScheme(.dark)
+        .sheet(isPresented: $showExerciseSelection) {
+            ExerciseSelectionView { selectedExercise in
+                // Handle exercise change
+                handleExerciseChange(to: selectedExercise)
+            }
+        }
     }
 
     // MARK: - Duration Picker View
@@ -406,10 +616,17 @@ struct BreathingView: View {
         // Get current phase configuration
         let phaseConfig = currentExercise.phases[currentPhaseIndex]
         currentPhase = AnimationPhase(from: phaseConfig.phase)
+        phaseTimeRemaining = phaseConfig.duration
 
-        // Play haptic pattern at the start of inhale phase
-        if phaseConfig.phase == .inhale {
-            HapticManager.shared.playBreathingInhale(duration: phaseConfig.duration)
+        // Play phase-based haptic pattern
+        playHapticForPhase(currentPhase, duration: phaseConfig.duration)
+
+        // Announce phase change for VoiceOver
+        if UIAccessibility.isVoiceOverRunning {
+            UIAccessibility.post(
+                notification: .announcement,
+                argument: "\(currentPhase.accessibilityAnnouncement). \(Int(phaseConfig.duration)) saniye"
+            )
         }
 
         // Animate to the current phase
@@ -417,8 +634,25 @@ struct BreathingView: View {
             scale = currentPhase.scale
         }
 
+        // Start pulsing effect for hold phases
+        if currentPhase.shouldPulse {
+            startPulsingEffect(duration: phaseConfig.duration)
+        } else {
+            pulseScale = 1.0
+        }
+
+        // Start phase countdown timer
+        let countdownTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [self] timer in
+            guard isAnimating && !isPaused else {
+                timer.invalidate()
+                return
+            }
+            phaseTimeRemaining = max(0, phaseTimeRemaining - 0.1)
+        }
+
         // Schedule next phase
         animationTimer = Timer.scheduledTimer(withTimeInterval: phaseConfig.duration, repeats: false) { [self] _ in
+            countdownTimer.invalidate()
             guard isAnimating && !isPaused else { return }
 
             // Move to next phase
@@ -427,6 +661,65 @@ struct BreathingView: View {
             // Continue the cycle
             performBreathingCycle()
         }
+    }
+
+    /// Start pulsing effect for hold phases
+    private func startPulsingEffect(duration: TimeInterval) {
+        let pulseCount = Int(duration / 0.6) // Pulse every 0.6 seconds
+
+        for i in 0..<pulseCount {
+            DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.6) { [self] in
+                guard isAnimating && !isPaused && currentPhase.shouldPulse else { return }
+
+                withAnimation(.easeInOut(duration: 0.3)) {
+                    pulseScale = 1.03
+                }
+                withAnimation(.easeInOut(duration: 0.3).delay(0.3)) {
+                    pulseScale = 1.0
+                }
+            }
+        }
+    }
+
+    /// Play haptic feedback pattern based on phase
+    private func playHapticForPhase(_ phase: AnimationPhase, duration: TimeInterval) {
+        switch phase {
+        case .inhale:
+            // Rising intensity haptic
+            HapticManager.shared.playBreathingInhale(duration: duration)
+        case .hold, .holdAfterExhale:
+            // Gentle tap for hold
+            HapticManager.shared.playImpact(style: .light)
+        case .exhale:
+            // Subtle notification for exhale
+            HapticManager.shared.playImpact(style: .soft)
+        }
+    }
+
+    /// Handle exercise change from selection view
+    private func handleExerciseChange(to exercise: BreathingExercise) {
+        // Stop current animation if running
+        if isAnimating {
+            stopAnimation()
+        }
+
+        // Update to new exercise
+        exerciseManager.selectExercise(exercise)
+
+        // Reset to first phase of new exercise
+        if let firstPhase = exercise.phases.first {
+            withAnimation(.easeInOut(duration: 0.5)) {
+                currentPhase = AnimationPhase(from: firstPhase.phase)
+                scale = currentPhase.scale
+                phaseTimeRemaining = firstPhase.duration
+            }
+        }
+
+        // Announce change
+        UIAccessibility.post(
+            notification: .announcement,
+            argument: "\(exercise.name) egzersizine geçildi"
+        )
     }
 }
 
