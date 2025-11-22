@@ -75,7 +75,7 @@ struct ZenGardenView: View {
                         progressSection
                             .background(
                                 RoundedRectangle(cornerRadius: 20)
-                                    .fill(Color.black.opacity(0.3))
+                                    .fill(Color.black.opacity(0.15))
                                     .blur(radius: 10)
                             )
 
@@ -122,76 +122,6 @@ struct ZenGardenView: View {
             .padding(.top, 60)
     }
 
-    // MARK: - Tree Display
-
-    private var treeDisplayArea: some View {
-        VStack(spacing: 30) {
-            // Ağaç ikonu ve glow efekti
-            ZStack {
-                // Glow efekti
-                Circle()
-                    .fill(
-                        RadialGradient(
-                            colors: [
-                                gardenManager.currentStage.glowColor.opacity(glowOpacity),
-                                Color.clear
-                            ],
-                            center: .center,
-                            startRadius: 0,
-                            endRadius: gardenManager.currentStage.glowRadius
-                        )
-                    )
-                    .frame(
-                        width: gardenManager.currentStage.glowRadius * 2,
-                        height: gardenManager.currentStage.glowRadius * 2
-                    )
-                    .scaleEffect(treeScale)
-                    .animation(.easeInOut(duration: 0.8), value: glowOpacity)
-
-                // Ağaç ikonu
-                Image(systemName: gardenManager.currentStage.symbolName)
-                    .font(.system(size: gardenManager.currentStage.iconSize))
-                    .foregroundStyle(
-                        LinearGradient(
-                            colors: gardenManager.currentStage.colors,
-                            startPoint: .top,
-                            endPoint: .bottom
-                        )
-                    )
-                    .shadow(
-                        color: gardenManager.currentStage.glowColor.opacity(0.5),
-                        radius: 20
-                    )
-                    .scaleEffect(treeScale)
-                    .rotationEffect(.degrees(treeRotation))
-                    .opacity(treeOpacity)
-            }
-            .animation(.spring(response: 0.8, dampingFraction: 0.6), value: gardenManager.currentStage)
-
-            // Aşama adı
-            Text(gardenManager.currentStage.title)
-                .font(ZenTheme.zenHeadline)
-                .foregroundColor(ZenTheme.lightLavender)
-                .transition(.opacity)
-
-            // Aşama açıklaması
-            Text(gardenManager.currentStage.description)
-                .font(.system(size: 14, weight: .regular))
-                .foregroundColor(ZenTheme.softPurple.opacity(0.8))
-                .multilineTextAlignment(.center)
-                .lineLimit(nil)
-                .fixedSize(horizontal: false, vertical: true)
-                .padding(.horizontal, 40)
-                .transition(.opacity)
-
-            // Toplam süre
-            Text(gardenManager.formattedTotalTime())
-                .font(ZenTheme.zenBody)
-                .foregroundColor(ZenTheme.softPurple)
-        }
-        .padding(.vertical, 40)
-    }
-
     // MARK: - Progress Section
 
     private var progressSection: some View {
@@ -216,7 +146,7 @@ struct ZenGardenView: View {
                 maximumLevelView
             }
         }
-        .padding(.bottom, 60)
+        .padding(.bottom, 30)
     }
 
     private var progressBar: some View {

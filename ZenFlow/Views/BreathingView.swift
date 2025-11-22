@@ -60,6 +60,10 @@ struct BreathingView: View {
     @State private var animationTimer: Timer?
     @State private var showSessionComplete = false
     @State private var completedDurationMinutes = 0
+    @State private var selectedDurationMinutes: Int = 5
+    @State private var sessionTimer: Timer?
+    @State private var sessionStartTime: Date?
+    @State private var pausedTimeRemaining: TimeInterval = 0
     @StateObject private var sessionTracker = SessionTracker.shared
     @StateObject private var hapticManager = HapticManager.shared
     @StateObject private var featureFlag = FeatureFlag.shared
@@ -139,6 +143,13 @@ struct BreathingView: View {
 
                 Spacer()
 
+                // Duration picker (visible only when not animating)
+                if !isAnimating {
+                    durationPickerView
+                        .transition(.opacity.combined(with: .scale))
+                        .padding(.bottom, 20)
+                }
+
                 // Control buttons
                 HStack(spacing: 40) {
                     // Start/Stop button
@@ -177,6 +188,44 @@ struct BreathingView: View {
         .preferredColorScheme(.dark)
     }
 
+    // MARK: - Duration Picker View
+
+    private var durationPickerView: some View {
+        VStack(spacing: 12) {
+            Text("Seans Süresi")
+                .font(.system(size: 16, weight: .medium))
+                .foregroundColor(ZenTheme.softPurple)
+
+            HStack(spacing: 16) {
+                ForEach([5, 10, 15, 30], id: \.self) { duration in
+                    Button(action: {
+                        selectedDurationMinutes = duration
+                        HapticManager.shared.playImpact(style: .light)
+                    }) {
+                        Text("\(duration) dk")
+                            .font(.system(size: 16, weight: .semibold))
+                            .foregroundColor(selectedDurationMinutes == duration ? .white : ZenTheme.softPurple)
+                            .frame(width: 70, height: 44)
+                            .background(
+                                RoundedRectangle(cornerRadius: 12)
+                                    .fill(selectedDurationMinutes == duration ?
+                                          ZenTheme.lightLavender.opacity(0.3) :
+                                          Color.white.opacity(0.1))
+                            )
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 12)
+                                    .stroke(selectedDurationMinutes == duration ?
+                                            ZenTheme.lightLavender :
+                                            Color.clear, lineWidth: 2)
+                            )
+                    }
+                    .accessibilityLabel("\(duration) dakika seans")
+                    .accessibilityHint(selectedDurationMinutes == duration ? "Seçili" : "Seçmek için dokunun")
+                }
+            }
+        }
+    }
+
     // MARK: - Animation Control
 
     private func toggleAnimation() {
@@ -210,8 +259,17 @@ struct BreathingView: View {
         // Start haptic engine
         hapticManager.startEngine()
 
+        // Start session duration timer
+        let durationInSeconds = TimeInterval(selectedDurationMinutes * 60)
+        sessionStartTime = Date()
+        pausedTimeRemaining = durationInSeconds
+        sessionTimer = Timer.scheduledTimer(withTimeInterval: durationInSeconds, repeats: false) { [self] _ in
+            // Session duration completed
+            completeSessionAutomatically()
+        }
+
         // Accessibility announcement
-        UIAccessibility.post(notification: .announcement, argument: "Meditasyon başladı")
+        UIAccessibility.post(notification: .announcement, argument: "Meditasyon başladı. \(selectedDurationMinutes) dakika.")
 
         performBreathingCycle()
     }
@@ -221,6 +279,8 @@ struct BreathingView: View {
         isPaused = false
         animationTimer?.invalidate()
         animationTimer = nil
+        sessionTimer?.invalidate()
+        sessionTimer = nil
 
         // End meditation session tracking
         sessionTracker.endSession { duration in
@@ -248,9 +308,22 @@ struct BreathingView: View {
         }
     }
 
+    private func completeSessionAutomatically() {
+        // Called when the session timer completes
+        stopAnimation()
+    }
+
     private func pauseAnimation() {
         animationTimer?.invalidate()
         animationTimer = nil
+
+        // Pause session timer - calculate remaining time
+        sessionTimer?.invalidate()
+        sessionTimer = nil
+        if let startTime = sessionStartTime {
+            let elapsedTime = Date().timeIntervalSince(startTime)
+            pausedTimeRemaining = max(0, pausedTimeRemaining - elapsedTime)
+        }
 
         // Stop haptic engine when paused
         hapticManager.stopEngine()
@@ -260,6 +333,14 @@ struct BreathingView: View {
     }
 
     private func resumeAnimation() {
+        // Resume session timer with remaining time
+        sessionStartTime = Date()
+        if pausedTimeRemaining > 0 {
+            sessionTimer = Timer.scheduledTimer(withTimeInterval: pausedTimeRemaining, repeats: false) { [self] _ in
+                completeSessionAutomatically()
+            }
+        }
+
         // Restart haptic engine when resumed
         hapticManager.startEngine()
 

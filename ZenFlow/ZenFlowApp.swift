@@ -17,6 +17,7 @@ struct ZenFlowApp: App {
     let persistenceController = PersistenceController.shared
     @State private var selectedTab: Int = 0
     @State private var showSplash: Bool = true
+    @State private var showHealthKitOnboarding: Bool = false
 
     var body: some Scene {
         WindowGroup {
@@ -30,10 +31,44 @@ struct ZenFlowApp: App {
                         .transition(.opacity)
                         .zIndex(1)
                 }
+
+                // HealthKit onboarding overlay
+                if showHealthKitOnboarding {
+                    HealthKitOnboardingView(isPresented: $showHealthKitOnboarding)
+                        .transition(.opacity)
+                        .zIndex(2)
+                }
             }
             .onAppear {
                 // Preload Lottie animations on app launch
                 _ = LottieAnimationManager.shared
+            }
+            .onChange(of: showSplash) { _, newValue in
+                // When splash screen is dismissed, check HealthKit authorization
+                if !newValue {
+                    checkHealthKitAuthorization()
+                }
+            }
+        }
+    }
+
+    // MARK: - HealthKit Authorization Check
+
+    private func checkHealthKitAuthorization() {
+        // Only check if HealthKit is available
+        guard HealthKitManager.shared.isHealthKitAvailable else {
+            return
+        }
+
+        let authStatus = HealthKitManager.shared.getAuthorizationStatus()
+
+        // Show onboarding if authorization not determined
+        if authStatus == .notDetermined {
+            // Delay to allow splash screen animation to complete
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                withAnimation {
+                    showHealthKitOnboarding = true
+                }
             }
         }
     }
