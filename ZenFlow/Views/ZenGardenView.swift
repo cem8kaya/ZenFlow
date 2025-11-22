@@ -34,7 +34,8 @@ struct ZenGardenView: View {
     @State private var particles: [Particle] = []
     @State private var showCelebrationText: Bool = false
     @State private var viewSize: CGSize = .zero
-    @State private var showSparkleAnimation: Bool = false
+    @State private var sparkleOpacity: Double = 0.0
+    @State private var sparkleScale: CGFloat = 0.0
 
 
     // MARK: - Body
@@ -50,15 +51,20 @@ struct ZenGardenView: View {
                     WatercolorZenGardenView(gardenManager: gardenManager)
 
                     // Sparkle Growth Animation Overlay
-                    if showSparkleAnimation {
-                        SparkleLottieView {
-                            // Animation completed
-                            withAnimation {
-                                showSparkleAnimation = false
-                            }
+                    ZStack {
+                        ForEach(0..<8, id: \.self) { index in
+                            Image(systemName: "sparkle")
+                                .font(.system(size: 30))
+                                .foregroundColor(gardenManager.currentStage.colors.randomElement() ?? .white)
+                                .opacity(sparkleOpacity)
+                                .scaleEffect(sparkleScale)
+                                .offset(
+                                    x: cos(Double(index) * .pi / 4) * 100,
+                                    y: sin(Double(index) * .pi / 4) * 100
+                                )
                         }
-                        .allowsHitTesting(false)
                     }
+                    .allowsHitTesting(false)
 
                     // Overlay UI
                     VStack(spacing: 40) {
@@ -254,9 +260,18 @@ struct ZenGardenView: View {
     // MARK: - Celebration Animation
 
     private func startCelebrationAnimation() {
-        // Show Lottie sparkle animation
-        withAnimation {
-            showSparkleAnimation = true
+        // Show sparkle animation
+        withAnimation(.easeOut(duration: 0.3)) {
+            sparkleOpacity = 1.0
+            sparkleScale = 1.0
+        }
+
+        // Hide sparkles
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            withAnimation(.easeOut(duration: 0.3)) {
+                sparkleOpacity = 0.0
+                sparkleScale = 0.5
+            }
         }
 
         // Tree scale animation

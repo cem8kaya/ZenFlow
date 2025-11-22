@@ -175,7 +175,7 @@ struct BreathingView: View {
                         .accessibilityHint(isPaused ? "Meditasyona devam eder" : "Meditasyonu geçici olarak duraklatır")
                     }
                 }
-                .padding(.bottom, 60)
+                .padding(.bottom, 120)
             }
 
             // Session Complete Overlay
