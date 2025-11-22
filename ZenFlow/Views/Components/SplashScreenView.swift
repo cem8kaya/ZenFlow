@@ -5,7 +5,7 @@
 //  Created by Claude AI on 16.11.2025.
 //
 //  App launch splash screen with:
-//  - Lottie zen logo animation (1.5 seconds)
+//  - Simple zen logo animation (1.5 seconds)
 //  - Fade-out transition
 //
 
@@ -17,6 +17,7 @@ struct SplashScreenView: View {
 
     @State private var opacity: Double = 1.0
     @State private var scale: CGFloat = 0.8
+    @State private var rotation: Double = 0
 
     var body: some View {
         ZStack {
@@ -33,9 +34,33 @@ struct SplashScreenView: View {
             .ignoresSafeArea()
 
             VStack(spacing: 30) {
-                // Lottie Loading Animation
-                LoadingLottieView()
-                    .scaleEffect(scale)
+                // Simple Loading Animation
+                ZStack {
+                    Circle()
+                        .stroke(lineWidth: 4)
+                        .fill(
+                            LinearGradient(
+                                colors: [.purple.opacity(0.3), .blue.opacity(0.3)],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            )
+                        )
+                        .frame(width: 80, height: 80)
+
+                    Circle()
+                        .trim(from: 0, to: 0.7)
+                        .stroke(
+                            LinearGradient(
+                                colors: [.purple, .blue, .cyan],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            ),
+                            style: StrokeStyle(lineWidth: 4, lineCap: .round)
+                        )
+                        .frame(width: 80, height: 80)
+                        .rotationEffect(.degrees(rotation))
+                }
+                .scaleEffect(scale)
 
                 // App Name
                 Text("ZenFlow")
@@ -58,6 +83,11 @@ struct SplashScreenView: View {
             // Scale animation
             withAnimation(.easeOut(duration: 0.8)) {
                 scale = 1.0
+            }
+
+            // Rotation animation
+            withAnimation(.linear(duration: 1.0).repeatForever(autoreverses: false)) {
+                rotation = 360
             }
 
             // Auto-dismiss after animation duration

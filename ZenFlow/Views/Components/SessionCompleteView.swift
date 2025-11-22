@@ -5,14 +5,14 @@
 //  Created by Claude AI on 16.11.2025.
 //
 //  Session completion modal with:
-//  - Lottie success checkmark animation (2 seconds)
+//  - Success checkmark animation (2 seconds)
 //  - Duration summary
 //  - Auto-dismiss after animation
 //
 
 import SwiftUI
 
-/// Session completion overlay with Lottie success animation
+/// Session completion overlay with success animation
 struct SessionCompleteView: View {
     let durationMinutes: Int
     let onComplete: () -> Void
@@ -20,6 +20,8 @@ struct SessionCompleteView: View {
     @State private var showSuccessAnimation = false
     @State private var showText = false
     @State private var backgroundOpacity: Double = 0.0
+    @State private var checkmarkScale: CGFloat = 0.0
+    @State private var checkmarkOpacity: Double = 0.0
 
     var body: some View {
         ZStack {
@@ -29,19 +31,26 @@ struct SessionCompleteView: View {
                 .opacity(backgroundOpacity)
 
             VStack(spacing: 30) {
-                // Success Lottie Animation
+                // Success Animation
                 if showSuccessAnimation {
-                    SuccessLottieView {
-                        // Animation completed (2 seconds)
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                            withAnimation(.easeOut(duration: 0.3)) {
-                                backgroundOpacity = 0.0
-                            }
+                    ZStack {
+                        // Circle background
+                        Circle()
+                            .fill(
+                                LinearGradient(
+                                    colors: [.green, .cyan],
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing
+                                )
+                            )
+                            .frame(width: 100, height: 100)
+                            .scaleEffect(checkmarkScale)
 
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                                onComplete()
-                            }
-                        }
+                        // Checkmark
+                        Image(systemName: "checkmark")
+                            .font(.system(size: 50, weight: .bold))
+                            .foregroundColor(.white)
+                            .opacity(checkmarkOpacity)
                     }
                     .transition(.scale.combined(with: .opacity))
                 }
@@ -91,6 +100,12 @@ struct SessionCompleteView: View {
 
             withAnimation(.spring(response: 0.5, dampingFraction: 0.7)) {
                 showSuccessAnimation = true
+                checkmarkScale = 1.0
+            }
+
+            // Fade in checkmark
+            withAnimation(.easeIn(duration: 0.3).delay(0.2)) {
+                checkmarkOpacity = 1.0
             }
         }
 
@@ -98,6 +113,17 @@ struct SessionCompleteView: View {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
             withAnimation(.easeOut(duration: 0.3)) {
                 showText = true
+            }
+        }
+
+        // Step 4: Auto-dismiss after animation (2.5s total)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+            withAnimation(.easeOut(duration: 0.3)) {
+                backgroundOpacity = 0.0
+            }
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                onComplete()
             }
         }
     }

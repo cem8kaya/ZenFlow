@@ -39,10 +39,6 @@ struct ZenFlowApp: App {
                         .zIndex(2)
                 }
             }
-            .onAppear {
-                // Preload Lottie animations on app launch
-                _ = LottieAnimationManager.shared
-            }
             .onChange(of: showSplash) { _, newValue in
                 // When splash screen is dismissed, check HealthKit authorization
                 if !newValue {
