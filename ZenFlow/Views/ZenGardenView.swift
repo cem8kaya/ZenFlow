@@ -67,25 +67,29 @@ struct ZenGardenView: View {
                     .allowsHitTesting(false)
 
                     // Overlay UI
-                    VStack(spacing: 40) {
-                        Spacer()
-
+                    VStack(spacing: 0) {
                         // Başlık
                         headerView
                             .shadow(color: .black.opacity(0.3), radius: 5)
 
                         Spacer()
+
+                        // Ağaç görsel alanı (merkez)
+                        treeDisplayArea
+                            .scaleEffect(treeScale)
+                            .rotationEffect(.degrees(treeRotation))
+                            .opacity(treeOpacity)
+
                         Spacer()
 
-                        // İlerleme göstergesi
+                        // İlerleme göstergesi (alt kısma yakın)
                         progressSection
                             .background(
                                 RoundedRectangle(cornerRadius: 20)
-                                    .fill(Color.black.opacity(0.15))
+                                    .fill(Color.black.opacity(0.1))
                                     .blur(radius: 10)
                             )
-
-                        Spacer()
+                            .padding(.bottom, 40)
                     }
                 }
             }
@@ -122,10 +126,16 @@ struct ZenGardenView: View {
     // MARK: - Header
 
     private var headerView: some View {
-        Text("Zen Bahçem")
-            .font(ZenTheme.zenTitle)
-            .foregroundColor(ZenTheme.lightLavender)
-            .padding(.top, 60)
+        VStack(spacing: 8) {
+            Text("Zen Bahçem")
+                .font(ZenTheme.zenTitle)
+                .foregroundColor(ZenTheme.lightLavender)
+
+            Text("Toplam: \(gardenManager.totalMinutes) dk")
+                .font(.system(size: 14, weight: .medium))
+                .foregroundColor(ZenTheme.softPurple.opacity(0.8))
+        }
+        .padding(.top, 60)
     }
 
     // MARK: - Progress Section
@@ -205,6 +215,67 @@ struct ZenGardenView: View {
                 .foregroundColor(ZenTheme.softPurple)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 40)
+        }
+    }
+
+    // MARK: - Tree Display Area
+
+    private var treeDisplayArea: some View {
+        ZStack {
+            // Glow effect
+            Circle()
+                .fill(
+                    RadialGradient(
+                        colors: [
+                            gardenManager.currentStage.glowColor.opacity(glowOpacity),
+                            gardenManager.currentStage.glowColor.opacity(0.0)
+                        ],
+                        center: .center,
+                        startRadius: 0,
+                        endRadius: gardenManager.currentStage.glowRadius
+                    )
+                )
+                .frame(
+                    width: gardenManager.currentStage.glowRadius * 2,
+                    height: gardenManager.currentStage.glowRadius * 2
+                )
+
+            // Tree icon
+            Image(systemName: gardenManager.currentStage.symbolName)
+                .font(.system(size: gardenManager.currentStage.iconSize))
+                .foregroundStyle(
+                    LinearGradient(
+                        colors: gardenManager.currentStage.colors,
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                )
+                .shadow(
+                    color: gardenManager.currentStage.glowColor.opacity(0.5),
+                    radius: 20
+                )
+
+            // Celebration text overlay (if celebrating)
+            if showCelebrationText {
+                VStack(spacing: 12) {
+                    Text("🎉")
+                        .font(.system(size: 40))
+
+                    Text(gardenManager.currentStage.title)
+                        .font(.system(size: 20, weight: .bold))
+                        .foregroundStyle(
+                            LinearGradient(
+                                colors: gardenManager.currentStage.colors,
+                                startPoint: .leading,
+                                endPoint: .trailing
+                            )
+                        )
+                }
+                .offset(y: gardenManager.currentStage.iconSize / 2 + 40)
+                .scaleEffect(showCelebrationText ? 1.0 : 0.5)
+                .opacity(showCelebrationText ? 1.0 : 0.0)
+                .animation(.spring(response: 0.6, dampingFraction: 0.7), value: showCelebrationText)
+            }
         }
     }
 
