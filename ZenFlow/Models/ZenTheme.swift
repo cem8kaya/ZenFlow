@@ -109,7 +109,27 @@ struct PremiumTheme {
 }
 
 struct ZenTheme {
-    // MARK: - Colors
+    // MARK: - Nature Colors (Earth Tones)
+
+    /// Sage green - calming natural green
+    static let sageGreen = Color(red: 0.42, green: 0.56, blue: 0.14) // #6B8E23
+
+    /// Earth brown - warm grounding brown
+    static let earthBrown = Color(red: 0.55, green: 0.45, blue: 0.33) // #8B7355
+
+    /// Sky blue - very soft, greyish blue
+    static let skyBlue = Color(red: 0.53, green: 0.60, blue: 0.65) // #87999A
+
+    /// Soft cream - warm beige
+    static let softCream = Color(red: 0.96, green: 0.96, blue: 0.86) // #F5F5DC
+
+    /// Sand tan - zen sand color
+    static let sandTan = Color(red: 0.82, green: 0.71, blue: 0.55) // #D2B48C
+
+    /// Deep sage - darker green for contrast
+    static let deepSage = Color(red: 0.13, green: 0.55, blue: 0.13) // #228B22
+
+    // MARK: - Legacy Colors (kept for compatibility)
 
     /// Deep indigo blue - primary background
     static let deepIndigo = Color(red: 0.18, green: 0.15, blue: 0.35)

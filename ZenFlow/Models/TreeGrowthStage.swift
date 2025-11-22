@@ -123,34 +123,34 @@ enum TreeGrowthStage: Int, CaseIterable, Identifiable {
         switch self {
         case .seed:
             return [
-                Color(red: 0.6, green: 0.4, blue: 0.2),  // Kahverengi
-                Color(red: 0.5, green: 0.3, blue: 0.15)
+                ZenTheme.earthBrown,
+                Color(red: 0.5, green: 0.3, blue: 0.15)  // Darker brown
             ]
         case .sprout:
             return [
-                Color(red: 0.5, green: 0.8, blue: 0.3),  // Açık yeşil
+                Color(red: 0.5, green: 0.8, blue: 0.3),  // Light green
                 Color(red: 0.4, green: 0.7, blue: 0.2)
             ]
         case .sapling:
             return [
-                Color(red: 0.2, green: 0.7, blue: 0.3),  // Orta yeşil
-                Color(red: 0.15, green: 0.6, blue: 0.25)
+                Color(red: 0.4, green: 0.7, blue: 0.25), // Mid green
+                ZenTheme.sageGreen
             ]
         case .youngTree:
             return [
-                Color(red: 0.1, green: 0.6, blue: 0.3),  // Koyu yeşil
-                ZenTheme.calmBlue
+                ZenTheme.sageGreen,
+                ZenTheme.deepSage
             ]
         case .matureTree:
             return [
-                ZenTheme.mysticalViolet,
-                ZenTheme.calmBlue
+                ZenTheme.deepSage,
+                Color(red: 0.2, green: 0.5, blue: 0.2)   // Forest green
             ]
         case .ancientTree:
             return [
-                ZenTheme.lightLavender,
-                Color(red: 1.0, green: 0.8, blue: 0.4),  // Altın sarısı
-                ZenTheme.mysticalViolet
+                ZenTheme.deepSage,
+                Color(red: 1.0, green: 0.85, blue: 0.4), // Golden
+                Color(red: 1.0, green: 0.75, blue: 0.8)  // Sakura pink
             ]
         }
     }
