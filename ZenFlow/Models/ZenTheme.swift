@@ -15,65 +15,24 @@ import SwiftUI
 // MARK: - Theme Type
 
 /// Available theme types in the application
-/// Free theme is available to all users, premium themes require subscription
 enum ThemeType: String, CaseIterable, Identifiable {
     case free = "free"
-    case premium1 = "premium1"
-    case premium2 = "premium2"
-    case premium3 = "premium3"
 
     var id: String { rawValue }
 
     /// Localized display name for the theme
     var displayName: String {
-        switch self {
-        case .free:
-            return "Klasik Zen"
-        case .premium1:
-            return "Gece Gökyüzü"
-        case .premium2:
-            return "Kiraz Çiçeği"
-        case .premium3:
-            return "Altın Gün Batımı"
-        }
+        return "Klasik Zen"
     }
 
     /// Description of the theme
     var description: String {
-        switch self {
-        case .free:
-            return "Derin mor ve mavi tonları ile klasik Zen teması"
-        case .premium1:
-            return "Yıldızlı gece gökyüzünden ilham alan koyu mavi tonlar"
-        case .premium2:
-            return "Kiraz çiçeklerinden ilham alan pembe ve mor tonlar"
-        case .premium3:
-            return "Gün batımı renklerinden ilham alan altın ve turuncu tonlar"
-        }
-    }
-
-    /// Whether this theme requires premium access
-    var isPremium: Bool {
-        switch self {
-        case .free:
-            return false
-        case .premium1, .premium2, .premium3:
-            return true
-        }
+        return "Derin mor ve mavi tonları ile klasik Zen teması"
     }
 
     /// Returns the PremiumTheme configuration for this theme type
     var theme: PremiumTheme {
-        switch self {
-        case .free:
-            return PremiumTheme.freeTheme
-        case .premium1:
-            return PremiumTheme.nightSkyTheme
-        case .premium2:
-            return PremiumTheme.cherryBlossomTheme
-        case .premium3:
-            return PremiumTheme.goldenSunsetTheme
-        }
+        return PremiumTheme.freeTheme
     }
 }
 
@@ -137,7 +96,7 @@ struct PremiumTheme {
 
     // MARK: - Predefined Themes
 
-    /// Classic Zen theme (Free) - Deep indigo and purple tones
+    /// Classic Zen theme - Deep indigo and purple tones
     static let freeTheme = PremiumTheme(
         primary: Color(red: 0.18, green: 0.15, blue: 0.35),      // Deep indigo
         secondary: Color(red: 0.45, green: 0.35, blue: 0.65),    // Soft purple
@@ -146,39 +105,6 @@ struct PremiumTheme {
         breathingOuter: Color(red: 0.50, green: 0.35, blue: 0.85), // Serene purple
         textHighlight: Color(red: 0.85, green: 0.80, blue: 0.95),  // Light lavender
         background: Color(red: 0.18, green: 0.15, blue: 0.35)    // Deep indigo
-    )
-
-    /// Night Sky theme (Premium 1) - Dark blues inspired by starry night
-    static let nightSkyTheme = PremiumTheme(
-        primary: Color(red: 0.10, green: 0.12, blue: 0.25),      // Midnight blue
-        secondary: Color(red: 0.15, green: 0.25, blue: 0.45),    // Deep sky blue
-        accent: Color(red: 0.30, green: 0.50, blue: 0.80),       // Bright blue
-        breathingInner: Color(red: 0.20, green: 0.35, blue: 0.70), // Ocean blue
-        breathingOuter: Color(red: 0.25, green: 0.40, blue: 0.75), // Azure
-        textHighlight: Color(red: 0.80, green: 0.90, blue: 1.00),  // Ice blue
-        background: Color(red: 0.05, green: 0.08, blue: 0.20)    // Deep night
-    )
-
-    /// Cherry Blossom theme (Premium 2) - Pink and purple tones
-    static let cherryBlossomTheme = PremiumTheme(
-        primary: Color(red: 0.25, green: 0.15, blue: 0.30),      // Deep plum
-        secondary: Color(red: 0.55, green: 0.30, blue: 0.50),    // Mauve
-        accent: Color(red: 0.85, green: 0.45, blue: 0.70),       // Pink
-        breathingInner: Color(red: 0.70, green: 0.35, blue: 0.65), // Rose
-        breathingOuter: Color(red: 0.75, green: 0.40, blue: 0.70), // Cherry pink
-        textHighlight: Color(red: 1.00, green: 0.85, blue: 0.95),  // Pale pink
-        background: Color(red: 0.20, green: 0.12, blue: 0.25)    // Dark plum
-    )
-
-    /// Golden Sunset theme (Premium 3) - Warm golden and orange tones
-    static let goldenSunsetTheme = PremiumTheme(
-        primary: Color(red: 0.30, green: 0.20, blue: 0.15),      // Deep bronze
-        secondary: Color(red: 0.60, green: 0.40, blue: 0.25),    // Copper
-        accent: Color(red: 0.95, green: 0.70, blue: 0.30),       // Gold
-        breathingInner: Color(red: 0.90, green: 0.55, blue: 0.25), // Amber
-        breathingOuter: Color(red: 0.95, green: 0.65, blue: 0.35), // Peach
-        textHighlight: Color(red: 1.00, green: 0.95, blue: 0.85),  // Cream
-        background: Color(red: 0.25, green: 0.15, blue: 0.10)    // Dark brown
     )
 }
 

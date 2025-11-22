@@ -150,7 +150,7 @@ struct HealthKitOnboardingView: View {
 
                 if success {
                     // Success - dismiss the view
-                    HapticManager.shared.playSuccess()
+                    HapticManager.shared.playNotification(type: .success)
                     UIAccessibility.post(notification: .announcement, argument: "HealthKit izni verildi")
 
                     // Delay to show success state
@@ -159,7 +159,7 @@ struct HealthKitOnboardingView: View {
                     }
                 } else {
                     // Error - show error message
-                    HapticManager.shared.playError()
+                    HapticManager.shared.playNotification(type: .error)
                     showError = true
                     errorMessage = error?.localizedDescription ?? "İzin verilemedi. Lütfen tekrar deneyin."
                     UIAccessibility.post(notification: .announcement, argument: errorMessage)

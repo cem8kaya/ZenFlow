@@ -108,15 +108,6 @@ struct SwipeableTabView: View {
                 .accessibilityLabel("Rozetler sekmesi")
                 .tag(2)
                 .gesture(swipeGesture)
-
-            ThemeSelectionView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                .tabItem {
-                    Label("Temalar", systemImage: "paintpalette.fill")
-                }
-                .accessibilityLabel("Temalar sekmesi")
-                .tag(3)
-                .gesture(swipeGesture)
         }
     }
 
@@ -136,11 +127,11 @@ struct SwipeableTabView: View {
                     let animationSpeed = min(abs(velocity) / 1000, 0.5)
                     let springResponse = max(0.3 - animationSpeed, 0.15)
 
-                    if horizontalAmount < 0 && selection < 3 {
+                    if horizontalAmount < 0 && selection < 2 {
                         // Sola kaydırma - sonraki tab
                         HapticManager.shared.playImpact(style: .light)
                         withAnimation(.spring(response: springResponse, dampingFraction: 0.75)) {
-                            selection = min(selection + 1, 3)
+                            selection = min(selection + 1, 2)
                         }
                     } else if horizontalAmount > 0 && selection > 0 {
                         // Sağa kaydırma - önceki tab
