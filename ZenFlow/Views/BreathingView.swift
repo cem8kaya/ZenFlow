@@ -12,17 +12,23 @@
 
 import SwiftUI
 
-/// Animation phase for the breathing cycle
+/// Animation phase for the breathing cycle (backward compatible)
 enum AnimationPhase {
     case inhale
+    case hold
     case exhale
+    case holdAfterExhale
 
     /// Scale factor for the breathing circles
     var scale: CGFloat {
         switch self {
         case .inhale:
             return AppConstants.Breathing.inhaleScale
+        case .hold:
+            return AppConstants.Breathing.inhaleScale
         case .exhale:
+            return AppConstants.Breathing.exhaleScale
+        case .holdAfterExhale:
             return AppConstants.Breathing.exhaleScale
         }
     }
@@ -32,8 +38,12 @@ enum AnimationPhase {
         switch self {
         case .inhale:
             return "Nefes Al"
+        case .hold:
+            return "Tut"
         case .exhale:
             return "Nefes Ver"
+        case .holdAfterExhale:
+            return "Tut"
         }
     }
 
@@ -42,8 +52,26 @@ enum AnimationPhase {
         switch self {
         case .inhale:
             return "Nefes alın"
+        case .hold:
+            return "Nefesinizi tutun"
         case .exhale:
             return "Nefes verin"
+        case .holdAfterExhale:
+            return "Nefesinizi tutun"
+        }
+    }
+
+    /// Convert from BreathingPhaseType
+    init(from phaseType: BreathingPhaseType) {
+        switch phaseType {
+        case .inhale:
+            self = .inhale
+        case .hold:
+            self = .hold
+        case .exhale:
+            self = .exhale
+        case .holdAfterExhale:
+            self = .holdAfterExhale
         }
     }
 }
@@ -54,6 +82,7 @@ struct BreathingView: View {
     // MARK: - State
 
     @State private var currentPhase: AnimationPhase = .exhale
+    @State private var currentPhaseIndex: Int = 0
     @State private var scale: CGFloat = AppConstants.Breathing.exhaleScale
     @State private var isAnimating = false
     @State private var isPaused = false
@@ -67,10 +96,13 @@ struct BreathingView: View {
     @StateObject private var sessionTracker = SessionTracker.shared
     @StateObject private var hapticManager = HapticManager.shared
     @StateObject private var featureFlag = FeatureFlag.shared
+    @StateObject private var exerciseManager = BreathingExerciseManager.shared
 
     // MARK: - Constants
 
-    private let animationDuration: Double = AppConstants.Animation.breathingCycleDuration
+    private var currentExercise: BreathingExercise {
+        exerciseManager.selectedExercise
+    }
 
     var body: some View {
         ZStack {
@@ -250,8 +282,16 @@ struct BreathingView: View {
     private func startAnimation() {
         isAnimating = true
         isPaused = false
-        scale = AppConstants.Breathing.exhaleScale
-        currentPhase = .exhale
+        currentPhaseIndex = 0
+
+        // Set initial state based on first phase of the exercise
+        if let firstPhase = currentExercise.phases.first {
+            currentPhase = AnimationPhase(from: firstPhase.phase)
+            scale = currentPhase.scale
+        } else {
+            scale = AppConstants.Breathing.exhaleScale
+            currentPhase = .exhale
+        }
 
         // Start meditation session tracking
         sessionTracker.startSession()
@@ -269,7 +309,7 @@ struct BreathingView: View {
         }
 
         // Accessibility announcement
-        UIAccessibility.post(notification: .announcement, argument: "Meditasyon başladı. \(selectedDurationMinutes) dakika.")
+        UIAccessibility.post(notification: .announcement, argument: "\(currentExercise.name) egzersizi başladı. \(selectedDurationMinutes) dakika.")
 
         performBreathingCycle()
     }
@@ -281,6 +321,7 @@ struct BreathingView: View {
         animationTimer = nil
         sessionTimer?.invalidate()
         sessionTimer = nil
+        currentPhaseIndex = 0
 
         // End meditation session tracking
         sessionTracker.endSession { duration in
@@ -302,9 +343,17 @@ struct BreathingView: View {
         // Stop haptic engine
         hapticManager.stopEngine()
 
-        withAnimation(.easeInOut(duration: AppConstants.Animation.transitionDuration)) {
-            scale = AppConstants.Breathing.exhaleScale
-            currentPhase = .exhale
+        // Reset to first phase of the exercise
+        if let firstPhase = currentExercise.phases.first {
+            withAnimation(.easeInOut(duration: AppConstants.Animation.transitionDuration)) {
+                currentPhase = AnimationPhase(from: firstPhase.phase)
+                scale = currentPhase.scale
+            }
+        } else {
+            withAnimation(.easeInOut(duration: AppConstants.Animation.transitionDuration)) {
+                scale = AppConstants.Breathing.exhaleScale
+                currentPhase = .exhale
+            }
         }
     }
 
@@ -352,31 +401,31 @@ struct BreathingView: View {
 
     private func performBreathingCycle() {
         guard isAnimating && !isPaused else { return }
+        guard !currentExercise.phases.isEmpty else { return }
 
-        // Inhale phase - trigger haptic feedback
-        currentPhase = .inhale
+        // Get current phase configuration
+        let phaseConfig = currentExercise.phases[currentPhaseIndex]
+        currentPhase = AnimationPhase(from: phaseConfig.phase)
 
-        // Play haptic pattern at the start of inhale
-        HapticManager.shared.playBreathingInhale(duration: animationDuration)
+        // Play haptic pattern at the start of inhale phase
+        if phaseConfig.phase == .inhale {
+            HapticManager.shared.playBreathingInhale(duration: phaseConfig.duration)
+        }
 
-        withAnimation(.easeInOut(duration: animationDuration)) {
+        // Animate to the current phase
+        withAnimation(.easeInOut(duration: phaseConfig.duration)) {
             scale = currentPhase.scale
         }
 
-        // Schedule exhale phase
-        animationTimer = Timer.scheduledTimer(withTimeInterval: animationDuration, repeats: false) { _ in
+        // Schedule next phase
+        animationTimer = Timer.scheduledTimer(withTimeInterval: phaseConfig.duration, repeats: false) { [self] _ in
             guard isAnimating && !isPaused else { return }
 
-            // Exhale phase
-            currentPhase = .exhale
-            withAnimation(.easeInOut(duration: animationDuration)) {
-                scale = currentPhase.scale
-            }
+            // Move to next phase
+            currentPhaseIndex = (currentPhaseIndex + 1) % currentExercise.phases.count
 
-            // Schedule next inhale phase
-            animationTimer = Timer.scheduledTimer(withTimeInterval: animationDuration, repeats: false) { _ in
-                performBreathingCycle()
-            }
+            // Continue the cycle
+            performBreathingCycle()
         }
     }
 }
