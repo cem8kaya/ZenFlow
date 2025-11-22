@@ -3,55 +3,20 @@
 //  ZenFlow
 //
 //  Created by Claude on 2025-11-16.
-//  2D Watercolor/Pastel Zen Garden with Japanese Mysticism
+//  Minimal Zen Garden with Natural Tree Growth
 //
 
 import SwiftUI
 import Combine
 
-// MARK: - Koi Fish Model
-struct KoiFish: Identifiable {
-    let id = UUID()
-    var x: CGFloat
-    var y: CGFloat
-    var angle: Double
-    var speed: CGFloat
-    var size: CGFloat
-    var color: Color
-    var phase: Double = 0
-}
-
-// MARK: - Sakura Petal Model
-struct SakuraPetal: Identifiable {
-    let id = UUID()
-    var x: CGFloat
-    var y: CGFloat
-    var rotation: Double
-    var opacity: Double
-    var speed: CGFloat
-    var swayAmplitude: CGFloat
-}
-
-// MARK: - Bamboo Model
-struct BambooStalk: Identifiable {
-    let id = UUID()
-    var x: CGFloat
-    var height: CGFloat
-    var sway: Double = 0
-    var segments: Int
-}
-
-// MARK: - Watercolor Zen Garden View
+// MARK: - Minimal Zen Garden View
 struct WatercolorZenGardenView: View {
     @ObservedObject var gardenManager: ZenGardenManager
 
     // Animation states
-    @State private var koiFish: [KoiFish] = []
-    @State private var sakuraPetals: [SakuraPetal] = []
-    @State private var bambooStalks: [BambooStalk] = []
-    @State private var waterRipples: [CGFloat] = [0, 0, 0]
-    @State private var mistOffset: CGFloat = 0
-    @State private var lanternGlow: Double = 0.5
+    @State private var windPhase: Double = 0
+    @State private var treeGrowthScale: CGFloat = 1.0
+    @State private var leafSway: Double = 0
 
     // Timers
     let timer = Timer.publish(every: 0.05, on: .main, in: .common).autoconnect()
@@ -59,735 +24,453 @@ struct WatercolorZenGardenView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                // Sky gradient background (watercolor style)
-                skyGradient
+                // Natural background gradient (soft beige/cream)
+                naturalBackgroundGradient
 
-                // Mountain silhouette (far background)
-                mountainSilhouette(in: geometry.size)
-                    .offset(y: geometry.size.height * 0.3)
+                // Minimal zen sand circle with rake pattern
+                zenSandCircle(in: geometry.size)
+                    .offset(y: geometry.size.height * 0.15)
 
-                // Mist layer
-                mistLayer(in: geometry.size)
-
-                // Torii gate (background)
-                toriiGate(in: geometry.size)
-                    .offset(y: geometry.size.height * 0.2)
-
-                // Sand garden with rake patterns
-                sandGarden(in: geometry.size)
-                    .offset(y: geometry.size.height * 0.4)
-
-                // Water pond
-                waterPond(in: geometry.size)
-                    .offset(x: -geometry.size.width * 0.25, y: geometry.size.height * 0.35)
-
-                // Koi fish in pond
-                ForEach(koiFish) { fish in
-                    koiFishView(fish: fish)
-                        .offset(x: -geometry.size.width * 0.25, y: geometry.size.height * 0.35)
-                }
-
-                // Lotus flowers
-                lotusFlowers(in: geometry.size)
-                    .offset(x: -geometry.size.width * 0.25, y: geometry.size.height * 0.35)
-
-                // Growing tree removed - now managed by ZenGardenView overlay
-                Spacer()
-
-                // Stone lantern
-                stoneLantern(in: geometry.size)
-                    .offset(x: geometry.size.width * 0.3, y: geometry.size.height * 0.3)
-
-                // Bamboo forest (left and right)
-                ForEach(bambooStalks) { bamboo in
-                    bambooStalkView(bamboo: bamboo, in: geometry.size)
-                }
-
-                // Falling sakura petals
-                ForEach(sakuraPetals) { petal in
-                    sakuraPetalView(petal: petal)
-                }
-
-                // Foreground mist
-                mistLayer(in: geometry.size, isForeground: true)
-                    .opacity(0.3)
-            }
-            .onAppear {
-                initializeElements(size: geometry.size)
+                // Tree (drawn with Canvas based on growth stage)
+                treeView(in: geometry.size)
+                    .offset(y: geometry.size.height * 0.1)
+                    .scaleEffect(treeGrowthScale)
             }
             .onReceive(timer) { _ in
-                animateElements(size: geometry.size)
+                animateElements()
             }
         }
         .ignoresSafeArea()
+        .onChange(of: gardenManager.currentStage) { _, _ in
+            animateGrowth()
+        }
     }
 
-    // MARK: - Sky Gradient (Watercolor)
+    // MARK: - Natural Background
 
-    private var skyGradient: some View {
+    private var naturalBackgroundGradient: some View {
         LinearGradient(
             colors: [
-                Color(red: 0.95, green: 0.85, blue: 0.90), // Soft pink
-                Color(red: 0.85, green: 0.90, blue: 0.95), // Soft blue
-                Color(red: 0.90, green: 0.92, blue: 0.88), // Warm beige
-                Color(red: 0.78, green: 0.82, blue: 0.88)  // Soft grey-blue
+                Color(red: 0.98, green: 0.97, blue: 0.92), // Very soft cream
+                Color(red: 0.96, green: 0.94, blue: 0.88), // Warm beige
+                Color(red: 0.94, green: 0.92, blue: 0.86)  // Soft earth
             ],
             startPoint: .top,
             endPoint: .bottom
         )
         .overlay(
-            // Watercolor texture effect
+            // Subtle texture
             Canvas { context, size in
-                for _ in 0..<50 {
+                for _ in 0..<30 {
                     let x = CGFloat.random(in: 0...size.width)
                     let y = CGFloat.random(in: 0...size.height)
-                    let radius = CGFloat.random(in: 30...100)
+                    let radius = CGFloat.random(in: 20...60)
 
                     let rect = CGRect(x: x - radius, y: y - radius, width: radius * 2, height: radius * 2)
-                    let opacity = Double.random(in: 0.02...0.05)
-
-                    context.opacity = opacity
+                    context.opacity = Double.random(in: 0.01...0.03)
                     context.fill(
                         Path(ellipseIn: rect),
-                        with: .color(.white)
+                        with: .color(ZenTheme.earthBrown)
                     )
                 }
             }
         )
     }
 
-    // MARK: - Mountain Silhouette
+    // MARK: - Zen Sand Circle
 
-    private func mountainSilhouette(in size: CGSize) -> some View {
-        Canvas { context, canvasSize in
-            var path = Path()
-            path.move(to: CGPoint(x: 0, y: canvasSize.height))
-
-            // Mountain peaks
-            path.addLine(to: CGPoint(x: canvasSize.width * 0.15, y: canvasSize.height * 0.6))
-            path.addLine(to: CGPoint(x: canvasSize.width * 0.3, y: canvasSize.height * 0.4))
-            path.addLine(to: CGPoint(x: canvasSize.width * 0.5, y: canvasSize.height * 0.2))
-            path.addLine(to: CGPoint(x: canvasSize.width * 0.7, y: canvasSize.height * 0.35))
-            path.addLine(to: CGPoint(x: canvasSize.width * 0.85, y: canvasSize.height * 0.5))
-            path.addLine(to: CGPoint(x: canvasSize.width, y: canvasSize.height * 0.7))
-            path.addLine(to: CGPoint(x: canvasSize.width, y: canvasSize.height))
-            path.closeSubpath()
-
-            // Watercolor effect with gradient
-            let gradient = Gradient(colors: [
-                Color(red: 0.45, green: 0.50, blue: 0.60).opacity(0.4),
-                Color(red: 0.55, green: 0.60, blue: 0.70).opacity(0.2)
-            ])
-
-            context.fill(
-                path,
-                with: .linearGradient(
-                    gradient,
-                    startPoint: CGPoint(x: canvasSize.width * 0.5, y: 0),
-                    endPoint: CGPoint(x: canvasSize.width * 0.5, y: canvasSize.height)
-                )
-            )
-        }
-        .blur(radius: 3)
-    }
-
-    // MARK: - Mist Layer
-
-    private func mistLayer(in size: CGSize, isForeground: Bool = false) -> some View {
-        Canvas { context, canvasSize in
-            let yOffset = isForeground ? canvasSize.height * 0.6 : canvasSize.height * 0.3
-
-            for i in 0..<5 {
-                let offset = mistOffset + CGFloat(i * 50)
-                let x = offset.truncatingRemainder(dividingBy: canvasSize.width + 200) - 100
-                let y = yOffset + CGFloat(i * 20)
-                let width = CGFloat.random(in: 150...300)
-                let height = CGFloat.random(in: 40...80)
-
-                let rect = CGRect(x: x, y: y, width: width, height: height)
-                context.opacity = 0.15
-                context.fill(
-                    Path(ellipseIn: rect),
-                    with: .color(.white)
-                )
-            }
-        }
-        .blur(radius: 20)
-    }
-
-    // MARK: - Torii Gate
-
-    private func toriiGate(in size: CGSize) -> some View {
+    private func zenSandCircle(in size: CGSize) -> some View {
         Canvas { context, canvasSize in
             let centerX = canvasSize.width * 0.5
-            let gateWidth: CGFloat = 180
-            let gateHeight: CGFloat = 140
-            let pillarWidth: CGFloat = 12
+            let centerY = canvasSize.height * 0.5
+            let radius: CGFloat = 160
 
-            // Torii color (vermillion/red-orange)
-            let toriiColor = Color(red: 0.85, green: 0.35, blue: 0.25).opacity(0.7)
+            // Sand circle base
+            let circlePath = Path(ellipseIn: CGRect(
+                x: centerX - radius,
+                y: centerY - radius,
+                width: radius * 2,
+                height: radius * 2
+            ))
 
-            // Left pillar
-            let leftPillar = Path(
-                roundedRect: CGRect(
-                    x: centerX - gateWidth/2,
-                    y: 0,
-                    width: pillarWidth,
-                    height: gateHeight
-                ),
-                cornerRadius: 3
-            )
-            context.fill(leftPillar, with: .color(toriiColor))
-
-            // Right pillar
-            let rightPillar = Path(
-                roundedRect: CGRect(
-                    x: centerX + gateWidth/2 - pillarWidth,
-                    y: 0,
-                    width: pillarWidth,
-                    height: gateHeight
-                ),
-                cornerRadius: 3
-            )
-            context.fill(rightPillar, with: .color(toriiColor))
-
-            // Top beam (kasagi)
-            let topBeam = Path(
-                roundedRect: CGRect(
-                    x: centerX - gateWidth/2 - 15,
-                    y: 15,
-                    width: gateWidth + 30,
-                    height: 14
-                ),
-                cornerRadius: 7
-            )
-            context.fill(topBeam, with: .color(toriiColor))
-
-            // Middle beam (nuki)
-            let middleBeam = Path(
-                roundedRect: CGRect(
-                    x: centerX - gateWidth/2 - 5,
-                    y: 55,
-                    width: gateWidth + 10,
-                    height: 10
-                ),
-                cornerRadius: 5
-            )
-            context.fill(middleBeam, with: .color(toriiColor))
-        }
-        .blur(radius: 1.5)
-    }
-
-    // MARK: - Sand Garden
-
-    private func sandGarden(in size: CGSize) -> some View {
-        Canvas { context, canvasSize in
-            // Sand base
-            let sandRect = CGRect(x: 0, y: 0, width: canvasSize.width, height: canvasSize.height * 0.6)
             let sandGradient = Gradient(colors: [
-                Color(red: 0.96, green: 0.94, blue: 0.88),
-                Color(red: 0.92, green: 0.90, blue: 0.85)
+                ZenTheme.sandTan.opacity(0.4),
+                ZenTheme.sandTan.opacity(0.25)
             ])
 
             context.fill(
-                Path(roundedRect: sandRect, cornerRadius: 0),
-                with: .linearGradient(
+                circlePath,
+                with: .radialGradient(
                     sandGradient,
-                    startPoint: CGPoint(x: canvasSize.width * 0.5, y: 0),
-                    endPoint: CGPoint(x: canvasSize.width * 0.5, y: sandRect.height)
+                    center: CGPoint(x: centerX, y: centerY),
+                    startRadius: 0,
+                    endRadius: radius
                 )
             )
 
-            // Rake patterns (concentric circles)
-            context.opacity = 0.3
-            let rakeColor = Color(red: 0.85, green: 0.83, blue: 0.78)
+            // Concentric rake patterns
+            context.opacity = 0.25
+            let rakeColor = ZenTheme.earthBrown
 
-            for radius in stride(from: 30, through: 200, by: 15) {
-                let center = CGPoint(x: canvasSize.width * 0.5, y: canvasSize.height * 0.3)
-                var path = Path()
-                path.addEllipse(in: CGRect(
-                    x: center.x - CGFloat(radius),
-                    y: center.y - CGFloat(radius) * 0.5,
-                    width: CGFloat(radius) * 2,
-                    height: CGFloat(radius)
+            for r in stride(from: 30, through: radius - 10, by: 15) {
+                var rakePath = Path()
+                rakePath.addEllipse(in: CGRect(
+                    x: centerX - r,
+                    y: centerY - r,
+                    width: r * 2,
+                    height: r * 2
                 ))
 
-                context.stroke(path, with: .color(rakeColor), lineWidth: 1)
+                context.stroke(rakePath, with: .color(rakeColor), lineWidth: 1.5)
             }
         }
     }
 
-    // MARK: - Water Pond
+    // MARK: - Tree View (Canvas Drawing)
 
-    private func waterPond(in size: CGSize) -> some View {
-        ZStack {
-            // Pond shape
-            Canvas { context, canvasSize in
-                let pondPath = Path { path in
-                    // Organic pond shape
-                    path.move(to: CGPoint(x: 50, y: 80))
-                    path.addQuadCurve(
-                        to: CGPoint(x: 200, y: 70),
-                        control: CGPoint(x: 125, y: 30)
-                    )
-                    path.addQuadCurve(
-                        to: CGPoint(x: 250, y: 150),
-                        control: CGPoint(x: 240, y: 100)
-                    )
-                    path.addQuadCurve(
-                        to: CGPoint(x: 180, y: 200),
-                        control: CGPoint(x: 230, y: 180)
-                    )
-                    path.addQuadCurve(
-                        to: CGPoint(x: 60, y: 180),
-                        control: CGPoint(x: 120, y: 210)
-                    )
-                    path.addQuadCurve(
-                        to: CGPoint(x: 50, y: 80),
-                        control: CGPoint(x: 40, y: 130)
-                    )
-                }
-
-                // Water gradient
-                let waterGradient = Gradient(colors: [
-                    Color(red: 0.40, green: 0.60, blue: 0.70).opacity(0.7),
-                    Color(red: 0.25, green: 0.45, blue: 0.60).opacity(0.8)
-                ])
-
-                context.fill(
-                    pondPath,
-                    with: .linearGradient(
-                        waterGradient,
-                        startPoint: CGPoint(x: 150, y: 50),
-                        endPoint: CGPoint(x: 150, y: 200)
-                    )
-                )
-            }
-            .blur(radius: 2)
-
-            // Water ripples
-            Canvas { context, canvasSize in
-                context.opacity = 0.3
-                for (index, ripple) in waterRipples.enumerated() {
-                    let center = CGPoint(
-                        x: 100 + CGFloat(index * 40),
-                        y: 120 + CGFloat(index * 20)
-                    )
-
-                    for r in stride(from: ripple, through: ripple + 30, by: 10) {
-                        var path = Path()
-                        path.addEllipse(in: CGRect(
-                            x: center.x - r,
-                            y: center.y - r * 0.7,
-                            width: r * 2,
-                            height: r * 1.4
-                        ))
-
-                        context.stroke(
-                            path,
-                            with: .color(.white),
-                            lineWidth: 1.5
-                        )
-                    }
-                }
-            }
-        }
-        .frame(width: 300, height: 250)
-    }
-
-    // MARK: - Koi Fish
-
-    private func koiFishView(fish: KoiFish) -> some View {
-        Canvas { context, size in
-            // Fish body (elongated ellipse)
-            let bodyLength: CGFloat = fish.size
-            let bodyWidth: CGFloat = fish.size * 0.4
-
-            var transform = CGAffineTransform.identity
-            transform = transform.translatedBy(x: fish.x, y: fish.y)
-            transform = transform.rotated(by: fish.angle)
-
-            context.transform = transform
-
-            // Body
-            let bodyPath = Path(
-                ellipseIn: CGRect(
-                    x: -bodyLength/2,
-                    y: -bodyWidth/2,
-                    width: bodyLength,
-                    height: bodyWidth
-                )
-            )
-
-            context.fill(bodyPath, with: .color(fish.color))
-
-            // Tail fin
-            var tailPath = Path()
-            tailPath.move(to: CGPoint(x: -bodyLength/2, y: 0))
-            tailPath.addQuadCurve(
-                to: CGPoint(x: -bodyLength/2 - 15, y: 8),
-                control: CGPoint(x: -bodyLength/2 - 10, y: 5)
-            )
-            tailPath.addQuadCurve(
-                to: CGPoint(x: -bodyLength/2, y: 0),
-                control: CGPoint(x: -bodyLength/2 - 10, y: 3)
-            )
-
-            context.fill(tailPath, with: .color(fish.color.opacity(0.8)))
-
-            // Eye
-            let eyePath = Path(
-                ellipseIn: CGRect(
-                    x: bodyLength/4,
-                    y: -2,
-                    width: 3,
-                    height: 3
-                )
-            )
-            context.fill(eyePath, with: .color(.black.opacity(0.6)))
-        }
-    }
-
-    // MARK: - Lotus Flowers
-
-    private func lotusFlowers(in size: CGSize) -> some View {
+    private func treeView(in size: CGSize) -> some View {
         Canvas { context, canvasSize in
-            let lotusPositions: [(x: CGFloat, y: CGFloat)] = [
-                (80, 100),
-                (180, 140),
-                (220, 90)
-            ]
+            let centerX = canvasSize.width * 0.5
+            let centerY = canvasSize.height * 0.5
 
-            for pos in lotusPositions {
-                // Lily pad
-                let padPath = Path(
-                    ellipseIn: CGRect(
-                        x: pos.x - 25,
-                        y: pos.y - 20,
-                        width: 50,
-                        height: 40
-                    )
-                )
-                context.fill(
-                    padPath,
-                    with: .color(Color(red: 0.3, green: 0.6, blue: 0.4).opacity(0.7))
-                )
+            switch gardenManager.currentStage {
+            case .seed:
+                drawSeed(context: context, centerX: centerX, centerY: centerY)
+            case .sprout:
+                drawSprout(context: context, centerX: centerX, centerY: centerY, sway: leafSway)
+            case .sapling:
+                drawSapling(context: context, centerX: centerX, centerY: centerY, sway: leafSway)
+            case .youngTree:
+                drawYoungTree(context: context, centerX: centerX, centerY: centerY, sway: leafSway)
+            case .matureTree:
+                drawMatureTree(context: context, centerX: centerX, centerY: centerY, sway: leafSway)
+            case .ancientTree:
+                drawAncientTree(context: context, centerX: centerX, centerY: centerY, sway: leafSway)
+            }
 
-                // Lotus flower (simple)
-                for i in 0..<5 {
-                    let angle = Double(i) * (2 * .pi / 5)
-                    let petalX = pos.x + cos(angle) * 8
-                    let petalY = pos.y + sin(angle) * 8
+            // Subtle shadow
+            context.opacity = 0.15
+            let shadowPath = Path(ellipseIn: CGRect(
+                x: centerX - 30,
+                y: centerY + getTreeHeight(for: gardenManager.currentStage) - 5,
+                width: 60,
+                height: 15
+            ))
+            context.fill(shadowPath, with: .color(.black))
+        }
+    }
 
-                    let petalPath = Path(
-                        ellipseIn: CGRect(
-                            x: petalX - 6,
-                            y: petalY - 8,
-                            width: 12,
-                            height: 16
-                        )
-                    )
+    // MARK: - Tree Drawing Functions
 
-                    context.fill(
-                        petalPath,
-                        with: .color(Color(red: 0.98, green: 0.85, blue: 0.90).opacity(0.9))
-                    )
+    private func drawSeed(context: GraphicsContext, centerX: CGFloat, centerY: CGFloat) {
+        // Small brown seed
+        let seedPath = Path(ellipseIn: CGRect(
+            x: centerX - 8,
+            y: centerY - 8,
+            width: 16,
+            height: 16
+        ))
+        context.fill(seedPath, with: .color(ZenTheme.earthBrown))
+
+        // Highlight
+        context.opacity = 0.3
+        let highlightPath = Path(ellipseIn: CGRect(
+            x: centerX - 4,
+            y: centerY - 6,
+            width: 6,
+            height: 6
+        ))
+        context.fill(highlightPath, with: .color(.white))
+    }
+
+    private func drawSprout(context: GraphicsContext, centerX: CGFloat, centerY: CGFloat, sway: Double) {
+        let swayOffset = sin(sway) * 2
+
+        // Thin stem
+        var stemPath = Path()
+        stemPath.move(to: CGPoint(x: centerX + swayOffset, y: centerY))
+        stemPath.addLine(to: CGPoint(x: centerX + swayOffset, y: centerY - 30))
+        context.stroke(stemPath, with: .color(Color(red: 0.5, green: 0.7, blue: 0.3)), lineWidth: 2)
+
+        // 2-3 small leaves
+        for i in 0..<2 {
+            let yPos = centerY - CGFloat(15 + i * 10)
+            let side = i % 2 == 0 ? -1.0 : 1.0
+            let leafSway = sin(sway + Double(i) * 0.5) * 1.5
+
+            var leafPath = Path()
+            leafPath.move(to: CGPoint(x: centerX + swayOffset, y: yPos))
+            leafPath.addQuadCurve(
+                to: CGPoint(x: centerX + swayOffset + side * (8 + leafSway), y: yPos - 6),
+                control: CGPoint(x: centerX + swayOffset + side * 6, y: yPos - 3)
+            )
+
+            context.stroke(leafPath, with: .color(Color(red: 0.5, green: 0.8, blue: 0.3)), lineWidth: 2)
+        }
+    }
+
+    private func drawSapling(context: GraphicsContext, centerX: CGFloat, centerY: CGFloat, sway: Double) {
+        let swayOffset = sin(sway) * 3
+
+        // Thin trunk
+        var trunkPath = Path()
+        trunkPath.move(to: CGPoint(x: centerX, y: centerY))
+        trunkPath.addLine(to: CGPoint(x: centerX + swayOffset, y: centerY - 60))
+        context.stroke(trunkPath, with: .color(ZenTheme.earthBrown), lineWidth: 4)
+
+        // A few branches with leaves
+        for i in 0..<3 {
+            let yPos = centerY - CGFloat(30 + i * 15)
+            let side = i % 2 == 0 ? -1.0 : 1.0
+            let branchSway = sin(sway + Double(i) * 0.3) * 2
+
+            // Branch
+            var branchPath = Path()
+            branchPath.move(to: CGPoint(x: centerX + swayOffset, y: yPos))
+            branchPath.addLine(to: CGPoint(x: centerX + swayOffset + side * (15 + branchSway), y: yPos - 10))
+            context.stroke(branchPath, with: .color(ZenTheme.earthBrown.opacity(0.8)), lineWidth: 2)
+
+            // Leaves cluster
+            let leafX = centerX + swayOffset + side * (15 + branchSway)
+            let leafY = yPos - 10
+
+            for j in 0..<3 {
+                let angle = Double(j) * 0.5 - 0.5
+                let leafPath = Path(ellipseIn: CGRect(
+                    x: leafX + cos(angle) * 6 - 3,
+                    y: leafY + sin(angle) * 6 - 4,
+                    width: 6,
+                    height: 8
+                ))
+                context.fill(leafPath, with: .color(Color(red: 0.4, green: 0.7, blue: 0.25)))
+            }
+        }
+    }
+
+    private func drawYoungTree(context: GraphicsContext, centerX: CGFloat, centerY: CGFloat, sway: Double) {
+        let swayOffset = sin(sway) * 4
+
+        // Medium trunk
+        var trunkPath = Path()
+        trunkPath.move(to: CGPoint(x: centerX, y: centerY))
+        trunkPath.addQuadCurve(
+            to: CGPoint(x: centerX + swayOffset, y: centerY - 90),
+            control: CGPoint(x: centerX + swayOffset * 0.5, y: centerY - 45)
+        )
+        context.stroke(trunkPath, with: .color(ZenTheme.earthBrown), lineWidth: 8)
+
+        // Multiple branches with fuller foliage
+        for i in 0..<5 {
+            let yPos = centerY - CGFloat(40 + i * 12)
+            let side = i % 2 == 0 ? -1.0 : 1.0
+            let branchSway = sin(sway + Double(i) * 0.3) * 3
+
+            var branchPath = Path()
+            branchPath.move(to: CGPoint(x: centerX + swayOffset, y: yPos))
+            branchPath.addQuadCurve(
+                to: CGPoint(x: centerX + swayOffset + side * (25 + branchSway), y: yPos - 15),
+                control: CGPoint(x: centerX + swayOffset + side * 15, y: yPos - 7)
+            )
+            context.stroke(branchPath, with: .color(ZenTheme.earthBrown.opacity(0.8)), lineWidth: 3)
+
+            // Leaf cluster
+            let leafX = centerX + swayOffset + side * (25 + branchSway)
+            let leafY = yPos - 15
+
+            for j in 0..<5 {
+                let angle = Double(j) * 0.6 - 1.2
+                let leafPath = Path(ellipseIn: CGRect(
+                    x: leafX + cos(angle) * 8 - 4,
+                    y: leafY + sin(angle) * 8 - 5,
+                    width: 8,
+                    height: 10
+                ))
+                context.fill(leafPath, with: .color(ZenTheme.sageGreen))
+            }
+        }
+    }
+
+    private func drawMatureTree(context: GraphicsContext, centerX: CGFloat, centerY: CGFloat, sway: Double) {
+        let swayOffset = sin(sway) * 5
+
+        // Thick trunk
+        var trunkPath = Path()
+        trunkPath.move(to: CGPoint(x: centerX - 6, y: centerY))
+        trunkPath.addQuadCurve(
+            to: CGPoint(x: centerX + swayOffset - 6, y: centerY - 120),
+            control: CGPoint(x: centerX + swayOffset * 0.5 - 6, y: centerY - 60)
+        )
+        trunkPath.addLine(to: CGPoint(x: centerX + swayOffset + 6, y: centerY - 120))
+        trunkPath.addQuadCurve(
+            to: CGPoint(x: centerX + 6, y: centerY),
+            control: CGPoint(x: centerX + swayOffset * 0.5 + 6, y: centerY - 60)
+        )
+        trunkPath.closeSubpath()
+        context.fill(trunkPath, with: .color(ZenTheme.earthBrown))
+
+        // Wide canopy with many branches
+        for i in 0..<8 {
+            let yPos = centerY - CGFloat(50 + i * 10)
+            let side = i % 2 == 0 ? -1.0 : 1.0
+            let branchSway = sin(sway + Double(i) * 0.25) * 4
+
+            var branchPath = Path()
+            branchPath.move(to: CGPoint(x: centerX + swayOffset, y: yPos))
+            branchPath.addQuadCurve(
+                to: CGPoint(x: centerX + swayOffset + side * (35 + branchSway), y: yPos - 20),
+                control: CGPoint(x: centerX + swayOffset + side * 20, y: yPos - 10)
+            )
+            context.stroke(branchPath, with: .color(ZenTheme.earthBrown.opacity(0.7)), lineWidth: 4)
+
+            // Dense foliage
+            let leafX = centerX + swayOffset + side * (35 + branchSway)
+            let leafY = yPos - 20
+
+            for j in 0..<8 {
+                let angle = Double(j) * 0.8 - 2.8
+                let distance = CGFloat.random(in: 5...12)
+                let leafPath = Path(ellipseIn: CGRect(
+                    x: leafX + cos(angle) * distance - 5,
+                    y: leafY + sin(angle) * distance - 6,
+                    width: 10,
+                    height: 12
+                ))
+                context.fill(leafPath, with: .color(ZenTheme.deepSage))
+            }
+        }
+    }
+
+    private func drawAncientTree(context: GraphicsContext, centerX: CGFloat, centerY: CGFloat, sway: Double) {
+        let swayOffset = sin(sway) * 6
+
+        // Very thick, majestic trunk
+        var trunkPath = Path()
+        trunkPath.move(to: CGPoint(x: centerX - 10, y: centerY))
+        trunkPath.addQuadCurve(
+            to: CGPoint(x: centerX + swayOffset - 8, y: centerY - 150),
+            control: CGPoint(x: centerX + swayOffset * 0.5 - 9, y: centerY - 75)
+        )
+        trunkPath.addLine(to: CGPoint(x: centerX + swayOffset + 8, y: centerY - 150))
+        trunkPath.addQuadCurve(
+            to: CGPoint(x: centerX + 10, y: centerY),
+            control: CGPoint(x: centerX + swayOffset * 0.5 + 9, y: centerY - 75)
+        )
+        trunkPath.closeSubpath()
+        context.fill(trunkPath, with: .color(ZenTheme.earthBrown))
+
+        // Trunk texture (bark)
+        context.opacity = 0.2
+        for i in 0..<5 {
+            let yPos = centerY - CGFloat(i * 30)
+            var barkPath = Path()
+            barkPath.move(to: CGPoint(x: centerX - 8, y: yPos))
+            barkPath.addLine(to: CGPoint(x: centerX + 8, y: yPos))
+            context.stroke(barkPath, with: .color(.black), lineWidth: 1)
+        }
+        context.opacity = 1.0
+
+        // Magnificent canopy with sakura-style blossoms
+        for i in 0..<12 {
+            let yPos = centerY - CGFloat(60 + i * 10)
+            let side = i % 2 == 0 ? -1.0 : 1.0
+            let branchSway = sin(sway + Double(i) * 0.2) * 5
+
+            var branchPath = Path()
+            branchPath.move(to: CGPoint(x: centerX + swayOffset, y: yPos))
+            branchPath.addQuadCurve(
+                to: CGPoint(x: centerX + swayOffset + side * (45 + branchSway), y: yPos - 25),
+                control: CGPoint(x: centerX + swayOffset + side * 25, y: yPos - 12)
+            )
+            context.stroke(branchPath, with: .color(ZenTheme.earthBrown.opacity(0.6)), lineWidth: 5)
+
+            // Dense foliage with blossoms
+            let leafX = centerX + swayOffset + side * (45 + branchSway)
+            let leafY = yPos - 25
+
+            // Green leaves
+            for j in 0..<10 {
+                let angle = Double(j) * 0.7 - 3.5
+                let distance = CGFloat.random(in: 8...15)
+                let leafPath = Path(ellipseIn: CGRect(
+                    x: leafX + cos(angle) * distance - 6,
+                    y: leafY + sin(angle) * distance - 7,
+                    width: 12,
+                    height: 14
+                ))
+                context.fill(leafPath, with: .color(ZenTheme.deepSage))
+            }
+
+            // Pink blossoms (sakura style)
+            for j in 0..<5 {
+                let angle = Double(j) * 0.8 - 2.0
+                let distance = CGFloat.random(in: 10...18)
+                let blossomX = leafX + cos(angle) * distance
+                let blossomY = leafY + sin(angle) * distance
+
+                // 5 petals
+                for k in 0..<5 {
+                    let petalAngle = Double(k) * (2 * .pi / 5)
+                    let petalPath = Path(ellipseIn: CGRect(
+                        x: blossomX + cos(petalAngle) * 3 - 2,
+                        y: blossomY + sin(petalAngle) * 3 - 3,
+                        width: 4,
+                        height: 6
+                    ))
+                    context.fill(petalPath, with: .color(Color(red: 1.0, green: 0.75, blue: 0.8)))
                 }
 
                 // Center
-                let centerPath = Path(
-                    ellipseIn: CGRect(
-                        x: pos.x - 5,
-                        y: pos.y - 5,
-                        width: 10,
-                        height: 10
-                    )
-                )
-                context.fill(
-                    centerPath,
-                    with: .color(Color(red: 0.95, green: 0.85, blue: 0.3).opacity(0.8))
-                )
+                let centerPath = Path(ellipseIn: CGRect(
+                    x: blossomX - 1.5,
+                    y: blossomY - 1.5,
+                    width: 3,
+                    height: 3
+                ))
+                context.fill(centerPath, with: .color(Color(red: 1.0, green: 0.85, blue: 0.4)))
             }
         }
-        .frame(width: 300, height: 250)
+
+        // Subtle glow effect for ancient tree
+        context.opacity = 0.1
+        let glowPath = Path(ellipseIn: CGRect(
+            x: centerX - 80,
+            y: centerY - 160,
+            width: 160,
+            height: 180
+        ))
+        context.fill(glowPath, with: .color(Color(red: 1.0, green: 0.9, blue: 0.7)))
     }
 
-    // MARK: - Growing Tree (Removed - Now managed by ZenGardenView)
-    // Tree visual is now displayed in ZenGardenView using SF Symbols for cleaner separation
+    // MARK: - Helper Functions
 
-    // MARK: - Stone Lantern
-
-    private func stoneLantern(in size: CGSize) -> some View {
-        Canvas { context, canvasSize in
-            let x: CGFloat = 100
-            let y: CGFloat = 80
-
-            let stoneColor = Color(red: 0.50, green: 0.48, blue: 0.45).opacity(0.8)
-
-            // Base
-            let basePath = Path(
-                roundedRect: CGRect(x: x - 20, y: y + 60, width: 40, height: 10),
-                cornerRadius: 2
-            )
-            context.fill(basePath, with: .color(stoneColor))
-
-            // Post
-            let postPath = Path(
-                roundedRect: CGRect(x: x - 8, y: y + 20, width: 16, height: 40),
-                cornerRadius: 2
-            )
-            context.fill(postPath, with: .color(stoneColor))
-
-            // Light box
-            let lightBoxPath = Path(
-                roundedRect: CGRect(x: x - 15, y: y, width: 30, height: 25),
-                cornerRadius: 3
-            )
-            context.fill(lightBoxPath, with: .color(Color(red: 0.95, green: 0.93, blue: 0.88).opacity(0.7)))
-
-            // Glow effect
-            context.opacity = lanternGlow
-            let glowPath = Path(
-                ellipseIn: CGRect(x: x - 20, y: y - 5, width: 40, height: 35)
-            )
-            context.fill(glowPath, with: .color(Color(red: 1.0, green: 0.95, blue: 0.85).opacity(0.6)))
-            context.opacity = 1.0
-
-            // Roof
-            var roofPath = Path()
-            roofPath.move(to: CGPoint(x: x - 25, y: y))
-            roofPath.addLine(to: CGPoint(x: x, y: y - 15))
-            roofPath.addLine(to: CGPoint(x: x + 25, y: y))
-            roofPath.closeSubpath()
-
-            context.fill(roofPath, with: .color(Color(red: 0.35, green: 0.33, blue: 0.30).opacity(0.8)))
-        }
-        .frame(width: 200, height: 150)
-        .blur(radius: 0.8)
-    }
-
-    // MARK: - Bamboo Stalk
-
-    private func bambooStalkView(bamboo: BambooStalk, in size: CGSize) -> some View {
-        Canvas { context, canvasSize in
-            let segments = bamboo.segments
-            let segmentHeight = bamboo.height / CGFloat(segments)
-
-            for i in 0..<segments {
-                let y = CGFloat(i) * segmentHeight
-                let sway = sin(bamboo.sway + Double(i) * 0.3) * 3
-
-                // Bamboo segment
-                let segmentPath = Path(
-                    roundedRect: CGRect(
-                        x: bamboo.x + sway,
-                        y: size.height - y - segmentHeight,
-                        width: 12,
-                        height: segmentHeight
-                    ),
-                    cornerRadius: 4
-                )
-
-                let bambooColor = Color(
-                    red: 0.45,
-                    green: 0.62,
-                    blue: 0.35
-                ).opacity(0.7)
-
-                context.fill(segmentPath, with: .color(bambooColor))
-
-                // Segment ring
-                let ringPath = Path(
-                    ellipseIn: CGRect(
-                        x: bamboo.x + sway - 2,
-                        y: size.height - y - CGFloat(3),
-                        width: 16,
-                        height: 6
-                    )
-                )
-
-                context.fill(ringPath, with: .color(Color(red: 0.35, green: 0.52, blue: 0.25).opacity(0.8)))
-            }
-
-            // Leaves at top
-            for i in 0..<3 {
-                let angle = Double(i) * 0.8 - 0.8
-                let swayOffset = sin(bamboo.sway + Double(i) * 0.5) * 5
-
-                var leafPath = Path()
-                leafPath.move(to: CGPoint(x: bamboo.x + 6, y: size.height - bamboo.height))
-                leafPath.addQuadCurve(
-                    to: CGPoint(
-                        x: bamboo.x + 6 + cos(angle) * 25 + swayOffset,
-                        y: size.height - bamboo.height - sin(angle) * 40
-                    ),
-                    control: CGPoint(
-                        x: bamboo.x + 6 + cos(angle) * 15,
-                        y: size.height - bamboo.height - sin(angle) * 20
-                    )
-                )
-
-                context.stroke(
-                    leafPath,
-                    with: .color(Color(red: 0.40, green: 0.70, blue: 0.30).opacity(0.7)),
-                    lineWidth: 3
-                )
-            }
-        }
-        .blur(radius: 0.5)
-    }
-
-    // MARK: - Sakura Petal
-
-    private func sakuraPetalView(petal: SakuraPetal) -> some View {
-        Canvas { context, size in
-            var transform = CGAffineTransform.identity
-            transform = transform.translatedBy(x: petal.x, y: petal.y)
-            transform = transform.rotated(by: petal.rotation)
-
-            context.transform = transform
-            context.opacity = petal.opacity
-
-            // Petal shape
-            let petalPath = Path(
-                ellipseIn: CGRect(x: -4, y: -6, width: 8, height: 12)
-            )
-
-            let petalColor = Color(red: 1.0, green: 0.80, blue: 0.85).opacity(0.9)
-            context.fill(petalPath, with: .color(petalColor))
+    private func getTreeHeight(for stage: TreeGrowthStage) -> CGFloat {
+        switch stage {
+        case .seed: return 10
+        case .sprout: return 35
+        case .sapling: return 65
+        case .youngTree: return 95
+        case .matureTree: return 125
+        case .ancientTree: return 155
         }
     }
 
-    // MARK: - Initialize Elements
+    // MARK: - Animations
 
-    private func initializeElements(size: CGSize) {
-        // Initialize koi fish
-        koiFish = (0..<5).map { i in
-            KoiFish(
-                x: CGFloat.random(in: 60...240),
-                y: CGFloat.random(in: 80...180),
-                angle: Double.random(in: 0...(2 * .pi)),
-                speed: CGFloat.random(in: 0.3...0.8),
-                size: CGFloat.random(in: 25...40),
-                color: [
-                    Color(red: 1.0, green: 0.6, blue: 0.2).opacity(0.8),
-                    Color(red: 1.0, green: 0.95, blue: 0.95).opacity(0.9),
-                    Color(red: 0.9, green: 0.3, blue: 0.2).opacity(0.85)
-                ].randomElement()!,
-                phase: Double(i) * 0.5
-            )
-        }
-
-        // Initialize bamboo
-        let leftBamboo = (0..<4).map { i in
-            BambooStalk(
-                x: CGFloat(20 + i * 25),
-                height: CGFloat.random(in: 200...300),
-                segments: Int.random(in: 6...10)
-            )
-        }
-
-        let rightBamboo = (0..<4).map { i in
-            BambooStalk(
-                x: size.width - CGFloat(120 - i * 25),
-                height: CGFloat.random(in: 200...300),
-                segments: Int.random(in: 6...10)
-            )
-        }
-
-        bambooStalks = leftBamboo + rightBamboo
-
-        // Initialize sakura petals (if mature tree)
-        if gardenManager.currentStage == .matureTree || gardenManager.currentStage == .ancientTree {
-            generateSakuraPetals(size: size)
-        }
+    private func animateElements() {
+        // Wind effect (leaf sway)
+        leafSway += 0.03
     }
 
-    // MARK: - Animate Elements
-
-    private func animateElements(size: CGSize) {
-        // Animate koi fish
-        for i in 0..<koiFish.count {
-            koiFish[i].phase += 0.05
-
-            // Swimming motion
-            let wave = sin(koiFish[i].phase) * 2
-            koiFish[i].x += cos(koiFish[i].angle) * koiFish[i].speed
-            koiFish[i].y += sin(koiFish[i].angle) * koiFish[i].speed + wave
-
-            // Boundary check (stay in pond area)
-            if koiFish[i].x < 60 || koiFish[i].x > 240 {
-                koiFish[i].angle = .pi - koiFish[i].angle
-            }
-            if koiFish[i].y < 70 || koiFish[i].y > 190 {
-                koiFish[i].angle = -koiFish[i].angle
-            }
-
-            // Random direction changes
-            if Double.random(in: 0...1) < 0.02 {
-                koiFish[i].angle += Double.random(in: -0.3...0.3)
-            }
+    private func animateGrowth() {
+        // Smooth growth animation
+        withAnimation(.spring(response: 1.2, dampingFraction: 0.6)) {
+            treeGrowthScale = 1.15
         }
 
-        // Animate water ripples
-        for i in 0..<waterRipples.count {
-            waterRipples[i] += 1.5
-            if waterRipples[i] > 40 {
-                waterRipples[i] = 0
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+            withAnimation(.spring(response: 0.8, dampingFraction: 0.7)) {
+                treeGrowthScale = 1.0
             }
-        }
-
-        // Animate mist
-        mistOffset += 0.3
-        if mistOffset > size.width + 200 {
-            mistOffset = 0
-        }
-
-        // Animate lantern glow
-        lanternGlow = 0.5 + sin(Date().timeIntervalSince1970 * 2) * 0.2
-
-        // Animate bamboo sway
-        for i in 0..<bambooStalks.count {
-            bambooStalks[i].sway += 0.02
-        }
-
-        // Animate sakura petals
-        if !sakuraPetals.isEmpty {
-            for i in 0..<sakuraPetals.count {
-                sakuraPetals[i].y += sakuraPetals[i].speed
-                sakuraPetals[i].x += sin(sakuraPetals[i].y * 0.05) * sakuraPetals[i].swayAmplitude
-                sakuraPetals[i].rotation += 2
-
-                // Reset if off screen
-                if sakuraPetals[i].y > size.height {
-                    sakuraPetals[i].y = -20
-                    sakuraPetals[i].x = CGFloat.random(in: 0...size.width)
-                }
-            }
-        } else if gardenManager.currentStage == .matureTree || gardenManager.currentStage == .ancientTree {
-            // Generate petals for mature trees
-            if Double.random(in: 0...1) < 0.1 {
-                generateSakuraPetals(size: size, count: 1)
-            }
-        }
-    }
-
-    private func generateSakuraPetals(size: CGSize, count: Int = 15) {
-        for _ in 0..<count {
-            let petal = SakuraPetal(
-                x: CGFloat.random(in: 0...size.width),
-                y: CGFloat.random(in: -100...0),
-                rotation: Double.random(in: 0...360),
-                opacity: Double.random(in: 0.6...0.9),
-                speed: CGFloat.random(in: 0.5...1.5),
-                swayAmplitude: CGFloat.random(in: 0.5...2.0)
-            )
-            sakuraPetals.append(petal)
-        }
-
-        // Limit petal count
-        if sakuraPetals.count > 30 {
-            sakuraPetals.removeFirst(sakuraPetals.count - 30)
         }
     }
 }
