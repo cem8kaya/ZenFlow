@@ -11,6 +11,7 @@
 
 import SwiftUI
 import CoreData
+internal import HealthKit
 
 @main
 struct ZenFlowApp: App {

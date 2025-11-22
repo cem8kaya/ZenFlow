@@ -5,7 +5,7 @@
 //  Created by Cem Kaya on 11/16/25.
 //
 
-import HealthKit
+internal import HealthKit
 import Combine
 
 class HealthKitManager {

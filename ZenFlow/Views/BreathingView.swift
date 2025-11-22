@@ -11,6 +11,7 @@
 //
 
 import SwiftUI
+import Combine
 
 /// Animation phase for the breathing cycle (backward compatible)
 enum AnimationPhase {
