@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Combine
 
 // MARK: - Koi Fish Model
 struct KoiFish: Identifiable {

@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		8783243B2ECA839C00B60D16 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 8783243A2ECA839C00B60D16 /* Lottie */; };
+		8783243D2ECA839C00B60D16 /* Lottie-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 8783243C2ECA839C00B60D16 /* Lottie-Dynamic */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		8775A7292EC9EBD1002EF46A /* ZenFlow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZenFlow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +28,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8783243B2ECA839C00B60D16 /* Lottie in Frameworks */,
+				8783243D2ECA839C00B60D16 /* Lottie-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +72,8 @@
 			);
 			name = ZenFlow;
 			packageProductDependencies = (
+				8783243A2ECA839C00B60D16 /* Lottie */,
+				8783243C2ECA839C00B60D16 /* Lottie-Dynamic */,
 			);
 			productName = ZenFlow;
 			productReference = 8775A7292EC9EBD1002EF46A /* ZenFlow.app */;
@@ -94,6 +103,9 @@
 			);
 			mainGroup = 8775A7202EC9EBD1002EF46A;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				878324392ECA839C00B60D16 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 8775A72A2EC9EBD1002EF46A /* Products */;
 			projectDirPath = "";
@@ -338,6 +350,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		878324392ECA839C00B60D16 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8783243A2ECA839C00B60D16 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 878324392ECA839C00B60D16 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+		8783243C2ECA839C00B60D16 /* Lottie-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 878324392ECA839C00B60D16 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = "Lottie-Dynamic";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8775A7212EC9EBD1002EF46A /* Project object */;
 }

@@ -13,6 +13,7 @@
 
 import SwiftUI
 import Lottie
+import Combine
 
 // MARK: - LottieView
 

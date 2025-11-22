@@ -6,6 +6,7 @@
 //
 
 import HealthKit
+import Combine
 
 class HealthKitManager {
     // MARK: - Singleton
