@@ -163,6 +163,7 @@ struct WatercolorZenGardenView: View {
     // MARK: - Tree Drawing Functions
 
     private func drawSeed(context: GraphicsContext, centerX: CGFloat, centerY: CGFloat) {
+        var context = context
         // Small brown seed
         let seedPath = Path(ellipseIn: CGRect(
             x: centerX - 8,
@@ -330,8 +331,8 @@ struct WatercolorZenGardenView: View {
                 let angle = Double(j) * 0.8 - 2.8
                 let distance = CGFloat.random(in: 5...12)
                 let leafPath = Path(ellipseIn: CGRect(
-                    x: leafX + cos(angle) * distance - 5,
-                    y: leafY + sin(angle) * distance - 6,
+                    x: leafX + CGFloat(cos(angle)) * distance - 5,
+                    y: leafY + CGFloat(sin(angle)) * distance - 6,
                     width: 10,
                     height: 12
                 ))
@@ -341,6 +342,7 @@ struct WatercolorZenGardenView: View {
     }
 
     private func drawAncientTree(context: GraphicsContext, centerX: CGFloat, centerY: CGFloat, sway: Double) {
+        var context = context
         let swayOffset = sin(sway) * 6
 
         // Very thick, majestic trunk
@@ -392,8 +394,8 @@ struct WatercolorZenGardenView: View {
                 let angle = Double(j) * 0.7 - 3.5
                 let distance = CGFloat.random(in: 8...15)
                 let leafPath = Path(ellipseIn: CGRect(
-                    x: leafX + cos(angle) * distance - 6,
-                    y: leafY + sin(angle) * distance - 7,
+                    x: leafX + CGFloat(cos(angle)) * distance - 6,
+                    y: leafY + CGFloat(sin(angle)) * distance - 7,
                     width: 12,
                     height: 14
                 ))
