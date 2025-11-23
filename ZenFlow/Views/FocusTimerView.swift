@@ -25,6 +25,9 @@ struct FocusTimerView: View {
     @State private var showBreathingExerciseSuggestion = false
     @State private var showCompletionCelebration = false
     @State private var breathingPhase: AnimationPhase = .exhale
+    @State private var showSoundPicker = false
+    @State private var volumeBeforePause: Float = 0.0
+    @StateObject private var soundManager = AmbientSoundManager.shared
 
     // MARK: - Computed Properties
 
@@ -64,6 +67,14 @@ struct FocusTimerView: View {
 
                 Spacer(minLength: 20)
 
+                // Sound selector (visible only when not running)
+                if timerState == .idle {
+                    compactSoundSelector
+                        .transition(.opacity.combined(with: .scale))
+                        .padding(.horizontal, 20)
+                        .padding(.bottom, 12)
+                }
+
                 // Control buttons
                 controlButtons
                     .padding(.bottom, 30)
@@ -86,6 +97,10 @@ struct FocusTimerView: View {
         }
         .onDisappear {
             stopTimer()
+            soundManager.stopAllSounds(fadeOutDuration: 0)
+        }
+        .sheet(isPresented: $showSoundPicker) {
+            SoundPickerSheet()
         }
     }
 
@@ -372,6 +387,13 @@ struct FocusTimerView: View {
         timerState = .running
         HapticManager.shared.playImpact(style: .medium)
 
+        // Start ambient sounds with fade in
+        if soundManager.isEnabled && !soundManager.activeSounds.isEmpty {
+            for sound in soundManager.activeSounds where !sound.fileName.isEmpty {
+                soundManager.playSound(sound, fadeInDuration: 2.0)
+            }
+        }
+
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
             if timeRemaining > 0 {
                 timeRemaining -= 1
@@ -386,9 +408,20 @@ struct FocusTimerView: View {
         timer?.invalidate()
         timer = nil
         HapticManager.shared.playImpact(style: .light)
+
+        // Reduce ambient sound volume to 50% when paused
+        volumeBeforePause = soundManager.volume
+        withAnimation(.easeInOut(duration: 0.5)) {
+            soundManager.volume = volumeBeforePause * 0.5
+        }
     }
 
     private func resumeTimer() {
+        // Restore ambient sound volume to normal
+        withAnimation(.easeInOut(duration: 0.5)) {
+            soundManager.volume = volumeBeforePause
+        }
+
         startTimer()
     }
 
@@ -402,11 +435,17 @@ struct FocusTimerView: View {
         timerState = .idle
         timeRemaining = currentMode.durationSeconds
         HapticManager.shared.playImpact(style: .medium)
+
+        // Stop ambient sounds with fade out
+        soundManager.stopAllSounds(fadeOutDuration: 2.0)
     }
 
     private func timerCompleted() {
         stopTimer()
         timerState = .completed
+
+        // Stop ambient sounds with fade out
+        soundManager.stopAllSounds(fadeOutDuration: 2.0)
 
         // Save completed session
         saveSession()
@@ -519,6 +558,167 @@ struct FocusTimerView: View {
                 print("Notification error: \(error)")
             }
         }
+    }
+
+    // MARK: - Compact Sound Selector
+
+    private var compactSoundSelector: some View {
+        Button(action: {
+            showSoundPicker = true
+            HapticManager.shared.playImpact(style: .light)
+        }) {
+            HStack(spacing: 12) {
+                // Icon
+                ZStack {
+                    Circle()
+                        .fill(Color.white.opacity(0.1))
+                        .frame(width: 44, height: 44)
+
+                    if soundManager.activeSounds.isEmpty || soundManager.activeSounds.first?.fileName == "" {
+                        Image(systemName: "speaker.slash.fill")
+                            .font(.system(size: 20))
+                            .foregroundColor(ZenTheme.softPurple)
+                    } else {
+                        Image(systemName: soundManager.activeSounds.first!.iconName)
+                            .font(.system(size: 20))
+                            .foregroundColor(soundManager.activeSounds.first!.category.color)
+                    }
+                }
+
+                // Label
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("Ses")
+                        .font(.system(size: 14, weight: .medium))
+                        .foregroundColor(ZenTheme.lightLavender.opacity(0.7))
+
+                    if soundManager.activeSounds.isEmpty || soundManager.activeSounds.first?.fileName == "" {
+                        Text("Sessiz")
+                            .font(.system(size: 16, weight: .semibold))
+                            .foregroundColor(ZenTheme.lightLavender)
+                    } else {
+                        Text(soundManager.activeSounds.map { $0.name }.joined(separator: ", "))
+                            .font(.system(size: 16, weight: .semibold))
+                            .foregroundColor(ZenTheme.lightLavender)
+                            .lineLimit(1)
+                    }
+                }
+
+                Spacer()
+
+                Image(systemName: "chevron.right")
+                    .font(.system(size: 14, weight: .semibold))
+                    .foregroundColor(ZenTheme.softPurple)
+            }
+            .padding(.horizontal, 16)
+            .padding(.vertical, 12)
+            .background(
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(Color.white.opacity(0.05))
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 16)
+                    .stroke(ZenTheme.softPurple.opacity(0.3), lineWidth: 1)
+            )
+        }
+        .accessibilityLabel("Ses seçimi")
+        .accessibilityHint("Arka plan sesi seçmek için dokunun")
+    }
+}
+
+// MARK: - Sound Picker Sheet
+
+/// Bottom sheet for selecting ambient sounds and adjusting volume
+private struct SoundPickerSheet: View {
+    @Environment(\.dismiss) private var dismiss
+    @StateObject private var soundManager = AmbientSoundManager.shared
+
+    var body: some View {
+        NavigationView {
+            ZStack {
+                // Background
+                ZenTheme.backgroundGradient
+                    .ignoresSafeArea()
+
+                ScrollView {
+                    VStack(spacing: 24) {
+                        // Sound Picker
+                        AmbientSoundPicker(
+                            selectedSounds: $soundManager.activeSounds,
+                            onSoundToggle: { sound in
+                                // Auto-play on selection if enabled
+                                if soundManager.isEnabled && !sound.fileName.isEmpty {
+                                    // Check if sound should be played or stopped
+                                    if soundManager.activeSounds.contains(where: { $0.id == sound.id }) {
+                                        soundManager.playSound(sound)
+                                    } else {
+                                        soundManager.stopSound(sound)
+                                    }
+                                }
+                            }
+                        )
+                        .padding(.top, 8)
+
+                        // Volume Slider (only show if sounds are selected)
+                        if !soundManager.activeSounds.isEmpty && soundManager.activeSounds.first?.fileName != "" {
+                            VolumeSliderView(volume: $soundManager.volume)
+                                .padding(.horizontal, 20)
+                                .transition(.opacity.combined(with: .scale))
+                        }
+
+                        // Enable/Disable Toggle
+                        Toggle(isOn: $soundManager.isEnabled) {
+                            HStack(spacing: 12) {
+                                Image(systemName: soundManager.isEnabled ? "speaker.wave.2.fill" : "speaker.slash.fill")
+                                    .font(.system(size: 20))
+                                    .foregroundColor(soundManager.isEnabled ? ZenTheme.calmBlue : ZenTheme.softPurple)
+
+                                VStack(alignment: .leading, spacing: 4) {
+                                    Text("Arka Plan Sesleri")
+                                        .font(.system(size: 16, weight: .semibold))
+                                        .foregroundColor(ZenTheme.lightLavender)
+
+                                    Text(soundManager.isEnabled ? "Etkin" : "Devre Dışı")
+                                        .font(.system(size: 14))
+                                        .foregroundColor(ZenTheme.softPurple)
+                                }
+
+                                Spacer()
+                            }
+                        }
+                        .tint(ZenTheme.calmBlue)
+                        .padding(20)
+                        .background(
+                            RoundedRectangle(cornerRadius: 16)
+                                .fill(Color.white.opacity(0.05))
+                        )
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 16)
+                                .stroke(ZenTheme.softPurple.opacity(0.3), lineWidth: 1)
+                        )
+                        .padding(.horizontal, 20)
+
+                        // Info text
+                        Text("Seçili sesler odaklanma sırasında arka planda çalacak. En fazla 2 ses aynı anda seçebilirsiniz.")
+                            .font(.system(size: 14))
+                            .foregroundColor(ZenTheme.softPurple.opacity(0.8))
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal, 40)
+                            .padding(.bottom, 20)
+                    }
+                }
+            }
+            .navigationTitle("Ses Ayarları")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Tamam") {
+                        dismiss()
+                    }
+                    .foregroundColor(ZenTheme.lightLavender)
+                }
+            }
+        }
+        .preferredColorScheme(.dark)
     }
 }
 

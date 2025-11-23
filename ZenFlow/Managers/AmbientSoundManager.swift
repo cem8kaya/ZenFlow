@@ -56,7 +56,9 @@ class AmbientSoundManager: NSObject, ObservableObject {
 
     private override init() {
         // Load saved preferences
-        self.isEnabled = UserDefaults.standard.bool(forKey: isEnabledKey)
+        // Default to true if no value is set (better UX - user expects sound when selected)
+        let savedIsEnabled = UserDefaults.standard.object(forKey: isEnabledKey) as? Bool
+        self.isEnabled = savedIsEnabled ?? true
         self.volume = UserDefaults.standard.object(forKey: volumeKey) as? Float ?? 0.5
 
         super.init()
@@ -86,8 +88,12 @@ class AmbientSoundManager: NSObject, ObservableObject {
 
     /// Play a sound with optional fade-in
     func playSound(_ sound: AmbientSound, fadeInDuration: TimeInterval = 2.0) {
-        guard isEnabled else { return }
         guard !sound.fileName.isEmpty else { return }
+
+        // Auto-enable when user selects a sound (better UX)
+        if !isEnabled {
+            isEnabled = true
+        }
 
         // Check if we've reached the maximum number of simultaneous sounds
         if !activeSounds.contains(where: { $0.id == sound.id }) {
