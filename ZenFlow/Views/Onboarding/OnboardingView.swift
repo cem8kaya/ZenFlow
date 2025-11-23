@@ -10,6 +10,7 @@
 //
 
 import SwiftUI
+internal import HealthKit
 
 /// Main onboarding view with page navigation
 struct OnboardingView: View {
@@ -300,7 +301,7 @@ private struct HealthKitPermissionView: View {
                 VStack(spacing: 16) {
                     // Allow button
                     Button(action: {
-                        HealthKitManager.shared.requestAuthorization { _ in
+                        HealthKitManager.shared.requestAuthorization { _,_  in
                             isPresented = false
                             onComplete()
                         }

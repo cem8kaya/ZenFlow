@@ -9,6 +9,7 @@
 //
 
 import Foundation
+import Combine
 
 /// Manager for tracking onboarding completion state
 class OnboardingManager: ObservableObject {
