@@ -12,6 +12,9 @@ import SwiftUI
 struct ZenFlowWidgetBundle: WidgetBundle {
     var body: some Widget {
         ZenFlowWidget()
+        ZenFlowLockScreenWidget()
+        ZenFlowLockScreenCircularWidget()
+        ZenFlowLockScreenInlineWidget()
         ZenFlowWidgetControl()
         ZenFlowWidgetLiveActivity()
     }
