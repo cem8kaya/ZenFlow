@@ -104,15 +104,16 @@ class AmbientSoundManager: NSObject, ObservableObject {
             stopSound(sound, fadeOutDuration: 0)
         }
 
-        // Load audio file from bundle
-        // Try loading from Assets.xcassets/Sounds/{fileName}.dataset/
-        guard let soundURL = Bundle.main.url(forResource: sound.fileName, withExtension: "wav", subdirectory: "\(sound.fileName).dataset") else {
-            print("❌ Sound file not found: \(sound.fileName).wav in \(sound.fileName).dataset")
+        // Load audio file from Assets.xcassets using NSDataAsset
+        // Assets are stored in Sounds/{fileName}.dataset format
+        guard let dataAsset = NSDataAsset(name: "Sounds/\(sound.fileName)") else {
+            print("❌ Sound file not found in Assets: Sounds/\(sound.fileName)")
             return
         }
 
         do {
-            let player = try AVAudioPlayer(contentsOf: soundURL)
+            // Create AVAudioPlayer from NSDataAsset's data
+            let player = try AVAudioPlayer(data: dataAsset.data)
             player.numberOfLoops = -1 // Infinite loop
             player.volume = 0.0 // Start at zero for fade-in
             player.prepareToPlay()

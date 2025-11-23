@@ -47,26 +47,28 @@ struct FocusTimerView: View {
             AnimatedGradientView(breathingPhase: $breathingPhase)
                 .ignoresSafeArea(.all)
 
-            VStack(spacing: 40) {
+            VStack(spacing: 0) {
                 // Header with session counter
                 headerView
+                    .padding(.top, 16)
 
-                Spacer()
+                Spacer(minLength: 30)
 
                 // Main timer circle
                 timerCircleView
 
-                Spacer()
+                Spacer(minLength: 30)
 
                 // Mode label
                 modeLabel
 
+                Spacer(minLength: 20)
+
                 // Control buttons
                 controlButtons
-
-                Spacer()
+                    .padding(.bottom, 30)
             }
-            .padding()
+            .padding(.horizontal)
 
             // Celebration overlay
             if showCompletionCelebration {
