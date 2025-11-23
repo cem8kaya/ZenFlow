@@ -73,7 +73,7 @@ struct SettingsView: View {
                             Slider(value: $soundVolume, in: 0...1, step: 0.1)
                                 .tint(ZenTheme.calmBlue)
                                 .onChange(of: soundVolume) { oldValue, newValue in
-                                    soundManager.setVolume(Float(newValue))
+                                    soundManager.volume = Float(newValue)
                                 }
                         }
                     }
