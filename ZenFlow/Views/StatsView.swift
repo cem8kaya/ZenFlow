@@ -32,6 +32,10 @@ struct StatsView: View {
             }
             .padding()
         }
+        .refreshable {
+            // Refresh data from LocalDataManager
+            await refreshStats()
+        }
         .background(
             LinearGradient(
                 gradient: Gradient(colors: [
@@ -43,6 +47,19 @@ struct StatsView: View {
             )
             .ignoresSafeArea()
         )
+    }
+
+    // MARK: - Refresh Function
+
+    private func refreshStats() async {
+        // Simulate a brief refresh delay for UX
+        try? await Task.sleep(nanoseconds: 500_000_000) // 0.5 seconds
+
+        // Trigger a UI update by accessing the data manager
+        // The @StateObject will automatically refresh the view
+        await MainActor.run {
+            dataManager.objectWillChange.send()
+        }
     }
 
     // MARK: - Haftalık Aktivite Grid (GitHub Tarzı)

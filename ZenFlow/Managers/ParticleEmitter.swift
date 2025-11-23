@@ -31,6 +31,13 @@ class ParticleEmitter: ObservableObject {
     // Current breathing phase
     var currentPhase: BreathingPhase = .exhale
 
+    // MARK: - Initialization
+
+    init() {
+        // Automatically adjust particle count based on device performance
+        adjustForDevicePerformance()
+    }
+
     /// Update all particles and spawn new ones
     func update(deltaTime: TimeInterval) {
         // Update existing particles
