@@ -16,11 +16,8 @@ struct SettingsView: View {
     @StateObject private var hapticManager = HapticManager.shared
     @StateObject private var soundManager = AmbientSoundManager.shared
     @State private var hapticsEnabled = true
-    @State private var soundEnabled = true
-    @State private var soundVolume: Double = 0.5
     @State private var showResetAlert = false
     @State private var showResetSuccess = false
-    @Environment(\.dismiss) private var dismiss
 
     // MARK: - Body
 
@@ -45,19 +42,19 @@ struct SettingsView: View {
                 // MARK: - Audio Settings Section
 
                 Section {
-                    Toggle(isOn: $soundEnabled) {
+                    Toggle(isOn: $soundManager.isEnabled) {
                         HStack {
-                            Image(systemName: soundEnabled ? "speaker.wave.2.fill" : "speaker.slash.fill")
+                            Image(systemName: soundManager.isEnabled ? "speaker.wave.2.fill" : "speaker.slash.fill")
                                 .foregroundColor(ZenTheme.calmBlue)
                                 .frame(width: 28)
                             Text("Ortam Sesleri")
                         }
                     }
-                    .onChange(of: soundEnabled) { oldValue, newValue in
-                        handleSoundToggle(newValue)
+                    .onChange(of: soundManager.isEnabled) { oldValue, newValue in
+                        HapticManager.shared.playImpact(style: .light)
                     }
 
-                    if soundEnabled {
+                    if soundManager.isEnabled {
                         VStack(alignment: .leading, spacing: 8) {
                             HStack {
                                 Image(systemName: "speaker.fill")
@@ -65,16 +62,16 @@ struct SettingsView: View {
                                     .frame(width: 28)
                                 Text("Ses Seviyesi")
                                 Spacer()
-                                Text("\(Int(soundVolume * 100))%")
+                                Text("\(Int(soundManager.volume * 100))%")
                                     .foregroundColor(.secondary)
                                     .font(.subheadline)
                             }
 
-                            Slider(value: $soundVolume, in: 0...1, step: 0.1)
+                            Slider(value: Binding(
+                                get: { Double(soundManager.volume) },
+                                set: { soundManager.volume = Float($0) }
+                            ), in: 0...1, step: 0.1)
                                 .tint(ZenTheme.calmBlue)
-                                .onChange(of: soundVolume) { oldValue, newValue in
-                                    soundManager.volume = Float(newValue)
-                                }
                         }
                     }
                 } header: {
@@ -166,14 +163,7 @@ struct SettingsView: View {
                 }
             }
             .navigationTitle("Ayarlar")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Kapat") {
-                        dismiss()
-                    }
-                }
-            }
+            .navigationBarTitleDisplayMode(.large)
             .alert("Tüm Verileri Sil", isPresented: $showResetAlert) {
                 Button("İptal", role: .cancel) { }
                 Button("Sil", role: .destructive) {
@@ -193,13 +183,6 @@ struct SettingsView: View {
     }
 
     // MARK: - Helper Methods
-
-    private func handleSoundToggle(_ isEnabled: Bool) {
-        if !isEnabled {
-            soundManager.stopAllSounds()
-        }
-        HapticManager.shared.playImpact(style: .light)
-    }
 
     private func handleHapticsToggle(_ isEnabled: Bool) {
         if isEnabled {

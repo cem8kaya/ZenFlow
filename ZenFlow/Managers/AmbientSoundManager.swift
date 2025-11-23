@@ -105,8 +105,9 @@ class AmbientSoundManager: NSObject, ObservableObject {
         }
 
         // Load audio file from bundle
-        guard let soundURL = Bundle.main.url(forResource: sound.fileName, withExtension: "wav", subdirectory: "Sounds.dataset") else {
-            print("❌ Sound file not found: \(sound.fileName).wav")
+        // Try loading from Assets.xcassets/Sounds/{fileName}.dataset/
+        guard let soundURL = Bundle.main.url(forResource: sound.fileName, withExtension: "wav", subdirectory: "\(sound.fileName).dataset") else {
+            print("❌ Sound file not found: \(sound.fileName).wav in \(sound.fileName).dataset")
             return
         }
 

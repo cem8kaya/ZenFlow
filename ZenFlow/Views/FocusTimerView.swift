@@ -45,7 +45,7 @@ struct FocusTimerView: View {
         ZStack {
             // Background gradient
             AnimatedGradientView(breathingPhase: $breathingPhase)
-                .ignoresSafeArea()
+                .ignoresSafeArea(.all)
 
             VStack(spacing: 40) {
                 // Header with session counter
