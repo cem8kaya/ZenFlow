@@ -10,6 +10,7 @@
 
 import AVFoundation
 import Combine
+import UIKit
 
 /// Manager for ambient background sounds
 class AmbientSoundManager: NSObject, ObservableObject {
