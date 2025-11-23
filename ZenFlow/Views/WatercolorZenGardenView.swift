@@ -12,14 +12,15 @@ import Combine
 // MARK: - Minimal Zen Garden View
 struct WatercolorZenGardenView: View {
     @ObservedObject var gardenManager: ZenGardenManager
+    @Environment(\.accessibilityReduceMotion) var reduceMotion
 
     // Animation states
     @State private var windPhase: Double = 0
     @State private var treeGrowthScale: CGFloat = 1.0
     @State private var leafSway: Double = 0
 
-    // Timers
-    let timer = Timer.publish(every: 0.05, on: .main, in: .common).autoconnect()
+    // Timers - using .default RunLoop for better performance
+    let timer = Timer.publish(every: 0.05, on: .main, in: .default).autoconnect()
 
     var body: some View {
         GeometryReader { geometry in
@@ -37,7 +38,10 @@ struct WatercolorZenGardenView: View {
                     .scaleEffect(treeGrowthScale)
             }
             .onReceive(timer) { _ in
-                animateElements()
+                // Skip animations if Reduce Motion is enabled
+                if !reduceMotion {
+                    animateElements()
+                }
             }
         }
         .ignoresSafeArea()
@@ -59,21 +63,10 @@ struct WatercolorZenGardenView: View {
             endPoint: .bottom
         )
         .overlay(
-            // Subtle texture
-            Canvas { context, size in
-                for _ in 0..<30 {
-                    let x = CGFloat.random(in: 0...size.width)
-                    let y = CGFloat.random(in: 0...size.height)
-                    let radius = CGFloat.random(in: 20...60)
-
-                    let rect = CGRect(x: x - radius, y: y - radius, width: radius * 2, height: radius * 2)
-                    context.opacity = Double.random(in: 0.01...0.03)
-                    context.fill(
-                        Path(ellipseIn: rect),
-                        with: .color(ZenTheme.earthBrown)
-                    )
-                }
-            }
+            // Subtle texture - optimized: use simple overlay instead of Canvas redraw
+            ZenTheme.earthBrown
+                .opacity(0.02)
+                .blur(radius: 40)
         )
     }
 
@@ -464,14 +457,25 @@ struct WatercolorZenGardenView: View {
     }
 
     private func animateGrowth() {
-        // Smooth growth animation
-        withAnimation(.spring(response: 1.2, dampingFraction: 0.6)) {
-            treeGrowthScale = 1.15
-        }
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
-            withAnimation(.spring(response: 0.8, dampingFraction: 0.7)) {
-                treeGrowthScale = 1.0
+        // Use simpler animation if Reduce Motion is enabled
+        if reduceMotion {
+            withAnimation(.easeInOut(duration: 0.3)) {
+                treeGrowthScale = 1.05
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                withAnimation(.easeInOut(duration: 0.2)) {
+                    treeGrowthScale = 1.0
+                }
+            }
+        } else {
+            // Smooth growth animation
+            withAnimation(.spring(response: 1.2, dampingFraction: 0.6)) {
+                treeGrowthScale = 1.15
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                withAnimation(.spring(response: 0.8, dampingFraction: 0.7)) {
+                    treeGrowthScale = 1.0
+                }
             }
         }
     }

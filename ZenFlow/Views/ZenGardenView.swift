@@ -25,6 +25,7 @@ struct ZenGardenView: View {
     // MARK: - State
 
     @StateObject private var gardenManager = ZenGardenManager()
+    @Environment(\.accessibilityReduceMotion) var reduceMotion
 
     @State private var treeScale: CGFloat = 1.0
     @State private var treeRotation: Double = 0.0
@@ -310,58 +311,96 @@ struct ZenGardenView: View {
     // MARK: - Celebration Animation
 
     private func startCelebrationAnimation() {
-        // Show sparkle animation
-        withAnimation(.easeOut(duration: 0.3)) {
-            sparkleOpacity = 1.0
-            sparkleScale = 1.0
-        }
-
-        // Hide sparkles
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            withAnimation(.easeOut(duration: 0.3)) {
-                sparkleOpacity = 0.0
-                sparkleScale = 0.5
+        // Use simpler animations if Reduce Motion is enabled
+        if reduceMotion {
+            // Simple fade in/out for sparkles
+            withAnimation(.easeInOut(duration: 0.2)) {
+                sparkleOpacity = 1.0
+                sparkleScale = 1.0
             }
-        }
 
-        // Tree scale animation (more subtle)
-        withAnimation(.spring(response: 0.6, dampingFraction: 0.5)) {
-            treeScale = 1.15
-            glowOpacity = 0.5
-        }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                withAnimation(.easeInOut(duration: 0.2)) {
+                    sparkleOpacity = 0.0
+                    sparkleScale = 0.5
+                }
+            }
 
-        withAnimation(.spring(response: 0.6, dampingFraction: 0.5).delay(0.2)) {
-            treeScale = 1.0
-            glowOpacity = 0.2
-        }
+            // Subtle scale only, no rotation
+            withAnimation(.easeInOut(duration: 0.3)) {
+                treeScale = 1.05
+                glowOpacity = 0.4
+            }
 
-        // Rotation animation
-        withAnimation(.easeInOut(duration: 0.4)) {
-            treeRotation = 10
-        }
+            withAnimation(.easeInOut(duration: 0.3).delay(0.2)) {
+                treeScale = 1.0
+                glowOpacity = 0.2
+            }
 
-        withAnimation(.easeInOut(duration: 0.4).delay(0.2)) {
-            treeRotation = -10
-        }
-
-        withAnimation(.easeInOut(duration: 0.4).delay(0.4)) {
-            treeRotation = 0
-        }
-
-        // Show celebration text
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            // Show celebration text
             showCelebrationText = true
-        }
 
-        // Hide celebration text
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            withAnimation {
-                showCelebrationText = false
+            // Hide celebration text
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                withAnimation {
+                    showCelebrationText = false
+                }
             }
-        }
+        } else {
+            // Full animations
+            // Show sparkle animation
+            withAnimation(.easeInOut(duration: 0.3)) {
+                sparkleOpacity = 1.0
+                sparkleScale = 1.0
+            }
 
-        // Generate particles
-        generateParticles()
+            // Hide sparkles
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                withAnimation(.easeInOut(duration: 0.3)) {
+                    sparkleOpacity = 0.0
+                    sparkleScale = 0.5
+                }
+            }
+
+            // Tree scale animation (more subtle)
+            withAnimation(.spring(response: 0.6, dampingFraction: 0.5)) {
+                treeScale = 1.15
+                glowOpacity = 0.5
+            }
+
+            withAnimation(.spring(response: 0.6, dampingFraction: 0.5).delay(0.2)) {
+                treeScale = 1.0
+                glowOpacity = 0.2
+            }
+
+            // Rotation animation
+            withAnimation(.easeInOut(duration: 0.4)) {
+                treeRotation = 10
+            }
+
+            withAnimation(.easeInOut(duration: 0.4).delay(0.2)) {
+                treeRotation = -10
+            }
+
+            withAnimation(.easeInOut(duration: 0.4).delay(0.4)) {
+                treeRotation = 0
+            }
+
+            // Show celebration text
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                showCelebrationText = true
+            }
+
+            // Hide celebration text
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                withAnimation {
+                    showCelebrationText = false
+                }
+            }
+
+            // Generate particles
+            generateParticles()
+        }
     }
 
     private func generateParticles() {
@@ -390,7 +429,7 @@ struct ZenGardenView: View {
 
         // Animate particles
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
-            withAnimation(.easeOut(duration: 2.0)) {
+            withAnimation(.easeInOut(duration: 2.0)) {
                 for i in 0..<particles.count {
                     let angle = Double.random(in: 0...(2 * .pi))
                     let distance = CGFloat.random(in: 100...300)
