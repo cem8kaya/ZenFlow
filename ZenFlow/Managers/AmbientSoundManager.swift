@@ -113,8 +113,9 @@ class AmbientSoundManager: NSObject, ObservableObject {
 
         // Load audio file from Assets.xcassets using NSDataAsset
         // Assets are stored in Sounds/{fileName}.dataset format
-        guard let dataAsset = NSDataAsset(name: "Sounds/\(sound.fileName)") else {
-            print("❌ Sound file not found in Assets: Sounds/\(sound.fileName)")
+        // NSDataAsset name should match the .dataset folder name without path
+        guard let dataAsset = NSDataAsset(name: sound.fileName) else {
+            print("❌ Sound file not found in Assets: \(sound.fileName)")
             return
         }
 
