@@ -28,7 +28,8 @@ class AmbientSoundManager: NSObject, ObservableObject {
         didSet {
             UserDefaults.standard.set(isEnabled, forKey: isEnabledKey)
             if !isEnabled {
-                stopAllSounds()
+                // Immediately stop all sounds without fade when disabled
+                stopAllSoundsImmediately()
             }
         }
     }
@@ -166,6 +167,26 @@ class AmbientSoundManager: NSObject, ObservableObject {
         for sound in soundsToStop {
             stopSound(sound, fadeOutDuration: fadeOutDuration)
         }
+    }
+
+    /// Immediately stop all sounds without fade (used when disabling sounds)
+    private func stopAllSoundsImmediately() {
+        // Cancel all fade timers first
+        for timer in fadeTimers.values {
+            timer.invalidate()
+        }
+        fadeTimers.removeAll()
+
+        // Stop all audio players immediately
+        for player in audioPlayers.values {
+            player.stop()
+        }
+        audioPlayers.removeAll()
+
+        // Clear active sounds
+        activeSounds.removeAll()
+
+        print("⏹ All ambient sounds stopped immediately")
     }
 
     /// Toggle a sound on/off

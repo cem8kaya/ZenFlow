@@ -34,7 +34,7 @@ struct ExerciseSelectionView: View {
                 headerView
 
                 // Exercise carousel
-                ScrollView(.horizontal, showsIndicators: false) {
+                ScrollView(.horizontal, showsIndicators: true) {
                     HStack(spacing: 20) {
                         ForEach(exerciseManager.allExercises) { exercise in
                             ExerciseCard(
