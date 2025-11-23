@@ -261,12 +261,10 @@ struct BreathingView: View {
                     palette: featureFlag.breathingGradientPalette,
                     opacity: featureFlag.breathingGradientOpacity
                 )
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .ignoresSafeArea(.all)
             } else {
                 // Static gradient
                 ZenTheme.backgroundGradient
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .ignoresSafeArea(.all)
             }
 
@@ -278,7 +276,7 @@ struct BreathingView: View {
                     intensity: featureFlag.particleIntensity,
                     colorTheme: featureFlag.particleColorTheme
                 )
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .ignoresSafeArea(.all)
             }
 
             GeometryReader { geometry in
@@ -428,6 +426,7 @@ struct BreathingView: View {
                             .accessibilityHint(isPaused ? "Meditasyona devam eder" : "Meditasyonu geçici olarak duraklatır")
                         }
                     }
+                    .frame(maxWidth: .infinity)
                     .padding(.bottom, max(20, geometry.safeAreaInsets.bottom + 10))
                 }
             }
@@ -851,7 +850,12 @@ private struct SoundPickerSheet: View {
                             onSoundToggle: { sound in
                                 // Auto-play on selection if enabled
                                 if soundManager.isEnabled && !sound.fileName.isEmpty {
-                                    soundManager.toggleSound(sound)
+                                    // Check if sound should be played or stopped
+                                    if soundManager.activeSounds.contains(where: { $0.id == sound.id }) {
+                                        soundManager.playSound(sound)
+                                    } else {
+                                        soundManager.stopSound(sound)
+                                    }
                                 }
                             }
                         )
