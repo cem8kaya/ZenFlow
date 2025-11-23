@@ -167,6 +167,10 @@ struct BadgesView: View {
             return gamificationManager.getDailyStreak()
         case .totalMinutes:
             return LocalDataManager.shared.totalMinutes
+        case .focusSessions:
+            return LocalDataManager.shared.totalFocusSessions
+        case .focusSessionsDaily:
+            return LocalDataManager.shared.todayFocusSessions
         }
     }
 }
@@ -486,6 +490,10 @@ struct BadgeDetailView: View {
             return "Gereken: \(badge.requiredValue) gün ardışık meditasyon"
         case .totalMinutes:
             return "Gereken: \(badge.requiredValue) dakika toplam meditasyon"
+        case .focusSessions:
+            return "Gereken: \(badge.requiredValue) odaklanma seansı"
+        case .focusSessionsDaily:
+            return "Gereken: Tek günde \(badge.requiredValue) odaklanma seansı"
         }
     }
 }
