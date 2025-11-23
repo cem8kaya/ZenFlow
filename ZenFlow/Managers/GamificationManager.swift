@@ -123,6 +123,10 @@ class GamificationManager: ObservableObject {
             return getDailyStreak()
         case .totalMinutes:
             return localDataManager.totalMinutes
+        case .focusSessions:
+            return localDataManager.totalFocusSessions
+        case .focusSessionsDaily:
+            return localDataManager.todayFocusSessions
         }
     }
 

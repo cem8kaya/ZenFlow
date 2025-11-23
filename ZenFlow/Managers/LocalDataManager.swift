@@ -22,6 +22,8 @@ class LocalDataManager: ObservableObject {
         static let currentStreak = "zenflow_current_streak"
         static let longestStreak = "zenflow_longest_streak"
         static let sessionHistory = "zenflow_session_history"
+        static let focusSessionHistory = "zenflow_focus_session_history"
+        static let totalFocusSessions = "zenflow_total_focus_sessions"
     }
 
     // MARK: - Properties
@@ -329,5 +331,99 @@ class LocalDataManager: ObservableObject {
 
         print("📊 Seri Durumu: \(isStreakActive() ? "✅ Aktif" : "❌ Kırıldı")")
         print("📊 ============================")
+    }
+
+    // MARK: - Focus Session Management
+
+    /// Tüm odaklanma seansı geçmişi
+    var focusSessionHistory: [FocusSessionData] {
+        get {
+            guard let data = defaults.data(forKey: Keys.focusSessionHistory),
+                  let sessions = try? JSONDecoder().decode([FocusSessionData].self, from: data) else {
+                return []
+            }
+            return sessions
+        }
+        set {
+            objectWillChange.send()
+            if let data = try? JSONEncoder().encode(newValue) {
+                defaults.set(data, forKey: Keys.focusSessionHistory)
+                print("💾 Focus session history updated: \(newValue.count) sessions")
+            }
+        }
+    }
+
+    /// Toplam odaklanma seansı sayısı
+    var totalFocusSessions: Int {
+        get {
+            return defaults.integer(forKey: Keys.totalFocusSessions)
+        }
+        set {
+            objectWillChange.send()
+            defaults.set(newValue, forKey: Keys.totalFocusSessions)
+            print("💾 Total focus sessions updated: \(newValue)")
+        }
+    }
+
+    /// Bugünkü tamamlanan odaklanma seansı sayısı
+    var todayFocusSessions: Int {
+        let sessions = getTodayFocusSessions()
+        return sessions.filter { $0.mode == .work && $0.completed }.count
+    }
+
+    /// Odaklanma seansı kaydet
+    /// - Parameter session: Kaydedilecek odaklanma seansı
+    func saveFocusSession(_ session: FocusSessionData) {
+        var history = focusSessionHistory
+        history.append(session)
+        focusSessionHistory = history
+
+        // Only count completed work sessions towards total
+        if session.mode == .work && session.completed {
+            totalFocusSessions += 1
+        }
+
+        print("✅ Focus session saved: \(session.mode.displayName) - \(session.durationMinutes) minutes on \(session.dateString)")
+        print("📊 Total focus sessions: \(totalFocusSessions)")
+    }
+
+    /// Bugünkü odaklanma seanslarını getir
+    /// - Returns: Bugünün odaklanma seansları
+    func getTodayFocusSessions() -> [FocusSessionData] {
+        let calendar = Calendar.current
+        let today = calendar.startOfDay(for: Date())
+        let tomorrow = calendar.date(byAdding: .day, value: 1, to: today)!
+
+        return focusSessionHistory.filter { session in
+            session.date >= today && session.date < tomorrow
+        }.sorted { $0.date > $1.date }
+    }
+
+    /// Belirli bir tarih aralığındaki odaklanma seanslarını getir
+    /// - Parameters:
+    ///   - startDate: Başlangıç tarihi
+    ///   - endDate: Bitiş tarihi
+    /// - Returns: Tarih aralığındaki odaklanma seansları
+    func getFocusSessions(from startDate: Date, to endDate: Date) -> [FocusSessionData] {
+        return focusSessionHistory.filter { session in
+            session.date >= startDate && session.date <= endDate
+        }.sorted { $0.date > $1.date }
+    }
+
+    /// Tüm odaklanma seanslarını getir
+    /// - Parameter limit: Maksimum seans sayısı (varsayılan: tümü)
+    /// - Returns: Odaklanma seansları (en yeniden en eskiye)
+    func getFocusSessions(limit: Int? = nil) -> [FocusSessionData] {
+        let sessions = focusSessionHistory.sorted { $0.date > $1.date }
+        if let limit = limit {
+            return Array(sessions.prefix(limit))
+        }
+        return sessions
+    }
+
+    /// Odaklanma seansı geçmişini temizle
+    func clearFocusHistory() {
+        focusSessionHistory = []
+        print("🗑️ Focus session history cleared")
     }
 }

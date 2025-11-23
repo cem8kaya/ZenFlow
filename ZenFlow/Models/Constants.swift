@@ -249,4 +249,40 @@ enum AppConstants {
         /// Maximum badges to show
         static let maxBadgeCount = 100
     }
+
+    // MARK: - Pomodoro Focus Timer
+
+    enum Pomodoro {
+        /// Work session duration in minutes
+        static let workDurationMinutes = 25
+
+        /// Short break duration in minutes
+        static let shortBreakMinutes = 5
+
+        /// Long break duration in minutes
+        static let longBreakMinutes = 15
+
+        /// Number of work sessions before a long break
+        static let sessionsBeforeLongBreak = 4
+
+        /// Timer circle size
+        static let timerCircleSize: CGFloat = 280
+
+        /// Timer progress stroke width
+        static let progressStrokeWidth: CGFloat = 12
+
+        /// Timer font size
+        static let timerFontSize: CGFloat = 64
+
+        /// Button size
+        static let buttonSize: CGFloat = 64
+
+        /// Session counter icon size
+        static let counterIconSize: CGFloat = 20
+
+        /// Pomodoro badge requirements
+        static let firstPomodoroSessions = 1
+        static let focusMasterSessions = 10
+        static let marathonSessions = 8 // In a single day
+    }
 }

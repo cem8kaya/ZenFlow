@@ -88,13 +88,22 @@ struct SwipeableTabView: View {
                 .tag(0)
                 .gesture(swipeGesture)
 
+            FocusTimerView()
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .tabItem {
+                    Label("Odaklan", systemImage: "timer")
+                }
+                .accessibilityLabel("Odaklan sekmesi")
+                .tag(1)
+                .gesture(swipeGesture)
+
             ZenGardenView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .tabItem {
                     Label("Zen Bahçem", systemImage: "tree.fill")
                 }
                 .accessibilityLabel("Zen Bahçem sekmesi")
-                .tag(1)
+                .tag(2)
                 .gesture(swipeGesture)
 
             BadgesView()
@@ -103,7 +112,7 @@ struct SwipeableTabView: View {
                     Label("Rozetler", systemImage: "trophy.fill")
                 }
                 .accessibilityLabel("Rozetler sekmesi")
-                .tag(2)
+                .tag(3)
                 .gesture(swipeGesture)
         }
     }
@@ -124,11 +133,11 @@ struct SwipeableTabView: View {
                     let animationSpeed = min(abs(velocity) / 1000, 0.5)
                     let springResponse = max(0.3 - animationSpeed, 0.15)
 
-                    if horizontalAmount < 0 && selection < 2 {
+                    if horizontalAmount < 0 && selection < 3 {
                         // Sola kaydırma - sonraki tab
                         HapticManager.shared.playImpact(style: .light)
                         withAnimation(.spring(response: springResponse, dampingFraction: 0.75)) {
-                            selection = min(selection + 1, 2)
+                            selection = min(selection + 1, 3)
                         }
                     } else if horizontalAmount > 0 && selection > 0 {
                         // Sağa kaydırma - önceki tab

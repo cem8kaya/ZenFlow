@@ -16,6 +16,8 @@ import Foundation
 enum RequirementType: String, Codable {
     case streak          // Consecutive days of meditation
     case totalMinutes    // Total meditation minutes accumulated
+    case focusSessions   // Completed Pomodoro focus sessions
+    case focusSessionsDaily // Completed Pomodoro focus sessions in a single day
 
     /// Localized display name for the requirement type
     var displayName: String {
@@ -24,6 +26,10 @@ enum RequirementType: String, Codable {
             return "Seri"
         case .totalMinutes:
             return "Toplam Dakika"
+        case .focusSessions:
+            return "Odaklanma Seansı"
+        case .focusSessionsDaily:
+            return "Günlük Odaklanma Seansı"
         }
     }
 }
@@ -129,6 +135,29 @@ extension Badge {
             requirementType: .totalMinutes,
             requiredValue: AppConstants.Badges.zenMasterMinutes,
             iconName: "crown.fill"
+        ),
+
+        // Focus Session Badges
+        Badge(
+            name: "İlk Pomodoro",
+            description: "İlk odaklanma seansını tamamladın!",
+            requirementType: .focusSessions,
+            requiredValue: AppConstants.Pomodoro.firstPomodoroSessions,
+            iconName: "timer"
+        ),
+        Badge(
+            name: "Odaklanma Ustası",
+            description: "10 odaklanma seansı tamamladın! Harika bir konsantrasyon!",
+            requirementType: .focusSessions,
+            requiredValue: AppConstants.Pomodoro.focusMasterSessions,
+            iconName: "brain.head.profile"
+        ),
+        Badge(
+            name: "Maraton",
+            description: "Tek günde 8 odaklanma seansı tamamladın! İnanılmaz bir disiplin!",
+            requirementType: .focusSessionsDaily,
+            requiredValue: AppConstants.Pomodoro.marathonSessions,
+            iconName: "figure.run"
         )
     ]
 
