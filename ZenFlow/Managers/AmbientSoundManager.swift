@@ -90,9 +90,11 @@ class AmbientSoundManager: NSObject, ObservableObject {
     func playSound(_ sound: AmbientSound, fadeInDuration: TimeInterval = 2.0) {
         guard !sound.fileName.isEmpty else { return }
 
-        // Auto-enable when user selects a sound (better UX)
-        if !isEnabled {
-            isEnabled = true
+        // Respect user's sound preference - don't force enable
+        // User must explicitly enable sounds in settings
+        guard isEnabled else {
+            print("⚠️ Sounds are disabled. Enable in settings to play.")
+            return
         }
 
         // Check if we've reached the maximum number of simultaneous sounds
@@ -270,12 +272,8 @@ class AmbientSoundManager: NSObject, ObservableObject {
             AmbientSound.getSound(byFileName: fileName)
         }
 
-        // Auto-play saved sounds if enabled
-        if isEnabled {
-            for sound in activeSounds {
-                playSound(sound, fadeInDuration: 0)
-            }
-        }
+        // Don't auto-play on app launch - let user start meditation/timer first
+        // Sounds will play when user explicitly starts a session
     }
 
     // MARK: - Session Integration
