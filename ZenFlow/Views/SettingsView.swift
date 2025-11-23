@@ -11,6 +11,10 @@
 import SwiftUI
 
 struct SettingsView: View {
+    // MARK: - Environment
+
+    @Environment(\.dismiss) private var dismiss
+
     // MARK: - State Properties
 
     @StateObject private var hapticManager = HapticManager.shared
