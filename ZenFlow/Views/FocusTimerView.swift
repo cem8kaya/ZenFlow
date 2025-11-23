@@ -24,6 +24,7 @@ struct FocusTimerView: View {
     @State private var timer: Timer?
     @State private var showBreathingExerciseSuggestion = false
     @State private var showCompletionCelebration = false
+    @State private var breathingPhase: AnimationPhase = .exhale
 
     // MARK: - Computed Properties
 
@@ -43,7 +44,7 @@ struct FocusTimerView: View {
     var body: some View {
         ZStack {
             // Background gradient
-            AnimatedGradientView()
+            AnimatedGradientView(breathingPhase: $breathingPhase)
                 .ignoresSafeArea()
 
             VStack(spacing: 40) {
@@ -409,7 +410,7 @@ struct FocusTimerView: View {
         saveSession()
 
         // Haptic feedback
-        HapticManager.shared.playSuccess()
+        HapticManager.shared.playNotification(type: .success)
 
         // Send notification if app is in background
         sendCompletionNotification()

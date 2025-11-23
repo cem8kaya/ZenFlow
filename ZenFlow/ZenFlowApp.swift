@@ -19,6 +19,7 @@ struct ZenFlowApp: App {
     @State private var selectedTab: Int = 0
     @State private var showSplash: Bool = true
     @State private var showHealthKitOnboarding: Bool = false
+    @State private var showSettings: Bool = false
 
     var body: some Scene {
         WindowGroup {
@@ -41,9 +42,10 @@ struct ZenFlowApp: App {
                 }
             }
             .onChange(of: showSplash) { _, newValue in
-                // When splash screen is dismissed, check HealthKit authorization
+                // When splash screen is dismissed, check authorizations
                 if !newValue {
                     checkHealthKitAuthorization()
+                    checkNotificationAuthorization()
                 }
             }
         }
@@ -66,6 +68,20 @@ struct ZenFlowApp: App {
                 withAnimation {
                     showHealthKitOnboarding = true
                 }
+            }
+        }
+    }
+
+    // MARK: - Notification Authorization Check
+
+    private func checkNotificationAuthorization() {
+        // Request notification authorization on first launch or when not determined
+        NotificationManager.shared.checkAuthorizationStatus()
+
+        // If notifications are not authorized, request permission
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            if !NotificationManager.shared.isAuthorized {
+                NotificationManager.shared.requestAuthorization { _ in }
             }
         }
     }
@@ -114,6 +130,15 @@ struct SwipeableTabView: View {
                 .accessibilityLabel("Rozetler sekmesi")
                 .tag(3)
                 .gesture(swipeGesture)
+
+            SettingsView()
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .tabItem {
+                    Label("Ayarlar", systemImage: "gear")
+                }
+                .accessibilityLabel("Ayarlar sekmesi")
+                .tag(4)
+                .gesture(swipeGesture)
         }
     }
 
@@ -133,11 +158,11 @@ struct SwipeableTabView: View {
                     let animationSpeed = min(abs(velocity) / 1000, 0.5)
                     let springResponse = max(0.3 - animationSpeed, 0.15)
 
-                    if horizontalAmount < 0 && selection < 3 {
+                    if horizontalAmount < 0 && selection < 4 {
                         // Sola kaydırma - sonraki tab
                         HapticManager.shared.playImpact(style: .light)
                         withAnimation(.spring(response: springResponse, dampingFraction: 0.75)) {
-                            selection = min(selection + 1, 3)
+                            selection = min(selection + 1, 4)
                         }
                     } else if horizontalAmount > 0 && selection > 0 {
                         // Sağa kaydırma - önceki tab
