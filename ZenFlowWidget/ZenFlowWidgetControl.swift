@@ -10,7 +10,7 @@ import SwiftUI
 import WidgetKit
 
 struct ZenFlowWidgetControl: ControlWidget {
-    static let kind: String = "com.oqza.ZenFlow.ZenFlowWidget"
+    static let kind: String = "ZenFlowControl"
 
     var body: some ControlWidgetConfiguration {
         AppIntentControlConfiguration(
