@@ -18,7 +18,7 @@ struct ZenFlowWidget: Widget {
         }
         .configurationDisplayName("ZenFlow Widget")
         .description("Meditasyon ilerlemenizi ve ağacınızı takip edin")
-        .supportedFamilies([.systemSmall])
+        .supportedFamilies([.systemSmall, .systemMedium])
     }
 }
 
@@ -65,7 +65,15 @@ struct ZenFlowLockScreenInlineWidget: Widget {
 
 // MARK: - Preview
 
-#Preview(as: .systemSmall) {
+#Preview("Small Widget", as: .systemSmall) {
+    ZenFlowWidget()
+} timeline: {
+    ZenFlowWidgetEntry.beginnerEntry
+    ZenFlowWidgetEntry.intermediateEntry
+    ZenFlowWidgetEntry.advancedEntry
+}
+
+#Preview("Medium Widget", as: .systemMedium) {
     ZenFlowWidget()
 } timeline: {
     ZenFlowWidgetEntry.beginnerEntry

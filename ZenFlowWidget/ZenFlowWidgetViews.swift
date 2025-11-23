@@ -51,9 +51,10 @@ extension Color {
 
 // MARK: - System Small Widget View
 
-/// Main widget view for systemSmall family
+/// Main widget view for systemSmall and systemMedium families
 /// Shows tree icon with circular progress indicator
 struct ZenFlowWidgetEntryView: View {
+    @Environment(\.widgetFamily) var widgetFamily
     let entry: ZenFlowWidgetEntry
 
     var body: some View {
@@ -62,67 +63,133 @@ struct ZenFlowWidgetEntryView: View {
             Color.zenBackgroundGradient
                 .ignoresSafeArea()
 
-            VStack(spacing: 8) {
-                // Top row: Total minutes
-                HStack {
-                    Text(entry.formattedMinutes)
-                        .font(.system(size: 12, weight: .medium, design: .rounded))
+            if widgetFamily == .systemMedium {
+                mediumWidgetContent
+            } else {
+                smallWidgetContent
+            }
+        }
+    }
+
+    // MARK: - Small Widget Content
+    private var smallWidgetContent: some View {
+        VStack(spacing: 8) {
+            // Top row: Total minutes
+            HStack {
+                Text(entry.formattedMinutes)
+                    .font(.system(size: 12, weight: .medium, design: .rounded))
+                    .foregroundColor(.zenTextHighlight)
+                Spacer()
+            }
+
+            Spacer()
+
+            // Center: Tree icon with circular progress
+            treeProgressView(size: 80, iconSize: 36, lineWidth: 8)
+
+            Spacer()
+
+            // Bottom row: Streak and stage info
+            HStack {
+                // Streak
+                HStack(spacing: 4) {
+                    Image(systemName: "flame.fill")
+                        .font(.system(size: 10))
+                        .foregroundColor(.orange)
+                    Text("\(entry.currentStreak)")
+                        .font(.system(size: 11, weight: .semibold, design: .rounded))
                         .foregroundColor(.zenTextHighlight)
-                    Spacer()
                 }
 
                 Spacer()
 
-                // Center: Tree icon with circular progress
-                ZStack {
-                    // Background circle
-                    Circle()
-                        .stroke(Color.zenSecondary.opacity(0.3), lineWidth: 8)
-                        .frame(width: 80, height: 80)
+                // Stage name
+                Text(entry.treeStage.name)
+                    .font(.system(size: 11, weight: .medium, design: .rounded))
+                    .foregroundColor(.zenSageGreen)
+            }
+        }
+        .padding(12)
+    }
 
-                    // Progress circle
-                    Circle()
-                        .trim(from: 0, to: entry.treeStage.progress)
-                        .stroke(
-                            Color.zenAccentGradient,
-                            style: StrokeStyle(
-                                lineWidth: 8,
-                                lineCap: .round
-                            )
-                        )
-                        .frame(width: 80, height: 80)
-                        .rotationEffect(.degrees(-90))
-                        .animation(.easeInOut, value: entry.treeStage.progress)
+    // MARK: - Medium Widget Content
+    private var mediumWidgetContent: some View {
+        HStack(spacing: 16) {
+            // Left side: Tree with progress
+            VStack(spacing: 8) {
+                treeProgressView(size: 100, iconSize: 44, lineWidth: 10)
 
-                    // Tree icon
-                    Image(systemName: entry.treeStage.iconName)
-                        .font(.system(size: 36, weight: .regular))
-                        .foregroundStyle(Color.zenTreeGradient)
+                Text(entry.treeStage.name)
+                    .font(.system(size: 13, weight: .semibold, design: .rounded))
+                    .foregroundColor(.zenSageGreen)
+            }
+            .frame(maxWidth: .infinity)
+
+            // Right side: Stats
+            VStack(alignment: .leading, spacing: 12) {
+                // Total meditation time
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("Toplam Süre")
+                        .font(.system(size: 11, weight: .medium, design: .rounded))
+                        .foregroundColor(.zenTextHighlight.opacity(0.7))
+
+                    Text(entry.formattedMinutes)
+                        .font(.system(size: 20, weight: .bold, design: .rounded))
+                        .foregroundColor(.zenTextHighlight)
                 }
 
-                Spacer()
+                Divider()
+                    .background(Color.zenSecondary.opacity(0.3))
 
-                // Bottom row: Streak and stage info
-                HStack {
-                    // Streak
-                    HStack(spacing: 4) {
+                // Current streak
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("Günlük Seri")
+                        .font(.system(size: 11, weight: .medium, design: .rounded))
+                        .foregroundColor(.zenTextHighlight.opacity(0.7))
+
+                    HStack(spacing: 6) {
                         Image(systemName: "flame.fill")
-                            .font(.system(size: 10))
+                            .font(.system(size: 16))
                             .foregroundColor(.orange)
-                        Text("\(entry.currentStreak)")
-                            .font(.system(size: 11, weight: .semibold, design: .rounded))
+                        Text("\(entry.currentStreak) Gün")
+                            .font(.system(size: 18, weight: .bold, design: .rounded))
                             .foregroundColor(.zenTextHighlight)
                     }
-
-                    Spacer()
-
-                    // Stage name
-                    Text(entry.treeStage.name)
-                        .font(.system(size: 11, weight: .medium, design: .rounded))
-                        .foregroundColor(.zenSageGreen)
                 }
+
+                Spacer()
             }
-            .padding(12)
+            .frame(maxWidth: .infinity, alignment: .leading)
+        }
+        .padding(16)
+    }
+
+    // MARK: - Reusable Tree Progress View
+    private func treeProgressView(size: CGFloat, iconSize: CGFloat, lineWidth: CGFloat) -> some View {
+        ZStack {
+            // Background circle
+            Circle()
+                .stroke(Color.zenSecondary.opacity(0.3), lineWidth: lineWidth)
+                .frame(width: size, height: size)
+
+            // Progress circle
+            Circle()
+                .trim(from: 0, to: entry.treeStage.progress)
+                .stroke(
+                    Color.zenAccentGradient,
+                    style: StrokeStyle(
+                        lineWidth: lineWidth,
+                        lineCap: .round
+                    )
+                )
+                .frame(width: size, height: size)
+                .rotationEffect(.degrees(-90))
+                .animation(.easeInOut, value: entry.treeStage.progress)
+
+            // Tree icon
+            Image(systemName: entry.treeStage.iconName)
+                .font(.system(size: iconSize, weight: .regular))
+                .foregroundStyle(Color.zenTreeGradient)
         }
     }
 }
@@ -235,6 +302,19 @@ struct ZenFlowWidgetViews_Previews: PreviewProvider {
             ZenFlowWidgetEntryView(entry: .advancedEntry)
                 .previewContext(WidgetPreviewContext(family: .systemSmall))
                 .previewDisplayName("Small - Advanced (Ancient)")
+
+            // System Medium Widget Previews
+            ZenFlowWidgetEntryView(entry: .beginnerEntry)
+                .previewContext(WidgetPreviewContext(family: .systemMedium))
+                .previewDisplayName("Medium - Beginner (Seed)")
+
+            ZenFlowWidgetEntryView(entry: .intermediateEntry)
+                .previewContext(WidgetPreviewContext(family: .systemMedium))
+                .previewDisplayName("Medium - Intermediate (Sapling)")
+
+            ZenFlowWidgetEntryView(entry: .advancedEntry)
+                .previewContext(WidgetPreviewContext(family: .systemMedium))
+                .previewDisplayName("Medium - Advanced (Ancient)")
 
             // Lock Screen Rectangular
             ZenFlowLockScreenView(entry: .intermediateEntry)
