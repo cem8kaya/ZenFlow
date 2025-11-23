@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import WidgetKit
 
 class LocalDataManager: ObservableObject {
     // MARK: - Singleton
@@ -28,17 +29,18 @@ class LocalDataManager: ObservableObject {
 
     // MARK: - Properties
 
-    private let defaults = UserDefaults.standard
+    private let defaults: UserDefaults
 
     // MARK: - Initialization
 
     private init() {
-        // Initialize default values if needed
-        if !defaults.bool(forKey: "zenflow_initialized") {
-            resetAllData()
-            defaults.set(true, forKey: "zenflow_initialized")
+            // Use App Group UserDefaults
+            if let appGroupDefaults = UserDefaults(suiteName: "group.com.zenflow.app") {
+                self.defaults = appGroupDefaults
+            } else {
+                self.defaults = UserDefaults.standard
+            }
         }
-    }
 
     // MARK: - Session Data Model
 
@@ -164,6 +166,8 @@ class LocalDataManager: ObservableObject {
 
         // Son seans tarihini güncelle
         lastSessionDate = date
+        
+        WidgetCenter.shared.reloadAllTimelines()
 
         print("✅ Session saved: \(durationMinutes) minutes on \(session.dateString)")
         print("📊 Stats - Total: \(totalSessions) sessions, \(totalMinutes) minutes, Streak: \(currentStreak) days")

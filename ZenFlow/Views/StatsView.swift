@@ -11,6 +11,7 @@
 
 import SwiftUI
 import Charts
+import Combine
 
 struct StatsView: View {
     @StateObject private var dataManager = LocalDataManager.shared
@@ -171,7 +172,7 @@ struct StatsView: View {
                     icon: "chart.line.uptrend.xyaxis",
                     title: "Ortalama",
                     value: "\(averageSessionMinutes) dk",
-                    color: ZenTheme.zenGreen
+                    color: ZenTheme.deepSage
                 )
 
                 SummaryCard(
@@ -323,7 +324,7 @@ struct StatsView: View {
                     icon: "chart.line.uptrend.xyaxis",
                     title: "Ortalama Seans Süresi",
                     value: "\(averageSessionMinutes) dakika",
-                    color: ZenTheme.zenGreen
+                    color: ZenTheme.deepSage
                 )
 
                 MetricRow(
@@ -384,11 +385,11 @@ struct StatsView: View {
         case 0:
             return Color.white.opacity(0.1)
         case 1..<10:
-            return ZenTheme.zenGreen.opacity(0.3)
+            return ZenTheme.deepSage.opacity(0.3)
         case 10..<30:
-            return ZenTheme.zenGreen.opacity(0.6)
+            return ZenTheme.deepSage.opacity(0.6)
         default:
-            return ZenTheme.zenGreen
+            return ZenTheme.deepSage
         }
     }
 
