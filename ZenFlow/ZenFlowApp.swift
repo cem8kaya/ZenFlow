@@ -18,8 +18,10 @@ struct ZenFlowApp: App {
     let persistenceController = PersistenceController.shared
     @State private var selectedTab: Int = 0
     @State private var showSplash: Bool = true
+    @State private var showOnboarding: Bool = false
     @State private var showHealthKitOnboarding: Bool = false
     @State private var showSettings: Bool = false
+    @StateObject private var onboardingManager = OnboardingManager.shared
 
     var body: some Scene {
         WindowGroup {
@@ -34,24 +36,57 @@ struct ZenFlowApp: App {
                         .zIndex(1)
                 }
 
-                // HealthKit onboarding overlay
-                if showHealthKitOnboarding {
-                    HealthKitOnboardingView(isPresented: $showHealthKitOnboarding)
+                // Onboarding overlay
+                if showOnboarding {
+                    OnboardingView()
                         .transition(.opacity)
                         .zIndex(2)
                 }
+
+                // HealthKit onboarding overlay (legacy - now integrated into OnboardingView)
+                if showHealthKitOnboarding {
+                    HealthKitOnboardingView(isPresented: $showHealthKitOnboarding)
+                        .transition(.opacity)
+                        .zIndex(3)
+                }
             }
             .onChange(of: showSplash) { _, newValue in
-                // When splash screen is dismissed, check authorizations
+                // When splash screen is dismissed, check if onboarding should be shown
                 if !newValue {
-                    checkHealthKitAuthorization()
-                    checkNotificationAuthorization()
+                    checkOnboardingStatus()
+                }
+            }
+            .onChange(of: onboardingManager.hasCompletedOnboarding) { _, completed in
+                // When onboarding is completed, hide it
+                if completed {
+                    withAnimation {
+                        showOnboarding = false
+                    }
                 }
             }
         }
     }
 
-    // MARK: - HealthKit Authorization Check
+    // MARK: - Onboarding Check
+
+    private func checkOnboardingStatus() {
+        // Check if user has completed onboarding
+        if onboardingManager.shouldShowOnboarding {
+            // Show onboarding for first-time users
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                withAnimation {
+                    showOnboarding = true
+                }
+            }
+        } else {
+            // Onboarding completed, check legacy authorizations
+            // (for users who already have the app before onboarding was added)
+            checkHealthKitAuthorization()
+            checkNotificationAuthorization()
+        }
+    }
+
+    // MARK: - HealthKit Authorization Check (Legacy)
 
     private func checkHealthKitAuthorization() {
         // Only check if HealthKit is available
@@ -72,7 +107,7 @@ struct ZenFlowApp: App {
         }
     }
 
-    // MARK: - Notification Authorization Check
+    // MARK: - Notification Authorization Check (Legacy)
 
     private func checkNotificationAuthorization() {
         // Request notification authorization on first launch or when not determined
