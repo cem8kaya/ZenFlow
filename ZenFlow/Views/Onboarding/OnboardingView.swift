@@ -26,6 +26,7 @@ struct OnboardingView: View {
     @StateObject private var hapticManager = HapticManager.shared
     @State private var showHealthKitPermission = false
     @State private var showNotificationPermission = false
+    @State private var showCompletionCelebration = false
 
     // MARK: - Constants
 
@@ -186,6 +187,16 @@ struct OnboardingView: View {
                 }
             )
         }
+        .fullScreenCover(isPresented: $showCompletionCelebration) {
+            OnboardingCompletionView(
+                isPresented: $showCompletionCelebration,
+                onStartFirstSession: {
+                    // Navigate to breathing tab and suggest first session
+                    dismiss()
+                    // TODO: Show first-time tutorial tooltip
+                }
+            )
+        }
     }
 
     // MARK: - Actions
@@ -248,11 +259,8 @@ struct OnboardingView: View {
         // Mark onboarding as completed
         onboardingManager.completeOnboarding()
 
-        // Success haptic
-        hapticManager.playNotification(type: .success)
-
-        // Dismiss onboarding
-        dismiss()
+        // Show completion celebration
+        showCompletionCelebration = true
     }
 }
 

@@ -24,40 +24,71 @@ struct OnboardingPageView: View {
         VStack(spacing: 0) {
             Spacer()
 
-            // Icon with animated appearance
-            ZStack {
-                // Glow effect background
-                Circle()
-                    .fill(
-                        RadialGradient(
-                            colors: [
-                                page.accentColor.opacity(0.3),
-                                page.accentColor.opacity(0.1),
-                                Color.clear
-                            ],
-                            center: .center,
-                            startRadius: 50,
-                            endRadius: 120
-                        )
-                    )
-                    .frame(width: 240, height: 240)
-                    .blur(radius: 20)
-                    .scaleEffect(isAnimating ? 1.0 : 0.8)
-                    .opacity(isAnimating ? 1.0 : 0.0)
+            // Interactive element or static icon
+            Group {
+                switch page.interactiveType {
+                case .pulsingCircle:
+                    PulsingCircleView(accentColor: page.accentColor)
+                        .frame(height: 240)
+                        .opacity(isAnimating ? 1.0 : 0.0)
+                        .scaleEffect(isAnimating ? 1.0 : 0.8)
 
-                // Main icon
-                Image(systemName: page.iconName)
-                    .font(.system(size: 100, weight: .light))
-                    .foregroundStyle(
-                        LinearGradient(
-                            colors: [page.accentColor, page.accentColor.opacity(0.7)],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
-                    )
-                    .scaleEffect(isAnimating ? 1.0 : 0.5)
-                    .opacity(isAnimating ? 1.0 : 0.0)
-                    .rotationEffect(.degrees(isAnimating ? 0 : -10))
+                case .breathingDemo:
+                    BreathingDemoView(accentColor: page.accentColor)
+                        .frame(height: 240)
+                        .opacity(isAnimating ? 1.0 : 0.0)
+                        .scaleEffect(isAnimating ? 1.0 : 0.8)
+
+                case .treeGrowth:
+                    TreeGrowthView(accentColor: page.accentColor)
+                        .frame(height: 240)
+                        .opacity(isAnimating ? 1.0 : 0.0)
+                        .scaleEffect(isAnimating ? 1.0 : 0.8)
+
+                case .timerDemo:
+                    TimerDemoView(accentColor: page.accentColor)
+                        .frame(height: 240)
+                        .opacity(isAnimating ? 1.0 : 0.0)
+                        .scaleEffect(isAnimating ? 1.0 : 0.8)
+
+                case .none:
+                    // Static icon with animated appearance
+                    ZStack {
+                        // Glow effect background
+                        Circle()
+                            .fill(
+                                RadialGradient(
+                                    colors: [
+                                        page.accentColor.opacity(0.3),
+                                        page.accentColor.opacity(0.1),
+                                        Color.clear
+                                    ],
+                                    center: .center,
+                                    startRadius: 50,
+                                    endRadius: 120
+                                )
+                            )
+                            .frame(width: 240, height: 240)
+                            .blur(radius: 20)
+                            .scaleEffect(isAnimating ? 1.0 : 0.8)
+                            .opacity(isAnimating ? 1.0 : 0.0)
+
+                        // Main icon
+                        Image(systemName: page.iconName)
+                            .font(.system(size: 100, weight: .light))
+                            .foregroundStyle(
+                                LinearGradient(
+                                    colors: [page.accentColor, page.accentColor.opacity(0.7)],
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing
+                                )
+                            )
+                            .scaleEffect(isAnimating ? 1.0 : 0.5)
+                            .opacity(isAnimating ? 1.0 : 0.0)
+                            .rotationEffect(.degrees(isAnimating ? 0 : -10))
+                    }
+                    .frame(height: 240)
+                }
             }
             .padding(.bottom, 60)
 
