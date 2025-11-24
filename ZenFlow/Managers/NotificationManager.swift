@@ -36,6 +36,9 @@ class NotificationManager: ObservableObject {
     // MARK: - Reminder Messages (Turkish)
 
     private let motivationalMessages = [
+        "5 dakika meditasyon, tüm gün huzur. Hazır mısın?",
+        "Stresini azalt, odağını artır. Hadi başlayalım! 🌱",
+        "Zen Bahçen seni bekliyor. Bugün hangi egzersizi deneyelim?",
         "Bugün kendine 5 dakika ayır 🧘",
         "Nefes almayı unutma, streak'in devam etsin! 🔥",
         "Huzurlu bir gün için kısa bir mola ☮️",
@@ -132,6 +135,44 @@ class NotificationManager: ObservableObject {
 
     private init() {
         checkAuthorizationStatus()
+        registerNotificationCategories()
+    }
+
+    // MARK: - Notification Categories
+
+    private func registerNotificationCategories() {
+        // Define "Başla" action
+        let startAction = UNNotificationAction(
+            identifier: "START_ACTION",
+            title: "Başla",
+            options: [.foreground]
+        )
+
+        // Define "Sonra Hatırlat" action
+        let snoozeAction = UNNotificationAction(
+            identifier: "SNOOZE_ACTION",
+            title: "Sonra Hatırlat",
+            options: []
+        )
+
+        // Create category with actions
+        let meditationCategory = UNNotificationCategory(
+            identifier: "MEDITATION_REMINDER",
+            actions: [startAction, snoozeAction],
+            intentIdentifiers: [],
+            options: []
+        )
+
+        let streakCategory = UNNotificationCategory(
+            identifier: "STREAK_REMINDER",
+            actions: [startAction, snoozeAction],
+            intentIdentifiers: [],
+            options: []
+        )
+
+        // Register categories
+        notificationCenter.setNotificationCategories([meditationCategory, streakCategory])
+        print("✅ Registered notification categories with action buttons")
     }
 
     // MARK: - Authorization
@@ -192,11 +233,29 @@ class NotificationManager: ObservableObject {
             dateComponents.weekday = day
 
             let content = UNMutableNotificationContent()
-            content.title = "ZenFlow Meditasyon"
-            content.body = motivationalMessages.randomElement() ?? "Meditasyon zamanı! 🧘"
+            content.title = "🧘‍♂️ Günlük ZenFlow Zamanı"
+
+            // Get current streak
+            let currentStreak = LocalDataManager.shared.currentStreak
+
+            // Use streak-aware message if streak > 0
+            var message: String
+            if currentStreak > 0 {
+                message = "Bugün kendine \(currentStreak) gün! Serini korumak için nefes al."
+            } else {
+                message = motivationalMessages.randomElement() ?? "Meditasyon zamanı! 🧘"
+            }
+
+            content.body = message
             content.sound = .default
-            content.badge = 1
+            content.badge = NSNumber(value: currentStreak > 0 ? currentStreak : 1)
             content.categoryIdentifier = "MEDITATION_REMINDER"
+
+            // Add user info for deep linking
+            content.userInfo = [
+                "type": "daily_reminder",
+                "streak": currentStreak
+            ]
 
             let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
             let request = UNNotificationRequest(
@@ -236,12 +295,27 @@ class NotificationManager: ObservableObject {
         dateComponents.hour = 20
         dateComponents.minute = 0
 
+        let currentStreak = LocalDataManager.shared.currentStreak
+
         let content = UNMutableNotificationContent()
         content.title = "Streak'in Tehlikede! 🔥"
-        content.body = "Bugün henüz meditasyon yapmadın. Günlük serini kırma!"
+
+        // Dynamic message based on streak
+        if currentStreak > 0 {
+            content.body = "Bugün henüz meditasyon yapmadın. \(currentStreak) günlük serini kırma! 💪"
+        } else {
+            content.body = "Bugün henüz meditasyon yapmadın. Günlük serini başlatmak için meditasyon yap!"
+        }
+
         content.sound = .default
-        content.badge = 1
+        content.badge = NSNumber(value: currentStreak > 0 ? currentStreak : 1)
         content.categoryIdentifier = "STREAK_REMINDER"
+
+        // Add user info
+        content.userInfo = [
+            "type": "streak_reminder",
+            "streak": currentStreak
+        ]
 
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         let request = UNNotificationRequest(
@@ -293,6 +367,44 @@ class NotificationManager: ObservableObject {
         cancelDailyReminders()
         cancelStreakReminder()
         print("🗑️ Cancelled all reminders")
+    }
+
+    // MARK: - Snooze
+
+    func snoozeNotification(hours: Int) {
+        guard isAuthorized else {
+            print("⚠️ Cannot snooze notification - not authorized")
+            return
+        }
+
+        let content = UNMutableNotificationContent()
+        content.title = "🧘‍♂️ Günlük ZenFlow Zamanı"
+        content.body = motivationalMessages.randomElement() ?? "Meditasyon zamanı! 🧘"
+        content.sound = .default
+
+        let currentStreak = LocalDataManager.shared.currentStreak
+        content.badge = NSNumber(value: currentStreak > 0 ? currentStreak : 1)
+        content.categoryIdentifier = "MEDITATION_REMINDER"
+
+        // Schedule for specified hours from now
+        let trigger = UNTimeIntervalNotificationTrigger(
+            timeInterval: TimeInterval(hours * 3600),
+            repeats: false
+        )
+
+        let request = UNNotificationRequest(
+            identifier: "snooze_reminder",
+            content: content,
+            trigger: trigger
+        )
+
+        notificationCenter.add(request) { error in
+            if let error = error {
+                print("❌ Failed to schedule snooze notification: \(error)")
+            } else {
+                print("✅ Scheduled snooze notification for \(hours) hour(s) from now")
+            }
+        }
     }
 
     // MARK: - Utility
