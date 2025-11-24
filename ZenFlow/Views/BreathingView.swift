@@ -255,42 +255,44 @@ struct BreathingView: View {
     }
 
     var body: some View {
-        ZStack {
-            VStack(spacing: 0) {
-                // Exercise selection button (fixed height zone)
-                HStack {
-                    Spacer()
-                    Button(action: {
-                        showExerciseSelection = true
-                    }) {
-                        HStack(spacing: 8) {
-                            Image(systemName: currentExercise.iconName)
-                                .font(.system(size: 14))
-                            Text(currentExercise.name)
-                                .font(.system(size: 14, weight: .semibold))
-                            Image(systemName: "chevron.down")
-                                .font(.system(size: 10, weight: .semibold))
+        NavigationView {
+            ZStack {
+                VStack(spacing: 0) {
+                    // Exercise selection button (fixed height zone)
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            showExerciseSelection = true
+                        }) {
+                            HStack(spacing: 8) {
+                                Image(systemName: currentExercise.iconName)
+                                    .font(.system(size: 14))
+                                Text(currentExercise.name)
+                                    .font(.system(size: 14, weight: .semibold))
+                                Image(systemName: "chevron.down")
+                                    .font(.system(size: 10, weight: .semibold))
+                            }
+                            .foregroundColor(ZenTheme.lightLavender)
+                            .padding(.horizontal, 16)
+                            .padding(.vertical, 10)
+                            .background(
+                                Capsule()
+                                    .fill(Color.white.opacity(0.1))
+                            )
+                            .overlay(
+                                Capsule()
+                                    .stroke(ZenTheme.softPurple.opacity(0.3), lineWidth: 1)
+                            )
                         }
-                        .foregroundColor(ZenTheme.lightLavender)
-                        .padding(.horizontal, 16)
-                        .padding(.vertical, 10)
-                        .background(
-                            Capsule()
-                                .fill(Color.white.opacity(0.1))
-                        )
-                        .overlay(
-                            Capsule()
-                                .stroke(ZenTheme.softPurple.opacity(0.3), lineWidth: 1)
-                        )
+                        .zenSecondaryButtonStyle()
+                        .accessibilityLabel("Egzersiz seç: \(currentExercise.name)")
+                        .accessibilityHint("Farklı bir nefes egzersizi seçmek için dokunun")
+                        .opacity(isAnimating ? 0 : 1)
+                        .allowsHitTesting(!isAnimating)
+                        Spacer()
                     }
-                    .zenSecondaryButtonStyle()
-                    .accessibilityLabel("Egzersiz seç: \(currentExercise.name)")
-                    .accessibilityHint("Farklı bir nefes egzersizi seçmek için dokunun")
-                    .opacity(isAnimating ? 0 : 1)
-                    .allowsHitTesting(!isAnimating)
-                    Spacer()
-                }
-                .frame(height: 50)
+                    .frame(height: 50)
+                    .padding(.top, 8)
 
                 // Fixed spacer
                 Color.clear.frame(height: 20)
@@ -404,58 +406,60 @@ struct BreathingView: View {
                 .padding(.bottom, 30)
             }
 
-            // Session Complete Overlay
-            if showSessionComplete {
-                SessionCompleteView(durationMinutes: completedDurationMinutes) { mood in
-                    showSessionComplete = false
-                    if let mood = mood {
-                        print("✅ User selected mood: \(mood.displayName) (\(mood.emoji))")
+                // Session Complete Overlay
+                if showSessionComplete {
+                    SessionCompleteView(durationMinutes: completedDurationMinutes) { mood in
+                        showSessionComplete = false
+                        if let mood = mood {
+                            print("✅ User selected mood: \(mood.displayName) (\(mood.emoji))")
+                        }
                     }
                 }
             }
-        }
-        .background(
-            ZStack {
-                // Background gradient layer
-                if featureFlag.breathingGradientEnabled {
-                    // Animated breathing-synchronized gradient
-                    AnimatedGradientView(
-                        breathingPhase: $currentPhase,
-                        palette: featureFlag.breathingGradientPalette,
-                        opacity: featureFlag.breathingGradientOpacity
-                    )
-                    .ignoresSafeArea(.all)
-                } else {
-                    // Static gradient
-                    ZenTheme.backgroundGradient
-                        .ignoresSafeArea(.all)
-                }
+            .background(
+                ZStack {
+                    // Background gradient layer
+                    if featureFlag.breathingGradientEnabled {
+                        // Animated breathing-synchronized gradient
+                        AnimatedGradientView(
+                            breathingPhase: $currentPhase,
+                            palette: featureFlag.breathingGradientPalette,
+                            opacity: featureFlag.breathingGradientOpacity
+                        )
+                        .ignoresSafeArea()
+                    } else {
+                        // Static gradient
+                        ZenTheme.backgroundGradient
+                            .ignoresSafeArea()
+                    }
 
-                // Particle effects layer (if enabled)
-                if featureFlag.particleEffectsEnabled {
-                    ParticleCanvasView(
-                        isAnimating: isAnimating && !isPaused,
-                        currentPhase: currentPhase,
-                        intensity: featureFlag.particleIntensity,
-                        colorTheme: featureFlag.particleColorTheme
-                    )
-                    .ignoresSafeArea(.all)
+                    // Particle effects layer (if enabled)
+                    if featureFlag.particleEffectsEnabled {
+                        ParticleCanvasView(
+                            isAnimating: isAnimating && !isPaused,
+                            currentPhase: currentPhase,
+                            intensity: featureFlag.particleIntensity,
+                            colorTheme: featureFlag.particleColorTheme
+                        )
+                        .ignoresSafeArea()
+                    }
                 }
-            }
-        )
-        .preferredColorScheme(.dark)
-        .sheet(isPresented: $showExerciseSelection) {
-            ExerciseSelectionView { selectedExercise in
-                // Handle exercise change
-                handleExerciseChange(to: selectedExercise)
-            }
-            .presentationDetents([.medium, .large])
-            .presentationCornerRadius(24)
-        }
-        .sheet(isPresented: $showSoundPicker) {
-            SoundPickerSheet()
+            )
+            .navigationBarHidden(true)
+            .preferredColorScheme(.dark)
+            .sheet(isPresented: $showExerciseSelection) {
+                ExerciseSelectionView { selectedExercise in
+                    // Handle exercise change
+                    handleExerciseChange(to: selectedExercise)
+                }
                 .presentationDetents([.medium, .large])
                 .presentationCornerRadius(24)
+            }
+            .sheet(isPresented: $showSoundPicker) {
+                SoundPickerSheet()
+                    .presentationDetents([.medium, .large])
+                    .presentationCornerRadius(24)
+            }
         }
     }
 

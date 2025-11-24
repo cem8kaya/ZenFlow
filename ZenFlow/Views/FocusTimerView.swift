@@ -46,11 +46,13 @@ struct FocusTimerView: View {
     // MARK: - Body
 
     var body: some View {
-        ZStack {
-            VStack(spacing: 0) {
-                // Header with session counter (fixed height)
-                headerView
-                    .frame(height: 80)
+        NavigationView {
+            ZStack {
+                VStack(spacing: 0) {
+                    // Header with session counter (fixed height)
+                    headerView
+                        .frame(height: 80)
+                        .padding(.top, 8)
 
                 // Fixed spacer
                 Color.clear.frame(height: 30)
@@ -89,27 +91,29 @@ struct FocusTimerView: View {
                 celebrationOverlay
             }
 
-            // Breathing exercise suggestion
-            if showBreathingExerciseSuggestion {
-                breathingExerciseSuggestion
+                // Breathing exercise suggestion
+                if showBreathingExerciseSuggestion {
+                    breathingExerciseSuggestion
+                }
             }
-        }
-        .background(
-            AnimatedGradientView(breathingPhase: $breathingPhase)
-                .ignoresSafeArea(.all)
-        )
-        .onAppear {
-            loadTodaysSessions()
-            requestNotificationPermission()
-        }
-        .onDisappear {
-            stopTimer()
-            soundManager.stopAllSounds(fadeOutDuration: 0)
-        }
-        .sheet(isPresented: $showSoundPicker) {
-            SoundPickerSheet()
-                .presentationDetents([.medium, .large])
-                .presentationCornerRadius(24)
+            .background(
+                AnimatedGradientView(breathingPhase: $breathingPhase)
+                    .ignoresSafeArea()
+            )
+            .navigationBarHidden(true)
+            .onAppear {
+                loadTodaysSessions()
+                requestNotificationPermission()
+            }
+            .onDisappear {
+                stopTimer()
+                soundManager.stopAllSounds(fadeOutDuration: 0)
+            }
+            .sheet(isPresented: $showSoundPicker) {
+                SoundPickerSheet()
+                    .presentationDetents([.medium, .large])
+                    .presentationCornerRadius(24)
+            }
         }
     }
 
