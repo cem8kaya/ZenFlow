@@ -89,7 +89,7 @@ struct ZenGardenView: View {
     // Dynamic background
     @State private var clouds: [Cloud] = []
     @State private var stars: [Star] = []
-    @State private var timeOfDay: Double = 0.5 // 0 = night, 1 = day
+    @State private var timeOfDay: Double = 0.2 // 0 = night, 1 = day (darker default for consistency)
     @State private var cloudAnimationPhase: Double = 0
     @State private var starTwinklePhase: Double = 0
 
@@ -205,9 +205,9 @@ struct ZenGardenView: View {
     private var dynamicBackground: some View {
         TimelineView(.animation(minimumInterval: 1.0/30.0, paused: reduceMotion)) { context in
             let dayColors = [
-                Color(red: 0.53, green: 0.81, blue: 0.92), // Sky blue
-                Color(red: 0.68, green: 0.85, blue: 0.90), // Light sky
-                Color(red: 0.85, green: 0.91, blue: 0.78)  // Horizon yellow-green
+                Color(red: 0.25, green: 0.30, blue: 0.45), // Muted zen blue
+                Color(red: 0.30, green: 0.30, blue: 0.50), // Soft zen violet
+                Color(red: 0.25, green: 0.25, blue: 0.40)  // Deep zen indigo
             ]
 
             let nightColors = [

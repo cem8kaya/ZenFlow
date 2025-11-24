@@ -407,7 +407,7 @@ struct FocusTimerView: View {
         // Set session end time for background-safe timing
         sessionEndTime = Date().addingTimeInterval(timeRemaining)
 
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
+        let newTimer = Timer(timeInterval: 1.0, repeats: true) { _ in
             guard let endTime = sessionEndTime else { return }
             let remaining = endTime.timeIntervalSince(Date())
 
@@ -418,6 +418,9 @@ struct FocusTimerView: View {
                 timerCompleted()
             }
         }
+        newTimer.tolerance = 0.2 // 20% tolerance to reduce CPU wake-ups and prevent audio overload
+        RunLoop.current.add(newTimer, forMode: .common)
+        timer = newTimer
     }
 
     private func pauseTimer() {
