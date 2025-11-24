@@ -109,7 +109,7 @@ struct ChatBubbleView: View {
 
     private func handleAction(url: String) {
         DeepLinkHandler.shared.handle(url)
-        HapticManager.shared.impact(style: .medium)
+        HapticManager.shared.playImpact(style: .medium)
     }
 }
 
