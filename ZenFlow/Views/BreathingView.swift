@@ -427,8 +427,11 @@ struct BreathingView: View {
 
             // Session Complete Overlay
             if showSessionComplete {
-                SessionCompleteView(durationMinutes: completedDurationMinutes) {
+                SessionCompleteView(durationMinutes: completedDurationMinutes) { mood in
                     showSessionComplete = false
+                    if let mood = mood {
+                        print("✅ User selected mood: \(mood.displayName) (\(mood.emoji))")
+                    }
                 }
             }
         }
