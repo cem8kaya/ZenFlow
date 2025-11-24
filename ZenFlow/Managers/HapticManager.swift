@@ -19,6 +19,10 @@ class HapticManager: ObservableObject {
     private var engine: CHHapticEngine?
     private(set) var isHapticsAvailable = false
 
+    // Reusable haptic generators (cached for performance)
+    private var impactGenerators: [UIImpactFeedbackGenerator.FeedbackStyle: UIImpactFeedbackGenerator] = [:]
+    private var notificationGenerator: UINotificationFeedbackGenerator?
+
     // MARK: - Initialization
 
     private init() {
@@ -228,7 +232,15 @@ class HapticManager: ObservableObject {
     /// Play impact haptic feedback
     /// - Parameter style: The impact style (light, medium, heavy, soft, rigid)
     func playImpact(style: UIImpactFeedbackGenerator.FeedbackStyle) {
-        let generator = UIImpactFeedbackGenerator(style: style)
+        // Reuse existing generator or create new one
+        let generator: UIImpactFeedbackGenerator
+        if let existingGenerator = impactGenerators[style] {
+            generator = existingGenerator
+        } else {
+            generator = UIImpactFeedbackGenerator(style: style)
+            impactGenerators[style] = generator
+        }
+
         generator.prepare()
         generator.impactOccurred()
         print("▶️ Playing impact haptic: \(style)")
@@ -237,9 +249,13 @@ class HapticManager: ObservableObject {
     /// Play notification haptic feedback
     /// - Parameter type: The notification type (success, warning, error)
     func playNotification(type: UINotificationFeedbackGenerator.FeedbackType) {
-        let generator = UINotificationFeedbackGenerator()
-        generator.prepare()
-        generator.notificationOccurred(type)
+        // Reuse existing generator or create new one
+        if notificationGenerator == nil {
+            notificationGenerator = UINotificationFeedbackGenerator()
+        }
+
+        notificationGenerator?.prepare()
+        notificationGenerator?.notificationOccurred(type)
         print("▶️ Playing notification haptic: \(type)")
     }
 }

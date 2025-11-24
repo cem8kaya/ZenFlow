@@ -78,7 +78,13 @@ class AmbientSoundManager: NSObject, ObservableObject {
             let audioSession = AVAudioSession.sharedInstance()
             // Use .ambient category to allow background sounds to mix with other audio
             // and continue playing when the app goes to background
+            // .mixWithOthers reduces audio routing overhead
             try audioSession.setCategory(.ambient, mode: .default, options: [.mixWithOthers])
+
+            // Optimize buffer size for better performance
+            // Lower latency = less buffer = less CPU overhead for meditation sounds
+            try audioSession.setPreferredIOBufferDuration(0.02) // 20ms buffer
+
             try audioSession.setActive(true)
         } catch {
             print("❌ Failed to configure audio session: \(error.localizedDescription)")
@@ -219,7 +225,8 @@ class AmbientSoundManager: NSObject, ObservableObject {
         // Cancel any existing fade timer
         fadeTimers[sound.fileName]?.invalidate()
 
-        let steps = 50
+        // Reduced frequency: 20 steps instead of 50 to reduce main thread load
+        let steps = 20
         let stepDuration = duration / TimeInterval(steps)
         let volumeIncrement = volume / Float(steps)
         var currentStep = 0
@@ -239,6 +246,9 @@ class AmbientSoundManager: NSObject, ObservableObject {
             }
         }
 
+        // Set timer tolerance to reduce CPU wake-ups
+        timer.tolerance = stepDuration * 0.1
+
         fadeTimers[sound.fileName] = timer
     }
 
@@ -251,7 +261,8 @@ class AmbientSoundManager: NSObject, ObservableObject {
         // Cancel any existing fade timer
         fadeTimers[sound.fileName]?.invalidate()
 
-        let steps = 50
+        // Reduced frequency: 20 steps instead of 50 to reduce main thread load
+        let steps = 20
         let stepDuration = duration / TimeInterval(steps)
         let startVolume = player.volume
         let volumeDecrement = startVolume / Float(steps)
@@ -273,6 +284,9 @@ class AmbientSoundManager: NSObject, ObservableObject {
                 completion()
             }
         }
+
+        // Set timer tolerance to reduce CPU wake-ups
+        timer.tolerance = stepDuration * 0.1
 
         fadeTimers[sound.fileName] = timer
     }

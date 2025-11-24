@@ -191,12 +191,12 @@ class BreathingAnimationController: ObservableObject {
         scheduleNextPhase(after: phaseConfig.duration)
     }
 
-    /// Start countdown timer (updates every 0.1 second for smooth UI)
+    /// Start countdown timer (updates every 0.2 second for smooth UI with reduced CPU load)
     private func startCountdownTimer() {
         countdownTimer?.invalidate()
-        countdownTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] _ in
+        countdownTimer = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true) { [weak self] _ in
             guard let self = self, self.isActive else { return }
-            self.phaseTimeRemaining = max(0, self.phaseTimeRemaining - 0.1)
+            self.phaseTimeRemaining = max(0, self.phaseTimeRemaining - 0.2)
         }
     }
 
@@ -751,13 +751,13 @@ struct BreathingView: View {
             pulseScale = 1.0
         }
 
-        // Start phase countdown timer
-        let countdownTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [self] timer in
+        // Start phase countdown timer (reduced frequency to lower CPU load)
+        let countdownTimer = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true) { [self] timer in
             guard isAnimating && !isPaused else {
                 timer.invalidate()
                 return
             }
-            phaseTimeRemaining = max(0, phaseTimeRemaining - 0.1)
+            phaseTimeRemaining = max(0, phaseTimeRemaining - 0.2)
         }
 
         // Schedule next phase
