@@ -78,6 +78,7 @@ struct AmbientSound: Identifiable, Codable, Equatable {
 extension AmbientSound {
     /// All available ambient sounds
     static let allSounds: [AmbientSound] = [
+        // MARK: - Water Sounds (5)
         AmbientSound(
             name: "Yağmur",
             iconName: "cloud.rain.fill",
@@ -86,6 +87,36 @@ extension AmbientSound {
             description: "Sakinleştirici yağmur sesi"
         ),
         AmbientSound(
+            name: "Okyanus",
+            iconName: "water.waves",
+            fileName: "ocean",
+            category: .water,
+            description: "Dinlendirici dalga sesleri"
+        ),
+        AmbientSound(
+            name: "Fırtına",
+            iconName: "cloud.bolt.rain.fill",
+            fileName: "thunderstorm",
+            category: .water,
+            description: "Gök gürültülü yağmur"
+        ),
+        AmbientSound(
+            name: "Dere",
+            iconName: "drop.triangle.fill",
+            fileName: "river",
+            category: .water,
+            description: "Akıp giden dere suyu"
+        ),
+        AmbientSound(
+            name: "Şelale",
+            iconName: "drop.halffull",
+            fileName: "waterfall",
+            category: .water,
+            description: "Güçlü şelale sesi"
+        ),
+
+        // MARK: - Nature Sounds (5)
+        AmbientSound(
             name: "Orman",
             iconName: "tree.fill",
             fileName: "forest",
@@ -93,11 +124,71 @@ extension AmbientSound {
             description: "Doğanın huzur verici sesleri"
         ),
         AmbientSound(
-            name: "Okyanus",
-            iconName: "water.waves",
-            fileName: "ocean",
-            category: .water,
-            description: "Dinlendirici dalga sesleri"
+            name: "Gece",
+            iconName: "moon.stars.fill",
+            fileName: "night",
+            category: .nature,
+            description: "Cırcır böcekleri ve gece sesleri"
+        ),
+        AmbientSound(
+            name: "Rüzgar",
+            iconName: "wind",
+            fileName: "wind-trees",
+            category: .nature,
+            description: "Ağaçlarda esen rüzgar"
+        ),
+        AmbientSound(
+            name: "Dağ",
+            iconName: "mountain.2.fill",
+            fileName: "mountain",
+            category: .nature,
+            description: "Dağ esintisi"
+        ),
+        AmbientSound(
+            name: "Çöl",
+            iconName: "sun.dust.fill",
+            fileName: "desert",
+            category: .nature,
+            description: "Çöl rüzgarı"
+        ),
+
+        // MARK: - Fire & Warmth (3)
+        AmbientSound(
+            name: "Şömine",
+            iconName: "fireplace.fill",
+            fileName: "fireplace",
+            category: .atmosphere,
+            description: "Çatırdayan şömine"
+        ),
+        AmbientSound(
+            name: "Ateş",
+            iconName: "flame.fill",
+            fileName: "fire",
+            category: .atmosphere,
+            description: "Yumuşak ateş sesi"
+        ),
+        AmbientSound(
+            name: "Kamp Ateşi",
+            iconName: "tent.fill",
+            fileName: "campfire",
+            category: .atmosphere,
+            description: "Kamp ateşi çatırtısı"
+        ),
+
+        // MARK: - Instrumental (2)
+        AmbientSound(
+            name: "Tibet Çanı",
+            iconName: "bell.fill",
+            fileName: "singing-bowl",
+            category: .atmosphere,
+            description: "Tibet çanak sesi"
+        ),
+        AmbientSound(
+            name: "Rüzgar Çanı",
+            iconName: "wind.circle.fill",
+            fileName: "wind-chimes",
+            category: .atmosphere,
+            description: "Rüzgar çanları"
         )
     ]
 
