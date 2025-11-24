@@ -28,11 +28,11 @@ class SharedDataManager {
     // These keys must match the ones used in LocalDataManager
 
     private enum Keys {
-        static let totalMinutes = "totalMinutes"
-        static let currentStreak = "currentStreak"
-        static let longestStreak = "longestStreak"
-        static let lastSessionDate = "lastSessionDate"
-        static let sessions = "sessions"
+        static let totalMinutes = "zenflow_total_minutes"
+        static let currentStreak = "zenflow_current_streak"
+        static let longestStreak = "zenflow_longest_streak"
+        static let lastSessionDate = "zenflow_last_session_date"
+        static let sessions = "zenflow_session_history"
     }
 
     // MARK: - Data Access Methods

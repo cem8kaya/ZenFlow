@@ -10,12 +10,10 @@
 //
 
 import SwiftUI
-import CoreData
 internal import HealthKit
 
 @main
 struct ZenFlowApp: App {
-    let persistenceController = PersistenceController.shared
     @State private var selectedTab: Int = 0
     @State private var showSplash: Bool = true
     @State private var showOnboarding: Bool = false
@@ -26,7 +24,7 @@ struct ZenFlowApp: App {
     var body: some Scene {
         WindowGroup {
             ZStack {
-                SwipeableTabView(selection: $selectedTab, persistenceController: persistenceController)
+                SwipeableTabView(selection: $selectedTab)
                     .preferredColorScheme(.dark)
 
                 // Splash screen overlay
@@ -125,12 +123,10 @@ struct ZenFlowApp: App {
 /// Tab view wrapper
 struct SwipeableTabView: View {
     @Binding var selection: Int
-    let persistenceController: PersistenceController
 
     var body: some View {
         TabView(selection: $selection) {
             BreathingView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .tabItem {
                     Label("Meditasyon", systemImage: "leaf.circle.fill")
                 }
@@ -138,7 +134,6 @@ struct SwipeableTabView: View {
                 .tag(0)
 
             FocusTimerView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .tabItem {
                     Label("Odaklan", systemImage: "timer")
                 }
@@ -146,7 +141,6 @@ struct SwipeableTabView: View {
                 .tag(1)
 
             ZenGardenView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .tabItem {
                     Label("Zen Bahçem", systemImage: "tree.fill")
                 }
@@ -154,7 +148,6 @@ struct SwipeableTabView: View {
                 .tag(2)
 
             BadgesView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .tabItem {
                     Label("Rozetler", systemImage: "trophy.fill")
                 }
@@ -162,7 +155,6 @@ struct SwipeableTabView: View {
                 .tag(3)
 
             SettingsView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .tabItem {
                     Label("Ayarlar", systemImage: "gear")
                 }
