@@ -312,7 +312,6 @@ struct BreathingView: View {
                         .accessibilityHint("Farklı bir nefes egzersizi seçmek için dokunun")
                         Spacer()
                     }
-                    .padding(.top, 16)
                     .transition(.opacity.combined(with: .move(edge: .top)))
                 }
 
@@ -387,7 +386,6 @@ struct BreathingView: View {
                 if !isAnimating {
                     compactSoundSelector
                         .transition(.opacity.combined(with: .scale))
-                        .padding(.horizontal, 20)
                         .padding(.bottom, 12)
                 }
 
@@ -426,7 +424,6 @@ struct BreathingView: View {
                 .frame(maxWidth: .infinity)
                 .padding(.bottom, 30)
             }
-            .padding(.horizontal)
 
             // Session Complete Overlay
             if showSessionComplete {
@@ -545,6 +542,7 @@ struct BreathingView: View {
                     .stroke(ZenTheme.softPurple.opacity(0.3), lineWidth: 1)
             )
         }
+        .padding(.horizontal, 20)
         .accessibilityLabel("Ses seçimi")
         .accessibilityHint("Arka plan sesi seçmek için dokunun")
     }

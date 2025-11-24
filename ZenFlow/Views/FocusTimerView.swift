@@ -53,7 +53,6 @@ struct FocusTimerView: View {
             VStack(spacing: 0) {
                 // Header with session counter
                 headerView
-                    .padding(.top, 16)
 
                 Spacer(minLength: 30)
 
@@ -71,7 +70,6 @@ struct FocusTimerView: View {
                 if timerState == .idle {
                     compactSoundSelector
                         .transition(.opacity.combined(with: .scale))
-                        .padding(.horizontal, 20)
                         .padding(.bottom, 12)
                 }
 
@@ -79,7 +77,6 @@ struct FocusTimerView: View {
                 controlButtons
                     .padding(.bottom, 30)
             }
-            .padding(.horizontal)
 
             // Celebration overlay
             if showCompletionCelebration {
@@ -139,6 +136,7 @@ struct FocusTimerView: View {
                     .fill(Color.white.opacity(0.1))
             )
         }
+        .padding(.horizontal, 20)
     }
 
     private var timerCircleView: some View {
@@ -620,6 +618,7 @@ struct FocusTimerView: View {
                     .stroke(ZenTheme.softPurple.opacity(0.3), lineWidth: 1)
             )
         }
+        .padding(.horizontal, 20)
         .accessibilityLabel("Ses seçimi")
         .accessibilityHint("Arka plan sesi seçmek için dokunun")
     }
