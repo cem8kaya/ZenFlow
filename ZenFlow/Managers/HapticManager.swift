@@ -6,7 +6,7 @@
 //
 
 import CoreHaptics
-import UIKit
+internal import UIKit
 import Combine
 
 class HapticManager: ObservableObject {

@@ -9,7 +9,7 @@
 //
 
 import SwiftUI
-import UIKit
+internal import UIKit
 
 // MARK: - Icon Size Configuration
 

@@ -10,6 +10,7 @@
 
 import Foundation
 import UserNotifications
+internal import UIKit
 
 class DeepLinkHandler {
     // MARK: - Notification Names
