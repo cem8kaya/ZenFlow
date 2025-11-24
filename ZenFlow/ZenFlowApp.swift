@@ -168,13 +168,6 @@ struct SwipeableTabView: View {
                 }
                 .accessibilityLabel("Ayarlar sekmesi")
                 .tag(4)
-
-            ZenCoachView()
-                .tabItem {
-                    Label("Zen Coach", systemImage: "person.crop.circle.fill")
-                }
-                .accessibilityLabel("Zen Coach sekmesi")
-                .tag(5)
         }
     }
 }
