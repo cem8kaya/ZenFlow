@@ -48,30 +48,39 @@ struct FocusTimerView: View {
     var body: some View {
         ZStack {
             VStack(spacing: 0) {
-                // Header with session counter
+                // Header with session counter (fixed height)
                 headerView
+                    .frame(height: 80)
 
-                Spacer(minLength: 30)
+                // Fixed spacer
+                Color.clear.frame(height: 30)
 
-                // Main timer circle
+                // Main timer circle (fixed height zone)
                 timerCircleView
+                    .frame(height: 300)
 
-                Spacer(minLength: 30)
+                // Fixed spacer
+                Color.clear.frame(height: 30)
 
-                // Mode label
+                // Mode label (fixed height zone)
                 modeLabel
+                    .frame(height: 60)
 
-                Spacer(minLength: 20)
+                // Fixed spacer
+                Color.clear.frame(height: 20)
 
-                // Sound selector (visible only when not running)
-                if timerState == .idle {
-                    compactSoundSelector
-                        .transition(.opacity.combined(with: .scale))
-                        .padding(.bottom, 12)
-                }
+                // Sound selector (fixed height zone, always present)
+                compactSoundSelector
+                    .opacity(timerState == .idle ? 1 : 0)
+                    .allowsHitTesting(timerState == .idle)
+                    .frame(height: 80)
 
-                // Control buttons
+                // Fixed spacer
+                Color.clear.frame(height: 12)
+
+                // Control buttons (fixed height zone)
                 controlButtons
+                    .frame(height: 80)
                     .padding(.bottom, 30)
             }
 
