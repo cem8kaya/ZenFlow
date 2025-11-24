@@ -62,6 +62,14 @@ struct ZenFlowApp: App {
                     }
                 }
             }
+            .onReceive(NotificationCenter.default.publisher(for: DeepLinkHandler.switchToTabNotification)) { notification in
+                // Handle deep link tab switching
+                if let tabIndex = notification.userInfo?["tabIndex"] as? Int {
+                    withAnimation {
+                        selectedTab = tabIndex
+                    }
+                }
+            }
         }
     }
 
@@ -160,6 +168,13 @@ struct SwipeableTabView: View {
                 }
                 .accessibilityLabel("Ayarlar sekmesi")
                 .tag(4)
+
+            ZenCoachView()
+                .tabItem {
+                    Label("Zen Coach", systemImage: "person.crop.circle.fill")
+                }
+                .accessibilityLabel("Zen Coach sekmesi")
+                .tag(5)
         }
     }
 }
