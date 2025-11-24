@@ -443,6 +443,9 @@ struct BreathingView: View {
                 // Handle exercise change
                 handleExerciseChange(to: selectedExercise)
             }
+            .presentationDetents([.medium, .large])
+            .presentationCornerRadius(24)
+            .presentationBackgroundInteraction(.enabled)
         }
         .sheet(isPresented: $showSoundPicker) {
             SoundPickerSheet()

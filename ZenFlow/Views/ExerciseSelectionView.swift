@@ -13,7 +13,7 @@ import SwiftUI
 /// Exercise selection view with horizontal carousel
 struct ExerciseSelectionView: View {
     @Environment(\.dismiss) private var dismiss
-    @StateObject private var exerciseManager = BreathingExerciseManager.shared
+    @ObservedObject private var exerciseManager = BreathingExerciseManager.shared
     @State private var selectedExercise: BreathingExercise
 
     var onExerciseSelected: ((BreathingExercise) -> Void)?
@@ -28,6 +28,7 @@ struct ExerciseSelectionView: View {
             // Background
             ZenTheme.backgroundGradient
                 .ignoresSafeArea()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
 
             VStack(spacing: 24) {
                 // Header
