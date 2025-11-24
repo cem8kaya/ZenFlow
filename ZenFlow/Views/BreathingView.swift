@@ -191,13 +191,16 @@ class BreathingAnimationController: ObservableObject {
         scheduleNextPhase(after: phaseConfig.duration)
     }
 
-    /// Start countdown timer (updates every 0.2 second for smooth UI with reduced CPU load)
+    /// Start countdown timer (updates every 0.5 second for smooth UI with minimal CPU load)
     private func startCountdownTimer() {
         countdownTimer?.invalidate()
-        countdownTimer = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true) { [weak self] _ in
+        let timer = Timer(timeInterval: 0.5, repeats: true) { [weak self] _ in
             guard let self = self, self.isActive else { return }
-            self.phaseTimeRemaining = max(0, self.phaseTimeRemaining - 0.2)
+            self.phaseTimeRemaining = max(0, self.phaseTimeRemaining - 0.5)
         }
+        timer.tolerance = 0.1 // 20% tolerance to reduce CPU wake-ups and audio overload
+        RunLoop.current.add(timer, forMode: .common)
+        countdownTimer = timer
     }
 
     /// Schedule next phase transition
@@ -753,14 +756,16 @@ struct BreathingView: View {
             pulseScale = 1.0
         }
 
-        // Start phase countdown timer (reduced frequency to lower CPU load)
-        let countdownTimer = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true) { [self] timer in
+        // Start phase countdown timer (reduced frequency to lower CPU load and prevent audio overload)
+        let countdownTimer = Timer(timeInterval: 0.5, repeats: true) { [self] timer in
             guard isAnimating && !isPaused else {
                 timer.invalidate()
                 return
             }
-            phaseTimeRemaining = max(0, phaseTimeRemaining - 0.2)
+            phaseTimeRemaining = max(0, phaseTimeRemaining - 0.5)
         }
+        countdownTimer.tolerance = 0.1 // 20% tolerance to reduce CPU wake-ups
+        RunLoop.current.add(countdownTimer, forMode: .common)
 
         // Schedule next phase
         animationTimer = Timer.scheduledTimer(withTimeInterval: phaseConfig.duration, repeats: false) { [self] _ in
