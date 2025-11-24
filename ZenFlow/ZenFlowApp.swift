@@ -21,7 +21,7 @@ struct ZenFlowApp: App {
     @State private var showHealthKitOnboarding: Bool = false
     @State private var showSettings: Bool = false
     @StateObject private var onboardingManager = OnboardingManager.shared
-    @StateObject private var notificationDelegate = NotificationDelegate()
+    private let notificationDelegate = NotificationDelegate()
 
     var body: some Scene {
         WindowGroup {
@@ -181,7 +181,11 @@ struct SwipeableTabView: View {
 // MARK: - Notification Delegate
 
 /// Handles notification responses and foreground notifications
-class NotificationDelegate: NSObject, ObservableObject, UNUserNotificationCenterDelegate {
+class NotificationDelegate: NSObject, UNUserNotificationCenterDelegate {
+    override init() {
+        super.init()
+    }
+
     // Handle notification when app is in foreground
     func userNotificationCenter(
         _ center: UNUserNotificationCenter,
