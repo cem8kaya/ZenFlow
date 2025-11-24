@@ -25,6 +25,7 @@ class LocalDataManager: ObservableObject {
         static let sessionHistory = "zenflow_session_history"
         static let focusSessionHistory = "zenflow_focus_session_history"
         static let totalFocusSessions = "zenflow_total_focus_sessions"
+        static let moodHistory = "zenflow_mood_history"
     }
 
     // MARK: - Properties
@@ -429,5 +430,76 @@ class LocalDataManager: ObservableObject {
     func clearFocusHistory() {
         focusSessionHistory = []
         print("🗑️ Focus session history cleared")
+    }
+
+    // MARK: - Mood Management
+
+    /// Tüm mood geçmişi
+    var moodHistory: [MoodEntry] {
+        get {
+            guard let data = defaults.data(forKey: Keys.moodHistory),
+                  let moods = try? JSONDecoder().decode([MoodEntry].self, from: data) else {
+                return []
+            }
+            return moods
+        }
+        set {
+            objectWillChange.send()
+            if let data = try? JSONEncoder().encode(newValue) {
+                defaults.set(data, forKey: Keys.moodHistory)
+                print("💾 Mood history updated: \(newValue.count) entries")
+            }
+        }
+    }
+
+    /// Mood kaydı kaydet
+    /// - Parameters:
+    ///   - mood: Kaydedilecek mood
+    ///   - date: Mood tarihi (varsayılan: şu an)
+    func saveMood(_ mood: Mood, date: Date = Date()) {
+        let entry = MoodEntry(date: date, mood: mood)
+        var history = moodHistory
+        history.append(entry)
+        moodHistory = history
+
+        print("✅ Mood saved: \(mood.displayName) (\(mood.emoji)) on \(entry.dateString)")
+    }
+
+    /// Belirli bir tarih aralığındaki mood kayıtlarını getir
+    /// - Parameters:
+    ///   - startDate: Başlangıç tarihi
+    ///   - endDate: Bitiş tarihi
+    /// - Returns: Tarih aralığındaki mood kayıtları
+    func getMoods(from startDate: Date, to endDate: Date) -> [MoodEntry] {
+        return moodHistory.filter { entry in
+            entry.date >= startDate && entry.date <= endDate
+        }.sorted { $0.date > $1.date }
+    }
+
+    /// Bugünkü mood kayıtlarını getir
+    /// - Returns: Bugünün mood kayıtları
+    func getTodayMoods() -> [MoodEntry] {
+        let calendar = Calendar.current
+        let today = calendar.startOfDay(for: Date())
+        let tomorrow = calendar.date(byAdding: .day, value: 1, to: today)!
+
+        return getMoods(from: today, to: tomorrow)
+    }
+
+    /// Tüm mood kayıtlarını getir
+    /// - Parameter limit: Maksimum kayıt sayısı (varsayılan: tümü)
+    /// - Returns: Mood kayıtları (en yeniden en eskiye)
+    func getMoods(limit: Int? = nil) -> [MoodEntry] {
+        let moods = moodHistory.sorted { $0.date > $1.date }
+        if let limit = limit {
+            return Array(moods.prefix(limit))
+        }
+        return moods
+    }
+
+    /// Mood geçmişini temizle
+    func clearMoodHistory() {
+        moodHistory = []
+        print("🗑️ Mood history cleared")
     }
 }
