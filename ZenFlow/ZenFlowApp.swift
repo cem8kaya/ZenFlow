@@ -11,6 +11,7 @@
 
 import SwiftUI
 internal import HealthKit
+import UserNotifications
 
 @main
 struct ZenFlowApp: App {
@@ -20,6 +21,7 @@ struct ZenFlowApp: App {
     @State private var showHealthKitOnboarding: Bool = false
     @State private var showSettings: Bool = false
     @StateObject private var onboardingManager = OnboardingManager.shared
+    @StateObject private var notificationDelegate = NotificationDelegate()
 
     var body: some Scene {
         WindowGroup {
@@ -69,6 +71,10 @@ struct ZenFlowApp: App {
                         selectedTab = tabIndex
                     }
                 }
+            }
+            .onAppear {
+                // Set notification delegate
+                UNUserNotificationCenter.current().delegate = notificationDelegate
             }
         }
     }
@@ -169,5 +175,35 @@ struct SwipeableTabView: View {
                 .accessibilityLabel("Ayarlar sekmesi")
                 .tag(4)
         }
+    }
+}
+
+// MARK: - Notification Delegate
+
+/// Handles notification responses and foreground notifications
+class NotificationDelegate: NSObject, ObservableObject, UNUserNotificationCenterDelegate {
+    // Handle notification when app is in foreground
+    func userNotificationCenter(
+        _ center: UNUserNotificationCenter,
+        willPresent notification: UNNotification,
+        withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void
+    ) {
+        // Show notification even when app is in foreground
+        completionHandler([.banner, .sound, .badge])
+        print("📱 Notification presented in foreground")
+    }
+
+    // Handle notification tap or action button
+    func userNotificationCenter(
+        _ center: UNUserNotificationCenter,
+        didReceive response: UNNotificationResponse,
+        withCompletionHandler completionHandler: @escaping () -> Void
+    ) {
+        print("📱 Notification response received: \(response.actionIdentifier)")
+
+        // Handle the response using DeepLinkHandler
+        DeepLinkHandler.shared.handleNotificationResponse(response)
+
+        completionHandler()
     }
 }
