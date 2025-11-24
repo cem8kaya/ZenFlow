@@ -24,44 +24,41 @@ struct ExerciseSelectionView: View {
     }
 
     var body: some View {
-        ZStack {
-            // Background
+        VStack(spacing: 24) {
+            // Header
+            headerView
+
+            // Exercise carousel
+            ScrollView(.horizontal, showsIndicators: true) {
+                HStack(spacing: 20) {
+                    ForEach(exerciseManager.allExercises) { exercise in
+                        ExerciseCard(
+                            exercise: exercise,
+                            isSelected: selectedExercise.id == exercise.id,
+                            onTap: {
+                                selectExercise(exercise)
+                            }
+                        )
+                    }
+                }
+                .padding(.horizontal, 32)
+                .padding(.vertical, 20)
+            }
+            .frame(height: 280)
+
+            // Selected exercise details
+            selectedExerciseDetailsView
+
+            Spacer()
+
+            // Action buttons
+            actionButtonsView
+        }
+        .padding(.top, 20)
+        .background(
             ZenTheme.backgroundGradient
                 .ignoresSafeArea()
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-
-            VStack(spacing: 24) {
-                // Header
-                headerView
-
-                // Exercise carousel
-                ScrollView(.horizontal, showsIndicators: true) {
-                    HStack(spacing: 20) {
-                        ForEach(exerciseManager.allExercises) { exercise in
-                            ExerciseCard(
-                                exercise: exercise,
-                                isSelected: selectedExercise.id == exercise.id,
-                                onTap: {
-                                    selectExercise(exercise)
-                                }
-                            )
-                        }
-                    }
-                    .padding(.horizontal, 32)
-                    .padding(.vertical, 20)
-                }
-                .frame(height: 280)
-
-                // Selected exercise details
-                selectedExerciseDetailsView
-
-                Spacer()
-
-                // Action buttons
-                actionButtonsView
-            }
-            .padding(.top, 20)
-        }
+        )
         .preferredColorScheme(.dark)
     }
 

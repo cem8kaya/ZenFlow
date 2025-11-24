@@ -253,34 +253,6 @@ struct BreathingView: View {
 
     var body: some View {
         ZStack {
-            // Background gradient
-            if featureFlag.breathingGradientEnabled {
-                // Animated breathing-synchronized gradient
-                AnimatedGradientView(
-                    breathingPhase: $currentPhase,
-                    palette: featureFlag.breathingGradientPalette,
-                    opacity: featureFlag.breathingGradientOpacity
-                )
-                .ignoresSafeArea(.all)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-            } else {
-                // Static gradient
-                ZenTheme.backgroundGradient
-                    .ignoresSafeArea(.all)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-            }
-
-            // Particle effects layer (if enabled)
-            if featureFlag.particleEffectsEnabled {
-                ParticleCanvasView(
-                    isAnimating: isAnimating && !isPaused,
-                    currentPhase: currentPhase,
-                    intensity: featureFlag.particleIntensity,
-                    colorTheme: featureFlag.particleColorTheme
-                )
-                .ignoresSafeArea(.all)
-            }
-
             VStack(spacing: 0) {
                 // Exercise selection button (only when not animating)
                 if !isAnimating {
@@ -437,6 +409,35 @@ struct BreathingView: View {
                 }
             }
         }
+        .background(
+            ZStack {
+                // Background gradient layer
+                if featureFlag.breathingGradientEnabled {
+                    // Animated breathing-synchronized gradient
+                    AnimatedGradientView(
+                        breathingPhase: $currentPhase,
+                        palette: featureFlag.breathingGradientPalette,
+                        opacity: featureFlag.breathingGradientOpacity
+                    )
+                    .ignoresSafeArea(.all)
+                } else {
+                    // Static gradient
+                    ZenTheme.backgroundGradient
+                        .ignoresSafeArea(.all)
+                }
+
+                // Particle effects layer (if enabled)
+                if featureFlag.particleEffectsEnabled {
+                    ParticleCanvasView(
+                        isAnimating: isAnimating && !isPaused,
+                        currentPhase: currentPhase,
+                        intensity: featureFlag.particleIntensity,
+                        colorTheme: featureFlag.particleColorTheme
+                    )
+                    .ignoresSafeArea(.all)
+                }
+            }
+        )
         .preferredColorScheme(.dark)
         .sheet(isPresented: $showExerciseSelection) {
             ExerciseSelectionView { selectedExercise in
@@ -445,13 +446,11 @@ struct BreathingView: View {
             }
             .presentationDetents([.medium, .large])
             .presentationCornerRadius(24)
-            .presentationBackgroundInteraction(.enabled)
         }
         .sheet(isPresented: $showSoundPicker) {
             SoundPickerSheet()
                 .presentationDetents([.medium, .large])
                 .presentationCornerRadius(24)
-                .presentationBackgroundInteraction(.enabled)
         }
     }
 
