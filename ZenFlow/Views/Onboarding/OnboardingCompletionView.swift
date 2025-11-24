@@ -206,7 +206,6 @@ struct OnboardingCompletionView: View {
         withAnimation(.easeIn(duration: 3.0)) {
             confettiParticles = confettiParticles.map { particle in
                 OnboardingConfetti(
-                    id: particle.id,
                     x: particle.x + CGFloat.random(in: -50...50),
                     y: UIScreen.main.bounds.height + 100,
                     color: particle.color,

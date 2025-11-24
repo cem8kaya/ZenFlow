@@ -24,41 +24,59 @@ struct ExerciseSelectionView: View {
     }
 
     var body: some View {
-        VStack(spacing: 32) {
-            // Header
-            headerView
-
-            // Exercise carousel
-            ScrollView(.horizontal, showsIndicators: true) {
-                HStack(spacing: 20) {
-                    ForEach(exerciseManager.allExercises) { exercise in
-                        ExerciseCard(
-                            exercise: exercise,
-                            isSelected: selectedExercise.id == exercise.id,
-                            onTap: {
-                                selectExercise(exercise)
-                            }
-                        )
-                    }
-                }
-                .padding(.horizontal, 32)
-                .padding(.vertical, 20)
-            }
-            .frame(height: 280)
-
-            // Selected exercise details
-            selectedExerciseDetailsView
-
-            Spacer()
-
-            // Action buttons
-            actionButtonsView
-        }
-        .padding(.top, 40)
-        .background(
+        ZStack {
+            // 1. Arka Plan (Tüm ekranı kaplar)
             ZenTheme.backgroundGradient
                 .ignoresSafeArea()
-        )
+            
+            VStack(spacing: 0) {
+                // 2. Kaydırılabilir İçerik Alanı (Scrollable Content)
+                ScrollView(.vertical, showsIndicators: false) {
+                    VStack(spacing: 24) {
+                        // Başlık (Sheet tutamacından kurtarmak için üst boşluk artırıldı)
+                        headerView
+                            .padding(.top, 32)
+                        
+                        // Exercise carousel
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 20) {
+                                ForEach(exerciseManager.allExercises) { exercise in
+                                    ExerciseCard(
+                                        exercise: exercise,
+                                        isSelected: selectedExercise.id == exercise.id,
+                                        onTap: {
+                                            selectExercise(exercise)
+                                        }
+                                    )
+                                }
+                            }
+                            .padding(.horizontal, 32)
+                            .padding(.vertical, 20) // Gölge kesilmemesi için dikey boşluk
+                        }
+                        .frame(height: 280)
+                        
+                        // Selected exercise details
+                        selectedExerciseDetailsView
+                    }
+                    .padding(.bottom, 100) // Footer'ın altında kalmaması için ekstra boşluk
+                }
+                
+                // 3. Sabit Alt Butonlar (Sticky Footer)
+                // ScrollView'ın dışında tutarak her zaman görünür olmasını sağlıyoruz
+                VStack {
+                    Divider()
+                        .background(Color.white.opacity(0.1))
+                    
+                    actionButtonsView
+                        .padding(.top, 16)
+                        .padding(.bottom, 16) // Alt güvenli alan için biraz boşluk
+                }
+                .background(
+                    ZenTheme.backgroundGradient // Butonların arkasının okunabilir olması için
+                        .opacity(0.98)
+                )
+            }
+        }
         .preferredColorScheme(.dark)
     }
 
@@ -201,7 +219,7 @@ struct ExerciseSelectionView: View {
             .zenPrimaryButtonStyle()
         }
         .padding(.horizontal, 32)
-        .padding(.bottom, 40)
+        // Not: Padding buradan kaldırıldı, dışarıdaki VStack'e eklendi
     }
 
     // MARK: - Actions

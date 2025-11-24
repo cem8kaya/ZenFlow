@@ -104,6 +104,15 @@ class AmbientSoundManager: NSObject, ObservableObject {
             return
         }
 
+        // 1. ÖNCE VARSA DURDUR (Restart mantığı)
+        // Stop if already playing.
+        // NOT: stopSound fonksiyonu sesi activeSounds listesinden siler.
+        // Bu yüzden activeSounds'a ekleme işlemini (append) bu adımdan SONRA yapmalıyız.
+        if audioPlayers[sound.fileName] != nil {
+            stopSound(sound, fadeOutDuration: 0)
+        }
+
+        // 2. SONRA LİSTEYE EKLE (Düzeltme burada yapıldı)
         // Check if we've reached the maximum number of simultaneous sounds
         if !activeSounds.contains(where: { $0.id == sound.id }) {
             if activeSounds.count >= maxSimultaneousSounds {
@@ -113,11 +122,6 @@ class AmbientSoundManager: NSObject, ObservableObject {
                 }
             }
             activeSounds.append(sound)
-        }
-
-        // Stop if already playing
-        if audioPlayers[sound.fileName] != nil {
-            stopSound(sound, fadeOutDuration: 0)
         }
 
         // Load audio file from Assets.xcassets using NSDataAsset

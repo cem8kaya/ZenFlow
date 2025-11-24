@@ -18,11 +18,11 @@ import Combine
 struct ConfettiParticle: Identifiable {
     let id = UUID()
     var position: CGPoint
-    var velocity: CGVector
-    var scale: CGFloat
+    let velocity: CGVector
+    let scale: CGFloat
     var rotation: Double
     var opacity: Double
-    var color: Color
+    let color: Color
 }
 
 /// Badge unlock animation overlay
