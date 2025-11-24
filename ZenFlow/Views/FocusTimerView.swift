@@ -46,13 +46,14 @@ struct FocusTimerView: View {
     // MARK: - Body
 
     var body: some View {
-        NavigationView {
-            ZStack {
-                VStack(spacing: 0) {
-                    // Header with session counter (fixed height)
-                    headerView
-                        .frame(height: 80)
-                        .padding(.top, 8)
+        NavigationStack {
+            GeometryReader { geometry in
+                ZStack {
+                    VStack(spacing: 0) {
+                        // Header with session counter (fixed height)
+                        headerView
+                            .frame(height: 80)
+                            .padding(.top, max(geometry.safeAreaInsets.top, 16))
 
                 // Fixed spacer
                 Color.clear.frame(height: 30)
@@ -83,17 +84,18 @@ struct FocusTimerView: View {
                 // Control buttons (fixed height zone)
                 controlButtons
                     .frame(height: 80)
-                    .padding(.bottom, 30)
+                    .padding(.bottom, max(geometry.safeAreaInsets.bottom, 30))
             }
 
-            // Celebration overlay
-            if showCompletionCelebration {
-                celebrationOverlay
-            }
+                    // Celebration overlay
+                    if showCompletionCelebration {
+                        celebrationOverlay
+                    }
 
-                // Breathing exercise suggestion
-                if showBreathingExerciseSuggestion {
-                    breathingExerciseSuggestion
+                    // Breathing exercise suggestion
+                    if showBreathingExerciseSuggestion {
+                        breathingExerciseSuggestion
+                    }
                 }
             }
             .background(
@@ -152,7 +154,7 @@ struct FocusTimerView: View {
                     .fill(Color.white.opacity(0.1))
             )
         }
-        .padding(.horizontal, 20)
+        .padding(.horizontal, 24)
     }
 
     private var timerCircleView: some View {
@@ -647,7 +649,7 @@ struct FocusTimerView: View {
                     .stroke(ZenTheme.softPurple.opacity(0.3), lineWidth: 1)
             )
         }
-        .padding(.horizontal, 20)
+        .padding(.horizontal, 24)
         .accessibilityLabel("Ses seçimi")
         .accessibilityHint("Arka plan sesi seçmek için dokunun")
     }
