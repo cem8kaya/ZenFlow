@@ -19,10 +19,18 @@ struct AmbientSoundPicker: View {
     let maxSelections: Int = 2
     var onSoundToggle: ((AmbientSound) -> Void)?
 
+    @State private var selectedCategory: AmbientCategory? = nil
+
     // MARK: - Available Sounds
 
     private var availableSounds: [AmbientSound] {
-        [AmbientSound.none] + AmbientSound.allSounds
+        let sounds = [AmbientSound.none] + AmbientSound.allSounds
+
+        guard let category = selectedCategory else {
+            return sounds
+        }
+
+        return [AmbientSound.none] + sounds.filter { $0.category == category && !$0.fileName.isEmpty }
     }
 
     // MARK: - Body
@@ -50,6 +58,40 @@ struct AmbientSoundPicker: View {
                 }
             }
             .padding(.horizontal, 20)
+
+            // Category Filter
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 12) {
+                    // All Categories
+                    CategoryChip(
+                        title: "Tümü",
+                        icon: "music.note.list",
+                        color: ZenTheme.lightLavender,
+                        isSelected: selectedCategory == nil,
+                        action: {
+                            withAnimation(.spring(response: 0.3)) {
+                                selectedCategory = nil
+                            }
+                        }
+                    )
+
+                    // Individual Categories
+                    ForEach(AmbientCategory.allCases, id: \.self) { category in
+                        CategoryChip(
+                            title: category.rawValue,
+                            icon: category.icon,
+                            color: category.color,
+                            isSelected: selectedCategory == category,
+                            action: {
+                                withAnimation(.spring(response: 0.3)) {
+                                    selectedCategory = category
+                                }
+                            }
+                        )
+                    }
+                }
+                .padding(.horizontal, 20)
+            }
 
             // Sound Cards
             ScrollView(.horizontal, showsIndicators: false) {
@@ -118,6 +160,41 @@ struct AmbientSoundPicker: View {
         }
 
         onSoundToggle?(sound)
+    }
+}
+
+// MARK: - Category Chip
+
+private struct CategoryChip: View {
+    let title: String
+    let icon: String
+    let color: Color
+    let isSelected: Bool
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: {
+            HapticManager.shared.playImpact(style: .light)
+            action()
+        }) {
+            HStack(spacing: 6) {
+                Image(systemName: icon)
+                    .font(.system(size: 14))
+                Text(title)
+                    .font(.system(size: 14, weight: .semibold))
+            }
+            .foregroundColor(isSelected ? .white : color)
+            .padding(.horizontal, 16)
+            .padding(.vertical, 10)
+            .background(
+                Capsule()
+                    .fill(isSelected ? color.opacity(0.8) : color.opacity(0.2))
+            )
+            .overlay(
+                Capsule()
+                    .stroke(color, lineWidth: isSelected ? 0 : 1)
+            )
+        }
     }
 }
 
