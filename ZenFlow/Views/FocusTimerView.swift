@@ -22,6 +22,7 @@ struct FocusTimerView: View {
     @State private var completedSessions: Int = 0
     @State private var todayCompletedSessions: Int = 0
     @State private var timer: Timer?
+    @State private var sessionEndTime: Date?
     @State private var showBreathingExerciseSuggestion = false
     @State private var showCompletionCelebration = false
     @State private var breathingPhase: AnimationPhase = .exhale
@@ -392,10 +393,17 @@ struct FocusTimerView: View {
             }
         }
 
+        // Set session end time for background-safe timing
+        sessionEndTime = Date().addingTimeInterval(timeRemaining)
+
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
-            if timeRemaining > 0 {
-                timeRemaining -= 1
+            guard let endTime = sessionEndTime else { return }
+            let remaining = endTime.timeIntervalSince(Date())
+
+            if remaining > 0 {
+                timeRemaining = remaining
             } else {
+                timeRemaining = 0
                 timerCompleted()
             }
         }
@@ -405,6 +413,7 @@ struct FocusTimerView: View {
         timerState = .paused
         timer?.invalidate()
         timer = nil
+        sessionEndTime = nil // Clear end time when paused
         HapticManager.shared.playImpact(style: .light)
 
         // Reduce ambient sound volume to 50% when paused
@@ -432,6 +441,7 @@ struct FocusTimerView: View {
         stopTimer()
         timerState = .idle
         timeRemaining = currentMode.durationSeconds
+        sessionEndTime = nil
         HapticManager.shared.playImpact(style: .medium)
 
         // Stop ambient sounds with fade out
@@ -498,6 +508,7 @@ struct FocusTimerView: View {
         let nextMode = currentMode.nextMode(completedSessions: completedSessions)
         currentMode = nextMode
         timeRemaining = nextMode.durationSeconds
+        sessionEndTime = nil
         timerState = .idle
     }
 
