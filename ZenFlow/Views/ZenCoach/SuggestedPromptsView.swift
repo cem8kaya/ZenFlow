@@ -27,7 +27,7 @@ struct SuggestedPromptsView: View {
             ForEach(prompts, id: \.self) { prompt in
                 Button(action: {
                     onPromptTapped(prompt)
-                    HapticManager.shared.impact(style: .light)
+                    HapticManager.shared.playImpact(style: .light)
                 }) {
                     HStack {
                         Text(prompt)

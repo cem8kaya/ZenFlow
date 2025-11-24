@@ -50,7 +50,7 @@ struct ZenCoachView: View {
             Button("İptal", role: .cancel) {}
             Button("Temizle", role: .destructive) {
                 manager.clearHistory()
-                HapticManager.shared.notification(type: .success)
+                HapticManager.shared.playNotification(type: .success)
             }
         } message: {
             Text("Tüm sohbet geçmişi silinecek. Emin misiniz?")
@@ -246,7 +246,7 @@ struct ZenCoachView: View {
         inputText = ""
         isInputFocused = false
 
-        HapticManager.shared.impact(style: .light)
+        HapticManager.shared.playImpact(style: .light)
     }
 }
 
