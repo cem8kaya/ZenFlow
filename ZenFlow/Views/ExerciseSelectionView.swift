@@ -54,7 +54,7 @@ struct ExerciseSelectionView: View {
             // Action buttons
             actionButtonsView
         }
-        .padding(.top, 20)
+        .padding(.top, 40)
         .background(
             ZenTheme.backgroundGradient
                 .ignoresSafeArea()

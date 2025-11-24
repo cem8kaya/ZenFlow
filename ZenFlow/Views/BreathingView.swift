@@ -295,8 +295,8 @@ struct BreathingView: View {
                         .frame(height: 50)
                         .padding(.top, max(geometry.safeAreaInsets.top, 16))
 
-                // Fixed spacer
-                Color.clear.frame(height: 20)
+                // Flexible spacer with minimum height
+                Spacer(minLength: 10)
 
                 // Session duration indicator (fixed height zone)
                 Text(sessionTracker.getFormattedDuration())
@@ -306,8 +306,8 @@ struct BreathingView: View {
                     .opacity((isAnimating || sessionTracker.duration > 0) ? 1 : 0)
                     .frame(height: 40)
 
-                // Fixed spacer above circles
-                Color.clear.frame(height: 30)
+                // Flexible spacer with minimum height
+                Spacer(minLength: 15)
 
                 // Breathing circles (fixed height zone)
                 ZStack {
@@ -350,7 +350,7 @@ struct BreathingView: View {
                 .accessibilityElement(children: .ignore)
                 .accessibilityLabel("Nefes alma animasyonu")
                 .accessibilityValue(currentPhase.accessibilityAnnouncement)
-                .frame(height: 350)
+                .frame(height: geometry.size.height * 0.4)
 
                 // Dynamic breathing text (fixed height zone)
                 Text(currentPhase.text)
@@ -361,23 +361,23 @@ struct BreathingView: View {
                     .opacity(isAnimating ? 0 : 1)
                     .frame(height: 50)
 
-                // Fixed spacer
-                Color.clear.frame(height: 20)
+                // Flexible spacer with minimum height
+                Spacer(minLength: 10)
 
-                // Sound selector (fixed height zone)
+                // Sound selector (flexible height)
                 compactSoundSelector
+                    .opacity(isAnimating ? 0 : 1)
+                    .allowsHitTesting(!isAnimating)
+                    .frame(height: 70)
+
+                // Duration picker (flexible height)
+                durationPickerView
                     .opacity(isAnimating ? 0 : 1)
                     .allowsHitTesting(!isAnimating)
                     .frame(height: 80)
 
-                // Duration picker (fixed height zone)
-                durationPickerView
-                    .opacity(isAnimating ? 0 : 1)
-                    .allowsHitTesting(!isAnimating)
-                    .frame(height: 100)
-
-                // Fixed spacer before buttons
-                Color.clear.frame(height: 10)
+                // Flexible spacer with minimum height
+                Spacer(minLength: 10)
 
                 // Control buttons (fixed height zone)
                 HStack(spacing: 40) {
