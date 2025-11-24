@@ -446,9 +446,10 @@ struct BreathingView: View {
                     }
                 }
             )
-            .navigationBarHidden(true)
-            .preferredColorScheme(.dark)
-            .sheet(isPresented: $showExerciseSelection) {
+        }
+        .navigationBarHidden(true)
+        .preferredColorScheme(.dark)
+        .sheet(isPresented: $showExerciseSelection) {
                 ExerciseSelectionView { selectedExercise in
                     // Handle exercise change
                     handleExerciseChange(to: selectedExercise)
