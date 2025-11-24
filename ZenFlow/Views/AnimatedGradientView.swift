@@ -210,8 +210,10 @@ struct AnimatedGradientView: View {
 
         func startAnimation() {
             Timer.scheduledTimer(withTimeInterval: 4.0, repeats: true) { _ in
-                guard isAnimating else { return }
-                phase = phase == .inhale ? .exhale : .inhale
+                Task { @MainActor in
+                    guard isAnimating else { return }
+                    phase = phase == .inhale ? .exhale : .inhale
+                }
             }
         }
     }
