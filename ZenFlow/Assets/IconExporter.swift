@@ -33,6 +33,7 @@ struct IconSize {
 
 // MARK: - Icon Sizes
 
+@MainActor
 struct IconSizes {
     static let all: [IconSize] = [
         // iPhone
