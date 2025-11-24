@@ -47,11 +47,6 @@ struct FocusTimerView: View {
 
     var body: some View {
         ZStack {
-            // Background gradient
-            AnimatedGradientView(breathingPhase: $breathingPhase)
-                .ignoresSafeArea(.all)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-
             VStack(spacing: 0) {
                 // Header with session counter
                 headerView
@@ -90,6 +85,10 @@ struct FocusTimerView: View {
                 breathingExerciseSuggestion
             }
         }
+        .background(
+            AnimatedGradientView(breathingPhase: $breathingPhase)
+                .ignoresSafeArea(.all)
+        )
         .onAppear {
             loadTodaysSessions()
             requestNotificationPermission()
@@ -102,7 +101,6 @@ struct FocusTimerView: View {
             SoundPickerSheet()
                 .presentationDetents([.medium, .large])
                 .presentationCornerRadius(24)
-                .presentationBackgroundInteraction(.enabled)
         }
     }
 
