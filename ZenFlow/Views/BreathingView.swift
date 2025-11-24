@@ -307,7 +307,7 @@ struct BreathingView: View {
                     .frame(height: 40)
 
                 // Flexible spacer with minimum height
-                Spacer(minLength: 15)
+                Spacer(minLength: 10)
 
                 // Breathing circles (fixed height zone)
                 ZStack {
@@ -350,7 +350,7 @@ struct BreathingView: View {
                 .accessibilityElement(children: .ignore)
                 .accessibilityLabel("Nefes alma animasyonu")
                 .accessibilityValue(currentPhase.accessibilityAnnouncement)
-                .frame(height: geometry.size.height * 0.4)
+                .frame(height: geometry.size.height * 0.35)
 
                 // Dynamic breathing text (fixed height zone)
                 Text(currentPhase.text)
@@ -368,13 +368,13 @@ struct BreathingView: View {
                 compactSoundSelector
                     .opacity(isAnimating ? 0 : 1)
                     .allowsHitTesting(!isAnimating)
-                    .frame(height: 70)
+                    .frame(height: 60)
 
                 // Duration picker (flexible height)
                 durationPickerView
                     .opacity(isAnimating ? 0 : 1)
                     .allowsHitTesting(!isAnimating)
-                    .frame(height: 80)
+                    .frame(height: 70)
 
                 // Flexible spacer with minimum height
                 Spacer(minLength: 10)
@@ -404,7 +404,7 @@ struct BreathingView: View {
                     .allowsHitTesting(isAnimating)
                 }
                 .frame(maxWidth: .infinity, minHeight: 80)
-                .padding(.bottom, max(geometry.safeAreaInsets.bottom, 30))
+                .padding(.bottom, 90)
             }
 
                 // Session Complete Overlay
