@@ -12,7 +12,7 @@ import SwiftUI
 
 // MARK: - Confetti Particle
 
-struct ConfettiParticle: Identifiable {
+struct OnboardingConfetti: Identifiable {
     let id = UUID()
     let x: CGFloat
     let y: CGFloat
@@ -28,7 +28,7 @@ struct OnboardingCompletionView: View {
     @Binding var isPresented: Bool
     let onStartFirstSession: () -> Void
 
-    @State private var confettiParticles: [ConfettiParticle] = []
+    @State private var confettiParticles: [OnboardingConfetti] = []
     @State private var isAnimating = false
     @State private var showContent = false
 
@@ -188,7 +188,7 @@ struct OnboardingCompletionView: View {
 
         // Create initial confetti particles
         for _ in 0..<50 {
-            let particle = ConfettiParticle(
+            let particle = OnboardingConfetti(
                 x: CGFloat.random(in: 0...UIScreen.main.bounds.width),
                 y: CGFloat.random(in: -200...(-50)),
                 color: colors.randomElement() ?? ZenTheme.mysticalViolet,
@@ -205,7 +205,7 @@ struct OnboardingCompletionView: View {
     private func animateConfetti() {
         withAnimation(.easeIn(duration: 3.0)) {
             confettiParticles = confettiParticles.map { particle in
-                ConfettiParticle(
+                OnboardingConfetti(
                     id: particle.id,
                     x: particle.x + CGFloat.random(in: -50...50),
                     y: UIScreen.main.bounds.height + 100,

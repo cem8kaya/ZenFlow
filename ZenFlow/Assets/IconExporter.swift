@@ -13,7 +13,7 @@ import UIKit
 
 // MARK: - Icon Size Configuration
 
-struct IconSize {
+struct IconExportConfig {
     let name: String
     let size: CGFloat
     let scale: CGFloat
@@ -35,37 +35,37 @@ struct IconSize {
 
 @MainActor
 struct IconSizes {
-    static let all: [IconSize] = [
+    static let all: [IconExportConfig] = [
         // iPhone
-        IconSize(name: "iPhone Notification", size: 20, scale: 2),
-        IconSize(name: "iPhone Notification", size: 20, scale: 3),
-        IconSize(name: "iPhone Settings", size: 29, scale: 2),
-        IconSize(name: "iPhone Settings", size: 29, scale: 3),
-        IconSize(name: "iPhone Spotlight", size: 40, scale: 2),
-        IconSize(name: "iPhone Spotlight", size: 40, scale: 3),
-        IconSize(name: "iPhone App", size: 60, scale: 2),
-        IconSize(name: "iPhone App", size: 60, scale: 3),
+        IconExportConfig(name: "iPhone Notification", size: 20, scale: 2),
+        IconExportConfig(name: "iPhone Notification", size: 20, scale: 3),
+        IconExportConfig(name: "iPhone Settings", size: 29, scale: 2),
+        IconExportConfig(name: "iPhone Settings", size: 29, scale: 3),
+        IconExportConfig(name: "iPhone Spotlight", size: 40, scale: 2),
+        IconExportConfig(name: "iPhone Spotlight", size: 40, scale: 3),
+        IconExportConfig(name: "iPhone App", size: 60, scale: 2),
+        IconExportConfig(name: "iPhone App", size: 60, scale: 3),
 
         // iPad
-        IconSize(name: "iPad Notification", size: 20, scale: 1),
-        IconSize(name: "iPad Notification", size: 20, scale: 2),
-        IconSize(name: "iPad Settings", size: 29, scale: 1),
-        IconSize(name: "iPad Settings", size: 29, scale: 2),
-        IconSize(name: "iPad Spotlight", size: 40, scale: 1),
-        IconSize(name: "iPad Spotlight", size: 40, scale: 2),
-        IconSize(name: "iPad App", size: 76, scale: 1),
-        IconSize(name: "iPad App", size: 76, scale: 2),
-        IconSize(name: "iPad Pro App", size: 83.5, scale: 2),
+        IconExportConfig(name: "iPad Notification", size: 20, scale: 1),
+        IconExportConfig(name: "iPad Notification", size: 20, scale: 2),
+        IconExportConfig(name: "iPad Settings", size: 29, scale: 1),
+        IconExportConfig(name: "iPad Settings", size: 29, scale: 2),
+        IconExportConfig(name: "iPad Spotlight", size: 40, scale: 1),
+        IconExportConfig(name: "iPad Spotlight", size: 40, scale: 2),
+        IconExportConfig(name: "iPad App", size: 76, scale: 1),
+        IconExportConfig(name: "iPad App", size: 76, scale: 2),
+        IconExportConfig(name: "iPad Pro App", size: 83.5, scale: 2),
 
         // App Store
-        IconSize(name: "App Store", size: 1024, scale: 1),
+        IconExportConfig(name: "App Store", size: 1024, scale: 1),
     ]
 
-    static let recommended: [IconSize] = [
-        IconSize(name: "iPhone App", size: 60, scale: 3),     // 180x180
-        IconSize(name: "iPhone App", size: 60, scale: 2),     // 120x120
-        IconSize(name: "iPad App", size: 76, scale: 2),       // 152x152
-        IconSize(name: "App Store", size: 1024, scale: 1),    // 1024x1024
+    static let recommended: [IconExportConfig] = [
+        IconExportConfig(name: "iPhone App", size: 60, scale: 3),     // 180x180
+        IconExportConfig(name: "iPhone App", size: 60, scale: 2),     // 120x120
+        IconExportConfig(name: "iPad App", size: 76, scale: 2),       // 152x152
+        IconExportConfig(name: "App Store", size: 1024, scale: 1),    // 1024x1024
     ]
 }
 
@@ -79,7 +79,7 @@ class IconExporter {
     /// Export a single icon at specified size
     static func exportIcon(
         style: IconStyle,
-        size: IconSize,
+        size: IconExportConfig,
         completion: @escaping (Result<UIImage, Error>) -> Void
     ) {
         let view = IconExportView(style: style, size: size.pixelSize)
@@ -96,7 +96,7 @@ class IconExporter {
     /// Export all recommended sizes
     static func exportAllSizes(
         style: IconStyle,
-        sizes: [IconSize] = IconSizes.recommended,
+        sizes: [IconExportConfig] = IconSizes.recommended,
         progress: @escaping (String, Int, Int) -> Void,
         completion: @escaping ([String: UIImage]) -> Void
     ) {
@@ -142,7 +142,7 @@ class IconExporter {
     /// Export and save all icons to Documents
     static func exportAndSave(
         style: IconStyle,
-        sizes: [IconSize] = IconSizes.all,
+        sizes: [IconExportConfig] = IconSizes.all,
         completion: @escaping (Int) -> Void
     ) {
         exportAllSizes(style: style, sizes: sizes) { filename, current, total in
