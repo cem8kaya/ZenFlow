@@ -254,53 +254,56 @@ struct BreathingView: View {
     var body: some View {
         ZStack {
             VStack(spacing: 0) {
-                // Exercise selection button (only when not animating)
-                if !isAnimating {
-                    HStack {
-                        Spacer()
-                        Button(action: {
-                            showExerciseSelection = true
-                        }) {
-                            HStack(spacing: 8) {
-                                Image(systemName: currentExercise.iconName)
-                                    .font(.system(size: 14))
-                                Text(currentExercise.name)
-                                    .font(.system(size: 14, weight: .semibold))
-                                Image(systemName: "chevron.down")
-                                    .font(.system(size: 10, weight: .semibold))
-                            }
-                            .foregroundColor(ZenTheme.lightLavender)
-                            .padding(.horizontal, 16)
-                            .padding(.vertical, 10)
-                            .background(
-                                Capsule()
-                                    .fill(Color.white.opacity(0.1))
-                            )
-                            .overlay(
-                                Capsule()
-                                    .stroke(ZenTheme.softPurple.opacity(0.3), lineWidth: 1)
-                            )
+                // Exercise selection button (fixed height zone)
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        showExerciseSelection = true
+                    }) {
+                        HStack(spacing: 8) {
+                            Image(systemName: currentExercise.iconName)
+                                .font(.system(size: 14))
+                            Text(currentExercise.name)
+                                .font(.system(size: 14, weight: .semibold))
+                            Image(systemName: "chevron.down")
+                                .font(.system(size: 10, weight: .semibold))
                         }
-                        .zenSecondaryButtonStyle()
-                        .accessibilityLabel("Egzersiz seç: \(currentExercise.name)")
-                        .accessibilityHint("Farklı bir nefes egzersizi seçmek için dokunun")
-                        Spacer()
+                        .foregroundColor(ZenTheme.lightLavender)
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 10)
+                        .background(
+                            Capsule()
+                                .fill(Color.white.opacity(0.1))
+                        )
+                        .overlay(
+                            Capsule()
+                                .stroke(ZenTheme.softPurple.opacity(0.3), lineWidth: 1)
+                        )
                     }
-                    .transition(.opacity.combined(with: .move(edge: .top)))
+                    .zenSecondaryButtonStyle()
+                    .accessibilityLabel("Egzersiz seç: \(currentExercise.name)")
+                    .accessibilityHint("Farklı bir nefes egzersizi seçmek için dokunun")
+                    .opacity(isAnimating ? 0 : 1)
+                    .allowsHitTesting(!isAnimating)
+                    Spacer()
                 }
+                .frame(height: 50)
 
-                Spacer(minLength: 20)
+                // Fixed spacer
+                Color.clear.frame(height: 20)
 
-                // Session duration indicator
-                if isAnimating || sessionTracker.duration > 0 {
-                    Text(sessionTracker.getFormattedDuration())
-                        .font(ZenTheme.zenHeadline)
-                        .foregroundColor(ZenTheme.lightLavender.opacity(0.7))
-                        .accessibilityLabel("Meditasyon süresi: \(sessionTracker.getFormattedDuration())")
-                        .padding(.bottom, 20)
-                }
+                // Session duration indicator (fixed height zone)
+                Text(sessionTracker.getFormattedDuration())
+                    .font(ZenTheme.zenHeadline)
+                    .foregroundColor(ZenTheme.lightLavender.opacity(0.7))
+                    .accessibilityLabel("Meditasyon süresi: \(sessionTracker.getFormattedDuration())")
+                    .opacity((isAnimating || sessionTracker.duration > 0) ? 1 : 0)
+                    .frame(height: 40)
 
-                // Breathing circles
+                // Fixed spacer above circles
+                Color.clear.frame(height: 30)
+
+                // Breathing circles (fixed height zone)
                 ZStack {
                     // Outer circle
                     Circle()
@@ -322,55 +325,55 @@ struct BreathingView: View {
                         .scaleEffect(scale * pulseScale)
                         .blur(radius: 5)
 
-                    // Phase countdown (only when animating)
-                    if isAnimating && !isPaused {
-                        VStack(spacing: 8) {
-                            // Countdown number
-                            Text("\(Int(ceil(phaseTimeRemaining)))")
-                                .font(.system(size: 72, weight: .ultraLight, design: .rounded))
-                                .foregroundColor(.white)
-                                .monospacedDigit()
+                    // Phase countdown and text overlay
+                    VStack(spacing: 8) {
+                        // Countdown number
+                        Text("\(Int(ceil(phaseTimeRemaining)))")
+                            .font(.system(size: 72, weight: .ultraLight, design: .rounded))
+                            .foregroundColor(.white)
+                            .monospacedDigit()
+                            .opacity(isAnimating && !isPaused ? 1 : 0)
 
-                            // Phase text
-                            Text(currentPhase.text)
-                                .font(.system(size: 18, weight: .medium))
-                                .foregroundColor(.white.opacity(0.8))
-                        }
-                        .transition(.opacity)
+                        // Phase text
+                        Text(currentPhase.text)
+                            .font(.system(size: 18, weight: .medium))
+                            .foregroundColor(.white.opacity(0.8))
+                            .opacity(isAnimating && !isPaused ? 1 : 0)
                     }
                 }
                 .accessibilityElement(children: .ignore)
                 .accessibilityLabel("Nefes alma animasyonu")
                 .accessibilityValue(currentPhase.accessibilityAnnouncement)
+                .frame(height: 350)
 
-                // Dynamic breathing text (when not animating)
-                if !isAnimating {
-                    Text(currentPhase.text)
-                        .font(ZenTheme.zenLargeTitle)
-                        .foregroundColor(ZenTheme.lightLavender)
-                        .transition(.opacity.combined(with: .scale))
-                        .id(currentPhase.text)
-                        .accessibilityHidden(true)
-                        .padding(.top, 20)
-                }
+                // Dynamic breathing text (fixed height zone)
+                Text(currentPhase.text)
+                    .font(ZenTheme.zenLargeTitle)
+                    .foregroundColor(ZenTheme.lightLavender)
+                    .id(currentPhase.text)
+                    .accessibilityHidden(true)
+                    .opacity(isAnimating ? 0 : 1)
+                    .frame(height: 50)
 
-                Spacer(minLength: 20)
+                // Fixed spacer
+                Color.clear.frame(height: 20)
 
-                // Sound selector (visible only when not animating)
-                if !isAnimating {
-                    compactSoundSelector
-                        .transition(.opacity.combined(with: .scale))
-                        .padding(.bottom, 12)
-                }
+                // Sound selector (fixed height zone)
+                compactSoundSelector
+                    .opacity(isAnimating ? 0 : 1)
+                    .allowsHitTesting(!isAnimating)
+                    .frame(height: 80)
 
-                // Duration picker (visible only when not animating)
-                if !isAnimating {
-                    durationPickerView
-                        .transition(.opacity.combined(with: .scale))
-                        .padding(.bottom, 16)
-                }
+                // Duration picker (fixed height zone)
+                durationPickerView
+                    .opacity(isAnimating ? 0 : 1)
+                    .allowsHitTesting(!isAnimating)
+                    .frame(height: 100)
 
-                // Control buttons
+                // Fixed spacer before buttons
+                Color.clear.frame(height: 10)
+
+                // Control buttons (fixed height zone)
                 HStack(spacing: 40) {
                     // Start/Stop button
                     Button(action: toggleAnimation) {
@@ -382,20 +385,19 @@ struct BreathingView: View {
                     .accessibilityLabel(isAnimating ? "Meditasyonu durdur" : "Meditasyonu başlat")
                     .accessibilityHint(isAnimating ? "Meditasyon seansını sonlandırır ve kaydeder" : "Nefes egzersizi ile meditasyonu başlatır")
 
-                    // Pause/Resume button
-                    if isAnimating {
-                        Button(action: togglePause) {
-                            Image(systemName: isPaused ? "play.circle" : "pause.circle")
-                                .font(.system(size: 50))
-                                .foregroundColor(ZenTheme.softPurple)
-                        }
-                        .zenSecondaryButtonStyle()
-                        .transition(.scale.combined(with: .opacity))
-                        .accessibilityLabel(isPaused ? "Devam et" : "Duraklat")
-                        .accessibilityHint(isPaused ? "Meditasyona devam eder" : "Meditasyonu geçici olarak duraklatır")
+                    // Pause/Resume button (always present, hidden when not animating)
+                    Button(action: togglePause) {
+                        Image(systemName: isPaused ? "play.circle" : "pause.circle")
+                            .font(.system(size: 50))
+                            .foregroundColor(ZenTheme.softPurple)
                     }
+                    .zenSecondaryButtonStyle()
+                    .accessibilityLabel(isPaused ? "Devam et" : "Duraklat")
+                    .accessibilityHint(isPaused ? "Meditasyona devam eder" : "Meditasyonu geçici olarak duraklatır")
+                    .opacity(isAnimating ? 1 : 0)
+                    .allowsHitTesting(isAnimating)
                 }
-                .frame(maxWidth: .infinity)
+                .frame(maxWidth: .infinity, minHeight: 80)
                 .padding(.bottom, 30)
             }
 
