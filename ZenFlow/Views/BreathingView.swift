@@ -255,44 +255,45 @@ struct BreathingView: View {
     }
 
     var body: some View {
-        NavigationView {
-            ZStack {
-                VStack(spacing: 0) {
-                    // Exercise selection button (fixed height zone)
-                    HStack {
-                        Spacer()
-                        Button(action: {
-                            showExerciseSelection = true
-                        }) {
-                            HStack(spacing: 8) {
-                                Image(systemName: currentExercise.iconName)
-                                    .font(.system(size: 14))
-                                Text(currentExercise.name)
-                                    .font(.system(size: 14, weight: .semibold))
-                                Image(systemName: "chevron.down")
-                                    .font(.system(size: 10, weight: .semibold))
+        NavigationStack {
+            GeometryReader { geometry in
+                ZStack {
+                    VStack(spacing: 0) {
+                        // Exercise selection button (fixed height zone)
+                        HStack {
+                            Spacer()
+                            Button(action: {
+                                showExerciseSelection = true
+                            }) {
+                                HStack(spacing: 8) {
+                                    Image(systemName: currentExercise.iconName)
+                                        .font(.system(size: 14))
+                                    Text(currentExercise.name)
+                                        .font(.system(size: 14, weight: .semibold))
+                                    Image(systemName: "chevron.down")
+                                        .font(.system(size: 10, weight: .semibold))
+                                }
+                                .foregroundColor(ZenTheme.lightLavender)
+                                .padding(.horizontal, 16)
+                                .padding(.vertical, 10)
+                                .background(
+                                    Capsule()
+                                        .fill(Color.white.opacity(0.1))
+                                )
+                                .overlay(
+                                    Capsule()
+                                        .stroke(ZenTheme.softPurple.opacity(0.3), lineWidth: 1)
+                                )
                             }
-                            .foregroundColor(ZenTheme.lightLavender)
-                            .padding(.horizontal, 16)
-                            .padding(.vertical, 10)
-                            .background(
-                                Capsule()
-                                    .fill(Color.white.opacity(0.1))
-                            )
-                            .overlay(
-                                Capsule()
-                                    .stroke(ZenTheme.softPurple.opacity(0.3), lineWidth: 1)
-                            )
+                            .zenSecondaryButtonStyle()
+                            .accessibilityLabel("Egzersiz seç: \(currentExercise.name)")
+                            .accessibilityHint("Farklı bir nefes egzersizi seçmek için dokunun")
+                            .opacity(isAnimating ? 0 : 1)
+                            .allowsHitTesting(!isAnimating)
+                            Spacer()
                         }
-                        .zenSecondaryButtonStyle()
-                        .accessibilityLabel("Egzersiz seç: \(currentExercise.name)")
-                        .accessibilityHint("Farklı bir nefes egzersizi seçmek için dokunun")
-                        .opacity(isAnimating ? 0 : 1)
-                        .allowsHitTesting(!isAnimating)
-                        Spacer()
-                    }
-                    .frame(height: 50)
-                    .padding(.top, 8)
+                        .frame(height: 50)
+                        .padding(.top, max(geometry.safeAreaInsets.top, 16))
 
                 // Fixed spacer
                 Color.clear.frame(height: 20)
@@ -403,7 +404,7 @@ struct BreathingView: View {
                     .allowsHitTesting(isAnimating)
                 }
                 .frame(maxWidth: .infinity, minHeight: 80)
-                .padding(.bottom, 30)
+                .padding(.bottom, max(geometry.safeAreaInsets.bottom, 30))
             }
 
                 // Session Complete Overlay
@@ -561,7 +562,7 @@ struct BreathingView: View {
                     .stroke(ZenTheme.softPurple.opacity(0.3), lineWidth: 1)
             )
         }
-        .padding(.horizontal, 20)
+        .padding(.horizontal, 24)
         .accessibilityLabel("Ses seçimi")
         .accessibilityHint("Arka plan sesi seçmek için dokunun")
     }
