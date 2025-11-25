@@ -48,16 +48,17 @@ struct ZenCoachView: View {
                 inputBar
             }
         }
-        .alert(Text("Geçmişi Temizle", comment: "Clear history alert title"), isPresented: $showClearAlert) {
-            Button(Text("İptal", comment: "Cancel button"), role: .cancel) {}
-            Button(Text("Temizle", comment: "Clear button"), role: .destructive) {
-                manager.clearHistory()
-                HapticManager.shared.playNotification(type: .success)
+        // DÜZELTME 1: Button başlıkları Text(...) yerine doğrudan String olarak verildi.
+                .alert(Text("Geçmişi Temizle", comment: "Clear history alert title"), isPresented: $showClearAlert) {
+                    Button("İptal", role: .cancel) {}
+                    Button("Temizle", role: .destructive) {
+                        manager.clearHistory()
+                        HapticManager.shared.playNotification(type: .success)
+                    }
+                } message: {
+                    Text("Tüm sohbet geçmişi silinecek. Emin misiniz?", comment: "Clear history confirmation message")
+                }
             }
-        } message: {
-            Text("Tüm sohbet geçmişi silinecek. Emin misiniz?", comment: "Clear history confirmation message")
-        }
-    }
 
     // MARK: - Header
 
@@ -106,14 +107,21 @@ struct ZenCoachView: View {
 
             // Title and status
             VStack(alignment: .leading, spacing: 2) {
-                Text("Zen Master")
-                    .font(.system(size: 18, weight: .semibold))
-                    .foregroundColor(ZenTheme.lightLavender)
+                            Text("Zen Master")
+                                .font(.system(size: 18, weight: .semibold))
+                                .foregroundColor(ZenTheme.lightLavender)
 
-                Text(manager.isProcessing ? Text("Yazıyor...", comment: "Typing indicator") : Text("Çevrimiçi", comment: "Online status"))
-                    .font(.system(size: 13))
-                    .foregroundColor(ZenTheme.lightLavender.opacity(0.7))
-            }
+                            // DÜZELTME 2: Dıştaki gereksiz Text() sarmalayıcısı kaldırıldı.
+                            Group {
+                                if manager.isProcessing {
+                                    Text("Yazıyor...", comment: "Typing indicator")
+                                } else {
+                                    Text("Çevrimiçi", comment: "Online status")
+                                }
+                            }
+                            .font(.system(size: 13))
+                            .foregroundColor(ZenTheme.lightLavender.opacity(0.7))
+                        }
 
             Spacer()
 

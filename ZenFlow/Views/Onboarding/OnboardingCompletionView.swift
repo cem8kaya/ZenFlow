@@ -254,3 +254,4 @@ struct OnboardingCompletionView: View {
         onStartFirstSession: {}
     )
 }
+
