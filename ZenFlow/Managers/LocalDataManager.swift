@@ -32,6 +32,10 @@ class LocalDataManager: ObservableObject {
 
     private let defaults: UserDefaults
 
+    // Cache for decoded session history to avoid repeated decoding
+    private var cachedSessionHistory: [SessionData]?
+    private var cachedFocusSessionHistory: [FocusSessionData]?
+
     // MARK: - Initialization
 
     private init() {
@@ -130,14 +134,24 @@ class LocalDataManager: ObservableObject {
     /// Seans geçmişi
     var sessionHistory: [SessionData] {
         get {
+            // Return cached value if available
+            if let cached = cachedSessionHistory {
+                return cached
+            }
+
+            // Decode from UserDefaults and cache
             guard let data = defaults.data(forKey: Keys.sessionHistory),
                   let sessions = try? JSONDecoder().decode([SessionData].self, from: data) else {
+                cachedSessionHistory = []
                 return []
             }
+
+            cachedSessionHistory = sessions
             return sessions
         }
         set {
             objectWillChange.send()
+            cachedSessionHistory = newValue // Update cache
             if let data = try? JSONEncoder().encode(newValue) {
                 defaults.set(data, forKey: Keys.sessionHistory)
                 print("💾 Session history updated: \(newValue.count) sessions")
@@ -343,14 +357,24 @@ class LocalDataManager: ObservableObject {
     /// Tüm odaklanma seansı geçmişi
     var focusSessionHistory: [FocusSessionData] {
         get {
+            // Return cached value if available
+            if let cached = cachedFocusSessionHistory {
+                return cached
+            }
+
+            // Decode from UserDefaults and cache
             guard let data = defaults.data(forKey: Keys.focusSessionHistory),
                   let sessions = try? JSONDecoder().decode([FocusSessionData].self, from: data) else {
+                cachedFocusSessionHistory = []
                 return []
             }
+
+            cachedFocusSessionHistory = sessions
             return sessions
         }
         set {
             objectWillChange.send()
+            cachedFocusSessionHistory = newValue // Update cache
             if let data = try? JSONEncoder().encode(newValue) {
                 defaults.set(data, forKey: Keys.focusSessionHistory)
                 print("💾 Focus session history updated: \(newValue.count) sessions")
