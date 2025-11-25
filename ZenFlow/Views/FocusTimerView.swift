@@ -234,20 +234,24 @@ struct FocusTimerView: View {
             .disabled(timerState == .idle)
             .opacity(timerState == .idle ? 0.5 : 1)
 
-            // Play/Pause button (more compact)
+            // Play/Pause button (larger with gradient, matching meditation style)
             Button(action: toggleTimer) {
-                Image(systemName: timerState.iconName)
-                    .font(.system(size: 28))
-                    .foregroundColor(.white)
-                    .frame(
-                        width: 64,
-                        height: 64
-                    )
-                    .background(
-                        Circle()
-                            .fill(currentMode.color)
-                            .shadow(color: currentMode.color.opacity(0.5), radius: 16)
-                    )
+                ZStack {
+                    Circle()
+                        .fill(
+                            LinearGradient(
+                                colors: [currentMode.color, currentMode.color.opacity(0.7)],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            )
+                        )
+                        .frame(width: 80, height: 80)
+                        .shadow(color: currentMode.color.opacity(0.5), radius: 20, x: 0, y: 10)
+
+                    Image(systemName: timerState.iconName)
+                        .font(.system(size: 32, weight: .semibold))
+                        .foregroundColor(.white)
+                }
             }
 
             // Skip button (more compact)
