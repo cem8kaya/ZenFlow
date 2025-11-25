@@ -267,16 +267,18 @@ struct ZenCoachView: View {
                 }
             }
             .onChange(of: manager.isProcessing) { _, isProcessing in
-                // Scroll to typing indicator or prompts
+                // Scroll to typing indicator or last message
                 if isProcessing {
                     withAnimation {
                         proxy.scrollTo("typing", anchor: .bottom)
                     }
                 } else {
-                    // Scroll to prompts after response
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                        withAnimation {
-                            proxy.scrollTo("prompts", anchor: .bottom)
+                    // Keep focus on the last message (coach response)
+                    if let lastMessage = manager.messages.last {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                            withAnimation {
+                                proxy.scrollTo(lastMessage.id, anchor: .bottom)
+                            }
                         }
                     }
                 }

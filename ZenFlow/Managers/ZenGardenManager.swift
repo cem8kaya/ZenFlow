@@ -78,11 +78,9 @@ class ZenGardenManager: ObservableObject {
 
     /// Session durumu değiştiğinde çağrılır
     private func handleSessionStateChange(isActive: Bool) {
-        if isActive {
-            print("🌳 Active meditation session detected - starting real-time updates")
-        } else {
-            print("🌳 Meditation session ended - updating final state")
-        }
+        #if DEBUG
+        print("🌳 Meditation session \(isActive ? "started" : "ended")")
+        #endif
         updateTreeStateWithActiveSession()
     }
 
@@ -123,15 +121,10 @@ class ZenGardenManager: ObservableObject {
         // Bir sonraki aşamaya kalan süreyi hesapla
         minutesUntilNextStage = currentStage.minutesUntilNextStage(currentMinutes: totalMinutes)
 
-        print("🌳 Tree state updated:")
-        print("   - Stage: \(currentStage.title)")
-        print("   - Total minutes: \(totalMinutes)")
-        print("   - Progress: \(Int(stageProgress * 100))%")
-        if let remaining = minutesUntilNextStage {
-            print("   - Minutes until next stage: \(remaining)")
-        } else {
-            print("   - Maximum stage reached!")
-        }
+        // Sadece debug modunda detaylı log yaz
+        #if DEBUG
+        print("🌳 Tree state: \(currentStage.title) (\(totalMinutes) min, \(Int(stageProgress * 100))% progress)")
+        #endif
     }
 
     /// Aktif session dahil ağaç durumunu güncelle
