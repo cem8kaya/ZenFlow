@@ -161,25 +161,25 @@ struct SwipeableTabView: View {
                 .accessibilityLabel("Zen Bahçem sekmesi")
                 .tag(2)
 
+            ZenCoachView()
+                .tabItem {
+                    Label("Zen Coach", systemImage: "person.crop.circle.fill")
+                }
+                .accessibilityLabel("Zen Coach sekmesi")
+                .tag(3)
+
             BadgesView()
                 .tabItem {
                     Label("Rozetler", systemImage: "trophy.fill")
                 }
                 .accessibilityLabel("Rozetler sekmesi")
-                .tag(3)
+                .tag(4)
 
             SettingsView()
                 .tabItem {
                     Label("Ayarlar", systemImage: "gear")
                 }
                 .accessibilityLabel("Ayarlar sekmesi")
-                .tag(4)
-
-            ZenCoachView()
-                .tabItem {
-                    Label("Zen Coach", systemImage: "person.crop.circle.fill")
-                }
-                .accessibilityLabel("Zen Coach sekmesi")
                 .tag(5)
         }
     }
