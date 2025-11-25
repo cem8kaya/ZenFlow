@@ -418,33 +418,9 @@ struct BreathingView: View {
                 }
             }
             .background(
-                ZStack {
-                    // Background gradient layer
-                    if featureFlag.breathingGradientEnabled {
-                        // Animated breathing-synchronized gradient
-                        AnimatedGradientView(
-                            breathingPhase: $currentPhase,
-                            palette: featureFlag.breathingGradientPalette,
-                            opacity: featureFlag.breathingGradientOpacity
-                        )
-                        .ignoresSafeArea()
-                    } else {
-                        // Static gradient
-                        ZenTheme.backgroundGradient
-                            .ignoresSafeArea()
-                    }
-
-                    // Particle effects layer (if enabled)
-                    if featureFlag.particleEffectsEnabled {
-                        ParticleCanvasView(
-                            isAnimating: isAnimating && !isPaused,
-                            currentPhase: currentPhase,
-                            intensity: featureFlag.particleIntensity,
-                            colorTheme: featureFlag.particleColorTheme
-                        )
-                        .ignoresSafeArea()
-                    }
-                }
+                // Static gradient - optimized for all devices, no edge shifting
+                ZenTheme.backgroundGradient
+                    .ignoresSafeArea()
             )
         }
         .navigationBarHidden(true)

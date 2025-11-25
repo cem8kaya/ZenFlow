@@ -25,7 +25,6 @@ struct FocusTimerView: View {
     @State private var sessionEndTime: Date?
     @State private var showBreathingExerciseSuggestion = false
     @State private var showCompletionCelebration = false
-    @State private var breathingPhase: AnimationPhase = .exhale
     @State private var showSoundPicker = false
     @State private var volumeBeforePause: Float = 0.0
     @StateObject private var soundManager = AmbientSoundManager.shared
@@ -99,7 +98,8 @@ struct FocusTimerView: View {
                 }
             }
             .background(
-                AnimatedGradientView(breathingPhase: $breathingPhase)
+                // Static gradient - optimized for all devices, no edge shifting
+                ZenTheme.backgroundGradient
                     .ignoresSafeArea()
             )
             .navigationBarHidden(true)

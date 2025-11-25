@@ -63,10 +63,12 @@ class DeepLinkHandler {
             return 1 // Odaklan tab
         case "garden":
             return 2 // Zen Bahçem tab
+        case "coach", "zencoach":
+            return 3 // Zen Coach tab
         case "badges", "progress", "stats":
-            return 3 // Rozetler tab
+            return 4 // Rozetler tab
         case "settings":
-            return 4 // Ayarlar tab
+            return 5 // Ayarlar tab
         default:
             print("⚠️ Unknown deep link host: \(host), defaulting to tab 0")
             return 0
@@ -88,6 +90,11 @@ class DeepLinkHandler {
     /// Navigates to zen garden
     func navigateToGarden() {
         handle("zenflow://garden")
+    }
+
+    /// Navigates to zen coach
+    func navigateToCoach() {
+        handle("zenflow://coach")
     }
 
     /// Navigates to badges
