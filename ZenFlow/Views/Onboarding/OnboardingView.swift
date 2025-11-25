@@ -129,8 +129,13 @@ struct OnboardingView: View {
                     // Next/Start button
                     Button(action: nextPageOrFinish) {
                         HStack(spacing: 8) {
-                            Text(isLastPage ? Text("Başla", comment: "Start button") : Text("İleri", comment: "Next button"))
-                                .font(.system(size: 17, weight: .semibold))
+                            if isLastPage {
+                                Text("Başla", comment: "Start button")
+                                    .font(.system(size: 17, weight: .semibold))
+                            } else {
+                                Text("İleri", comment: "Next button")
+                                    .font(.system(size: 17, weight: .semibold))
+                            }
                             if !isLastPage {
                                 Image(systemName: "chevron.right")
                                     .font(.system(size: 16, weight: .semibold))
@@ -159,10 +164,10 @@ struct OnboardingView: View {
                             y: 6
                         )
                     }
-                    .accessibilityLabel(isLastPage ? Text("Başla", comment: "Start button accessibility") : Text("Sonraki sayfa", comment: "Next page accessibility"))
+                    .accessibilityLabel(isLastPage ? "Başla" : "Sonraki sayfa")
                     .accessibilityHint(isLastPage ?
-                        Text("Onboarding'i tamamla ve uygulamaya geç", comment: "Complete onboarding hint") :
-                        Text("Sonraki sayfaya git", comment: "Go to next page hint"))
+                        "Onboarding'i tamamla ve uygulamaya geç" :
+                        "Sonraki sayfaya git")
                 }
                 .padding(.horizontal, 32)
                 .padding(.bottom, 40)
