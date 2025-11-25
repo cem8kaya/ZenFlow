@@ -466,6 +466,12 @@ struct BreathingView: View {
                     .presentationDetents([.medium, .large])
                     .presentationCornerRadius(24)
             }
+            .onReceive(NotificationCenter.default.publisher(for: DeepLinkHandler.switchToTabNotification)) { notification in
+                // Handle deep link with exercise parameter
+                if let exerciseType = notification.userInfo?["exerciseType"] as? String {
+                    handleDeepLinkExercise(exerciseType)
+                }
+            }
         }
     }
 
@@ -842,6 +848,27 @@ struct BreathingView: View {
         UIAccessibility.post(
             notification: .announcement,
             argument: "\(exercise.name) egzersizine geçildi"
+        )
+    }
+
+    /// Handle deep link exercise type parameter
+    private func handleDeepLinkExercise(_ exerciseType: String) {
+        // Select exercise by type
+        exerciseManager.selectExerciseByType(exerciseType)
+
+        // Update UI to reflect the new exercise
+        if let firstPhase = exerciseManager.selectedExercise.phases.first {
+            withAnimation(.easeInOut(duration: 0.5)) {
+                currentPhase = AnimationPhase(from: firstPhase.phase)
+                scale = currentPhase.scale
+                phaseTimeRemaining = firstPhase.duration
+            }
+        }
+
+        // Announce change
+        UIAccessibility.post(
+            notification: .announcement,
+            argument: "\(exerciseManager.selectedExercise.name) egzersizine geçildi"
         )
     }
 }

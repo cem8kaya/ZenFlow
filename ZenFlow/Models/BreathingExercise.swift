@@ -371,4 +371,23 @@ class BreathingExerciseManager: ObservableObject {
         let favoriteStrings = favoriteExerciseIDs.map { $0.uuidString }
         UserDefaults.standard.set(favoriteStrings, forKey: favoriteExercisesKey)
     }
+
+    /// Select exercise by type identifier from deep link
+    /// - Parameter type: Exercise type identifier (e.g., "box", "478", "calming")
+    func selectExerciseByType(_ type: String) {
+        let typeMap: [String: Int] = [
+            "box": 0,           // Kutu Nefesi (Box Breathing)
+            "478": 1,           // 4-7-8 Tekniği
+            "calming": 2,       // Sakinleştirici Nefes
+            "energy": 3,        // Enerji Nefesi
+            "deep": 4           // Derin Gevşeme
+        ]
+
+        if let index = typeMap[type.lowercased()], index < allExercises.count {
+            selectExercise(allExercises[index])
+            print("✅ Selected exercise via deep link: \(allExercises[index].name)")
+        } else {
+            print("⚠️ Unknown exercise type: \(type), keeping current selection")
+        }
+    }
 }

@@ -93,19 +93,22 @@ enum UserIntent: String, Codable, CaseIterable, Identifiable {
         }
     }
 
-    /// Deep link URL for navigation
+    /// Deep link URL for navigation with appropriate exercise parameters
     var deepLinkURL: String? {
         switch self {
         case .stress, .breathing:
-            return "zenflow://breathing"
+            // Box Breathing (Kutu Nefesi) - ideal for stress
+            return "zenflow://breathing?exercise=box"
         case .focus:
             return "zenflow://focus"
         case .sleep:
-            return "zenflow://breathing"
+            // 4-7-8 Technique - ideal for sleep
+            return "zenflow://breathing?exercise=478"
         case .motivation:
             return "zenflow://garden"
         case .meditation:
-            return "zenflow://breathing"
+            // Calming Breath (Sakinleştirici Nefes) - ideal for meditation
+            return "zenflow://breathing?exercise=calming"
         case .progress:
             return "zenflow://badges"
         case .general:

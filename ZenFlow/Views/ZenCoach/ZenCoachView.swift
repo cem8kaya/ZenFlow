@@ -62,6 +62,21 @@ struct ZenCoachView: View {
 
     private var header: some View {
         HStack(spacing: 12) {
+            // Close/Dismiss keyboard button (always visible)
+            Button(action: {
+                // Dismiss keyboard if open, otherwise this button just exists for visual consistency
+                isInputFocused = false
+            }) {
+                Image(systemName: "chevron.down")
+                    .font(.system(size: 18, weight: .semibold))
+                    .foregroundColor(ZenTheme.lightLavender)
+                    .frame(width: 36, height: 36)
+                    .background(
+                        Circle()
+                            .fill(Color.white.opacity(0.1))
+                    )
+            }
+
             // Avatar
             ZStack {
                 Circle()
@@ -210,6 +225,36 @@ struct ZenCoachView: View {
                         .padding(.horizontal, 16)
                         .id("typing")
                     }
+
+                    // Suggested prompts after messages (if not processing)
+                    if !manager.isProcessing {
+                        VStack(spacing: 12) {
+                            Divider()
+                                .background(ZenTheme.softPurple.opacity(0.3))
+                                .padding(.vertical, 8)
+
+                            SuggestedPromptsView(
+                                prompts: manager.getSuggestedPrompts(),
+                                onPromptTapped: { prompt in
+                                    // Remove emoji from prompt before sending
+                                    let cleanPrompt = prompt.replacingOccurrences(of: "🌸 ", with: "")
+                                        .replacingOccurrences(of: "💭 ", with: "")
+                                        .replacingOccurrences(of: "⚡ ", with: "")
+                                        .replacingOccurrences(of: "😴 ", with: "")
+                                        .replacingOccurrences(of: "🎯 ", with: "")
+                                        .replacingOccurrences(of: "🫁 ", with: "")
+                                        .replacingOccurrences(of: "📈 ", with: "")
+                                        .replacingOccurrences(of: "🧘 ", with: "")
+                                        .replacingOccurrences(of: "💆 ", with: "")
+                                        .replacingOccurrences(of: "✨ ", with: "")
+                                    inputText = cleanPrompt
+                                    sendMessage()
+                                }
+                            )
+                        }
+                        .padding(.top, 8)
+                        .id("prompts")
+                    }
                 }
                 .padding(.vertical, 16)
             }
@@ -222,10 +267,17 @@ struct ZenCoachView: View {
                 }
             }
             .onChange(of: manager.isProcessing) { _, isProcessing in
-                // Scroll to typing indicator
+                // Scroll to typing indicator or prompts
                 if isProcessing {
                     withAnimation {
                         proxy.scrollTo("typing", anchor: .bottom)
+                    }
+                } else {
+                    // Scroll to prompts after response
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        withAnimation {
+                            proxy.scrollTo("prompts", anchor: .bottom)
+                        }
                     }
                 }
             }

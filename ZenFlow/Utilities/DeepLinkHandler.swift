@@ -30,7 +30,7 @@ class DeepLinkHandler {
     // MARK: - Deep Link Handling
 
     /// Handles a deep link URL string
-    /// - Parameter urlString: URL string (e.g., "zenflow://breathing")
+    /// - Parameter urlString: URL string (e.g., "zenflow://breathing?exercise=box")
     func handle(_ urlString: String) {
         guard let url = URL(string: urlString),
               url.scheme == "zenflow",
@@ -39,17 +39,37 @@ class DeepLinkHandler {
             return
         }
 
+        // Parse query parameters
+        var queryParams: [String: String] = [:]
+        if let components = URLComponents(string: urlString),
+           let queryItems = components.queryItems {
+            for item in queryItems {
+                if let value = item.value {
+                    queryParams[item.name] = value
+                }
+            }
+        }
+
         // Map host to tab index
         let tabIndex = getTabIndex(for: host)
+
+        // Prepare userInfo with tab index and query params
+        var userInfo: [String: Any] = ["tabIndex": tabIndex]
+
+        // Handle breathing exercise parameter
+        if host.lowercased() == "breathing" || host.lowercased() == "meditation",
+           let exercise = queryParams["exercise"] {
+            userInfo["exerciseType"] = exercise
+        }
 
         // Post notification to switch tabs
         NotificationCenter.default.post(
             name: DeepLinkHandler.switchToTabNotification,
             object: nil,
-            userInfo: ["tabIndex": tabIndex]
+            userInfo: userInfo
         )
 
-        print("🔗 Deep link handled: \(host) -> Tab \(tabIndex)")
+        print("🔗 Deep link handled: \(host) -> Tab \(tabIndex), params: \(queryParams)")
     }
 
     /// Maps URL host to tab index
