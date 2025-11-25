@@ -68,10 +68,10 @@ struct EnhancedZenCoachView: View {
                 .font(.system(size: 50))
                 .foregroundColor(.purple)
 
-            Text("Zen Master")
+            Text("Zen Master", comment: "Zen Master header title")
                 .font(.system(size: 32, weight: .bold, design: .serif))
 
-            Text("Bilgelik yolculuğuna hoş geldin")
+            Text("Bilgelik yolculuğuna hoş geldin", comment: "Zen Master welcome message")
                 .font(.subheadline)
                 .foregroundColor(.secondary)
         }
@@ -83,7 +83,7 @@ struct EnhancedZenCoachView: View {
             HStack {
                 Image(systemName: "sun.max.fill")
                     .foregroundColor(.orange)
-                Text("Günün Öğretisi")
+                Text("Günün Öğretisi", comment: "Daily teaching section title")
                     .font(.headline)
             }
 
@@ -123,7 +123,7 @@ struct EnhancedZenCoachView: View {
                         currentTeaching = teaching
                         showingTeachingDetail = true
                     }) {
-                        Text("Devamını Oku")
+                        Text("Devamını Oku", comment: "Read more button")
                             .font(.subheadline)
                             .foregroundColor(.purple)
                     }
@@ -138,7 +138,7 @@ struct EnhancedZenCoachView: View {
 
     private var categoriesSection: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Zen Öğretileri")
+            Text("Zen Öğretileri", comment: "Zen teachings section title")
                 .font(.headline)
                 .padding(.horizontal)
 
@@ -162,7 +162,7 @@ struct EnhancedZenCoachView: View {
             HStack {
                 Image(systemName: "person.circle.fill")
                     .foregroundColor(.blue)
-                Text("Sana Özel Tavsiye")
+                Text("Sana Özel Tavsiye", comment: "Personalized advice section title")
                     .font(.headline)
             }
 
@@ -181,7 +181,7 @@ struct EnhancedZenCoachView: View {
             HStack {
                 Image(systemName: "leaf.fill")
                     .foregroundColor(.green)
-                Text("Bugünün Uygulaması")
+                Text("Bugünün Uygulaması", comment: "Today's practice section title")
                     .font(.headline)
             }
 
@@ -298,7 +298,7 @@ struct TeachingDetailView: View {
                         HStack {
                             Image(systemName: "lightbulb.fill")
                                 .foregroundColor(.yellow)
-                            Text("Uygulama")
+                            Text("Uygulama", comment: "Practice section title")
                                 .font(.headline)
                         }
 
@@ -311,12 +311,14 @@ struct TeachingDetailView: View {
                 }
                 .padding()
             }
-            .navigationTitle("Zen Öğretisi")
+            .navigationTitle(Text("Zen Öğretisi", comment: "Zen teaching detail page title"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Kapat") {
+                    Button(action: {
                         dismiss()
+                    }) {
+                        Text("Kapat", comment: "Close button")
                     }
                 }
             }

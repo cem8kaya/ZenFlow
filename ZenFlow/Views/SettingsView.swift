@@ -268,46 +268,46 @@ struct StatisticsView: View {
             Section {
                 StatisticRow(
                     icon: "figure.mind.and.body",
-                    title: "Toplam Seans",
+                    title: String(localized: "Toplam Seans", comment: "Total sessions label"),
                     value: "\(dataManager.totalSessions)"
                 )
 
                 StatisticRow(
                     icon: "clock.fill",
-                    title: "Toplam Süre",
+                    title: String(localized: "Toplam Süre", comment: "Total duration label"),
                     value: formatDuration(dataManager.totalMinutes)
                 )
 
                 StatisticRow(
                     icon: "flame.fill",
-                    title: "Mevcut Seri",
-                    value: "\(dataManager.currentStreak) gün"
+                    title: String(localized: "Mevcut Seri", comment: "Current streak label"),
+                    value: String(localized: "\(dataManager.currentStreak) gün", comment: "Days count")
                 )
 
                 StatisticRow(
                     icon: "trophy.fill",
-                    title: "En Uzun Seri",
-                    value: "\(dataManager.longestStreak) gün"
+                    title: String(localized: "En Uzun Seri", comment: "Longest streak label"),
+                    value: String(localized: "\(dataManager.longestStreak) gün", comment: "Days count")
                 )
             } header: {
-                Text("Meditasyon İstatistikleri")
+                Text("Meditasyon İstatistikleri", comment: "Meditation statistics section header")
             }
 
             // Focus Session Statistics
             Section {
                 StatisticRow(
                     icon: "brain.head.profile",
-                    title: "Toplam Odaklanma Seansı",
+                    title: String(localized: "Toplam Odaklanma Seansı", comment: "Total focus sessions label"),
                     value: "\(dataManager.totalFocusSessions)"
                 )
 
                 StatisticRow(
                     icon: "calendar",
-                    title: "Bugünkü Seanslar",
+                    title: String(localized: "Bugünkü Seanslar", comment: "Today's sessions label"),
                     value: "\(dataManager.todayFocusSessions)"
                 )
             } header: {
-                Text("Pomodoro İstatistikleri")
+                Text("Pomodoro İstatistikleri", comment: "Pomodoro statistics section header")
             }
 
             // Last Session
@@ -315,7 +315,7 @@ struct StatisticsView: View {
                 Section {
                     StatisticRow(
                         icon: "calendar.badge.clock",
-                        title: "Son Meditasyon",
+                        title: String(localized: "Son Meditasyon", comment: "Last meditation label"),
                         value: formatDate(lastDate)
                     )
 
@@ -323,17 +323,17 @@ struct StatisticsView: View {
                         Image(systemName: "checkmark.circle.fill")
                             .foregroundColor(dataManager.isStreakActive() ? .green : .red)
                             .frame(width: 28)
-                        Text("Seri Durumu")
+                        Text("Seri Durumu", comment: "Streak status label")
                         Spacer()
-                        Text(dataManager.isStreakActive() ? "Aktif" : "Kırıldı")
+                        Text(dataManager.isStreakActive() ? Text("Aktif", comment: "Active status") : Text("Kırıldı", comment: "Broken status"))
                             .foregroundColor(dataManager.isStreakActive() ? .green : .red)
                     }
                 } header: {
-                    Text("Durum")
+                    Text("Durum", comment: "Status section header")
                 }
             }
         }
-        .navigationTitle("İstatistikler")
+        .navigationTitle(Text("İstatistikler", comment: "Statistics page title"))
         .navigationBarTitleDisplayMode(.inline)
     }
 
@@ -342,9 +342,9 @@ struct StatisticsView: View {
         let mins = minutes % 60
 
         if hours > 0 {
-            return "\(hours)s \(mins)d"
+            return String(localized: "\(hours)s \(mins)d", comment: "Hours and minutes format (short)")
         } else {
-            return "\(mins) dakika"
+            return String(localized: "\(mins) dakika", comment: "Minutes only format")
         }
     }
 
@@ -368,11 +368,11 @@ struct ContactView: View {
         List {
             Section {
                 VStack(alignment: .leading, spacing: 16) {
-                    Text("Geri Bildiriminiz")
+                    Text("Geri Bildiriminiz", comment: "Your feedback section title")
                         .font(.headline)
                         .foregroundColor(.primary)
 
-                    Text("ZenFlow'u daha iyi hale getirmemize yardımcı olun. Önerileriniz, hata raporlarınız veya genel geri bildirimlerinizi bizimle paylaşın.")
+                    Text("ZenFlow'u daha iyi hale getirmemize yardımcı olun. Önerileriniz, hata raporlarınız veya genel geri bildirimlerinizi bizimle paylaşın.", comment: "Feedback description text")
                         .font(.subheadline)
                         .foregroundColor(.secondary)
 
@@ -394,7 +394,7 @@ struct ContactView: View {
                         HStack {
                             Spacer()
                             Image(systemName: "paperplane.fill")
-                            Text("Gönder")
+                            Text("Gönder", comment: "Send feedback button")
                                 .fontWeight(.semibold)
                             Spacer()
                         }
@@ -409,9 +409,9 @@ struct ContactView: View {
                 }
                 .padding(.vertical, 8)
             } header: {
-                Text("Geri Bildirim")
+                Text("Geri Bildirim", comment: "Feedback section header")
             } footer: {
-                Text("Geri bildiriminiz doğrudan geliştirme ekibine iletilecektir.")
+                Text("Geri bildiriminiz doğrudan geliştirme ekibine iletilecektir.", comment: "Feedback footer text")
             }
 
             Section {
@@ -420,7 +420,7 @@ struct ContactView: View {
                         Image(systemName: "envelope.fill")
                             .foregroundColor(ZenTheme.calmBlue)
                             .frame(width: 28)
-                        Text("E-posta")
+                        Text("E-posta", comment: "Email contact option")
                         Spacer()
                         Text("contact@zenflow.app")
                             .font(.caption)
@@ -433,7 +433,7 @@ struct ContactView: View {
                         Image(systemName: "at")
                             .foregroundColor(ZenTheme.calmBlue)
                             .frame(width: 28)
-                        Text("Twitter")
+                        Text("Twitter", comment: "Twitter contact option")
                         Spacer()
                         Text("@zenflowapp")
                             .font(.caption)
@@ -441,18 +441,18 @@ struct ContactView: View {
                     }
                 }
             } header: {
-                Text("İletişim Kanalları")
+                Text("İletişim Kanalları", comment: "Contact channels section header")
             }
         }
-        .navigationTitle("İletişim")
+        .navigationTitle(Text("İletişim", comment: "Contact page title"))
         .navigationBarTitleDisplayMode(.inline)
-        .alert("Teşekkürler!", isPresented: $showSubmitAlert) {
-            Button("Tamam") {
+        .alert(Text("Teşekkürler!", comment: "Thank you alert title"), isPresented: $showSubmitAlert) {
+            Button(Text("Tamam", comment: "OK button")) {
                 feedbackText = ""
                 dismiss()
             }
         } message: {
-            Text("Geri bildiriminiz başarıyla gönderildi. Katkınız için teşekkür ederiz!")
+            Text("Geri bildiriminiz başarıyla gönderildi. Katkınız için teşekkür ederiz!", comment: "Feedback success message")
         }
     }
 

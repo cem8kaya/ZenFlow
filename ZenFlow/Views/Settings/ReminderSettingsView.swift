@@ -37,14 +37,14 @@ struct ReminderSettingsView: View {
             // MARK: - Daily Reminders Section
 
             Section {
-                Toggle("Günlük Hatırlatıcı", isOn: $remindersEnabled)
+                Toggle(Text("Günlük Hatırlatıcı", comment: "Daily reminder toggle"), isOn: $remindersEnabled)
                     .onChange(of: remindersEnabled) { oldValue, newValue in
                         handleReminderToggle(newValue)
                     }
 
                 if remindersEnabled {
                     DatePicker(
-                        "Saat",
+                        Text("Saat", comment: "Time picker label"),
                         selection: $selectedTime,
                         displayedComponents: .hourAndMinute
                     )
@@ -53,9 +53,9 @@ struct ReminderSettingsView: View {
                     }
                 }
             } header: {
-                Text("Meditasyon Hatırlatıcısı")
+                Text("Meditasyon Hatırlatıcısı", comment: "Meditation reminder section header")
             } footer: {
-                Text("Belirlediğin saatte günlük meditasyon hatırlatıcısı alacaksın.")
+                Text("Belirlediğin saatte günlük meditasyon hatırlatıcısı alacaksın.", comment: "Meditation reminder footer")
             }
 
             // MARK: - Days Selection Section
@@ -63,7 +63,7 @@ struct ReminderSettingsView: View {
             if remindersEnabled {
                 Section {
                     ForEach(Weekday.allCases, id: \.self) { weekday in
-                        Toggle(weekday.name, isOn: Binding(
+                        Toggle(Text(weekday.localizedName), isOn: Binding(
                             get: { selectedDays.contains(weekday.rawValue) },
                             set: { isSelected in
                                 if isSelected {
@@ -76,23 +76,23 @@ struct ReminderSettingsView: View {
                         ))
                     }
                 } header: {
-                    Text("Hatırlatıcı Günleri")
+                    Text("Hatırlatıcı Günleri", comment: "Reminder days section header")
                 } footer: {
-                    Text("Hangi günler hatırlatıcı almak istediğini seç.")
+                    Text("Hangi günler hatırlatıcı almak istediğini seç.", comment: "Reminder days footer")
                 }
             }
 
             // MARK: - Streak Reminder Section
 
             Section {
-                Toggle("Streak Hatırlatıcısı", isOn: $streakReminderEnabled)
+                Toggle(Text("Streak Hatırlatıcısı", comment: "Streak reminder toggle"), isOn: $streakReminderEnabled)
                     .onChange(of: streakReminderEnabled) { oldValue, newValue in
                         handleStreakReminderToggle(newValue)
                     }
             } header: {
-                Text("Streak Koruması")
+                Text("Streak Koruması", comment: "Streak protection section header")
             } footer: {
-                Text("Her akşam saat 20:00'de meditasyon yapmadıysan hatırlatıcı alacaksın.")
+                Text("Her akşam saat 20:00'de meditasyon yapmadıysan hatırlatıcı alacaksın.", comment: "Streak reminder footer")
             }
 
             // MARK: - Preview Messages Section
@@ -100,7 +100,7 @@ struct ReminderSettingsView: View {
             if remindersEnabled || streakReminderEnabled {
                 Section {
                     VStack(alignment: .leading, spacing: 12) {
-                        Text("Örnek Mesajlar:")
+                        Text("Örnek Mesajlar:", comment: "Sample messages label")
                             .font(.subheadline)
                             .fontWeight(.semibold)
                             .foregroundColor(.secondary)
@@ -120,7 +120,7 @@ struct ReminderSettingsView: View {
                     }
                     .padding(.vertical, 8)
                 } header: {
-                    Text("Motivasyon Mesajları")
+                    Text("Motivasyon Mesajları", comment: "Motivation messages section header")
                 }
             }
 
@@ -132,27 +132,27 @@ struct ReminderSettingsView: View {
                         HStack {
                             Image(systemName: "paperplane.fill")
                                 .foregroundColor(ZenTheme.calmBlue)
-                            Text("Test Bildirimi Gönder")
+                            Text("Test Bildirimi Gönder", comment: "Send test notification button")
                                 .foregroundColor(.primary)
                         }
                     }
                 } footer: {
-                    Text("Bildirim ayarlarını test etmek için bir deneme bildirimi gönder.")
+                    Text("Bildirim ayarlarını test etmek için bir deneme bildirimi gönder.", comment: "Test notification footer")
                 }
             }
         }
-        .navigationTitle("Hatırlatıcılar")
+        .navigationTitle(Text("Hatırlatıcılar", comment: "Reminders page title"))
         .navigationBarTitleDisplayMode(.inline)
-        .alert("Bildirim İzni Gerekli", isPresented: $showAuthorizationAlert) {
-            Button("Ayarlara Git") {
+        .alert(Text("Bildirim İzni Gerekli", comment: "Notification permission required alert title"), isPresented: $showAuthorizationAlert) {
+            Button(Text("Ayarlara Git", comment: "Go to settings button")) {
                 openAppSettings()
             }
-            Button("İptal", role: .cancel) {
+            Button(Text("İptal", comment: "Cancel button"), role: .cancel) {
                 remindersEnabled = false
                 streakReminderEnabled = false
             }
         } message: {
-            Text("Hatırlatıcı almak için ZenFlow'a bildirim izni vermelisin. Ayarlar'dan izni etkinleştirebilirsin.")
+            Text("Hatırlatıcı almak için ZenFlow'a bildirim izni vermelisin. Ayarlar'dan izni etkinleştirebilirsin.", comment: "Notification permission message")
         }
     }
 
@@ -160,9 +160,9 @@ struct ReminderSettingsView: View {
 
     private var sampleMessages: [String] {
         [
-            "Bugün kendine 5 dakika ayır 🧘",
-            "Nefes almayı unutma, streak'in devam etsin! 🔥",
-            "Huzurlu bir gün için kısa bir mola ☮️"
+            String(localized: "Bugün kendine 5 dakika ayır 🧘", comment: "Sample reminder message 1"),
+            String(localized: "Nefes almayı unutma, streak'in devam etsin! 🔥", comment: "Sample reminder message 2"),
+            String(localized: "Huzurlu bir gün için kısa bir mola ☮️", comment: "Sample reminder message 3")
         ]
     }
 
@@ -232,6 +232,23 @@ enum Weekday: Int, CaseIterable {
         case .thursday: return "Perşembe"
         case .friday: return "Cuma"
         case .saturday: return "Cumartesi"
+        }
+    }
+
+    var localizedName: String {
+        switch LanguageManager.shared.currentLanguage {
+        case .turkish:
+            return name
+        case .english:
+            switch self {
+            case .sunday: return String(localized: "Pazar", comment: "Sunday")
+            case .monday: return String(localized: "Pazartesi", comment: "Monday")
+            case .tuesday: return String(localized: "Salı", comment: "Tuesday")
+            case .wednesday: return String(localized: "Çarşamba", comment: "Wednesday")
+            case .thursday: return String(localized: "Perşembe", comment: "Thursday")
+            case .friday: return String(localized: "Cuma", comment: "Friday")
+            case .saturday: return String(localized: "Cumartesi", comment: "Saturday")
+            }
         }
     }
 }

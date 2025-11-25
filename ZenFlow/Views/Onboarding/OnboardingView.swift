@@ -49,14 +49,14 @@ struct OnboardingView: View {
                     HStack {
                         Spacer()
                         Button(action: skipOnboarding) {
-                            Text("Atla")
+                            Text("Atla", comment: "Skip onboarding button")
                                 .font(.system(size: 16, weight: .medium))
                                 .foregroundColor(ZenTheme.softPurple)
                                 .padding(.horizontal, 20)
                                 .padding(.vertical, 10)
                         }
-                        .accessibilityLabel("Tanıtımı atla")
-                        .accessibilityHint("Doğrudan uygulamaya git")
+                        .accessibilityLabel(Text("Tanıtımı atla", comment: "Skip onboarding accessibility label"))
+                        .accessibilityHint(Text("Doğrudan uygulamaya git", comment: "Skip onboarding accessibility hint"))
                     }
                     .padding(.top, 16)
                     .padding(.horizontal, 20)
@@ -79,7 +79,7 @@ struct OnboardingView: View {
                     let page = pages[newValue]
                     UIAccessibility.post(
                         notification: .screenChanged,
-                        argument: "Sayfa \(newValue + 1) / \(pages.count). \(page.title)"
+                        argument: String(localized: "Sayfa \(newValue + 1) / \(pages.count). \(page.title)", comment: "Page announcement")
                     )
                 }
 
@@ -97,7 +97,7 @@ struct OnboardingView: View {
                 }
                 .padding(.vertical, 24)
                 .accessibilityElement(children: .ignore)
-                .accessibilityLabel("Sayfa \(currentPage + 1) / \(pages.count)")
+                .accessibilityLabel(Text("Sayfa \(currentPage + 1) / \(pages.count)", comment: "Page indicator accessibility"))
 
                 // Navigation buttons
                 HStack(spacing: 20) {
@@ -107,7 +107,7 @@ struct OnboardingView: View {
                             HStack(spacing: 8) {
                                 Image(systemName: "chevron.left")
                                     .font(.system(size: 16, weight: .semibold))
-                                Text("Geri")
+                                Text("Geri", comment: "Back button")
                                     .font(.system(size: 17, weight: .semibold))
                             }
                             .foregroundColor(ZenTheme.softPurple)
@@ -122,14 +122,14 @@ struct OnboardingView: View {
                                     .stroke(ZenTheme.softPurple.opacity(0.3), lineWidth: 1.5)
                             )
                         }
-                        .accessibilityLabel("Önceki sayfa")
+                        .accessibilityLabel(Text("Önceki sayfa", comment: "Previous page accessibility"))
                         .transition(.move(edge: .leading).combined(with: .opacity))
                     }
 
                     // Next/Start button
                     Button(action: nextPageOrFinish) {
                         HStack(spacing: 8) {
-                            Text(isLastPage ? "Başla" : "İleri")
+                            Text(isLastPage ? Text("Başla", comment: "Start button") : Text("İleri", comment: "Next button"))
                                 .font(.system(size: 17, weight: .semibold))
                             if !isLastPage {
                                 Image(systemName: "chevron.right")
@@ -159,10 +159,10 @@ struct OnboardingView: View {
                             y: 6
                         )
                     }
-                    .accessibilityLabel(isLastPage ? "Başla" : "Sonraki sayfa")
+                    .accessibilityLabel(isLastPage ? Text("Başla", comment: "Start button accessibility") : Text("Sonraki sayfa", comment: "Next page accessibility"))
                     .accessibilityHint(isLastPage ?
-                        "Onboarding'i tamamla ve uygulamaya geç" :
-                        "Sonraki sayfaya git")
+                        Text("Onboarding'i tamamla ve uygulamaya geç", comment: "Complete onboarding hint") :
+                        Text("Sonraki sayfaya git", comment: "Go to next page hint"))
                 }
                 .padding(.horizontal, 32)
                 .padding(.bottom, 40)
@@ -291,12 +291,12 @@ private struct HealthKitPermissionView: View {
                     )
 
                 VStack(spacing: 16) {
-                    Text("HealthKit Entegrasyonu")
+                    Text("HealthKit Entegrasyonu", comment: "HealthKit integration title")
                         .font(ZenTheme.zenTitle)
                         .foregroundColor(ZenTheme.lightLavender)
                         .multilineTextAlignment(.center)
 
-                    Text("Meditasyon seanslarını Apple Health'e kaydetmek için izin verin. Verileriniz güvende ve yalnızca sizin kontrolünüzde.")
+                    Text("Meditasyon seanslarını Apple Health'e kaydetmek için izin verin. Verileriniz güvende ve yalnızca sizin kontrolünüzde.", comment: "HealthKit permission description")
                         .font(ZenTheme.zenBody)
                         .foregroundColor(ZenTheme.softPurple.opacity(0.9))
                         .multilineTextAlignment(.center)
@@ -314,7 +314,7 @@ private struct HealthKitPermissionView: View {
                             onComplete()
                         }
                     }) {
-                        Text("İzin Ver")
+                        Text("İzin Ver", comment: "Allow HealthKit permission button")
                             .font(.system(size: 17, weight: .semibold))
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity)
@@ -336,7 +336,7 @@ private struct HealthKitPermissionView: View {
                         isPresented = false
                         onComplete()
                     }) {
-                        Text("Şimdi Değil")
+                        Text("Şimdi Değil", comment: "Not now button")
                             .font(.system(size: 16, weight: .medium))
                             .foregroundColor(ZenTheme.softPurple)
                             .padding(.vertical, 12)
@@ -377,12 +377,12 @@ private struct NotificationPermissionView: View {
                     )
 
                 VStack(spacing: 16) {
-                    Text("Günlük Hatırlatmalar")
+                    Text("Günlük Hatırlatmalar", comment: "Daily reminders title")
                         .font(ZenTheme.zenTitle)
                         .foregroundColor(ZenTheme.lightLavender)
                         .multilineTextAlignment(.center)
 
-                    Text("Düzenli meditasyon alışkanlığı kazanmak için günlük hatırlatmalar almak ister misiniz?")
+                    Text("Düzenli meditasyon alışkanlığı kazanmak için günlük hatırlatmalar almak ister misiniz?", comment: "Notification permission description")
                         .font(ZenTheme.zenBody)
                         .foregroundColor(ZenTheme.softPurple.opacity(0.9))
                         .multilineTextAlignment(.center)
@@ -400,7 +400,7 @@ private struct NotificationPermissionView: View {
                             onComplete()
                         }
                     }) {
-                        Text("İzin Ver")
+                        Text("İzin Ver", comment: "Allow notification permission button")
                             .font(.system(size: 17, weight: .semibold))
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity)
@@ -422,7 +422,7 @@ private struct NotificationPermissionView: View {
                         isPresented = false
                         onComplete()
                     }) {
-                        Text("Şimdi Değil")
+                        Text("Şimdi Değil", comment: "Not now notification button")
                             .font(.system(size: 16, weight: .medium))
                             .foregroundColor(ZenTheme.softPurple)
                             .padding(.vertical, 12)

@@ -84,16 +84,16 @@ struct ExerciseSelectionView: View {
 
     private var headerView: some View {
         VStack(spacing: 8) {
-            Text("Nefes Egzersizi Seç")
+            Text("Nefes Egzersizi Seç", comment: "Exercise selection page title")
                 .font(ZenTheme.zenTitle)
                 .foregroundColor(ZenTheme.lightLavender)
 
-            Text("Size uygun bir egzersiz seçin")
+            Text("Size uygun bir egzersiz seçin", comment: "Exercise selection page subtitle")
                 .font(ZenTheme.zenSubheadline)
                 .foregroundColor(ZenTheme.softPurple)
         }
         .accessibilityElement(children: .combine)
-        .accessibilityLabel("Nefes egzersizi seçim ekranı")
+        .accessibilityLabel(Text("Nefes egzersizi seçim ekranı", comment: "Exercise selection screen accessibility label"))
     }
 
     // MARK: - Selected Exercise Details
@@ -146,7 +146,7 @@ struct ExerciseSelectionView: View {
 
             // Benefits
             VStack(alignment: .leading, spacing: 8) {
-                Text("Faydaları:")
+                Text("Faydaları:", comment: "Exercise benefits section title")
                     .font(.system(size: 14, weight: .semibold))
                     .foregroundColor(ZenTheme.lightLavender)
 
@@ -184,7 +184,7 @@ struct ExerciseSelectionView: View {
                 HapticManager.shared.playImpact(style: .light)
                 dismiss()
             }) {
-                Text("İptal")
+                Text("İptal", comment: "Cancel button")
                     .font(.system(size: 18, weight: .semibold))
                     .foregroundColor(ZenTheme.softPurple)
                     .frame(maxWidth: .infinity)
@@ -200,7 +200,7 @@ struct ExerciseSelectionView: View {
             Button(action: {
                 confirmSelection()
             }) {
-                Text("Seç")
+                Text("Seç", comment: "Select exercise button")
                     .font(.system(size: 18, weight: .bold))
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity)
@@ -239,7 +239,7 @@ struct ExerciseSelectionView: View {
         // Accessibility announcement
         UIAccessibility.post(
             notification: .announcement,
-            argument: "\(selectedExercise.name) egzersizi seçildi"
+            argument: String(localized: "Egzersiz seç: \(selectedExercise.name)", comment: "Exercise selected announcement")
         )
 
         dismiss()
@@ -343,8 +343,8 @@ struct ExerciseCard: View {
             onTap()
         }
         .accessibilityElement(children: .combine)
-        .accessibilityLabel("\(exercise.name), \(exercise.difficulty.rawValue) seviye")
-        .accessibilityHint(isSelected ? "Seçili" : "Seçmek için dokunun")
+        .accessibilityLabel(Text("\(exercise.name), \(exercise.difficulty.rawValue) seviye", comment: "Exercise card accessibility label"))
+        .accessibilityHint(isSelected ? Text("Seçili", comment: "Selected state hint") : Text("Seçmek için dokunun", comment: "Tap to select hint"))
     }
 }
 
