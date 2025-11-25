@@ -19,6 +19,7 @@ struct SettingsView: View {
 
     @StateObject private var hapticManager = HapticManager.shared
     @StateObject private var soundManager = AmbientSoundManager.shared
+    @StateObject private var languageManager = LanguageManager.shared
     @State private var hapticsEnabled = true
     @State private var showResetAlert = false
     @State private var showResetSuccess = false
@@ -28,6 +29,28 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             List {
+                // MARK: - General Section
+
+                Section {
+                    Picker(selection: $languageManager.currentLanguage) {
+                        ForEach(AppLanguage.allCases, id: \.self) { language in
+                            Text(language.displayName).tag(language)
+                        }
+                    } label: {
+                        HStack {
+                            Image(systemName: "globe")
+                                .foregroundColor(ZenTheme.calmBlue)
+                                .frame(width: 28)
+                            Text("Dil", comment: "Language setting label")
+                        }
+                    }
+                    .onChange(of: languageManager.currentLanguage) { _, _ in
+                        HapticManager.shared.playImpact(style: .light)
+                    }
+                } header: {
+                    Text("Genel", comment: "General settings section header")
+                }
+
                 // MARK: - Notifications Section
 
                 Section {
@@ -36,11 +59,11 @@ struct SettingsView: View {
                             Image(systemName: "bell.fill")
                                 .foregroundColor(ZenTheme.calmBlue)
                                 .frame(width: 28)
-                            Text("Hatırlatıcılar")
+                            Text("Hatırlatıcılar", comment: "Reminders setting")
                         }
                     }
                 } header: {
-                    Text("Bildirimler")
+                    Text("Bildirimler", comment: "Notifications section header")
                 }
 
                 // MARK: - Audio Settings Section
@@ -51,7 +74,7 @@ struct SettingsView: View {
                             Image(systemName: soundManager.isEnabled ? "speaker.wave.2.fill" : "speaker.slash.fill")
                                 .foregroundColor(ZenTheme.calmBlue)
                                 .frame(width: 28)
-                            Text("Ortam Sesleri")
+                            Text("Ortam Sesleri", comment: "Ambient sounds setting")
                         }
                     }
                     .onChange(of: soundManager.isEnabled) { oldValue, newValue in
@@ -64,7 +87,7 @@ struct SettingsView: View {
                                 Image(systemName: "speaker.fill")
                                     .foregroundColor(ZenTheme.calmBlue)
                                     .frame(width: 28)
-                                Text("Ses Seviyesi")
+                                Text("Ses Seviyesi", comment: "Volume label")
                                 Spacer()
                                 Text("\(Int(soundManager.volume * 100))%")
                                     .foregroundColor(.secondary)
@@ -79,9 +102,9 @@ struct SettingsView: View {
                         }
                     }
                 } header: {
-                    Text("Ses Ayarları")
+                    Text("Ses Ayarları", comment: "Audio settings section header")
                 } footer: {
-                    Text("Meditasyon sırasında çalacak ortam seslerini yönet.")
+                    Text("Meditasyon sırasında çalacak ortam seslerini yönet.", comment: "Audio settings footer")
                 }
 
                 // MARK: - Haptic Settings Section
@@ -92,7 +115,7 @@ struct SettingsView: View {
                             Image(systemName: "waveform")
                                 .foregroundColor(ZenTheme.calmBlue)
                                 .frame(width: 28)
-                            Text("Dokunsal Geri Bildirim")
+                            Text("Dokunsal Geri Bildirim", comment: "Haptic feedback setting")
                         }
                     }
                     .onChange(of: hapticsEnabled) { oldValue, newValue in
@@ -100,12 +123,12 @@ struct SettingsView: View {
                     }
                     .disabled(!hapticManager.isHapticsAvailable)
                 } header: {
-                    Text("Dokunsal Ayarlar")
+                    Text("Dokunsal Ayarlar", comment: "Haptic settings section header")
                 } footer: {
                     if !hapticManager.isHapticsAvailable {
-                        Text("Bu cihaz dokunsal geri bildirimi desteklemiyor.")
+                        Text("Bu cihaz dokunsal geri bildirimi desteklemiyor.", comment: "Haptic not supported message")
                     } else {
-                        Text("Uygulama içi titreşim ve dokunsal geri bildirimi kontrol et.")
+                        Text("Uygulama içi titreşim ve dokunsal geri bildirimi kontrol et.", comment: "Haptic settings footer")
                     }
                 }
 
@@ -117,7 +140,7 @@ struct SettingsView: View {
                             Image(systemName: "trophy.fill")
                                 .foregroundColor(ZenTheme.calmBlue)
                                 .frame(width: 28)
-                            Text("Rozetler")
+                            Text("Rozetler", comment: "Badges section")
                         }
                     }
 
@@ -126,11 +149,11 @@ struct SettingsView: View {
                             Image(systemName: "chart.bar.fill")
                                 .foregroundColor(ZenTheme.calmBlue)
                                 .frame(width: 28)
-                            Text("İstatistikler")
+                            Text("İstatistikler", comment: "Statistics section")
                         }
                     }
                 } header: {
-                    Text("Başarılar & İstatistikler")
+                    Text("Başarılar & İstatistikler", comment: "Achievements and statistics section header")
                 }
 
                 // MARK: - Data Management Section
@@ -140,20 +163,20 @@ struct SettingsView: View {
                         HStack {
                             Image(systemName: "trash.fill")
                                 .frame(width: 28)
-                            Text("Tüm Verileri Sıfırla")
+                            Text("Tüm Verileri Sıfırla", comment: "Reset all data button")
                         }
                     }
                 } header: {
-                    Text("Veri Yönetimi")
+                    Text("Veri Yönetimi", comment: "Data management section header")
                 } footer: {
-                    Text("Bu işlem tüm meditasyon geçmişini, streak'leri ve ayarları siler. Bu işlem geri alınamaz.")
+                    Text("Bu işlem tüm meditasyon geçmişini, streak'leri ve ayarları siler. Bu işlem geri alınamaz.", comment: "Reset data footer warning")
                 }
 
                 // MARK: - About Section
 
                 Section {
                     HStack {
-                        Text("Versiyon")
+                        Text("Versiyon", comment: "Version label")
                         Spacer()
                         Text("1.0.0")
                             .foregroundColor(.secondary)
@@ -164,7 +187,7 @@ struct SettingsView: View {
                             Image(systemName: "envelope.fill")
                                 .foregroundColor(ZenTheme.calmBlue)
                                 .frame(width: 28)
-                            Text("İletişim & Geri Bildirim")
+                            Text("İletişim & Geri Bildirim", comment: "Contact and feedback menu item")
                         }
                     }
 
@@ -173,7 +196,7 @@ struct SettingsView: View {
                             Image(systemName: "safari.fill")
                                 .foregroundColor(ZenTheme.calmBlue)
                                 .frame(width: 28)
-                            Text("Website")
+                            Text("Website", comment: "Website link label")
                             Spacer()
                             Image(systemName: "arrow.up.right")
                                 .font(.caption)
@@ -181,25 +204,25 @@ struct SettingsView: View {
                         }
                     }
                 } header: {
-                    Text("Hakkında")
+                    Text("Hakkında", comment: "About section header")
                 }
             }
-            .navigationTitle("Ayarlar")
+            .navigationTitle(Text("Ayarlar", comment: "Settings tab bar item"))
             .navigationBarTitleDisplayMode(.large)
-            .alert("Tüm Verileri Sil", isPresented: $showResetAlert) {
-                Button("İptal", role: .cancel) { }
-                Button("Sil", role: .destructive) {
+            .alert(Text("Tüm Verileri Sil", comment: "Delete all data alert title"), isPresented: $showResetAlert) {
+                Button(Text("İptal", comment: "Cancel button"), role: .cancel) { }
+                Button(Text("Sil", comment: "Delete button"), role: .destructive) {
                     resetAllData()
                 }
             } message: {
-                Text("Bu işlem tüm meditasyon geçmişini, streak'leri, odaklanma seanslarını ve ayarları kalıcı olarak silecek. Devam etmek istediğinden emin misin?")
+                Text("Bu işlem tüm meditasyon geçmişini, streak'leri, odaklanma seanslarını ve ayarları kalıcı olarak silecek. Devam etmek istediğinden emin misin?", comment: "Delete all data confirmation message")
             }
-            .alert("Veriler Silindi", isPresented: $showResetSuccess) {
-                Button("Tamam") {
+            .alert(Text("Veriler Silindi", comment: "Data deleted alert title"), isPresented: $showResetSuccess) {
+                Button(Text("Tamam", comment: "OK button")) {
                     dismiss()
                 }
             } message: {
-                Text("Tüm veriler başarıyla sıfırlandı.")
+                Text("Tüm veriler başarıyla sıfırlandı.", comment: "Data reset success message")
             }
         }
     }

@@ -19,8 +19,8 @@ struct WatercolorZenGardenView: View {
     @State private var treeGrowthScale: CGFloat = 1.0
     @State private var leafSway: Double = 0
 
-    // Timers - using .default RunLoop for better performance
-    let timer = Timer.publish(every: 0.05, on: .main, in: .default).autoconnect()
+    // Timers - manual connection for proper lifecycle management
+    @State private var animationTimer: Timer?
 
     var body: some View {
         GeometryReader { geometry in
@@ -37,11 +37,11 @@ struct WatercolorZenGardenView: View {
                     .offset(y: geometry.size.height * 0.1)
                     .scaleEffect(treeGrowthScale)
             }
-            .onReceive(timer) { _ in
-                // Skip animations if Reduce Motion is enabled
-                if !reduceMotion {
-                    animateElements()
-                }
+            .onAppear {
+                startAnimations()
+            }
+            .onDisappear {
+                stopAnimations()
             }
         }
         .ignoresSafeArea()
@@ -454,6 +454,24 @@ struct WatercolorZenGardenView: View {
     private func animateElements() {
         // Wind effect (leaf sway)
         leafSway += 0.03
+    }
+
+    private func startAnimations() {
+        // Stop any existing timer first
+        stopAnimations()
+
+        // Start new timer if animations are enabled
+        guard !reduceMotion else { return }
+
+        animationTimer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { [weak self] _ in
+            guard let self = self, !self.reduceMotion else { return }
+            self.animateElements()
+        }
+    }
+
+    private func stopAnimations() {
+        animationTimer?.invalidate()
+        animationTimer = nil
     }
 
     private func animateGrowth() {

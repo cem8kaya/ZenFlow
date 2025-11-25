@@ -102,6 +102,10 @@ struct ZenGardenView: View {
     private let impactFeedback = UIImpactFeedbackGenerator(style: .medium)
     private let lightFeedback = UIImpactFeedbackGenerator(style: .light)
 
+    // Timers for cleanup
+    @State private var cloudAnimationTimer: Timer?
+    @State private var starTwinkleTimer: Timer?
+
 
     // MARK: - Body
 
@@ -186,6 +190,9 @@ struct ZenGardenView: View {
                 startBackgroundAnimations()
                 impactFeedback.prepare()
                 lightFeedback.prepare()
+            }
+            .onDisappear {
+                stopBackgroundAnimations()
             }
             .onChange(of: geometry.size) { _, newSize in
                 viewSize = newSize
@@ -838,32 +845,42 @@ struct ZenGardenView: View {
     }
 
     private func startBackgroundAnimations() {
+        // Stop any existing timers first
+        stopBackgroundAnimations()
+
         // Cloud movement
-        Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { _ in
-            guard !reduceMotion else { return }
+        cloudAnimationTimer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { [weak self] _ in
+            guard let self = self, !self.reduceMotion else { return }
 
-            cloudAnimationPhase += 0.01
+            self.cloudAnimationPhase += 0.01
 
-            for i in clouds.indices {
-                clouds[i].x += clouds[i].speed * 0.3
+            for i in self.clouds.indices {
+                self.clouds[i].x += self.clouds[i].speed * 0.3
 
                 // Wrap around
-                if clouds[i].x > viewSize.width + 100 {
-                    clouds[i].x = -100
+                if self.clouds[i].x > self.viewSize.width + 100 {
+                    self.clouds[i].x = -100
                 }
             }
         }
 
         // Star twinkling
-        Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { _ in
-            guard !reduceMotion else { return }
-            starTwinklePhase += 0.05
+        starTwinkleTimer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { [weak self] _ in
+            guard let self = self, !self.reduceMotion else { return }
+            self.starTwinklePhase += 0.05
         }
 
         // Start falling petals if ancient tree
         if gardenManager.currentStage == .ancientTree {
             startFallingPetals()
         }
+    }
+
+    private func stopBackgroundAnimations() {
+        cloudAnimationTimer?.invalidate()
+        cloudAnimationTimer = nil
+        starTwinkleTimer?.invalidate()
+        starTwinkleTimer = nil
     }
 }
 
