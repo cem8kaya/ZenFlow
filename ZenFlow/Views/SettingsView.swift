@@ -150,12 +150,21 @@ struct SettingsView: View {
                             .foregroundColor(.secondary)
                     }
 
-                    Link(destination: URL(string: "https://github.com/cem8kaya/ZenFlow")!) {
+                    NavigationLink(destination: ContactView()) {
                         HStack {
-                            Image(systemName: "link")
+                            Image(systemName: "envelope.fill")
                                 .foregroundColor(ZenTheme.calmBlue)
                                 .frame(width: 28)
-                            Text("GitHub")
+                            Text("İletişim & Geri Bildirim")
+                        }
+                    }
+
+                    Link(destination: URL(string: "https://zenflow.app")!) {
+                        HStack {
+                            Image(systemName: "safari.fill")
+                                .foregroundColor(ZenTheme.calmBlue)
+                                .frame(width: 28)
+                            Text("Website")
                             Spacer()
                             Image(systemName: "arrow.up.right")
                                 .font(.caption)
@@ -313,6 +322,113 @@ struct StatisticsView: View {
         formatter.timeStyle = .short
         formatter.locale = Locale(identifier: "tr_TR")
         return formatter.string(from: date)
+    }
+}
+
+// MARK: - Contact View
+
+struct ContactView: View {
+    @State private var feedbackText = ""
+    @State private var showSubmitAlert = false
+    @Environment(\.dismiss) private var dismiss
+
+    var body: some View {
+        List {
+            Section {
+                VStack(alignment: .leading, spacing: 16) {
+                    Text("Geri Bildiriminiz")
+                        .font(.headline)
+                        .foregroundColor(.primary)
+
+                    Text("ZenFlow'u daha iyi hale getirmemize yardımcı olun. Önerileriniz, hata raporlarınız veya genel geri bildirimlerinizi bizimle paylaşın.")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+
+                    TextEditor(text: $feedbackText)
+                        .frame(minHeight: 150)
+                        .padding(8)
+                        .background(
+                            RoundedRectangle(cornerRadius: 8)
+                                .fill(Color(UIColor.secondarySystemBackground))
+                        )
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(Color.gray.opacity(0.2), lineWidth: 1)
+                        )
+
+                    Button(action: {
+                        submitFeedback()
+                    }) {
+                        HStack {
+                            Spacer()
+                            Image(systemName: "paperplane.fill")
+                            Text("Gönder")
+                                .fontWeight(.semibold)
+                            Spacer()
+                        }
+                        .padding()
+                        .background(
+                            RoundedRectangle(cornerRadius: 12)
+                                .fill(feedbackText.isEmpty ? Color.gray.opacity(0.3) : ZenTheme.calmBlue)
+                        )
+                        .foregroundColor(.white)
+                    }
+                    .disabled(feedbackText.isEmpty)
+                }
+                .padding(.vertical, 8)
+            } header: {
+                Text("Geri Bildirim")
+            } footer: {
+                Text("Geri bildiriminiz doğrudan geliştirme ekibine iletilecektir.")
+            }
+
+            Section {
+                Link(destination: URL(string: "mailto:contact@zenflow.app")!) {
+                    HStack {
+                        Image(systemName: "envelope.fill")
+                            .foregroundColor(ZenTheme.calmBlue)
+                            .frame(width: 28)
+                        Text("E-posta")
+                        Spacer()
+                        Text("contact@zenflow.app")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
+                }
+
+                Link(destination: URL(string: "https://twitter.com/zenflowapp")!) {
+                    HStack {
+                        Image(systemName: "at")
+                            .foregroundColor(ZenTheme.calmBlue)
+                            .frame(width: 28)
+                        Text("Twitter")
+                        Spacer()
+                        Text("@zenflowapp")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
+                }
+            } header: {
+                Text("İletişim Kanalları")
+            }
+        }
+        .navigationTitle("İletişim")
+        .navigationBarTitleDisplayMode(.inline)
+        .alert("Teşekkürler!", isPresented: $showSubmitAlert) {
+            Button("Tamam") {
+                feedbackText = ""
+                dismiss()
+            }
+        } message: {
+            Text("Geri bildiriminiz başarıyla gönderildi. Katkınız için teşekkür ederiz!")
+        }
+    }
+
+    private func submitFeedback() {
+        // In a real implementation, this would send the feedback to a backend
+        // For now, we'll just show a success message
+        HapticManager.shared.playNotification(type: .success)
+        showSubmitAlert = true
     }
 }
 

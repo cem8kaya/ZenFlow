@@ -51,25 +51,25 @@ struct FocusTimerView: View {
                     VStack(spacing: 0) {
                         // Header with session counter (fixed height)
                         headerView
-                            .frame(height: 80)
-                            .padding(.top, max(geometry.safeAreaInsets.top, 16))
-
-                // Fixed spacer
-                Color.clear.frame(height: 30)
-
-                // Main timer circle (fixed height zone)
-                timerCircleView
-                    .frame(height: 300)
-
-                // Fixed spacer
-                Color.clear.frame(height: 30)
-
-                // Mode label (fixed height zone)
-                modeLabel
-                    .frame(height: 60)
+                            .frame(height: 70)
+                            .padding(.top, max(geometry.safeAreaInsets.top, 12))
 
                 // Fixed spacer
                 Color.clear.frame(height: 20)
+
+                // Main timer circle (fixed height zone, more compact)
+                timerCircleView
+                    .frame(height: 260)
+
+                // Fixed spacer
+                Color.clear.frame(height: 20)
+
+                // Mode label (fixed height zone)
+                modeLabel
+                    .frame(height: 50)
+
+                // Fixed spacer
+                Color.clear.frame(height: 16)
 
                 // Sound selector (fixed height zone, always present)
                 compactSoundSelector
@@ -123,34 +123,34 @@ struct FocusTimerView: View {
 
     private var headerView: some View {
         HStack {
-            VStack(alignment: .leading, spacing: 8) {
+            VStack(alignment: .leading, spacing: 6) {
                 Text("Pomodoro Zamanlayıcı")
-                    .font(.title2)
+                    .font(.title3)
                     .fontWeight(.bold)
                     .foregroundColor(.white)
 
                 Text("Bugün: \(todayCompletedSessions) oturum")
-                    .font(.subheadline)
+                    .font(.caption)
                     .foregroundColor(.white.opacity(0.7))
             }
 
             Spacer()
 
             // Total session counter
-            HStack(spacing: 8) {
+            HStack(spacing: 6) {
                 Image(systemName: "checkmark.circle.fill")
-                    .font(.system(size: AppConstants.Pomodoro.counterIconSize))
+                    .font(.system(size: 16))
                     .foregroundColor(ZenTheme.calmBlue)
 
                 Text("\(completedSessions)")
-                    .font(.title2)
+                    .font(.title3)
                     .fontWeight(.bold)
                     .foregroundColor(.white)
             }
-            .padding(.horizontal, 16)
-            .padding(.vertical, 8)
+            .padding(.horizontal, 14)
+            .padding(.vertical, 6)
             .background(
-                RoundedRectangle(cornerRadius: 12)
+                RoundedRectangle(cornerRadius: 10)
                     .fill(Color.white.opacity(0.1))
             )
         }
@@ -159,15 +159,15 @@ struct FocusTimerView: View {
 
     private var timerCircleView: some View {
         ZStack {
-            // Background circle
+            // Background circle (smaller and more compact)
             Circle()
                 .stroke(
                     Color.white.opacity(0.2),
-                    lineWidth: AppConstants.Pomodoro.progressStrokeWidth
+                    lineWidth: 12
                 )
                 .frame(
-                    width: AppConstants.Pomodoro.timerCircleSize,
-                    height: AppConstants.Pomodoro.timerCircleSize
+                    width: 220,
+                    height: 220
                 )
 
             // Progress circle
@@ -176,55 +176,55 @@ struct FocusTimerView: View {
                 .stroke(
                     currentMode.color,
                     style: StrokeStyle(
-                        lineWidth: AppConstants.Pomodoro.progressStrokeWidth,
+                        lineWidth: 12,
                         lineCap: .round
                     )
                 )
                 .frame(
-                    width: AppConstants.Pomodoro.timerCircleSize,
-                    height: AppConstants.Pomodoro.timerCircleSize
+                    width: 220,
+                    height: 220
                 )
                 .rotationEffect(.degrees(-90))
                 .animation(.linear(duration: 0.5), value: progress)
 
-            // Inner content
-            VStack(spacing: 16) {
+            // Inner content (smaller font)
+            VStack(spacing: 12) {
                 // Time display
                 Text(timeString)
-                    .font(.system(size: AppConstants.Pomodoro.timerFontSize, weight: .bold, design: .rounded))
+                    .font(.system(size: 48, weight: .bold, design: .rounded))
                     .foregroundColor(.white)
 
                 // Mode icon
                 Image(systemName: currentMode.iconName)
-                    .font(.system(size: 32))
+                    .font(.system(size: 26))
                     .foregroundColor(currentMode.color)
             }
         }
     }
 
     private var modeLabel: some View {
-        VStack(spacing: 8) {
+        VStack(spacing: 6) {
             Text(currentMode.displayName)
-                .font(.title3)
+                .font(.headline)
                 .fontWeight(.semibold)
                 .foregroundColor(.white)
 
             Text(currentMode.description)
-                .font(.subheadline)
+                .font(.caption)
                 .foregroundColor(.white.opacity(0.7))
         }
     }
 
     private var controlButtons: some View {
-        HStack(spacing: 32) {
-            // Reset button
+        HStack(spacing: 28) {
+            // Reset button (more compact)
             Button(action: resetTimer) {
                 Image(systemName: "arrow.clockwise")
-                    .font(.system(size: 24))
+                    .font(.system(size: 20))
                     .foregroundColor(.white)
                     .frame(
-                        width: AppConstants.Pomodoro.buttonSize,
-                        height: AppConstants.Pomodoro.buttonSize
+                        width: 52,
+                        height: 52
                     )
                     .background(
                         Circle()
@@ -234,30 +234,30 @@ struct FocusTimerView: View {
             .disabled(timerState == .idle)
             .opacity(timerState == .idle ? 0.5 : 1)
 
-            // Play/Pause button
+            // Play/Pause button (more compact)
             Button(action: toggleTimer) {
                 Image(systemName: timerState.iconName)
-                    .font(.system(size: 32))
+                    .font(.system(size: 28))
                     .foregroundColor(.white)
                     .frame(
-                        width: AppConstants.Pomodoro.buttonSize * 1.2,
-                        height: AppConstants.Pomodoro.buttonSize * 1.2
+                        width: 64,
+                        height: 64
                     )
                     .background(
                         Circle()
                             .fill(currentMode.color)
-                            .shadow(color: currentMode.color.opacity(0.5), radius: 20)
+                            .shadow(color: currentMode.color.opacity(0.5), radius: 16)
                     )
             }
 
-            // Skip button
+            // Skip button (more compact)
             Button(action: skipToNextMode) {
                 Image(systemName: "forward.fill")
-                    .font(.system(size: 24))
+                    .font(.system(size: 20))
                     .foregroundColor(.white)
                     .frame(
-                        width: AppConstants.Pomodoro.buttonSize,
-                        height: AppConstants.Pomodoro.buttonSize
+                        width: 52,
+                        height: 52
                     )
                     .background(
                         Circle()
