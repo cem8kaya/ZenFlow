@@ -30,6 +30,7 @@ class ZenCoachManager: ObservableObject {
 
     private let maxHistoryCount = 50
     private let conversationHistoryKey = "zenCoachConversationHistory"
+    private var saveWorkItem: DispatchWorkItem?
 
     // MARK: - Dependencies
 
@@ -150,15 +151,37 @@ class ZenCoachManager: ObservableObject {
 
     // MARK: - Conversation History
 
-    /// Saves conversation history to UserDefaults
+    /// Saves conversation history to UserDefaults with debouncing
     private func saveConversationHistory() {
-        // Keep only last maxHistoryCount messages
-        let messagesToSave = Array(messages.suffix(maxHistoryCount))
+        // Cancel previous save work item to debounce
+        saveWorkItem?.cancel()
 
-        if let encoded = try? JSONEncoder().encode(messagesToSave) {
-            UserDefaults.standard.set(encoded, forKey: conversationHistoryKey)
-            print("💾 Conversation history saved: \(messagesToSave.count) messages")
+        // Create new work item
+        let workItem = DispatchWorkItem { [weak self] in
+            guard let self = self else { return }
+
+            // Trim messages to maxHistoryCount in memory
+            if self.messages.count > self.maxHistoryCount {
+                let excessCount = self.messages.count - self.maxHistoryCount
+                DispatchQueue.main.async {
+                    self.messages.removeFirst(excessCount)
+                }
+            }
+
+            // Keep only last maxHistoryCount messages
+            let messagesToSave = Array(self.messages.suffix(self.maxHistoryCount))
+
+            // Encode on background thread
+            if let encoded = try? JSONEncoder().encode(messagesToSave) {
+                UserDefaults.standard.set(encoded, forKey: self.conversationHistoryKey)
+                print("💾 Conversation history saved: \(messagesToSave.count) messages")
+            }
         }
+
+        saveWorkItem = workItem
+
+        // Execute after 1 second delay to debounce rapid saves
+        DispatchQueue.global(qos: .utility).asyncAfter(deadline: .now() + 1.0, execute: workItem)
     }
 
     /// Loads conversation history from UserDefaults

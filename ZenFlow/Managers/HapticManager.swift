@@ -23,6 +23,9 @@ class HapticManager: ObservableObject {
     private var impactGenerators: [UIImpactFeedbackGenerator.FeedbackStyle: UIImpactFeedbackGenerator] = [:]
     private var notificationGenerator: UINotificationFeedbackGenerator?
 
+    // Cached haptic patterns to avoid repeated creation
+    private var cachedBreathingPatterns: [Double: CHHapticPattern] = [:]
+
     // MARK: - Initialization
 
     private init() {
@@ -145,6 +148,11 @@ class HapticManager: ObservableObject {
             return nil
         }
 
+        // Return cached pattern if available
+        if let cachedPattern = cachedBreathingPatterns[duration] {
+            return cachedPattern
+        }
+
         do {
             // Create parameter curve for intensity (0.0 → 1.0 over duration)
             let intensityParameter = CHHapticParameterCurve(
@@ -185,6 +193,9 @@ class HapticManager: ObservableObject {
                 events: [continuousEvent],
                 parameterCurves: [intensityParameter, sharpnessParameter]
             )
+
+            // Cache the pattern for future use
+            cachedBreathingPatterns[duration] = pattern
 
             print("✅ Created breathing inhale haptic pattern (duration: \(duration)s)")
             return pattern

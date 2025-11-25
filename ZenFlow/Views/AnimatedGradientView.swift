@@ -29,6 +29,11 @@ struct AnimatedGradientView: View {
     @State private var animationPhase: CGFloat = 0
     @State private var colorShiftIndex: Int = 0
     @State private var saturationMultiplier: CGFloat = 0.7
+    @State private var isActive: Bool = true
+
+    /// Cached colors to avoid regeneration every frame
+    @State private var cachedMeshColors: [Color] = []
+    @State private var cachedLinearColors: [Color] = []
 
     // MARK: - Initialization
 
@@ -43,11 +48,22 @@ struct AnimatedGradientView: View {
     // MARK: - Body
 
     var body: some View {
-        TimelineView(.animation(minimumInterval: 1.0 / 30.0)) { timeline in
-            if #available(iOS 18.0, *) {
-                meshGradientView
+        Group {
+            if isActive {
+                TimelineView(.animation(minimumInterval: 1.0 / 30.0)) { timeline in
+                    if #available(iOS 18.0, *) {
+                        meshGradientView(time: timeline.date.timeIntervalSince1970)
+                    } else {
+                        linearGradientView
+                    }
+                }
             } else {
-                linearGradientView
+                // Static fallback when not active
+                if #available(iOS 18.0, *) {
+                    meshGradientView(time: Date.now.timeIntervalSince1970)
+                } else {
+                    linearGradientView
+                }
             }
         }
         .ignoresSafeArea(.all, edges: .all)
@@ -55,17 +71,22 @@ struct AnimatedGradientView: View {
         .onChange(of: breathingPhase) { oldPhase, newPhase in
             handlePhaseChange(from: oldPhase, to: newPhase)
         }
+        .onAppear {
+            isActive = true
+            updateCachedColors()
+        }
+        .onDisappear {
+            isActive = false
+        }
     }
 
     // MARK: - iOS 18 Mesh Gradient
 
     @available(iOS 18.0, *)
-    private var meshGradientView: some View {
-        let time = Date.now.timeIntervalSince1970
-
+    private func meshGradientView(time: TimeInterval) -> some View {
         // Create 4x4 mesh grid with sinusoidal movement
         let gridSize = 4
-        let colors = generateMeshColors(gridSize: gridSize)
+        let colors = cachedMeshColors.isEmpty ? generateMeshColors(gridSize: gridSize) : cachedMeshColors
         let points = generateMeshPoints(gridSize: gridSize, time: time)
 
         return MeshGradient(
@@ -80,7 +101,7 @@ struct AnimatedGradientView: View {
     // MARK: - iOS 17 Fallback: Linear Gradient
 
     private var linearGradientView: some View {
-        let currentColors = generateCurrentColors()
+        let currentColors = cachedLinearColors.isEmpty ? generateCurrentColors() : cachedLinearColors
 
         return LinearGradient(
             colors: currentColors,
@@ -158,6 +179,14 @@ struct AnimatedGradientView: View {
         return points
     }
 
+    /// Update cached colors to avoid regeneration every frame
+    private func updateCachedColors() {
+        cachedLinearColors = generateCurrentColors()
+        if #available(iOS 18.0, *) {
+            cachedMeshColors = generateMeshColors(gridSize: 4)
+        }
+    }
+
     /// Handle breathing phase changes
     private func handlePhaseChange(from oldPhase: AnimationPhase, to newPhase: AnimationPhase) {
         // Animate color transition
@@ -172,6 +201,9 @@ struct AnimatedGradientView: View {
                 colorShiftIndex = (colorShiftIndex - 1 + palette.colors.count) % palette.colors.count
                 saturationMultiplier = 0.7 // Desaturated during exhale
             }
+
+            // Update cached colors when phase changes
+            updateCachedColors()
         }
     }
 }

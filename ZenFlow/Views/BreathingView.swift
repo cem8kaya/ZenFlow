@@ -231,6 +231,7 @@ struct BreathingView: View {
     @State private var isAnimating = false
     @State private var isPaused = false
     @State private var animationTimer: Timer?
+    @State private var countdownTimer: Timer?
     @State private var showSessionComplete = false
     @State private var completedDurationMinutes = 0
     @State private var selectedDurationMinutes: Int = 5
@@ -642,6 +643,8 @@ struct BreathingView: View {
         isPaused = false
         animationTimer?.invalidate()
         animationTimer = nil
+        countdownTimer?.invalidate()
+        countdownTimer = nil
         sessionTimer?.invalidate()
         sessionTimer = nil
         currentPhaseIndex = 0
@@ -691,6 +694,8 @@ struct BreathingView: View {
     private func pauseAnimation() {
         animationTimer?.invalidate()
         animationTimer = nil
+        countdownTimer?.invalidate()
+        countdownTimer = nil
 
         // Pause session timer - calculate remaining time
         sessionTimer?.invalidate()
@@ -768,20 +773,25 @@ struct BreathingView: View {
             pulseScale = 1.0
         }
 
+        // Invalidate existing countdown timer to prevent leaks
+        countdownTimer?.invalidate()
+
         // Start phase countdown timer (reduced frequency to lower CPU load and prevent audio overload)
-        let countdownTimer = Timer(timeInterval: 0.5, repeats: true) { [self] timer in
+        let newCountdownTimer = Timer(timeInterval: 0.5, repeats: true) { [self] timer in
             guard isAnimating && !isPaused else {
                 timer.invalidate()
                 return
             }
             phaseTimeRemaining = max(0, phaseTimeRemaining - 0.5)
         }
-        countdownTimer.tolerance = 0.1 // 20% tolerance to reduce CPU wake-ups
-        RunLoop.current.add(countdownTimer, forMode: .common)
+        newCountdownTimer.tolerance = 0.1 // 20% tolerance to reduce CPU wake-ups
+        RunLoop.current.add(newCountdownTimer, forMode: .common)
+        countdownTimer = newCountdownTimer
 
         // Schedule next phase
         animationTimer = Timer.scheduledTimer(withTimeInterval: phaseConfig.duration, repeats: false) { [self] _ in
-            countdownTimer.invalidate()
+            countdownTimer?.invalidate()
+            countdownTimer = nil
             guard isAnimating && !isPaused else { return }
 
             // Move to next phase

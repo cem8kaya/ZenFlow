@@ -51,6 +51,7 @@ class AmbientSoundManager: NSObject, ObservableObject {
 
     private var audioPlayers: [String: AVAudioPlayer] = [:]
     private var fadeTimers: [String: Timer] = [:]
+    private var cachedAudioData: [String: Data] = [:] // Cache for NSDataAsset data
     private let maxSimultaneousSounds = 2
 
     // MARK: - Initialization
@@ -127,14 +128,22 @@ class AmbientSoundManager: NSObject, ObservableObject {
         // Load audio file from Assets.xcassets using NSDataAsset
         // Assets are stored in Sounds/{fileName}.dataset format
         // NSDataAsset name should match the .dataset folder name without path
-        guard let dataAsset = NSDataAsset(name: sound.fileName) else {
-            print("❌ Sound file not found in Assets: \(sound.fileName)")
-            return
+        // Use cached data if available to avoid disk I/O
+        let audioData: Data
+        if let cachedData = cachedAudioData[sound.fileName] {
+            audioData = cachedData
+        } else {
+            guard let dataAsset = NSDataAsset(name: sound.fileName) else {
+                print("❌ Sound file not found in Assets: \(sound.fileName)")
+                return
+            }
+            audioData = dataAsset.data
+            cachedAudioData[sound.fileName] = audioData
         }
 
         do {
-            // Create AVAudioPlayer from NSDataAsset's data
-            let player = try AVAudioPlayer(data: dataAsset.data)
+            // Create AVAudioPlayer from cached/loaded data
+            let player = try AVAudioPlayer(data: audioData)
             player.numberOfLoops = -1 // Infinite loop
             player.volume = 0.0 // Start at zero for fade-in
             player.prepareToPlay()
