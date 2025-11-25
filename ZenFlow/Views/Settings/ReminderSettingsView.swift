@@ -37,17 +37,20 @@ struct ReminderSettingsView: View {
             // MARK: - Daily Reminders Section
 
             Section {
-                Toggle(Text("Günlük Hatırlatıcı", comment: "Daily reminder toggle"), isOn: $remindersEnabled)
-                    .onChange(of: remindersEnabled) { oldValue, newValue in
-                        handleReminderToggle(newValue)
-                    }
+                Toggle(isOn: $remindersEnabled) {
+                    Text("Günlük Hatırlatıcı", comment: "Daily reminder toggle")
+                }
+                .onChange(of: remindersEnabled) { oldValue, newValue in
+                    handleReminderToggle(newValue)
+                }
 
                 if remindersEnabled {
                     DatePicker(
-                        Text("Saat", comment: "Time picker label"),
                         selection: $selectedTime,
                         displayedComponents: .hourAndMinute
-                    )
+                    ) {
+                        Text("Saat", comment: "Time picker label")
+                    }
                     .onChange(of: selectedTime) { oldValue, newValue in
                         notificationManager.reminderTime = newValue
                     }
@@ -63,7 +66,7 @@ struct ReminderSettingsView: View {
             if remindersEnabled {
                 Section {
                     ForEach(Weekday.allCases, id: \.self) { weekday in
-                        Toggle(Text(weekday.localizedName), isOn: Binding(
+                        Toggle(isOn: Binding(
                             get: { selectedDays.contains(weekday.rawValue) },
                             set: { isSelected in
                                 if isSelected {
@@ -73,7 +76,9 @@ struct ReminderSettingsView: View {
                                 }
                                 notificationManager.reminderDays = selectedDays
                             }
-                        ))
+                        )) {
+                            Text(weekday.localizedName)
+                        }
                     }
                 } header: {
                     Text("Hatırlatıcı Günleri", comment: "Reminder days section header")
@@ -85,10 +90,12 @@ struct ReminderSettingsView: View {
             // MARK: - Streak Reminder Section
 
             Section {
-                Toggle(Text("Streak Hatırlatıcısı", comment: "Streak reminder toggle"), isOn: $streakReminderEnabled)
-                    .onChange(of: streakReminderEnabled) { oldValue, newValue in
-                        handleStreakReminderToggle(newValue)
-                    }
+                Toggle(isOn: $streakReminderEnabled) {
+                    Text("Streak Hatırlatıcısı", comment: "Streak reminder toggle")
+                }
+                .onChange(of: streakReminderEnabled) { oldValue, newValue in
+                    handleStreakReminderToggle(newValue)
+                }
             } header: {
                 Text("Streak Koruması", comment: "Streak protection section header")
             } footer: {
@@ -144,12 +151,16 @@ struct ReminderSettingsView: View {
         .navigationTitle(Text("Hatırlatıcılar", comment: "Reminders page title"))
         .navigationBarTitleDisplayMode(.inline)
         .alert(Text("Bildirim İzni Gerekli", comment: "Notification permission required alert title"), isPresented: $showAuthorizationAlert) {
-            Button(Text("Ayarlara Git", comment: "Go to settings button")) {
+            Button {
                 openAppSettings()
+            } label: {
+                Text("Ayarlara Git", comment: "Go to settings button")
             }
-            Button(Text("İptal", comment: "Cancel button"), role: .cancel) {
+            Button(role: .cancel) {
                 remindersEnabled = false
                 streakReminderEnabled = false
+            } label: {
+                Text("İptal", comment: "Cancel button")
             }
         } message: {
             Text("Hatırlatıcı almak için ZenFlow'a bildirim izni vermelisin. Ayarlar'dan izni etkinleştirebilirsin.", comment: "Notification permission message")
