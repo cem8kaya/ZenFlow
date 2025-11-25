@@ -325,8 +325,14 @@ struct StatisticsView: View {
                             .frame(width: 28)
                         Text("Seri Durumu", comment: "Streak status label")
                         Spacer()
-                        Text(dataManager.isStreakActive() ? Text("Aktif", comment: "Active status") : Text("Kırıldı", comment: "Broken status"))
-                            .foregroundColor(dataManager.isStreakActive() ? .green : .red)
+                        Group {
+                            if dataManager.isStreakActive() {
+                                Text("Aktif", comment: "Active status")
+                            } else {
+                                Text("Kırıldı", comment: "Broken status")
+                            }
+                        }
+                        .foregroundColor(dataManager.isStreakActive() ? .green : .red)
                     }
                 } header: {
                     Text("Durum", comment: "Status section header")

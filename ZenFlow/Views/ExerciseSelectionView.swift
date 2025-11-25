@@ -344,7 +344,7 @@ struct ExerciseCard: View {
         }
         .accessibilityElement(children: .combine)
         .accessibilityLabel(Text("\(exercise.name), \(exercise.difficulty.rawValue) seviye", comment: "Exercise card accessibility label"))
-        .accessibilityHint(isSelected ? Text("Seçili", comment: "Selected state hint") : Text("Seçmek için dokunun", comment: "Tap to select hint"))
+        .accessibilityHint(isSelected ? "Seçili" : "Seçmek için dokunun")
     }
 }
 
