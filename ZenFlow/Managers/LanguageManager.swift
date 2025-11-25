@@ -37,26 +37,30 @@ enum AppLanguage: String, CaseIterable {
 
 class LanguageManager: ObservableObject {
     static let shared = LanguageManager()
-
+    
+    // UserDefaults anahtarını sabit olarak tanımlamak hatayı azaltır
+    private let kAppLanguageKey = "appLanguage"
+    
     @AppStorage("appLanguage") private var languageCode: String = "tr"
-
+    
     @Published var currentLanguage: AppLanguage {
         didSet {
+            // Dil değiştiğinde AppStorage'ı güncelle
             languageCode = currentLanguage.rawValue
-            // Post notification for language change
+            // Notification gönder
             NotificationCenter.default.post(name: .languageDidChange, object: nil)
         }
     }
-
+    
     private init() {
-        // Initialize from stored preference
-        if let language = AppLanguage(rawValue: languageCode) {
-            currentLanguage = language
-        } else {
-            currentLanguage = .turkish
-        }
+        // ÇÖZÜM: @AppStorage (self.languageCode) yerine UserDefaults.standard kullanıyoruz.
+        // Böylece 'self' tam olarak başlatılmadan önce veriyi okuyabiliyoruz.
+        let savedCode = UserDefaults.standard.string(forKey: "appLanguage") ?? "tr"
+        
+        // Değeri atayarak initialization sürecini tamamlıyoruz
+        self.currentLanguage = AppLanguage(rawValue: savedCode) ?? .turkish
     }
-
+    
     /// Sets the app language
     func setLanguage(_ language: AppLanguage) {
         currentLanguage = language
