@@ -31,9 +31,11 @@ struct OnboardingCompletionView: View {
     @State private var confettiParticles: [OnboardingConfetti] = []
     @State private var isAnimating = false
     @State private var showContent = false
+    @State private var viewSize: CGSize = .zero
 
     var body: some View {
-        ZStack {
+        GeometryReader { geometry in
+            ZStack {
             // Background gradient
             ZenTheme.backgroundGradient
                 .ignoresSafeArea()
@@ -166,12 +168,13 @@ struct OnboardingCompletionView: View {
                 .opacity(showContent ? 1.0 : 0.0)
                 .offset(y: showContent ? 0 : 20)
             }
+            .onAppear {
+                viewSize = geometry.size
+                createConfetti()
+                animateContent()
+            }
         }
         .preferredColorScheme(.dark)
-        .onAppear {
-            createConfetti()
-            animateContent()
-        }
     }
 
     // MARK: - Private Methods
@@ -189,7 +192,7 @@ struct OnboardingCompletionView: View {
         // Create initial confetti particles
         for _ in 0..<50 {
             let particle = OnboardingConfetti(
-                x: CGFloat.random(in: 0...UIScreen.main.bounds.width),
+                x: CGFloat.random(in: 0...viewSize.width),
                 y: CGFloat.random(in: -200...(-50)),
                 color: colors.randomElement() ?? ZenTheme.mysticalViolet,
                 size: CGFloat.random(in: 8...16),
@@ -207,7 +210,7 @@ struct OnboardingCompletionView: View {
             confettiParticles = confettiParticles.map { particle in
                 OnboardingConfetti(
                     x: particle.x + CGFloat.random(in: -50...50),
-                    y: UIScreen.main.bounds.height + 100,
+                    y: viewSize.height + 100,
                     color: particle.color,
                     size: particle.size,
                     rotation: particle.rotation + Double.random(in: 360...720)
