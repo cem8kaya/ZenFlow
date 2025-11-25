@@ -174,7 +174,8 @@ struct OnboardingCompletionView: View {
                 animateContent()
             }
         }
-        .preferredColorScheme(.dark)
+    }
+    .preferredColorScheme(.dark)
     }
 
     // MARK: - Private Methods
