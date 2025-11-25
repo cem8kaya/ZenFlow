@@ -201,13 +201,13 @@
 
     },
     "Bu cihaz dokunsal geri bildirimi desteklemiyor." : {
-
+      "comment" : "Haptic not supported message"
     },
     "Bu işlem tüm meditasyon geçmişini, streak'leri ve ayarları siler. Bu işlem geri alınamaz." : {
-
+      "comment" : "Reset data footer warning"
     },
     "Bu işlem tüm meditasyon geçmişini, streak'leri, odaklanma seanslarını ve ayarları kalıcı olarak silecek. Devam etmek istediğinden emin misin?" : {
-
+      "comment" : "Delete all data confirmation message"
     },
     "Bugün: %lld oturum" : {
 
@@ -216,7 +216,7 @@
 
     },
     "Çevrimiçi" : {
-
+      "comment" : "Online status"
     },
     "Çok" : {
 
@@ -245,6 +245,23 @@
     "Devre Dışı" : {
 
     },
+    "Dil" : {
+      "comment" : "Language setting label",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Language"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dil"
+          }
+        }
+      }
+    },
     "dk" : {
 
     },
@@ -252,7 +269,7 @@
 
     },
     "Dokunsal Ayarlar" : {
-
+      "comment" : "Haptic settings section header"
     },
     "Dokunsal Geri Bildirim" : {
       "comment" : "Haptic feedback setting",
@@ -317,7 +334,24 @@
 
     },
     "Geçmişi Temizle" : {
-
+      "comment" : "Clear history alert title"
+    },
+    "Genel" : {
+      "comment" : "General settings section header",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "General"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genel"
+          }
+        }
+      }
     },
     "Geri" : {
 
@@ -426,13 +460,30 @@
 
     },
     "İletişim & Geri Bildirim" : {
-
+      "comment" : "Contact and feedback menu item"
     },
     "İletişim Kanalları" : {
 
     },
     "İlk Meditasyonuna Başla" : {
 
+    },
+    "İngilizce" : {
+      "comment" : "English language option",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "English"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İngilizce"
+          }
+        }
+      }
     },
     "İptal" : {
 
@@ -508,7 +559,7 @@
 
     },
     "Meditasyon sırasında çalacak ortam seslerini yönet." : {
-
+      "comment" : "Audio settings footer"
     },
     "Meditasyon sürenizi Apple Sağlık uygulamasına kaydetmek istiyor musunuz?" : {
 
@@ -718,7 +769,7 @@
 
     },
     "Ses Seviyesi" : {
-
+      "comment" : "Volume label"
     },
     "Sessiz" : {
 
@@ -778,19 +829,36 @@
 
     },
     "Tüm sohbet geçmişi silinecek. Emin misiniz?" : {
-
+      "comment" : "Clear history confirmation message"
     },
     "Tüm veriler başarıyla sıfırlandı." : {
-
+      "comment" : "Data reset success message"
     },
     "Tüm Verileri Sil" : {
 
     },
     "Tüm Verileri Sıfırla" : {
-
+      "comment" : "Reset all data button"
     },
     "Tüm Zamanlar" : {
 
+    },
+    "Türkçe" : {
+      "comment" : "Turkish language option",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Turkish"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Türkçe"
+          }
+        }
+      }
     },
     "Twitter" : {
 
@@ -802,25 +870,25 @@
 
     },
     "Uygulama içi titreşim ve dokunsal geri bildirimi kontrol et." : {
-
+      "comment" : "Haptic settings footer"
     },
     "Uygulamayı Keşfet" : {
 
     },
     "Veri Yönetimi" : {
-
+      "comment" : "Data management section header"
     },
     "Veriler Silindi" : {
 
     },
     "Versiyon" : {
-
+      "comment" : "Version label"
     },
     "Website" : {
-
+      "comment" : "Website link label"
     },
     "Yazıyor..." : {
-
+      "comment" : "Typing indicator"
     },
     "Yeni Aşama!" : {
 
@@ -865,464 +933,38 @@
         }
       }
     },
-    "Yazıyor..." : {
-      "comment" : "Typing indicator",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Yazıyor..."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Typing..."
-          }
-        }
-      }
+    "Zen Coach sekmesi" : {
+
     },
-    "Çevrimiçi" : {
-      "comment" : "Online status",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Çevrimiçi"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Online"
-          }
-        }
-      }
+    "Zen Master" : {
+
     },
-    "Geçmişi Temizle" : {
-      "comment" : "Clear history alert title",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Geçmişi Temizle"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Clear History"
-          }
-        }
-      }
+    "Zen Öğretileri" : {
+
     },
-    "İptal" : {
-      "comment" : "Cancel button",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "İptal"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cancel"
-          }
-        }
-      }
+    "Zen Öğretisi" : {
+
     },
-    "Temizle" : {
-      "comment" : "Clear button",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Temizle"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Clear"
-          }
-        }
-      }
+    "ZenFlow" : {
+
     },
-    "Tüm sohbet geçmişi silinecek. Emin misiniz?" : {
-      "comment" : "Clear history confirmation message",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tüm sohbet geçmişi silinecek. Emin misiniz?"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "All chat history will be deleted. Are you sure?"
-          }
-        }
-      }
+    "ZenFlow App Icon Exporter" : {
+
     },
-    "Dokunsal Ayarlar" : {
-      "comment" : "Haptic settings section header",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dokunsal Ayarlar"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Haptic Settings"
-          }
-        }
-      }
+    "ZenFlow Icons" : {
+
     },
-    "Bu cihaz dokunsal geri bildirimi desteklemiyor." : {
-      "comment" : "Haptic not supported message",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bu cihaz dokunsal geri bildirimi desteklemiyor."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "This device does not support haptic feedback."
-          }
-        }
-      }
+    "ZenFlow yolculuğuna başlamaya hazırsın" : {
+
     },
-    "Uygulama içi titreşim ve dokunsal geri bildirimi kontrol et." : {
-      "comment" : "Haptic settings footer",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Uygulama içi titreşim ve dokunsal geri bildirimi kontrol et."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Control in-app vibration and haptic feedback."
-          }
-        }
-      }
+    "ZenFlow'da kullanılan ortam seslerinin kaynakları ve lisans bilgileri" : {
+
     },
-    "Meditasyon sırasında çalacak ortam seslerini yönet." : {
-      "comment" : "Audio settings footer",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Meditasyon sırasında çalacak ortam seslerini yönet."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Manage ambient sounds that play during meditation."
-          }
-        }
-      }
+    "ZenFlow'da kullanılan tüm ortam sesleri CC0 (Public Domain) veya Pixabay Lisansı ile lisanslanmıştır ve atıf gerektirmez." : {
+
     },
-    "Ses Seviyesi" : {
-      "comment" : "Volume label",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ses Seviyesi"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Volume"
-          }
-        }
-      }
-    },
-    "Veri Yönetimi" : {
-      "comment" : "Data management section header",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Veri Yönetimi"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Data Management"
-          }
-        }
-      }
-    },
-    "Tüm Verileri Sıfırla" : {
-      "comment" : "Reset all data button",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tüm Verileri Sıfırla"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reset All Data"
-          }
-        }
-      }
-    },
-    "Bu işlem tüm meditasyon geçmişini, streak'leri ve ayarları siler. Bu işlem geri alınamaz." : {
-      "comment" : "Reset data footer warning",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bu işlem tüm meditasyon geçmişini, streak'leri ve ayarları siler. Bu işlem geri alınamaz."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "This will delete all meditation history, streaks, and settings. This action cannot be undone."
-          }
-        }
-      }
-    },
-    "Versiyon" : {
-      "comment" : "Version label",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Versiyon"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Version"
-          }
-        }
-      }
-    },
-    "İletişim & Geri Bildirim" : {
-      "comment" : "Contact and feedback menu item",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "İletişim & Geri Bildirim"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Contact & Feedback"
-          }
-        }
-      }
-    },
-    "Website" : {
-      "comment" : "Website link label",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Website"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Website"
-          }
-        }
-      }
-    },
-    "Tüm Verileri Sil" : {
-      "comment" : "Delete all data alert title",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tüm Verileri Sil"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Delete All Data"
-          }
-        }
-      }
-    },
-    "Sil" : {
-      "comment" : "Delete button",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sil"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Delete"
-          }
-        }
-      }
-    },
-    "Bu işlem tüm meditasyon geçmişini, streak'leri, odaklanma seanslarını ve ayarları kalıcı olarak silecek. Devam etmek istediğinden emin misin?" : {
-      "comment" : "Delete all data confirmation message",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bu işlem tüm meditasyon geçmişini, streak'leri, odaklanma seanslarını ve ayarları kalıcı olarak silecek. Devam etmek istediğinden emin misin?"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "This will permanently delete all meditation history, streaks, focus sessions, and settings. Are you sure you want to continue?"
-          }
-        }
-      }
-    },
-    "Veriler Silindi" : {
-      "comment" : "Data deleted alert title",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Veriler Silindi"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Data Deleted"
-          }
-        }
-      }
-    },
-    "Tamam" : {
-      "comment" : "OK button",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tamam"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "OK"
-          }
-        }
-      }
-    },
-    "Tüm veriler başarıyla sıfırlandı." : {
-      "comment" : "Data reset success message",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tüm veriler başarıyla sıfırlandı."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "All data has been successfully reset."
-          }
-        }
-      }
-    },
-    "Dil" : {
-      "comment" : "Language setting label",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dil"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Language"
-          }
-        }
-      }
-    },
-    "Genel" : {
-      "comment" : "General settings section header",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Genel"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "General"
-          }
-        }
-      }
-    },
-    "Türkçe" : {
-      "comment" : "Turkish language option",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Türkçe"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Turkish"
-          }
-        }
-      }
-    },
-    "İngilizce" : {
-      "comment" : "English language option",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "İngilizce"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "English"
-          }
-        }
-      }
+    "ZenFlow'u daha iyi hale getirmemize yardımcı olun. Önerileriniz, hata raporlarınız veya genel geri bildirimlerinizi bizimle paylaşın." : {
+
     }
   },
   "version" : "1.0"
