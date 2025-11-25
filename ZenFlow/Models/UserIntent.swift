@@ -27,25 +27,31 @@ enum UserIntent: String, Codable, CaseIterable, Identifiable {
 
     var id: String { rawValue }
 
-    /// Display name in Turkish
+    /// Display name localized
     var displayName: String {
-        switch self {
-        case .stress:
-            return "Stres Yönetimi"
-        case .focus:
-            return "Odaklanma"
-        case .sleep:
-            return "Uyku"
-        case .breathing:
-            return "Nefes Egzersizi"
-        case .motivation:
-            return "Motivasyon"
-        case .meditation:
-            return "Meditasyon"
-        case .progress:
-            return "İlerleme"
-        case .general:
-            return "Genel"
+        switch LanguageManager.shared.currentLanguage {
+        case .turkish:
+            switch self {
+            case .stress: return "Stres Yönetimi"
+            case .focus: return "Odaklanma"
+            case .sleep: return "Uyku"
+            case .breathing: return "Nefes Egzersizi"
+            case .motivation: return "Motivasyon"
+            case .meditation: return "Meditasyon"
+            case .progress: return "İlerleme"
+            case .general: return "Genel"
+            }
+        case .english:
+            switch self {
+            case .stress: return String(localized: "Stres Yönetimi", comment: "Stress Management intent")
+            case .focus: return String(localized: "Odaklanma", comment: "Focus intent")
+            case .sleep: return String(localized: "Uyku", comment: "Sleep intent")
+            case .breathing: return String(localized: "Nefes Egzersizi", comment: "Breathing Exercise intent")
+            case .motivation: return String(localized: "Motivasyon", comment: "Motivation intent")
+            case .meditation: return String(localized: "Meditasyon", comment: "Meditation intent")
+            case .progress: return String(localized: "İlerleme", comment: "Progress intent")
+            case .general: return String(localized: "Genel", comment: "General intent")
+            }
         }
     }
 

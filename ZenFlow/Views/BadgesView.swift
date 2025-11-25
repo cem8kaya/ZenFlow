@@ -37,7 +37,7 @@ struct BadgesView: View {
                         // Unlocked Badges Section
                         if !gamificationManager.unlockedBadges.isEmpty {
                             badgeSectionView(
-                                title: "Kazanılan Rozetler",
+                                title: String(localized: "Kazanılan Rozetler", comment: "Earned badges section title"),
                                 badges: gamificationManager.unlockedBadges,
                                 isUnlocked: true
                             )
@@ -46,7 +46,7 @@ struct BadgesView: View {
                         // Locked Badges Section
                         if !gamificationManager.lockedBadges.isEmpty {
                             badgeSectionView(
-                                title: "Kilitli Rozetler",
+                                title: String(localized: "Kilitli Rozetler", comment: "Locked badges section title"),
                                 badges: gamificationManager.lockedBadges,
                                 isUnlocked: false
                             )
@@ -55,7 +55,7 @@ struct BadgesView: View {
                     .padding()
                 }
             }
-            .navigationTitle("Rozetler")
+            .navigationTitle(Text("Rozetler", comment: "Badges page title"))
             .navigationBarTitleDisplayMode(.large)
             .sheet(isPresented: $showingBadgeDetail) {
                 if let badge = selectedBadge {
@@ -118,7 +118,7 @@ struct BadgesView: View {
                 }
             }
 
-            Text(String(format: "%.0f%% Tamamlandı", gamificationManager.progressPercentage))
+            Text(String(localized: "\(String(format: "%.0f", gamificationManager.progressPercentage))% Tamamlandı", comment: "Progress percentage completed"))
                 .font(.headline)
                 .foregroundColor(.white.opacity(0.9))
         }
@@ -447,7 +447,7 @@ struct BadgeDetailView: View {
                                         .padding(.horizontal)
 
                                     VStack(spacing: 4) {
-                                        Text("Kazanılma Tarihi")
+                                        Text("Kazanılma Tarihi", comment: "Badge earned date label")
                                             .font(.caption)
                                             .foregroundColor(.white.opacity(0.6))
 
@@ -467,8 +467,10 @@ struct BadgeDetailView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Kapat") {
+                    Button(action: {
                         dismiss()
+                    }) {
+                        Text("Kapat", comment: "Close badge detail button")
                     }
                     .foregroundColor(.white)
                     .zenSecondaryButtonStyle()
@@ -480,13 +482,13 @@ struct BadgeDetailView: View {
     private var requirementText: String {
         switch badge.requirementType {
         case .streak:
-            return "Gereken: \(badge.requiredValue) gün ardışık meditasyon"
+            return String(localized: "Gereken: \(badge.requiredValue) gün ardışık meditasyon", comment: "Badge requirement: consecutive meditation days")
         case .totalMinutes:
-            return "Gereken: \(badge.requiredValue) dakika toplam meditasyon"
+            return String(localized: "Gereken: \(badge.requiredValue) dakika toplam meditasyon", comment: "Badge requirement: total meditation minutes")
         case .focusSessions:
-            return "Gereken: \(badge.requiredValue) odaklanma seansı"
+            return String(localized: "Gereken: \(badge.requiredValue) odaklanma seansı", comment: "Badge requirement: focus sessions")
         case .focusSessionsDaily:
-            return "Gereken: Tek günde \(badge.requiredValue) odaklanma seansı"
+            return String(localized: "Gereken: Tek günde \(badge.requiredValue) odaklanma seansı", comment: "Badge requirement: daily focus sessions")
         }
     }
 }
