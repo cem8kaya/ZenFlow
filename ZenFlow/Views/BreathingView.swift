@@ -379,29 +379,57 @@ struct BreathingView: View {
                 // Flexible spacer with minimum height
                 Spacer(minLength: 10)
 
-                // Control buttons (fixed height zone)
-                HStack(spacing: 40) {
-                    // Start/Stop button
+                // Control buttons (fixed height zone, centered)
+                VStack(spacing: 20) {
+                    // Main centered Start/Stop button with zen icon
                     Button(action: toggleAnimation) {
-                        Image(systemName: isAnimating ? "stop.circle.fill" : "play.circle.fill")
-                            .font(.system(size: 60))
-                            .foregroundColor(ZenTheme.lightLavender)
+                        ZStack {
+                            Circle()
+                                .fill(
+                                    LinearGradient(
+                                        colors: [ZenTheme.lightLavender, ZenTheme.softPurple],
+                                        startPoint: .topLeading,
+                                        endPoint: .bottomTrailing
+                                    )
+                                )
+                                .frame(width: 80, height: 80)
+                                .shadow(color: ZenTheme.lightLavender.opacity(0.5), radius: 20, x: 0, y: 10)
+
+                            Image(systemName: isAnimating ? "stop.fill" : "leaf.fill")
+                                .font(.system(size: 32, weight: .semibold))
+                                .foregroundColor(.white)
+                        }
                     }
                     .zenIconButtonStyle()
                     .accessibilityLabel(isAnimating ? "Meditasyonu durdur" : "Meditasyonu başlat")
                     .accessibilityHint(isAnimating ? "Meditasyon seansını sonlandırır ve kaydeder" : "Nefes egzersizi ile meditasyonu başlatır")
 
-                    // Pause/Resume button (always present, hidden when not animating)
-                    Button(action: togglePause) {
-                        Image(systemName: isPaused ? "play.circle" : "pause.circle")
-                            .font(.system(size: 50))
-                            .foregroundColor(ZenTheme.softPurple)
+                    // Pause/Resume button (smaller, below main button)
+                    if isAnimating {
+                        Button(action: togglePause) {
+                            HStack(spacing: 8) {
+                                Image(systemName: isPaused ? "play.fill" : "pause.fill")
+                                    .font(.system(size: 14))
+                                Text(isPaused ? "Devam Et" : "Duraklat")
+                                    .font(.system(size: 14, weight: .semibold))
+                            }
+                            .foregroundColor(ZenTheme.lightLavender)
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 10)
+                            .background(
+                                Capsule()
+                                    .fill(Color.white.opacity(0.1))
+                            )
+                            .overlay(
+                                Capsule()
+                                    .stroke(ZenTheme.softPurple.opacity(0.3), lineWidth: 1)
+                            )
+                        }
+                        .zenSecondaryButtonStyle()
+                        .accessibilityLabel(isPaused ? "Devam et" : "Duraklat")
+                        .accessibilityHint(isPaused ? "Meditasyona devam eder" : "Meditasyonu geçici olarak duraklatır")
+                        .transition(.opacity.combined(with: .scale))
                     }
-                    .zenSecondaryButtonStyle()
-                    .accessibilityLabel(isPaused ? "Devam et" : "Duraklat")
-                    .accessibilityHint(isPaused ? "Meditasyona devam eder" : "Meditasyonu geçici olarak duraklatır")
-                    .opacity(isAnimating ? 1 : 0)
-                    .allowsHitTesting(isAnimating)
                 }
                 .frame(maxWidth: .infinity, minHeight: 80)
                 .padding(.bottom, 90)
@@ -445,10 +473,6 @@ struct BreathingView: View {
 
     private var durationPickerView: some View {
         VStack(spacing: 12) {
-            Text("Seans Süresi")
-                .font(.system(size: 16, weight: .medium))
-                .foregroundColor(ZenTheme.softPurple)
-
             HStack(spacing: 16) {
                 ForEach([5, 10, 15, 30], id: \.self) { duration in
                     Button(action: {
