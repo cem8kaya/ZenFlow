@@ -23,6 +23,7 @@ struct ZenCoachView: View {
     @State private var inputText: String = ""
     @State private var showClearAlert: Bool = false
     @FocusState private var isInputFocused: Bool
+    @State private var scrollProxy: ScrollViewProxy?
 
     // MARK: - Body
 
@@ -47,14 +48,14 @@ struct ZenCoachView: View {
                 inputBar
             }
         }
-        .alert("Geçmişi Temizle", isPresented: $showClearAlert) {
-            Button("İptal", role: .cancel) {}
-            Button("Temizle", role: .destructive) {
+        .alert(Text("Geçmişi Temizle", comment: "Clear history alert title"), isPresented: $showClearAlert) {
+            Button(Text("İptal", comment: "Cancel button"), role: .cancel) {}
+            Button(Text("Temizle", comment: "Clear button"), role: .destructive) {
                 manager.clearHistory()
                 HapticManager.shared.playNotification(type: .success)
             }
         } message: {
-            Text("Tüm sohbet geçmişi silinecek. Emin misiniz?")
+            Text("Tüm sohbet geçmişi silinecek. Emin misiniz?", comment: "Clear history confirmation message")
         }
     }
 
@@ -62,10 +63,20 @@ struct ZenCoachView: View {
 
     private var header: some View {
         HStack(spacing: 12) {
-            // Close/Dismiss keyboard button (always visible)
+            // Close/Dismiss keyboard button - dismisses keyboard and scrolls to top
             Button(action: {
-                // Dismiss keyboard if open, otherwise this button just exists for visual consistency
+                // Dismiss keyboard
                 isInputFocused = false
+
+                // Scroll to top of messages if available
+                if let firstMessage = manager.messages.first, let proxy = scrollProxy {
+                    withAnimation(.easeInOut(duration: 0.3)) {
+                        proxy.scrollTo(firstMessage.id, anchor: .top)
+                    }
+                }
+
+                // Haptic feedback
+                HapticManager.shared.playImpact(style: .light)
             }) {
                 Image(systemName: "chevron.down")
                     .font(.system(size: 18, weight: .semibold))
@@ -99,7 +110,7 @@ struct ZenCoachView: View {
                     .font(.system(size: 18, weight: .semibold))
                     .foregroundColor(ZenTheme.lightLavender)
 
-                Text(manager.isProcessing ? "Yazıyor..." : "Çevrimiçi")
+                Text(manager.isProcessing ? Text("Yazıyor...", comment: "Typing indicator") : Text("Çevrimiçi", comment: "Online status"))
                     .font(.system(size: 13))
                     .foregroundColor(ZenTheme.lightLavender.opacity(0.7))
             }
@@ -282,6 +293,10 @@ struct ZenCoachView: View {
                         }
                     }
                 }
+            }
+            .onAppear {
+                // Store proxy for use in header button
+                scrollProxy = proxy
             }
         }
     }

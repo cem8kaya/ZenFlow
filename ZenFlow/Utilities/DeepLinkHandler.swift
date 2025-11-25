@@ -77,18 +77,19 @@ class DeepLinkHandler {
     /// - Returns: Tab index
     private func getTabIndex(for host: String) -> Int {
         switch host.lowercased() {
-        case "breathing", "meditation":
-            return 0 // Meditasyon tab
-        case "focus", "pomodoro":
-            return 1 // Odaklan tab
-        case "garden":
-            return 2 // Zen Bahçem tab
         case "coach", "zencoach":
-            return 3 // Zen Coach tab
-        case "badges", "progress", "stats":
-            return 4 // Rozetler tab
+            return 0 // Zen Coach tab
+        case "breathing", "meditation":
+            return 1 // Meditasyon tab
+        case "focus", "pomodoro":
+            return 2 // Odaklan tab
+        case "garden":
+            return 3 // Zen Bahçem tab
         case "settings":
-            return 5 // Ayarlar tab
+            return 4 // Ayarlar tab
+        case "badges", "progress", "stats":
+            // Navigate to settings and let the user go to badges from there
+            return 4
         default:
             print("⚠️ Unknown deep link host: \(host), defaulting to tab 0")
             return 0
