@@ -210,16 +210,22 @@ struct SettingsView: View {
             .navigationTitle(Text("Ayarlar", comment: "Settings tab bar item"))
             .navigationBarTitleDisplayMode(.large)
             .alert(Text("Tüm Verileri Sil", comment: "Delete all data alert title"), isPresented: $showResetAlert) {
-                Button(Text("İptal", comment: "Cancel button"), role: .cancel) { }
-                Button(Text("Sil", comment: "Delete button"), role: .destructive) {
+                Button(role: .cancel) { } label: {
+                    Text("İptal", comment: "Cancel button")
+                }
+                Button(role: .destructive) {
                     resetAllData()
+                } label: {
+                    Text("Sil", comment: "Delete button")
                 }
             } message: {
                 Text("Bu işlem tüm meditasyon geçmişini, streak'leri, odaklanma seanslarını ve ayarları kalıcı olarak silecek. Devam etmek istediğinden emin misin?", comment: "Delete all data confirmation message")
             }
             .alert(Text("Veriler Silindi", comment: "Data deleted alert title"), isPresented: $showResetSuccess) {
-                Button(Text("Tamam", comment: "OK button")) {
+                Button {
                     dismiss()
+                } label: {
+                    Text("Tamam", comment: "OK button")
                 }
             } message: {
                 Text("Tüm veriler başarıyla sıfırlandı.", comment: "Data reset success message")
@@ -453,9 +459,11 @@ struct ContactView: View {
         .navigationTitle(Text("İletişim", comment: "Contact page title"))
         .navigationBarTitleDisplayMode(.inline)
         .alert(Text("Teşekkürler!", comment: "Thank you alert title"), isPresented: $showSubmitAlert) {
-            Button(Text("Tamam", comment: "OK button")) {
+            Button {
                 feedbackText = ""
                 dismiss()
+            } label: {
+                Text("Tamam", comment: "OK button")
             }
         } message: {
             Text("Geri bildiriminiz başarıyla gönderildi. Katkınız için teşekkür ederiz!", comment: "Feedback success message")
