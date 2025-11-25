@@ -5,108 +5,114 @@
 //  Created by Claude AI on 24.11.2025.
 //  Copyright © 2025 ZenFlow. All rights reserved.
 //
-//  Handles deep linking from notifications and other sources
+//  Deep link handler for navigating to app features from Zen Coach.
+//  Supports custom URL scheme: zenflow://
 //
 
 import Foundation
 import UserNotifications
-internal import UIKit
 
+// MARK: - Deep Link Handler
+
+/// Singleton class for handling deep links within the app
 class DeepLinkHandler {
-    // MARK: - Notification Names
-
-    static let switchToTabNotification = Notification.Name("DeepLinkHandler.switchToTab")
-    static let startMeditationNotification = Notification.Name("DeepLinkHandler.startMeditation")
-
-    // MARK: - Tab Indices
-
-    enum Tab: Int {
-        case meditation = 0
-        case focus = 1
-        case garden = 2
-        case badges = 3
-        case settings = 4
-    }
 
     // MARK: - Singleton
 
     static let shared = DeepLinkHandler()
 
+    // MARK: - Notification Name
+
+    static let switchToTabNotification = Notification.Name("SwitchToTab")
+
     private init() {}
 
-    // MARK: - Public Methods
+    // MARK: - Deep Link Handling
 
-    /// Switch to a specific tab
-    func switchToTab(_ tab: Tab) {
+    /// Handles a deep link URL string
+    /// - Parameter urlString: URL string (e.g., "zenflow://breathing")
+    func handle(_ urlString: String) {
+        guard let url = URL(string: urlString),
+              url.scheme == "zenflow",
+              let host = url.host else {
+            print("⚠️ Invalid deep link URL: \(urlString)")
+            return
+        }
+
+        // Map host to tab index
+        let tabIndex = getTabIndex(for: host)
+
+        // Post notification to switch tabs
         NotificationCenter.default.post(
             name: DeepLinkHandler.switchToTabNotification,
             object: nil,
-            userInfo: ["tabIndex": tab.rawValue]
+            userInfo: ["tabIndex": tabIndex]
         )
+
+        print("🔗 Deep link handled: \(host) -> Tab \(tabIndex)")
     }
 
-    /// Handle notification response (when user taps notification)
-    func handleNotificationResponse(_ response: UNNotificationResponse) {
-        let actionIdentifier = response.actionIdentifier
-        let categoryIdentifier = response.notification.request.content.categoryIdentifier
-
-        print("🔗 Deep link - Action: \(actionIdentifier), Category: \(categoryIdentifier)")
-
-        switch actionIdentifier {
-        case UNNotificationDefaultActionIdentifier:
-            // User tapped the notification itself
-            handleNotificationTap(category: categoryIdentifier)
-
-        case "START_ACTION":
-            // User tapped "Başla" action button
-            handleStartAction()
-
-        case "SNOOZE_ACTION":
-            // User tapped "Sonra Hatırlat" action button
-            handleSnoozeAction()
-
+    /// Maps URL host to tab index
+    /// - Parameter host: URL host (e.g., "breathing")
+    /// - Returns: Tab index
+    private func getTabIndex(for host: String) -> Int {
+        switch host.lowercased() {
+        case "breathing", "meditation":
+            return 0 // Meditasyon tab
+        case "focus", "pomodoro":
+            return 1 // Odaklan tab
+        case "garden":
+            return 2 // Zen Bahçem tab
+        case "badges", "progress", "stats":
+            return 3 // Rozetler tab
+        case "settings":
+            return 4 // Ayarlar tab
         default:
-            break
+            print("⚠️ Unknown deep link host: \(host), defaulting to tab 0")
+            return 0
         }
     }
 
-    // MARK: - Private Methods
+    // MARK: - Convenience Methods
 
-    private func handleNotificationTap(category: String) {
-        // Switch to meditation tab
-        switchToTab(.meditation)
-
-        // Post notification to start meditation
-        NotificationCenter.default.post(
-            name: DeepLinkHandler.startMeditationNotification,
-            object: nil
-        )
-
-        // Track analytics
-        print("📊 Analytics: notification_opened - category: \(category)")
+    /// Navigates to breathing exercises
+    func navigateToBreathing() {
+        handle("zenflow://breathing")
     }
 
-    private func handleStartAction() {
-        // Switch to meditation tab
-        switchToTab(.meditation)
-
-        // Post notification to auto-start meditation
-        NotificationCenter.default.post(
-            name: DeepLinkHandler.startMeditationNotification,
-            object: nil,
-            userInfo: ["autoStart": true]
-        )
-
-        // Play haptic feedback
-        HapticManager.shared.playImpact(style: .medium)
-
-        print("📊 Analytics: notification_action_start")
+    /// Navigates to focus timer
+    func navigateToFocus() {
+        handle("zenflow://focus")
     }
 
-    private func handleSnoozeAction() {
-        // Snooze notification for 1 hour
-        NotificationManager.shared.snoozeNotification(hours: 1)
+    /// Navigates to zen garden
+    func navigateToGarden() {
+        handle("zenflow://garden")
+    }
 
-        print("📊 Analytics: notification_action_snooze")
+    /// Navigates to badges
+    func navigateToBadges() {
+        handle("zenflow://badges")
+    }
+
+    /// Navigates to settings
+    func navigateToSettings() {
+        handle("zenflow://settings")
+    }
+
+    // MARK: - Notification Response Handling
+
+    /// Handles notification response (when user taps on a notification)
+    /// - Parameter response: The notification response
+    func handleNotificationResponse(_ response: UNNotificationResponse) {
+        let userInfo = response.notification.request.content.userInfo
+
+        // Check for deep link in userInfo
+        if let deepLink = userInfo["deepLink"] as? String {
+            handle(deepLink)
+        } else {
+            // Default behavior: navigate to meditation tab
+            navigateToBreathing()
+        }
     }
 }
