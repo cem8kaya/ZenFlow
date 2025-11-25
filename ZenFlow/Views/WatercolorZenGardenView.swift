@@ -463,8 +463,8 @@ struct WatercolorZenGardenView: View {
         // Start new timer if animations are enabled
         guard !reduceMotion else { return }
 
-        animationTimer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { [weak self] _ in
-            guard let self = self, !self.reduceMotion else { return }
+        animationTimer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { _ in
+            guard !self.reduceMotion else { return }
             self.animateElements()
         }
     }

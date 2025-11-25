@@ -849,8 +849,8 @@ struct ZenGardenView: View {
         stopBackgroundAnimations()
 
         // Cloud movement
-        cloudAnimationTimer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { [weak self] _ in
-            guard let self = self, !self.reduceMotion else { return }
+        cloudAnimationTimer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { _ in
+            guard !self.reduceMotion else { return }
 
             self.cloudAnimationPhase += 0.01
 
@@ -865,8 +865,8 @@ struct ZenGardenView: View {
         }
 
         // Star twinkling
-        starTwinkleTimer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { [weak self] _ in
-            guard let self = self, !self.reduceMotion else { return }
+        starTwinkleTimer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { _ in
+            guard !self.reduceMotion else { return }
             self.starTwinklePhase += 0.05
         }
 

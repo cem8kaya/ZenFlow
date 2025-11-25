@@ -79,7 +79,7 @@ class ZenCoachManager: ObservableObject {
             )
 
             // Create coach message
-            var coachMessage = response.toChatMessage()
+            let coachMessage = response.toChatMessage()
 
             // Add action URL to message if available (stored in a custom way)
             // We'll pass this through the UI via the response
