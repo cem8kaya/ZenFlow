@@ -180,19 +180,14 @@ class ZenCoachManager: ObservableObject {
 
     // MARK: - Suggested Prompts (Enhanced)
 
-    /// Returns suggested prompts for quick access - more engaging and diverse
+    /// Returns suggested prompts for quick access - limited to 5 for better UX
     func getSuggestedPrompts() -> [String] {
         return [
             "🌸 Meditasyona nasıl başlarım?",
             "💭 Zihinsel olarak yorgunum, yardım et",
             "⚡ Odaklanmamı nasıl artırabilirim?",
             "😴 Gece rahat uyuyamıyorum",
-            "🎯 Bugün için motivasyon lazım",
-            "🫁 Nefes egzersizleri nedir?",
-            "📈 İlerlememi görmek istiyorum",
-            "🧘 Zen felsefesi nedir?",
-            "💆 Stresi nasıl yönetirim?",
-            "✨ Mindfulness pratiği nedir?"
+            "🎯 Bugün için motivasyon lazım"
         ]
     }
 

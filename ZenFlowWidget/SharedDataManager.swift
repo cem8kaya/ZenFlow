@@ -20,9 +20,14 @@ class SharedDataManager {
     private static let appGroupIdentifier = "group.com.zenflow.app"
 
     /// Shared UserDefaults instance using App Group
-    private static var sharedDefaults: UserDefaults? {
-        return UserDefaults(suiteName: appGroupIdentifier)
-    }
+    /// Cached to avoid repeated initialization and reduce console warnings
+    private static let sharedDefaults: UserDefaults? = {
+        guard let defaults = UserDefaults(suiteName: appGroupIdentifier) else {
+            print("⚠️ Failed to initialize App Group UserDefaults with identifier: \(appGroupIdentifier)")
+            return nil
+        }
+        return defaults
+    }()
 
     // MARK: - UserDefaults Keys
     // These keys must match the ones used in LocalDataManager
