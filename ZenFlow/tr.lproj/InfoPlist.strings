@@ -1,0 +1,10 @@
+/*
+  InfoPlist.strings
+  Zen Coach
+
+  Turkish localization for app display name and permissions
+*/
+
+CFBundleDisplayName = "Zen Coach";
+CFBundleName = "Zen Coach";
+NSUserNotificationsUsageDescription = "Zen Coach meditasyon hatırlatıcıları göndermek için bildirim izni gerekiyor.";

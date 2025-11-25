@@ -140,47 +140,40 @@ struct SwipeableTabView: View {
 
     var body: some View {
         TabView(selection: $selection) {
+            ZenCoachView()
+                .tabItem {
+                    Label("Zen Coach", systemImage: "person.crop.circle.fill")
+                }
+                .accessibilityLabel("Zen Coach sekmesi")
+                .tag(0)
+
             BreathingView()
                 .tabItem {
                     Label("Meditasyon", systemImage: "leaf.circle.fill")
                 }
                 .accessibilityLabel("Meditasyon sekmesi")
-                .tag(0)
+                .tag(1)
 
             FocusTimerView()
                 .tabItem {
                     Label("Odaklan", systemImage: "timer")
                 }
                 .accessibilityLabel("Odaklan sekmesi")
-                .tag(1)
+                .tag(2)
 
             ZenGardenView()
                 .tabItem {
                     Label("Zen Bahçem", systemImage: "tree.fill")
                 }
                 .accessibilityLabel("Zen Bahçem sekmesi")
-                .tag(2)
-
-            ZenCoachView()
-                .tabItem {
-                    Label("Zen Coach", systemImage: "person.crop.circle.fill")
-                }
-                .accessibilityLabel("Zen Coach sekmesi")
                 .tag(3)
-
-            BadgesView()
-                .tabItem {
-                    Label("Rozetler", systemImage: "trophy.fill")
-                }
-                .accessibilityLabel("Rozetler sekmesi")
-                .tag(4)
 
             SettingsView()
                 .tabItem {
                     Label("Ayarlar", systemImage: "gear")
                 }
                 .accessibilityLabel("Ayarlar sekmesi")
-                .tag(5)
+                .tag(4)
         }
     }
 }

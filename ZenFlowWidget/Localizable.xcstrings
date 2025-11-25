@@ -1,0 +1,57 @@
+{
+  "sourceLanguage" : "tr",
+  "strings" : {
+    "Zen Coach" : {
+      "comment" : "App name in widget",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zen Coach"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zen Coach"
+          }
+        }
+      }
+    },
+    "Meditasyon" : {
+      "comment" : "Meditation widget text",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meditasyon"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meditation"
+          }
+        }
+      }
+    },
+    "Bugünkü Hedefin" : {
+      "comment" : "Today's goal widget text",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugünkü Hedefin"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Today's Goal"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

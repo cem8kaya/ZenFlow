@@ -13,7 +13,6 @@ struct BadgesView: View {
     @StateObject private var gamificationManager = GamificationManager.shared
     @State private var selectedBadge: Badge?
     @State private var showingBadgeDetail = false
-    @State private var selectedTab = 0 // 0: Rozetler, 1: İstatistikler
 
     // Grid layout configuration
     private let columns = [
@@ -30,47 +29,33 @@ struct BadgesView: View {
                 ZenTheme.backgroundGradient
                     .ignoresSafeArea()
 
-                VStack(spacing: 0) {
-                    // Segment Control
-                    segmentControl
-                        .padding(.horizontal)
-                        .padding(.top, 16)
+                ScrollView {
+                    VStack(spacing: 24) {
+                        // Header with progress
+                        headerView
 
-                    // Content based on selected tab
-                    if selectedTab == 0 {
-                        // Rozetler
-                        ScrollView {
-                            VStack(spacing: 24) {
-                                // Header with progress
-                                headerView
-
-                                // Unlocked Badges Section
-                                if !gamificationManager.unlockedBadges.isEmpty {
-                                    badgeSectionView(
-                                        title: "Kazanılan Rozetler",
-                                        badges: gamificationManager.unlockedBadges,
-                                        isUnlocked: true
-                                    )
-                                }
-
-                                // Locked Badges Section
-                                if !gamificationManager.lockedBadges.isEmpty {
-                                    badgeSectionView(
-                                        title: "Kilitli Rozetler",
-                                        badges: gamificationManager.lockedBadges,
-                                        isUnlocked: false
-                                    )
-                                }
-                            }
-                            .padding()
+                        // Unlocked Badges Section
+                        if !gamificationManager.unlockedBadges.isEmpty {
+                            badgeSectionView(
+                                title: "Kazanılan Rozetler",
+                                badges: gamificationManager.unlockedBadges,
+                                isUnlocked: true
+                            )
                         }
-                    } else {
-                        // İstatistikler
-                        StatsView()
+
+                        // Locked Badges Section
+                        if !gamificationManager.lockedBadges.isEmpty {
+                            badgeSectionView(
+                                title: "Kilitli Rozetler",
+                                badges: gamificationManager.lockedBadges,
+                                isUnlocked: false
+                            )
+                        }
                     }
+                    .padding()
                 }
             }
-            .navigationTitle("Başarılar")
+            .navigationTitle("Rozetler")
             .navigationBarTitleDisplayMode(.large)
             .sheet(isPresented: $showingBadgeDetail) {
                 if let badge = selectedBadge {
@@ -93,59 +78,6 @@ struct BadgesView: View {
                 }
             )
         }
-    }
-
-    // MARK: - Segment Control
-
-    private var segmentControl: some View {
-        HStack(spacing: 0) {
-            // Rozetler Tab
-            Button(action: {
-                withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
-                    selectedTab = 0
-                }
-                HapticManager.shared.playImpact(style: .light)
-            }) {
-                Text("Rozetler")
-                    .font(.subheadline)
-                    .fontWeight(.semibold)
-                    .foregroundColor(selectedTab == 0 ? .white : .white.opacity(0.6))
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 12)
-                    .background(
-                        RoundedRectangle(cornerRadius: 10)
-                            .fill(selectedTab == 0 ? Color.white.opacity(0.2) : Color.clear)
-                    )
-            }
-
-            // İstatistikler Tab
-            Button(action: {
-                withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
-                    selectedTab = 1
-                }
-                HapticManager.shared.playImpact(style: .light)
-            }) {
-                Text("İstatistikler")
-                    .font(.subheadline)
-                    .fontWeight(.semibold)
-                    .foregroundColor(selectedTab == 1 ? .white : .white.opacity(0.6))
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 12)
-                    .background(
-                        RoundedRectangle(cornerRadius: 10)
-                            .fill(selectedTab == 1 ? Color.white.opacity(0.2) : Color.clear)
-                    )
-            }
-        }
-        .padding(4)
-        .background(
-            RoundedRectangle(cornerRadius: 12)
-                .fill(Color.white.opacity(0.1))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 12)
-                        .stroke(Color.white.opacity(0.2), lineWidth: 1)
-                )
-        )
     }
 
     // MARK: - Header View
