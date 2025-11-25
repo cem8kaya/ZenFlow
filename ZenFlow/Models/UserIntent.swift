@@ -5,101 +5,111 @@
 //  Created by Claude AI on 24.11.2025.
 //  Copyright © 2025 ZenFlow. All rights reserved.
 //
-//  User intent classification for message analysis.
+//  User intent classification for Zen Coach feature.
+//  Defines 8 categories of user intents with Turkish keywords and deep links.
 //
 
 import Foundation
+import SwiftUI
 
 // MARK: - User Intent
 
-/// Represents the intent or purpose behind a user's message
-enum UserIntent: String, Codable, CaseIterable {
-    case meditation
-    case breathing
-    case focus
-    case mood
-    case relaxation
-    case sleep
+/// Represents the classified intent of a user's message
+enum UserIntent: String, Codable, CaseIterable, Identifiable {
     case stress
-    case anxiety
-    case exercise
+    case focus
+    case sleep
+    case breathing
+    case motivation
+    case meditation
+    case progress
     case general
+
+    var id: String { rawValue }
 
     /// Display name in Turkish
     var displayName: String {
         switch self {
-        case .meditation:
-            return "Meditasyon"
-        case .breathing:
-            return "Nefes Egzersizi"
-        case .focus:
-            return "Odaklanma"
-        case .mood:
-            return "Ruh Hali"
-        case .relaxation:
-            return "Rahatlama"
-        case .sleep:
-            return "Uyku"
         case .stress:
             return "Stres Yönetimi"
-        case .anxiety:
-            return "Kaygı Azaltma"
-        case .exercise:
-            return "Egzersiz"
+        case .focus:
+            return "Odaklanma"
+        case .sleep:
+            return "Uyku"
+        case .breathing:
+            return "Nefes Egzersizi"
+        case .motivation:
+            return "Motivasyon"
+        case .meditation:
+            return "Meditasyon"
+        case .progress:
+            return "İlerleme"
         case .general:
             return "Genel"
+        }
+    }
+
+    /// SF Symbol icon name
+    var iconName: String {
+        switch self {
+        case .stress:
+            return "heart.circle.fill"
+        case .focus:
+            return "target"
+        case .sleep:
+            return "moon.stars.fill"
+        case .breathing:
+            return "wind"
+        case .motivation:
+            return "bolt.fill"
+        case .meditation:
+            return "leaf.circle.fill"
+        case .progress:
+            return "chart.bar.fill"
+        case .general:
+            return "message.fill"
         }
     }
 
     /// Turkish keywords for intent matching
     var keywords: [String] {
         switch self {
-        case .meditation:
-            return ["meditasyon", "medit", "huzur", "sakinlik", "dinginlik", "zen"]
-        case .breathing:
-            return ["nefes", "soluk", "breathing", "nefes al", "nefes ver", "derin nefes"]
-        case .focus:
-            return ["odak", "konsantrasyon", "dikkat", "çalış", "pomodoro", "çalışma", "verimli"]
-        case .mood:
-            return ["ruh hal", "duygu", "his", "mood", "nasılsın", "durum"]
-        case .relaxation:
-            return ["rahatla", "gevşe", "dinlen", "relax", "huzur", "sakin"]
-        case .sleep:
-            return ["uyku", "uyu", "yat", "uyumak", "uyuyamıyorum", "uyumadan önce", "gece"]
         case .stress:
-            return ["stres", "gergin", "baskı", "yük", "stresli", "gerginlik"]
-        case .anxiety:
-            return ["kaygı", "endişe", "korku", "panik", "tedirgin", "huzursuz", "anxiety"]
-        case .exercise:
-            return ["egzersiz", "antrenman", "spor", "hareket", "yoga", "jimnastik"]
+            return ["stres", "kaygı", "endişe", "gergin", "huzursuz", "sinirli", "tedirgin", "panik", "korku", "kaygılan", "stresli", "sıkıntı"]
+        case .focus:
+            return ["odak", "dikkat", "konsantrasyon", "dağınık", "çalış", "verim", "iş", "ders", "pomodoro", "odaklan", "çalışma", "konsantre"]
+        case .sleep:
+            return ["uyku", "uyu", "dinlen", "yorgun", "bitkin", "uyuya", "gece", "yat", "uyuma", "uyumak", "uykusuz"]
+        case .breathing:
+            return ["nefes", "soluk", "breathing", "box breathing", "4-7-8", "derin nefes", "nefes al", "soluk al", "nefes egzersiz"]
+        case .motivation:
+            return ["motivasyon", "başla", "istemi", "üşen", "enerji", "güç", "ilham", "cesaret", "isteksiz", "tembellik", "motivasyon bul"]
+        case .meditation:
+            return ["meditasyon", "mindfulness", "farkındalık", "meditasyon yap", "nasıl", "öğren", "meditasyon öğren", "başlangıç"]
+        case .progress:
+            return ["ilerleme", "gelişim", "istatistik", "rozet", "başarı", "seri", "bahçe", "ağaç", "gelişme", "streak", "stats"]
         case .general:
             return []
         }
     }
 
-    /// Emoji representation
-    var emoji: String {
+    /// Deep link URL for navigation
+    var deepLinkURL: String? {
         switch self {
-        case .meditation:
-            return "🧘"
-        case .breathing:
-            return "🌬️"
+        case .stress, .breathing:
+            return "zenflow://breathing"
         case .focus:
-            return "🎯"
-        case .mood:
-            return "😊"
-        case .relaxation:
-            return "😌"
+            return "zenflow://focus"
         case .sleep:
-            return "😴"
-        case .stress:
-            return "😓"
-        case .anxiety:
-            return "😰"
-        case .exercise:
-            return "💪"
+            return "zenflow://breathing"
+        case .motivation:
+            return "zenflow://garden"
+        case .meditation:
+            return "zenflow://breathing"
+        case .progress:
+            return "zenflow://badges"
         case .general:
-            return "💬"
+            return nil
         }
     }
 }
