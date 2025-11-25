@@ -1,237 +1,863 @@
 {
   "sourceLanguage" : "tr",
   "strings" : {
-    "Zen Coach" : {
-      "comment" : "Tab bar item and main feature name",
+    "— %@" : {
+
+    },
+    "\"Şimdiki an, sahip olduğun tek andır.\"" : {
+
+    },
+    "@zenflowapp" : {
+
+    },
+    "/%lld" : {
+
+    },
+    "%@ • %@" : {
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zen Coach"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zen Coach"
+            "state" : "new",
+            "value" : "%1$@ • %2$@"
           }
         }
       }
     },
-    "Meditasyon" : {
-      "comment" : "Meditation tab bar item",
+    "%@ sesi" : {
+
+    },
+    "%@, %@ seviye" : {
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Meditasyon"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Meditation"
+            "state" : "new",
+            "value" : "%1$@, %2$@ seviye"
           }
         }
       }
     },
-    "Odaklan" : {
-      "comment" : "Focus tab bar item",
+    "%lld" : {
+
+    },
+    "%lld / %lld" : {
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Odaklan"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Focus"
+            "state" : "new",
+            "value" : "%1$lld / %2$lld"
           }
         }
       }
     },
-    "Zen Bahçem" : {
-      "comment" : "Garden tab bar item",
+    "%lld dakika" : {
+
+    },
+    "%lld dakika seans" : {
+
+    },
+    "%lld dk" : {
+
+    },
+    "%lld yüzde" : {
+
+    },
+    "%lld/%lld" : {
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zen Bahçem"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zen Garden"
+            "state" : "new",
+            "value" : "%1$lld/%2$lld"
           }
         }
       }
+    },
+    "%lld%%" : {
+
+    },
+    "🌱" : {
+
+    },
+    "🎉" : {
+
+    },
+    "🧘" : {
+
+    },
+    "1.0.0" : {
+
+    },
+    "Aktif" : {
+
+    },
+    "App Icon Preview" : {
+
+    },
+    "Apple Sağlık Entegrasyonu" : {
+
+    },
+    "Arka Plan Sesi" : {
+
+    },
+    "Arka plan sesi seçmek için dokunun" : {
+
+    },
+    "Arka Plan Sesleri" : {
+
+    },
+    "Atla" : {
+
     },
     "Ayarlar" : {
       "comment" : "Settings tab bar item",
       "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ayarlar"
-          }
-        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Settings"
           }
-        }
-      }
-    },
-    "Rozetler" : {
-      "comment" : "Badges section",
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rozetler"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Badges"
+            "value" : "Ayarlar"
           }
         }
       }
     },
-    "İstatistikler" : {
-      "comment" : "Statistics section",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "İstatistikler"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Statistics"
-          }
-        }
-      }
+    "Ayarlar sekmesi" : {
+
+    },
+    "Ayarlara Git" : {
+
+    },
+    "Az" : {
+
     },
     "Başarılar & İstatistikler" : {
       "comment" : "Achievements and statistics section header",
       "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Başarılar & İstatistikler"
-          }
-        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Achievements & Statistics"
           }
-        }
-      }
-    },
-    "Hatırlatıcılar" : {
-      "comment" : "Reminders setting",
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hatırlatıcılar"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reminders"
+            "value" : "Başarılar & İstatistikler"
           }
         }
       }
+    },
+    "Başla" : {
+
+    },
+    "Başlamak için bir soru seç:" : {
+
+    },
+    "Başlat" : {
+
+    },
+    "Belirlediğin saatte günlük meditasyon hatırlatıcısı alacaksın." : {
+
+    },
+    "Bildirim ayarlarını test etmek için bir deneme bildirimi gönder." : {
+
+    },
+    "Bildirim İzni Gerekli" : {
+
     },
     "Bildirimler" : {
       "comment" : "Notifications section header",
       "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bildirimler"
-          }
-        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Notifications"
           }
-        }
-      }
-    },
-    "Ortam Sesleri" : {
-      "comment" : "Ambient sounds setting",
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ortam Sesleri"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ambient Sounds"
+            "value" : "Bildirimler"
           }
         }
       }
     },
-    "Ses Ayarları" : {
-      "comment" : "Audio settings section header",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ses Ayarları"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Audio Settings"
-          }
-        }
-      }
+    "Bilgelik yolculuğuna hoş geldin" : {
+
+    },
+    "Bir %@ oturumu tamamladın" : {
+
+    },
+    "Bir şey sor..." : {
+
+    },
+    "Breathing Circles Design" : {
+
+    },
+    "Bu Ay Özeti" : {
+
+    },
+    "Bu cihaz dokunsal geri bildirimi desteklemiyor." : {
+
+    },
+    "Bu işlem tüm meditasyon geçmişini, streak'leri ve ayarları siler. Bu işlem geri alınamaz." : {
+
+    },
+    "Bu işlem tüm meditasyon geçmişini, streak'leri, odaklanma seanslarını ve ayarları kalıcı olarak silecek. Devam etmek istediğinden emin misin?" : {
+
+    },
+    "Bugün: %lld oturum" : {
+
+    },
+    "Bugünün Uygulaması" : {
+
+    },
+    "Çevrimiçi" : {
+
+    },
+    "Çok" : {
+
+    },
+    "contact@zenflow.app" : {
+
+    },
+    "Dakika" : {
+
+    },
+    "Dene - 30 saniye" : {
+
+    },
+    "Designed for iOS 17+ • 1024x1024px" : {
+
+    },
+    "Devam et" : {
+
+    },
+    "Devam Et" : {
+
+    },
+    "Devamını Oku" : {
+
+    },
+    "Devre Dışı" : {
+
+    },
+    "dk" : {
+
+    },
+    "Doğrudan uygulamaya git" : {
+
+    },
+    "Dokunsal Ayarlar" : {
+
     },
     "Dokunsal Geri Bildirim" : {
       "comment" : "Haptic feedback setting",
       "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dokunsal Geri Bildirim"
-          }
-        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Haptic Feedback"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dokunsal Geri Bildirim"
+          }
         }
       }
+    },
+    "Duraklat" : {
+
+    },
+    "Durdur" : {
+
+    },
+    "Durum" : {
+
+    },
+    "Düzenli meditasyon alışkanlığı kazanmak için günlük hatırlatmalar almak ister misiniz?" : {
+
+    },
+    "E-posta" : {
+
+    },
+    "Efsanevi bir yolculuk tamamladın!" : {
+
+    },
+    "Egzersiz seç: %@" : {
+
+    },
+    "Etkin" : {
+
+    },
+    "Export All Icons" : {
+
+    },
+    "Export All Sizes" : {
+
+    },
+    "Export Icons" : {
+
+    },
+    "Export Recommended Sizes" : {
+
+    },
+    "Exporting..." : {
+
+    },
+    "Farklı bir nefes egzersizi seçmek için dokunun" : {
+
+    },
+    "Faydaları:" : {
+
+    },
+    "Geçmişi Temizle" : {
+
+    },
+    "Geri" : {
+
+    },
+    "Geri Bildirim" : {
+
+    },
+    "Geri Bildiriminiz" : {
+
+    },
+    "Geri bildiriminiz başarıyla gönderildi. Katkınız için teşekkür ederiz!" : {
+
+    },
+    "Geri bildiriminiz doğrudan geliştirme ekibine iletilecektir." : {
+
+    },
+    "Gönder" : {
+
+    },
+    "Gün" : {
+
+    },
+    "Günlük Hatırlatıcı" : {
+
+    },
+    "Günlük Hatırlatmalar" : {
+
+    },
+    "Günün Öğretisi" : {
+
+    },
+    "Hadi Başlayalım" : {
+
     },
     "Hakkında" : {
       "comment" : "About section header",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hakkında"
           }
-        },
+        }
+      }
+    },
+    "Hangi günler hatırlatıcı almak istediğini seç." : {
+
+    },
+    "Harika bir seans! 🧘‍♀️" : {
+
+    },
+    "Harika İş!" : {
+
+    },
+    "Harika!" : {
+
+    },
+    "Hatırlatıcı almak için ZenFlow'a bildirim izni vermelisin. Ayarlar'dan izni etkinleştirebilirsin." : {
+
+    },
+    "Hatırlatıcı Günleri" : {
+
+    },
+    "Hatırlatıcılar" : {
+      "comment" : "Reminders setting",
+      "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reminders"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hatırlatıcılar"
+          }
+        }
+      }
+    },
+    "HealthKit Entegrasyonu" : {
+
+    },
+    "Her akşam saat 20:00'de meditasyon yapmadıysan hatırlatıcı alacaksın." : {
+
+    },
+    "Huzurlu bir yolculuk..." : {
+
+    },
+    "Icon Style" : {
+
+    },
+    "İleri" : {
+
+    },
+    "İlerleme" : {
+
+    },
+    "İletişim" : {
+
+    },
+    "İletişim & Geri Bildirim" : {
+
+    },
+    "İletişim Kanalları" : {
+
+    },
+    "İlk Meditasyonuna Başla" : {
+
+    },
+    "İptal" : {
+
+    },
+    "İstatistikler" : {
+      "comment" : "Statistics section",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Statistics"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İstatistikler"
+          }
+        }
+      }
+    },
+    "İzin İsteniyor..." : {
+
+    },
+    "İzin Ver" : {
+
+    },
+    "Kapat" : {
+
+    },
+    "Kaynağı Görüntüle" : {
+
+    },
+    "Kazanılma Tarihi" : {
+
+    },
+    "Kırıldı" : {
+
+    },
+    "Maksimum Seviye!" : {
+
+    },
+    "Meditasyon" : {
+      "comment" : "Meditation tab bar item",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meditation"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meditasyon"
+          }
+        }
+      }
+    },
+    "Meditasyon Hatırlatıcısı" : {
+
+    },
+    "Meditasyon İstatistikleri" : {
+
+    },
+    "Meditasyon seansını sonlandırır ve kaydeder" : {
+
+    },
+    "Meditasyon seanslarını Apple Health'e kaydetmek için izin verin. Verileriniz güvende ve yalnızca sizin kontrolünüzde." : {
+
+    },
+    "Meditasyon sekmesi" : {
+
+    },
+    "Meditasyon sırasında çalacak ortam seslerini yönet." : {
+
+    },
+    "Meditasyon sürenizi Apple Sağlık uygulamasına kaydetmek istiyor musunuz?" : {
+
+    },
+    "Meditasyon süresi: %@" : {
+
+    },
+    "Meditasyon Tamamlandı!" : {
+
+    },
+    "Meditasyona devam eder" : {
+
+    },
+    "Meditasyonu başlat" : {
+
+    },
+    "Meditasyonu durdur" : {
+
+    },
+    "Meditasyonu geçici olarak duraklatır" : {
+
+    },
+    "Mindfulness yolculuğunda rehberin" : {
+
+    },
+    "Mola Zamanı" : {
+
+    },
+    "Motivasyon Mesajları" : {
+
+    },
+    "Nasıl hissediyorsun?" : {
+
+    },
+    "Nefes Al" : {
+
+    },
+    "Nefes alma animasyonu" : {
+
+    },
+    "Nefes egzersizi ile meditasyonu başlatır" : {
+
+    },
+    "Nefes Egzersizi Seç" : {
+
+    },
+    "Nefes egzersizi seçim ekranı" : {
+
+    },
+    "Nefes egzersizi yapmak ister misin?" : {
+
+    },
+    "Nefes Ver" : {
+
+    },
+    "Odaklan" : {
+      "comment" : "Focus tab bar item",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Focus"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odaklan"
+          }
+        }
+      }
+    },
+    "Odaklan sekmesi" : {
+
+    },
+    "Odaklan..." : {
+
+    },
+    "Onboarding'i tamamla ve uygulamaya geç" : {
+
+    },
+    "Önceki sayfa" : {
+
+    },
+    "Örnek Mesajlar:" : {
+
+    },
+    "Ortam Sesleri" : {
+      "comment" : "Ambient sounds setting",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ambient Sounds"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ortam Sesleri"
+          }
+        }
+      }
+    },
+    "Pomodoro İstatistikleri" : {
+
+    },
+    "Pomodoro Zamanlayıcı" : {
+
+    },
+    "Ready to export 18 icon sizes" : {
+
+    },
+    "Renk Teması" : {
+
+    },
+    "Rozet Kazanıldı!" : {
+
+    },
+    "Rozetler" : {
+      "comment" : "Badges section",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Badges"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rozetler"
+          }
+        }
+      }
+    },
+    "Saat" : {
+
+    },
+    "Sana Özel Tavsiye" : {
+
+    },
+    "saniye" : {
+
+    },
+    "Sayfa %lld / %lld" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Sayfa %1$lld / %2$lld"
+          }
+        }
+      }
+    },
+    "Seç" : {
+
+    },
+    "Seçili" : {
+
+    },
+    "Seçili sesler meditasyon sırasında arka planda çalacak. En fazla 2 ses aynı anda seçebilirsiniz." : {
+
+    },
+    "Seçili, kaldırmak için dokunun" : {
+
+    },
+    "Seçmek için dokunun" : {
+
+    },
+    "Select Icon Style" : {
+
+    },
+    "Seri Durumu" : {
+
+    },
+    "Ses" : {
+
+    },
+    "Ses Ayarları" : {
+      "comment" : "Audio settings section header",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Audio Settings"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ses Ayarları"
+          }
+        }
+      }
+    },
+    "Ses Kaynakları" : {
+
+    },
+    "Ses Kredileri" : {
+
+    },
+    "Ses seçimi" : {
+
+    },
+    "Ses seviyesi" : {
+
+    },
+    "Ses Seviyesi" : {
+
+    },
+    "Sessiz" : {
+
+    },
+    "Sil" : {
+
+    },
+    "Şimdi Değil" : {
+
+    },
+    "Size uygun bir egzersiz seçin" : {
+
+    },
+    "Son 4 Hafta Aktivite" : {
+
+    },
+    "Son 7 Gün" : {
+
+    },
+    "Sonraki Aşamaya" : {
+
+    },
+    "Sonraki sayfa" : {
+
+    },
+    "Sonraki sayfaya git" : {
+
+    },
+    "Streak Hatırlatıcısı" : {
+
+    },
+    "Streak Koruması" : {
+
+    },
+    "Style" : {
+
+    },
+    "Tamam" : {
+
+    },
+    "Tanıtımı atla" : {
+
+    },
+    "Temizle" : {
+
+    },
+    "Teşekkürler!" : {
+
+    },
+    "Test Bildirimi Gönder" : {
+
+    },
+    "Toplam: %lld dk" : {
+
+    },
+    "Tüm sesler ücretsiz kullanım lisansına sahip" : {
+
+    },
+    "Tüm sohbet geçmişi silinecek. Emin misiniz?" : {
+
+    },
+    "Tüm veriler başarıyla sıfırlandı." : {
+
+    },
+    "Tüm Verileri Sil" : {
+
+    },
+    "Tüm Verileri Sıfırla" : {
+
+    },
+    "Tüm Zamanlar" : {
+
+    },
+    "Twitter" : {
+
+    },
+    "Use Xcode's Image Renderer to export" : {
+
+    },
+    "Uygulama" : {
+
+    },
+    "Uygulama içi titreşim ve dokunsal geri bildirimi kontrol et." : {
+
+    },
+    "Uygulamayı Keşfet" : {
+
+    },
+    "Veri Yönetimi" : {
+
+    },
+    "Veriler Silindi" : {
+
+    },
+    "Versiyon" : {
+
+    },
+    "Website" : {
+
+    },
+    "Yazıyor..." : {
+
+    },
+    "Yeni Aşama!" : {
+
+    },
+    "Yoğunluk" : {
+
+    },
+    "Zen Bahçem" : {
+      "comment" : "Garden tab bar item",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zen Garden"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zen Bahçem"
+          }
+        }
+      }
+    },
+    "Zen Bahçem sekmesi" : {
+
+    },
+    "Zen Coach" : {
+      "comment" : "Tab bar item and main feature name",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zen Coach"
+          }
+        },
+        "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "About"

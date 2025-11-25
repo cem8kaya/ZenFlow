@@ -1,56 +1,161 @@
 {
   "sourceLanguage" : "tr",
   "strings" : {
-    "Zen Coach" : {
-      "comment" : "App name in widget",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zen Coach"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zen Coach"
-          }
-        }
-      }
+    "%lld" : {
+
     },
-    "Meditasyon" : {
-      "comment" : "Meditation widget text",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Meditasyon"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Meditation"
-          }
-        }
-      }
+    "%lld dk" : {
+
+    },
+    "%lld Gün" : {
+
+    },
+    "%lld gün serisi" : {
+
+    },
+    "%lld Gün Serisi" : {
+
+    },
+    "•" : {
+
+    },
+    "A an example control that runs a timer." : {
+
+    },
+    "Bottom %@" : {
+
     },
     "Bugünkü Hedefin" : {
       "comment" : "Today's goal widget text",
+      "extractionState" : "stale",
       "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bugünkü Hedefin"
-          }
-        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Today's Goal"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugünkü Hedefin"
+          }
         }
       }
+    },
+    "Configuration" : {
+
+    },
+    "Favorite Emoji" : {
+
+    },
+    "Günlük Seri" : {
+
+    },
+    "Hello %@" : {
+
+    },
+    "Kompakt dairesel widget" : {
+
+    },
+    "L" : {
+
+    },
+    "Leading" : {
+
+    },
+    "Meditasyon" : {
+      "comment" : "Meditation widget text",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meditation"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meditasyon"
+          }
+        }
+      }
+    },
+    "Meditasyon ilerlemenizi ve ağacınızı takip edin" : {
+
+    },
+    "Meditasyon serinizi kilit ekranında görün" : {
+
+    },
+    "Off" : {
+
+    },
+    "On" : {
+
+    },
+    "Start a timer" : {
+
+    },
+    "Start Timer" : {
+
+    },
+    "T %@" : {
+
+    },
+    "Tek satırlık seri göstergesi" : {
+
+    },
+    "This is an example widget." : {
+
+    },
+    "Timer" : {
+
+    },
+    "Timer is running" : {
+
+    },
+    "Timer Name" : {
+
+    },
+    "Timer Name Configuration" : {
+
+    },
+    "Toplam Süre" : {
+
+    },
+    "Trailing" : {
+
+    },
+    "Zen Coach" : {
+      "comment" : "App name in widget",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zen Coach"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zen Coach"
+          }
+        }
+      }
+    },
+    "ZenFlow Dairesel" : {
+
+    },
+    "ZenFlow Kilit Ekranı" : {
+
+    },
+    "ZenFlow Satır İçi" : {
+
+    },
+    "ZenFlow Widget" : {
+
     }
   },
   "version" : "1.0"

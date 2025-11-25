@@ -10,6 +10,7 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
 enum AppLanguage: String, CaseIterable {
     case turkish = "tr"
