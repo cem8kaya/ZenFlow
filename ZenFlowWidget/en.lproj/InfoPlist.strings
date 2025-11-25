@@ -1,0 +1,9 @@
+/*
+  InfoPlist.strings
+  Zen Coach Widget
+
+  English localization for widget display name
+*/
+
+CFBundleDisplayName = "Zen Coach Widget";
+CFBundleName = "Zen Coach Widget";

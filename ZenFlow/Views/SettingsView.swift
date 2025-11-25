@@ -109,10 +109,19 @@ struct SettingsView: View {
                     }
                 }
 
-                // MARK: - Statistics Section
+                // MARK: - Achievements Section
 
                 Section {
-                    NavigationLink(destination: StatisticsView()) {
+                    NavigationLink(destination: BadgesView()) {
+                        HStack {
+                            Image(systemName: "trophy.fill")
+                                .foregroundColor(ZenTheme.calmBlue)
+                                .frame(width: 28)
+                            Text("Rozetler")
+                        }
+                    }
+
+                    NavigationLink(destination: StatsView()) {
                         HStack {
                             Image(systemName: "chart.bar.fill")
                                 .foregroundColor(ZenTheme.calmBlue)
@@ -121,7 +130,7 @@ struct SettingsView: View {
                         }
                     }
                 } header: {
-                    Text("Veriler")
+                    Text("Başarılar & İstatistikler")
                 }
 
                 // MARK: - Data Management Section

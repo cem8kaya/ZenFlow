@@ -1,0 +1,10 @@
+/*
+  InfoPlist.strings
+  Zen Coach
+
+  English localization for app display name and permissions
+*/
+
+CFBundleDisplayName = "Zen Coach";
+CFBundleName = "Zen Coach";
+NSUserNotificationsUsageDescription = "Zen Coach needs notification permission to send meditation reminders.";

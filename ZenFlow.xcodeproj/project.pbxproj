@@ -197,9 +197,10 @@
 				};
 			};
 			buildConfigurationList = 8775A7242EC9EBD1002EF46A /* Build configuration list for PBXProject "ZenFlow" */;
-			developmentRegion = en;
+			developmentRegion = tr;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				tr,
 				en,
 				Base,
 			);
