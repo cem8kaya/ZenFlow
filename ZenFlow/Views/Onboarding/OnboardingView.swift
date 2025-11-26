@@ -196,9 +196,8 @@ struct OnboardingView: View {
             OnboardingCompletionView(
                 isPresented: $showCompletionCelebration,
                 onStartFirstSession: {
-                    // Navigate to breathing tab and suggest first session
-                    dismiss()
-                    // TODO: Show first-time tutorial tooltip
+                    // Navigate to breathing/meditation tab
+                    DeepLinkHandler.shared.navigateToBreathing()
                 }
             )
         }

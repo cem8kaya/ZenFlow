@@ -1,573 +1,355 @@
 {
-  "sourceLanguage" : "tr",
-  "strings" : {
-    "%lld" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld"
+  "sourceLanguage": "tr",
+  "strings": {
+    "%lld": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld"
           }
         }
       }
     },
-    "%lld dk" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld min"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld dk"
+    "%lld dk": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld dk"
           }
         }
       }
     },
-    "%lld Gün" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld Days"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld Gün"
+    "%lld Gün": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld Gün"
           }
         }
       }
     },
-    "%lld gün serisi" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld day streak"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld gün serisi"
+    "%lld gün serisi": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld gün serisi"
           }
         }
       }
     },
-    "%lld Gün Serisi" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld Day Streak"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld Gün Serisi"
+    "%lld Gün Serisi": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld Gün Serisi"
           }
         }
       }
     },
-    "•" : {
-
-    },
-    "A an example control that runs a timer." : {
-
-    },
-    "Bottom %@" : {
-
-    },
-    "Bugünkü Hedefin" : {
-      "comment" : "Today's goal widget text",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Today's Goal"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bugünkü Hedefin"
+    "•": {},
+    "A an example control that runs a timer.": {},
+    "Bottom %@": {},
+    "Bugünkü Hedefin": {
+      "comment": "Today's goal widget text",
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bugünkü Hedefin"
           }
         }
       }
     },
-    "Configuration" : {
-
-    },
-    "Favorite Emoji" : {
-
-    },
-    "Günlük Seri" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Daily Streak"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Günlük Seri"
+    "Configuration": {},
+    "Favorite Emoji": {},
+    "Günlük Seri": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Günlük Seri"
           }
         }
       }
     },
-    "Hello %@" : {
-
-    },
-    "Kompakt dairesel widget" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Compact circular widget"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kompakt dairesel widget"
+    "Hello %@": {},
+    "Kompakt dairesel widget": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kompakt dairesel widget"
           }
         }
       }
     },
-    "L" : {
-
-    },
-    "Leading" : {
-
-    },
-    "Meditasyon" : {
-      "comment" : "Meditation widget text",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Meditation"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Meditasyon"
+    "L": {},
+    "Leading": {},
+    "Meditasyon": {
+      "comment": "Meditation widget text",
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meditasyon"
           }
         }
       }
     },
-    "Meditasyon ilerlemenizi ve ağacınızı takip edin" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Track your meditation progress and tree"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Meditasyon ilerlemenizi ve ağacınızı takip edin"
+    "Meditasyon ilerlemenizi ve ağacınızı takip edin": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meditasyon ilerlemenizi ve ağacınızı takip edin"
           }
         }
       }
     },
-    "Meditasyon serinizi kilit ekranında görün" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "View your meditation streak on lock screen"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Meditasyon serinizi kilit ekranında görün"
+    "Meditasyon serinizi kilit ekranında görün": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meditasyon serinizi kilit ekranında görün"
           }
         }
       }
     },
-    "Off" : {
-
-    },
-    "On" : {
-
-    },
-    "Start a timer" : {
-
-    },
-    "Start Timer" : {
-
-    },
-    "T %@" : {
-
-    },
-    "Tek satırlık seri göstergesi" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Single-line streak indicator"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tek satırlık seri göstergesi"
+    "Off": {},
+    "On": {},
+    "Start a timer": {},
+    "Start Timer": {},
+    "T %@": {},
+    "Tek satırlık seri göstergesi": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tek satırlık seri göstergesi"
           }
         }
       }
     },
-    "This is an example widget." : {
-
-    },
-    "Timer" : {
-
-    },
-    "Timer is running" : {
-
-    },
-    "Timer Name" : {
-
-    },
-    "Timer Name Configuration" : {
-
-    },
-    "Toplam Süre" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Total Time"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Toplam Süre"
+    "This is an example widget.": {},
+    "Timer": {},
+    "Timer is running": {},
+    "Timer Name": {},
+    "Timer Name Configuration": {},
+    "Toplam Süre": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toplam Süre"
           }
         }
       }
     },
-    "Trailing" : {
-
-    },
-    "tree_stage_ancient_tree_description" : {
-      "comment" : "Ancient tree stage description",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "You've completed a legendary journey! You possess wisdom and strength."
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Efsanevi bir yolculuk tamamladın! Bilgelik ve güç sahibisin."
+    "Trailing": {},
+    "tree_stage_ancient_tree_description": {
+      "comment": "Ancient tree stage description",
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Efsanevi bir yolculuk tamamladın! Bilgelik ve güç sahibisin."
           }
         }
       }
     },
-    "tree_stage_ancient_tree_title" : {
-      "comment" : "Ancient tree stage title",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ancient Tree"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kadim Ağaç"
+    "tree_stage_ancient_tree_title": {
+      "comment": "Ancient tree stage title",
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kadim Ağaç"
           }
         }
       }
     },
-    "tree_stage_mature_tree_description" : {
-      "comment" : "Mature tree stage description",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "You've matured and grown strong. The magnificent tree of your Zen garden."
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Olgunlaştın ve güçlendin. Zen bahçenin görkemli ağacı."
+    "tree_stage_mature_tree_description": {
+      "comment": "Mature tree stage description",
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Olgunlaştın ve güçlendin. Zen bahçenin görkemli ağacı."
           }
         }
       }
     },
-    "tree_stage_mature_tree_title" : {
-      "comment" : "Mature tree stage title",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mature Tree"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Olgun Ağaç"
+    "tree_stage_mature_tree_title": {
+      "comment": "Mature tree stage title",
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Olgun Ağaç"
           }
         }
       }
     },
-    "tree_stage_sapling_description" : {
-      "comment" : "Sapling stage description",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Building strong foundations. Growing stronger every day."
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Güçlü temeller atıyorsun. Her gün daha da büyüyorsun."
+    "tree_stage_sapling_description": {
+      "comment": "Sapling stage description",
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güçlü temeller atıyorsun. Her gün daha da büyüyorsun."
           }
         }
       }
     },
-    "tree_stage_sapling_title" : {
-      "comment" : "Sapling stage title",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sapling"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fidan"
+    "tree_stage_sapling_title": {
+      "comment": "Sapling stage title",
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fidan"
           }
         }
       }
     },
-    "tree_stage_seed_description" : {
-      "comment" : "Seed stage description",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The beginning of your journey. Every great change starts with a small seed."
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Yolculuğun başlangıcı. Her büyük değişim küçük bir tohumla başlar."
+    "tree_stage_seed_description": {
+      "comment": "Seed stage description",
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yolculuğun başlangıcı. Her büyük değişim küçük bir tohumla başlar."
           }
         }
       }
     },
-    "tree_stage_seed_title" : {
-      "comment" : "Seed stage title",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Seed"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tohum"
+    "tree_stage_seed_title": {
+      "comment": "Seed stage title",
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tohum"
           }
         }
       }
     },
-    "tree_stage_sprout_description" : {
-      "comment" : "Sprout stage description",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "You've taken the first steps! Keep growing with patience and dedication."
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "İlk adımları attın! Sabır ve özveriyle büyümeye devam et."
+    "tree_stage_sprout_description": {
+      "comment": "Sprout stage description",
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İlk adımları attın! Sabır ve özveriyle büyümeye devam et."
           }
         }
       }
     },
-    "tree_stage_sprout_title" : {
-      "comment" : "Sprout stage title",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sprout"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Filiz"
+    "tree_stage_sprout_title": {
+      "comment": "Sprout stage title",
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Filiz"
           }
         }
       }
     },
-    "tree_stage_young_tree_description" : {
-      "comment" : "Young tree stage description",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "You're a strong tree now! Your practice is taking root."
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Artık güçlü bir ağaçsın! Egzersiz alışkanlığın kökleniyor."
+    "tree_stage_young_tree_description": {
+      "comment": "Young tree stage description",
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Artık güçlü bir ağaçsın! Egzersiz alışkanlığın kökleniyor."
           }
         }
       }
     },
-    "tree_stage_young_tree_title" : {
-      "comment" : "Young tree stage title",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Young Tree"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Genç Ağaç"
+    "tree_stage_young_tree_title": {
+      "comment": "Young tree stage title",
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Genç Ağaç"
           }
         }
       }
     },
-    "Zen Coach" : {
-      "comment" : "App name in widget",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zen Coach"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zen Coach"
+    "Zen Coach": {
+      "comment": "App name in widget",
+      "extractionState": "stale",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zen Coach"
           }
         }
       }
     },
-    "ZenFlow Dairesel" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ZenFlow Circular"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ZenFlow Dairesel"
+    "ZenFlow Dairesel": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ZenFlow Dairesel"
           }
         }
       }
     },
-    "ZenFlow Kilit Ekranı" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ZenFlow Lock Screen"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ZenFlow Kilit Ekranı"
+    "ZenFlow Kilit Ekranı": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ZenFlow Kilit Ekranı"
           }
         }
       }
     },
-    "ZenFlow Satır İçi" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ZenFlow Inline"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ZenFlow Satır İçi"
+    "ZenFlow Satır İçi": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ZenFlow Satır İçi"
           }
         }
       }
     },
-    "ZenFlow Widget" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ZenFlow Widget"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ZenFlow Widget"
+    "ZenFlow Widget": {
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ZenFlow Widget"
           }
         }
       }
     }
   },
-  "version" : "1.0"
+  "version": "1.0"
 }

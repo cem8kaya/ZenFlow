@@ -19,7 +19,6 @@ struct SettingsView: View {
 
     @StateObject private var hapticManager = HapticManager.shared
     @StateObject private var soundManager = AmbientSoundManager.shared
-    @StateObject private var languageManager = LanguageManager.shared
     @State private var hapticsEnabled = true
     @State private var showResetAlert = false
     @State private var showResetSuccess = false
@@ -29,28 +28,6 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             List {
-                // MARK: - General Section
-
-                Section {
-                    Picker(selection: $languageManager.currentLanguage) {
-                        ForEach(AppLanguage.allCases, id: \.self) { language in
-                            Text(language.displayName).tag(language)
-                        }
-                    } label: {
-                        HStack {
-                            Image(systemName: "globe")
-                                .foregroundColor(ZenTheme.calmBlue)
-                                .frame(width: 28)
-                            Text("Dil", comment: "Language setting label")
-                        }
-                    }
-                    .onChange(of: languageManager.currentLanguage) { _, _ in
-                        HapticManager.shared.playImpact(style: .light)
-                    }
-                } header: {
-                    Text("Genel", comment: "General settings section header")
-                }
-
                 // MARK: - Notifications Section
 
                 Section {
