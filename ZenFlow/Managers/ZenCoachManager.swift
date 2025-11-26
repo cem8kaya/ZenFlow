@@ -133,17 +133,17 @@ class ZenCoachManager: ObservableObject {
     private func getActionText(for intent: UserIntent) -> String {
         switch intent {
         case .stress, .breathing:
-            return "Nefes Egzersizi"
+            return String(localized: "action_breathing", comment: "Breathing Exercise")
         case .focus:
-            return "Pomodoro"
+            return String(localized: "action_pomodoro", comment: "Pomodoro")
         case .sleep:
-            return "4-7-8 Tekniği"
+            return String(localized: "action_478", comment: "4-7-8 Technique")
         case .motivation:
-            return "Zen Bahçem"
+            return String(localized: "action_garden", comment: "Zen Garden")
         case .meditation:
-            return "Meditasyon"
+            return String(localized: "action_meditation", comment: "Meditation")
         case .progress:
-            return "İlerlemem"
+            return String(localized: "action_progress", comment: "My Progress")
         case .general:
             return ""
         }
@@ -206,44 +206,44 @@ class ZenCoachManager: ObservableObject {
     /// Returns suggested prompts for quick access - limited to 5 for better UX
     func getSuggestedPrompts() -> [String] {
         return [
-            "🌸 Meditasyona nasıl başlarım?",
-            "💭 Zihinsel olarak yorgunum, yardım et",
-            "⚡ Odaklanmamı nasıl artırabilirim?",
-            "😴 Gece rahat uyuyamıyorum",
-            "🎯 Bugün için motivasyon lazım"
+            String(localized: "suggested_prompt_0", comment: "How to start meditation"),
+            String(localized: "suggested_prompt_1", comment: "Mentally tired, need help"),
+            String(localized: "suggested_prompt_2", comment: "How to improve focus"),
+            String(localized: "suggested_prompt_3", comment: "Can't sleep well at night"),
+            String(localized: "suggested_prompt_4", comment: "Need motivation today")
         ]
     }
 
     /// Returns category-specific suggested prompts
     func getCategorySuggestedPrompts(for category: String) -> [String] {
         switch category.lowercased() {
-        case "stres":
+        case "stres", "stress":
             return [
-                "Çok stresli hissediyorum",
-                "Kaygılarımı nasıl kontrol ederim?",
-                "Hemen rahatlamam lazım",
-                "Stresten bunaldım"
+                String(localized: "category_prompt_stress_0", comment: "Feeling very stressed"),
+                String(localized: "category_prompt_stress_1", comment: "How to control anxiety"),
+                String(localized: "category_prompt_stress_2", comment: "Need immediate relief"),
+                String(localized: "category_prompt_stress_3", comment: "Overwhelmed by stress")
             ]
-        case "odaklanma":
+        case "odaklanma", "focus":
             return [
-                "Konsantre olamıyorum",
-                "Pomodoro tekniği nedir?",
-                "Verimli çalışma için ipuçları ver",
-                "Dikkatim çok dağınık"
+                String(localized: "category_prompt_focus_0", comment: "Can't concentrate"),
+                String(localized: "category_prompt_focus_1", comment: "What is Pomodoro technique"),
+                String(localized: "category_prompt_focus_2", comment: "Tips for productive work"),
+                String(localized: "category_prompt_focus_3", comment: "Very distracted")
             ]
-        case "uyku":
+        case "uyku", "sleep":
             return [
-                "Uyumakta zorlanıyorum",
-                "4-7-8 nefes tekniği göster",
-                "Uyku kalitemi nasıl artırırım?",
-                "Zihinim durmuyor gece"
+                String(localized: "category_prompt_sleep_0", comment: "Having trouble sleeping"),
+                String(localized: "category_prompt_sleep_1", comment: "Show 4-7-8 technique"),
+                String(localized: "category_prompt_sleep_2", comment: "How to improve sleep quality"),
+                String(localized: "category_prompt_sleep_3", comment: "Mind won't stop at night")
             ]
-        case "meditasyon":
+        case "meditasyon", "meditation":
             return [
-                "Meditasyon yapmayı öğrenmek istiyorum",
-                "Günde kaç dakika meditasyon yapmalıyım?",
-                "Meditasyon sırasında ne düşünmeliyim?",
-                "Başlangıç egzersizleri göster"
+                String(localized: "category_prompt_meditation_0", comment: "Want to learn meditation"),
+                String(localized: "category_prompt_meditation_1", comment: "How many minutes per day"),
+                String(localized: "category_prompt_meditation_2", comment: "What to think during meditation"),
+                String(localized: "category_prompt_meditation_3", comment: "Show beginner exercises")
             ]
         default:
             return getSuggestedPrompts()

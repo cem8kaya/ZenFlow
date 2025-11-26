@@ -18,15 +18,15 @@ enum MessageSentiment: String, Codable, CaseIterable {
     case neutral
     case negative
 
-    /// Display name in Turkish
+    /// Display name localized
     var displayName: String {
         switch self {
         case .positive:
-            return "Pozitif"
+            return String(localized: "sentiment_positive", comment: "Positive")
         case .neutral:
-            return "Nötr"
+            return String(localized: "sentiment_neutral", comment: "Neutral")
         case .negative:
-            return "Negatif"
+            return String(localized: "sentiment_negative", comment: "Negative")
         }
     }
 
