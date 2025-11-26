@@ -3763,123 +3763,77 @@
         }
       }
     },
-    "Tüm Verileri Sıfırla": {
-      "comment": "Reset all data button"
-    },
-    "Tüm Zamanlar": {},
-    "Türkçe": {},
-    "Twitter": {
-      "comment": "Twitter contact option"
-    },
-    "Use Xcode's Image Renderer to export": {},
-    "Uygulama": {
-      "comment": "Practice section title"
-    },
-    "Uygulama içi titreşim ve dokunsal geri bildirimi kontrol et.": {
-      "comment": "Haptic settings footer"
-    },
-    "settings.haptic.disabled.description": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "value": "Haptic feedback disabled during breathing exercises."
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "value": "Nefes egzersizleri sırasında titreşim geri bildirimi kapalı."
+    "settings_data_deleted_title" : {
+      "comment" : "Data deleted alert title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Veriler Silindi"
           }
         }
       }
     },
-    "settings.haptic.enabled.description": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "value": "Synchronized haptic feedback during breathing exercises. Intensity setting affects all haptics."
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "value": "Nefes egzersizleri sırasında animasyonlarla senkronize titreşim geri bildirimi. Şiddet ayarı tüm titreşimleri etkiler."
+    "settings_data_management_section" : {
+      "comment" : "Data management section header",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Veri Yönetimi"
           }
         }
       }
     },
-    "settings.haptic.intensity": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "value": "Haptic Intensity"
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "value": "Titreşim Şiddeti"
+    "settings_data_reset_success" : {
+      "comment" : "Data reset success message",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Tüm veriler başarıyla sıfırlandı."
           }
         }
       }
     },
-    "settings.haptic.intensity.light": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "value": "Light (%d%%)"
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "value": "Hafif (%d%%)"
+    "settings_delete" : {
+      "comment" : "Delete button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Sil"
           }
         }
       }
     },
-    "settings.haptic.intensity.medium": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "value": "Medium (%d%%)"
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "value": "Orta (%d%%)"
+    "settings_delete_all_data_title" : {
+      "comment" : "Delete all data alert title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Tüm Verileri Sil"
           }
         }
       }
     },
-    "settings.haptic.intensity.strong": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "value": "Strong (%d%%)"
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "value": "Güçlü (%d%%)"
+    "settings_delete_confirmation" : {
+      "comment" : "Delete all data confirmation message",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Bu işlem tüm meditasyon geçmişini, streak'leri, odaklanma seanslarını ve ayarları kalıcı olarak silecek. Devam etmek istediğinden emin misin?"
           }
         }
       }
-    },
-    "Uygulamayı Keşfet": {},
-    "Veri Yönetimi": {
-      "comment": "Data management section header"
-    },
-    "Veriler Silindi": {
-      "comment": "Data deleted alert title"
-    },
-    "Versiyon": {
-      "comment": "Version label"
-    },
-    "Website": {
-      "comment": "Website link label"
     },
     "settings_email" : {
       "comment" : "Email contact option",
@@ -3949,18 +3903,6 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Dokunsal Geri Bildirim"
-          }
-        }
-      }
-    },
-    "settings_haptic_footer" : {
-      "comment" : "Haptic settings footer",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Uygulama içi titreşim ve dokunsal geri bildirimi kontrol et. Nefes egzersizleri sırasında her faz için farklı titreşim desenleri kullanılır."
           }
         }
       }
@@ -4213,6 +4155,108 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Geri Bildiriminiz"
+          }
+        }
+      }
+    },
+    "settings.haptic.disabled.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haptic feedback disabled during breathing exercises."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nefes egzersizleri sırasında titreşim geri bildirimi kapalı."
+          }
+        }
+      }
+    },
+    "settings.haptic.enabled.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Synchronized haptic feedback during breathing exercises. Intensity setting affects all haptics."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nefes egzersizleri sırasında animasyonlarla senkronize titreşim geri bildirimi. Şiddet ayarı tüm titreşimleri etkiler."
+          }
+        }
+      }
+    },
+    "settings.haptic.intensity" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haptic Intensity"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Titreşim Şiddeti"
+          }
+        }
+      }
+    },
+    "settings.haptic.intensity.light" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Light (%d%%)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hafif (%d%%)"
+          }
+        }
+      }
+    },
+    "settings.haptic.intensity.medium" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Medium (%d%%)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orta (%d%%)"
+          }
+        }
+      }
+    },
+    "settings.haptic.intensity.strong" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Strong (%d%%)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Güçlü (%d%%)"
           }
         }
       }
