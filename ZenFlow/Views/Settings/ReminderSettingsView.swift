@@ -38,7 +38,7 @@ struct ReminderSettingsView: View {
 
             Section {
                 Toggle(isOn: $remindersEnabled) {
-                    Text("Günlük Hatırlatıcı", comment: "Daily reminder toggle")
+                    Text(String(localized: "reminder_daily_toggle", defaultValue: "Günlük Hatırlatıcı", comment: "Daily reminder toggle"))
                 }
                 .onChange(of: remindersEnabled) { oldValue, newValue in
                     handleReminderToggle(newValue)
@@ -49,16 +49,16 @@ struct ReminderSettingsView: View {
                         selection: $selectedTime,
                         displayedComponents: .hourAndMinute
                     ) {
-                        Text("Saat", comment: "Time picker label")
+                        Text(String(localized: "reminder_time_picker", defaultValue: "Saat", comment: "Time picker label"))
                     }
                     .onChange(of: selectedTime) { oldValue, newValue in
                         notificationManager.reminderTime = newValue
                     }
                 }
             } header: {
-                Text("Meditasyon Hatırlatıcısı", comment: "Meditation reminder section header")
+                Text(String(localized: "reminder_meditation_header", defaultValue: "Meditasyon Hatırlatıcısı", comment: "Meditation reminder section header"))
             } footer: {
-                Text("Belirlediğin saatte günlük meditasyon hatırlatıcısı alacaksın.", comment: "Meditation reminder footer")
+                Text(String(localized: "reminder_meditation_footer", defaultValue: "Belirlediğin saatte günlük meditasyon hatırlatıcısı alacaksın.", comment: "Meditation reminder footer"))
             }
 
             // MARK: - Days Selection Section
@@ -81,9 +81,9 @@ struct ReminderSettingsView: View {
                         }
                     }
                 } header: {
-                    Text("Hatırlatıcı Günleri", comment: "Reminder days section header")
+                    Text(String(localized: "reminder_days_header", defaultValue: "Hatırlatıcı Günleri", comment: "Reminder days section header"))
                 } footer: {
-                    Text("Hangi günler hatırlatıcı almak istediğini seç.", comment: "Reminder days footer")
+                    Text(String(localized: "reminder_days_footer", defaultValue: "Hangi günler hatırlatıcı almak istediğini seç.", comment: "Reminder days footer"))
                 }
             }
 
@@ -91,15 +91,15 @@ struct ReminderSettingsView: View {
 
             Section {
                 Toggle(isOn: $streakReminderEnabled) {
-                    Text("Streak Hatırlatıcısı", comment: "Streak reminder toggle")
+                    Text(String(localized: "reminder_streak_toggle", defaultValue: "Streak Hatırlatıcısı", comment: "Streak reminder toggle"))
                 }
                 .onChange(of: streakReminderEnabled) { oldValue, newValue in
                     handleStreakReminderToggle(newValue)
                 }
             } header: {
-                Text("Streak Koruması", comment: "Streak protection section header")
+                Text(String(localized: "reminder_streak_header", defaultValue: "Streak Koruması", comment: "Streak protection section header"))
             } footer: {
-                Text("Her akşam saat 20:00'de meditasyon yapmadıysan hatırlatıcı alacaksın.", comment: "Streak reminder footer")
+                Text(String(localized: "reminder_streak_footer", defaultValue: "Her akşam saat 20:00'de meditasyon yapmadıysan hatırlatıcı alacaksın.", comment: "Streak reminder footer"))
             }
 
             // MARK: - Preview Messages Section
@@ -107,7 +107,7 @@ struct ReminderSettingsView: View {
             if remindersEnabled || streakReminderEnabled {
                 Section {
                     VStack(alignment: .leading, spacing: 12) {
-                        Text("Örnek Mesajlar:", comment: "Sample messages label")
+                        Text(String(localized: "reminder_sample_messages", defaultValue: "Örnek Mesajlar:", comment: "Sample messages label"))
                             .font(.subheadline)
                             .fontWeight(.semibold)
                             .foregroundColor(.secondary)
@@ -127,7 +127,7 @@ struct ReminderSettingsView: View {
                     }
                     .padding(.vertical, 8)
                 } header: {
-                    Text("Motivasyon Mesajları", comment: "Motivation messages section header")
+                    Text(String(localized: "reminder_motivation_header", defaultValue: "Motivasyon Mesajları", comment: "Motivation messages section header"))
                 }
             }
 
@@ -139,31 +139,31 @@ struct ReminderSettingsView: View {
                         HStack {
                             Image(systemName: "paperplane.fill")
                                 .foregroundColor(ZenTheme.calmBlue)
-                            Text("Test Bildirimi Gönder", comment: "Send test notification button")
+                            Text(String(localized: "reminder_test_notification", defaultValue: "Test Bildirimi Gönder", comment: "Send test notification button"))
                                 .foregroundColor(.primary)
                         }
                     }
                 } footer: {
-                    Text("Bildirim ayarlarını test etmek için bir deneme bildirimi gönder.", comment: "Test notification footer")
+                    Text(String(localized: "reminder_test_footer", defaultValue: "Bildirim ayarlarını test etmek için bir deneme bildirimi gönder.", comment: "Test notification footer"))
                 }
             }
         }
-        .navigationTitle(Text("Hatırlatıcılar", comment: "Reminders page title"))
+        .navigationTitle(Text(String(localized: "settings_reminders", defaultValue: "Hatırlatıcılar", comment: "Reminders page title")))
         .navigationBarTitleDisplayMode(.inline)
-        .alert(Text("Bildirim İzni Gerekli", comment: "Notification permission required alert title"), isPresented: $showAuthorizationAlert) {
+        .alert(Text(String(localized: "reminder_permission_title", defaultValue: "Bildirim İzni Gerekli", comment: "Notification permission required alert title")), isPresented: $showAuthorizationAlert) {
             Button {
                 openAppSettings()
             } label: {
-                Text("Ayarlara Git", comment: "Go to settings button")
+                Text(String(localized: "reminder_go_to_settings", defaultValue: "Ayarlara Git", comment: "Go to settings button"))
             }
             Button(role: .cancel) {
                 remindersEnabled = false
                 streakReminderEnabled = false
             } label: {
-                Text("İptal", comment: "Cancel button")
+                Text(String(localized: "reminder_cancel", defaultValue: "İptal", comment: "Cancel button"))
             }
         } message: {
-            Text("Hatırlatıcı almak için ZenFlow'a bildirim izni vermelisin. Ayarlar'dan izni etkinleştirebilirsin.", comment: "Notification permission message")
+            Text(String(localized: "reminder_permission_message", defaultValue: "Hatırlatıcı almak için ZenFlow'a bildirim izni vermelisin. Ayarlar'dan izni etkinleştirebilirsin.", comment: "Notification permission message"))
         }
     }
 

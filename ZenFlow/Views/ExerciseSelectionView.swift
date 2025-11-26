@@ -84,16 +84,16 @@ struct ExerciseSelectionView: View {
 
     private var headerView: some View {
         VStack(spacing: 8) {
-            Text("Nefes Egzersizi Seç", comment: "Exercise selection page title")
+            Text(String(localized: "exercise_selection_title", defaultValue: "Nefes Egzersizi Seç", comment: "Exercise selection page title"))
                 .font(ZenTheme.zenTitle)
                 .foregroundColor(ZenTheme.lightLavender)
 
-            Text("Size uygun bir egzersiz seçin", comment: "Exercise selection page subtitle")
+            Text(String(localized: "exercise_selection_subtitle", defaultValue: "Size uygun bir egzersiz seçin", comment: "Exercise selection page subtitle"))
                 .font(ZenTheme.zenSubheadline)
                 .foregroundColor(ZenTheme.softPurple)
         }
         .accessibilityElement(children: .combine)
-        .accessibilityLabel(Text("Nefes egzersizi seçim ekranı", comment: "Exercise selection screen accessibility label"))
+        .accessibilityLabel(Text(String(localized: "exercise_selection_accessibility", defaultValue: "Nefes egzersizi seçim ekranı", comment: "Exercise selection screen accessibility label")))
     }
 
     // MARK: - Selected Exercise Details
@@ -146,7 +146,7 @@ struct ExerciseSelectionView: View {
 
             // Benefits
             VStack(alignment: .leading, spacing: 8) {
-                Text("Faydaları:", comment: "Exercise benefits section title")
+                Text(String(localized: "exercise_selection_benefits", defaultValue: "Faydaları:", comment: "Exercise benefits section title"))
                     .font(.system(size: 14, weight: .semibold))
                     .foregroundColor(ZenTheme.lightLavender)
 
@@ -184,7 +184,7 @@ struct ExerciseSelectionView: View {
                 HapticManager.shared.playImpact(style: .light)
                 dismiss()
             }) {
-                Text("İptal", comment: "Cancel button")
+                Text(String(localized: "exercise_selection_cancel", defaultValue: "İptal", comment: "Cancel button"))
                     .font(.system(size: 18, weight: .semibold))
                     .foregroundColor(ZenTheme.softPurple)
                     .frame(maxWidth: .infinity)
@@ -200,7 +200,7 @@ struct ExerciseSelectionView: View {
             Button(action: {
                 confirmSelection()
             }) {
-                Text("Seç", comment: "Select exercise button")
+                Text(String(localized: "exercise_selection_select", defaultValue: "Seç", comment: "Select exercise button"))
                     .font(.system(size: 18, weight: .bold))
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity)
@@ -343,8 +343,8 @@ struct ExerciseCard: View {
             onTap()
         }
         .accessibilityElement(children: .combine)
-        .accessibilityLabel(Text("\(exercise.name), \(exercise.difficulty.rawValue) seviye", comment: "Exercise card accessibility label"))
-        .accessibilityHint(isSelected ? "Seçili" : "Seçmek için dokunun")
+        .accessibilityLabel(Text(String(localized: "exercise_card_accessibility", defaultValue: "\(exercise.name), \(exercise.difficulty.rawValue) seviye", comment: "Exercise card accessibility label")))
+        .accessibilityHint(isSelected ? String(localized: "exercise_card_selected", defaultValue: "Seçili", comment: "Selected hint") : String(localized: "exercise_card_tap_to_select", defaultValue: "Seçmek için dokunun", comment: "Tap to select hint"))
     }
 }
 

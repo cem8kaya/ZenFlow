@@ -55,8 +55,8 @@ struct OnboardingView: View {
                                 .padding(.horizontal, 20)
                                 .padding(.vertical, 10)
                         }
-                        .accessibilityLabel(Text("Tanıtımı atla", comment: "Skip onboarding accessibility label"))
-                        .accessibilityHint(Text("Doğrudan uygulamaya git", comment: "Skip onboarding accessibility hint"))
+                        .accessibilityLabel(String(localized: "onboarding_skip_accessibility_label", defaultValue: "Tanıtımı atla", comment: "Skip onboarding accessibility label"))
+                        .accessibilityHint(String(localized: "onboarding_skip_accessibility_hint", defaultValue: "Doğrudan uygulamaya git", comment: "Skip onboarding accessibility hint"))
                     }
                     .padding(.top, 16)
                     .padding(.horizontal, 20)
@@ -122,7 +122,7 @@ struct OnboardingView: View {
                                     .stroke(ZenTheme.softPurple.opacity(0.3), lineWidth: 1.5)
                             )
                         }
-                        .accessibilityLabel(Text("Önceki sayfa", comment: "Previous page accessibility"))
+                        .accessibilityLabel(String(localized: "button_previous_page", defaultValue: "Önceki sayfa", comment: "Previous page accessibility"))
                         .transition(.move(edge: .leading).combined(with: .opacity))
                     }
 
@@ -130,10 +130,10 @@ struct OnboardingView: View {
                     Button(action: nextPageOrFinish) {
                         HStack(spacing: 8) {
                             if isLastPage {
-                                Text("Başla", comment: "Start button")
+                                Text(String(localized: "button_start", defaultValue: "Başla", comment: "Start button"))
                                     .font(.system(size: 17, weight: .semibold))
                             } else {
-                                Text("İleri", comment: "Next button")
+                                Text(String(localized: "button_next", defaultValue: "İleri", comment: "Next button"))
                                     .font(.system(size: 17, weight: .semibold))
                             }
                             if !isLastPage {
@@ -164,10 +164,10 @@ struct OnboardingView: View {
                             y: 6
                         )
                     }
-                    .accessibilityLabel(isLastPage ? "Başla" : "Sonraki sayfa")
+                    .accessibilityLabel(isLastPage ? String(localized: "button_start", defaultValue: "Başla", comment: "Start button") : String(localized: "button_next_page", defaultValue: "Sonraki sayfa", comment: "Next page button"))
                     .accessibilityHint(isLastPage ?
-                        "Onboarding'i tamamla ve uygulamaya geç" :
-                        "Sonraki sayfaya git")
+                        String(localized: "onboarding_complete_hint", defaultValue: "Onboarding'i tamamla ve uygulamaya geç", comment: "Complete onboarding hint") :
+                        String(localized: "onboarding_next_hint", defaultValue: "Sonraki sayfaya git", comment: "Go to next page hint"))
                 }
                 .padding(.horizontal, 32)
                 .padding(.bottom, 40)
@@ -295,12 +295,12 @@ private struct HealthKitPermissionView: View {
                     )
 
                 VStack(spacing: 16) {
-                    Text("HealthKit Entegrasyonu", comment: "HealthKit integration title")
+                    Text(String(localized: "onboarding_healthkit_title", defaultValue: "HealthKit Entegrasyonu", comment: "HealthKit integration title"))
                         .font(ZenTheme.zenTitle)
                         .foregroundColor(ZenTheme.lightLavender)
                         .multilineTextAlignment(.center)
 
-                    Text("Meditasyon seanslarını Apple Health'e kaydetmek için izin verin. Verileriniz güvende ve yalnızca sizin kontrolünüzde.", comment: "HealthKit permission description")
+                    Text(String(localized: "onboarding_healthkit_description", defaultValue: "Meditasyon seanslarını Apple Health'e kaydetmek için izin verin. Verileriniz güvende ve yalnızca sizin kontrolünüzde.", comment: "HealthKit permission description"))
                         .font(ZenTheme.zenBody)
                         .foregroundColor(ZenTheme.softPurple.opacity(0.9))
                         .multilineTextAlignment(.center)
@@ -318,7 +318,7 @@ private struct HealthKitPermissionView: View {
                             onComplete()
                         }
                     }) {
-                        Text("İzin Ver", comment: "Allow HealthKit permission button")
+                        Text(String(localized: "healthkit_allow", defaultValue: "İzin Ver", comment: "Allow HealthKit permission button"))
                             .font(.system(size: 17, weight: .semibold))
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity)
@@ -340,7 +340,7 @@ private struct HealthKitPermissionView: View {
                         isPresented = false
                         onComplete()
                     }) {
-                        Text("Şimdi Değil", comment: "Not now button")
+                        Text(String(localized: "button_not_now", defaultValue: "Şimdi Değil", comment: "Not now button"))
                             .font(.system(size: 16, weight: .medium))
                             .foregroundColor(ZenTheme.softPurple)
                             .padding(.vertical, 12)
@@ -381,12 +381,12 @@ private struct NotificationPermissionView: View {
                     )
 
                 VStack(spacing: 16) {
-                    Text("Günlük Hatırlatmalar", comment: "Daily reminders title")
+                    Text(String(localized: "onboarding_notifications_title", defaultValue: "Günlük Hatırlatmalar", comment: "Daily reminders title"))
                         .font(ZenTheme.zenTitle)
                         .foregroundColor(ZenTheme.lightLavender)
                         .multilineTextAlignment(.center)
 
-                    Text("Düzenli meditasyon alışkanlığı kazanmak için günlük hatırlatmalar almak ister misiniz?", comment: "Notification permission description")
+                    Text(String(localized: "onboarding_notifications_description", defaultValue: "Düzenli meditasyon alışkanlığı kazanmak için günlük hatırlatmalar almak ister misiniz?", comment: "Notification permission description"))
                         .font(ZenTheme.zenBody)
                         .foregroundColor(ZenTheme.softPurple.opacity(0.9))
                         .multilineTextAlignment(.center)
@@ -404,7 +404,7 @@ private struct NotificationPermissionView: View {
                             onComplete()
                         }
                     }) {
-                        Text("İzin Ver", comment: "Allow notification permission button")
+                        Text(String(localized: "notifications_allow", defaultValue: "İzin Ver", comment: "Allow notification permission button"))
                             .font(.system(size: 17, weight: .semibold))
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity)
@@ -426,7 +426,7 @@ private struct NotificationPermissionView: View {
                         isPresented = false
                         onComplete()
                     }) {
-                        Text("Şimdi Değil", comment: "Not now notification button")
+                        Text(String(localized: "button_not_now", defaultValue: "Şimdi Değil", comment: "Not now notification button"))
                             .font(.system(size: 16, weight: .medium))
                             .foregroundColor(ZenTheme.softPurple)
                             .padding(.vertical, 12)

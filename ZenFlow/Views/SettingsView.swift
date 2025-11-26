@@ -36,11 +36,11 @@ struct SettingsView: View {
                             Image(systemName: "bell.fill")
                                 .foregroundColor(ZenTheme.calmBlue)
                                 .frame(width: 28)
-                            Text("Hatırlatıcılar", comment: "Reminders setting")
+                            Text(String(localized: "settings_reminders", defaultValue: "Hatırlatıcılar", comment: "Reminders setting"))
                         }
                     }
                 } header: {
-                    Text("Bildirimler", comment: "Notifications section header")
+                    Text(String(localized: "settings_notifications_section", defaultValue: "Bildirimler", comment: "Notifications section header"))
                 }
 
                 // MARK: - Audio Settings Section
@@ -51,7 +51,7 @@ struct SettingsView: View {
                             Image(systemName: soundManager.isEnabled ? "speaker.wave.2.fill" : "speaker.slash.fill")
                                 .foregroundColor(ZenTheme.calmBlue)
                                 .frame(width: 28)
-                            Text("Ortam Sesleri", comment: "Ambient sounds setting")
+                            Text(String(localized: "settings_ambient_sounds", defaultValue: "Ortam Sesleri", comment: "Ambient sounds setting"))
                         }
                     }
                     .onChange(of: soundManager.isEnabled) { oldValue, newValue in
@@ -64,7 +64,7 @@ struct SettingsView: View {
                                 Image(systemName: "speaker.fill")
                                     .foregroundColor(ZenTheme.calmBlue)
                                     .frame(width: 28)
-                                Text("Ses Seviyesi", comment: "Volume label")
+                                Text(String(localized: "settings_volume", defaultValue: "Ses Seviyesi", comment: "Volume label"))
                                 Spacer()
                                 Text("\(Int(soundManager.volume * 100))%")
                                     .foregroundColor(.secondary)
@@ -79,9 +79,9 @@ struct SettingsView: View {
                         }
                     }
                 } header: {
-                    Text("Ses Ayarları", comment: "Audio settings section header")
+                    Text(String(localized: "settings_audio_section", defaultValue: "Ses Ayarları", comment: "Audio settings section header"))
                 } footer: {
-                    Text("Meditasyon sırasında çalacak ortam seslerini yönet.", comment: "Audio settings footer")
+                    Text(String(localized: "settings_audio_footer", defaultValue: "Meditasyon sırasında çalacak ortam seslerini yönet.", comment: "Audio settings footer"))
                 }
 
                 // MARK: - Haptic Settings Section
@@ -92,7 +92,7 @@ struct SettingsView: View {
                             Image(systemName: "waveform")
                                 .foregroundColor(ZenTheme.calmBlue)
                                 .frame(width: 28)
-                            Text("Dokunsal Geri Bildirim", comment: "Haptic feedback setting")
+                            Text(String(localized: "settings_haptic_feedback", defaultValue: "Dokunsal Geri Bildirim", comment: "Haptic feedback setting"))
                         }
                     }
                     .onChange(of: hapticsEnabled) { oldValue, newValue in
@@ -100,12 +100,12 @@ struct SettingsView: View {
                     }
                     .disabled(!hapticManager.isHapticsAvailable)
                 } header: {
-                    Text("Dokunsal Ayarlar", comment: "Haptic settings section header")
+                    Text(String(localized: "settings_haptic_section", defaultValue: "Dokunsal Ayarlar", comment: "Haptic settings section header"))
                 } footer: {
                     if !hapticManager.isHapticsAvailable {
-                        Text("Bu cihaz dokunsal geri bildirimi desteklemiyor.", comment: "Haptic not supported message")
+                        Text(String(localized: "settings_haptic_not_supported", defaultValue: "Bu cihaz dokunsal geri bildirimi desteklemiyor.", comment: "Haptic not supported message"))
                     } else {
-                        Text("Uygulama içi titreşim ve dokunsal geri bildirimi kontrol et.", comment: "Haptic settings footer")
+                        Text(String(localized: "settings_haptic_footer", defaultValue: "Uygulama içi titreşim ve dokunsal geri bildirimi kontrol et.", comment: "Haptic settings footer"))
                     }
                 }
 
@@ -117,7 +117,7 @@ struct SettingsView: View {
                             Image(systemName: "trophy.fill")
                                 .foregroundColor(ZenTheme.calmBlue)
                                 .frame(width: 28)
-                            Text("Rozetler", comment: "Badges section")
+                            Text(String(localized: "settings_badges", defaultValue: "Rozetler", comment: "Badges section"))
                         }
                     }
 
@@ -126,11 +126,11 @@ struct SettingsView: View {
                             Image(systemName: "chart.bar.fill")
                                 .foregroundColor(ZenTheme.calmBlue)
                                 .frame(width: 28)
-                            Text("İstatistikler", comment: "Statistics section")
+                            Text(String(localized: "settings_statistics", defaultValue: "İstatistikler", comment: "Statistics section"))
                         }
                     }
                 } header: {
-                    Text("Başarılar & İstatistikler", comment: "Achievements and statistics section header")
+                    Text(String(localized: "settings_achievements_section", defaultValue: "Başarılar & İstatistikler", comment: "Achievements and statistics section header"))
                 }
 
                 // MARK: - Data Management Section
@@ -140,20 +140,20 @@ struct SettingsView: View {
                         HStack {
                             Image(systemName: "trash.fill")
                                 .frame(width: 28)
-                            Text("Tüm Verileri Sıfırla", comment: "Reset all data button")
+                            Text(String(localized: "settings_reset_all_data", defaultValue: "Tüm Verileri Sıfırla", comment: "Reset all data button"))
                         }
                     }
                 } header: {
-                    Text("Veri Yönetimi", comment: "Data management section header")
+                    Text(String(localized: "settings_data_management_section", defaultValue: "Veri Yönetimi", comment: "Data management section header"))
                 } footer: {
-                    Text("Bu işlem tüm meditasyon geçmişini, streak'leri ve ayarları siler. Bu işlem geri alınamaz.", comment: "Reset data footer warning")
+                    Text(String(localized: "settings_reset_data_footer", defaultValue: "Bu işlem tüm meditasyon geçmişini, streak'leri ve ayarları siler. Bu işlem geri alınamaz.", comment: "Reset data footer warning"))
                 }
 
                 // MARK: - About Section
 
                 Section {
                     HStack {
-                        Text("Versiyon", comment: "Version label")
+                        Text(String(localized: "settings_version", defaultValue: "Versiyon", comment: "Version label"))
                         Spacer()
                         Text("1.0.0")
                             .foregroundColor(.secondary)
@@ -164,7 +164,7 @@ struct SettingsView: View {
                             Image(systemName: "envelope.fill")
                                 .foregroundColor(ZenTheme.calmBlue)
                                 .frame(width: 28)
-                            Text("İletişim & Geri Bildirim", comment: "Contact and feedback menu item")
+                            Text(String(localized: "settings_contact_feedback", defaultValue: "İletişim & Geri Bildirim", comment: "Contact and feedback menu item"))
                         }
                     }
 
@@ -173,7 +173,7 @@ struct SettingsView: View {
                             Image(systemName: "safari.fill")
                                 .foregroundColor(ZenTheme.calmBlue)
                                 .frame(width: 28)
-                            Text("Website", comment: "Website link label")
+                            Text(String(localized: "settings_website", defaultValue: "Website", comment: "Website link label"))
                             Spacer()
                             Image(systemName: "arrow.up.right")
                                 .font(.caption)
@@ -181,31 +181,31 @@ struct SettingsView: View {
                         }
                     }
                 } header: {
-                    Text("Hakkında", comment: "About section header")
+                    Text(String(localized: "settings_about_section", defaultValue: "Hakkında", comment: "About section header"))
                 }
             }
-            .navigationTitle(Text("Ayarlar", comment: "Settings tab bar item"))
+            .navigationTitle(Text(String(localized: "settings_title", defaultValue: "Ayarlar", comment: "Settings tab bar item")))
             .navigationBarTitleDisplayMode(.large)
-            .alert(Text("Tüm Verileri Sil", comment: "Delete all data alert title"), isPresented: $showResetAlert) {
+            .alert(Text(String(localized: "settings_delete_all_data_title", defaultValue: "Tüm Verileri Sil", comment: "Delete all data alert title")), isPresented: $showResetAlert) {
                 Button(role: .cancel) { } label: {
-                    Text("İptal", comment: "Cancel button")
+                    Text(String(localized: "settings_cancel", defaultValue: "İptal", comment: "Cancel button"))
                 }
                 Button(role: .destructive) {
                     resetAllData()
                 } label: {
-                    Text("Sil", comment: "Delete button")
+                    Text(String(localized: "settings_delete", defaultValue: "Sil", comment: "Delete button"))
                 }
             } message: {
-                Text("Bu işlem tüm meditasyon geçmişini, streak'leri, odaklanma seanslarını ve ayarları kalıcı olarak silecek. Devam etmek istediğinden emin misin?", comment: "Delete all data confirmation message")
+                Text(String(localized: "settings_delete_confirmation", defaultValue: "Bu işlem tüm meditasyon geçmişini, streak'leri, odaklanma seanslarını ve ayarları kalıcı olarak silecek. Devam etmek istediğinden emin misin?", comment: "Delete all data confirmation message"))
             }
-            .alert(Text("Veriler Silindi", comment: "Data deleted alert title"), isPresented: $showResetSuccess) {
+            .alert(Text(String(localized: "settings_data_deleted_title", defaultValue: "Veriler Silindi", comment: "Data deleted alert title")), isPresented: $showResetSuccess) {
                 Button {
                     dismiss()
                 } label: {
-                    Text("Tamam", comment: "OK button")
+                    Text(String(localized: "settings_ok", defaultValue: "Tamam", comment: "OK button"))
                 }
             } message: {
-                Text("Tüm veriler başarıyla sıfırlandı.", comment: "Data reset success message")
+                Text(String(localized: "settings_data_reset_success", defaultValue: "Tüm veriler başarıyla sıfırlandı.", comment: "Data reset success message"))
             }
         }
     }
@@ -273,7 +273,7 @@ struct StatisticsView: View {
                     value: String(localized: "\(dataManager.longestStreak) gün", comment: "Days count")
                 )
             } header: {
-                Text("Meditasyon İstatistikleri", comment: "Meditation statistics section header")
+                Text(String(localized: "settings_meditation_statistics_section", defaultValue: "Meditasyon İstatistikleri", comment: "Meditation statistics section header"))
             }
 
             // Focus Session Statistics
@@ -290,7 +290,7 @@ struct StatisticsView: View {
                     value: "\(dataManager.todayFocusSessions)"
                 )
             } header: {
-                Text("Pomodoro İstatistikleri", comment: "Pomodoro statistics section header")
+                Text(String(localized: "settings_pomodoro_statistics_section", defaultValue: "Pomodoro İstatistikleri", comment: "Pomodoro statistics section header"))
             }
 
             // Last Session
@@ -306,23 +306,23 @@ struct StatisticsView: View {
                         Image(systemName: "checkmark.circle.fill")
                             .foregroundColor(dataManager.isStreakActive() ? .green : .red)
                             .frame(width: 28)
-                        Text("Seri Durumu", comment: "Streak status label")
+                        Text(String(localized: "settings_streak_status", defaultValue: "Seri Durumu", comment: "Streak status label"))
                         Spacer()
                         Group {
                             if dataManager.isStreakActive() {
-                                Text("Aktif", comment: "Active status")
+                                Text(String(localized: "settings_active_status", defaultValue: "Aktif", comment: "Active status"))
                             } else {
-                                Text("Kırıldı", comment: "Broken status")
+                                Text(String(localized: "settings_broken_status", defaultValue: "Kırıldı", comment: "Broken status"))
                             }
                         }
                         .foregroundColor(dataManager.isStreakActive() ? .green : .red)
                     }
                 } header: {
-                    Text("Durum", comment: "Status section header")
+                    Text(String(localized: "settings_status_section", defaultValue: "Durum", comment: "Status section header"))
                 }
             }
         }
-        .navigationTitle(Text("İstatistikler", comment: "Statistics page title"))
+        .navigationTitle(Text(String(localized: "settings_statistics_title", defaultValue: "İstatistikler", comment: "Statistics page title")))
         .navigationBarTitleDisplayMode(.inline)
     }
 
@@ -357,11 +357,11 @@ struct ContactView: View {
         List {
             Section {
                 VStack(alignment: .leading, spacing: 16) {
-                    Text("Geri Bildiriminiz", comment: "Your feedback section title")
+                    Text(String(localized: "settings_your_feedback_title", defaultValue: "Geri Bildiriminiz", comment: "Your feedback section title"))
                         .font(.headline)
                         .foregroundColor(.primary)
 
-                    Text("ZenFlow'u daha iyi hale getirmemize yardımcı olun. Önerileriniz, hata raporlarınız veya genel geri bildirimlerinizi bizimle paylaşın.", comment: "Feedback description text")
+                    Text(String(localized: "settings_feedback_description", defaultValue: "ZenFlow'u daha iyi hale getirmemize yardımcı olun. Önerileriniz, hata raporlarınız veya genel geri bildirimlerinizi bizimle paylaşın.", comment: "Feedback description text"))
                         .font(.subheadline)
                         .foregroundColor(.secondary)
 
@@ -383,7 +383,7 @@ struct ContactView: View {
                         HStack {
                             Spacer()
                             Image(systemName: "paperplane.fill")
-                            Text("Gönder", comment: "Send feedback button")
+                            Text(String(localized: "settings_send", defaultValue: "Gönder", comment: "Send feedback button"))
                                 .fontWeight(.semibold)
                             Spacer()
                         }
@@ -398,9 +398,9 @@ struct ContactView: View {
                 }
                 .padding(.vertical, 8)
             } header: {
-                Text("Geri Bildirim", comment: "Feedback section header")
+                Text(String(localized: "settings_feedback_section", defaultValue: "Geri Bildirim", comment: "Feedback section header"))
             } footer: {
-                Text("Geri bildiriminiz doğrudan geliştirme ekibine iletilecektir.", comment: "Feedback footer text")
+                Text(String(localized: "settings_feedback_footer", defaultValue: "Geri bildiriminiz doğrudan geliştirme ekibine iletilecektir.", comment: "Feedback footer text"))
             }
 
             Section {
@@ -409,7 +409,7 @@ struct ContactView: View {
                         Image(systemName: "envelope.fill")
                             .foregroundColor(ZenTheme.calmBlue)
                             .frame(width: 28)
-                        Text("E-posta", comment: "Email contact option")
+                        Text(String(localized: "settings_email", defaultValue: "E-posta", comment: "Email contact option"))
                         Spacer()
                         Text("contact@zenflow.app")
                             .font(.caption)
@@ -422,7 +422,7 @@ struct ContactView: View {
                         Image(systemName: "at")
                             .foregroundColor(ZenTheme.calmBlue)
                             .frame(width: 28)
-                        Text("Twitter", comment: "Twitter contact option")
+                        Text(String(localized: "settings_twitter", defaultValue: "Twitter", comment: "Twitter contact option"))
                         Spacer()
                         Text("@zenflowapp")
                             .font(.caption)
@@ -430,20 +430,20 @@ struct ContactView: View {
                     }
                 }
             } header: {
-                Text("İletişim Kanalları", comment: "Contact channels section header")
+                Text(String(localized: "settings_contact_channels_section", defaultValue: "İletişim Kanalları", comment: "Contact channels section header"))
             }
         }
-        .navigationTitle(Text("İletişim", comment: "Contact page title"))
+        .navigationTitle(Text(String(localized: "settings_contact_title", defaultValue: "İletişim", comment: "Contact page title")))
         .navigationBarTitleDisplayMode(.inline)
-        .alert(Text("Teşekkürler!", comment: "Thank you alert title"), isPresented: $showSubmitAlert) {
+        .alert(Text(String(localized: "settings_thank_you_title", defaultValue: "Teşekkürler!", comment: "Thank you alert title")), isPresented: $showSubmitAlert) {
             Button {
                 feedbackText = ""
                 dismiss()
             } label: {
-                Text("Tamam", comment: "OK button")
+                Text(String(localized: "settings_ok", defaultValue: "Tamam", comment: "OK button"))
             }
         } message: {
-            Text("Geri bildiriminiz başarıyla gönderildi. Katkınız için teşekkür ederiz!", comment: "Feedback success message")
+            Text(String(localized: "settings_feedback_success_message", defaultValue: "Geri bildiriminiz başarıyla gönderildi. Katkınız için teşekkür ederiz!", comment: "Feedback success message"))
         }
     }
 

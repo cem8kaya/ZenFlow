@@ -55,7 +55,7 @@ struct BadgesView: View {
                     .padding()
                 }
             }
-            .navigationTitle(Text("Rozetler", comment: "Badges page title"))
+            .navigationTitle(Text(String(localized: "badges_title", defaultValue: "Rozetler", comment: "Badges page title")))
             .navigationBarTitleDisplayMode(.large)
             .sheet(isPresented: $showingBadgeDetail) {
                 if let badge = selectedBadge {
@@ -118,7 +118,7 @@ struct BadgesView: View {
                 }
             }
 
-            Text(String(localized: "\(String(format: "%.0f", gamificationManager.progressPercentage))% Tamamlandı", comment: "Progress percentage completed"))
+            Text(String(localized: "badges_progress_completed", defaultValue: "\(String(format: "%.0f", gamificationManager.progressPercentage))% Tamamlandı", comment: "Progress percentage completed"))
                 .font(.headline)
                 .foregroundColor(.white.opacity(0.9))
         }
@@ -380,7 +380,7 @@ struct BadgeDetailView: View {
                                     .padding(.horizontal)
 
                                 VStack(spacing: 12) {
-                                    Text("İlerleme")
+                                    Text(String(localized: "badges_progress", defaultValue: "İlerleme", comment: "Progress label"))
                                         .font(.headline)
                                         .foregroundColor(.white.opacity(0.9))
 
@@ -447,7 +447,7 @@ struct BadgeDetailView: View {
                                         .padding(.horizontal)
 
                                     VStack(spacing: 4) {
-                                        Text("Kazanılma Tarihi", comment: "Badge earned date label")
+                                        Text(String(localized: "badges_earned_date", defaultValue: "Kazanılma Tarihi", comment: "Badge earned date label"))
                                             .font(.caption)
                                             .foregroundColor(.white.opacity(0.6))
 
@@ -470,7 +470,7 @@ struct BadgeDetailView: View {
                     Button(action: {
                         dismiss()
                     }) {
-                        Text("Kapat", comment: "Close badge detail button")
+                        Text(String(localized: "badges_close", defaultValue: "Kapat", comment: "Close badge detail button"))
                     }
                     .foregroundColor(.white)
                     .zenSecondaryButtonStyle()

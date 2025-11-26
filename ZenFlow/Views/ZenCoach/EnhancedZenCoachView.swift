@@ -68,10 +68,10 @@ struct EnhancedZenCoachView: View {
                 .font(.system(size: 50))
                 .foregroundColor(.purple)
 
-            Text("Zen Master", comment: "Zen Master header title")
+            Text(String(localized: "zen_coach_master_title", defaultValue: "Zen Master", comment: "Zen Master header title"))
                 .font(.system(size: 32, weight: .bold, design: .serif))
 
-            Text("Bilgelik yolculuğuna hoş geldin", comment: "Zen Master welcome message")
+            Text(String(localized: "zen_coach_welcome_message", defaultValue: "Bilgelik yolculuğuna hoş geldin", comment: "Zen Master welcome message"))
                 .font(.subheadline)
                 .foregroundColor(.secondary)
         }
@@ -83,7 +83,7 @@ struct EnhancedZenCoachView: View {
             HStack {
                 Image(systemName: "sun.max.fill")
                     .foregroundColor(.orange)
-                Text("Günün Öğretisi", comment: "Daily teaching section title")
+                Text(String(localized: "zen_coach_daily_teaching", defaultValue: "Günün Öğretisi", comment: "Daily teaching section title"))
                     .font(.headline)
             }
 
@@ -123,7 +123,7 @@ struct EnhancedZenCoachView: View {
                         currentTeaching = teaching
                         showingTeachingDetail = true
                     }) {
-                        Text("Devamını Oku", comment: "Read more button")
+                        Text(String(localized: "zen_coach_read_more", defaultValue: "Devamını Oku", comment: "Read more button"))
                             .font(.subheadline)
                             .foregroundColor(.purple)
                     }
@@ -138,7 +138,7 @@ struct EnhancedZenCoachView: View {
 
     private var categoriesSection: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Zen Öğretileri", comment: "Zen teachings section title")
+            Text(String(localized: "zen_coach_teachings", defaultValue: "Zen Öğretileri", comment: "Zen teachings section title"))
                 .font(.headline)
                 .padding(.horizontal)
 
@@ -162,7 +162,7 @@ struct EnhancedZenCoachView: View {
             HStack {
                 Image(systemName: "person.circle.fill")
                     .foregroundColor(.blue)
-                Text("Sana Özel Tavsiye", comment: "Personalized advice section title")
+                Text(String(localized: "zen_coach_personalized_advice", defaultValue: "Sana Özel Tavsiye", comment: "Personalized advice section title"))
                     .font(.headline)
             }
 
@@ -181,7 +181,7 @@ struct EnhancedZenCoachView: View {
             HStack {
                 Image(systemName: "leaf.fill")
                     .foregroundColor(.green)
-                Text("Bugünün Uygulaması", comment: "Today's practice section title")
+                Text(String(localized: "zen_coach_todays_practice", defaultValue: "Bugünün Uygulaması", comment: "Today's practice section title"))
                     .font(.headline)
             }
 
@@ -298,7 +298,7 @@ struct TeachingDetailView: View {
                         HStack {
                             Image(systemName: "lightbulb.fill")
                                 .foregroundColor(.yellow)
-                            Text("Uygulama", comment: "Practice section title")
+                            Text(String(localized: "zen_coach_practice", defaultValue: "Uygulama", comment: "Practice section title"))
                                 .font(.headline)
                         }
 
@@ -311,14 +311,14 @@ struct TeachingDetailView: View {
                 }
                 .padding()
             }
-            .navigationTitle(Text("Zen Öğretisi", comment: "Zen teaching detail page title"))
+            .navigationTitle(String(localized: "zen_coach_teaching_detail_title", defaultValue: "Zen Öğretisi", comment: "Zen teaching detail page title"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
                         dismiss()
                     }) {
-                        Text("Kapat", comment: "Close button")
+                        Text(String(localized: "zen_coach_close", defaultValue: "Kapat", comment: "Close button"))
                     }
                 }
             }
