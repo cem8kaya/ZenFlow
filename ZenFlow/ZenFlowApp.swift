@@ -21,6 +21,7 @@ struct ZenFlowApp: App {
     @State private var showHealthKitOnboarding: Bool = false
     @State private var showSettings: Bool = false
     @StateObject private var onboardingManager = OnboardingManager.shared
+    @StateObject private var languageManager = LanguageManager.shared
     private let notificationDelegate = NotificationDelegate()
 
     var body: some Scene {
@@ -28,6 +29,8 @@ struct ZenFlowApp: App {
             ZStack {
                 SwipeableTabView(selection: $selectedTab)
                     .preferredColorScheme(.dark)
+                    .environment(\.locale, languageManager.locale)
+                    .id(languageManager.languageRefreshID)
 
                 // Splash screen overlay
                 if showSplash {
@@ -142,37 +145,37 @@ struct SwipeableTabView: View {
         TabView(selection: $selection) {
             ZenCoachView()
                 .tabItem {
-                    Label("Zen Coach", systemImage: "person.crop.circle.fill")
+                    Label(String(localized: "tab_zen_coach", comment: "Zen Coach tab"), systemImage: "person.crop.circle.fill")
                 }
-                .accessibilityLabel("Zen Coach sekmesi")
+                .accessibilityLabel(String(localized: "tab_zen_coach_accessibility", comment: "Zen Coach tab accessibility"))
                 .tag(0)
 
             BreathingView()
                 .tabItem {
-                    Label("Meditasyon", systemImage: "leaf.circle.fill")
+                    Label(String(localized: "tab_meditation", comment: "Meditation tab"), systemImage: "leaf.circle.fill")
                 }
-                .accessibilityLabel("Meditasyon sekmesi")
+                .accessibilityLabel(String(localized: "tab_meditation_accessibility", comment: "Meditation tab accessibility"))
                 .tag(1)
 
             FocusTimerView()
                 .tabItem {
-                    Label("Odaklan", systemImage: "timer")
+                    Label(String(localized: "tab_focus", comment: "Focus tab"), systemImage: "timer")
                 }
-                .accessibilityLabel("Odaklan sekmesi")
+                .accessibilityLabel(String(localized: "tab_focus_accessibility", comment: "Focus tab accessibility"))
                 .tag(2)
 
             ZenGardenView()
                 .tabItem {
-                    Label("Zen Bahçem", systemImage: "tree.fill")
+                    Label(String(localized: "tab_zen_garden", comment: "Zen Garden tab"), systemImage: "tree.fill")
                 }
-                .accessibilityLabel("Zen Bahçem sekmesi")
+                .accessibilityLabel(String(localized: "tab_zen_garden_accessibility", comment: "Zen Garden tab accessibility"))
                 .tag(3)
 
             SettingsView()
                 .tabItem {
-                    Label("Ayarlar", systemImage: "gear")
+                    Label(String(localized: "tab_settings", comment: "Settings tab"), systemImage: "gear")
                 }
-                .accessibilityLabel("Ayarlar sekmesi")
+                .accessibilityLabel(String(localized: "tab_settings_accessibility", comment: "Settings tab accessibility"))
                 .tag(4)
         }
     }

@@ -63,11 +63,11 @@ struct SessionCompleteView: View {
                 // Session summary text
                 if showText {
                     VStack(spacing: 12) {
-                        Text("Meditasyon Tamamlandı!")
+                        Text(String(localized: "session_complete_title", comment: "Meditation completed title"))
                             .font(.system(size: 28, weight: .bold))
                             .foregroundColor(.white)
 
-                        Text("\(durationMinutes) dakika")
+                        Text(String(localized: "session_complete_duration", defaultValue: "\(durationMinutes) dakika", comment: "Session duration"))
                             .font(.system(size: 36, weight: .heavy))
                             .foregroundStyle(
                                 LinearGradient(
@@ -77,7 +77,7 @@ struct SessionCompleteView: View {
                                 )
                             )
 
-                        Text("Harika bir seans! 🧘‍♀️")
+                        Text(String(localized: "session_complete_congratulations", comment: "Congratulations message"))
                             .font(.body)
                             .foregroundColor(.white.opacity(0.9))
                             .multilineTextAlignment(.center)
@@ -88,7 +88,7 @@ struct SessionCompleteView: View {
                 // Mood Selector
                 if showMoodSelector && !moodSelectionComplete {
                     VStack(spacing: 20) {
-                        Text("Nasıl hissediyorsun?")
+                        Text(String(localized: "session_complete_mood_question", comment: "How are you feeling?"))
                             .font(.system(size: 20, weight: .semibold))
                             .foregroundColor(.white)
 
@@ -109,7 +109,7 @@ struct SessionCompleteView: View {
                         Button(action: {
                             skipMoodSelection()
                         }) {
-                            Text("Atla")
+                            Text(String(localized: "session_complete_skip", comment: "Skip button"))
                                 .font(.system(size: 16, weight: .medium))
                                 .foregroundColor(.white.opacity(0.6))
                                 .padding(.vertical, 8)

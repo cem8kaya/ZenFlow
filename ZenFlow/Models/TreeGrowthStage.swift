@@ -26,39 +26,39 @@ enum TreeGrowthStage: Int, CaseIterable, Identifiable {
 
     // MARK: - Localized Names
 
-    /// Türkçe başlık
+    /// Localized title for the tree stage
     var title: String {
         switch self {
         case .seed:
-            return "Tohum"
+            return String(localized: "tree_stage_seed_title", comment: "Seed stage title")
         case .sprout:
-            return "Filiz"
+            return String(localized: "tree_stage_sprout_title", comment: "Sprout stage title")
         case .sapling:
-            return "Fidan"
+            return String(localized: "tree_stage_sapling_title", comment: "Sapling stage title")
         case .youngTree:
-            return "Genç Ağaç"
+            return String(localized: "tree_stage_young_tree_title", comment: "Young tree stage title")
         case .matureTree:
-            return "Olgun Ağaç"
+            return String(localized: "tree_stage_mature_tree_title", comment: "Mature tree stage title")
         case .ancientTree:
-            return "Kadim Ağaç"
+            return String(localized: "tree_stage_ancient_tree_title", comment: "Ancient tree stage title")
         }
     }
 
-    /// Aşama açıklaması
+    /// Localized description for the tree stage
     var description: String {
         switch self {
         case .seed:
-            return "Yolculuğun başlangıcı. Her büyük değişim küçük bir tohumla başlar."
+            return String(localized: "tree_stage_seed_description", comment: "Seed stage description")
         case .sprout:
-            return "İlk adımları attın! Sabır ve özveriyle büyümeye devam et."
+            return String(localized: "tree_stage_sprout_description", comment: "Sprout stage description")
         case .sapling:
-            return "Güçlü temeller atıyorsun. Her gün daha da büyüyorsun."
+            return String(localized: "tree_stage_sapling_description", comment: "Sapling stage description")
         case .youngTree:
-            return "Artık güçlü bir ağaçsın! Egzersiz alışkanlığın kökleniyor."
+            return String(localized: "tree_stage_young_tree_description", comment: "Young tree stage description")
         case .matureTree:
-            return "Olgunlaştın ve güçlendin. Zen bahçenin görkemli ağacı."
+            return String(localized: "tree_stage_mature_tree_description", comment: "Mature tree stage description")
         case .ancientTree:
-            return "Efsanevi bir yolculuk tamamladın! Bilgelik ve güç sahibisin."
+            return String(localized: "tree_stage_ancient_tree_description", comment: "Ancient tree stage description")
         }
     }
 
