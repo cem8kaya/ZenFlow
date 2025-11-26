@@ -417,8 +417,12 @@ struct FocusTimerView: View {
         // Set session end time for background-safe timing
         sessionEndTime = Date().addingTimeInterval(timeRemaining)
 
-        let newTimer = Timer(timeInterval: 1.0, repeats: true) { [weak self] _ in
-            guard let self = self, let endTime = self.sessionEndTime else { return }
+        // DÜZELTME: [weak self] kaldırıldı. Struct olduğu için weak kullanılamaz.
+        // Ayrıca 'guard let self = self' kontrolüne gerek yoktur.
+        let newTimer = Timer(timeInterval: 1.0, repeats: true) { _ in
+            // self.sessionEndTime'a doğrudan erişiyoruz.
+            guard let endTime = self.sessionEndTime else { return }
+            
             let remaining = endTime.timeIntervalSince(Date())
 
             if remaining > 0 {
