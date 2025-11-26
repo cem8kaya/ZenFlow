@@ -21,7 +21,6 @@ struct ZenFlowApp: App {
     @State private var showHealthKitOnboarding: Bool = false
     @State private var showSettings: Bool = false
     @StateObject private var onboardingManager = OnboardingManager.shared
-    @StateObject private var languageManager = LanguageManager.shared
     private let notificationDelegate = NotificationDelegate()
 
     var body: some Scene {
@@ -29,8 +28,6 @@ struct ZenFlowApp: App {
             ZStack {
                 SwipeableTabView(selection: $selectedTab)
                     .preferredColorScheme(.dark)
-                    .environment(\.locale, languageManager.locale)
-                    .id(languageManager.languageRefreshID)
 
                 // Splash screen overlay
                 if showSplash {
