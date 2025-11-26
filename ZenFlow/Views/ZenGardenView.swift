@@ -62,6 +62,14 @@ struct Star: Identifiable {
     var brightness: Double
 }
 
+struct RainDrop: Identifiable {
+    let id = UUID()
+    var x: CGFloat
+    var y: CGFloat
+    var opacity: Double
+    var speed: Double
+}
+
 // MARK: - ZenGardenView
 
 struct ZenGardenView: View {
@@ -106,6 +114,27 @@ struct ZenGardenView: View {
     @State private var cloudAnimationTimer: Timer?
     @State private var starTwinkleTimer: Timer?
 
+    // Daily watering mechanism
+    @State private var hasWateredToday: Bool = false
+    @State private var wateringAnimation: Bool = false
+    @State private var dailyWateringStreak: Int = 0
+
+    // Micro progress indicator
+    @State private var showMicroProgress: Bool = false
+    @State private var microProgressScale: CGFloat = 1.0
+    @State private var microProgressOpacity: Double = 0.8
+
+    // Rain effect (ambient weather)
+    @State private var showRainEffect: Bool = false
+    @State private var rainDrops: [RainDrop] = []
+
+    // Tooltip system
+    @State private var showGardenTip: Bool = true
+    @AppStorage("hasSeenGardenTip") private var hasSeenGardenTip: Bool = false
+
+    // Celebration shake
+    @State private var celebrationShake: Bool = false
+
 
     // MARK: - Body
 
@@ -138,6 +167,11 @@ struct ZenGardenView: View {
                     // Water droplets (interactive)
                     waterDropletsLayer
 
+                    // Rain effect (ambient weather)
+                    if showRainEffect {
+                        rainLayer
+                    }
+
                     // Sparkle Growth Animation Overlay
                     ZStack {
                         ForEach(0..<8, id: \.self) { index in
@@ -159,6 +193,11 @@ struct ZenGardenView: View {
                         // Başlık
                         headerView
                             .shadow(color: .black.opacity(0.3), radius: 5)
+
+                        Spacer()
+
+                        // Garden Tip (Tooltip)
+                        gardenTipView
 
                         Spacer()
 
@@ -190,6 +229,8 @@ struct ZenGardenView: View {
                 startBackgroundAnimations()
                 impactFeedback.prepare()
                 lightFeedback.prepare()
+                checkDailyWateringStatus()
+                maybeStartRain()
             }
             .onDisappear {
                 stopBackgroundAnimations()
@@ -360,6 +401,9 @@ struct ZenGardenView: View {
                 // Maksimum seviyeye ulaşıldı
                 maximumLevelView
             }
+
+            // Daily watering button
+            wateringButton
         }
         .padding(.bottom, 30)
     }
@@ -439,6 +483,15 @@ struct ZenGardenView: View {
                     height: gardenManager.currentStage.glowRadius * 1.2
                 )
 
+            // Micro progress pulse effect
+            if showMicroProgress {
+                Circle()
+                    .stroke(gardenManager.currentStage.glowColor, lineWidth: 2)
+                    .frame(width: 100, height: 100)
+                    .scaleEffect(microProgressScale)
+                    .opacity(microProgressOpacity)
+            }
+
             // Celebration text overlay (if celebrating)
             if showCelebrationText {
                 VStack(spacing: 12) {
@@ -509,8 +562,12 @@ struct ZenGardenView: View {
     // MARK: - Celebration Animation
 
     private func startCelebrationAnimation() {
-        // Haptic feedback - strong impact for celebration
-        impactFeedback.impactOccurred()
+        // Enhanced haptic feedback burst for celebration
+        for i in 0..<3 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.15) {
+                HapticManager.shared.playImpact(style: .medium)
+            }
+        }
 
         // Use simpler animations if Reduce Motion is enabled
         if reduceMotion {
@@ -751,6 +808,81 @@ struct ZenGardenView: View {
         }
     }
 
+    // MARK: - Daily Watering Button
+
+    private var wateringButton: some View {
+        Button(action: performWatering) {
+            VStack(spacing: 8) {
+                ZStack {
+                    Circle()
+                        .fill(hasWateredToday ?
+                              Color.gray.opacity(0.3) :
+                              LinearGradient(colors: [.cyan, .blue], startPoint: .top, endPoint: .bottom))
+                        .frame(width: 60, height: 60)
+
+                    Image(systemName: hasWateredToday ? "checkmark.circle.fill" : "drop.fill")
+                        .font(.system(size: 28))
+                        .foregroundColor(.white)
+                        .scaleEffect(wateringAnimation ? 1.2 : 1.0)
+                }
+
+                Text(hasWateredToday ?
+                     String(localized: "garden_watered_today") :
+                     String(localized: "garden_water_tree"))
+                    .font(.caption)
+                    .foregroundColor(ZenTheme.lightLavender)
+            }
+        }
+        .disabled(hasWateredToday)
+    }
+
+    // MARK: - Garden Tip View
+
+    private var gardenTipView: some View {
+        Group {
+            if showGardenTip && !hasSeenGardenTip {
+                VStack(spacing: 8) {
+                    Text("💡")
+                        .font(.title)
+                    Text(String(localized: "garden_tip_meditate_to_grow"))
+                        .font(.subheadline)
+                        .foregroundColor(ZenTheme.lightLavender)
+                        .multilineTextAlignment(.center)
+
+                    Button(String(localized: "garden_tip_dismiss")) {
+                        withAnimation {
+                            showGardenTip = false
+                            hasSeenGardenTip = true
+                        }
+                    }
+                    .font(.caption)
+                    .foregroundColor(ZenTheme.softPurple)
+                }
+                .padding()
+                .background(
+                    RoundedRectangle(cornerRadius: 16)
+                        .fill(Color.black.opacity(0.6))
+                )
+                .transition(.scale.combined(with: .opacity))
+            }
+        }
+    }
+
+    // MARK: - Rain Layer
+
+    private var rainLayer: some View {
+        Canvas { context, size in
+            for drop in rainDrops {
+                let path = Path { p in
+                    p.move(to: CGPoint(x: drop.x, y: drop.y))
+                    p.addLine(to: CGPoint(x: drop.x, y: drop.y + 8))
+                }
+                context.stroke(path, with: .color(.cyan.opacity(drop.opacity)), lineWidth: 1.5)
+            }
+        }
+        .allowsHitTesting(false)
+    }
+
     // MARK: - Interactive Functions
 
     private func handleTreeTap(at location: CGPoint, in size: CGSize) {
@@ -881,6 +1013,143 @@ struct ZenGardenView: View {
         cloudAnimationTimer = nil
         starTwinkleTimer?.invalidate()
         starTwinkleTimer = nil
+    }
+
+    // MARK: - Daily Watering Functions
+
+    private func checkDailyWateringStatus() {
+        // Check if user already watered today
+        if let lastWateringDate = UserDefaults.standard.object(forKey: "lastWateringDate") as? Date {
+            let calendar = Calendar.current
+            if calendar.isDateInToday(lastWateringDate) {
+                hasWateredToday = true
+            } else {
+                hasWateredToday = false
+            }
+        }
+
+        // Load watering streak
+        dailyWateringStreak = UserDefaults.standard.integer(forKey: "wateringStreak")
+    }
+
+    private func performWatering() {
+        guard !hasWateredToday else { return }
+
+        // Haptic feedback
+        HapticManager.shared.playNotification(type: .success)
+
+        // Animation
+        withAnimation(.spring(response: 0.4, dampingFraction: 0.6)) {
+            wateringAnimation = true
+            hasWateredToday = true
+            dailyWateringStreak += 1
+        }
+
+        // Water droplet effect
+        generateWateringDroplets()
+
+        // Reset animation
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            wateringAnimation = false
+        }
+
+        // Save to UserDefaults
+        UserDefaults.standard.set(Date(), forKey: "lastWateringDate")
+        UserDefaults.standard.set(dailyWateringStreak, forKey: "wateringStreak")
+
+        // Show micro progress animation
+        showMicroProgressAnimation()
+    }
+
+    private func generateWateringDroplets() {
+        // Generate water droplets around the tree
+        for _ in 0..<8 {
+            let angle = Double.random(in: 0...(2 * .pi))
+            let distance = CGFloat.random(in: 40...80)
+
+            let droplet = WaterDroplet(
+                x: viewSize.width / 2 + cos(angle) * distance,
+                y: viewSize.height / 2 + sin(angle) * distance,
+                scale: 0.0,
+                opacity: 0.8
+            )
+            waterDroplets.append(droplet)
+        }
+
+        // Animate water droplets
+        withAnimation(.easeOut(duration: 0.8)) {
+            for i in waterDroplets.indices {
+                waterDroplets[i].scale = 1.8
+                waterDroplets[i].opacity = 0.0
+            }
+        }
+
+        // Clean up after animation
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            waterDroplets.removeAll()
+        }
+    }
+
+    // MARK: - Micro Progress Animation
+
+    func showMicroProgressAnimation() {
+        showMicroProgress = true
+
+        withAnimation(.easeOut(duration: 0.8)) {
+            microProgressScale = 1.5
+            microProgressOpacity = 0.0
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
+            showMicroProgress = false
+            microProgressScale = 1.0
+            microProgressOpacity = 0.8
+        }
+    }
+
+    // MARK: - Rain Effect Functions
+
+    private func maybeStartRain() {
+        guard Int.random(in: 1...10) == 1 else { return } // 10% chance
+
+        showRainEffect = true
+
+        // Generate 20 rain drops
+        for _ in 0..<20 {
+            let drop = RainDrop(
+                x: CGFloat.random(in: 0...viewSize.width),
+                y: CGFloat.random(in: -50...0),
+                opacity: Double.random(in: 0.3...0.7),
+                speed: Double.random(in: 5...10)
+            )
+            rainDrops.append(drop)
+        }
+
+        // Animate rain drops falling
+        Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true) { timer in
+            guard self.showRainEffect else {
+                timer.invalidate()
+                return
+            }
+
+            for i in self.rainDrops.indices {
+                self.rainDrops[i].y += CGFloat(self.rainDrops[i].speed)
+
+                // Reset drop to top if it goes off screen
+                if self.rainDrops[i].y > self.viewSize.height {
+                    self.rainDrops[i].y = -10
+                    self.rainDrops[i].x = CGFloat.random(in: 0...self.viewSize.width)
+                }
+            }
+        }
+
+        // Stop rain after 3 seconds
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+            withAnimation {
+                self.showRainEffect = false
+                self.rainDrops.removeAll()
+            }
+        }
     }
 }
 
