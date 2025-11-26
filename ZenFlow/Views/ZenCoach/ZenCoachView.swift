@@ -64,29 +64,29 @@ struct ZenCoachView: View {
 
     private var header: some View {
         HStack(spacing: 12) {
-            // Keyboard dismiss button - only visible when keyboard is active
-            if isInputFocused {
-                Button(action: {
-                    // Dismiss keyboard
-                    isInputFocused = false
+            // Close/Dismiss keyboard button - dismisses keyboard and scrolls to top
+            Button(action: {
+                // Dismiss keyboard
+                isInputFocused = false
 
-                    // Haptic feedback
-                    HapticManager.shared.playImpact(style: .light)
-                }) {
-                    Image(systemName: "keyboard.chevron.compact.down")
-                        .font(.system(size: 18, weight: .semibold))
-                        .foregroundColor(ZenTheme.lightLavender)
-                        .frame(width: 36, height: 36)
-                        .background(
-                            Circle()
-                                .fill(Color.white.opacity(0.1))
-                        )
+                // Scroll to top of messages if available
+                if let firstMessage = manager.messages.first, let proxy = scrollProxy {
+                    withAnimation(.easeInOut(duration: 0.3)) {
+                        proxy.scrollTo(firstMessage.id, anchor: .top)
+                    }
                 }
-                .transition(.opacity.combined(with: .scale))
-            } else {
-                // Empty space to maintain layout consistency
-                Color.clear
+
+                // Haptic feedback
+                HapticManager.shared.playImpact(style: .light)
+            }) {
+                Image(systemName: "chevron.down")
+                    .font(.system(size: 18, weight: .semibold))
+                    .foregroundColor(ZenTheme.lightLavender)
                     .frame(width: 36, height: 36)
+                    .background(
+                        Circle()
+                            .fill(Color.white.opacity(0.1))
+                    )
             }
 
             // Avatar
