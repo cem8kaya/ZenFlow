@@ -23,10 +23,19 @@ enum OnboardingInteractiveType {
 struct OnboardingPage: Identifiable, Equatable {
     let id: Int
     let iconName: String
-    let title: String
-    let description: String
+    let titleKey: String
+    let descriptionKey: String
     let accentColor: Color
     let interactiveType: OnboardingInteractiveType
+
+    // Localized computed properties
+    var title: String {
+        String(localized: LocalizedStringKey(titleKey), comment: "Onboarding title")
+    }
+
+    var description: String {
+        String(localized: LocalizedStringKey(descriptionKey), comment: "Onboarding description")
+    }
 
     // MARK: - Accessibility
 
@@ -50,8 +59,8 @@ struct OnboardingData {
         OnboardingPage(
             id: 0,
             iconName: "hands.sparkles.fill",
-            title: "Hoş Geldin ZenFlow'a",
-            description: "Günde sadece 5 dakika ile stres azaltma, daha iyi uyku ve artmış odaklanma. Bilimsel olarak kanıtlanmış teknikler, her zaman yanında.",
+            titleKey: "onboarding_page_0_title",
+            descriptionKey: "onboarding_page_0_description",
             accentColor: ZenTheme.mysticalViolet,
             interactiveType: .pulsingCircle
         ),
@@ -60,8 +69,8 @@ struct OnboardingData {
         OnboardingPage(
             id: 1,
             iconName: "lungs.fill",
-            title: "Nefes Alın, Rahatlayın",
-            description: "Box Breathing, 4-7-8 tekniği ve daha fazlası. NASA astronotları ve Navy SEALs tarafından kullanılan tekniklerle stresini yönet.",
+            titleKey: "onboarding_page_1_title",
+            descriptionKey: "onboarding_page_1_description",
             accentColor: ZenTheme.calmBlue,
             interactiveType: .breathingDemo
         ),
@@ -70,8 +79,8 @@ struct OnboardingData {
         OnboardingPage(
             id: 2,
             iconName: "tree.fill",
-            title: "İlerlemenizi Görün",
-            description: "Her meditasyon seansı Zen Bahçenizi büyütür. Rozetler kazanın, serilerinizi koruyun, gelişiminizi kutlayın.",
+            titleKey: "onboarding_page_2_title",
+            descriptionKey: "onboarding_page_2_description",
             accentColor: ZenTheme.sageGreen,
             interactiveType: .treeGrowth
         ),
@@ -80,8 +89,8 @@ struct OnboardingData {
         OnboardingPage(
             id: 3,
             iconName: "timer",
-            title: "Odaklanın, Üretin",
-            description: "Pomodoro tekniği ile 25 dakika derin odaklanma, 5 dakika dinlenme. Verimliliğinizi %40 artırın.",
+            titleKey: "onboarding_page_3_title",
+            descriptionKey: "onboarding_page_3_description",
             accentColor: ZenTheme.softPurple,
             interactiveType: .timerDemo
         ),
@@ -90,8 +99,8 @@ struct OnboardingData {
         OnboardingPage(
             id: 4,
             iconName: "checkmark.shield.fill",
-            title: "Gizliliğiniz Bizim İçin Önemli",
-            description: "Verileriniz sadece cihazınızda. Sunucuya hiçbir veri gönderilmez. HealthKit ve bildirimler tamamen opsiyonel.",
+            titleKey: "onboarding_page_4_title",
+            descriptionKey: "onboarding_page_4_description",
             accentColor: ZenTheme.serenePurple,
             interactiveType: .none
         )

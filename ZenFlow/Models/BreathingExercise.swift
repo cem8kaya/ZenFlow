@@ -24,13 +24,13 @@ enum BreathingPhaseType: String, Codable {
     var displayText: String {
         switch self {
         case .inhale:
-            return "Nefes Al"
+            return String(localized: "breathing_phase_inhale", comment: "Inhale")
         case .hold:
-            return "Tut"
+            return String(localized: "breathing_phase_hold", comment: "Hold")
         case .exhale:
-            return "Nefes Ver"
+            return String(localized: "breathing_phase_exhale", comment: "Exhale")
         case .holdAfterExhale:
-            return "Tut"
+            return String(localized: "breathing_phase_hold_after_exhale", comment: "Hold after exhale")
         }
     }
 
@@ -56,13 +56,17 @@ struct BreathingPhaseConfig: Identifiable, Codable {
     let id: UUID
     let phase: BreathingPhaseType
     let duration: TimeInterval // in seconds
-    let instruction: String
+    let instructionKey: String // Localization key for instruction
 
-    init(phase: BreathingPhaseType, duration: TimeInterval, instruction: String) {
+    var instruction: String {
+        String(localized: LocalizedStringKey(instructionKey), comment: "Breathing phase instruction")
+    }
+
+    init(phase: BreathingPhaseType, duration: TimeInterval, instructionKey: String) {
         self.id = UUID()
         self.phase = phase
         self.duration = duration
-        self.instruction = instruction
+        self.instructionKey = instructionKey
     }
 }
 
@@ -70,9 +74,20 @@ struct BreathingPhaseConfig: Identifiable, Codable {
 
 /// Difficulty level for breathing exercises
 enum ExerciseDifficulty: String, Codable {
-    case beginner = "Başlangıç"
-    case intermediate = "Orta"
-    case advanced = "İleri"
+    case beginner
+    case intermediate
+    case advanced
+
+    var displayName: String {
+        switch self {
+        case .beginner:
+            return String(localized: "difficulty_beginner", comment: "Beginner")
+        case .intermediate:
+            return String(localized: "difficulty_intermediate", comment: "Intermediate")
+        case .advanced:
+            return String(localized: "difficulty_advanced", comment: "Advanced")
+        }
+    }
 
     var color: Color {
         switch self {
@@ -90,10 +105,23 @@ enum ExerciseDifficulty: String, Codable {
 
 /// Recommended time of day for an exercise
 enum RecommendedTime: String, Codable {
-    case morning = "Sabah"
-    case evening = "Akşam"
-    case stressful = "Stres Anı"
-    case anytime = "Her Zaman"
+    case morning
+    case evening
+    case stressful
+    case anytime
+
+    var displayName: String {
+        switch self {
+        case .morning:
+            return String(localized: "recommended_time_morning", comment: "Morning")
+        case .evening:
+            return String(localized: "recommended_time_evening", comment: "Evening")
+        case .stressful:
+            return String(localized: "recommended_time_stressful", comment: "Stressful moments")
+        case .anytime:
+            return String(localized: "recommended_time_anytime", comment: "Anytime")
+        }
+    }
 
     var icon: String {
         switch self {
@@ -114,36 +142,50 @@ enum RecommendedTime: String, Codable {
 /// A complete breathing exercise with all its phases and metadata
 struct BreathingExercise: Identifiable, Codable {
     let id: UUID
-    let name: String
-    let description: String
+    let exerciseType: String // Identifier for localization (e.g., "box", "478", etc.)
     let phases: [BreathingPhaseConfig]
     let totalCycleDuration: TimeInterval
     let recommendedDuration: Int // in minutes
     let iconName: String
     let difficulty: ExerciseDifficulty
     let recommendedTime: RecommendedTime
-    let benefits: [String]
+
+    // Localized computed properties
+    var localizedName: String {
+        String(localized: LocalizedStringKey("exercise_\(exerciseType)_name"), comment: "Exercise name")
+    }
+
+    var localizedDescription: String {
+        String(localized: LocalizedStringKey("exercise_\(exerciseType)_description"), comment: "Exercise description")
+    }
+
+    var localizedBenefits: [String] {
+        (0..<4).map { index in
+            String(localized: LocalizedStringKey("exercise_\(exerciseType)_benefit_\(index)"), comment: "Exercise benefit")
+        }
+    }
+
+    // Legacy compatibility
+    var name: String { localizedName }
+    var description: String { localizedDescription }
+    var benefits: [String] { localizedBenefits }
 
     init(
-        name: String,
-        description: String,
+        exerciseType: String,
         phases: [BreathingPhaseConfig],
         recommendedDuration: Int = 5,
         iconName: String,
         difficulty: ExerciseDifficulty,
-        recommendedTime: RecommendedTime,
-        benefits: [String]
+        recommendedTime: RecommendedTime
     ) {
         self.id = UUID()
-        self.name = name
-        self.description = description
+        self.exerciseType = exerciseType
         self.phases = phases
         self.totalCycleDuration = phases.reduce(0) { $0 + $1.duration }
         self.recommendedDuration = recommendedDuration
         self.iconName = iconName
         self.difficulty = difficulty
         self.recommendedTime = recommendedTime
-        self.benefits = benefits
     }
 }
 
@@ -162,164 +204,129 @@ class BreathingExerciseManager: ObservableObject {
 
     /// All available breathing exercises
     let allExercises: [BreathingExercise] = [
-        // 1. Box Breathing (Kutu Nefesi)
+        // 1. Box Breathing
         BreathingExercise(
-            name: "Kutu Nefesi",
-            description: "Dengeli ve düzenli bir nefes egzersizi. Zihinsel netlik ve sakinlik için idealdir.",
+            exerciseType: "box",
             phases: [
                 BreathingPhaseConfig(
                     phase: .inhale,
                     duration: 4,
-                    instruction: "Dört sayarak burnunuzdan yavaşça nefes alın"
+                    instructionKey: "exercise_box_phase_0_instruction"
                 ),
                 BreathingPhaseConfig(
                     phase: .hold,
                     duration: 4,
-                    instruction: "Dört sayarak nefesinizi tutun"
+                    instructionKey: "exercise_box_phase_1_instruction"
                 ),
                 BreathingPhaseConfig(
                     phase: .exhale,
                     duration: 4,
-                    instruction: "Dört sayarak ağzınızdan yavaşça nefes verin"
+                    instructionKey: "exercise_box_phase_2_instruction"
                 ),
                 BreathingPhaseConfig(
                     phase: .holdAfterExhale,
                     duration: 4,
-                    instruction: "Dört sayarak nefesinizi tutun"
+                    instructionKey: "exercise_box_phase_3_instruction"
                 )
             ],
             recommendedDuration: 5,
             iconName: "square.fill",
             difficulty: .beginner,
-            recommendedTime: .anytime,
-            benefits: [
-                "Stresi azaltır",
-                "Odaklanmayı artırır",
-                "Zihinsel netlik sağlar",
-                "Anksiyeteyi azaltır"
-            ]
+            recommendedTime: .anytime
         ),
 
-        // 2. 4-7-8 Tekniği
+        // 2. 4-7-8 Technique
         BreathingExercise(
-            name: "4-7-8 Tekniği",
-            description: "Uykuya dalmayı kolaylaştıran ve derin rahatlama sağlayan teknik. Dr. Andrew Weil tarafından geliştirilmiştir.",
+            exerciseType: "478",
             phases: [
                 BreathingPhaseConfig(
                     phase: .inhale,
                     duration: 4,
-                    instruction: "Burnunuzdan dört sayarak sessizce nefes alın"
+                    instructionKey: "exercise_478_phase_0_instruction"
                 ),
                 BreathingPhaseConfig(
                     phase: .hold,
                     duration: 7,
-                    instruction: "Yedi sayarak nefesinizi tutun"
+                    instructionKey: "exercise_478_phase_1_instruction"
                 ),
                 BreathingPhaseConfig(
                     phase: .exhale,
                     duration: 8,
-                    instruction: "Ağzınızdan sekiz sayarak sesli bir şekilde nefes verin"
+                    instructionKey: "exercise_478_phase_2_instruction"
                 )
             ],
             recommendedDuration: 5,
             iconName: "bed.double.fill",
             difficulty: .intermediate,
-            recommendedTime: .evening,
-            benefits: [
-                "Uykuya dalmayı kolaylaştırır",
-                "Anksiyeteyi azaltır",
-                "Kan basıncını düşürür",
-                "Derin rahatlama sağlar"
-            ]
+            recommendedTime: .evening
         ),
 
-        // 3. Sakinleştirici Nefes
+        // 3. Calming Breath
         BreathingExercise(
-            name: "Sakinleştirici Nefes",
-            description: "Basit ve etkili bir sakinleşme tekniği. Uzun nefes vermeler sinir sistemini sakinleştirir.",
+            exerciseType: "calming",
             phases: [
                 BreathingPhaseConfig(
                     phase: .inhale,
                     duration: 4,
-                    instruction: "Burnunuzdan dört sayarak nefes alın"
+                    instructionKey: "exercise_calming_phase_0_instruction"
                 ),
                 BreathingPhaseConfig(
                     phase: .exhale,
                     duration: 6,
-                    instruction: "Ağzınızdan altı sayarak yavaşça nefes verin"
+                    instructionKey: "exercise_calming_phase_1_instruction"
                 )
             ],
             recommendedDuration: 5,
             iconName: "leaf.fill",
             difficulty: .beginner,
-            recommendedTime: .stressful,
-            benefits: [
-                "Hızlı sakinleşme sağlar",
-                "Stresi azaltır",
-                "Kalp atış hızını düzenler",
-                "Kolayca uygulanabilir"
-            ]
+            recommendedTime: .stressful
         ),
 
-        // 4. Enerji Nefesi
+        // 4. Energy Breath
         BreathingExercise(
-            name: "Enerji Nefesi",
-            description: "Enerji ve canlılık kazandıran hızlı tempo nefes egzersizi. Sabah rutini için mükemmeldir.",
+            exerciseType: "energy",
             phases: [
                 BreathingPhaseConfig(
                     phase: .inhale,
                     duration: 2,
-                    instruction: "Burnunuzdan hızlıca iki sayarak nefes alın"
+                    instructionKey: "exercise_energy_phase_0_instruction"
                 ),
                 BreathingPhaseConfig(
                     phase: .exhale,
                     duration: 2,
-                    instruction: "Ağzınızdan hızlıca iki sayarak nefes verin"
+                    instructionKey: "exercise_energy_phase_1_instruction"
                 )
             ],
             recommendedDuration: 3,
             iconName: "bolt.fill",
             difficulty: .intermediate,
-            recommendedTime: .morning,
-            benefits: [
-                "Enerji seviyesini yükseltir",
-                "Zihinsel uyanıklığı artırır",
-                "Kan dolaşımını hızlandırır",
-                "Güne dinç başlamanızı sağlar"
-            ]
+            recommendedTime: .morning
         ),
 
-        // 5. Derin Gevşeme
+        // 5. Deep Relaxation
         BreathingExercise(
-            name: "Derin Gevşeme",
-            description: "Yavaş ve derin nefes alıp vermelerle tam bir rahatlama hali. Meditasyon ve yoga sonrası idealdir.",
+            exerciseType: "deep",
             phases: [
                 BreathingPhaseConfig(
                     phase: .inhale,
                     duration: 6,
-                    instruction: "Burnunuzdan çok yavaş ve derin bir şekilde altı sayarak nefes alın"
+                    instructionKey: "exercise_deep_phase_0_instruction"
                 ),
                 BreathingPhaseConfig(
                     phase: .hold,
                     duration: 2,
-                    instruction: "İki sayarak nefesinizi nazikçe tutun"
+                    instructionKey: "exercise_deep_phase_1_instruction"
                 ),
                 BreathingPhaseConfig(
                     phase: .exhale,
                     duration: 8,
-                    instruction: "Ağzınızdan çok yavaş sekiz sayarak nefesinizi tamamen boşaltın"
+                    instructionKey: "exercise_deep_phase_2_instruction"
                 )
             ],
             recommendedDuration: 10,
             iconName: "wind",
             difficulty: .advanced,
-            recommendedTime: .evening,
-            benefits: [
-                "Derin rahatlama sağlar",
-                "Meditasyonu derinleştirir",
-                "Kalp hızını yavaşlatır",
-                "İç huzur verir"
-            ]
+            recommendedTime: .evening
         )
     ]
 

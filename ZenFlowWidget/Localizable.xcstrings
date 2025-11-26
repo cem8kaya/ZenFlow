@@ -2,32 +2,87 @@
   "sourceLanguage" : "tr",
   "strings" : {
     "%lld" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
+        }
+      }
     },
     "%lld dk" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld min"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld dk"
+          }
+        }
+      }
     },
     "%lld Gün" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld Days"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld Gün"
+          }
+        }
+      }
     },
     "%lld gün serisi" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld day streak"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld gün serisi"
+          }
+        }
+      }
     },
     "%lld Gün Serisi" : {
-
-    },
-    "•" : {
-
-    },
-    "A an example control that runs a timer." : {
-
-    },
-    "Bottom %@" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld Day Streak"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld Gün Serisi"
+          }
+        }
+      }
     },
     "Bugünkü Hedefin" : {
       "comment" : "Today's goal widget text",
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -43,30 +98,40 @@
         }
       }
     },
-    "Configuration" : {
-
-    },
-    "Favorite Emoji" : {
-
-    },
     "Günlük Seri" : {
-
-    },
-    "Hello %@" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daily Streak"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Günlük Seri"
+          }
+        }
+      }
     },
     "Kompakt dairesel widget" : {
-
-    },
-    "L" : {
-
-    },
-    "Leading" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compact circular widget"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kompakt dairesel widget"
+          }
+        }
+      }
     },
     "Meditasyon" : {
       "comment" : "Meditation widget text",
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -83,53 +148,71 @@
       }
     },
     "Meditasyon ilerlemenizi ve ağacınızı takip edin" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Track your meditation progress and tree"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meditasyon ilerlemenizi ve ağacınızı takip edin"
+          }
+        }
+      }
     },
     "Meditasyon serinizi kilit ekranında görün" : {
-
-    },
-    "Off" : {
-
-    },
-    "On" : {
-
-    },
-    "Start a timer" : {
-
-    },
-    "Start Timer" : {
-
-    },
-    "T %@" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "View your meditation streak on lock screen"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meditasyon serinizi kilit ekranında görün"
+          }
+        }
+      }
     },
     "Tek satırlık seri göstergesi" : {
-
-    },
-    "This is an example widget." : {
-
-    },
-    "Timer" : {
-
-    },
-    "Timer is running" : {
-
-    },
-    "Timer Name" : {
-
-    },
-    "Timer Name Configuration" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Single-line streak indicator"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tek satırlık seri göstergesi"
+          }
+        }
+      }
     },
     "Toplam Süre" : {
-
-    },
-    "Trailing" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total Time"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toplam Süre"
+          }
+        }
+      }
     },
     "Zen Coach" : {
       "comment" : "App name in widget",
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -146,16 +229,68 @@
       }
     },
     "ZenFlow Dairesel" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ZenFlow Circular"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ZenFlow Dairesel"
+          }
+        }
+      }
     },
     "ZenFlow Kilit Ekranı" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ZenFlow Lock Screen"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ZenFlow Kilit Ekranı"
+          }
+        }
+      }
     },
     "ZenFlow Satır İçi" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ZenFlow Inline"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ZenFlow Satır İçi"
+          }
+        }
+      }
     },
     "ZenFlow Widget" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ZenFlow Widget"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ZenFlow Widget"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
