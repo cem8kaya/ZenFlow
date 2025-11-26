@@ -18,6 +18,12 @@ class HapticManager: ObservableObject {
     // MARK: - Properties
 
     @AppStorage("hapticsEnabled") var isEnabled: Bool = true
+    @AppStorage("hapticIntensity") var intensity: Double = 0.7 {
+        didSet {
+            // Clear cache when intensity changes to regenerate patterns
+            clearPatternCache()
+        }
+    }
 
     private var engine: CHHapticEngine?
     private(set) var isHapticsAvailable = false
@@ -140,6 +146,14 @@ class HapticManager: ObservableObject {
         }
     }
 
+    // MARK: - Cache Management
+
+    /// Clear cached breathing patterns to force regeneration with new intensity
+    func clearPatternCache() {
+        cachedBreathingPatterns.removeAll()
+        print("🧹 Cleared haptic pattern cache")
+    }
+
     // MARK: - Haptic Pattern Generation
 
     /// Create a dynamic haptic pattern for the breathing inhale phase
@@ -157,15 +171,17 @@ class HapticManager: ObservableObject {
         }
 
         do {
-            // Create parameter curve for intensity (0.0 → 1.0 over duration)
+            // Create parameter curve for intensity (0.0 → user_intensity over duration)
+            // Apply user intensity multiplier (30%-100%)
+            let maxIntensity = Float(intensity)
             let intensityParameter = CHHapticParameterCurve(
                 parameterID: .hapticIntensityControl,
                 controlPoints: [
                     CHHapticParameterCurve.ControlPoint(relativeTime: 0, value: 0.0),
-                    CHHapticParameterCurve.ControlPoint(relativeTime: duration * 0.25, value: 0.4),
-                    CHHapticParameterCurve.ControlPoint(relativeTime: duration * 0.5, value: 0.7),
-                    CHHapticParameterCurve.ControlPoint(relativeTime: duration * 0.75, value: 0.9),
-                    CHHapticParameterCurve.ControlPoint(relativeTime: duration, value: 1.0)
+                    CHHapticParameterCurve.ControlPoint(relativeTime: duration * 0.25, value: 0.4 * maxIntensity),
+                    CHHapticParameterCurve.ControlPoint(relativeTime: duration * 0.5, value: 0.7 * maxIntensity),
+                    CHHapticParameterCurve.ControlPoint(relativeTime: duration * 0.75, value: 0.9 * maxIntensity),
+                    CHHapticParameterCurve.ControlPoint(relativeTime: duration, value: maxIntensity)
                 ],
                 relativeTime: 0
             )
@@ -292,14 +308,16 @@ class HapticManager: ObservableObject {
         }
 
         do {
-            // Intensity curve: 1.0 → 0.0 (reverse of inhale)
+            // Intensity curve: user_intensity → 0.0 (reverse of inhale)
+            // Apply user intensity multiplier (30%-100%)
+            let maxIntensity = Float(intensity)
             let intensityParameter = CHHapticParameterCurve(
                 parameterID: .hapticIntensityControl,
                 controlPoints: [
-                    CHHapticParameterCurve.ControlPoint(relativeTime: 0, value: 1.0),
-                    CHHapticParameterCurve.ControlPoint(relativeTime: duration * 0.25, value: 0.7),
-                    CHHapticParameterCurve.ControlPoint(relativeTime: duration * 0.5, value: 0.4),
-                    CHHapticParameterCurve.ControlPoint(relativeTime: duration * 0.75, value: 0.2),
+                    CHHapticParameterCurve.ControlPoint(relativeTime: 0, value: maxIntensity),
+                    CHHapticParameterCurve.ControlPoint(relativeTime: duration * 0.25, value: 0.7 * maxIntensity),
+                    CHHapticParameterCurve.ControlPoint(relativeTime: duration * 0.5, value: 0.4 * maxIntensity),
+                    CHHapticParameterCurve.ControlPoint(relativeTime: duration * 0.75, value: 0.2 * maxIntensity),
                     CHHapticParameterCurve.ControlPoint(relativeTime: duration, value: 0.0)
                 ],
                 relativeTime: 0
@@ -360,14 +378,17 @@ class HapticManager: ObservableObject {
             let pulseInterval = 0.8 // Pulse every 0.8 seconds
             let pulseCount = Int(duration / pulseInterval)
 
+            // Apply user intensity multiplier (30%-100%) to pulse intensity
+            let pulseIntensity = Float(0.3 * intensity)
+
             for i in 0..<pulseCount {
                 let pulseTime = Double(i) * pulseInterval
 
-                // Each pulse: gentle tap
+                // Each pulse: gentle tap scaled by user intensity
                 let pulseEvent = CHHapticEvent(
                     eventType: .hapticTransient,
                     parameters: [
-                        CHHapticEventParameter(parameterID: .hapticIntensity, value: 0.3),
+                        CHHapticEventParameter(parameterID: .hapticIntensity, value: pulseIntensity),
                         CHHapticEventParameter(parameterID: .hapticSharpness, value: 0.2)
                     ],
                     relativeTime: pulseTime
