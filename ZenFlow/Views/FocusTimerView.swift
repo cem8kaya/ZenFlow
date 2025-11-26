@@ -124,12 +124,12 @@ struct FocusTimerView: View {
     private var headerView: some View {
         HStack {
             VStack(alignment: .leading, spacing: 6) {
-                Text("Pomodoro Zamanlayıcı")
+                Text(String(localized: "focus_timer_title", defaultValue: "Pomodoro Zamanlayıcı", comment: "Focus timer title"))
                     .font(.title3)
                     .fontWeight(.bold)
                     .foregroundColor(.white)
 
-                Text("Bugün: \(todayCompletedSessions) oturum")
+                Text(String(localized: "focus_timer_today_sessions", defaultValue: "Bugün: \(todayCompletedSessions) oturum", comment: "Today's session count"))
                     .font(.caption)
                     .foregroundColor(.white.opacity(0.7))
             }
@@ -283,12 +283,12 @@ struct FocusTimerView: View {
                     .font(.system(size: 80))
                     .foregroundColor(currentMode.color)
 
-                Text("Harika İş!")
+                Text(String(localized: "focus_timer_great_work", defaultValue: "Harika İş!", comment: "Great work celebration"))
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .foregroundColor(.white)
 
-                Text("Bir \(currentMode.displayName) oturumu tamamladın")
+                Text(String(localized: "focus_timer_session_completed", defaultValue: "Bir \(currentMode.displayName) oturumu tamamladın", comment: "Session completed message"))
                     .font(.body)
                     .foregroundColor(.white.opacity(0.8))
                     .multilineTextAlignment(.center)
@@ -299,7 +299,7 @@ struct FocusTimerView: View {
                         moveToNextMode()
                     }
                 }) {
-                    Text("Devam Et")
+                    Text(String(localized: "focus_timer_continue", defaultValue: "Devam Et", comment: "Continue button"))
                         .font(.headline)
                         .foregroundColor(.white)
                         .padding(.horizontal, 32)
@@ -330,12 +330,12 @@ struct FocusTimerView: View {
                     .font(.system(size: 60))
                     .foregroundColor(ZenTheme.calmBlue)
 
-                Text("Mola Zamanı")
+                Text(String(localized: "focus_timer_break_time", defaultValue: "Mola Zamanı", comment: "Break time title"))
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundColor(.white)
 
-                Text("Nefes egzersizi yapmak ister misin?")
+                Text(String(localized: "focus_timer_breathing_question", defaultValue: "Nefes egzersizi yapmak ister misin?", comment: "Breathing exercise question"))
                     .font(.body)
                     .foregroundColor(.white.opacity(0.8))
                     .multilineTextAlignment(.center)
@@ -347,7 +347,7 @@ struct FocusTimerView: View {
                             moveToNextMode()
                         }
                     }) {
-                        Text("Şimdi Değil")
+                        Text(String(localized: "focus_timer_not_now", defaultValue: "Şimdi Değil", comment: "Not now button"))
                             .font(.headline)
                             .foregroundColor(.white)
                             .padding(.horizontal, 24)
@@ -366,7 +366,7 @@ struct FocusTimerView: View {
                         // TODO: Navigate to breathing exercise
                         print("Navigate to breathing exercise")
                     }) {
-                        Text("Hadi Başlayalım")
+                        Text(String(localized: "focus_timer_lets_start", defaultValue: "Hadi Başlayalım", comment: "Let's start button"))
                             .font(.headline)
                             .foregroundColor(.white)
                             .padding(.horizontal, 24)
@@ -571,11 +571,11 @@ struct FocusTimerView: View {
 
         switch currentMode {
         case .work:
-            content.title = "Odaklanma Tamamlandı! 🎉"
-            content.body = "Harika iş! Mola zamanı. \(currentMode.nextMode(completedSessions: completedSessions).durationMinutes) dakika dinlen."
+            content.title = String(localized: "focus_timer_notification_completed", defaultValue: "Odaklanma Tamamlandı! 🎉", comment: "Focus completed notification title")
+            content.body = String(localized: "focus_timer_notification_break", defaultValue: "Harika iş! Mola zamanı. \(currentMode.nextMode(completedSessions: completedSessions).durationMinutes) dakika dinlen.", comment: "Break time notification body")
         case .shortBreak, .longBreak:
-            content.title = "Mola Bitti! ⏰"
-            content.body = "Tekrar odaklanma zamanı. Hazır mısın?"
+            content.title = String(localized: "focus_timer_notification_break_over", defaultValue: "Mola Bitti! ⏰", comment: "Break over notification title")
+            content.body = String(localized: "focus_timer_notification_ready", defaultValue: "Tekrar odaklanma zamanı. Hazır mısın?", comment: "Ready for focus notification body")
         }
 
         content.sound = .default
@@ -620,12 +620,12 @@ struct FocusTimerView: View {
 
                 // Label
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("Ses")
+                    Text(String(localized: "focus_timer_sound_label", defaultValue: "Ses", comment: "Sound label"))
                         .font(.system(size: 14, weight: .medium))
                         .foregroundColor(ZenTheme.lightLavender.opacity(0.7))
 
                     if soundManager.activeSounds.isEmpty || soundManager.activeSounds.first?.fileName == "" {
-                        Text("Sessiz")
+                        Text(String(localized: "focus_timer_sound_silent", defaultValue: "Sessiz", comment: "Silent option"))
                             .font(.system(size: 16, weight: .semibold))
                             .foregroundColor(ZenTheme.lightLavender)
                     } else {
@@ -654,8 +654,8 @@ struct FocusTimerView: View {
             )
         }
         .padding(.horizontal, 24)
-        .accessibilityLabel("Ses seçimi")
-        .accessibilityHint("Arka plan sesi seçmek için dokunun")
+        .accessibilityLabel(String(localized: "focus_timer_sound_accessibility", defaultValue: "Ses seçimi", comment: "Sound selection accessibility"))
+        .accessibilityHint(String(localized: "focus_timer_sound_hint", defaultValue: "Arka plan sesi seçmek için dokunun", comment: "Sound selection hint"))
     }
 }
 

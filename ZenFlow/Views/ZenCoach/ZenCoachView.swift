@@ -48,15 +48,14 @@ struct ZenCoachView: View {
                 inputBar
             }
         }
-        // DÜZELTME 1: Button başlıkları Text(...) yerine doğrudan String olarak verildi.
-                .alert(Text("Geçmişi Temizle", comment: "Clear history alert title"), isPresented: $showClearAlert) {
-                    Button("İptal", role: .cancel) {}
-                    Button("Temizle", role: .destructive) {
+        .alert(String(localized: "zen_coach_clear_history_title", defaultValue: "Geçmişi Temizle", comment: "Clear history alert title"), isPresented: $showClearAlert) {
+                    Button(String(localized: "zen_coach_cancel", defaultValue: "İptal", comment: "Cancel button"), role: .cancel) {}
+                    Button(String(localized: "zen_coach_clear", defaultValue: "Temizle", comment: "Clear button"), role: .destructive) {
                         manager.clearHistory()
                         HapticManager.shared.playNotification(type: .success)
                     }
                 } message: {
-                    Text("Tüm sohbet geçmişi silinecek. Emin misiniz?", comment: "Clear history confirmation message")
+                    Text(String(localized: "zen_coach_clear_history_message", defaultValue: "Tüm sohbet geçmişi silinecek. Emin misiniz?", comment: "Clear history confirmation message"))
                 }
             }
 

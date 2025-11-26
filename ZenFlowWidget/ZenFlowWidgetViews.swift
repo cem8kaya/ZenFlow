@@ -129,7 +129,7 @@ struct ZenFlowWidgetEntryView: View {
             VStack(alignment: .leading, spacing: 12) {
                 // Total meditation time
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("Toplam Süre")
+                    Text(String(localized: "widget_total_time", defaultValue: "Toplam Süre", comment: "Total meditation time label"))
                         .font(.system(size: 11, weight: .medium, design: .rounded))
                         .foregroundColor(.zenTextHighlight.opacity(0.7))
 
@@ -143,7 +143,7 @@ struct ZenFlowWidgetEntryView: View {
 
                 // Current streak
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("Günlük Seri")
+                    Text(String(localized: "widget_daily_streak", defaultValue: "Günlük Seri", comment: "Daily streak label"))
                         .font(.system(size: 11, weight: .medium, design: .rounded))
                         .foregroundColor(.zenTextHighlight.opacity(0.7))
 
@@ -151,7 +151,7 @@ struct ZenFlowWidgetEntryView: View {
                         Image(systemName: "flame.fill")
                             .font(.system(size: 16))
                             .foregroundColor(.orange)
-                        Text("\(entry.currentStreak) Gün")
+                        Text(String(localized: "widget_days_count", defaultValue: "\(entry.currentStreak) Gün", comment: "Days count with number"))
                             .font(.system(size: 18, weight: .bold, design: .rounded))
                             .foregroundColor(.zenTextHighlight)
                     }
@@ -211,7 +211,7 @@ struct ZenFlowLockScreenView: View {
             // Right: Streak information
             VStack(alignment: .leading, spacing: 2) {
                 // Streak count
-                Text("\(entry.currentStreak) Gün Serisi")
+                Text(String(localized: "widget_days_streak", defaultValue: "\(entry.currentStreak) Gün Serisi", comment: "Days streak with count"))
                     .font(.system(size: 14, weight: .bold, design: .rounded))
                     .foregroundColor(.primary)
 
@@ -277,9 +277,9 @@ struct ZenFlowLockScreenInlineView: View {
     var body: some View {
         HStack(spacing: 4) {
             Image(systemName: "leaf.fill")
-            Text("\(entry.currentStreak) gün serisi")
+            Text(String(localized: "widget_streak_inline", defaultValue: "\(entry.currentStreak) gün serisi", comment: "Inline streak count"))
             Text("•")
-            Text("\(entry.totalMinutes) dk")
+            Text(String(localized: "widget_minutes_inline", defaultValue: "\(entry.totalMinutes) dk", comment: "Inline minutes count"))
         }
         .font(.system(size: 14, weight: .medium, design: .rounded))
     }
@@ -341,19 +341,19 @@ extension ZenFlowWidgetEntry {
     var motivationalMessage: String {
         switch currentStreak {
         case 0:
-            return "Yeni bir başlangıç!"
+            return String(localized: "widget_message_new_start", defaultValue: "Yeni bir başlangıç!", comment: "New beginning motivational message")
         case 1...6:
-            return "Harika gidiyorsun!"
+            return String(localized: "widget_message_great_going", defaultValue: "Harika gidiyorsun!", comment: "Great progress motivational message")
         case 7...13:
-            return "Bir hafta tamamlandı! 🎉"
+            return String(localized: "widget_message_week_completed", defaultValue: "Bir hafta tamamlandı! 🎉", comment: "One week completed motivational message")
         case 14...29:
-            return "İnanılmaz ilerleme!"
+            return String(localized: "widget_message_amazing_progress", defaultValue: "İnanılmaz ilerleme!", comment: "Amazing progress motivational message")
         case 30...89:
-            return "Bir ay geçti! Muhteşem! 🌟"
+            return String(localized: "widget_message_month_passed", defaultValue: "Bir ay geçti! Muhteşem! 🌟", comment: "One month passed motivational message")
         case 90...179:
-            return "90 gün! Efsane! 💪"
+            return String(localized: "widget_message_ninety_days", defaultValue: "90 gün! Efsane! 💪", comment: "90 days completed motivational message")
         default:
-            return "Zen ustası! 🧘‍♂️"
+            return String(localized: "widget_message_zen_master", defaultValue: "Zen ustası! 🧘‍♂️", comment: "Zen master motivational message")
         }
     }
 

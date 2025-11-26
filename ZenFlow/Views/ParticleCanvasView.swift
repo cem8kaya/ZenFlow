@@ -164,7 +164,7 @@ private struct ParticlePreviewContainer: View {
                     Button(action: {
                         currentPhase = currentPhase == .inhale ? .exhale : .inhale
                     }) {
-                        Text(currentPhase == .inhale ? "Nefes Al" : "Nefes Ver")
+                        Text(currentPhase == .inhale ? String(localized: "particle_breathe_in", defaultValue: "Nefes Al", comment: "Breathe in button") : String(localized: "particle_breathe_out", defaultValue: "Nefes Ver", comment: "Breathe out button"))
                             .font(.headline)
                             .foregroundColor(.white)
                             .padding()
@@ -176,7 +176,7 @@ private struct ParticlePreviewContainer: View {
                     Button(action: {
                         isAnimating.toggle()
                     }) {
-                        Text(isAnimating ? "Durdur" : "Başlat")
+                        Text(isAnimating ? String(localized: "particle_stop", defaultValue: "Durdur", comment: "Stop animation button") : String(localized: "particle_start", defaultValue: "Başlat", comment: "Start animation button"))
                             .font(.headline)
                             .foregroundColor(.white)
                             .padding()
@@ -185,7 +185,7 @@ private struct ParticlePreviewContainer: View {
                     }
 
                     // Intensity picker
-                    Picker("Yoğunluk", selection: $intensity) {
+                    Picker(String(localized: "particle_intensity", defaultValue: "Yoğunluk", comment: "Particle intensity picker label"), selection: $intensity) {
                         ForEach(ParticleIntensity.allCases, id: \.self) { level in
                             Text(level.displayName).tag(level)
                         }
@@ -194,7 +194,7 @@ private struct ParticlePreviewContainer: View {
                     .padding(.horizontal)
 
                     // Color theme picker
-                    Picker("Renk Teması", selection: $colorTheme) {
+                    Picker(String(localized: "particle_color_theme", defaultValue: "Renk Teması", comment: "Color theme picker label"), selection: $colorTheme) {
                         ForEach(ParticleColorTheme.allCases, id: \.self) { theme in
                             Text(theme.displayName).tag(theme)
                         }

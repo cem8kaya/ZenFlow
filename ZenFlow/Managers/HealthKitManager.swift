@@ -103,15 +103,15 @@ class HealthKitManager {
         var errorDescription: String? {
             switch self {
             case .healthKitNotAvailable:
-                return "HealthKit bu cihazda kullanılamıyor"
+                return String(localized: "error_healthkit_not_available", defaultValue: "HealthKit bu cihazda kullanılamıyor", comment: "HealthKit not available error message")
             case .mindfulSessionTypeNotAvailable:
-                return "Mindful Session veri tipi alınamadı"
+                return String(localized: "error_mindful_session_type_not_available", defaultValue: "Mindful Session veri tipi alınamadı", comment: "Mindful session type not available error message")
             case .invalidDateRange:
-                return "Geçersiz tarih aralığı: Başlangıç zamanı bitiş zamanından sonra olamaz"
+                return String(localized: "error_invalid_date_range", defaultValue: "Geçersiz tarih aralığı: Başlangıç zamanı bitiş zamanından sonra olamaz", comment: "Invalid date range error message")
             case .saveFailed(let error):
-                return "Veri kaydedilemedi: \(error.localizedDescription)"
+                return String(localized: "error_save_failed", defaultValue: "Veri kaydedilemedi: \(error.localizedDescription)", comment: "Save failed error message")
             case .notAuthorized:
-                return "HealthKit izni verilmedi. Lütfen Ayarlar'dan izin verin"
+                return String(localized: "error_not_authorized", defaultValue: "HealthKit izni verilmedi. Lütfen Ayarlar'dan izin verin", comment: "HealthKit not authorized error message")
             }
         }
     }

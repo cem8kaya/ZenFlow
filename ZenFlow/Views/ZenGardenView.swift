@@ -326,11 +326,11 @@ struct ZenGardenView: View {
 
     private var headerView: some View {
         VStack(spacing: 8) {
-            Text("Zen Bahçem")
+            Text(String(localized: "zen_garden_title", defaultValue: "Zen Bahçem", comment: "Zen Garden title"))
                 .font(ZenTheme.zenTitle)
                 .foregroundColor(ZenTheme.earthBrown)
 
-            Text("Toplam: \(gardenManager.totalMinutes) dk")
+            Text(String(localized: "zen_garden_total_minutes", defaultValue: "Toplam: \(gardenManager.totalMinutes) dk", comment: "Total minutes"))
                 .font(.system(size: 14, weight: .medium))
                 .foregroundColor(ZenTheme.sageGreen.opacity(0.9))
         }
@@ -344,7 +344,7 @@ struct ZenGardenView: View {
             if let timeRemaining = gardenManager.formattedTimeUntilNextStage() {
                 // Sonraki aşama bilgisi
                 VStack(spacing: 8) {
-                    Text("Sonraki Aşamaya")
+                    Text(String(localized: "zen_garden_next_stage", defaultValue: "Sonraki Aşamaya", comment: "Next stage label"))
                         .font(.system(size: 14, weight: .medium))
                         .foregroundColor(ZenTheme.sageGreen)
 
@@ -405,11 +405,11 @@ struct ZenGardenView: View {
                 .font(.system(size: 40))
                 .foregroundColor(Color(red: 1.0, green: 0.85, blue: 0.4))
 
-            Text("Maksimum Seviye!")
+            Text(String(localized: "zen_garden_max_level", defaultValue: "Maksimum Seviye!", comment: "Maximum level reached"))
                 .font(ZenTheme.zenHeadline)
                 .foregroundColor(ZenTheme.earthBrown)
 
-            Text("Efsanevi bir yolculuk tamamladın!")
+            Text(String(localized: "zen_garden_legendary_journey", defaultValue: "Efsanevi bir yolculuk tamamladın!", comment: "Legendary journey completed"))
                 .font(ZenTheme.zenBody)
                 .foregroundColor(ZenTheme.sageGreen)
                 .multilineTextAlignment(.center)
@@ -478,7 +478,7 @@ struct ZenGardenView: View {
                     Text("🎉")
                         .font(.system(size: 60))
 
-                    Text("Yeni Aşama!")
+                    Text(String(localized: "zen_garden_new_stage", defaultValue: "Yeni Aşama!", comment: "New stage celebration"))
                         .font(.system(size: 32, weight: .bold))
                         .foregroundColor(.white)
 

@@ -8,3 +8,5 @@
 CFBundleDisplayName = "Zen Coach";
 CFBundleName = "Zen Coach";
 NSUserNotificationsUsageDescription = "Zen Coach meditasyon hatırlatıcıları göndermek için bildirim izni gerekiyor.";
+NSHealthShareUsageDescription = "Zen Coach, Sağlık uygulamasından farkındalık verilerinizi okumak istiyor.";
+NSHealthUpdateUsageDescription = "Zen Coach, meditasyon seanslarınızı Sağlık uygulamasına farkındalık seansı olarak kaydetmek istiyor.";

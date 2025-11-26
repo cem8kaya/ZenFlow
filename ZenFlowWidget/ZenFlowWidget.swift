@@ -16,8 +16,8 @@ struct ZenFlowWidget: Widget {
             ZenFlowWidgetEntryView(entry: entry)
                 .containerBackground(.fill.tertiary, for: .widget)
         }
-        .configurationDisplayName("ZenFlow Widget")
-        .description("Meditasyon ilerlemenizi ve ağacınızı takip edin")
+        .configurationDisplayName(String(localized: "widget_config_name", defaultValue: "ZenFlow Widget", comment: "Main widget configuration name"))
+        .description(String(localized: "widget_config_description", defaultValue: "Meditasyon ilerlemenizi ve ağacınızı takip edin", comment: "Main widget configuration description"))
         .supportedFamilies([.systemSmall, .systemMedium])
     }
 }
@@ -31,8 +31,8 @@ struct ZenFlowLockScreenWidget: Widget {
         StaticConfiguration(kind: kind, provider: ZenFlowWidgetProvider()) { entry in
             ZenFlowLockScreenView(entry: entry)
         }
-        .configurationDisplayName("ZenFlow Kilit Ekranı")
-        .description("Meditasyon serinizi kilit ekranında görün")
+        .configurationDisplayName(String(localized: "widget_lockscreen_config_name", defaultValue: "ZenFlow Kilit Ekranı", comment: "Lock screen widget configuration name"))
+        .description(String(localized: "widget_lockscreen_config_description", defaultValue: "Meditasyon serinizi kilit ekranında görün", comment: "Lock screen widget configuration description"))
         .supportedFamilies([.accessoryRectangular])
     }
 }
@@ -44,8 +44,8 @@ struct ZenFlowLockScreenCircularWidget: Widget {
         StaticConfiguration(kind: kind, provider: ZenFlowWidgetProvider()) { entry in
             ZenFlowLockScreenCircularView(entry: entry)
         }
-        .configurationDisplayName("ZenFlow Dairesel")
-        .description("Kompakt dairesel widget")
+        .configurationDisplayName(String(localized: "widget_circular_config_name", defaultValue: "ZenFlow Dairesel", comment: "Circular widget configuration name"))
+        .description(String(localized: "widget_circular_config_description", defaultValue: "Kompakt dairesel widget", comment: "Circular widget configuration description"))
         .supportedFamilies([.accessoryCircular])
     }
 }
@@ -57,8 +57,8 @@ struct ZenFlowLockScreenInlineWidget: Widget {
         StaticConfiguration(kind: kind, provider: ZenFlowWidgetProvider()) { entry in
             ZenFlowLockScreenInlineView(entry: entry)
         }
-        .configurationDisplayName("ZenFlow Satır İçi")
-        .description("Tek satırlık seri göstergesi")
+        .configurationDisplayName(String(localized: "widget_inline_config_name", defaultValue: "ZenFlow Satır İçi", comment: "Inline widget configuration name"))
+        .description(String(localized: "widget_inline_config_description", defaultValue: "Tek satırlık seri göstergesi", comment: "Inline widget configuration description"))
         .supportedFamilies([.accessoryInline])
     }
 }

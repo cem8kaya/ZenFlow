@@ -206,8 +206,8 @@ extension View {
         VStack(spacing: 40) {
             // Example with arrow up
             TutorialTooltip(
-                title: "İlk Nefes Egzersizin",
-                message: "Buradan nefes egzersizlerine başlayabilirsin. Box Breathing ile başlamayı öneririz!",
+                title: String(localized: "tutorial_first_breath_exercise", defaultValue: "İlk Nefes Egzersizin", comment: "First breathing exercise tutorial title"),
+                message: String(localized: "tutorial_first_breath_exercise_message", defaultValue: "Buradan nefes egzersizlerine başlayabilirsin. Box Breathing ile başlamayı öneririz!", comment: "First breathing exercise tutorial message"),
                 arrowDirection: .up,
                 onDismiss: {}
             )
@@ -215,8 +215,8 @@ extension View {
 
             // Example with arrow down
             TutorialTooltip(
-                title: "Zen Bahçen",
-                message: "Her meditasyon seansı bahçeni büyütür. İlerlemenizi buradan takip edin!",
+                title: String(localized: "tutorial_zen_garden", defaultValue: "Zen Bahçen", comment: "Zen garden tutorial title"),
+                message: String(localized: "tutorial_zen_garden_message", defaultValue: "Her meditasyon seansı bahçeni büyütür. İlerlemenizi buradan takip edin!", comment: "Zen garden tutorial message"),
                 arrowDirection: .down,
                 onDismiss: {}
             )

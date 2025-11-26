@@ -9,7 +9,5 @@
 		<string>tr</string>
 		<string>en</string>
 	</array>
-	<key>NSUserNotificationsUsageDescription</key>
-	<string>Zen Coach meditasyon hatırlatıcıları göndermek için bildirim izni gerekiyor.</string>
 </dict>
 </plist>

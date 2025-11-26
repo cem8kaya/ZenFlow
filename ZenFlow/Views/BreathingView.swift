@@ -633,7 +633,7 @@ struct BreathingView: View {
         }
 
         // Accessibility announcement
-        UIAccessibility.post(notification: .announcement, argument: "\(currentExercise.name) egzersizi başladı. \(selectedDurationMinutes) dakika.")
+        UIAccessibility.post(notification: .announcement, argument: String(localized: "accessibility_exercise_started", defaultValue: "\(currentExercise.name) egzersizi başladı. \(selectedDurationMinutes) dakika.", comment: "Exercise started announcement"))
 
         performBreathingCycle()
     }
@@ -665,7 +665,7 @@ struct BreathingView: View {
 
             // Accessibility announcement for completion
             DispatchQueue.main.asyncAfter(deadline: .now() + AppConstants.Accessibility.announcementDelay) {
-                UIAccessibility.post(notification: .announcement, argument: "Meditasyon tamamlandı. \(minutes) dakika.")
+                UIAccessibility.post(notification: .announcement, argument: String(localized: "accessibility_meditation_completed", defaultValue: "Meditasyon tamamlandı. \(minutes) dakika.", comment: "Meditation completed announcement"))
             }
         }
 
@@ -715,7 +715,7 @@ struct BreathingView: View {
         hapticManager.stopEngine()
 
         // Accessibility announcement
-        UIAccessibility.post(notification: .announcement, argument: "Meditasyon duraklatıldı")
+        UIAccessibility.post(notification: .announcement, argument: String(localized: "accessibility_meditation_paused", defaultValue: "Meditasyon duraklatıldı", comment: "Meditation paused announcement"))
     }
 
     private func resumeAnimation() {
@@ -736,7 +736,7 @@ struct BreathingView: View {
         hapticManager.startEngine()
 
         // Accessibility announcement
-        UIAccessibility.post(notification: .announcement, argument: "Meditasyon devam ediyor")
+        UIAccessibility.post(notification: .announcement, argument: String(localized: "accessibility_meditation_resumed", defaultValue: "Meditasyon devam ediyor", comment: "Meditation resumed announcement"))
 
         performBreathingCycle()
     }
@@ -857,7 +857,7 @@ struct BreathingView: View {
         // Announce change
         UIAccessibility.post(
             notification: .announcement,
-            argument: "\(exercise.name) egzersizine geçildi"
+            argument: String(localized: "accessibility_exercise_changed", defaultValue: "\(exercise.name) egzersizine geçildi", comment: "Exercise changed announcement")
         )
     }
 
@@ -878,7 +878,7 @@ struct BreathingView: View {
         // Announce change
         UIAccessibility.post(
             notification: .announcement,
-            argument: "\(exerciseManager.selectedExercise.name) egzersizine geçildi"
+            argument: String(localized: "accessibility_exercise_changed", defaultValue: "\(exerciseManager.selectedExercise.name) egzersizine geçildi", comment: "Exercise changed announcement")
         )
     }
 }

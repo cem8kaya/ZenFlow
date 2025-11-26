@@ -38,14 +38,14 @@ struct HealthKitOnboardingView: View {
                     .shadow(color: ZenTheme.lightLavender.opacity(0.3), radius: 20)
 
                 // Title
-                Text("Apple Sağlık Entegrasyonu")
+                Text(String(localized: "healthkit_onboarding_title", defaultValue: "Apple Sağlık Entegrasyonu", comment: "HealthKit onboarding title"))
                     .font(ZenTheme.zenTitle)
                     .foregroundColor(ZenTheme.lightLavender)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 40)
 
                 // Description
-                Text("Meditasyon sürenizi Apple Sağlık uygulamasına kaydetmek istiyor musunuz?")
+                Text(String(localized: "healthkit_onboarding_description", defaultValue: "Meditasyon sürenizi Apple Sağlık uygulamasına kaydetmek istiyor musunuz?", comment: "HealthKit onboarding description"))
                     .font(ZenTheme.zenBody)
                     .foregroundColor(ZenTheme.softPurple)
                     .multilineTextAlignment(.center)
@@ -55,9 +55,9 @@ struct HealthKitOnboardingView: View {
 
                 // Benefits
                 VStack(alignment: .leading, spacing: 16) {
-                    benefitRow(icon: "chart.line.uptrend.xyaxis", text: "İlerlemenizi takip edin")
-                    benefitRow(icon: "clock.fill", text: "Meditasyon saatlerinizi görün")
-                    benefitRow(icon: "lock.shield.fill", text: "Verileriniz güvende")
+                    benefitRow(icon: "chart.line.uptrend.xyaxis", text: String(localized: "healthkit_benefit_track_progress", defaultValue: "İlerlemenizi takip edin", comment: "HealthKit benefit: track progress"))
+                    benefitRow(icon: "clock.fill", text: String(localized: "healthkit_benefit_view_hours", defaultValue: "Meditasyon saatlerinizi görün", comment: "HealthKit benefit: view hours"))
+                    benefitRow(icon: "lock.shield.fill", text: String(localized: "healthkit_benefit_data_secure", defaultValue: "Verileriniz güvende", comment: "HealthKit benefit: data is secure"))
                 }
                 .padding(.horizontal, 40)
                 .padding(.vertical, 20)
@@ -84,7 +84,7 @@ struct HealthKitOnboardingView: View {
                                     .progressViewStyle(CircularProgressViewStyle(tint: .white))
                                     .scaleEffect(0.8)
                             }
-                            Text(isRequesting ? "İzin İsteniyor..." : "İzin Ver")
+                            Text(isRequesting ? String(localized: "healthkit_requesting", defaultValue: "İzin İsteniyor...", comment: "HealthKit requesting permission") : String(localized: "healthkit_allow", defaultValue: "İzin Ver", comment: "HealthKit allow button"))
                                 .font(.system(size: 18, weight: .semibold))
                         }
                         .frame(maxWidth: .infinity)
@@ -107,7 +107,7 @@ struct HealthKitOnboardingView: View {
                         HapticManager.shared.playImpact(style: .light)
                         isPresented = false
                     }) {
-                        Text("Şimdi Değil")
+                        Text(String(localized: "button_not_now", defaultValue: "Şimdi Değil", comment: "Not now button"))
                             .font(.system(size: 16, weight: .medium))
                             .foregroundColor(ZenTheme.softPurple)
                             .frame(maxWidth: .infinity)
@@ -151,7 +151,7 @@ struct HealthKitOnboardingView: View {
                 if success {
                     // Success - dismiss the view
                     HapticManager.shared.playNotification(type: .success)
-                    UIAccessibility.post(notification: .announcement, argument: "HealthKit izni verildi")
+                    UIAccessibility.post(notification: .announcement, argument: String(localized: "healthkit_permission_granted", defaultValue: "HealthKit izni verildi", comment: "HealthKit permission granted announcement"))
 
                     // Delay to show success state
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -161,7 +161,7 @@ struct HealthKitOnboardingView: View {
                     // Error - show error message
                     HapticManager.shared.playNotification(type: .error)
                     showError = true
-                    errorMessage = error?.localizedDescription ?? "İzin verilemedi. Lütfen tekrar deneyin."
+                    errorMessage = error?.localizedDescription ?? String(localized: "healthkit_permission_failed", defaultValue: "İzin verilemedi. Lütfen tekrar deneyin.", comment: "HealthKit permission failed message")
                     UIAccessibility.post(notification: .announcement, argument: errorMessage)
 
                     // Auto-hide error after 3 seconds
