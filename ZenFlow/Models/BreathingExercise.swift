@@ -59,8 +59,9 @@ struct BreathingPhaseConfig: Identifiable, Codable {
     let instructionKey: String // Localization key for instruction
 
     var instruction: String {
-        String(localized: LocalizedStringKey(instructionKey), comment: "Breathing phase instruction")
-    }
+            // DÜZELTME 1: LocalizedStringKey yerine NSLocalizedString kullanıldı
+            NSLocalizedString(instructionKey, comment: "Breathing phase instruction")
+        }
 
     init(phase: BreathingPhaseType, duration: TimeInterval, instructionKey: String) {
         self.id = UUID()
@@ -152,16 +153,19 @@ struct BreathingExercise: Identifiable, Codable {
 
     // Localized computed properties
     var localizedName: String {
-        String(localized: LocalizedStringKey("exercise_\(exerciseType)_name"), comment: "Exercise name")
-    }
-
+            // DÜZELTME 2: Dinamik anahtarlar için NSLocalizedString kullanıldı
+            NSLocalizedString("exercise_\(exerciseType)_name", comment: "Exercise name")
+        }
+        
     var localizedDescription: String {
-        String(localized: LocalizedStringKey("exercise_\(exerciseType)_description"), comment: "Exercise description")
+        // DÜZELTME 3: Dinamik anahtarlar için NSLocalizedString kullanıldı
+        NSLocalizedString("exercise_\(exerciseType)_description", comment: "Exercise description")
     }
-
+    
     var localizedBenefits: [String] {
         (0..<4).map { index in
-            String(localized: LocalizedStringKey("exercise_\(exerciseType)_benefit_\(index)"), comment: "Exercise benefit")
+            // DÜZELTME 4: Dinamik anahtarlar için NSLocalizedString kullanıldı
+            NSLocalizedString("exercise_\(exerciseType)_benefit_\(index)", comment: "Exercise benefit")
         }
     }
 

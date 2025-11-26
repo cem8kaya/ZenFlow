@@ -81,8 +81,18 @@
         }
       }
     },
+    "•" : {
+
+    },
+    "A an example control that runs a timer." : {
+
+    },
+    "Bottom %@" : {
+
+    },
     "Bugünkü Hedefin" : {
       "comment" : "Today's goal widget text",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -97,6 +107,12 @@
           }
         }
       }
+    },
+    "Configuration" : {
+
+    },
+    "Favorite Emoji" : {
+
     },
     "Günlük Seri" : {
       "localizations" : {
@@ -114,6 +130,9 @@
         }
       }
     },
+    "Hello %@" : {
+
+    },
     "Kompakt dairesel widget" : {
       "localizations" : {
         "en" : {
@@ -130,8 +149,15 @@
         }
       }
     },
+    "L" : {
+
+    },
+    "Leading" : {
+
+    },
     "Meditasyon" : {
       "comment" : "Meditation widget text",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -179,6 +205,21 @@
         }
       }
     },
+    "Off" : {
+
+    },
+    "On" : {
+
+    },
+    "Start a timer" : {
+
+    },
+    "Start Timer" : {
+
+    },
+    "T %@" : {
+
+    },
     "Tek satırlık seri göstergesi" : {
       "localizations" : {
         "en" : {
@@ -194,6 +235,21 @@
           }
         }
       }
+    },
+    "This is an example widget." : {
+
+    },
+    "Timer" : {
+
+    },
+    "Timer is running" : {
+
+    },
+    "Timer Name" : {
+
+    },
+    "Timer Name Configuration" : {
+
     },
     "Toplam Süre" : {
       "localizations" : {
@@ -211,8 +267,12 @@
         }
       }
     },
+    "Trailing" : {
+
+    },
     "Zen Coach" : {
       "comment" : "App name in widget",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

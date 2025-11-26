@@ -25,7 +25,8 @@ enum ZenCategory: String, CaseIterable {
     case balance
 
     var displayName: String {
-        String(localized: LocalizedStringKey("zen_category_\(rawValue)"), comment: "Zen category")
+        // DÜZELTME 1: NSLocalizedString kullanıldı
+        NSLocalizedString("zen_category_\(rawValue)", comment: "Zen category")
     }
 }
 
@@ -37,25 +38,30 @@ struct ZenTeaching: Identifiable, Codable {
 
     // Localized computed properties
     var title: String {
-        String(localized: LocalizedStringKey("zen_teaching_\(teachingIndex)_title"), comment: "Teaching title")
+        // DÜZELTME 2: NSLocalizedString kullanıldı
+        NSLocalizedString("zen_teaching_\(teachingIndex)_title", comment: "Teaching title")
     }
 
     var content: String {
-        String(localized: LocalizedStringKey("zen_teaching_\(teachingIndex)_content"), comment: "Teaching content")
+        // DÜZELTME 3: NSLocalizedString kullanıldı
+        NSLocalizedString("zen_teaching_\(teachingIndex)_content", comment: "Teaching content")
     }
 
     var quote: String? {
-        let quoteText = String(localized: LocalizedStringKey("zen_teaching_\(teachingIndex)_quote"), comment: "Teaching quote")
+        // DÜZELTME 4: NSLocalizedString kullanıldı
+        let quoteText = NSLocalizedString("zen_teaching_\(teachingIndex)_quote", comment: "Teaching quote")
         return quoteText.isEmpty ? nil : quoteText
     }
 
     var author: String? {
-        let authorText = String(localized: LocalizedStringKey("zen_teaching_\(teachingIndex)_author"), comment: "Teaching author")
+        // DÜZELTME 5: NSLocalizedString kullanıldı
+        let authorText = NSLocalizedString("zen_teaching_\(teachingIndex)_author", comment: "Teaching author")
         return authorText.isEmpty ? nil : authorText
     }
 
     var practicalAdvice: String {
-        String(localized: LocalizedStringKey("zen_teaching_\(teachingIndex)_advice"), comment: "Practical advice")
+        // DÜZELTME 6: NSLocalizedString kullanıldı
+        NSLocalizedString("zen_teaching_\(teachingIndex)_advice", comment: "Practical advice")
     }
 
     init(id: UUID = UUID(), teachingIndex: Int, category: ZenCategory) {
