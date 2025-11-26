@@ -4134,6 +4134,74 @@
         }
       }
     },
+    "garden_water_tree": {
+      "comment": "Water tree button",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ağacı Sula"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Water Tree"
+          }
+        }
+      }
+    },
+    "garden_watered_today": {
+      "comment": "Already watered today",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bugün Sulandı ✓"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Watered Today ✓"
+          }
+        }
+      }
+    },
+    "garden_tip_meditate_to_grow": {
+      "comment": "Garden tip message",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meditasyon yaparak ağacını büyüt! Her seans seni bir adım ileriye taşır."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Grow your tree by meditating! Each session brings you one step forward."
+          }
+        }
+      }
+    },
+    "garden_tip_dismiss": {
+      "comment": "Dismiss tip button",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anladım"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Got it"
+          }
+        }
+      }
+    },
     "ZenFlow": {},
     "ZenFlow App Icon Exporter": {},
     "ZenFlow Icons": {},
