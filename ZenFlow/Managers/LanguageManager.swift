@@ -5,12 +5,14 @@
 //  Created by Claude AI on 25.11.2025.
 //  Copyright © 2025 ZenFlow. All rights reserved.
 //
-//  Manages app language preferences
+//  Manages app language preferences with runtime Bundle swap
 //
 
 import Foundation
 import SwiftUI
 import Combine
+
+// MARK: - AppLanguage Enum
 
 enum AppLanguage: String, CaseIterable {
     case turkish = "tr"
@@ -33,39 +35,127 @@ enum AppLanguage: String, CaseIterable {
             return "İngilizce"
         }
     }
+
+    var localeIdentifier: String {
+        switch self {
+        case .turkish:
+            return "tr_TR"
+        case .english:
+            return "en_US"
+        }
+    }
 }
+
+// MARK: - LanguageManager
 
 class LanguageManager: ObservableObject {
     static let shared = LanguageManager()
-    
-    // UserDefaults anahtarını sabit olarak tanımlamak hatayı azaltır
+
+    // UserDefaults keys
     private let kAppLanguageKey = "appLanguage"
-    
-    @AppStorage("appLanguage") private var languageCode: String = "tr"
-    
+    private let kAppleLanguagesKey = "AppleLanguages"
+
+    // Published properties for SwiftUI
     @Published var currentLanguage: AppLanguage {
         didSet {
-            // Dil değiştiğinde AppStorage'ı güncelle
-            languageCode = currentLanguage.rawValue
-            // Notification gönder
-            NotificationCenter.default.post(name: .languageDidChange, object: nil)
+            applyLanguageChange()
         }
     }
-    
+
+    @Published var locale: Locale
+    @Published var languageRefreshID = UUID()
+
+    // Runtime bundle for localization
+    private var localizedBundle: Bundle?
+
     private init() {
-        // ÇÖZÜM: @AppStorage (self.languageCode) yerine UserDefaults.standard kullanıyoruz.
-        // Böylece 'self' tam olarak başlatılmadan önce veriyi okuyabiliyoruz.
+        // Load saved language
         let savedCode = UserDefaults.standard.string(forKey: "appLanguage") ?? "tr"
-        
-        // Değeri atayarak initialization sürecini tamamlıyoruz
         self.currentLanguage = AppLanguage(rawValue: savedCode) ?? .turkish
+        self.locale = Locale(identifier: currentLanguage.localeIdentifier)
+
+        // Setup bundle for current language
+        setupLocalizedBundle(for: currentLanguage)
     }
-    
-    /// Sets the app language
+
+    /// Sets the app language and applies changes
     func setLanguage(_ language: AppLanguage) {
+        guard currentLanguage != language else { return }
         currentLanguage = language
     }
+
+    // MARK: - Private Methods
+
+    private func applyLanguageChange() {
+        // 1. Save to UserDefaults
+        UserDefaults.standard.set(currentLanguage.rawValue, forKey: kAppLanguageKey)
+
+        // 2. Update AppleLanguages (required for system-level language change)
+        UserDefaults.standard.set([currentLanguage.rawValue], forKey: kAppleLanguagesKey)
+        UserDefaults.standard.synchronize()
+
+        // 3. Setup localized bundle
+        setupLocalizedBundle(for: currentLanguage)
+
+        // 4. Update locale for SwiftUI environment
+        locale = Locale(identifier: currentLanguage.localeIdentifier)
+
+        // 5. Trigger full app refresh
+        languageRefreshID = UUID()
+
+        // 6. Send notification for observers
+        NotificationCenter.default.post(name: .languageDidChange, object: nil)
+
+        print("🌍 Language changed to: \(currentLanguage.displayName)")
+    }
+
+    private func setupLocalizedBundle(for language: AppLanguage) {
+        // Find the localized bundle path
+        if let path = Bundle.main.path(forResource: language.rawValue, ofType: "lproj"),
+           let bundle = Bundle(path: path) {
+            self.localizedBundle = bundle
+
+            // Override main bundle's localization (advanced technique)
+            object_setClass(Bundle.main, LocalizedBundle.self)
+            LocalizedBundle.currentLanguage = language.rawValue
+        }
+    }
+
+    /// Get localized string with current language
+    func localized(_ key: String, comment: String = "") -> String {
+        if let bundle = localizedBundle {
+            return bundle.localizedString(forKey: key, value: nil, table: nil)
+        }
+        return NSLocalizedString(key, comment: comment)
+    }
 }
+
+// MARK: - LocalizedBundle (Runtime Bundle Swap)
+
+private class LocalizedBundle: Bundle {
+    static var currentLanguage: String = "tr"
+
+    override func localizedString(forKey key: String, value: String?, table tableName: String?) -> String {
+        // Get the bundle for the current language
+        guard let path = Bundle.main.path(forResource: LocalizedBundle.currentLanguage, ofType: "lproj"),
+              let bundle = Bundle(path: path) else {
+            return super.localizedString(forKey: key, value: value, table: tableName)
+        }
+
+        return bundle.localizedString(forKey: key, value: value, table: tableName)
+    }
+}
+
+// MARK: - String Extension
+
+extension String {
+    /// Get localized string using LanguageManager
+    func localized(comment: String = "") -> String {
+        return LanguageManager.shared.localized(self, comment: comment)
+    }
+}
+
+// MARK: - Notification Extension
 
 extension Notification.Name {
     static let languageDidChange = Notification.Name("languageDidChange")

@@ -234,32 +234,22 @@ enum Weekday: Int, CaseIterable {
     case friday = 6
     case saturday = 7
 
-    var name: String {
-        switch self {
-        case .sunday: return "Pazar"
-        case .monday: return "Pazartesi"
-        case .tuesday: return "Salı"
-        case .wednesday: return "Çarşamba"
-        case .thursday: return "Perşembe"
-        case .friday: return "Cuma"
-        case .saturday: return "Cumartesi"
-        }
-    }
-
     var localizedName: String {
-        switch LanguageManager.shared.currentLanguage {
-        case .turkish:
-            return name
-        case .english:
-            switch self {
-            case .sunday: return String(localized: "Pazar", comment: "Sunday")
-            case .monday: return String(localized: "Pazartesi", comment: "Monday")
-            case .tuesday: return String(localized: "Salı", comment: "Tuesday")
-            case .wednesday: return String(localized: "Çarşamba", comment: "Wednesday")
-            case .thursday: return String(localized: "Perşembe", comment: "Thursday")
-            case .friday: return String(localized: "Cuma", comment: "Friday")
-            case .saturday: return String(localized: "Cumartesi", comment: "Saturday")
-            }
+        switch self {
+        case .sunday:
+            return String(localized: "weekday_sunday", comment: "Sunday")
+        case .monday:
+            return String(localized: "weekday_monday", comment: "Monday")
+        case .tuesday:
+            return String(localized: "weekday_tuesday", comment: "Tuesday")
+        case .wednesday:
+            return String(localized: "weekday_wednesday", comment: "Wednesday")
+        case .thursday:
+            return String(localized: "weekday_thursday", comment: "Thursday")
+        case .friday:
+            return String(localized: "weekday_friday", comment: "Friday")
+        case .saturday:
+            return String(localized: "weekday_saturday", comment: "Saturday")
         }
     }
 }

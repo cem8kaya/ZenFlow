@@ -38,13 +38,13 @@ enum AnimationPhase {
     var text: String {
         switch self {
         case .inhale:
-            return "Nefes Al"
+            return String(localized: "breathing_phase_inhale", comment: "Inhale")
         case .hold:
-            return "Tut"
+            return String(localized: "breathing_phase_hold", comment: "Hold")
         case .exhale:
-            return "Nefes Ver"
+            return String(localized: "breathing_phase_exhale", comment: "Exhale")
         case .holdAfterExhale:
-            return "Tut"
+            return String(localized: "breathing_phase_hold_after_exhale", comment: "Hold after exhale")
         }
     }
 
@@ -76,13 +76,13 @@ enum AnimationPhase {
     var accessibilityAnnouncement: String {
         switch self {
         case .inhale:
-            return "Nefes alın"
+            return String(localized: "breathing_accessibility_inhale", comment: "Breathe in announcement")
         case .hold:
-            return "Nefesinizi tutun"
+            return String(localized: "breathing_accessibility_hold", comment: "Hold breath announcement")
         case .exhale:
-            return "Nefes verin"
+            return String(localized: "breathing_accessibility_exhale", comment: "Breathe out announcement")
         case .holdAfterExhale:
-            return "Nefesinizi tutun"
+            return String(localized: "breathing_accessibility_hold_after_exhale", comment: "Hold after exhale announcement")
         }
     }
 
@@ -287,8 +287,8 @@ struct BreathingView: View {
                                 )
                             }
                             .zenSecondaryButtonStyle()
-                            .accessibilityLabel("Egzersiz seç: \(currentExercise.name)")
-                            .accessibilityHint("Farklı bir nefes egzersizi seçmek için dokunun")
+                            .accessibilityLabel(String(localized: "breathing_select_exercise_accessibility", defaultValue: "Egzersiz seç: \(currentExercise.name)", comment: "Select exercise accessibility"))
+                            .accessibilityHint(String(localized: "breathing_select_exercise_hint", comment: "Tap to select different exercise"))
                             .opacity(isAnimating ? 0 : 1)
                             .allowsHitTesting(!isAnimating)
                             Spacer()
@@ -303,7 +303,7 @@ struct BreathingView: View {
                 Text(sessionTracker.getFormattedDuration())
                     .font(ZenTheme.zenHeadline)
                     .foregroundColor(ZenTheme.lightLavender.opacity(0.7))
-                    .accessibilityLabel("Meditasyon süresi: \(sessionTracker.getFormattedDuration())")
+                    .accessibilityLabel(String(localized: "breathing_session_duration_accessibility", defaultValue: "Meditasyon süresi: \(sessionTracker.getFormattedDuration())", comment: "Session duration accessibility"))
                     .opacity((isAnimating || sessionTracker.duration > 0) ? 1 : 0)
                     .frame(height: 40)
 
@@ -349,7 +349,7 @@ struct BreathingView: View {
                     }
                 }
                 .accessibilityElement(children: .ignore)
-                .accessibilityLabel("Nefes alma animasyonu")
+                .accessibilityLabel(String(localized: "breathing_animation_accessibility", comment: "Breathing animation accessibility"))
                 .accessibilityValue(currentPhase.accessibilityAnnouncement)
                 .frame(height: geometry.size.height * 0.35)
 
@@ -402,8 +402,8 @@ struct BreathingView: View {
                         }
                     }
                     .zenIconButtonStyle()
-                    .accessibilityLabel(isAnimating ? "Meditasyonu durdur" : "Meditasyonu başlat")
-                    .accessibilityHint(isAnimating ? "Meditasyon seansını sonlandırır ve kaydeder" : "Nefes egzersizi ile meditasyonu başlatır")
+                    .accessibilityLabel(isAnimating ? String(localized: "breathing_stop_meditation", comment: "Stop meditation") : String(localized: "breathing_start_meditation", comment: "Start meditation"))
+                    .accessibilityHint(isAnimating ? String(localized: "breathing_stop_meditation_hint", comment: "Ends and saves session") : String(localized: "breathing_start_meditation_hint", comment: "Starts breathing exercise"))
 
                     // Pause/Resume button (smaller, below main button)
                     if isAnimating {
@@ -411,7 +411,7 @@ struct BreathingView: View {
                             HStack(spacing: 8) {
                                 Image(systemName: isPaused ? "play.fill" : "pause.fill")
                                     .font(.system(size: 14))
-                                Text(isPaused ? "Devam Et" : "Duraklat")
+                                Text(isPaused ? String(localized: "breathing_resume", comment: "Resume") : String(localized: "breathing_pause", comment: "Pause"))
                                     .font(.system(size: 14, weight: .semibold))
                             }
                             .foregroundColor(ZenTheme.lightLavender)
@@ -427,8 +427,8 @@ struct BreathingView: View {
                             )
                         }
                         .zenSecondaryButtonStyle()
-                        .accessibilityLabel(isPaused ? "Devam et" : "Duraklat")
-                        .accessibilityHint(isPaused ? "Meditasyona devam eder" : "Meditasyonu geçici olarak duraklatır")
+                        .accessibilityLabel(isPaused ? String(localized: "breathing_resume_accessibility", comment: "Resume") : String(localized: "breathing_pause_accessibility", comment: "Pause"))
+                        .accessibilityHint(isPaused ? String(localized: "breathing_resume_hint", comment: "Continues meditation") : String(localized: "breathing_pause_hint", comment: "Temporarily pauses"))
                         .transition(.opacity.combined(with: .scale))
                     }
                 }
@@ -486,7 +486,7 @@ struct BreathingView: View {
                         selectedDurationMinutes = duration
                         HapticManager.shared.playImpact(style: .light)
                     }) {
-                        Text("\(duration) dk")
+                        Text(String(localized: "breathing_duration_minutes", defaultValue: "\(duration) dk", comment: "Duration in minutes"))
                             .font(.system(size: 16, weight: .semibold))
                             .foregroundColor(selectedDurationMinutes == duration ? .white : ZenTheme.softPurple)
                             .frame(width: 70, height: 44)
@@ -503,8 +503,8 @@ struct BreathingView: View {
                                             Color.clear, lineWidth: 2)
                             )
                     }
-                    .accessibilityLabel("\(duration) dakika seans")
-                    .accessibilityHint(selectedDurationMinutes == duration ? "Seçili" : "Seçmek için dokunun")
+                    .accessibilityLabel(String(localized: "breathing_duration_accessibility", defaultValue: "\(duration) dakika seans", comment: "Duration accessibility"))
+                    .accessibilityHint(selectedDurationMinutes == duration ? String(localized: "breathing_duration_selected", comment: "Selected") : String(localized: "breathing_duration_tap_to_select", comment: "Tap to select"))
                 }
             }
         }
@@ -537,12 +537,12 @@ struct BreathingView: View {
 
                 // Label
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("Ses")
+                    Text(String(localized: "breathing_sound_label", comment: "Sound label"))
                         .font(.system(size: 14, weight: .medium))
                         .foregroundColor(ZenTheme.lightLavender.opacity(0.7))
 
                     if soundManager.activeSounds.isEmpty || soundManager.activeSounds.first?.fileName == "" {
-                        Text("Sessiz")
+                        Text(String(localized: "breathing_sound_silent", comment: "Silent"))
                             .font(.system(size: 16, weight: .semibold))
                             .foregroundColor(ZenTheme.lightLavender)
                     } else {
@@ -571,8 +571,8 @@ struct BreathingView: View {
             )
         }
         .padding(.horizontal, 24)
-        .accessibilityLabel("Ses seçimi")
-        .accessibilityHint("Arka plan sesi seçmek için dokunun")
+        .accessibilityLabel(String(localized: "breathing_sound_selection_accessibility", comment: "Sound selection accessibility"))
+        .accessibilityHint(String(localized: "breathing_sound_selection_hint", comment: "Tap to select sound"))
     }
 
     // MARK: - Animation Control
