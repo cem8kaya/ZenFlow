@@ -405,7 +405,7 @@ struct FocusTimerView: View {
 
     private func startTimer() {
         timerState = .running
-        HapticManager.shared.playImpact(style: .medium)
+        HapticManager.shared.playSessionStart()
 
         // Start ambient sounds with fade in
         if soundManager.isEnabled && !soundManager.activeSounds.isEmpty {
@@ -417,15 +417,16 @@ struct FocusTimerView: View {
         // Set session end time for background-safe timing
         sessionEndTime = Date().addingTimeInterval(timeRemaining)
 
-        let newTimer = Timer(timeInterval: 1.0, repeats: true) { _ in
-            guard let endTime = sessionEndTime else { return }
+        let newTimer = Timer(timeInterval: 1.0, repeats: true) { [weak self] _ in
+            guard let self = self, let endTime = self.sessionEndTime else { return }
             let remaining = endTime.timeIntervalSince(Date())
 
             if remaining > 0 {
-                timeRemaining = remaining
+                self.timeRemaining = remaining
+                self.checkIntervalMilestone()
             } else {
-                timeRemaining = 0
-                timerCompleted()
+                self.timeRemaining = 0
+                self.timerCompleted()
             }
         }
         newTimer.tolerance = 0.2 // 20% tolerance to reduce CPU wake-ups and prevent audio overload
@@ -482,8 +483,8 @@ struct FocusTimerView: View {
         // Save completed session
         saveSession()
 
-        // Haptic feedback
-        HapticManager.shared.playNotification(type: .success)
+        // Play session complete haptic
+        HapticManager.shared.playSessionComplete()
 
         // Send notification if app is in background
         sendCompletionNotification()
@@ -534,6 +535,21 @@ struct FocusTimerView: View {
         timeRemaining = nextMode.durationSeconds
         sessionEndTime = nil
         timerState = .idle
+    }
+
+    /// Check and play interval milestone haptic (every 5 minutes)
+    private func checkIntervalMilestone() {
+        let elapsed = currentMode.durationSeconds - timeRemaining
+        let elapsedMinutes = Int(elapsed / 60)
+
+        // Play haptic at 5, 10, 15, 20 minute marks
+        if elapsedMinutes > 0 && elapsedMinutes % 5 == 0 {
+            let elapsedSeconds = Int(elapsed)
+            // Only trigger once per milestone (when elapsed seconds is exactly at the minute mark)
+            if elapsedSeconds % 300 == 0 || elapsedSeconds % 300 == 1 {
+                HapticManager.shared.playIntervalMilestone()
+            }
+        }
     }
 
     // MARK: - Data Persistence

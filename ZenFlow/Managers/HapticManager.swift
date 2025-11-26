@@ -8,6 +8,7 @@
 import CoreHaptics
 internal import UIKit
 import Combine
+import SwiftUI
 
 class HapticManager: ObservableObject {
     // MARK: - Singleton
@@ -15,6 +16,8 @@ class HapticManager: ObservableObject {
     static let shared = HapticManager()
 
     // MARK: - Properties
+
+    @AppStorage("hapticsEnabled") var isEnabled: Bool = true
 
     private var engine: CHHapticEngine?
     private(set) var isHapticsAvailable = false
@@ -230,6 +233,8 @@ class HapticManager: ObservableObject {
     /// Play the breathing inhale haptic pattern
     /// - Parameter duration: Duration of the pattern in seconds (default: 4.0)
     func playBreathingInhale(duration: Double = 4.0) {
+        guard isEnabled && isHapticsAvailable else { return }
+
         guard let pattern = createBreathingInhalePattern(duration: duration) else {
             print("⚠️ Could not create breathing pattern")
             return
@@ -243,6 +248,8 @@ class HapticManager: ObservableObject {
     /// Play impact haptic feedback
     /// - Parameter style: The impact style (light, medium, heavy, soft, rigid)
     func playImpact(style: UIImpactFeedbackGenerator.FeedbackStyle) {
+        guard isEnabled else { return }
+
         // Reuse existing generator or create new one
         let generator: UIImpactFeedbackGenerator
         if let existingGenerator = impactGenerators[style] {
@@ -260,6 +267,8 @@ class HapticManager: ObservableObject {
     /// Play notification haptic feedback
     /// - Parameter type: The notification type (success, warning, error)
     func playNotification(type: UINotificationFeedbackGenerator.FeedbackType) {
+        guard isEnabled else { return }
+
         // Reuse existing generator or create new one
         if notificationGenerator == nil {
             notificationGenerator = UINotificationFeedbackGenerator()
@@ -268,5 +277,166 @@ class HapticManager: ObservableObject {
         notificationGenerator?.prepare()
         notificationGenerator?.notificationOccurred(type)
         print("▶️ Playing notification haptic: \(type)")
+    }
+
+    // MARK: - Exhale and Hold Patterns
+
+    /// Create exhale haptic pattern with decreasing intensity
+    /// - Parameter duration: Duration of exhale (default: 4.0)
+    private func createBreathingExhalePattern(duration: Double = 4.0) -> CHHapticPattern? {
+        guard isHapticsAvailable else { return nil }
+
+        // Return cached pattern if available (use negative key for exhale)
+        if let cachedPattern = cachedBreathingPatterns[-duration] {
+            return cachedPattern
+        }
+
+        do {
+            // Intensity curve: 1.0 → 0.0 (reverse of inhale)
+            let intensityParameter = CHHapticParameterCurve(
+                parameterID: .hapticIntensityControl,
+                controlPoints: [
+                    CHHapticParameterCurve.ControlPoint(relativeTime: 0, value: 1.0),
+                    CHHapticParameterCurve.ControlPoint(relativeTime: duration * 0.25, value: 0.7),
+                    CHHapticParameterCurve.ControlPoint(relativeTime: duration * 0.5, value: 0.4),
+                    CHHapticParameterCurve.ControlPoint(relativeTime: duration * 0.75, value: 0.2),
+                    CHHapticParameterCurve.ControlPoint(relativeTime: duration, value: 0.0)
+                ],
+                relativeTime: 0
+            )
+
+            let sharpnessParameter = CHHapticParameterCurve(
+                parameterID: .hapticSharpnessControl,
+                controlPoints: [
+                    CHHapticParameterCurve.ControlPoint(relativeTime: 0, value: 0.3),
+                    CHHapticParameterCurve.ControlPoint(relativeTime: duration, value: 0.3)
+                ],
+                relativeTime: 0
+            )
+
+            let continuousEvent = CHHapticEvent(
+                eventType: .hapticContinuous,
+                parameters: [
+                    CHHapticEventParameter(parameterID: .hapticIntensity, value: 1.0),
+                    CHHapticEventParameter(parameterID: .hapticSharpness, value: 0.3)
+                ],
+                relativeTime: 0,
+                duration: duration
+            )
+
+            let pattern = try CHHapticPattern(
+                events: [continuousEvent],
+                parameterCurves: [intensityParameter, sharpnessParameter]
+            )
+
+            cachedBreathingPatterns[-duration] = pattern
+            print("✅ Created breathing exhale haptic pattern (duration: \(duration)s)")
+            return pattern
+
+        } catch {
+            print("❌ Failed to create exhale pattern: \(error.localizedDescription)")
+            return nil
+        }
+    }
+
+    /// Play exhale haptic pattern
+    func playBreathingExhale(duration: Double = 4.0) {
+        guard isEnabled && isHapticsAvailable else { return }
+
+        guard let pattern = createBreathingExhalePattern(duration: duration) else {
+            print("⚠️ Could not create exhale pattern")
+            return
+        }
+        playPattern(pattern)
+    }
+
+    /// Create hold haptic pattern with gentle pulsing
+    /// - Parameter duration: Duration of hold phase
+    private func createBreathingHoldPattern(duration: Double) -> CHHapticPattern? {
+        guard isHapticsAvailable else { return nil }
+
+        do {
+            var events: [CHHapticEvent] = []
+            let pulseInterval = 0.8 // Pulse every 0.8 seconds
+            let pulseCount = Int(duration / pulseInterval)
+
+            for i in 0..<pulseCount {
+                let pulseTime = Double(i) * pulseInterval
+
+                // Each pulse: gentle tap
+                let pulseEvent = CHHapticEvent(
+                    eventType: .hapticTransient,
+                    parameters: [
+                        CHHapticEventParameter(parameterID: .hapticIntensity, value: 0.3),
+                        CHHapticEventParameter(parameterID: .hapticSharpness, value: 0.2)
+                    ],
+                    relativeTime: pulseTime
+                )
+                events.append(pulseEvent)
+            }
+
+            let pattern = try CHHapticPattern(events: events, parameters: [])
+            print("✅ Created breathing hold haptic pattern (duration: \(duration)s, pulses: \(pulseCount))")
+            return pattern
+
+        } catch {
+            print("❌ Failed to create hold pattern: \(error.localizedDescription)")
+            return nil
+        }
+    }
+
+    /// Play hold haptic pattern
+    func playBreathingHold(duration: Double) {
+        guard isEnabled && isHapticsAvailable else { return }
+
+        guard let pattern = createBreathingHoldPattern(duration: duration) else {
+            print("⚠️ Could not create hold pattern")
+            return
+        }
+        playPattern(pattern)
+    }
+
+    // MARK: - Session Lifecycle Patterns
+
+    /// Play session start haptic (encouraging start)
+    func playSessionStart() {
+        guard isEnabled else { return }
+        playImpact(style: .medium)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) { [weak self] in
+            self?.playImpact(style: .light)
+        }
+    }
+
+    /// Play session complete haptic (celebratory)
+    func playSessionComplete() {
+        guard isEnabled else { return }
+
+        // Three-stage success pattern
+        playImpact(style: .light)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
+            self?.playImpact(style: .medium)
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [weak self] in
+            self?.playNotification(type: .success)
+        }
+    }
+
+    /// Play session cancel/interrupt haptic (subtle warning)
+    func playSessionCancel() {
+        guard isEnabled else { return }
+        playNotification(type: .warning)
+    }
+
+    /// Play interval milestone haptic (e.g., 5 min, 10 min completed)
+    func playIntervalMilestone() {
+        guard isEnabled else { return }
+        playImpact(style: .medium)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [weak self] in
+            self?.playImpact(style: .light)
+        }
     }
 }

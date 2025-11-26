@@ -616,6 +616,9 @@ struct BreathingView: View {
         // Start haptic engine
         hapticManager.startEngine()
 
+        // Play session start haptic
+        HapticManager.shared.playSessionStart()
+
         // Start session duration timer
         let durationInSeconds = TimeInterval(selectedDurationMinutes * 60)
         sessionStartTime = Date()
@@ -659,8 +662,13 @@ struct BreathingView: View {
 
             // Only show success animation for sessions >= 1 minute
             if minutes >= 1 {
+                // Play session complete haptic
+                HapticManager.shared.playSessionComplete()
                 completedDurationMinutes = minutes
                 showSessionComplete = true
+            } else {
+                // Play session cancel haptic for short sessions
+                HapticManager.shared.playSessionCancel()
             }
 
             // Accessibility announcement for completion
@@ -827,11 +835,11 @@ struct BreathingView: View {
             // Rising intensity haptic
             HapticManager.shared.playBreathingInhale(duration: duration)
         case .hold, .holdAfterExhale:
-            // Gentle tap for hold
-            HapticManager.shared.playImpact(style: .light)
+            // Gentle pulsing for hold
+            HapticManager.shared.playBreathingHold(duration: duration)
         case .exhale:
-            // Subtle notification for exhale
-            HapticManager.shared.playImpact(style: .soft)
+            // Decreasing intensity haptic
+            HapticManager.shared.playBreathingExhale(duration: duration)
         }
     }
 

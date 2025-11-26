@@ -19,7 +19,7 @@ struct SettingsView: View {
 
     @StateObject private var hapticManager = HapticManager.shared
     @StateObject private var soundManager = AmbientSoundManager.shared
-    @State private var hapticsEnabled = true
+    @AppStorage("hapticsEnabled") private var hapticsEnabled = true
     @State private var showResetAlert = false
     @State private var showResetSuccess = false
 
@@ -105,7 +105,7 @@ struct SettingsView: View {
                     if !hapticManager.isHapticsAvailable {
                         Text(String(localized: "settings_haptic_not_supported", defaultValue: "Bu cihaz dokunsal geri bildirimi desteklemiyor.", comment: "Haptic not supported message"))
                     } else {
-                        Text(String(localized: "settings_haptic_footer", defaultValue: "Uygulama içi titreşim ve dokunsal geri bildirimi kontrol et.", comment: "Haptic settings footer"))
+                        Text(String(localized: "settings_haptic_footer", defaultValue: "Uygulama içi titreşim ve dokunsal geri bildirimi kontrol et. Nefes egzersizleri sırasında her faz için farklı titreşim desenleri kullanılır.", comment: "Haptic settings footer"))
                     }
                 }
 
@@ -215,9 +215,17 @@ struct SettingsView: View {
     private func handleHapticsToggle(_ isEnabled: Bool) {
         if isEnabled {
             hapticManager.startEngine()
+            // Demo haptic pattern when enabled: medium followed by light
             HapticManager.shared.playImpact(style: .medium)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                HapticManager.shared.playImpact(style: .light)
+            }
         } else {
-            hapticManager.stopEngine()
+            // Final gentle tap when disabling
+            HapticManager.shared.playImpact(style: .light)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                hapticManager.stopEngine()
+            }
         }
     }
 
