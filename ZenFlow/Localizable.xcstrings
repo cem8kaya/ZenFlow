@@ -3086,6 +3086,96 @@
     "Uygulama içi titreşim ve dokunsal geri bildirimi kontrol et.": {
       "comment": "Haptic settings footer"
     },
+    "settings.haptic.disabled.description": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "value": "Haptic feedback disabled during breathing exercises."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "value": "Nefes egzersizleri sırasında titreşim geri bildirimi kapalı."
+          }
+        }
+      }
+    },
+    "settings.haptic.enabled.description": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "value": "Synchronized haptic feedback during breathing exercises. Intensity setting affects all haptics."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "value": "Nefes egzersizleri sırasında animasyonlarla senkronize titreşim geri bildirimi. Şiddet ayarı tüm titreşimleri etkiler."
+          }
+        }
+      }
+    },
+    "settings.haptic.intensity": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "value": "Haptic Intensity"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "value": "Titreşim Şiddeti"
+          }
+        }
+      }
+    },
+    "settings.haptic.intensity.light": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "value": "Light (%d%%)"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "value": "Hafif (%d%%)"
+          }
+        }
+      }
+    },
+    "settings.haptic.intensity.medium": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "value": "Medium (%d%%)"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "value": "Orta (%d%%)"
+          }
+        }
+      }
+    },
+    "settings.haptic.intensity.strong": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "value": "Strong (%d%%)"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "value": "Güçlü (%d%%)"
+          }
+        }
+      }
+    },
     "Uygulamayı Keşfet": {},
     "Veri Yönetimi": {
       "comment": "Data management section header"

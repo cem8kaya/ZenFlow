@@ -20,8 +20,22 @@ struct SettingsView: View {
     @StateObject private var hapticManager = HapticManager.shared
     @StateObject private var soundManager = AmbientSoundManager.shared
     @AppStorage("hapticsEnabled") private var hapticsEnabled = true
+    @AppStorage("hapticIntensity") private var hapticIntensity = 0.7
     @State private var showResetAlert = false
     @State private var showResetSuccess = false
+
+    // MARK: - Computed Properties
+
+    private var intensityLabel: String {
+        let percentage = Int(hapticIntensity * 100)
+        if hapticIntensity <= 0.5 {
+            return String(localized: "settings.haptic.intensity.light", defaultValue: "Hafif (\(percentage)%)", comment: "Light intensity label")
+        } else if hapticIntensity <= 0.8 {
+            return String(localized: "settings.haptic.intensity.medium", defaultValue: "Orta (\(percentage)%)", comment: "Medium intensity label")
+        } else {
+            return String(localized: "settings.haptic.intensity.strong", defaultValue: "Güçlü (\(percentage)%)", comment: "Strong intensity label")
+        }
+    }
 
     // MARK: - Body
 
@@ -99,13 +113,37 @@ struct SettingsView: View {
                         handleHapticsToggle(newValue)
                     }
                     .disabled(!hapticManager.isHapticsAvailable)
+
+                    if hapticsEnabled && hapticManager.isHapticsAvailable {
+                        VStack(alignment: .leading, spacing: 8) {
+                            HStack {
+                                Image(systemName: "slider.horizontal.3")
+                                    .foregroundColor(ZenTheme.calmBlue)
+                                    .frame(width: 28)
+                                Text(String(localized: "settings.haptic.intensity", defaultValue: "Titreşim Şiddeti", comment: "Haptic intensity label"))
+                                Spacer()
+                                Text(intensityLabel)
+                                    .foregroundColor(.secondary)
+                                    .font(.subheadline)
+                            }
+
+                            Slider(value: $hapticIntensity, in: 0.3...1.0, step: 0.1)
+                                .tint(ZenTheme.calmBlue)
+                                .onChange(of: hapticIntensity) { oldValue, newValue in
+                                    // Play demo haptic at new intensity
+                                    HapticManager.shared.playImpact(style: .medium)
+                                }
+                        }
+                    }
                 } header: {
                     Text(String(localized: "settings_haptic_section", defaultValue: "Dokunsal Ayarlar", comment: "Haptic settings section header"))
                 } footer: {
                     if !hapticManager.isHapticsAvailable {
                         Text(String(localized: "settings_haptic_not_supported", defaultValue: "Bu cihaz dokunsal geri bildirimi desteklemiyor.", comment: "Haptic not supported message"))
+                    } else if hapticsEnabled {
+                        Text(String(localized: "settings.haptic.enabled.description", defaultValue: "Nefes egzersizleri sırasında animasyonlarla senkronize titreşim geri bildirimi. Şiddet ayarı tüm titreşimleri etkiler.", comment: "Haptic enabled description"))
                     } else {
-                        Text(String(localized: "settings_haptic_footer", defaultValue: "Uygulama içi titreşim ve dokunsal geri bildirimi kontrol et. Nefes egzersizleri sırasında her faz için farklı titreşim desenleri kullanılır.", comment: "Haptic settings footer"))
+                        Text(String(localized: "settings.haptic.disabled.description", defaultValue: "Nefes egzersizleri sırasında titreşim geri bildirimi kapalı.", comment: "Haptic disabled description"))
                     }
                 }
 
