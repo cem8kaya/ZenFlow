@@ -460,24 +460,17 @@ struct BreathingView: View {
         .sheet(isPresented: $showExerciseSelection) {
             if #available(iOS 16.4, *) {
                 ExerciseSelectionView { selectedExercise in
-                    // Handle exercise change
                     handleExerciseChange(to: selectedExercise)
                 }
                 .presentationDetents([.medium, .large])
                 .presentationCornerRadius(24)
             } else {
-                // Fallback on earlier versions
-            };if #available(iOS 16.4, *) {
+                // iOS 16.4 öncesi için basit sheet
                 ExerciseSelectionView { selectedExercise in
-                    // Handle exercise change
                     handleExerciseChange(to: selectedExercise)
                 }
-                .presentationDetents([.medium, .large])
-                .presentationCornerRadius(24)
-            } else {
-                // Fallback on earlier versions
             }
-            }
+        }
             .sheet(isPresented: $showSoundPicker) {
                 if #available(iOS 16.4, *) {
                     SoundPickerSheet()
