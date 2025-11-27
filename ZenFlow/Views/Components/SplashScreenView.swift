@@ -90,13 +90,13 @@ struct SplashScreenView: View {
                 rotation = 360
             }
 
-            // Auto-dismiss after animation duration
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                withAnimation(.easeOut(duration: 0.5)) {
+            // Auto-dismiss after animation duration (optimized to 1.0s for faster startup)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                withAnimation(.easeOut(duration: 0.3)) {
                     opacity = 0.0
                 }
 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                     isActive = false
                 }
             }

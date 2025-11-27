@@ -5135,6 +5135,78 @@
         }
       }
     },
+    "zen_garden_streak_days" : {
+      "comment" : "Streak days label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "day streak"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "gün"
+          }
+        }
+      }
+    },
+    "zen_garden_next_stage_tooltip" : {
+      "comment" : "Next stage label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next: %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Sonraki: %@"
+          }
+        }
+      }
+    },
+    "zen_garden_minutes_remaining" : {
+      "comment" : "Minutes remaining",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld min remaining"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%lld dk kaldı"
+          }
+        }
+      }
+    },
+    "zen_garden_max_level_tooltip" : {
+      "comment" : "Max level reached",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maximum level!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Maksimum seviye!"
+          }
+        }
+      }
+    },
     "zen_quote_0" : {
       "extractionState" : "stale",
       "localizations" : {

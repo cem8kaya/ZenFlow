@@ -62,12 +62,23 @@ struct Star: Identifiable {
     var brightness: Double
 }
 
+// MARK: - Falling Leaf Model
+struct FallingLeaf: Identifiable {
+    let id = UUID()
+    var x: CGFloat
+    var y: CGFloat
+    var rotation: Double
+    var scale: CGFloat
+    var opacity: Double
+}
+
 // MARK: - ZenGardenView
 
 struct ZenGardenView: View {
     // MARK: - State
 
     @StateObject private var gardenManager = ZenGardenManager()
+    private let dataManager = LocalDataManager.shared
     @Environment(\.accessibilityReduceMotion) var reduceMotion
     @Environment(\.scenePhase) private var scenePhase
     @State private var isViewActive = false
@@ -87,6 +98,7 @@ struct ZenGardenView: View {
     @State private var stardustParticles: [StardustParticle] = []
     @State private var fallingPetals: [FallingPetal] = []
     @State private var waterDroplets: [WaterDroplet] = []
+    @State private var fallingLeaves: [FallingLeaf] = []
 
     // Dynamic background
     @State private var clouds: [Cloud] = []
@@ -99,6 +111,7 @@ struct ZenGardenView: View {
     @State private var tapLocation: CGPoint?
     @State private var showWaterEffect: Bool = false
     @State private var lastTapTime: Date = Date()
+    @State private var showProgressTooltip = false
 
     // Haptic feedback
     private let impactFeedback = UIImpactFeedbackGenerator(style: .medium)
@@ -107,6 +120,27 @@ struct ZenGardenView: View {
     // Timers for cleanup
     @State private var cloudAnimationTimer: Timer?
     @State private var starTwinkleTimer: Timer?
+
+    // MARK: - Daily Quote Data
+    private let zenQuotes: [(tr: String, en: String)] = [
+        ("Her gün yeni bir başlangıç", "Every day is a new beginning"),
+        ("Sakinlik güçtür", "Calmness is power"),
+        ("Nefes al, bırak, var ol", "Breathe in, let go, exist"),
+        ("Şu an tek gerçeklik", "Now is the only reality"),
+        ("İç huzur dış yansımadır", "Inner peace reflects outward"),
+        ("Sabır bilgeliktir", "Patience is wisdom"),
+        ("Sessizlikte anlam bul", "Find meaning in silence"),
+        ("Her adım yolculuktur", "Every step is a journey"),
+        ("Bugün kendine iyi bak", "Take care of yourself today"),
+        ("Düşünceler bulutlar gibi geçer", "Thoughts pass like clouds")
+    ]
+
+    private var dailyQuote: String {
+        let dayOfYear = Calendar.current.ordinality(of: .day, in: .year, for: Date()) ?? 1
+        let quote = zenQuotes[dayOfYear % zenQuotes.count]
+        let languageCode = Locale.current.language.languageCode?.identifier
+        return languageCode == "en" ? quote.en : quote.tr
+    }
 
 
     // MARK: - Body
@@ -140,7 +174,10 @@ struct ZenGardenView: View {
                         
                         // Water droplets (interactive)
                         waterDropletsLayer
-                        
+
+                        // Falling leaves (interactive tree tap)
+                        fallingLeavesLayer
+
                         // Sparkle Growth Animation Overlay
                         ZStack {
                             ForEach(0..<8, id: \.self) { index in
@@ -162,9 +199,13 @@ struct ZenGardenView: View {
                             // Başlık
                             headerView
                                 .shadow(color: .black.opacity(0.3), radius: 5)
-                            
+
+                            // Daily quote
+                            dailyQuoteView
+                                .padding(.top, 8)
+
                             Spacer()
-                            
+
                             // Ağaç görsel alanı (merkez)
                             treeDisplayArea
                                 .scaleEffect(treeScale)
@@ -173,9 +214,18 @@ struct ZenGardenView: View {
                                 .onTapGesture { location in
                                     handleTreeTap(at: location, in: geometry.size)
                                 }
-                            
+                                .onLongPressGesture(minimumDuration: 0.5) {
+                                    handleTreeLongPress()
+                                }
+
+                            // Progress tooltip
+                            if showProgressTooltip {
+                                progressTooltipView
+                                    .transition(.opacity.combined(with: .scale))
+                            }
+
                             Spacer()
-                            
+
                             // İlerleme göstergesi (alt kısma yakın)
                             progressSection
                                 .background(
@@ -184,6 +234,11 @@ struct ZenGardenView: View {
                                         .blur(radius: 10)
                                 )
                                 .padding(.bottom, 40)
+                        }
+                        .overlay(alignment: .topTrailing) {
+                            streakBadgeView
+                                .padding(.top, 60)
+                                .padding(.trailing, 20)
                         }
                     }
                 }
@@ -344,6 +399,20 @@ struct ZenGardenView: View {
         .allowsHitTesting(false)
     }
 
+    private var fallingLeavesLayer: some View {
+        ZStack {
+            ForEach(fallingLeaves) { leaf in
+                Image(systemName: "leaf.fill")
+                    .font(.system(size: 12))
+                    .foregroundColor(ZenTheme.sageGreen.opacity(leaf.opacity))
+                    .rotationEffect(.degrees(leaf.rotation))
+                    .scaleEffect(leaf.scale)
+                    .position(x: leaf.x, y: leaf.y)
+            }
+        }
+        .allowsHitTesting(false)
+    }
+
     // MARK: - Header
 
     private var headerView: some View {
@@ -357,6 +426,66 @@ struct ZenGardenView: View {
                 .foregroundColor(ZenTheme.sageGreen.opacity(0.9))
         }
         .padding(.top, 60)
+    }
+
+    private var dailyQuoteView: some View {
+        Text(dailyQuote)
+            .font(.system(size: 14, weight: .medium, design: .serif))
+            .italic()
+            .foregroundColor(ZenTheme.earthBrown.opacity(0.8))
+            .multilineTextAlignment(.center)
+            .padding(.horizontal, 40)
+    }
+
+    private var streakBadgeView: some View {
+        HStack(spacing: 6) {
+            Image(systemName: "flame.fill")
+                .font(.system(size: 14))
+                .foregroundColor(.orange)
+
+            Text("\(dataManager.currentStreak)")
+                .font(.system(size: 14, weight: .bold))
+                .foregroundColor(ZenTheme.earthBrown)
+
+            Text(String(localized: "zen_garden_streak_days", defaultValue: "gün", comment: "Streak days label"))
+                .font(.system(size: 12))
+                .foregroundColor(ZenTheme.earthBrown.opacity(0.7))
+        }
+        .padding(.horizontal, 12)
+        .padding(.vertical, 6)
+        .background(
+            Capsule()
+                .fill(Color.orange.opacity(0.15))
+                .overlay(
+                    Capsule()
+                        .stroke(Color.orange.opacity(0.3), lineWidth: 1)
+                )
+        )
+        .opacity(dataManager.currentStreak > 0 ? 1 : 0)
+    }
+
+    private var progressTooltipView: some View {
+        VStack(spacing: 4) {
+            if let nextStage = TreeGrowthStage(rawValue: gardenManager.currentStage.rawValue + 1),
+               let minutesRemaining = gardenManager.minutesUntilNextStage {
+                Text(String(localized: "zen_garden_next_stage_tooltip", defaultValue: "Sonraki: \(nextStage.title)", comment: "Next stage label"))
+                    .font(.system(size: 12, weight: .semibold))
+
+                Text(String(localized: "zen_garden_minutes_remaining", defaultValue: "\(minutesRemaining) dk kaldı", comment: "Minutes remaining"))
+                    .font(.system(size: 11))
+                    .foregroundColor(.secondary)
+            } else {
+                Text(String(localized: "zen_garden_max_level_tooltip", defaultValue: "Maksimum seviye!", comment: "Max level reached"))
+                    .font(.system(size: 12, weight: .semibold))
+            }
+        }
+        .padding(.horizontal, 12)
+        .padding(.vertical, 8)
+        .background(
+            RoundedRectangle(cornerRadius: 8)
+                .fill(Color.black.opacity(0.7))
+        )
+        .foregroundColor(.white)
     }
 
     // MARK: - Progress Section
@@ -809,6 +938,11 @@ struct ZenGardenView: View {
             waterDroplets.removeAll()
         }
 
+        // Spawn falling leaves (for youngTree stage and above)
+        if gardenManager.currentStage.rawValue >= TreeGrowthStage.youngTree.rawValue && !reduceMotion {
+            spawnFallingLeaves(at: CGPoint(x: size.width / 2, y: size.height / 2), in: size)
+        }
+
         // Brief tree animation (gentle sway)
         if !reduceMotion {
             withAnimation(.easeInOut(duration: 0.3)) {
@@ -816,6 +950,52 @@ struct ZenGardenView: View {
             }
             withAnimation(.easeInOut(duration: 0.3).delay(0.3)) {
                 treeScale = 1.0
+            }
+        }
+    }
+
+    private func spawnFallingLeaves(at location: CGPoint, in size: CGSize) {
+        // Limit to max 10 leaves to prevent performance issues
+        guard fallingLeaves.count < 10 else { return }
+
+        for _ in 0..<3 {
+            let leaf = FallingLeaf(
+                x: location.x + CGFloat.random(in: -30...30),
+                y: location.y,
+                rotation: Double.random(in: 0...360),
+                scale: CGFloat.random(in: 0.5...1.0),
+                opacity: 1.0
+            )
+            fallingLeaves.append(leaf)
+        }
+
+        // Animate leaves falling
+        withAnimation(.easeIn(duration: 2.0)) {
+            for i in fallingLeaves.indices {
+                fallingLeaves[i].y += 200
+                fallingLeaves[i].rotation += Double.random(in: 180...540)
+                fallingLeaves[i].opacity = 0
+            }
+        }
+
+        // Cleanup
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+            fallingLeaves.removeAll()
+        }
+    }
+
+    private func handleTreeLongPress() {
+        // Show progress tooltip
+        lightFeedback.impactOccurred()
+
+        withAnimation {
+            showProgressTooltip = true
+        }
+
+        // Hide tooltip after 3 seconds
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+            withAnimation {
+                showProgressTooltip = false
             }
         }
     }
