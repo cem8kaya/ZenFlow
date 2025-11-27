@@ -17,9 +17,10 @@ import SwiftUI
 /// Main chat interface for Zen Coach feature
 struct ZenCoachView: View {
 
-    // MARK: - State
+    // MARK: - Environment Objects (Performance Optimization)
+    @EnvironmentObject var manager: ZenCoachManager
 
-    @StateObject private var manager = ZenCoachManager.shared
+    // MARK: - State
     @State private var inputText: String = ""
     @State private var showClearAlert: Bool = false
     @FocusState private var isInputFocused: Bool

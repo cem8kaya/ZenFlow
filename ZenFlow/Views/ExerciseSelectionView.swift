@@ -13,7 +13,9 @@ import SwiftUI
 /// Exercise selection view with horizontal carousel
 struct ExerciseSelectionView: View {
     @Environment(\.dismiss) private var dismiss
-    @ObservedObject private var exerciseManager = BreathingExerciseManager.shared
+
+    // MARK: - Environment Objects (Performance Optimization)
+    @EnvironmentObject var exerciseManager: BreathingExerciseManager
     @State private var selectedExercise: BreathingExercise
 
     var onExerciseSelected: ((BreathingExercise) -> Void)?

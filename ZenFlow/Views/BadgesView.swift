@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct BadgesView: View {
-    // MARK: - Properties
+    // MARK: - Environment Objects (Performance Optimization)
+    @EnvironmentObject var gamificationManager: GamificationManager
 
-    @StateObject private var gamificationManager = GamificationManager.shared
+    // MARK: - Properties
     @State private var selectedBadge: Badge?
     @State private var showingBadgeDetail = false
 

@@ -19,11 +19,13 @@ struct OnboardingView: View {
 
     @Environment(\.dismiss) private var dismiss
 
+    // MARK: - Environment Objects (Performance Optimization)
+    @EnvironmentObject var hapticManager: HapticManager
+
     // MARK: - State
 
     @State private var currentPage = 0
     @StateObject private var onboardingManager = OnboardingManager.shared
-    @StateObject private var hapticManager = HapticManager.shared
     @State private var showHealthKitPermission = false
     @State private var showNotificationPermission = false
     @State private var showCompletionCelebration = false
