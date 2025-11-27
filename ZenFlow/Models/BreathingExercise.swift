@@ -62,7 +62,7 @@ struct BreathingPhaseConfig: Identifiable, Codable {
         // Use the localization key to fetch the instruction, with a fallback to the key itself
         String(
             localized: String.LocalizationValue(instructionKey),
-            defaultValue: String.LocalizationValue(instructionKey)
+            defaultValue: "\(instructionKey)"
         )
     }
 
@@ -158,14 +158,14 @@ struct BreathingExercise: Identifiable, Codable {
     var localizedName: String {
         String(
             localized: String.LocalizationValue("exercise_\(exerciseType)_name"),
-            defaultValue: String.LocalizationValue(getDefaultName())
+            defaultValue: "\(getDefaultName())"
         )
     }
 
     var localizedDescription: String {
         String(
             localized: String.LocalizationValue("exercise_\(exerciseType)_description"),
-            defaultValue: String.LocalizationValue(getDefaultDescription())
+            defaultValue: "\(getDefaultDescription())"
         )
     }
 
@@ -173,7 +173,7 @@ struct BreathingExercise: Identifiable, Codable {
         (0..<4).map { index in
             String(
                 localized: String.LocalizationValue("exercise_\(exerciseType)_benefit_\(index)"),
-                defaultValue: String.LocalizationValue(getDefaultBenefit(at: index))
+                defaultValue: "\(getDefaultBenefit(at: index))"
             )
         }
     }
