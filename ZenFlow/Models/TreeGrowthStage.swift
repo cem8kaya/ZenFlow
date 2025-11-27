@@ -30,17 +30,17 @@ enum TreeGrowthStage: Int, CaseIterable, Identifiable {
     var title: String {
         switch self {
         case .seed:
-            return String(localized: "tree_stage_seed_title", comment: "Seed stage title")
+            return String(localized: "tree_stage_seed_title", defaultValue: "Tohum", comment: "Seed stage title")
         case .sprout:
-            return String(localized: "tree_stage_sprout_title", comment: "Sprout stage title")
+            return String(localized: "tree_stage_sprout_title", defaultValue: "Filiz", comment: "Sprout stage title")
         case .sapling:
-            return String(localized: "tree_stage_sapling_title", comment: "Sapling stage title")
+            return String(localized: "tree_stage_sapling_title", defaultValue: "Fidan", comment: "Sapling stage title")
         case .youngTree:
-            return String(localized: "tree_stage_young_tree_title", comment: "Young tree stage title")
+            return String(localized: "tree_stage_young_tree_title", defaultValue: "Genç Ağaç", comment: "Young tree stage title")
         case .matureTree:
-            return String(localized: "tree_stage_mature_tree_title", comment: "Mature tree stage title")
+            return String(localized: "tree_stage_mature_tree_title", defaultValue: "Olgun Ağaç", comment: "Mature tree stage title")
         case .ancientTree:
-            return String(localized: "tree_stage_ancient_tree_title", comment: "Ancient tree stage title")
+            return String(localized: "tree_stage_ancient_tree_title", defaultValue: "Kadim Ağaç", comment: "Ancient tree stage title")
         }
     }
 
@@ -48,17 +48,17 @@ enum TreeGrowthStage: Int, CaseIterable, Identifiable {
     var description: String {
         switch self {
         case .seed:
-            return String(localized: "tree_stage_seed_description", comment: "Seed stage description")
+            return String(localized: "tree_stage_seed_description", defaultValue: "Yolculuğun başlangıcı. Her büyük değişim küçük bir tohumla başlar.", comment: "Seed stage description")
         case .sprout:
-            return String(localized: "tree_stage_sprout_description", comment: "Sprout stage description")
+            return String(localized: "tree_stage_sprout_description", defaultValue: "İlk adımları attın! Sabır ve özveriyle büyümeye devam et.", comment: "Sprout stage description")
         case .sapling:
-            return String(localized: "tree_stage_sapling_description", comment: "Sapling stage description")
+            return String(localized: "tree_stage_sapling_description", defaultValue: "Güçlü temeller atıyorsun. Her gün daha da büyüyorsun.", comment: "Sapling stage description")
         case .youngTree:
-            return String(localized: "tree_stage_young_tree_description", comment: "Young tree stage description")
+            return String(localized: "tree_stage_young_tree_description", defaultValue: "Artık güçlü bir ağaçsın! Egzersiz alışkanlığın kökleniyor.", comment: "Young tree stage description")
         case .matureTree:
-            return String(localized: "tree_stage_mature_tree_description", comment: "Mature tree stage description")
+            return String(localized: "tree_stage_mature_tree_description", defaultValue: "Olgunlaştın ve güçlendin. Zen bahçenin görkemli ağacı.", comment: "Mature tree stage description")
         case .ancientTree:
-            return String(localized: "tree_stage_ancient_tree_description", comment: "Ancient tree stage description")
+            return String(localized: "tree_stage_ancient_tree_description", defaultValue: "Efsanevi bir yolculuk tamamladın! Bilgelik ve güç sahibisin.", comment: "Ancient tree stage description")
         }
     }
 

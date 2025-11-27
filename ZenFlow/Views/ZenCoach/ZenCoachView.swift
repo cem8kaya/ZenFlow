@@ -106,15 +106,15 @@ struct ZenCoachView: View {
 
             // Title and status
             VStack(alignment: .leading, spacing: 2) {
-                            Text(String(localized: "zen_coach_title", comment: "Zen Master title"))
+                            Text(String(localized: "zen_coach_title", defaultValue: "Zen Master", comment: "Zen Master title"))
                                 .font(.system(size: 18, weight: .semibold))
                                 .foregroundColor(ZenTheme.lightLavender)
 
                             Group {
                                 if manager.isProcessing {
-                                    Text(String(localized: "zen_coach_typing", comment: "Typing indicator"))
+                                    Text(String(localized: "zen_coach_typing", defaultValue: "Yazıyor...", comment: "Typing indicator"))
                                 } else {
-                                    Text(String(localized: "zen_coach_online", comment: "Online status"))
+                                    Text(String(localized: "zen_coach_online", defaultValue: "Çevrimiçi", comment: "Online status"))
                                 }
                             }
                             .font(.system(size: 13))
@@ -171,18 +171,18 @@ struct ZenCoachView: View {
                 }
 
                 // Title
-                Text(String(localized: "zen_coach_title", comment: "Zen Master title"))
+                Text(String(localized: "zen_coach_title", defaultValue: "Zen Master", comment: "Zen Master title"))
                     .font(ZenTheme.zenTitle)
                     .foregroundColor(ZenTheme.lightLavender)
 
                 // Subtitle with Zen quote
                 VStack(spacing: 8) {
-                    Text(String(localized: "zen_coach_subtitle", comment: "Your guide in mindfulness journey"))
+                    Text(String(localized: "zen_coach_subtitle", defaultValue: "Mindfulness yolculuğunda rehberin", comment: "Your guide in mindfulness journey"))
                         .font(ZenTheme.zenSubheadline)
                         .foregroundColor(ZenTheme.lightLavender.opacity(0.7))
                         .multilineTextAlignment(.center)
 
-                    Text(String(localized: "zen_coach_quote", comment: "Zen wisdom quote"))
+                    Text(String(localized: "zen_coach_quote", defaultValue: "\"Şimdiki an, sahip olduğun tek andır.\"", comment: "Zen wisdom quote"))
                         .font(.system(size: 14, weight: .light, design: .serif))
                         .foregroundColor(ZenTheme.softPurple)
                         .italic()
@@ -312,7 +312,7 @@ struct ZenCoachView: View {
     private var inputBar: some View {
         HStack(alignment: .bottom, spacing: 12) {
             // Text field
-            TextField(String(localized: "zen_coach_input_placeholder", comment: "Ask something..."), text: $inputText, axis: .vertical)
+            TextField(String(localized: "zen_coach_input_placeholder", defaultValue: "Bir şey sor...", comment: "Ask something..."), text: $inputText, axis: .vertical)
                 .textFieldStyle(.plain)
                 .font(.system(size: 16))
                 .foregroundColor(ZenTheme.lightLavender)

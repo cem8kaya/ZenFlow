@@ -24,13 +24,13 @@ enum BreathingPhaseType: String, Codable {
     var displayText: String {
         switch self {
         case .inhale:
-            return String(localized: "breathing_phase_inhale", comment: "Inhale")
+            return String(localized: "breathing_phase_inhale", defaultValue: "Nefes Al", comment: "Inhale")
         case .hold:
-            return String(localized: "breathing_phase_hold", comment: "Hold")
+            return String(localized: "breathing_phase_hold", defaultValue: "Tut", comment: "Hold")
         case .exhale:
-            return String(localized: "breathing_phase_exhale", comment: "Exhale")
+            return String(localized: "breathing_phase_exhale", defaultValue: "Nefes Ver", comment: "Exhale")
         case .holdAfterExhale:
-            return String(localized: "breathing_phase_hold_after_exhale", comment: "Hold after exhale")
+            return String(localized: "breathing_phase_hold_after_exhale", defaultValue: "Tut", comment: "Hold after exhale")
         }
     }
 
@@ -82,11 +82,11 @@ enum ExerciseDifficulty: String, Codable {
     var displayName: String {
         switch self {
         case .beginner:
-            return String(localized: "difficulty_beginner", comment: "Beginner")
+            return String(localized: "difficulty_beginner", defaultValue: "Başlangıç", comment: "Beginner")
         case .intermediate:
-            return String(localized: "difficulty_intermediate", comment: "Intermediate")
+            return String(localized: "difficulty_intermediate", defaultValue: "Orta", comment: "Intermediate")
         case .advanced:
-            return String(localized: "difficulty_advanced", comment: "Advanced")
+            return String(localized: "difficulty_advanced", defaultValue: "İleri", comment: "Advanced")
         }
     }
 
@@ -114,13 +114,13 @@ enum RecommendedTime: String, Codable {
     var displayName: String {
         switch self {
         case .morning:
-            return String(localized: "recommended_time_morning", comment: "Morning")
+            return String(localized: "recommended_time_morning", defaultValue: "Sabah", comment: "Morning")
         case .evening:
-            return String(localized: "recommended_time_evening", comment: "Evening")
+            return String(localized: "recommended_time_evening", defaultValue: "Akşam", comment: "Evening")
         case .stressful:
-            return String(localized: "recommended_time_stressful", comment: "Stressful moments")
+            return String(localized: "recommended_time_stressful", defaultValue: "Stres Anı", comment: "Stressful moments")
         case .anytime:
-            return String(localized: "recommended_time_anytime", comment: "Anytime")
+            return String(localized: "recommended_time_anytime", defaultValue: "Her Zaman", comment: "Anytime")
         }
     }
 

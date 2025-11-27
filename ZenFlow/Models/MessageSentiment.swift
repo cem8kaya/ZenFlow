@@ -22,11 +22,11 @@ enum MessageSentiment: String, Codable, CaseIterable {
     var displayName: String {
         switch self {
         case .positive:
-            return String(localized: "sentiment_positive", comment: "Positive")
+            return String(localized: "sentiment_positive", defaultValue: "Pozitif", comment: "Positive")
         case .neutral:
-            return String(localized: "sentiment_neutral", comment: "Neutral")
+            return String(localized: "sentiment_neutral", defaultValue: "Nötr", comment: "Neutral")
         case .negative:
-            return String(localized: "sentiment_negative", comment: "Negative")
+            return String(localized: "sentiment_negative", defaultValue: "Negatif", comment: "Negative")
         }
     }
 

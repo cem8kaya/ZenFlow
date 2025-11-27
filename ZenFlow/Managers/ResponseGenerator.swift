@@ -85,7 +85,7 @@ class ResponseGenerator {
         let count = responseTemplateCount[intent]?[sentiment] ?? 0
         
         guard count > 0 else {
-            let fallback = String(localized: "response_fallback", comment: "Fallback response")
+            let fallback = String(localized: "response_fallback", defaultValue: "Anlıyorum. Sana nasıl yardımcı olabilirim? 🧘", comment: "Fallback response")
             return "\(fallback)\n\n\(getRandomZenQuote())"
         }
         
@@ -109,14 +109,14 @@ class ResponseGenerator {
         
         // Add streak information
         if stats.currentStreak > 0 {
-            let streakTemplate = String(localized: "personalization_streak", comment: "Streak message")
+            let streakTemplate = String(localized: "personalization_streak", defaultValue: "🔥 Bu arada, %d günlük serin devam ediyor! Harika bir disiplin.", comment: "Streak message")
             let streakMessage = "\n\n\(String(format: streakTemplate, stats.currentStreak))"
             personalizedResponse += streakMessage
         }
-        
+
         // Add milestone celebration
         if stats.totalMinutes >= 300 && stats.totalMinutes % 100 < 10 {
-            let milestoneTemplate = String(localized: "personalization_milestone", comment: "Milestone message")
+            let milestoneTemplate = String(localized: "personalization_milestone", defaultValue: "🎉 %d dakikayı geçtin! Bu muazzam bir başarı!", comment: "Milestone message")
             let milestoneMessage = "\n\n\(String(format: milestoneTemplate, stats.totalMinutes))"
             personalizedResponse += milestoneMessage
         }
@@ -130,17 +130,17 @@ class ResponseGenerator {
     private func getActionButton(for intent: UserIntent) -> (text: String?, url: String?) {
         switch intent {
         case .stress, .breathing:
-            return (String(localized: "action_button_breathing", comment: "Start breathing exercise"), intent.deepLinkURL)
+            return (String(localized: "action_button_breathing", defaultValue: "Nefes Egzersizi Başlat", comment: "Start breathing exercise"), intent.deepLinkURL)
         case .focus:
-            return (String(localized: "action_button_pomodoro", comment: "Start Pomodoro"), intent.deepLinkURL)
+            return (String(localized: "action_button_pomodoro", defaultValue: "Pomodoro Başlat", comment: "Start Pomodoro"), intent.deepLinkURL)
         case .sleep:
-            return (String(localized: "action_button_478", comment: "4-7-8 Technique"), intent.deepLinkURL)
+            return (String(localized: "action_button_478", defaultValue: "4-7-8 Tekniği", comment: "4-7-8 Technique"), intent.deepLinkURL)
         case .motivation:
-            return (String(localized: "action_button_garden", comment: "View Zen Garden"), intent.deepLinkURL)
+            return (String(localized: "action_button_garden", defaultValue: "Zen Bahçeni Gör", comment: "View Zen Garden"), intent.deepLinkURL)
         case .meditation:
-            return (String(localized: "action_button_meditation", comment: "Learn meditation"), intent.deepLinkURL)
+            return (String(localized: "action_button_meditation", defaultValue: "Meditasyon Öğren", comment: "Learn meditation"), intent.deepLinkURL)
         case .progress:
-            return (String(localized: "action_button_progress", comment: "View progress"), intent.deepLinkURL)
+            return (String(localized: "action_button_progress", defaultValue: "İlerlemeni Gör", comment: "View progress"), intent.deepLinkURL)
         case .general:
             return (nil, nil)
         }
