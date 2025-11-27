@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import CoreMotion
+import Combine
 
 // MARK: - Particle Models
 
@@ -78,6 +80,8 @@ struct ZenGardenView: View {
     // MARK: - State
 
     @StateObject private var gardenManager = ZenGardenManager()
+    @StateObject private var motionManager = MotionManager() // Paralaks efekti için eklendi
+    
     private let dataManager = LocalDataManager.shared
     @Environment(\.accessibilityReduceMotion) var reduceMotion
     @Environment(\.scenePhase) private var scenePhase
@@ -150,17 +154,25 @@ struct ZenGardenView: View {
             if #available(iOS 17.0, *) {
                 ZStack {
                     // Dynamic Background with time-of-day
+                    // Paralaks: Arka plan hafifçe hareket eder ve scale ile kenar boşlukları önlenir
                     dynamicBackground
+                        .offset(x: motionManager.x * 0.5, y: motionManager.y * 0.5)
+                        .scaleEffect(1.05)
                     
                     // Stars (night only)
+                    // Paralaks: Yıldızlar arka plandan biraz daha hızlı hareket eder
                     if timeOfDay < 0.3 {
                         starsLayer
+                            .offset(x: motionManager.x * 0.8, y: motionManager.y * 0.8)
                     }
                     
                     // Clouds
+                    // Paralaks: Bulutlar daha yakında olduğu için daha fazla hareket eder
                     cloudsLayer
+                        .offset(x: motionManager.x * 1.5, y: motionManager.y * 1.5)
                     
-                    // 2D Watercolor View
+                    // 2D Watercolor View (Ön Plan Grubu)
+                    // Paralaks: Ön plan, arka plana zıt ve daha güçlü hareket ederek derinlik hissi yaratır
                     ZStack {
                         WatercolorZenGardenView(gardenManager: gardenManager)
                         
@@ -241,12 +253,14 @@ struct ZenGardenView: View {
                                 .padding(.trailing, 20)
                         }
                     }
+                    .offset(x: motionManager.x * -2.0, y: motionManager.y * -2.0)
                 }
                 .onAppear {
                     isViewActive = true
                     viewSize = geometry.size
                     setupBackground()
                     startBackgroundAnimations()
+                    motionManager.startUpdates() // Hareketi başlat
                     impactFeedback.prepare()
                     lightFeedback.prepare()
                 }
@@ -254,6 +268,7 @@ struct ZenGardenView: View {
                     // PERFORMANCE OPTIMIZATION: Clean up when view disappears
                     isViewActive = false
                     stopAllAnimations()
+                    motionManager.stopUpdates() // Hareketi durdur
                 }
                 .onChange(of: scenePhase) { oldPhase, newPhase in
                     // PERFORMANCE OPTIMIZATION: Handle app backgrounding
@@ -261,9 +276,11 @@ struct ZenGardenView: View {
                     case .active:
                         if isViewActive {
                             startBackgroundAnimations()
+                            motionManager.startUpdates()
                         }
                     case .background, .inactive:
                         stopAllAnimations()
+                        motionManager.stopUpdates()
                     @unknown default:
                         break
                     }
@@ -1097,6 +1114,37 @@ struct ZenGardenView: View {
         stardustParticles.removeAll()
         fallingPetals.removeAll()
         waterDroplets.removeAll()
+    }
+}
+
+// MARK: - Motion Manager for Parallax Effect
+class MotionManager: ObservableObject {
+    private let motionManager = CMMotionManager()
+    @Published var x: CGFloat = 0
+    @Published var y: CGFloat = 0
+
+    init() {
+        // Performans için update interval'i makul bir seviyede tutuyoruz (60 FPS)
+        motionManager.deviceMotionUpdateInterval = 1/60
+    }
+
+    func startUpdates() {
+        guard motionManager.isDeviceMotionAvailable else { return }
+        
+        motionManager.startDeviceMotionUpdates(to: .main) { [weak self] data, error in
+            guard let self = self, let data = data else { return }
+            
+            // Hareket verilerini yumuşatarak UI offset değerlerine dönüştürüyoruz
+            // pitch ve roll değerlerini kullanıyoruz
+            withAnimation(.linear(duration: 0.1)) {
+                self.x = CGFloat(data.attitude.roll) * 20 // Hassasiyet çarpanı
+                self.y = CGFloat(data.attitude.pitch) * 20
+            }
+        }
+    }
+
+    func stopUpdates() {
+        motionManager.stopDeviceMotionUpdates()
     }
 }
 
