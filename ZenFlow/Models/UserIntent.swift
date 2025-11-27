@@ -31,21 +31,21 @@ enum UserIntent: String, Codable, CaseIterable, Identifiable {
     var displayName: String {
         switch self {
         case .stress:
-            return String(localized: "intent_stress", comment: "Stress Management")
+            return String(localized: "intent_stress", defaultValue: "Stres Yönetimi", comment: "Stress Management")
         case .focus:
-            return String(localized: "intent_focus", comment: "Focus")
+            return String(localized: "intent_focus", defaultValue: "Odaklanma", comment: "Focus")
         case .sleep:
-            return String(localized: "intent_sleep", comment: "Sleep")
+            return String(localized: "intent_sleep", defaultValue: "Uyku", comment: "Sleep")
         case .breathing:
-            return String(localized: "intent_breathing", comment: "Breathing Exercise")
+            return String(localized: "intent_breathing", defaultValue: "Nefes Egzersizi", comment: "Breathing Exercise")
         case .motivation:
-            return String(localized: "intent_motivation", comment: "Motivation")
+            return String(localized: "intent_motivation", defaultValue: "Motivasyon", comment: "Motivation")
         case .meditation:
-            return String(localized: "intent_meditation", comment: "Meditation")
+            return String(localized: "intent_meditation", defaultValue: "Meditasyon", comment: "Meditation")
         case .progress:
-            return String(localized: "intent_progress", comment: "Progress")
+            return String(localized: "intent_progress", defaultValue: "İlerleme", comment: "Progress")
         case .general:
-            return String(localized: "intent_general", comment: "General")
+            return String(localized: "intent_general", defaultValue: "Genel", comment: "General")
         }
     }
 
