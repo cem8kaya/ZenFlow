@@ -20,19 +20,71 @@ struct ZenButtonStyle: ButtonStyle {
     var isEnabled: Bool = true
 
     func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .scaleEffect(configuration.isPressed ? scaleEffect : 1.0)
-            .opacity(isEnabled ? 1.0 : 0.5)
-            .animation(
-                .spring(response: 0.3, dampingFraction: 0.6),
-                value: configuration.isPressed
-            )
-            .onChange(of: configuration.isPressed) { _, isPressed in
-                if isPressed && isEnabled {
-                    // Play haptic feedback on press
-                    HapticManager.shared.playImpact(style: hapticStyle)
+        if #available(iOS 17.0, *) {
+            configuration.label
+                .scaleEffect(configuration.isPressed ? scaleEffect : 1.0)
+                .opacity(isEnabled ? 1.0 : 0.5)
+                .animation(
+                    .spring(response: 0.3, dampingFraction: 0.6),
+                    value: configuration.isPressed
+                )
+                .onChange(of: configuration.isPressed) { _, isPressed in
+                    if isPressed && isEnabled {
+                        // Play haptic feedback on press
+                        HapticManager.shared.playImpact(style: hapticStyle)
+                    }
                 }
-            }
+        } else {
+            // Fallback on earlier versions
+        };if #available(iOS 17.0, *) {
+            configuration.label
+                .scaleEffect(configuration.isPressed ? scaleEffect : 1.0)
+                .opacity(isEnabled ? 1.0 : 0.5)
+                .animation(
+                    .spring(response: 0.3, dampingFraction: 0.6),
+                    value: configuration.isPressed
+                )
+                .onChange(of: configuration.isPressed) { _, isPressed in
+                    if isPressed && isEnabled {
+                        // Play haptic feedback on press
+                        HapticManager.shared.playImpact(style: hapticStyle)
+                    }
+                }
+        } else {
+            // Fallback on earlier versions
+        };if #available(iOS 17.0, *) {
+            configuration.label
+                .scaleEffect(configuration.isPressed ? scaleEffect : 1.0)
+                .opacity(isEnabled ? 1.0 : 0.5)
+                .animation(
+                    .spring(response: 0.3, dampingFraction: 0.6),
+                    value: configuration.isPressed
+                )
+                .onChange(of: configuration.isPressed) { _, isPressed in
+                    if isPressed && isEnabled {
+                        // Play haptic feedback on press
+                        HapticManager.shared.playImpact(style: hapticStyle)
+                    }
+                }
+        } else {
+            // Fallback on earlier versions
+        };if #available(iOS 17.0, *) {
+            configuration.label
+                .scaleEffect(configuration.isPressed ? scaleEffect : 1.0)
+                .opacity(isEnabled ? 1.0 : 0.5)
+                .animation(
+                    .spring(response: 0.3, dampingFraction: 0.6),
+                    value: configuration.isPressed
+                )
+                .onChange(of: configuration.isPressed) { _, isPressed in
+                    if isPressed && isEnabled {
+                        // Play haptic feedback on press
+                        HapticManager.shared.playImpact(style: hapticStyle)
+                    }
+                }
+        } else {
+            // Fallback on earlier versions
+        }
     }
 }
 
@@ -41,18 +93,52 @@ struct ZenPrimaryButtonStyle: ButtonStyle {
     var isEnabled: Bool = true
 
     func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
-            .opacity(isEnabled ? 1.0 : 0.5)
-            .animation(
-                .spring(response: 0.3, dampingFraction: 0.6),
-                value: configuration.isPressed
-            )
-            .onChange(of: configuration.isPressed) { _, isPressed in
-                if isPressed && isEnabled {
-                    HapticManager.shared.playImpact(style: .medium)
+        if #available(iOS 17.0, *) {
+            configuration.label
+                .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
+                .opacity(isEnabled ? 1.0 : 0.5)
+                .animation(
+                    .spring(response: 0.3, dampingFraction: 0.6),
+                    value: configuration.isPressed
+                )
+                .onChange(of: configuration.isPressed) { _, isPressed in
+                    if isPressed && isEnabled {
+                        HapticManager.shared.playImpact(style: .medium)
+                    }
                 }
-            }
+        } else {
+            // Fallback on earlier versions
+        };if #available(iOS 17.0, *) {
+            configuration.label
+                .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
+                .opacity(isEnabled ? 1.0 : 0.5)
+                .animation(
+                    .spring(response: 0.3, dampingFraction: 0.6),
+                    value: configuration.isPressed
+                )
+                .onChange(of: configuration.isPressed) { _, isPressed in
+                    if isPressed && isEnabled {
+                        HapticManager.shared.playImpact(style: .medium)
+                    }
+                }
+        } else {
+            // Fallback on earlier versions
+        };if #available(iOS 17.0, *) {
+            configuration.label
+                .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
+                .opacity(isEnabled ? 1.0 : 0.5)
+                .animation(
+                    .spring(response: 0.3, dampingFraction: 0.6),
+                    value: configuration.isPressed
+                )
+                .onChange(of: configuration.isPressed) { _, isPressed in
+                    if isPressed && isEnabled {
+                        HapticManager.shared.playImpact(style: .medium)
+                    }
+                }
+        } else {
+            // Fallback on earlier versions
+        }
     }
 }
 
@@ -61,18 +147,22 @@ struct ZenSecondaryButtonStyle: ButtonStyle {
     var isEnabled: Bool = true
 
     func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .scaleEffect(configuration.isPressed ? 0.97 : 1.0)
-            .opacity(isEnabled ? 1.0 : 0.6)
-            .animation(
-                .spring(response: 0.3, dampingFraction: 0.6),
-                value: configuration.isPressed
-            )
-            .onChange(of: configuration.isPressed) { _, isPressed in
-                if isPressed && isEnabled {
-                    HapticManager.shared.playImpact(style: .light)
+        if #available(iOS 17.0, *) {
+            configuration.label
+                .scaleEffect(configuration.isPressed ? 0.97 : 1.0)
+                .opacity(isEnabled ? 1.0 : 0.6)
+                .animation(
+                    .spring(response: 0.3, dampingFraction: 0.6),
+                    value: configuration.isPressed
+                )
+                .onChange(of: configuration.isPressed) { _, isPressed in
+                    if isPressed && isEnabled {
+                        HapticManager.shared.playImpact(style: .light)
+                    }
                 }
-            }
+        } else {
+            // Fallback on earlier versions
+        }
     }
 }
 
@@ -81,18 +171,22 @@ struct ZenIconButtonStyle: ButtonStyle {
     var isEnabled: Bool = true
 
     func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .scaleEffect(configuration.isPressed ? 0.90 : 1.0)
-            .opacity(isEnabled ? 1.0 : 0.5)
-            .animation(
-                .spring(response: 0.25, dampingFraction: 0.7),
-                value: configuration.isPressed
-            )
-            .onChange(of: configuration.isPressed) { _, isPressed in
-                if isPressed && isEnabled {
-                    HapticManager.shared.playImpact(style: .light)
+        if #available(iOS 17.0, *) {
+            configuration.label
+                .scaleEffect(configuration.isPressed ? 0.90 : 1.0)
+                .opacity(isEnabled ? 1.0 : 0.5)
+                .animation(
+                    .spring(response: 0.25, dampingFraction: 0.7),
+                    value: configuration.isPressed
+                )
+                .onChange(of: configuration.isPressed) { _, isPressed in
+                    if isPressed && isEnabled {
+                        HapticManager.shared.playImpact(style: .light)
+                    }
                 }
-            }
+        } else {
+            // Fallback on earlier versions
+        }
     }
 }
 

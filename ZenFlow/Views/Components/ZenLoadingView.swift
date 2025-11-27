@@ -106,46 +106,50 @@ struct ZenProgressView: View {
     @State private var animatedProgress: Double = 0
 
     var body: some View {
-        ZStack {
-            // Background circle
-            Circle()
-                .stroke(
-                    Color.white.opacity(0.2),
-                    lineWidth: lineWidth
-                )
-                .frame(width: size, height: size)
-
-            // Progress circle
-            Circle()
-                .trim(from: 0, to: animatedProgress)
-                .stroke(
-                    LinearGradient(
-                        gradient: Gradient(colors: [.purple, .blue, .cyan]),
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    ),
-                    style: StrokeStyle(
-                        lineWidth: lineWidth,
-                        lineCap: .round
+        if #available(iOS 17.0, *) {
+            ZStack {
+                // Background circle
+                Circle()
+                    .stroke(
+                        Color.white.opacity(0.2),
+                        lineWidth: lineWidth
                     )
-                )
-                .frame(width: size, height: size)
-                .rotationEffect(.degrees(-90))
-
-            // Percentage text
-            Text("\(Int(animatedProgress * 100))%")
-                .font(.system(size: size * 0.25, weight: .semibold))
-                .foregroundColor(.white)
-        }
-        .onAppear {
-            withAnimation(.easeInOut(duration: 0.5)) {
-                animatedProgress = progress
+                    .frame(width: size, height: size)
+                
+                // Progress circle
+                Circle()
+                    .trim(from: 0, to: animatedProgress)
+                    .stroke(
+                        LinearGradient(
+                            gradient: Gradient(colors: [.purple, .blue, .cyan]),
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        ),
+                        style: StrokeStyle(
+                            lineWidth: lineWidth,
+                            lineCap: .round
+                        )
+                    )
+                    .frame(width: size, height: size)
+                    .rotationEffect(.degrees(-90))
+                
+                // Percentage text
+                Text("\(Int(animatedProgress * 100))%")
+                    .font(.system(size: size * 0.25, weight: .semibold))
+                    .foregroundColor(.white)
             }
-        }
-        .onChange(of: progress) { _, newProgress in
-            withAnimation(.easeInOut(duration: 0.3)) {
-                animatedProgress = newProgress
+            .onAppear {
+                withAnimation(.easeInOut(duration: 0.5)) {
+                    animatedProgress = progress
+                }
             }
+            .onChange(of: progress) { _, newProgress in
+                withAnimation(.easeInOut(duration: 0.3)) {
+                    animatedProgress = newProgress
+                }
+            }
+        } else {
+            // Fallback on earlier versions
         }
     }
 }

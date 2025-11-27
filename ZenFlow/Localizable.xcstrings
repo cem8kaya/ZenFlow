@@ -983,9 +983,6 @@
     "dk" : {
 
     },
-    "Egzersiz seç: %@" : {
-      "comment" : "Exercise selected announcement"
-    },
     "En Uzun Seri" : {
       "comment" : "Longest streak label"
     },
@@ -1568,6 +1565,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ağzınızdan hızlıca iki sayarak nefes verin"
+          }
+        }
+      }
+    },
+    "exercise_selected_announcement" : {
+      "comment" : "Exercise selected announcement",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Egzersiz seçildi: %@"
           }
         }
       }
