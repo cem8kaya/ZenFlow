@@ -30,11 +30,11 @@ struct OnboardingPage: Identifiable, Equatable {
 
     // Localized computed properties
     var title: String {
-        String(localized: LocalizationKey(stringLiteral: titleKey), defaultValue: String.LocalizationValue(stringLiteral: titleKey), comment: "Onboarding title")
+        String(localized: String.LocalizationValue(stringLiteral: titleKey), defaultValue: String.LocalizationValue(stringLiteral: titleKey))
     }
 
     var description: String {
-        String(localized: LocalizationKey(stringLiteral: descriptionKey), defaultValue: String.LocalizationValue(stringLiteral: descriptionKey), comment: "Onboarding description")
+        String(localized: String.LocalizationValue(stringLiteral: descriptionKey), defaultValue: String.LocalizationValue(stringLiteral: descriptionKey))
     }
 
     // MARK: - Accessibility
