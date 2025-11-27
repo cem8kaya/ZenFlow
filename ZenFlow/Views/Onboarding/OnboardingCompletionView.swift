@@ -96,11 +96,11 @@ struct OnboardingCompletionView: View {
 
                 // Title
                 VStack(spacing: 12) {
-                    Text("Harika!")
+                    Text(String(localized: "onboarding_completion_title", defaultValue: "Harika!", comment: "Onboarding completion title"))
                         .font(.system(size: 36, weight: .bold))
                         .foregroundColor(ZenTheme.lightLavender)
 
-                    Text("ZenFlow yolculuğuna başlamaya hazırsın")
+                    Text(String(localized: "onboarding_completion_subtitle", defaultValue: "ZenFlow yolculuğuna başlamaya hazırsın", comment: "Onboarding completion subtitle"))
                         .font(.system(size: 18, weight: .medium))
                         .foregroundColor(ZenTheme.softPurple.opacity(0.9))
                         .multilineTextAlignment(.center)
@@ -127,7 +127,7 @@ struct OnboardingCompletionView: View {
                         HStack(spacing: 8) {
                             Image(systemName: "play.fill")
                                 .font(.system(size: 16, weight: .semibold))
-                            Text("İlk Meditasyonuna Başla")
+                            Text(String(localized: "onboarding_start_first_session", defaultValue: "İlk Meditasyonuna Başla", comment: "Start first meditation button"))
                                 .font(.system(size: 17, weight: .semibold))
                         }
                         .foregroundColor(.white)
@@ -159,7 +159,7 @@ struct OnboardingCompletionView: View {
                         HapticManager.shared.playImpact(style: .light)
                         isPresented = false
                     }) {
-                        Text("Uygulamayı Keşfet")
+                        Text(String(localized: "onboarding_explore_app", defaultValue: "Uygulamayı Keşfet", comment: "Explore app button"))
                             .font(.system(size: 16, weight: .medium))
                             .foregroundColor(ZenTheme.softPurple)
                             .padding(.vertical, 12)

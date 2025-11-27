@@ -131,8 +131,8 @@ struct SettingsView: View {
                             Slider(value: $hapticIntensity, in: 0.3...1.0, step: 0.1)
                                 .tint(ZenTheme.calmBlue)
                                 .onChange(of: hapticIntensity) { oldValue, newValue in
-                                    // Play demo haptic at new intensity
-                                    HapticManager.shared.playImpact(style: .medium)
+                                    // Play demo haptic at new intensity level
+                                    hapticManager.playIntensityDemo()
                                 }
                         }
                     }
