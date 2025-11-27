@@ -59,9 +59,12 @@ struct BreathingPhaseConfig: Identifiable, Codable {
     let instructionKey: String // Localization key for instruction
 
     var instruction: String {
-            // DÜZELTME 1: LocalizedStringKey yerine NSLocalizedString kullanıldı
-            NSLocalizedString(instructionKey, comment: "Breathing phase instruction")
-        }
+        // Use the localization key to fetch the instruction, with a fallback to the key itself
+        String(
+            localized: String.LocalizationValue(instructionKey),
+            defaultValue: String.LocalizationValue(instructionKey)
+        )
+    }
 
     init(phase: BreathingPhaseType, duration: TimeInterval, instructionKey: String) {
         self.id = UUID()
@@ -153,20 +156,89 @@ struct BreathingExercise: Identifiable, Codable {
 
     // Localized computed properties
     var localizedName: String {
-            // DÜZELTME 2: Dinamik anahtarlar için NSLocalizedString kullanıldı
-            NSLocalizedString("exercise_\(exerciseType)_name", comment: "Exercise name")
-        }
-        
-    var localizedDescription: String {
-        // DÜZELTME 3: Dinamik anahtarlar için NSLocalizedString kullanıldı
-        NSLocalizedString("exercise_\(exerciseType)_description", comment: "Exercise description")
+        String(
+            localized: String.LocalizationValue("exercise_\(exerciseType)_name"),
+            defaultValue: String.LocalizationValue(getDefaultName())
+        )
     }
-    
+
+    var localizedDescription: String {
+        String(
+            localized: String.LocalizationValue("exercise_\(exerciseType)_description"),
+            defaultValue: String.LocalizationValue(getDefaultDescription())
+        )
+    }
+
     var localizedBenefits: [String] {
         (0..<4).map { index in
-            // DÜZELTME 4: Dinamik anahtarlar için NSLocalizedString kullanıldı
-            NSLocalizedString("exercise_\(exerciseType)_benefit_\(index)", comment: "Exercise benefit")
+            String(
+                localized: String.LocalizationValue("exercise_\(exerciseType)_benefit_\(index)"),
+                defaultValue: String.LocalizationValue(getDefaultBenefit(at: index))
+            )
         }
+    }
+
+    // Default values for when localization is not available
+    private func getDefaultName() -> String {
+        switch exerciseType {
+        case "box": return "Kutu Nefesi"
+        case "478": return "4-7-8 Tekniği"
+        case "calming": return "Sakinleştirici Nefes"
+        case "energy": return "Enerji Nefesi"
+        case "deep": return "Derin Gevşeme"
+        default: return exerciseType
+        }
+    }
+
+    private func getDefaultDescription() -> String {
+        switch exerciseType {
+        case "box": return "Dengeli ve düzenli bir nefes egzersizi. Zihinsel netlik ve sakinlik için idealdir."
+        case "478": return "Uykuya dalmayı kolaylaştıran ve derin rahatlama sağlayan teknik. Dr. Andrew Weil tarafından geliştirilmiştir."
+        case "calming": return "Basit ve etkili bir sakinleşme tekniği. Uzun nefes vermeler sinir sistemini sakinleştirir."
+        case "energy": return "Enerji ve canlılık kazandıran hızlı tempo nefes egzersizi. Sabah rutini için mükemmeldir."
+        case "deep": return "Yavaş ve derin nefes alıp vermelerle tam bir rahatlama hali. Meditasyon ve yoga sonrası idealdir."
+        default: return exerciseType
+        }
+    }
+
+    private func getDefaultBenefit(at index: Int) -> String {
+        let benefits: [String: [String]] = [
+            "box": [
+                "Stresi azaltır",
+                "Odaklanmayı artırır",
+                "Zihinsel netlik sağlar",
+                "Anksiyeteyi azaltır"
+            ],
+            "478": [
+                "Uykuya dalmayı kolaylaştırır",
+                "Anksiyeteyi azaltır",
+                "Kan basıncını düşürür",
+                "Derin rahatlama sağlar"
+            ],
+            "calming": [
+                "Hızlı sakinleşme sağlar",
+                "Stresi azaltır",
+                "Kalp atış hızını düzenler",
+                "Kolayca uygulanabilir"
+            ],
+            "energy": [
+                "Enerji seviyesini yükseltir",
+                "Zihinsel uyanıklığı artırır",
+                "Kan dolaşımını hızlandırır",
+                "Güne dinç başlamanızı sağlar"
+            ],
+            "deep": [
+                "Derin rahatlama sağlar",
+                "Meditasyonu derinleştirir",
+                "Kalp hızını yavaşlatır",
+                "İç huzur verir"
+            ]
+        ]
+        guard let typeBenefits = benefits[exerciseType],
+              index >= 0 && index < typeBenefits.count else {
+            return ""
+        }
+        return typeBenefits[index]
     }
 
     // Legacy compatibility
