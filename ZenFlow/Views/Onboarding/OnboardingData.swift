@@ -30,12 +30,13 @@ struct OnboardingPage: Identifiable, Equatable {
 
     // MARK: - Localized Computed Properties
 
+    // Düzeltme: Dinamik değişkenler için NSLocalizedString kullanımı en doğru yöntemdir.
     var title: String {
-        String(localized: String.LocalizationValue(titleKey), defaultValue: getDefaultTitle())
+        NSLocalizedString(titleKey, value: getDefaultTitle(), comment: "")
     }
 
     var description: String {
-        String(localized: String.LocalizationValue(descriptionKey), defaultValue: getDefaultDescription())
+        NSLocalizedString(descriptionKey, value: getDefaultDescription(), comment: "")
     }
 
     private func getDefaultTitle() -> String {
