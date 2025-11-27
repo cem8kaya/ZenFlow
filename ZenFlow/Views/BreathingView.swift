@@ -488,16 +488,49 @@ struct BreathingView: View {
             }
         }
         .onAppear {
-            // View appeared - setup if needed
+            // Görünüm açıldığında, eğer arka planda aktif bir seans varsa UI'ı senkronize et
+            if sessionTracker.isActive {
+                // 1. UI durumunu aktif hale getir (Play butonu yerine Stop butonu gelsin)
+                isAnimating = true
+                isPaused = false
+                
+                // 2. Görsel animasyon döngüsünü tekrar başlat (Timer'lar onDisappear'da silinmişti)
+                if animationTimer == nil {
+                    performBreathingCycle()
+                }
+                
+                // 3. Seans bitiş zamanlayıcısını (Session Timer) geri yükle
+                // Kalan süreyi hesapla
+                let totalSeconds = Double(selectedDurationMinutes * 60)
+                let elapsed = sessionTracker.duration
+                let remaining = totalSeconds - elapsed
+                
+                // Eğer süre dolmadıysa zamanlayıcıyı kalan süre için tekrar kur
+                if remaining > 0 {
+                    sessionTimer?.invalidate() // Varsa eskisini temizle
+                    sessionTimer = Timer.scheduledTimer(withTimeInterval: remaining, repeats: false) { _ in
+                        completeSessionAutomatically()
+                    }
+                } else {
+                    // Biz yokken süre dolmuşsa seansı bitir
+                    completeSessionAutomatically()
+                }
+            }
         }
         .onDisappear {
             // PERFORMANCE OPTIMIZATION: Clean up timers when view disappears
+            // CPU tasarrufu için Timer'ları durduruyoruz (Doğru işlem)
             cleanupTimers()
 
-            // Stop animations
+            // HATA KAYNAĞI BURASIYDI:
+            // Aşağıdaki kod bloğunu SİLİN veya YORUM SATIRI yapın.
+            // Başka taba geçince animasyon durumu "false" olmamalı, sadece görsel durmalı.
+            
+            /* BU KISMI KALDIRIN:
             if isAnimating {
                 isAnimating = false
             }
+            */
 
             // Fade out sound if playing
             if !soundManager.activeSounds.isEmpty {

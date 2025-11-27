@@ -202,10 +202,23 @@ struct OnboardingView: View {
             OnboardingCompletionView(
                 isPresented: $showCompletionCelebration,
                 onStartFirstSession: {
-                    // Navigate to breathing/meditation tab
-                    DeepLinkHandler.shared.navigateToBreathing()
+                    // 1. ÖNCE Onboarding'i tamamla (Bu, ZenFlowApp'in bu katmanı kaldırmasını sağlar)
+                    onboardingManager.completeOnboarding()
+                    
+                    // 2. SONRA Yönlendirmeyi yap
+                    // Küçük bir gecikme eklemek UI geçişinin daha pürüzsüz olmasını sağlar
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                        DeepLinkHandler.shared.navigateToBreathing()
+                    }
                 }
             )
+            .onDisappear {
+                // Eğer kullanıcı "Uygulamayı Keşfet"e basarsa veya ekranı kapatırsa,
+                // Onboarding'in tamamlandığından emin olmalıyız.
+                if !onboardingManager.hasCompletedOnboarding {
+                    onboardingManager.completeOnboarding()
+                }
+            }
         }
     }
 
@@ -266,10 +279,11 @@ struct OnboardingView: View {
     }
 
     private func completeOnboarding() {
-        // Mark onboarding as completed
-        onboardingManager.completeOnboarding()
-
-        // Show completion celebration
+        // BURAYI KALDIRIYORUZ: onboardingManager.completeOnboarding()
+        // Sebebi: Bunu şimdi çağırırsak ZenFlowApp bu view'ı (OnboardingView) hemen öldürür
+        // ve showCompletionCelebration (sheet) düzgün çalışmaz veya kilitlenir.
+        
+        // Sadece kutlama ekranını aç:
         showCompletionCelebration = true
     }
 }

@@ -107,8 +107,7 @@ struct ZenPrimaryButtonStyle: ButtonStyle {
                     }
                 }
         } else {
-            // Fallback on earlier versions
-        };if #available(iOS 17.0, *) {
+            // iOS 17 öncesi için fallback
             configuration.label
                 .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
                 .opacity(isEnabled ? 1.0 : 0.5)
@@ -116,28 +115,11 @@ struct ZenPrimaryButtonStyle: ButtonStyle {
                     .spring(response: 0.3, dampingFraction: 0.6),
                     value: configuration.isPressed
                 )
-                .onChange(of: configuration.isPressed) { _, isPressed in
+                .onChange(of: configuration.isPressed) { isPressed in
                     if isPressed && isEnabled {
                         HapticManager.shared.playImpact(style: .medium)
                     }
                 }
-        } else {
-            // Fallback on earlier versions
-        };if #available(iOS 17.0, *) {
-            configuration.label
-                .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
-                .opacity(isEnabled ? 1.0 : 0.5)
-                .animation(
-                    .spring(response: 0.3, dampingFraction: 0.6),
-                    value: configuration.isPressed
-                )
-                .onChange(of: configuration.isPressed) { _, isPressed in
-                    if isPressed && isEnabled {
-                        HapticManager.shared.playImpact(style: .medium)
-                    }
-                }
-        } else {
-            // Fallback on earlier versions
         }
     }
 }
