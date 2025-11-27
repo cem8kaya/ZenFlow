@@ -115,7 +115,7 @@ struct FocusTimerView: View {
                     pauseTimer()
                 }
                 // Fade out sound
-                if soundManager.isPlaying {
+                if !soundManager.activeSounds.isEmpty {
                     soundManager.stopAllSounds(fadeOutDuration: 0.3)
                 }
             }

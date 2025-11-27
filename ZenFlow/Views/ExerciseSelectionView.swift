@@ -241,7 +241,7 @@ struct ExerciseSelectionView: View {
         // Accessibility announcement
         UIAccessibility.post(
             notification: .announcement,
-            argument: String(localized: "Egzersiz seç: \(selectedExercise.name)", comment: "Exercise selected announcement")
+            argument: String(localized: "exercise_selected_announcement", defaultValue: "Egzersiz seçildi: \(selectedExercise.name)", comment: "Exercise selected announcement")
         )
 
         dismiss()
