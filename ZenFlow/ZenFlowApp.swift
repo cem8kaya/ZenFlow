@@ -23,11 +23,33 @@ struct ZenFlowApp: App {
     @StateObject private var onboardingManager = OnboardingManager.shared
     private let notificationDelegate = NotificationDelegate()
 
+    // MARK: - Singleton Managers (Performance Optimization)
+    // Initialize singleton managers once at app level and inject via EnvironmentObject
+    @StateObject private var sessionTracker = SessionTracker.shared
+    @StateObject private var hapticManager = HapticManager.shared
+    @StateObject private var soundManager = AmbientSoundManager.shared
+    @StateObject private var exerciseManager = BreathingExerciseManager.shared
+    @StateObject private var featureFlag = FeatureFlag.shared
+    @StateObject private var dataManager = LocalDataManager.shared
+    @StateObject private var gamificationManager = GamificationManager.shared
+    @StateObject private var zenCoachManager = ZenCoachManager.shared
+    @StateObject private var notificationManager = NotificationManager.shared
+
     var body: some Scene {
         WindowGroup {
             ZStack {
                 SwipeableTabView(selection: $selectedTab)
                     .preferredColorScheme(.dark)
+                    // Inject singleton managers into view hierarchy
+                    .environmentObject(sessionTracker)
+                    .environmentObject(hapticManager)
+                    .environmentObject(soundManager)
+                    .environmentObject(exerciseManager)
+                    .environmentObject(featureFlag)
+                    .environmentObject(dataManager)
+                    .environmentObject(gamificationManager)
+                    .environmentObject(zenCoachManager)
+                    .environmentObject(notificationManager)
 
                 // Splash screen overlay
                 if showSplash {
@@ -134,12 +156,17 @@ struct ZenFlowApp: App {
     }
 }
 
-/// Tab view wrapper
+/// Tab view wrapper with lazy loading for performance optimization
 struct SwipeableTabView: View {
     @Binding var selection: Int
 
+    // MARK: - Lazy Loading State (Performance Optimization)
+    // Track which tabs have been loaded to prevent unnecessary initialization
+    @State private var loadedTabs: Set<Int> = [0] // Tab 0 (ZenCoach) preloaded
+
     var body: some View {
         TabView(selection: $selection) {
+            // Tab 0: ZenCoach - Always loaded (first tab)
             ZenCoachView()
                 .tabItem {
                     Label(String(localized: "tab_zen_coach", defaultValue: "Zen Coach", comment: "Zen Coach tab"), systemImage: "person.crop.circle.fill")
@@ -147,33 +174,73 @@ struct SwipeableTabView: View {
                 .accessibilityLabel(String(localized: "tab_zen_coach_accessibility", defaultValue: "Zen Coach sekmesi", comment: "Zen Coach tab accessibility"))
                 .tag(0)
 
-            BreathingView()
-                .tabItem {
-                    Label(String(localized: "tab_meditation", defaultValue: "Meditasyon", comment: "Meditation tab"), systemImage: "leaf.circle.fill")
+            // Tab 1: Breathing - Lazy loaded
+            Group {
+                if loadedTabs.contains(1) {
+                    BreathingView()
+                } else {
+                    Color.clear.onAppear {
+                        loadedTabs.insert(1)
+                    }
                 }
-                .accessibilityLabel(String(localized: "tab_meditation_accessibility", defaultValue: "Meditasyon sekmesi", comment: "Meditation tab accessibility"))
-                .tag(1)
+            }
+            .tabItem {
+                Label(String(localized: "tab_meditation", defaultValue: "Meditasyon", comment: "Meditation tab"), systemImage: "leaf.circle.fill")
+            }
+            .accessibilityLabel(String(localized: "tab_meditation_accessibility", defaultValue: "Meditasyon sekmesi", comment: "Meditation tab accessibility"))
+            .tag(1)
 
-            FocusTimerView()
-                .tabItem {
-                    Label(String(localized: "tab_focus", defaultValue: "Odaklan", comment: "Focus tab"), systemImage: "timer")
+            // Tab 2: Focus Timer - Lazy loaded
+            Group {
+                if loadedTabs.contains(2) {
+                    FocusTimerView()
+                } else {
+                    Color.clear.onAppear {
+                        loadedTabs.insert(2)
+                    }
                 }
-                .accessibilityLabel(String(localized: "tab_focus_accessibility", defaultValue: "Odaklan sekmesi", comment: "Focus tab accessibility"))
-                .tag(2)
+            }
+            .tabItem {
+                Label(String(localized: "tab_focus", defaultValue: "Odaklan", comment: "Focus tab"), systemImage: "timer")
+            }
+            .accessibilityLabel(String(localized: "tab_focus_accessibility", defaultValue: "Odaklan sekmesi", comment: "Focus tab accessibility"))
+            .tag(2)
 
-            ZenGardenView()
-                .tabItem {
-                    Label(String(localized: "tab_zen_garden", defaultValue: "Zen Bahçem", comment: "Zen Garden tab"), systemImage: "tree.fill")
+            // Tab 3: Zen Garden - Lazy loaded
+            Group {
+                if loadedTabs.contains(3) {
+                    ZenGardenView()
+                } else {
+                    Color.clear.onAppear {
+                        loadedTabs.insert(3)
+                    }
                 }
-                .accessibilityLabel(String(localized: "tab_zen_garden_accessibility", defaultValue: "Zen Bahçem sekmesi", comment: "Zen Garden tab accessibility"))
-                .tag(3)
+            }
+            .tabItem {
+                Label(String(localized: "tab_zen_garden", defaultValue: "Zen Bahçem", comment: "Zen Garden tab"), systemImage: "tree.fill")
+            }
+            .accessibilityLabel(String(localized: "tab_zen_garden_accessibility", defaultValue: "Zen Bahçem sekmesi", comment: "Zen Garden tab accessibility"))
+            .tag(3)
 
-            SettingsView()
-                .tabItem {
-                    Label(String(localized: "tab_settings", defaultValue: "Ayarlar", comment: "Settings tab"), systemImage: "gear")
+            // Tab 4: Settings - Lazy loaded
+            Group {
+                if loadedTabs.contains(4) {
+                    SettingsView()
+                } else {
+                    Color.clear.onAppear {
+                        loadedTabs.insert(4)
+                    }
                 }
-                .accessibilityLabel(String(localized: "tab_settings_accessibility", defaultValue: "Ayarlar sekmesi", comment: "Settings tab accessibility"))
-                .tag(4)
+            }
+            .tabItem {
+                Label(String(localized: "tab_settings", defaultValue: "Ayarlar", comment: "Settings tab"), systemImage: "gear")
+            }
+            .accessibilityLabel(String(localized: "tab_settings_accessibility", defaultValue: "Ayarlar sekmesi", comment: "Settings tab accessibility"))
+            .tag(4)
+        }
+        .onChange(of: selection) { oldValue, newValue in
+            // Preload the selected tab
+            loadedTabs.insert(newValue)
         }
     }
 }

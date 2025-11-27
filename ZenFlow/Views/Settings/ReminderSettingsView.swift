@@ -11,9 +11,10 @@
 import SwiftUI
 
 struct ReminderSettingsView: View {
-    // MARK: - State Properties
+    // MARK: - Environment Objects (Performance Optimization)
+    @EnvironmentObject var notificationManager: NotificationManager
 
-    @StateObject private var notificationManager = NotificationManager.shared
+    // MARK: - State Properties
     @State private var selectedTime: Date
     @State private var selectedDays: Set<Int>
     @State private var remindersEnabled: Bool

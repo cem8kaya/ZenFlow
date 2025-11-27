@@ -69,6 +69,8 @@ struct ZenGardenView: View {
 
     @StateObject private var gardenManager = ZenGardenManager()
     @Environment(\.accessibilityReduceMotion) var reduceMotion
+    @Environment(\.scenePhase) private var scenePhase
+    @State private var isViewActive = false
 
     @State private var treeScale: CGFloat = 1.0
     @State private var treeRotation: Double = 0.0
@@ -185,6 +187,7 @@ struct ZenGardenView: View {
                 }
             }
             .onAppear {
+                isViewActive = true
                 viewSize = geometry.size
                 setupBackground()
                 startBackgroundAnimations()
@@ -192,7 +195,22 @@ struct ZenGardenView: View {
                 lightFeedback.prepare()
             }
             .onDisappear {
-                stopBackgroundAnimations()
+                // PERFORMANCE OPTIMIZATION: Clean up when view disappears
+                isViewActive = false
+                stopAllAnimations()
+            }
+            .onChange(of: scenePhase) { oldPhase, newPhase in
+                // PERFORMANCE OPTIMIZATION: Handle app backgrounding
+                switch newPhase {
+                case .active:
+                    if isViewActive {
+                        startBackgroundAnimations()
+                    }
+                case .background, .inactive:
+                    stopAllAnimations()
+                @unknown default:
+                    break
+                }
             }
             .onChange(of: geometry.size) { _, newSize in
                 viewSize = newSize
@@ -881,6 +899,20 @@ struct ZenGardenView: View {
         cloudAnimationTimer = nil
         starTwinkleTimer?.invalidate()
         starTwinkleTimer = nil
+    }
+
+    // MARK: - Performance Optimization
+
+    /// Stop all animations and clean up resources when view is not active
+    private func stopAllAnimations() {
+        // Stop all timers
+        stopBackgroundAnimations()
+
+        // Clear particle arrays to free memory
+        particles.removeAll()
+        stardustParticles.removeAll()
+        fallingPetals.removeAll()
+        waterDroplets.removeAll()
     }
 }
 

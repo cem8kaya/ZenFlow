@@ -27,7 +27,9 @@ struct FocusTimerView: View {
     @State private var showCompletionCelebration = false
     @State private var showSoundPicker = false
     @State private var volumeBeforePause: Float = 0.0
-    @StateObject private var soundManager = AmbientSoundManager.shared
+
+    // MARK: - Environment Objects (Performance Optimization)
+    @EnvironmentObject var soundManager: AmbientSoundManager
 
     // MARK: - Computed Properties
 
@@ -108,8 +110,14 @@ struct FocusTimerView: View {
                 requestNotificationPermission()
             }
             .onDisappear {
-                stopTimer()
-                soundManager.stopAllSounds(fadeOutDuration: 0)
+                // PERFORMANCE OPTIMIZATION: Pause timer when tab is switched
+                if timerState == .running {
+                    pauseTimer()
+                }
+                // Fade out sound
+                if soundManager.isPlaying {
+                    soundManager.stopAllSounds(fadeOutDuration: 0.3)
+                }
             }
             .sheet(isPresented: $showSoundPicker) {
                 SoundPickerSheet()
@@ -461,7 +469,16 @@ struct FocusTimerView: View {
         startTimer()
     }
 
+    // MARK: - Timer Cleanup (Performance Optimization)
+
+    /// Stop and cleanup timer
     private func stopTimer() {
+        timer?.invalidate()
+        timer = nil
+    }
+
+    /// Centralized timer cleanup
+    private func cleanupTimer() {
         timer?.invalidate()
         timer = nil
     }

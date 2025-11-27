@@ -14,7 +14,8 @@ import Charts
 import Combine
 
 struct StatsView: View {
-    @StateObject private var dataManager = LocalDataManager.shared
+    // MARK: - Environment Objects (Performance Optimization)
+    @EnvironmentObject var dataManager: LocalDataManager
 
     var body: some View {
         ScrollView {

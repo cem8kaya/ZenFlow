@@ -243,11 +243,14 @@ struct BreathingView: View {
     @State private var phaseTimeRemaining: TimeInterval = 0
     @State private var pulseScale: CGFloat = 1.0
     @State private var volumeBeforePause: Float = 0.0
-    @StateObject private var sessionTracker = SessionTracker.shared
-    @StateObject private var hapticManager = HapticManager.shared
-    @StateObject private var featureFlag = FeatureFlag.shared
-    @StateObject private var exerciseManager = BreathingExerciseManager.shared
-    @StateObject private var soundManager = AmbientSoundManager.shared
+
+    // MARK: - Environment Objects (Performance Optimization)
+    // Use @EnvironmentObject for singleton managers to avoid re-initialization
+    @EnvironmentObject var sessionTracker: SessionTracker
+    @EnvironmentObject var hapticManager: HapticManager
+    @EnvironmentObject var featureFlag: FeatureFlag
+    @EnvironmentObject var exerciseManager: BreathingExerciseManager
+    @EnvironmentObject var soundManager: AmbientSoundManager
 
     // MARK: - Constants
 
@@ -473,6 +476,23 @@ struct BreathingView: View {
                     handleDeepLinkExercise(exerciseType)
                 }
             }
+            .onAppear {
+                // View appeared - setup if needed
+            }
+            .onDisappear {
+                // PERFORMANCE OPTIMIZATION: Clean up timers when view disappears
+                cleanupTimers()
+
+                // Stop animations
+                if isAnimating {
+                    isAnimating = false
+                }
+
+                // Fade out sound if playing
+                if soundManager.isPlaying {
+                    soundManager.stopAllSounds(fadeOutDuration: 0.5)
+                }
+            }
         }
     }
 
@@ -644,12 +664,7 @@ struct BreathingView: View {
     private func stopAnimation() {
         isAnimating = false
         isPaused = false
-        animationTimer?.invalidate()
-        animationTimer = nil
-        countdownTimer?.invalidate()
-        countdownTimer = nil
-        sessionTimer?.invalidate()
-        sessionTimer = nil
+        cleanupTimers() // Use centralized cleanup
         currentPhaseIndex = 0
 
         // Stop ambient sounds with fade out
@@ -697,6 +712,18 @@ struct BreathingView: View {
     private func completeSessionAutomatically() {
         // Called when the session timer completes
         stopAnimation()
+    }
+
+    // MARK: - Timer Cleanup (Performance Optimization)
+
+    /// Centralized timer cleanup to prevent memory leaks and background CPU usage
+    private func cleanupTimers() {
+        animationTimer?.invalidate()
+        animationTimer = nil
+        countdownTimer?.invalidate()
+        countdownTimer = nil
+        sessionTimer?.invalidate()
+        sessionTimer = nil
     }
 
     private func pauseAnimation() {

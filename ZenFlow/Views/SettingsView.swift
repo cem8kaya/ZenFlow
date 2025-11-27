@@ -15,10 +15,11 @@ struct SettingsView: View {
 
     @Environment(\.dismiss) private var dismiss
 
-    // MARK: - State Properties
+    // MARK: - Environment Objects (Performance Optimization)
+    @EnvironmentObject var hapticManager: HapticManager
+    @EnvironmentObject var soundManager: AmbientSoundManager
 
-    @StateObject private var hapticManager = HapticManager.shared
-    @StateObject private var soundManager = AmbientSoundManager.shared
+    // MARK: - State Properties
     @AppStorage("hapticsEnabled") private var hapticsEnabled = true
     @AppStorage("hapticIntensity") private var hapticIntensity = 0.7
     @State private var showResetAlert = false
@@ -289,7 +290,8 @@ struct SettingsView: View {
 // MARK: - Statistics View
 
 struct StatisticsView: View {
-    @StateObject private var dataManager = LocalDataManager.shared
+    // MARK: - Environment Objects (Performance Optimization)
+    @EnvironmentObject var dataManager: LocalDataManager
 
     var body: some View {
         List {
