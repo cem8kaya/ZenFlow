@@ -471,39 +471,40 @@ struct BreathingView: View {
                 }
             }
         }
-            .sheet(isPresented: $showSoundPicker) {
-                if #available(iOS 16.4, *) {
-                    SoundPickerSheet()
-                        .presentationDetents([.medium, .large])
-                        .presentationCornerRadius(24)
-                } else {
-                    // Fallback on earlier versions
-                }
-            }
-            .onReceive(NotificationCenter.default.publisher(for: DeepLinkHandler.switchToTabNotification)) { notification in
-                // Handle deep link with exercise parameter
-                if let exerciseType = notification.userInfo?["exerciseType"] as? String {
-                    handleDeepLinkExercise(exerciseType)
-                }
-            }
-            .onAppear {
-                // View appeared - setup if needed
-            }
-            .onDisappear {
-                // PERFORMANCE OPTIMIZATION: Clean up timers when view disappears
-                cleanupTimers()
-
-                // Stop animations
-                if isAnimating {
-                    isAnimating = false
-                }
-
-                // Fade out sound if playing
-                if !soundManager.activeSounds.isEmpty {
-                    soundManager.stopAllSounds(fadeOutDuration: 0.5)
-                }
+        .sheet(isPresented: $showSoundPicker) {
+            if #available(iOS 16.4, *) {
+                SoundPickerSheet()
+                    .presentationDetents([.medium, .large])
+                    .presentationCornerRadius(24)
+            } else {
+                // Fallback on earlier versions
+                SoundPickerSheet()
             }
         }
+        .onReceive(NotificationCenter.default.publisher(for: DeepLinkHandler.switchToTabNotification)) { notification in
+            // Handle deep link with exercise parameter
+            if let exerciseType = notification.userInfo?["exerciseType"] as? String {
+                handleDeepLinkExercise(exerciseType)
+            }
+        }
+        .onAppear {
+            // View appeared - setup if needed
+        }
+        .onDisappear {
+            // PERFORMANCE OPTIMIZATION: Clean up timers when view disappears
+            cleanupTimers()
+
+            // Stop animations
+            if isAnimating {
+                isAnimating = false
+            }
+
+            // Fade out sound if playing
+            if !soundManager.activeSounds.isEmpty {
+                soundManager.stopAllSounds(fadeOutDuration: 0.5)
+            }
+        }
+    }
     }
 
     // MARK: - Duration Picker View
