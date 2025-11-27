@@ -4,11 +4,14 @@
 //
 //  Created by Cem Kaya on 11/24/25.
 //
+// ZenFlowWidget/ZenFlowWidgetControl.swift
 
 import AppIntents
 import SwiftUI
 import WidgetKit
 
+// iOS 18.0 kontrolü ekleyin
+@available(iOS 18.0, *)
 struct ZenFlowWidgetControl: ControlWidget {
     static let kind: String = "ZenFlowControl"
 
@@ -30,6 +33,7 @@ struct ZenFlowWidgetControl: ControlWidget {
     }
 }
 
+@available(iOS 18.0, *)
 extension ZenFlowWidgetControl {
     struct Value {
         var isRunning: Bool
@@ -42,12 +46,13 @@ extension ZenFlowWidgetControl {
         }
 
         func currentValue(configuration: TimerConfiguration) async throws -> Value {
-            let isRunning = true // Check if the timer is running
+            let isRunning = true
             return ZenFlowWidgetControl.Value(isRunning: isRunning, name: configuration.timerName)
         }
     }
 }
 
+@available(iOS 18.0, *)
 struct TimerConfiguration: ControlConfigurationIntent {
     static let title: LocalizedStringResource = "Timer Name Configuration"
 
@@ -55,6 +60,7 @@ struct TimerConfiguration: ControlConfigurationIntent {
     var timerName: String
 }
 
+@available(iOS 18.0, *)
 struct StartTimerIntent: SetValueIntent {
     static let title: LocalizedStringResource = "Start a timer"
 
@@ -71,7 +77,6 @@ struct StartTimerIntent: SetValueIntent {
     }
 
     func perform() async throws -> some IntentResult {
-        // Start the timer…
         return .result()
     }
 }

@@ -13,12 +13,32 @@ struct ZenFlowWidget: Widget {
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: ZenFlowWidgetProvider()) { entry in
-            ZenFlowWidgetEntryView(entry: entry)
-                .containerBackground(.fill.tertiary, for: .widget)
+            // iOS 17 ve sonrası için containerBackground kullan
+            if #available(iOS 17.0, *) {
+                ZenFlowWidgetEntryView(entry: entry)
+                    .containerBackground(.fill.tertiary, for: .widget)
+            } else {
+                // iOS 16 için standart görünüm (Arka plan View içinde zaten tanımlı)
+                ZenFlowWidgetEntryView(entry: entry)
+                    .background(Color.zenBackgroundGradient) // Gerekirse explicit background
+            }
         }
         .configurationDisplayName(String(localized: "widget_config_name", defaultValue: "ZenFlow Widget", comment: "Main widget configuration name"))
         .description(String(localized: "widget_config_description", defaultValue: "Meditasyon ilerlemenizi ve ağacınızı takip edin", comment: "Main widget configuration description"))
         .supportedFamilies([.systemSmall, .systemMedium])
+        // iOS 15/16 için içerik kenar boşluklarını kaldırmak gerekebilir
+        .contentMarginsDisabledIfAvailable()
+    }
+}
+
+// MARK: - Helper Extension for iOS 15/16 Margins
+extension WidgetConfiguration {
+    func contentMarginsDisabledIfAvailable() -> some WidgetConfiguration {
+        if #available(iOS 15.0, *) {
+            return self.contentMarginsDisabled()
+        } else {
+            return self
+        }
     }
 }
 
@@ -63,8 +83,9 @@ struct ZenFlowLockScreenInlineWidget: Widget {
     }
 }
 
-// MARK: - Preview
+// MARK: - Preview (iOS 17+ Only)
 
+@available(iOS 17.0, *)
 #Preview("Small Widget", as: .systemSmall) {
     ZenFlowWidget()
 } timeline: {
@@ -73,6 +94,7 @@ struct ZenFlowLockScreenInlineWidget: Widget {
     ZenFlowWidgetEntry.advancedEntry
 }
 
+@available(iOS 17.0, *)
 #Preview("Medium Widget", as: .systemMedium) {
     ZenFlowWidget()
 } timeline: {
