@@ -113,113 +113,117 @@ struct ZenGardenView: View {
 
     var body: some View {
         GeometryReader { geometry in
-            ZStack {
-                // Dynamic Background with time-of-day
-                dynamicBackground
-
-                // Stars (night only)
-                if timeOfDay < 0.3 {
-                    starsLayer
-                }
-
-                // Clouds
-                cloudsLayer
-
-                // 2D Watercolor View
+            if #available(iOS 17.0, *) {
                 ZStack {
-                    WatercolorZenGardenView(gardenManager: gardenManager)
-
-                    // Falling Petals (Ancient Tree only)
-                    if gardenManager.currentStage == .ancientTree {
-                        fallingPetalsLayer
+                    // Dynamic Background with time-of-day
+                    dynamicBackground
+                    
+                    // Stars (night only)
+                    if timeOfDay < 0.3 {
+                        starsLayer
                     }
-
-                    // Stardust particles (level-up)
-                    stardustParticlesLayer
-
-                    // Water droplets (interactive)
-                    waterDropletsLayer
-
-                    // Sparkle Growth Animation Overlay
+                    
+                    // Clouds
+                    cloudsLayer
+                    
+                    // 2D Watercolor View
                     ZStack {
-                        ForEach(0..<8, id: \.self) { index in
-                            Image(systemName: "sparkle")
-                                .font(.system(size: 30))
-                                .foregroundColor(gardenManager.currentStage.colors.randomElement() ?? .white)
-                                .opacity(sparkleOpacity)
-                                .scaleEffect(sparkleScale)
-                                .offset(
-                                    x: cos(Double(index) * .pi / 4) * 100,
-                                    y: sin(Double(index) * .pi / 4) * 100
+                        WatercolorZenGardenView(gardenManager: gardenManager)
+                        
+                        // Falling Petals (Ancient Tree only)
+                        if gardenManager.currentStage == .ancientTree {
+                            fallingPetalsLayer
+                        }
+                        
+                        // Stardust particles (level-up)
+                        stardustParticlesLayer
+                        
+                        // Water droplets (interactive)
+                        waterDropletsLayer
+                        
+                        // Sparkle Growth Animation Overlay
+                        ZStack {
+                            ForEach(0..<8, id: \.self) { index in
+                                Image(systemName: "sparkle")
+                                    .font(.system(size: 30))
+                                    .foregroundColor(gardenManager.currentStage.colors.randomElement() ?? .white)
+                                    .opacity(sparkleOpacity)
+                                    .scaleEffect(sparkleScale)
+                                    .offset(
+                                        x: cos(Double(index) * .pi / 4) * 100,
+                                        y: sin(Double(index) * .pi / 4) * 100
+                                    )
+                            }
+                        }
+                        .allowsHitTesting(false)
+                        
+                        // Overlay UI
+                        VStack(spacing: 0) {
+                            // Başlık
+                            headerView
+                                .shadow(color: .black.opacity(0.3), radius: 5)
+                            
+                            Spacer()
+                            
+                            // Ağaç görsel alanı (merkez)
+                            treeDisplayArea
+                                .scaleEffect(treeScale)
+                                .rotationEffect(.degrees(treeRotation))
+                                .opacity(treeOpacity)
+                                .onTapGesture { location in
+                                    handleTreeTap(at: location, in: geometry.size)
+                                }
+                            
+                            Spacer()
+                            
+                            // İlerleme göstergesi (alt kısma yakın)
+                            progressSection
+                                .background(
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .fill(Color.black.opacity(0.1))
+                                        .blur(radius: 10)
                                 )
+                                .padding(.bottom, 40)
                         }
                     }
-                    .allowsHitTesting(false)
-
-                    // Overlay UI
-                    VStack(spacing: 0) {
-                        // Başlık
-                        headerView
-                            .shadow(color: .black.opacity(0.3), radius: 5)
-
-                        Spacer()
-
-                        // Ağaç görsel alanı (merkez)
-                        treeDisplayArea
-                            .scaleEffect(treeScale)
-                            .rotationEffect(.degrees(treeRotation))
-                            .opacity(treeOpacity)
-                            .onTapGesture { location in
-                                handleTreeTap(at: location, in: geometry.size)
-                            }
-
-                        Spacer()
-
-                        // İlerleme göstergesi (alt kısma yakın)
-                        progressSection
-                            .background(
-                                RoundedRectangle(cornerRadius: 20)
-                                    .fill(Color.black.opacity(0.1))
-                                    .blur(radius: 10)
-                            )
-                            .padding(.bottom, 40)
-                    }
                 }
-            }
-            .onAppear {
-                isViewActive = true
-                viewSize = geometry.size
-                setupBackground()
-                startBackgroundAnimations()
-                impactFeedback.prepare()
-                lightFeedback.prepare()
-            }
-            .onDisappear {
-                // PERFORMANCE OPTIMIZATION: Clean up when view disappears
-                isViewActive = false
-                stopAllAnimations()
-            }
-            .onChange(of: scenePhase) { oldPhase, newPhase in
-                // PERFORMANCE OPTIMIZATION: Handle app backgrounding
-                switch newPhase {
-                case .active:
-                    if isViewActive {
-                        startBackgroundAnimations()
-                    }
-                case .background, .inactive:
+                .onAppear {
+                    isViewActive = true
+                    viewSize = geometry.size
+                    setupBackground()
+                    startBackgroundAnimations()
+                    impactFeedback.prepare()
+                    lightFeedback.prepare()
+                }
+                .onDisappear {
+                    // PERFORMANCE OPTIMIZATION: Clean up when view disappears
+                    isViewActive = false
                     stopAllAnimations()
-                @unknown default:
-                    break
                 }
-            }
-            .onChange(of: geometry.size) { _, newSize in
-                viewSize = newSize
-            }
-            .preferredColorScheme(.light)
-            .onChange(of: gardenManager.shouldCelebrate) { _, shouldCelebrate in
-                if shouldCelebrate {
-                    startCelebrationAnimation()
+                .onChange(of: scenePhase) { oldPhase, newPhase in
+                    // PERFORMANCE OPTIMIZATION: Handle app backgrounding
+                    switch newPhase {
+                    case .active:
+                        if isViewActive {
+                            startBackgroundAnimations()
+                        }
+                    case .background, .inactive:
+                        stopAllAnimations()
+                    @unknown default:
+                        break
+                    }
                 }
+                .onChange(of: geometry.size) { _, newSize in
+                    viewSize = newSize
+                }
+                .preferredColorScheme(.light)
+                .onChange(of: gardenManager.shouldCelebrate) { _, shouldCelebrate in
+                    if shouldCelebrate {
+                        startCelebrationAnimation()
+                    }
+                }
+            } else {
+                // Fallback on earlier versions
             }
         }
         .drawingGroup() // Performance optimization

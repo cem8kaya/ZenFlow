@@ -458,17 +458,34 @@ struct BreathingView: View {
         .navigationBarHidden(true)
         .preferredColorScheme(.dark)
         .sheet(isPresented: $showExerciseSelection) {
+            if #available(iOS 16.4, *) {
                 ExerciseSelectionView { selectedExercise in
                     // Handle exercise change
                     handleExerciseChange(to: selectedExercise)
                 }
                 .presentationDetents([.medium, .large])
                 .presentationCornerRadius(24)
+            } else {
+                // Fallback on earlier versions
+            };if #available(iOS 16.4, *) {
+                ExerciseSelectionView { selectedExercise in
+                    // Handle exercise change
+                    handleExerciseChange(to: selectedExercise)
+                }
+                .presentationDetents([.medium, .large])
+                .presentationCornerRadius(24)
+            } else {
+                // Fallback on earlier versions
+            }
             }
             .sheet(isPresented: $showSoundPicker) {
-                SoundPickerSheet()
-                    .presentationDetents([.medium, .large])
-                    .presentationCornerRadius(24)
+                if #available(iOS 16.4, *) {
+                    SoundPickerSheet()
+                        .presentationDetents([.medium, .large])
+                        .presentationCornerRadius(24)
+                } else {
+                    // Fallback on earlier versions
+                }
             }
             .onReceive(NotificationCenter.default.publisher(for: DeepLinkHandler.switchToTabNotification)) { notification in
                 // Handle deep link with exercise parameter

@@ -45,49 +45,57 @@ struct ParticleCanvasView: View {
 
     var body: some View {
         GeometryReader { geometry in
-            TimelineView(.animation(minimumInterval: 1.0/60.0, paused: !isAnimating)) { timeline in
-                Canvas { context, size in
-                    // Update emitter screen bounds
-                    if emitter.screenBounds != CGRect(origin: .zero, size: size) {
-                        emitter.screenBounds = CGRect(origin: .zero, size: size)
-                    }
-
-                    // Draw all particles
-                    for particle in emitter.particles {
-                        drawParticle(particle, in: context, size: size)
+            if #available(iOS 17.0, *) {
+                TimelineView(.animation(minimumInterval: 1.0/60.0, paused: !isAnimating)) { timeline in
+                    if #available(iOS 17.0, *) {
+                        Canvas { context, size in
+                            // Update emitter screen bounds
+                            if emitter.screenBounds != CGRect(origin: .zero, size: size) {
+                                emitter.screenBounds = CGRect(origin: .zero, size: size)
+                            }
+                            
+                            // Draw all particles
+                            for particle in emitter.particles {
+                                drawParticle(particle, in: context, size: size)
+                            }
+                        }
+                        .onChange(of: timeline.date) { _, newDate in
+                            // Update particles with delta time
+                            let deltaTime = newDate.timeIntervalSince(lastUpdate)
+                            lastUpdate = newDate
+                            
+                            if isAnimating {
+                                emitter.update(deltaTime: deltaTime)
+                            }
+                        }
+                    } else {
+                        // Fallback on earlier versions
                     }
                 }
-                .onChange(of: timeline.date) { _, newDate in
-                    // Update particles with delta time
-                    let deltaTime = newDate.timeIntervalSince(lastUpdate)
-                    lastUpdate = newDate
-
-                    if isAnimating {
-                        emitter.update(deltaTime: deltaTime)
+                .onAppear {
+                    // Initialize emitter settings
+                    emitter.intensity = intensity
+                    emitter.colorTheme = colorTheme
+                    emitter.setPhase(breathingPhase)
+                    emitter.adjustForDevicePerformance()
+                    lastUpdate = Date()
+                }
+                .onChange(of: currentPhase) { _, _ in
+                    emitter.setPhase(breathingPhase)
+                }
+                .onChange(of: intensity) { _, newIntensity in
+                    emitter.intensity = newIntensity
+                }
+                .onChange(of: colorTheme) { _, newTheme in
+                    emitter.colorTheme = newTheme
+                }
+                .onChange(of: isAnimating) { _, animating in
+                    if !animating {
+                        emitter.clearParticles()
                     }
                 }
-            }
-            .onAppear {
-                // Initialize emitter settings
-                emitter.intensity = intensity
-                emitter.colorTheme = colorTheme
-                emitter.setPhase(breathingPhase)
-                emitter.adjustForDevicePerformance()
-                lastUpdate = Date()
-            }
-            .onChange(of: currentPhase) { _, _ in
-                emitter.setPhase(breathingPhase)
-            }
-            .onChange(of: intensity) { _, newIntensity in
-                emitter.intensity = newIntensity
-            }
-            .onChange(of: colorTheme) { _, newTheme in
-                emitter.colorTheme = newTheme
-            }
-            .onChange(of: isAnimating) { _, animating in
-                if !animating {
-                    emitter.clearParticles()
-                }
+            } else {
+                // Fallback on earlier versions
             }
         }
     }

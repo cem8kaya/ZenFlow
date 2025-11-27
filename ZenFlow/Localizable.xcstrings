@@ -1890,9 +1890,6 @@
     "Gün" : {
 
     },
-    "Harika!" : {
-
-    },
     "healthkit_allow" : {
       "comment" : "Allow HealthKit permission button\nHealthKit allow button",
       "extractionState" : "extracted_with_value",
@@ -2008,9 +2005,6 @@
 
     },
     "Icon Style" : {
-
-    },
-    "İlk Meditasyonuna Başla" : {
 
     },
     "intent_breathing" : {
@@ -2139,6 +2133,42 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Onboarding'i tamamla ve uygulamaya geç"
+          }
+        }
+      }
+    },
+    "onboarding_completion_subtitle" : {
+      "comment" : "Onboarding completion subtitle",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "ZenFlow yolculuğuna başlamaya hazırsın"
+          }
+        }
+      }
+    },
+    "onboarding_completion_title" : {
+      "comment" : "Onboarding completion title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Harika!"
+          }
+        }
+      }
+    },
+    "onboarding_explore_app" : {
+      "comment" : "Explore app button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Uygulamayı Keşfet"
           }
         }
       }
@@ -2333,6 +2363,18 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Tanıtımı atla"
+          }
+        }
+      }
+    },
+    "onboarding_start_first_session" : {
+      "comment" : "Start first meditation button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "İlk Meditasyonuna Başla"
           }
         }
       }
@@ -4600,9 +4642,6 @@
     "Use Xcode's Image Renderer to export" : {
 
     },
-    "Uygulamayı Keşfet" : {
-
-    },
     "weekday_friday" : {
       "comment" : "Friday",
       "localizations" : {
@@ -5873,9 +5912,6 @@
 
     },
     "ZenFlow Icons" : {
-
-    },
-    "ZenFlow yolculuğuna başlamaya hazırsın" : {
 
     },
     "ZenFlow'da kullanılan ortam seslerinin kaynakları ve lisans bilgileri" : {

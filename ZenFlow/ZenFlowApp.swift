@@ -37,67 +37,71 @@ struct ZenFlowApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ZStack {
-                SwipeableTabView(selection: $selectedTab)
-                    .preferredColorScheme(.dark)
+            if #available(iOS 17.0, *) {
+                ZStack {
+                    SwipeableTabView(selection: $selectedTab)
+                        .preferredColorScheme(.dark)
                     // Inject singleton managers into view hierarchy
-                    .environmentObject(sessionTracker)
-                    .environmentObject(hapticManager)
-                    .environmentObject(soundManager)
-                    .environmentObject(exerciseManager)
-                    .environmentObject(featureFlag)
-                    .environmentObject(dataManager)
-                    .environmentObject(gamificationManager)
-                    .environmentObject(zenCoachManager)
-                    .environmentObject(notificationManager)
-
-                // Splash screen overlay
-                if showSplash {
-                    SplashScreenView(isActive: $showSplash)
-                        .transition(.opacity)
-                        .zIndex(1)
-                }
-
-                // Onboarding overlay
-                if showOnboarding {
-                    OnboardingView()
+                        .environmentObject(sessionTracker)
                         .environmentObject(hapticManager)
-                        .transition(.opacity)
-                        .zIndex(2)
-                }
-
-                // HealthKit onboarding overlay (legacy - now integrated into OnboardingView)
-                if showHealthKitOnboarding {
-                    HealthKitOnboardingView(isPresented: $showHealthKitOnboarding)
-                        .transition(.opacity)
-                        .zIndex(3)
-                }
-            }
-            .onChange(of: showSplash) { _, newValue in
-                // When splash screen is dismissed, check if onboarding should be shown
-                if !newValue {
-                    checkOnboardingStatus()
-                }
-            }
-            .onChange(of: onboardingManager.hasCompletedOnboarding) { _, completed in
-                // When onboarding is completed, hide it
-                if completed {
-                    withAnimation {
-                        showOnboarding = false
+                        .environmentObject(soundManager)
+                        .environmentObject(exerciseManager)
+                        .environmentObject(featureFlag)
+                        .environmentObject(dataManager)
+                        .environmentObject(gamificationManager)
+                        .environmentObject(zenCoachManager)
+                        .environmentObject(notificationManager)
+                    
+                    // Splash screen overlay
+                    if showSplash {
+                        SplashScreenView(isActive: $showSplash)
+                            .transition(.opacity)
+                            .zIndex(1)
+                    }
+                    
+                    // Onboarding overlay
+                    if showOnboarding {
+                        OnboardingView()
+                            .environmentObject(hapticManager)
+                            .transition(.opacity)
+                            .zIndex(2)
+                    }
+                    
+                    // HealthKit onboarding overlay (legacy - now integrated into OnboardingView)
+                    if showHealthKitOnboarding {
+                        HealthKitOnboardingView(isPresented: $showHealthKitOnboarding)
+                            .transition(.opacity)
+                            .zIndex(3)
                     }
                 }
-            }
-            .onReceive(NotificationCenter.default.publisher(for: DeepLinkHandler.switchToTabNotification)) { notification in
-                // Handle deep link tab switching
-                if let tabIndex = notification.userInfo?["tabIndex"] as? Int {
-                    withAnimation {
-                        selectedTab = tabIndex
+                .onChange(of: showSplash) { _, newValue in
+                    // When splash screen is dismissed, check if onboarding should be shown
+                    if !newValue {
+                        checkOnboardingStatus()
                     }
                 }
-            }
-            .onAppear {
-                // Set notification delegate
-                UNUserNotificationCenter.current().delegate = notificationDelegate
+                .onChange(of: onboardingManager.hasCompletedOnboarding) { _, completed in
+                    // When onboarding is completed, hide it
+                    if completed {
+                        withAnimation {
+                            showOnboarding = false
+                        }
+                    }
+                }
+                .onReceive(NotificationCenter.default.publisher(for: DeepLinkHandler.switchToTabNotification)) { notification in
+                    // Handle deep link tab switching
+                    if let tabIndex = notification.userInfo?["tabIndex"] as? Int {
+                        withAnimation {
+                            selectedTab = tabIndex
+                        }
+                    }
+                }
+                .onAppear {
+                    // Set notification delegate
+                    UNUserNotificationCenter.current().delegate = notificationDelegate
+                }
+            } else {
+                // Fallback on earlier versions
             }
         }
     }
@@ -166,82 +170,86 @@ struct SwipeableTabView: View {
     @State private var loadedTabs: Set<Int> = [0] // Tab 0 (ZenCoach) preloaded
 
     var body: some View {
-        TabView(selection: $selection) {
-            // Tab 0: ZenCoach - Always loaded (first tab)
-            ZenCoachView()
+        if #available(iOS 17.0, *) {
+            TabView(selection: $selection) {
+                // Tab 0: ZenCoach - Always loaded (first tab)
+                ZenCoachView()
+                    .tabItem {
+                        Label(String(localized: "tab_zen_coach", defaultValue: "Zen Coach", comment: "Zen Coach tab"), systemImage: "person.crop.circle.fill")
+                    }
+                    .accessibilityLabel(String(localized: "tab_zen_coach_accessibility", defaultValue: "Zen Coach sekmesi", comment: "Zen Coach tab accessibility"))
+                    .tag(0)
+                
+                // Tab 1: Breathing - Lazy loaded
+                Group {
+                    if loadedTabs.contains(1) {
+                        BreathingView()
+                    } else {
+                        Color.clear.onAppear {
+                            loadedTabs.insert(1)
+                        }
+                    }
+                }
                 .tabItem {
-                    Label(String(localized: "tab_zen_coach", defaultValue: "Zen Coach", comment: "Zen Coach tab"), systemImage: "person.crop.circle.fill")
+                    Label(String(localized: "tab_meditation", defaultValue: "Meditasyon", comment: "Meditation tab"), systemImage: "leaf.circle.fill")
                 }
-                .accessibilityLabel(String(localized: "tab_zen_coach_accessibility", defaultValue: "Zen Coach sekmesi", comment: "Zen Coach tab accessibility"))
-                .tag(0)
-
-            // Tab 1: Breathing - Lazy loaded
-            Group {
-                if loadedTabs.contains(1) {
-                    BreathingView()
-                } else {
-                    Color.clear.onAppear {
-                        loadedTabs.insert(1)
+                .accessibilityLabel(String(localized: "tab_meditation_accessibility", defaultValue: "Meditasyon sekmesi", comment: "Meditation tab accessibility"))
+                .tag(1)
+                
+                // Tab 2: Focus Timer - Lazy loaded
+                Group {
+                    if loadedTabs.contains(2) {
+                        FocusTimerView()
+                    } else {
+                        Color.clear.onAppear {
+                            loadedTabs.insert(2)
+                        }
                     }
                 }
-            }
-            .tabItem {
-                Label(String(localized: "tab_meditation", defaultValue: "Meditasyon", comment: "Meditation tab"), systemImage: "leaf.circle.fill")
-            }
-            .accessibilityLabel(String(localized: "tab_meditation_accessibility", defaultValue: "Meditasyon sekmesi", comment: "Meditation tab accessibility"))
-            .tag(1)
-
-            // Tab 2: Focus Timer - Lazy loaded
-            Group {
-                if loadedTabs.contains(2) {
-                    FocusTimerView()
-                } else {
-                    Color.clear.onAppear {
-                        loadedTabs.insert(2)
+                .tabItem {
+                    Label(String(localized: "tab_focus", defaultValue: "Odaklan", comment: "Focus tab"), systemImage: "timer")
+                }
+                .accessibilityLabel(String(localized: "tab_focus_accessibility", defaultValue: "Odaklan sekmesi", comment: "Focus tab accessibility"))
+                .tag(2)
+                
+                // Tab 3: Zen Garden - Lazy loaded
+                Group {
+                    if loadedTabs.contains(3) {
+                        ZenGardenView()
+                    } else {
+                        Color.clear.onAppear {
+                            loadedTabs.insert(3)
+                        }
                     }
                 }
-            }
-            .tabItem {
-                Label(String(localized: "tab_focus", defaultValue: "Odaklan", comment: "Focus tab"), systemImage: "timer")
-            }
-            .accessibilityLabel(String(localized: "tab_focus_accessibility", defaultValue: "Odaklan sekmesi", comment: "Focus tab accessibility"))
-            .tag(2)
-
-            // Tab 3: Zen Garden - Lazy loaded
-            Group {
-                if loadedTabs.contains(3) {
-                    ZenGardenView()
-                } else {
-                    Color.clear.onAppear {
-                        loadedTabs.insert(3)
+                .tabItem {
+                    Label(String(localized: "tab_zen_garden", defaultValue: "Zen Bahçem", comment: "Zen Garden tab"), systemImage: "tree.fill")
+                }
+                .accessibilityLabel(String(localized: "tab_zen_garden_accessibility", defaultValue: "Zen Bahçem sekmesi", comment: "Zen Garden tab accessibility"))
+                .tag(3)
+                
+                // Tab 4: Settings - Lazy loaded
+                Group {
+                    if loadedTabs.contains(4) {
+                        SettingsView()
+                    } else {
+                        Color.clear.onAppear {
+                            loadedTabs.insert(4)
+                        }
                     }
                 }
-            }
-            .tabItem {
-                Label(String(localized: "tab_zen_garden", defaultValue: "Zen Bahçem", comment: "Zen Garden tab"), systemImage: "tree.fill")
-            }
-            .accessibilityLabel(String(localized: "tab_zen_garden_accessibility", defaultValue: "Zen Bahçem sekmesi", comment: "Zen Garden tab accessibility"))
-            .tag(3)
-
-            // Tab 4: Settings - Lazy loaded
-            Group {
-                if loadedTabs.contains(4) {
-                    SettingsView()
-                } else {
-                    Color.clear.onAppear {
-                        loadedTabs.insert(4)
-                    }
+                .tabItem {
+                    Label(String(localized: "tab_settings", defaultValue: "Ayarlar", comment: "Settings tab"), systemImage: "gear")
                 }
+                .accessibilityLabel(String(localized: "tab_settings_accessibility", defaultValue: "Ayarlar sekmesi", comment: "Settings tab accessibility"))
+                .tag(4)
             }
-            .tabItem {
-                Label(String(localized: "tab_settings", defaultValue: "Ayarlar", comment: "Settings tab"), systemImage: "gear")
+            .onChange(of: selection) { oldValue, newValue in
+                // Preload the selected tab
+                loadedTabs.insert(newValue)
             }
-            .accessibilityLabel(String(localized: "tab_settings_accessibility", defaultValue: "Ayarlar sekmesi", comment: "Settings tab accessibility"))
-            .tag(4)
-        }
-        .onChange(of: selection) { oldValue, newValue in
-            // Preload the selected tab
-            loadedTabs.insert(newValue)
+        } else {
+            // Fallback on earlier versions
         }
     }
 }

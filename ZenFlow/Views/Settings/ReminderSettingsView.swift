@@ -38,22 +38,30 @@ struct ReminderSettingsView: View {
             // MARK: - Daily Reminders Section
 
             Section {
-                Toggle(isOn: $remindersEnabled) {
-                    Text(String(localized: "reminder_daily_toggle", defaultValue: "Günlük Hatırlatıcı", comment: "Daily reminder toggle"))
-                }
-                .onChange(of: remindersEnabled) { oldValue, newValue in
-                    handleReminderToggle(newValue)
+                if #available(iOS 17.0, *) {
+                    Toggle(isOn: $remindersEnabled) {
+                        Text(String(localized: "reminder_daily_toggle", defaultValue: "Günlük Hatırlatıcı", comment: "Daily reminder toggle"))
+                    }
+                    .onChange(of: remindersEnabled) { oldValue, newValue in
+                        handleReminderToggle(newValue)
+                    }
+                } else {
+                    // Fallback on earlier versions
                 }
 
                 if remindersEnabled {
-                    DatePicker(
-                        selection: $selectedTime,
-                        displayedComponents: .hourAndMinute
-                    ) {
-                        Text(String(localized: "reminder_time_picker", defaultValue: "Saat", comment: "Time picker label"))
-                    }
-                    .onChange(of: selectedTime) { oldValue, newValue in
-                        notificationManager.reminderTime = newValue
+                    if #available(iOS 17.0, *) {
+                        DatePicker(
+                            selection: $selectedTime,
+                            displayedComponents: .hourAndMinute
+                        ) {
+                            Text(String(localized: "reminder_time_picker", defaultValue: "Saat", comment: "Time picker label"))
+                        }
+                        .onChange(of: selectedTime) { oldValue, newValue in
+                            notificationManager.reminderTime = newValue
+                        }
+                    } else {
+                        // Fallback on earlier versions
                     }
                 }
             } header: {
@@ -91,11 +99,15 @@ struct ReminderSettingsView: View {
             // MARK: - Streak Reminder Section
 
             Section {
-                Toggle(isOn: $streakReminderEnabled) {
-                    Text(String(localized: "reminder_streak_toggle", defaultValue: "Streak Hatırlatıcısı", comment: "Streak reminder toggle"))
-                }
-                .onChange(of: streakReminderEnabled) { oldValue, newValue in
-                    handleStreakReminderToggle(newValue)
+                if #available(iOS 17.0, *) {
+                    Toggle(isOn: $streakReminderEnabled) {
+                        Text(String(localized: "reminder_streak_toggle", defaultValue: "Streak Hatırlatıcısı", comment: "Streak reminder toggle"))
+                    }
+                    .onChange(of: streakReminderEnabled) { oldValue, newValue in
+                        handleStreakReminderToggle(newValue)
+                    }
+                } else {
+                    // Fallback on earlier versions
                 }
             } header: {
                 Text(String(localized: "reminder_streak_header", defaultValue: "Streak Koruması", comment: "Streak protection section header"))

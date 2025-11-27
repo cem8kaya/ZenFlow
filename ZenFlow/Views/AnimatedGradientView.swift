@@ -48,35 +48,39 @@ struct AnimatedGradientView: View {
     // MARK: - Body
 
     var body: some View {
-        Group {
-            if isActive {
-                TimelineView(.animation(minimumInterval: 1.0 / 30.0)) { timeline in
+        if #available(iOS 17.0, *) {
+            Group {
+                if isActive {
+                    TimelineView(.animation(minimumInterval: 1.0 / 30.0)) { timeline in
+                        if #available(iOS 18.0, *) {
+                            meshGradientView(time: timeline.date.timeIntervalSince1970)
+                        } else {
+                            linearGradientView
+                        }
+                    }
+                } else {
+                    // Static fallback when not active
                     if #available(iOS 18.0, *) {
-                        meshGradientView(time: timeline.date.timeIntervalSince1970)
+                        meshGradientView(time: Date.now.timeIntervalSince1970)
                     } else {
                         linearGradientView
                     }
                 }
-            } else {
-                // Static fallback when not active
-                if #available(iOS 18.0, *) {
-                    meshGradientView(time: Date.now.timeIntervalSince1970)
-                } else {
-                    linearGradientView
-                }
             }
-        }
-        .ignoresSafeArea(.all, edges: .all)
-        .opacity(opacity)
-        .onChange(of: breathingPhase) { oldPhase, newPhase in
-            handlePhaseChange(from: oldPhase, to: newPhase)
-        }
-        .onAppear {
-            isActive = true
-            updateCachedColors()
-        }
-        .onDisappear {
-            isActive = false
+            .ignoresSafeArea(.all, edges: .all)
+            .opacity(opacity)
+            .onChange(of: breathingPhase) { oldPhase, newPhase in
+                handlePhaseChange(from: oldPhase, to: newPhase)
+            }
+            .onAppear {
+                isActive = true
+                updateCachedColors()
+            }
+            .onDisappear {
+                isActive = false
+            }
+        } else {
+            // Fallback on earlier versions
         }
     }
 

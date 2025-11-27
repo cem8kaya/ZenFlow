@@ -224,86 +224,90 @@ struct ZenCoachView: View {
 
     private var messagesList: some View {
         ScrollViewReader { proxy in
-            ScrollView {
-                LazyVStack(spacing: 16) {
-                    ForEach(manager.messages) { message in
-                        ChatBubbleView(
-                            message: message,
-                            action: manager.getAction(for: message.id)
-                        )
-                        .id(message.id)
-                    }
-
-                    // Typing indicator
-                    if manager.isProcessing {
-                        HStack {
-                            TypingIndicatorView()
-                            Spacer()
-                        }
-                        .padding(.horizontal, 16)
-                        .id("typing")
-                    }
-
-                    // Suggested prompts after messages (if not processing)
-                    if !manager.isProcessing {
-                        VStack(spacing: 12) {
-                            Divider()
-                                .background(ZenTheme.softPurple.opacity(0.3))
-                                .padding(.vertical, 8)
-
-                            SuggestedPromptsView(
-                                prompts: manager.getSuggestedPrompts(),
-                                onPromptTapped: { prompt in
-                                    // Remove emoji from prompt before sending
-                                    let cleanPrompt = prompt.replacingOccurrences(of: "🌸 ", with: "")
-                                        .replacingOccurrences(of: "💭 ", with: "")
-                                        .replacingOccurrences(of: "⚡ ", with: "")
-                                        .replacingOccurrences(of: "😴 ", with: "")
-                                        .replacingOccurrences(of: "🎯 ", with: "")
-                                        .replacingOccurrences(of: "🫁 ", with: "")
-                                        .replacingOccurrences(of: "📈 ", with: "")
-                                        .replacingOccurrences(of: "🧘 ", with: "")
-                                        .replacingOccurrences(of: "💆 ", with: "")
-                                        .replacingOccurrences(of: "✨ ", with: "")
-                                    inputText = cleanPrompt
-                                    sendMessage()
-                                }
+            if #available(iOS 17.0, *) {
+                ScrollView {
+                    LazyVStack(spacing: 16) {
+                        ForEach(manager.messages) { message in
+                            ChatBubbleView(
+                                message: message,
+                                action: manager.getAction(for: message.id)
                             )
+                            .id(message.id)
                         }
-                        .padding(.top, 8)
-                        .id("prompts")
+                        
+                        // Typing indicator
+                        if manager.isProcessing {
+                            HStack {
+                                TypingIndicatorView()
+                                Spacer()
+                            }
+                            .padding(.horizontal, 16)
+                            .id("typing")
+                        }
+                        
+                        // Suggested prompts after messages (if not processing)
+                        if !manager.isProcessing {
+                            VStack(spacing: 12) {
+                                Divider()
+                                    .background(ZenTheme.softPurple.opacity(0.3))
+                                    .padding(.vertical, 8)
+                                
+                                SuggestedPromptsView(
+                                    prompts: manager.getSuggestedPrompts(),
+                                    onPromptTapped: { prompt in
+                                        // Remove emoji from prompt before sending
+                                        let cleanPrompt = prompt.replacingOccurrences(of: "🌸 ", with: "")
+                                            .replacingOccurrences(of: "💭 ", with: "")
+                                            .replacingOccurrences(of: "⚡ ", with: "")
+                                            .replacingOccurrences(of: "😴 ", with: "")
+                                            .replacingOccurrences(of: "🎯 ", with: "")
+                                            .replacingOccurrences(of: "🫁 ", with: "")
+                                            .replacingOccurrences(of: "📈 ", with: "")
+                                            .replacingOccurrences(of: "🧘 ", with: "")
+                                            .replacingOccurrences(of: "💆 ", with: "")
+                                            .replacingOccurrences(of: "✨ ", with: "")
+                                        inputText = cleanPrompt
+                                        sendMessage()
+                                    }
+                                )
+                            }
+                            .padding(.top, 8)
+                            .id("prompts")
+                        }
                     }
+                    .padding(.vertical, 16)
                 }
-                .padding(.vertical, 16)
-            }
-            .onChange(of: manager.messages.count) { _, _ in
-                // Auto-scroll to bottom
-                if let lastMessage = manager.messages.last {
-                    withAnimation {
-                        proxy.scrollTo(lastMessage.id, anchor: .bottom)
-                    }
-                }
-            }
-            .onChange(of: manager.isProcessing) { _, isProcessing in
-                // Scroll to typing indicator or last message
-                if isProcessing {
-                    withAnimation {
-                        proxy.scrollTo("typing", anchor: .bottom)
-                    }
-                } else {
-                    // Keep focus on the last message (coach response)
+                .onChange(of: manager.messages.count) { _, _ in
+                    // Auto-scroll to bottom
                     if let lastMessage = manager.messages.last {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                            withAnimation {
-                                proxy.scrollTo(lastMessage.id, anchor: .bottom)
+                        withAnimation {
+                            proxy.scrollTo(lastMessage.id, anchor: .bottom)
+                        }
+                    }
+                }
+                .onChange(of: manager.isProcessing) { _, isProcessing in
+                    // Scroll to typing indicator or last message
+                    if isProcessing {
+                        withAnimation {
+                            proxy.scrollTo("typing", anchor: .bottom)
+                        }
+                    } else {
+                        // Keep focus on the last message (coach response)
+                        if let lastMessage = manager.messages.last {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                                withAnimation {
+                                    proxy.scrollTo(lastMessage.id, anchor: .bottom)
+                                }
                             }
                         }
                     }
                 }
-            }
-            .onAppear {
-                // Store proxy for use in header button
-                scrollProxy = proxy
+                .onAppear {
+                    // Store proxy for use in header button
+                    scrollProxy = proxy
+                }
+            } else {
+                // Fallback on earlier versions
             }
         }
     }

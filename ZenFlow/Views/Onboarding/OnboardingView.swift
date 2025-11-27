@@ -66,23 +66,27 @@ struct OnboardingView: View {
                 }
 
                 // Page content
-                TabView(selection: $currentPage) {
-                    ForEach(pages) { page in
-                        OnboardingPageView(page: page)
-                            .tag(page.id)
+                if #available(iOS 17.0, *) {
+                    TabView(selection: $currentPage) {
+                        ForEach(pages) { page in
+                            OnboardingPageView(page: page)
+                                .tag(page.id)
+                        }
                     }
-                }
-                .tabViewStyle(.page(indexDisplayMode: .never))
-                .onChange(of: currentPage) { oldValue, newValue in
-                    // Haptic feedback on page change
-                    hapticManager.playImpact(style: .light)
-
-                    // Accessibility announcement
-                    let page = pages[newValue]
-                    UIAccessibility.post(
-                        notification: .screenChanged,
-                        argument: String(localized: "Sayfa \(newValue + 1) / \(pages.count). \(page.title)", comment: "Page announcement")
-                    )
+                    .tabViewStyle(.page(indexDisplayMode: .never))
+                    .onChange(of: currentPage) { oldValue, newValue in
+                        // Haptic feedback on page change
+                        hapticManager.playImpact(style: .light)
+                        
+                        // Accessibility announcement
+                        let page = pages[newValue]
+                        UIAccessibility.post(
+                            notification: .screenChanged,
+                            argument: String(localized: "Sayfa \(newValue + 1) / \(pages.count). \(page.title)", comment: "Page announcement")
+                        )
+                    }
+                } else {
+                    // Fallback on earlier versions
                 }
 
                 // Progress dots

@@ -23,30 +23,34 @@ struct WatercolorZenGardenView: View {
     @State private var animationTimer: Timer?
 
     var body: some View {
-        GeometryReader { geometry in
-            ZStack {
-                // Natural background gradient (soft beige/cream)
-                naturalBackgroundGradient
-
-                // Minimal zen sand circle with rake pattern
-                zenSandCircle(in: geometry.size)
-                    .offset(y: geometry.size.height * 0.15)
-
-                // Tree (drawn with Canvas based on growth stage)
-                treeView(in: geometry.size)
-                    .offset(y: geometry.size.height * 0.1)
-                    .scaleEffect(treeGrowthScale)
+        if #available(iOS 17.0, *) {
+            GeometryReader { geometry in
+                ZStack {
+                    // Natural background gradient (soft beige/cream)
+                    naturalBackgroundGradient
+                    
+                    // Minimal zen sand circle with rake pattern
+                    zenSandCircle(in: geometry.size)
+                        .offset(y: geometry.size.height * 0.15)
+                    
+                    // Tree (drawn with Canvas based on growth stage)
+                    treeView(in: geometry.size)
+                        .offset(y: geometry.size.height * 0.1)
+                        .scaleEffect(treeGrowthScale)
+                }
+                .onAppear {
+                    startAnimations()
+                }
+                .onDisappear {
+                    stopAnimations()
+                }
             }
-            .onAppear {
-                startAnimations()
+            .ignoresSafeArea()
+            .onChange(of: gardenManager.currentStage) { _, _ in
+                animateGrowth()
             }
-            .onDisappear {
-                stopAnimations()
-            }
-        }
-        .ignoresSafeArea()
-        .onChange(of: gardenManager.currentStage) { _, _ in
-            animateGrowth()
+        } else {
+            // Fallback on earlier versions
         }
     }
 

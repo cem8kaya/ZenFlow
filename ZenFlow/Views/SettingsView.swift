@@ -61,16 +61,20 @@ struct SettingsView: View {
                 // MARK: - Audio Settings Section
 
                 Section {
-                    Toggle(isOn: $soundManager.isEnabled) {
-                        HStack {
-                            Image(systemName: soundManager.isEnabled ? "speaker.wave.2.fill" : "speaker.slash.fill")
-                                .foregroundColor(ZenTheme.calmBlue)
-                                .frame(width: 28)
-                            Text(String(localized: "settings_ambient_sounds", defaultValue: "Ortam Sesleri", comment: "Ambient sounds setting"))
+                    if #available(iOS 17.0, *) {
+                        Toggle(isOn: $soundManager.isEnabled) {
+                            HStack {
+                                Image(systemName: soundManager.isEnabled ? "speaker.wave.2.fill" : "speaker.slash.fill")
+                                    .foregroundColor(ZenTheme.calmBlue)
+                                    .frame(width: 28)
+                                Text(String(localized: "settings_ambient_sounds", defaultValue: "Ortam Sesleri", comment: "Ambient sounds setting"))
+                            }
                         }
-                    }
-                    .onChange(of: soundManager.isEnabled) { oldValue, newValue in
-                        HapticManager.shared.playImpact(style: .light)
+                        .onChange(of: soundManager.isEnabled) { oldValue, newValue in
+                            HapticManager.shared.playImpact(style: .light)
+                        }
+                    } else {
+                        // Fallback on earlier versions
                     }
 
                     if soundManager.isEnabled {
@@ -102,18 +106,22 @@ struct SettingsView: View {
                 // MARK: - Haptic Settings Section
 
                 Section {
-                    Toggle(isOn: $hapticsEnabled) {
-                        HStack {
-                            Image(systemName: "waveform")
-                                .foregroundColor(ZenTheme.calmBlue)
-                                .frame(width: 28)
-                            Text(String(localized: "settings_haptic_feedback", defaultValue: "Dokunsal Geri Bildirim", comment: "Haptic feedback setting"))
+                    if #available(iOS 17.0, *) {
+                        Toggle(isOn: $hapticsEnabled) {
+                            HStack {
+                                Image(systemName: "waveform")
+                                    .foregroundColor(ZenTheme.calmBlue)
+                                    .frame(width: 28)
+                                Text(String(localized: "settings_haptic_feedback", defaultValue: "Dokunsal Geri Bildirim", comment: "Haptic feedback setting"))
+                            }
                         }
+                        .onChange(of: hapticsEnabled) { oldValue, newValue in
+                            handleHapticsToggle(newValue)
+                        }
+                        .disabled(!hapticManager.isHapticsAvailable)
+                    } else {
+                        // Fallback on earlier versions
                     }
-                    .onChange(of: hapticsEnabled) { oldValue, newValue in
-                        handleHapticsToggle(newValue)
-                    }
-                    .disabled(!hapticManager.isHapticsAvailable)
 
                     if hapticsEnabled && hapticManager.isHapticsAvailable {
                         VStack(alignment: .leading, spacing: 8) {
@@ -128,12 +136,16 @@ struct SettingsView: View {
                                     .font(.subheadline)
                             }
 
-                            Slider(value: $hapticIntensity, in: 0.3...1.0, step: 0.1)
-                                .tint(ZenTheme.calmBlue)
-                                .onChange(of: hapticIntensity) { oldValue, newValue in
-                                    // Play demo haptic at new intensity level
-                                    hapticManager.playIntensityDemo()
-                                }
+                            if #available(iOS 17.0, *) {
+                                Slider(value: $hapticIntensity, in: 0.3...1.0, step: 0.1)
+                                    .tint(ZenTheme.calmBlue)
+                                    .onChange(of: hapticIntensity) { oldValue, newValue in
+                                        // Play demo haptic at new intensity level
+                                        hapticManager.playIntensityDemo()
+                                    }
+                            } else {
+                                // Fallback on earlier versions
+                            }
                         }
                     }
                 } header: {

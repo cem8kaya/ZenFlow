@@ -28,13 +28,15 @@ struct OnboardingPage: Identifiable, Equatable {
     let accentColor: Color
     let interactiveType: OnboardingInteractiveType
 
-    // Localized computed properties
+    // MARK: - Localized Computed Properties
+    
+    // DÜZELTME: Dinamik String değişkenleri için NSLocalizedString kullanımı en doğru yöntemdir.
     var title: String {
-        String(localized: String.LocalizationValue(stringLiteral: titleKey), defaultValue: String.LocalizationValue(stringLiteral: titleKey))
+        NSLocalizedString(titleKey, comment: "")
     }
 
     var description: String {
-        String(localized: String.LocalizationValue(stringLiteral: descriptionKey), defaultValue: String.LocalizationValue(stringLiteral: descriptionKey))
+        NSLocalizedString(descriptionKey, comment: "")
     }
 
     // MARK: - Accessibility
