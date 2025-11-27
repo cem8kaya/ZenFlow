@@ -81,19 +81,26 @@ class ResponseGenerator {
     
     /// Gets response template based on intent and sentiment (localized)
     private func getResponseTemplate(for intent: UserIntent, sentiment: MessageSentiment) -> String {
-        // Get count of templates for this combination
         let count = responseTemplateCount[intent]?[sentiment] ?? 0
         
         guard count > 0 else {
-            let fallback = String(localized: "response_fallback", defaultValue: "Anlıyorum. Sana nasıl yardımcı olabilirim? 🧘", comment: "Fallback response")
-            return "\(fallback)\n\n\(getRandomZenQuote())"
+            // Fallback
+            return String(localized: "response_fallback", defaultValue: "Anlıyorum. Sana nasıl yardımcı olabilirim?", comment: "Fallback response")
         }
         
-        // Randomly select a template index
         let randomIndex = Int.random(in: 0..<count)
         let key = "response_\(intent.rawValue)_\(sentiment.rawValue)_\(randomIndex)"
-        // DÜZELTME 2: Foundation ile uyumlu NSLocalizedString kullanıldı
-        return NSLocalizedString(key, comment: "Response template")
+        
+        // String(localized:) kullanarak ve defaultValue ekleyerek güvenli hale getirme
+        // Not: Dinamik key'ler için defaultValue vermek zordur, ancak en azından String kataloğunu zorlarız.
+        let localizedString = String(localized: String.LocalizationValue(key))
+        
+        // Eğer dönen değer key ile aynıysa (çeviri bulunamadıysa), genel bir mesaj göster
+        if localizedString == key {
+            return "Anlıyorum. Devam edelim." // Acil durum cümlesi
+        }
+        
+        return localizedString
     }
     
     
