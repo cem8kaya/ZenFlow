@@ -117,12 +117,17 @@ struct OnboardingCompletionView: View {
                     // Start first session
                     Button(action: {
                         HapticManager.shared.playImpact(style: .medium)
-                        // Trigger first breathing tutorial
-                        TutorialManager.shared.showTutorial(.firstBreathing)
-                        // Call the callback to navigate to meditation
-                        onStartFirstSession()
-                        // Close the onboarding view
+                        // Close the onboarding view first
                         isPresented = false
+                        // Give a small delay to ensure view is dismissed before navigation
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                            // Call the callback to navigate to meditation
+                            onStartFirstSession()
+                            // Trigger first breathing tutorial after navigation
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                TutorialManager.shared.showTutorial(.firstBreathing)
+                            }
+                        }
                     }) {
                         HStack(spacing: 8) {
                             Image(systemName: "play.fill")

@@ -29,14 +29,35 @@ struct OnboardingPage: Identifiable, Equatable {
     let interactiveType: OnboardingInteractiveType
 
     // MARK: - Localized Computed Properties
-    
-    // DÜZELTME: Dinamik String değişkenleri için NSLocalizedString kullanımı en doğru yöntemdir.
+
     var title: String {
-        NSLocalizedString(titleKey, comment: "")
+        String(localized: String.LocalizationValue(titleKey), defaultValue: getDefaultTitle())
     }
 
     var description: String {
-        NSLocalizedString(descriptionKey, comment: "")
+        String(localized: String.LocalizationValue(descriptionKey), defaultValue: getDefaultDescription())
+    }
+
+    private func getDefaultTitle() -> String {
+        switch id {
+        case 0: return "Hoş Geldin ZenFlow'a"
+        case 1: return "Nefes Alın, Rahatlayın"
+        case 2: return "İlerlemenizi Görün"
+        case 3: return "Odaklanın, Üretin"
+        case 4: return "Gizliliğiniz Bizim İçin Önemli"
+        default: return titleKey
+        }
+    }
+
+    private func getDefaultDescription() -> String {
+        switch id {
+        case 0: return "Günde sadece 5 dakika ile stres azaltma, daha iyi uyku ve artmış odaklanma. Bilimsel olarak kanıtlanmış teknikler, her zaman yanında."
+        case 1: return "Box Breathing, 4-7-8 tekniği ve daha fazlası. NASA astronotları ve Navy SEALs tarafından kullanılan tekniklerle stresini yönet."
+        case 2: return "Her meditasyon seansı Zen Bahçenizi büyütür. Rozetler kazanın, serilerinizi koruyun, gelişiminizi kutlayın."
+        case 3: return "Pomodoro tekniği ile 25 dakika derin odaklanma, 5 dakika dinlenme. Verimliliğinizi %40 artırın."
+        case 4: return "Verileriniz sadece cihazınızda. Sunucuya hiçbir veri gönderilmez. HealthKit ve bildirimler tamamen opsiyonel."
+        default: return descriptionKey
+        }
     }
 
     // MARK: - Accessibility
