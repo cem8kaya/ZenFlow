@@ -396,7 +396,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ZenFlow/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Zen Coach";
+				INFOPLIST_KEY_CFBundleDisplayName = ZenFlow;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "ZenFlow meditasyon seanslarınızı HealthKit'e kaydetmek için izninize ihtiyaç duyuyor.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "ZenFlow meditasyon seanslarınızı HealthKit'e kaydetmek için izninize ihtiyaç duyuyor.";
@@ -436,7 +436,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ZenFlow/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Zen Coach";
+				INFOPLIST_KEY_CFBundleDisplayName = ZenFlow;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "ZenFlow meditasyon seanslarınızı HealthKit'e kaydetmek için izninize ihtiyaç duyuyor.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "ZenFlow meditasyon seanslarınızı HealthKit'e kaydetmek için izninize ihtiyaç duyuyor.";

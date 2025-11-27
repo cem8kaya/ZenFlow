@@ -1,9 +1,9 @@
 /*
   InfoPlist.strings
-  Zen Coach Widget
+  ZenFlow Widget
 
   Turkish localization for widget display name
 */
 
-CFBundleDisplayName = "Zen Coach Widget";
-CFBundleName = "Zen Coach Widget";
+CFBundleDisplayName = "ZenFlow Widget";
+CFBundleName = "ZenFlow Widget";
