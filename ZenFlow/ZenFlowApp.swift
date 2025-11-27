@@ -61,6 +61,7 @@ struct ZenFlowApp: App {
                 // Onboarding overlay
                 if showOnboarding {
                     OnboardingView()
+                        .environmentObject(hapticManager)
                         .transition(.opacity)
                         .zIndex(2)
                 }

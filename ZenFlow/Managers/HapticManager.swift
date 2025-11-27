@@ -295,6 +295,37 @@ class HapticManager: ObservableObject {
         print("▶️ Playing notification haptic: \(type)")
     }
 
+    /// Play intensity demo haptic - a short pulse at the current intensity level
+    /// Used for previewing the intensity setting in settings
+    func playIntensityDemo() {
+        guard isEnabled && isHapticsAvailable, let engine = engine else {
+            print("⚠️ Cannot play intensity demo - haptics not available")
+            return
+        }
+
+        do {
+            // Create a short continuous event with current intensity
+            let demoIntensity = Float(intensity)
+            let event = CHHapticEvent(
+                eventType: .hapticContinuous,
+                parameters: [
+                    CHHapticEventParameter(parameterID: .hapticIntensity, value: demoIntensity),
+                    CHHapticEventParameter(parameterID: .hapticSharpness, value: 0.5)
+                ],
+                relativeTime: 0,
+                duration: 0.3
+            )
+
+            let pattern = try CHHapticPattern(events: [event], parameters: [])
+            let player = try engine.makePlayer(with: pattern)
+            try player.start(atTime: CHHapticTimeImmediate)
+
+            print("▶️ Playing intensity demo at \(Int(intensity * 100))%")
+        } catch {
+            print("❌ Failed to play intensity demo: \(error.localizedDescription)")
+        }
+    }
+
     // MARK: - Exhale and Hold Patterns
 
     /// Create exhale haptic pattern with decreasing intensity

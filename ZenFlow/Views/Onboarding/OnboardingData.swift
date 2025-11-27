@@ -30,13 +30,11 @@ struct OnboardingPage: Identifiable, Equatable {
 
     // Localized computed properties
     var title: String {
-        // DÜZELTME 1: NSLocalizedString kullanıldı
-        NSLocalizedString(titleKey, comment: "Onboarding title")
+        String(localized: LocalizationKey(stringLiteral: titleKey), defaultValue: String.LocalizationValue(stringLiteral: titleKey), comment: "Onboarding title")
     }
 
     var description: String {
-        // DÜZELTME 2: NSLocalizedString kullanıldı
-        NSLocalizedString(descriptionKey, comment: "Onboarding description")
+        String(localized: LocalizationKey(stringLiteral: descriptionKey), defaultValue: String.LocalizationValue(stringLiteral: descriptionKey), comment: "Onboarding description")
     }
 
     // MARK: - Accessibility
