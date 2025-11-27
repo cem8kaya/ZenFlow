@@ -115,7 +115,7 @@ struct ExerciseSelectionView: View {
 
                     HStack(spacing: 8) {
                         // Difficulty badge
-                        Text(selectedExercise.difficulty.rawValue)
+                        Text(selectedExercise.difficulty.displayName)
                             .font(.system(size: 12, weight: .semibold))
                             .foregroundColor(.white)
                             .padding(.horizontal, 10)
@@ -300,7 +300,7 @@ struct ExerciseCard: View {
                     .fill(exercise.difficulty.color)
                     .frame(width: 8, height: 8)
 
-                Text(exercise.difficulty.rawValue)
+                Text(exercise.difficulty.displayName)
                     .font(.system(size: 11, weight: .semibold))
                     .foregroundColor(exercise.difficulty.color)
             }
@@ -345,7 +345,7 @@ struct ExerciseCard: View {
             onTap()
         }
         .accessibilityElement(children: .combine)
-        .accessibilityLabel(Text(String(localized: "exercise_card_accessibility", defaultValue: "\(exercise.name), \(exercise.difficulty.rawValue) seviye", comment: "Exercise card accessibility label")))
+        .accessibilityLabel(Text(String(localized: "exercise_card_accessibility", defaultValue: "\(exercise.name), \(exercise.difficulty.displayName) seviye", comment: "Exercise card accessibility label")))
         .accessibilityHint(isSelected ? String(localized: "exercise_card_selected", defaultValue: "Seçili", comment: "Selected hint") : String(localized: "exercise_card_tap_to_select", defaultValue: "Seçmek için dokunun", comment: "Tap to select hint"))
     }
 }

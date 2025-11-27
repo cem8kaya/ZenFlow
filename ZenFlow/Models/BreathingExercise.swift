@@ -206,8 +206,8 @@ class BreathingExerciseManager: ObservableObject {
     @Published var selectedExercise: BreathingExercise
     @Published var favoriteExerciseIDs: Set<UUID> = []
 
-    /// All available breathing exercises
-    let allExercises: [BreathingExercise] = [
+    /// All available breathing exercises (static for performance - created once and shared)
+    static let allExercises: [BreathingExercise] = [
         // 1. Box Breathing
         BreathingExercise(
             exerciseType: "box",
@@ -338,17 +338,22 @@ class BreathingExerciseManager: ObservableObject {
         // Load selected exercise from UserDefaults
         if let savedExerciseID = UserDefaults.standard.string(forKey: selectedExerciseKey),
            let uuid = UUID(uuidString: savedExerciseID),
-           let exercise = allExercises.first(where: { $0.id == uuid }) {
+           let exercise = Self.allExercises.first(where: { $0.id == uuid }) {
             self.selectedExercise = exercise
         } else {
             // Default to Box Breathing
-            self.selectedExercise = allExercises[0]
+            self.selectedExercise = Self.allExercises[0]
         }
 
         // Load favorite exercises from UserDefaults
         if let savedFavorites = UserDefaults.standard.array(forKey: favoriteExercisesKey) as? [String] {
             self.favoriteExerciseIDs = Set(savedFavorites.compactMap { UUID(uuidString: $0) })
         }
+    }
+
+    /// Instance property for backward compatibility
+    var allExercises: [BreathingExercise] {
+        Self.allExercises
     }
 
     /// Select an exercise
@@ -374,7 +379,7 @@ class BreathingExerciseManager: ObservableObject {
 
     /// Get favorite exercises
     var favoriteExercises: [BreathingExercise] {
-        return allExercises.filter { favoriteExerciseIDs.contains($0.id) }
+        return Self.allExercises.filter { favoriteExerciseIDs.contains($0.id) }
     }
 
     /// Save favorites to UserDefaults
@@ -394,9 +399,9 @@ class BreathingExerciseManager: ObservableObject {
             "deep": 4           // Derin Gevşeme
         ]
 
-        if let index = typeMap[type.lowercased()], index < allExercises.count {
-            selectExercise(allExercises[index])
-            print("✅ Selected exercise via deep link: \(allExercises[index].name)")
+        if let index = typeMap[type.lowercased()], index < Self.allExercises.count {
+            selectExercise(Self.allExercises[index])
+            print("✅ Selected exercise via deep link: \(Self.allExercises[index].name)")
         } else {
             print("⚠️ Unknown exercise type: \(type), keeping current selection")
         }
