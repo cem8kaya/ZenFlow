@@ -60,10 +60,7 @@ struct BreathingPhaseConfig: Identifiable, Codable {
 
     var instruction: String {
         // Use the localization key to fetch the instruction, with a fallback to the key itself
-        String(
-            localized: String.LocalizationValue(instructionKey),
-            defaultValue: "\(instructionKey)"
-        )
+        NSLocalizedString(instructionKey, value: "\(instructionKey)", comment: "")
     }
 
     init(phase: BreathingPhaseType, duration: TimeInterval, instructionKey: String) {
@@ -156,25 +153,16 @@ struct BreathingExercise: Identifiable, Codable {
 
     // Localized computed properties
     var localizedName: String {
-        String(
-            localized: String.LocalizationValue("exercise_\(exerciseType)_name"),
-            defaultValue: "\(getDefaultName())"
-        )
+        NSLocalizedString("exercise_\(exerciseType)_name", value: "\(getDefaultName())", comment: "")
     }
 
     var localizedDescription: String {
-        String(
-            localized: String.LocalizationValue("exercise_\(exerciseType)_description"),
-            defaultValue: "\(getDefaultDescription())"
-        )
+        NSLocalizedString("exercise_\(exerciseType)_description", value: "\(getDefaultDescription())", comment: "")
     }
 
     var localizedBenefits: [String] {
         (0..<4).map { index in
-            String(
-                localized: String.LocalizationValue("exercise_\(exerciseType)_benefit_\(index)"),
-                defaultValue: "\(getDefaultBenefit(at: index))"
-            )
+            NSLocalizedString("exercise_\(exerciseType)_benefit_\(index)", value: "\(getDefaultBenefit(at: index))", comment: "")
         }
     }
 

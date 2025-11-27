@@ -1,12 +1,12 @@
 /*
   InfoPlist.strings
-  Zen Coach
+  ZenFlow
 
   English localization for app display name and permissions
 */
 
-CFBundleDisplayName = "Zen Coach";
-CFBundleName = "Zen Coach";
-NSUserNotificationsUsageDescription = "Zen Coach needs notification permission to send meditation reminders.";
-NSHealthShareUsageDescription = "Zen Coach would like to read your mindfulness data from Health.";
-NSHealthUpdateUsageDescription = "Zen Coach would like to save your meditation sessions to Health as mindful sessions.";
+CFBundleDisplayName = "ZenFlow";
+CFBundleName = "ZenFlow";
+NSUserNotificationsUsageDescription = "ZenFlow needs notification permission to send meditation reminders.";
+NSHealthShareUsageDescription = "ZenFlow would like to read your mindfulness data from Health.";
+NSHealthUpdateUsageDescription = "ZenFlow would like to save your meditation sessions to Health as mindful sessions.";
