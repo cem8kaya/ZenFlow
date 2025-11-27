@@ -38,13 +38,13 @@ enum AnimationPhase {
     var text: String {
         switch self {
         case .inhale:
-            return String(localized: "breathing_phase_inhale", comment: "Inhale")
+            return String(localized: "breathing_phase_inhale", defaultValue: "Nefes Al", comment: "Inhale")
         case .hold:
-            return String(localized: "breathing_phase_hold", comment: "Hold")
+            return String(localized: "breathing_phase_hold", defaultValue: "Tut", comment: "Hold")
         case .exhale:
-            return String(localized: "breathing_phase_exhale", comment: "Exhale")
+            return String(localized: "breathing_phase_exhale", defaultValue: "Nefes Ver", comment: "Exhale")
         case .holdAfterExhale:
-            return String(localized: "breathing_phase_hold_after_exhale", comment: "Hold after exhale")
+            return String(localized: "breathing_phase_hold_after_exhale", defaultValue: "Tut", comment: "Hold after exhale")
         }
     }
 
@@ -76,13 +76,13 @@ enum AnimationPhase {
     var accessibilityAnnouncement: String {
         switch self {
         case .inhale:
-            return String(localized: "breathing_accessibility_inhale", comment: "Breathe in announcement")
+            return String(localized: "breathing_accessibility_inhale", defaultValue: "Nefes alın", comment: "Breathe in announcement")
         case .hold:
-            return String(localized: "breathing_accessibility_hold", comment: "Hold breath announcement")
+            return String(localized: "breathing_accessibility_hold", defaultValue: "Nefesi tutun", comment: "Hold breath announcement")
         case .exhale:
-            return String(localized: "breathing_accessibility_exhale", comment: "Breathe out announcement")
+            return String(localized: "breathing_accessibility_exhale", defaultValue: "Nefes verin", comment: "Breathe out announcement")
         case .holdAfterExhale:
-            return String(localized: "breathing_accessibility_hold_after_exhale", comment: "Hold after exhale announcement")
+            return String(localized: "breathing_accessibility_hold_after_exhale", defaultValue: "Nefesi tutun", comment: "Hold after exhale announcement")
         }
     }
 
