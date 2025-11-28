@@ -14,9 +14,27 @@ import SwiftUI
 
 /// Categories for ambient sounds
 enum AmbientCategory: String, Codable, CaseIterable {
-    case nature = "Doğa"
-    case water = "Su"
-    case atmosphere = "Atmosfer"
+    case nature = "nature"
+    case water = "water"
+    case atmosphere = "atmosphere"
+
+    /// Localized display name for the category
+    var localizedName: String {
+        switch self {
+        case .nature:
+            return String(localized: "category_nature", defaultValue: "Doğa", comment: "Nature sound category")
+        case .water:
+            return String(localized: "category_water", defaultValue: "Su", comment: "Water sound category")
+        case .atmosphere:
+            return String(localized: "category_atmosphere", defaultValue: "Atmosfer", comment: "Atmosphere sound category")
+        }
+    }
+    
+    // Backward compatibility for rawValue usage in UI if needed
+    // Note: UI should prefer using .localizedName
+    var rawValueLocalized: String {
+        localizedName
+    }
 
     var icon: String {
         switch self {
@@ -80,115 +98,115 @@ extension AmbientSound {
     static let allSounds: [AmbientSound] = [
         // MARK: - Water Sounds (5)
         AmbientSound(
-            name: "Yağmur",
+            name: String(localized: "sound_rain", defaultValue: "Yağmur", comment: "Rain sound"),
             iconName: "cloud.rain.fill",
             fileName: "Rain",
             category: .water,
-            description: "Sakinleştirici yağmur sesi"
+            description: String(localized: "sound_rain_desc", defaultValue: "Sakinleştirici yağmur sesi", comment: "Rain sound description")
         ),
         AmbientSound(
-            name: "Okyanus",
+            name: String(localized: "sound_ocean", defaultValue: "Okyanus", comment: "Ocean sound"),
             iconName: "water.waves",
             fileName: "ocean",
             category: .water,
-            description: "Dinlendirici dalga sesleri"
+            description: String(localized: "sound_ocean_desc", defaultValue: "Dinlendirici dalga sesleri", comment: "Ocean sound description")
         ),
         AmbientSound(
-            name: "Fırtına",
+            name: String(localized: "sound_thunderstorm", defaultValue: "Fırtına", comment: "Thunderstorm sound"),
             iconName: "cloud.bolt.rain.fill",
             fileName: "thunderstorm",
             category: .water,
-            description: "Gök gürültülü yağmur"
+            description: String(localized: "sound_thunderstorm_desc", defaultValue: "Gök gürültülü yağmur", comment: "Thunderstorm sound description")
         ),
         AmbientSound(
-            name: "Dere",
+            name: String(localized: "sound_river", defaultValue: "Dere", comment: "River sound"),
             iconName: "drop.triangle.fill",
             fileName: "river",
             category: .water,
-            description: "Akıp giden dere suyu"
+            description: String(localized: "sound_river_desc", defaultValue: "Akıp giden dere suyu", comment: "River sound description")
         ),
         AmbientSound(
-            name: "Şelale",
+            name: String(localized: "sound_waterfall", defaultValue: "Şelale", comment: "Waterfall sound"),
             iconName: "drop.halffull",
             fileName: "waterfall",
             category: .water,
-            description: "Güçlü şelale sesi"
+            description: String(localized: "sound_waterfall_desc", defaultValue: "Güçlü şelale sesi", comment: "Waterfall sound description")
         ),
 
         // MARK: - Nature Sounds (5)
         AmbientSound(
-            name: "Orman",
+            name: String(localized: "sound_forest", defaultValue: "Orman", comment: "Forest sound"),
             iconName: "tree.fill",
             fileName: "forest",
             category: .nature,
-            description: "Doğanın huzur verici sesleri"
+            description: String(localized: "sound_forest_desc", defaultValue: "Doğanın huzur verici sesleri", comment: "Forest sound description")
         ),
         AmbientSound(
-            name: "Gece",
+            name: String(localized: "sound_night", defaultValue: "Gece", comment: "Night sound"),
             iconName: "moon.stars.fill",
             fileName: "night",
             category: .nature,
-            description: "Cırcır böcekleri ve gece sesleri"
+            description: String(localized: "sound_night_desc", defaultValue: "Cırcır böcekleri ve gece sesleri", comment: "Night sound description")
         ),
         AmbientSound(
-            name: "Rüzgar",
+            name: String(localized: "sound_wind", defaultValue: "Rüzgar", comment: "Wind sound"),
             iconName: "wind",
             fileName: "wind-trees",
             category: .nature,
-            description: "Ağaçlarda esen rüzgar"
+            description: String(localized: "sound_wind_desc", defaultValue: "Ağaçlarda esen rüzgar", comment: "Wind sound description")
         ),
         AmbientSound(
-            name: "Dağ",
+            name: String(localized: "sound_mountain", defaultValue: "Dağ", comment: "Mountain sound"),
             iconName: "mountain.2.fill",
             fileName: "mountain",
             category: .nature,
-            description: "Dağ esintisi"
+            description: String(localized: "sound_mountain_desc", defaultValue: "Dağ esintisi", comment: "Mountain sound description")
         ),
         AmbientSound(
-            name: "Çöl",
+            name: String(localized: "sound_desert", defaultValue: "Çöl", comment: "Desert sound"),
             iconName: "sun.dust.fill",
             fileName: "desert",
             category: .nature,
-            description: "Çöl rüzgarı"
+            description: String(localized: "sound_desert_desc", defaultValue: "Çöl rüzgarı", comment: "Desert sound description")
         ),
 
         // MARK: - Fire & Warmth (3)
         AmbientSound(
-            name: "Şömine",
+            name: String(localized: "sound_fireplace", defaultValue: "Şömine", comment: "Fireplace sound"),
             iconName: "fireplace.fill",
             fileName: "fireplace",
             category: .atmosphere,
-            description: "Çatırdayan şömine"
+            description: String(localized: "sound_fireplace_desc", defaultValue: "Çatırdayan şömine", comment: "Fireplace sound description")
         ),
         AmbientSound(
-            name: "Ateş",
+            name: String(localized: "sound_fire", defaultValue: "Ateş", comment: "Fire sound"),
             iconName: "flame.fill",
             fileName: "fire",
             category: .atmosphere,
-            description: "Yumuşak ateş sesi"
+            description: String(localized: "sound_fire_desc", defaultValue: "Yumuşak ateş sesi", comment: "Fire sound description")
         ),
         AmbientSound(
-            name: "Kamp Ateşi",
+            name: String(localized: "sound_campfire", defaultValue: "Kamp Ateşi", comment: "Campfire sound"),
             iconName: "tent.fill",
             fileName: "campfire",
             category: .atmosphere,
-            description: "Kamp ateşi çatırtısı"
+            description: String(localized: "sound_campfire_desc", defaultValue: "Kamp ateşi çatırtısı", comment: "Campfire sound description")
         ),
 
         // MARK: - Instrumental (2)
         AmbientSound(
-            name: "Tibet Çanı",
+            name: String(localized: "sound_singing_bowl", defaultValue: "Tibet Çanı", comment: "Singing bowl sound"),
             iconName: "bell.fill",
             fileName: "singing-bowl",
             category: .atmosphere,
-            description: "Tibet çanak sesi"
+            description: String(localized: "sound_singing_bowl_desc", defaultValue: "Tibet çanak sesi", comment: "Singing bowl sound description")
         ),
         AmbientSound(
-            name: "Rüzgar Çanı",
+            name: String(localized: "sound_wind_chimes", defaultValue: "Rüzgar Çanı", comment: "Wind chimes sound"),
             iconName: "wind.circle.fill",
             fileName: "wind-chimes",
             category: .atmosphere,
-            description: "Rüzgar çanları"
+            description: String(localized: "sound_wind_chimes_desc", defaultValue: "Rüzgar çanları", comment: "Wind chimes sound description")
         )
     ]
 
@@ -204,10 +222,10 @@ extension AmbientSound {
 
     /// None option (no sound)
     static let none = AmbientSound(
-        name: "Sessiz",
+        name: String(localized: "sound_silent", defaultValue: "Sessiz", comment: "Silent sound option"),
         iconName: "speaker.slash.fill",
         fileName: "",
         category: .atmosphere,
-        description: "Arka plan sesi yok"
+        description: String(localized: "sound_silent_desc", defaultValue: "Arka plan sesi yok", comment: "No background sound")
     )
 }

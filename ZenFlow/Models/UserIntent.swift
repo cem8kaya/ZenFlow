@@ -77,49 +77,49 @@ enum UserIntent: String, Codable, CaseIterable, Identifiable {
         switch self {
         case .stress:
             return [
-                // Turkish
+                // Türkçe
                 "stres", "kaygı", "endişe", "gergin", "huzursuz", "sinirli", "tedirgin", "panik", "korku", "kaygılan", "stresli", "sıkıntı", "bunalım", "daraldım",
                 // English
-                "stress", "anxiety", "worry", "nervous", "restless", "angry", "panic", "fear", "scared", "overwhelmed", "tension", "upset"
+                "stress", "anxiety", "worry", "nervous", "restless", "angry", "panic", "fear", "scared", "overwhelmed", "tension", "upset", "help"
             ]
         case .focus:
             return [
-                // Turkish
+                // Türkçe
                 "odak", "dikkat", "konsantrasyon", "dağınık", "çalış", "verim", "iş", "ders", "pomodoro", "odaklan", "çalışma", "konsantre", "zihin dağınıklığı",
                 // English
                 "focus", "attention", "concentrate", "concentration", "distracted", "distraction", "work", "study", "productive", "pomodoro", "efficiency"
             ]
         case .sleep:
             return [
-                // Turkish
+                // Türkçe
                 "uyku", "uyu", "dinlen", "yorgun", "bitkin", "uyuya", "gece", "yat", "uyuma", "uyumak", "uykusuz", "kabûs",
                 // English
                 "sleep", "insomnia", "tired", "exhausted", "rest", "night", "awake", "dream", "nap", "sleepy"
             ]
         case .breathing:
             return [
-                // Turkish
+                // Türkçe
                 "nefes", "soluk", "breathing", "box breathing", "4-7-8", "derin nefes", "nefes al", "soluk al", "nefes egzersiz", "egzersiz", "teknik",
                 // English
                 "breath", "breathing", "inhale", "exhale", "box breathing", "4-7-8", "deep breath", "lung", "exercise", "technique"
             ]
         case .motivation:
             return [
-                // Turkish
+                // Türkçe
                 "motivasyon", "başla", "istemi", "üşen", "enerji", "güç", "ilham", "cesaret", "isteksiz", "tembellik", "motivasyon bul", "bahçe", "zen bahçesi", "ağaç", "büyüme", "çiçek", "bitki",
                 // English
                 "motivation", "inspire", "inspiration", "energy", "power", "courage", "lazy", "procrastination", "start", "garden", "zen garden", "tree", "grow", "plant"
             ]
         case .meditation:
             return [
-                // Turkish
+                // Türkçe
                 "meditasyon", "mindfulness", "farkındalık", "meditasyon yap", "nasıl", "öğren", "meditasyon öğren", "başlangıç", "sakinleş", "huzur",
                 // English
                 "meditation", "mindfulness", "awareness", "meditate", "how to", "learn", "beginner", "start", "calm", "peace"
             ]
         case .progress:
             return [
-                // Turkish
+                // Türkçe
                 "ilerleme", "gelişim", "istatistik", "rozet", "başarı", "seri", "gelişme", "streak", "stats", "durum", "skor", "puan",
                 // English
                 "progress", "improvement", "stats", "statistics", "badge", "achievement", "streak", "score", "status"
@@ -141,8 +141,8 @@ enum UserIntent: String, Codable, CaseIterable, Identifiable {
             // 4-7-8 Technique - ideal for sleep
             return "zenflow://breathing?exercise=478"
         case .motivation:
-            // Calming Breath (Sakinleştirici Nefes) - ideal for meditation
-            return "zenflow://breathing?exercise=calming"
+            // Motivasyon intent'i Zen Bahçesi'ne yönlendiriyor
+            return "zenflow://garden"
         case .meditation:
             // Calming Breath (Sakinleştirici Nefes) - ideal for meditation
             return "zenflow://breathing?exercise=calming"

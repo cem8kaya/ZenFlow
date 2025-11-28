@@ -242,15 +242,18 @@ class ZenGardenManager: ObservableObject {
         }
 
         if minutes < 60 {
-            return "\(minutes) dakika"
+            // FIX: Localized string for minutes
+            return String(localized: "time_remaining_minutes", defaultValue: "\(minutes) dakika", comment: "Time remaining in minutes")
         } else {
             let hours = minutes / 60
             let remainingMinutes = minutes % 60
 
             if remainingMinutes == 0 {
-                return "\(hours) saat"
+                // FIX: Localized string for hours
+                return String(localized: "time_remaining_hours", defaultValue: "\(hours) saat", comment: "Time remaining in hours")
             } else {
-                return "\(hours) saat \(remainingMinutes) dakika"
+                // FIX: Localized string for hours and minutes
+                return String(localized: "time_remaining_hours_minutes", defaultValue: "\(hours) saat \(remainingMinutes) dakika", comment: "Time remaining in hours and minutes")
             }
         }
     }
@@ -263,15 +266,15 @@ class ZenGardenManager: ObservableObject {
     /// Toplam süreyi formatlanmış string olarak döndür
     func formattedTotalTime() -> String {
         if totalMinutes < 60 {
-            return "\(totalMinutes) dakika"
+            return String(localized: "total_time_minutes", defaultValue: "\(totalMinutes) dakika", comment: "Total time in minutes")
         } else {
             let hours = totalMinutes / 60
             let minutes = totalMinutes % 60
 
             if minutes == 0 {
-                return "\(hours) saat"
+                return String(localized: "total_time_hours", defaultValue: "\(hours) saat", comment: "Total time in hours")
             } else {
-                return "\(hours) saat \(minutes) dakika"
+                return String(localized: "total_time_hours_minutes", defaultValue: "\(hours) saat \(minutes) dakika", comment: "Total time in hours and minutes")
             }
         }
     }

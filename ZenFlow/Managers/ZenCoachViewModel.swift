@@ -62,36 +62,38 @@ class ZenCoachViewModel: ObservableObject {
         let lastSessionDate = localDataManager.lastSessionDate
 
         if totalSessions < 3 {
-            personalizedAdvice = """
+            personalizedAdvice = String(localized: "advice_beginner_start", defaultValue: """
             Yolculuğunun başındasın. Zen yolu sabır ve süreklilik gerektirir. \
             Her gün küçük bir adım at - nefes al, otur, gözlemle. \
             Mükemmellik arayışında olma, sadece var ol.
-            """
+            """, comment: "Beginner advice for new users")
         } else if currentStreak >= 7 {
-            personalizedAdvice = """
-            \(currentStreak) günlük seride harikasın! Ancak unutma: \
+            let format = String(localized: "advice_streak_maintenance", defaultValue: """
+            %lld günlük seride harikasın! Ancak unutma: \
             Zen'de hedef, seriyi korumak değil, her anı tam yaşamaktır. \
             Seri kırılırsa da sorun değil - önemli olan şimdiki nefes.
-            """
+            """, comment: "Advice for users with a streak")
+            personalizedAdvice = String(format: format, currentStreak)
         } else if totalSessions >= 30 {
-            personalizedAdvice = """
-            \(totalSessions) seans tamamladın. Meditasyon artık yaşamının bir parçası. \
+            let format = String(localized: "advice_mastery_progress", defaultValue: """
+            %lld seans tamamladın. Meditasyon artık yaşamının bir parçası. \
             Ancak asıl dönüşüm yastığın dışında gerçekleşir. Günlük yaşamda ne kadar uyanıksın? \
             Her an bir uygulama fırsatıdır.
-            """
+            """, comment: "Advice for experienced users")
+            personalizedAdvice = String(format: format, totalSessions)
         } else if let lastDate = lastSessionDate,
                   Calendar.current.dateComponents([.day], from: lastDate, to: Date()).day ?? 0 > 3 {
-            personalizedAdvice = """
+            personalizedAdvice = String(localized: "advice_returning_user", defaultValue: """
             Bir süredir meditasyon yapmadın. Bu normaldir - hayat bazen bizleri meşgul eder. \
             Ama unutma: Yolculuk bin bir millik yoldan başlar. Bugün küçük bir nefesle başla. \
             Yeniden başlamak, başarısızlık değil, cesaret işaretidir.
-            """
+            """, comment: "Advice for returning users")
         } else {
-            personalizedAdvice = """
+            personalizedAdvice = String(localized: "advice_general_encouragement", defaultValue: """
             Meditasyon yolculuğun güzel ilerliyor. Bazen zihin dağınık olacak, \
             bazen sessiz. Her ikisi de doğaldır. Önemli olan, yargılamadan gözlemlemek. \
             Sen düşüncen değilsin, düşüncelerin gözlemcisisin.
-            """
+            """, comment: "General advice")
         }
     }
 

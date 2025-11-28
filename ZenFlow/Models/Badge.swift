@@ -23,13 +23,13 @@ enum RequirementType: String, Codable {
     var displayName: String {
         switch self {
         case .streak:
-            return "Seri"
+            return String(localized: "requirement_type_streak", defaultValue: "Seri", comment: "Streak requirement")
         case .totalMinutes:
-            return "Toplam Dakika"
+            return String(localized: "requirement_type_total_minutes", defaultValue: "Toplam Dakika", comment: "Total minutes requirement")
         case .focusSessions:
-            return "Odaklanma Seansı"
+            return String(localized: "requirement_type_focus_sessions", defaultValue: "Odaklanma Seansı", comment: "Focus sessions requirement")
         case .focusSessionsDaily:
-            return "Günlük Odaklanma Seansı"
+            return String(localized: "requirement_type_focus_sessions_daily", defaultValue: "Günlük Odaklanma Seansı", comment: "Daily focus sessions requirement")
         }
     }
 }
@@ -100,15 +100,15 @@ extension Badge {
     static let predefinedBadges: [Badge] = [
         // Streak Badges
         Badge(
-            name: "7 Gün Serisi",
-            description: "7 gün üst üste meditasyon yaptın!",
+            name: String(localized: "badge_7_day_streak_title", defaultValue: "7 Gün Serisi", comment: "7 Day Streak Badge Title"),
+            description: String(localized: "badge_7_day_streak_desc", defaultValue: "7 gün üst üste meditasyon yaptın!", comment: "7 Day Streak Badge Description"),
             requirementType: .streak,
             requiredValue: AppConstants.Badges.weekStreakDays,
             iconName: "flame.fill"
         ),
         Badge(
-            name: "30 Gün Serisi",
-            description: "30 gün üst üste meditasyon yaptın! İnanılmaz bir disiplin!",
+            name: String(localized: "badge_30_day_streak_title", defaultValue: "30 Gün Serisi", comment: "30 Day Streak Badge Title"),
+            description: String(localized: "badge_30_day_streak_desc", defaultValue: "30 gün üst üste meditasyon yaptın! İnanılmaz bir disiplin!", comment: "30 Day Streak Badge Description"),
             requirementType: .streak,
             requiredValue: AppConstants.Badges.monthStreakDays,
             iconName: "bolt.fill"
@@ -116,22 +116,22 @@ extension Badge {
 
         // Minute Badges
         Badge(
-            name: "İlk Saat",
-            description: "Toplam 60 dakika meditasyon tamamladın!",
+            name: String(localized: "badge_first_hour_title", defaultValue: "İlk Saat", comment: "First Hour Badge Title"),
+            description: String(localized: "badge_first_hour_desc", defaultValue: "Toplam 60 dakika meditasyon tamamladın!", comment: "First Hour Badge Description"),
             requirementType: .totalMinutes,
             requiredValue: AppConstants.Badges.firstHourMinutes,
             iconName: "clock.fill"
         ),
         Badge(
-            name: "5 Saat Ustalık",
-            description: "Toplam 300 dakika meditasyon tamamladın!",
+            name: String(localized: "badge_5_hour_mastery_title", defaultValue: "5 Saat Ustalık", comment: "5 Hour Mastery Badge Title"),
+            description: String(localized: "badge_5_hour_mastery_desc", defaultValue: "Toplam 300 dakika meditasyon tamamladın!", comment: "5 Hour Mastery Badge Description"),
             requirementType: .totalMinutes,
             requiredValue: AppConstants.Badges.masteryMinutes,
             iconName: "star.fill"
         ),
         Badge(
-            name: "Zen Ustası",
-            description: "Toplam 1000 dakika meditasyon tamamladın! Gerçek bir usta!",
+            name: String(localized: "badge_zen_master_title", defaultValue: "Zen Ustası", comment: "Zen Master Badge Title"),
+            description: String(localized: "badge_zen_master_desc", defaultValue: "Toplam 1000 dakika meditasyon tamamladın! Gerçek bir usta!", comment: "Zen Master Badge Description"),
             requirementType: .totalMinutes,
             requiredValue: AppConstants.Badges.zenMasterMinutes,
             iconName: "crown.fill"
@@ -139,22 +139,22 @@ extension Badge {
 
         // Focus Session Badges
         Badge(
-            name: "İlk Pomodoro",
-            description: "İlk odaklanma seansını tamamladın!",
+            name: String(localized: "badge_first_pomodoro_title", defaultValue: "İlk Pomodoro", comment: "First Pomodoro Badge Title"),
+            description: String(localized: "badge_first_pomodoro_desc", defaultValue: "İlk odaklanma seansını tamamladın!", comment: "First Pomodoro Badge Description"),
             requirementType: .focusSessions,
             requiredValue: AppConstants.Pomodoro.firstPomodoroSessions,
             iconName: "timer"
         ),
         Badge(
-            name: "Odaklanma Ustası",
-            description: "10 odaklanma seansı tamamladın! Harika bir konsantrasyon!",
+            name: String(localized: "badge_focus_master_title", defaultValue: "Odaklanma Ustası", comment: "Focus Master Badge Title"),
+            description: String(localized: "badge_focus_master_desc", defaultValue: "10 odaklanma seansı tamamladın! Harika bir konsantrasyon!", comment: "Focus Master Badge Description"),
             requirementType: .focusSessions,
             requiredValue: AppConstants.Pomodoro.focusMasterSessions,
             iconName: "brain.head.profile"
         ),
         Badge(
-            name: "Maraton",
-            description: "Tek günde 8 odaklanma seansı tamamladın! İnanılmaz bir disiplin!",
+            name: String(localized: "badge_marathon_title", defaultValue: "Maraton", comment: "Marathon Badge Title"),
+            description: String(localized: "badge_marathon_desc", defaultValue: "Tek günde 8 odaklanma seansı tamamladın! İnanılmaz bir disiplin!", comment: "Marathon Badge Description"),
             requirementType: .focusSessionsDaily,
             requiredValue: AppConstants.Pomodoro.marathonSessions,
             iconName: "figure.run"

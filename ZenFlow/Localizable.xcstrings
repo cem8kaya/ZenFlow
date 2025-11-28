@@ -499,6 +499,96 @@
         }
       }
     },
+    "advice_beginner_start" : {
+      "comment" : "Beginner advice for new users",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You're at the beginning of your journey. The Zen path requires patience and persistence. Take one small step each day—breathe, sit, observe. Don't seek perfection, just be."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Yolculuğunun başındasın. Zen yolu sabır ve süreklilik gerektirir. Her gün küçük bir adım at - nefes al, otur, gözlemle. Mükemmellik arayışında olma, sadece var ol."
+          }
+        }
+      }
+    },
+    "advice_general_encouragement" : {
+      "comment" : "General advice",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your meditation journey is progressing well. Sometimes your mind will wander, sometimes it will be quiet. Both are natural. The important thing is to observe without judgment. You are not your thoughts; you are the observer of your thoughts."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Meditasyon yolculuğun güzel ilerliyor. Bazen zihin dağınık olacak, bazen sessiz. Her ikisi de doğaldır. Önemli olan, yargılamadan gözlemlemek. Sen düşüncen değilsin, düşüncelerin gözlemcisisin."
+          }
+        }
+      }
+    },
+    "advice_mastery_progress" : {
+      "comment" : "Advice for experienced users",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You've completed %lld of your sessions. Meditation is now a part of your life. But the real transformation happens outside your pillow. How alert are you in your daily life? Every moment is an opportunity to practice."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%lld seans tamamladın. Meditasyon artık yaşamının bir parçası. Ancak asıl dönüşüm yastığın dışında gerçekleşir. Günlük yaşamda ne kadar uyanıksın? Her an bir uygulama fırsatıdır."
+          }
+        }
+      }
+    },
+    "advice_returning_user" : {
+      "comment" : "Advice for returning users",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You haven't meditated in a while. That's normal, life gets busy sometimes. But remember: The journey begins with a thousand miles. Start today with a small breath. Starting over is a sign of courage, not failure."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Bir süredir meditasyon yapmadın. Bu normaldir - hayat bazen bizleri meşgul eder. Ama unutma: Yolculuk bin bir millik yoldan başlar. Bugün küçük bir nefesle başla. Yeniden başlamak, başarısızlık değil, cesaret işaretidir."
+          }
+        }
+      }
+    },
+    "advice_streak_maintenance" : {
+      "comment" : "Advice for users with a streak",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You're doing great with your %lld day streak! But remember: In Zen, the goal isn't to maintain the streak, but to live each moment fully. It's okay if the streak breaks, it's the present breath that counts."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%lld günlük seride harikasın! Ancak unutma: Zen'de hedef, seriyi korumak değil, her anı tam yaşamaktır. Seri kırılırsa da sorun değil - önemli olan şimdiki nefes."
+          }
+        }
+      }
+    },
     "App Icon Preview" : {
       "localizations" : {
         "en" : {
@@ -540,12 +630,290 @@
         }
       }
     },
-    "Az" : {
+    "badge_5_hour_mastery_desc" : {
+      "comment" : "5 Hour Mastery Badge Description",
+      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Low"
+            "value" : "You have completed a total of 300 minutes of meditation!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Toplam 300 dakika meditasyon tamamladın!"
+          }
+        }
+      }
+    },
+    "badge_5_hour_mastery_title" : {
+      "comment" : "5 Hour Mastery Badge Title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5 Hours of Mastery"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "5 Saat Ustalık"
+          }
+        }
+      }
+    },
+    "badge_7_day_streak_desc" : {
+      "comment" : "7 Day Streak Badge Description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You meditated 7 days in a row!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "7 gün üst üste meditasyon yaptın!"
+          }
+        }
+      }
+    },
+    "badge_7_day_streak_title" : {
+      "comment" : "7 Day Streak Badge Title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "7 Day Streak"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "7 Gün Serisi"
+          }
+        }
+      }
+    },
+    "badge_30_day_streak_desc" : {
+      "comment" : "30 Day Streak Badge Description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You've meditated for 30 days in a row! Incredible discipline!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "30 gün üst üste meditasyon yaptın! İnanılmaz bir disiplin!"
+          }
+        }
+      }
+    },
+    "badge_30_day_streak_title" : {
+      "comment" : "30 Day Streak Badge Title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "30 Day Streak"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "30 Gün Serisi"
+          }
+        }
+      }
+    },
+    "badge_first_hour_desc" : {
+      "comment" : "First Hour Badge Description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You've completed a total of 60 minutes of meditation!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Toplam 60 dakika meditasyon tamamladın!"
+          }
+        }
+      }
+    },
+    "badge_first_hour_title" : {
+      "comment" : "First Hour Badge Title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "First Hour"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "İlk Saat"
+          }
+        }
+      }
+    },
+    "badge_first_pomodoro_desc" : {
+      "comment" : "First Pomodoro Badge Description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You've completed your first focus session!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "İlk odaklanma seansını tamamladın!"
+          }
+        }
+      }
+    },
+    "badge_first_pomodoro_title" : {
+      "comment" : "First Pomodoro Badge Title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "First Pomodoro"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "İlk Pomodoro"
+          }
+        }
+      }
+    },
+    "badge_focus_master_desc" : {
+      "comment" : "Focus Master Badge Description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You've completed 10 focus sessions! Great concentration!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "10 odaklanma seansı tamamladın! Harika bir konsantrasyon!"
+          }
+        }
+      }
+    },
+    "badge_focus_master_title" : {
+      "comment" : "Focus Master Badge Title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Focus Master"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Odaklanma Ustası"
+          }
+        }
+      }
+    },
+    "badge_marathon_desc" : {
+      "comment" : "Marathon Badge Description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You completed 8 focus sessions in one day! Incredible discipline!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Tek günde 8 odaklanma seansı tamamladın! İnanılmaz bir disiplin!"
+          }
+        }
+      }
+    },
+    "badge_marathon_title" : {
+      "comment" : "Marathon Badge Title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marathon"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Maraton"
+          }
+        }
+      }
+    },
+    "badge_zen_master_desc" : {
+      "comment" : "Zen Master Badge Description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You've completed a total of 1000 minutes of meditation! A true master!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Toplam 1000 dakika meditasyon tamamladın! Gerçek bir usta!"
+          }
+        }
+      }
+    },
+    "badge_zen_master_title" : {
+      "comment" : "Zen Master Badge Title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zen Master"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Zen Ustası"
           }
         }
       }
@@ -916,7 +1284,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "inhale"
+            "value" : "Inhale"
           }
         },
         "tr" : {
@@ -1165,16 +1533,6 @@
         }
       }
     },
-    "Bu Ay Özeti" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Month summary"
-          }
-        }
-      }
-    },
     "Bugün kendine 5 dakika ayır 🧘" : {
       "comment" : "Sample reminder message 1",
       "localizations" : {
@@ -1278,6 +1636,42 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Başla"
+          }
+        }
+      }
+    },
+    "category_atmosphere" : {
+      "comment" : "Atmosphere sound category",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atmosphere"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Atmosfer"
+          }
+        }
+      }
+    },
+    "category_nature" : {
+      "comment" : "Nature sound category",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nature"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Doğa"
           }
         }
       }
@@ -1554,12 +1948,20 @@
         }
       }
     },
-    "Çok" : {
+    "category_water" : {
+      "comment" : "Water sound category",
+      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Too much"
+            "value" : "Water"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Su"
           }
         }
       }
@@ -1570,16 +1972,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "contact@zenflow.app"
-          }
-        }
-      }
-    },
-    "Dakika" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Minute"
           }
         }
       }
@@ -1661,16 +2053,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Orta"
-          }
-        }
-      }
-    },
-    "dk" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "min"
           }
         }
       }
@@ -1781,6 +2163,330 @@
         }
       }
     },
+    "exercise_478_benefit_0" : {
+      "comment" : "478 benefit 1",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Makes it easier to fall asleep"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Uykuya dalmayı kolaylaştırır"
+          }
+        }
+      }
+    },
+    "exercise_478_benefit_1" : {
+      "comment" : "478 benefit 2",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reduces anxiety"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Anksiyeteyi azaltır"
+          }
+        }
+      }
+    },
+    "exercise_478_benefit_2" : {
+      "comment" : "478 benefit 3",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lowers blood pressure"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Kan basıncını düşürür"
+          }
+        }
+      }
+    },
+    "exercise_478_benefit_3" : {
+      "comment" : "478 benefit 4",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Provides deep relaxation"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Derin rahatlama sağlar"
+          }
+        }
+      }
+    },
+    "exercise_478_description" : {
+      "comment" : "4-7-8 Technique Description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A technique that facilitates falling asleep and promotes deep relaxation. Developed by Dr. Andrew Weil."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Uykuya dalmayı kolaylaştıran ve derin rahatlama sağlayan teknik. Dr. Andrew Weil tarafından geliştirilmiştir."
+          }
+        }
+      }
+    },
+    "exercise_478_name" : {
+      "comment" : "4-7-8 Technique Name",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4-7-8 Technique"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "4-7-8 Tekniği"
+          }
+        }
+      }
+    },
+    "exercise_box_benefit_0" : {
+      "comment" : "Box benefit 1",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reduces stress"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Stresi azaltır"
+          }
+        }
+      }
+    },
+    "exercise_box_benefit_1" : {
+      "comment" : "Box benefit 2",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Increases focus"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Odaklanmayı artırır"
+          }
+        }
+      }
+    },
+    "exercise_box_benefit_2" : {
+      "comment" : "Box benefit 3",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Provides mental clarity"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Zihinsel netlik sağlar"
+          }
+        }
+      }
+    },
+    "exercise_box_benefit_3" : {
+      "comment" : "Box benefit 4",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reduces anxiety"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Anksiyeteyi azaltır"
+          }
+        }
+      }
+    },
+    "exercise_box_description" : {
+      "comment" : "Box Breathing Description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A balanced and regular breathing exercise. Ideal for mental clarity and calmness."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Dengeli ve düzenli bir nefes egzersizi. Zihinsel netlik ve sakinlik için idealdir."
+          }
+        }
+      }
+    },
+    "exercise_box_name" : {
+      "comment" : "Box Breathing Name",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Box Breath"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Kutu Nefesi"
+          }
+        }
+      }
+    },
+    "exercise_calming_benefit_0" : {
+      "comment" : "Calming benefit 1",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Provides rapid calming"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Hızlı sakinleşme sağlar"
+          }
+        }
+      }
+    },
+    "exercise_calming_benefit_1" : {
+      "comment" : "Calming benefit 2",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reduces stress"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Stresi azaltır"
+          }
+        }
+      }
+    },
+    "exercise_calming_benefit_2" : {
+      "comment" : "Calming benefit 3",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regulates heart rate"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Kalp atış hızını düzenler"
+          }
+        }
+      }
+    },
+    "exercise_calming_benefit_3" : {
+      "comment" : "Calming benefit 4",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Easy to apply"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Kolayca uygulanabilir"
+          }
+        }
+      }
+    },
+    "exercise_calming_description" : {
+      "comment" : "Calming Breath Description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A simple and effective relaxation technique. Long exhalations calm the nervous system."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Basit ve etkili bir sakinleşme tekniği. Uzun nefes vermeler sinir sistemini sakinleştirir."
+          }
+        }
+      }
+    },
+    "exercise_calming_name" : {
+      "comment" : "Calming Breath Name",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calming Breath"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Sakinleştirici Nefes"
+          }
+        }
+      }
+    },
     "exercise_card_accessibility" : {
       "comment" : "Exercise card accessibility label",
       "localizations" : {
@@ -1828,6 +2534,222 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Seçmek için dokunun"
+          }
+        }
+      }
+    },
+    "exercise_deep_benefit_0" : {
+      "comment" : "Deep benefit 1",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Provides deep relaxation"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Derin rahatlama sağlar"
+          }
+        }
+      }
+    },
+    "exercise_deep_benefit_1" : {
+      "comment" : "Deep benefit 2",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deepens meditation"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Meditasyonu derinleştirir"
+          }
+        }
+      }
+    },
+    "exercise_deep_benefit_2" : {
+      "comment" : "Deep benefit 3",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Slows down the heart rate"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Kalp hızını yavaşlatır"
+          }
+        }
+      }
+    },
+    "exercise_deep_benefit_3" : {
+      "comment" : "Deep benefit 4",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "It gives inner peace"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "İç huzur verir"
+          }
+        }
+      }
+    },
+    "exercise_deep_description" : {
+      "comment" : "Deep Relaxation Description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A state of complete relaxation through slow, deep breathing. Ideal after meditation and yoga."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Yavaş ve derin nefes alıp vermelerle tam bir rahatlama hali. Meditasyon ve yoga sonrası idealdir."
+          }
+        }
+      }
+    },
+    "exercise_deep_name" : {
+      "comment" : "Deep Relaxation Name",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deep Relaxation"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Derin Gevşeme"
+          }
+        }
+      }
+    },
+    "exercise_energy_benefit_0" : {
+      "comment" : "Energy benefit 1",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Increases energy level"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Enerji seviyesini yükseltir"
+          }
+        }
+      }
+    },
+    "exercise_energy_benefit_1" : {
+      "comment" : "Energy benefit 2",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Increases mental alertness"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Zihinsel uyanıklığı artırır"
+          }
+        }
+      }
+    },
+    "exercise_energy_benefit_2" : {
+      "comment" : "Energy benefit 3",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "It accelerates blood circulation"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Kan dolaşımını hızlandırır"
+          }
+        }
+      }
+    },
+    "exercise_energy_benefit_3" : {
+      "comment" : "Energy benefit 4",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "It allows you to start the day fresh"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Güne dinç başlamanızı sağlar"
+          }
+        }
+      }
+    },
+    "exercise_energy_description" : {
+      "comment" : "Energy Breath Description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A fast-paced breathing exercise that boosts energy and vitality. Perfect for your morning routine."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Enerji ve canlılık kazandıran hızlı tempo nefes egzersizi. Sabah rutini için mükemmeldir."
+          }
+        }
+      }
+    },
+    "exercise_energy_name" : {
+      "comment" : "Energy Breath Name",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Energy Breath"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Enerji Nefesi"
           }
         }
       }
@@ -1997,6 +2919,114 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Exporting..."
+          }
+        }
+      }
+    },
+    "focus_mode_long_break" : {
+      "comment" : "Long break mode display name",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Long Break"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Uzun Mola"
+          }
+        }
+      }
+    },
+    "focus_mode_long_break_desc" : {
+      "comment" : "Long break mode description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld min long break"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%lld dakika uzun mola"
+          }
+        }
+      }
+    },
+    "focus_mode_short_break" : {
+      "comment" : "Short break mode display name",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Short Break"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Kısa Mola"
+          }
+        }
+      }
+    },
+    "focus_mode_short_break_desc" : {
+      "comment" : "Short break mode description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld min short break"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%lld dakika kısa mola"
+          }
+        }
+      }
+    },
+    "focus_mode_work" : {
+      "comment" : "Focus mode display name",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Focus"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Odaklanma"
+          }
+        }
+      }
+    },
+    "focus_mode_work_desc" : {
+      "comment" : "Focus mode description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld min focus time"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%lld dakika odaklanma zamanı"
           }
         }
       }
@@ -2341,16 +3371,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Back"
-          }
-        }
-      }
-    },
-    "Gün" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Day"
           }
         }
       }
@@ -3425,6 +4445,78 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Saat"
+          }
+        }
+      }
+    },
+    "requirement_type_focus_sessions" : {
+      "comment" : "Focus sessions requirement",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Focus Session"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Odaklanma Seansı"
+          }
+        }
+      }
+    },
+    "requirement_type_focus_sessions_daily" : {
+      "comment" : "Daily focus sessions requirement",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daily Focus Session"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Günlük Odaklanma Seansı"
+          }
+        }
+      }
+    },
+    "requirement_type_streak" : {
+      "comment" : "Streak requirement",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Streak"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Seri"
+          }
+        }
+      }
+    },
+    "requirement_type_total_minutes" : {
+      "comment" : "Total minutes requirement",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total minutes"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Toplam Dakika"
           }
         }
       }
@@ -4576,26 +5668,6 @@
         }
       }
     },
-    "Son 4 Hafta Aktivite" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Last 4 Weeks Activity"
-          }
-        }
-      }
-    },
-    "Son 7 Gün" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Last 7 Days"
-          }
-        }
-      }
-    },
     "Son Meditasyon" : {
       "comment" : "Last meditation label",
       "localizations" : {
@@ -4603,6 +5675,958 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Last Meditation"
+          }
+        }
+      }
+    },
+    "sound_campfire" : {
+      "comment" : "Campfire sound",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Campfire"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Kamp Ateşi"
+          }
+        }
+      }
+    },
+    "sound_campfire_desc" : {
+      "comment" : "Campfire sound description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Campfire"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Kamp ateşi çatırtısı"
+          }
+        }
+      }
+    },
+    "sound_desert" : {
+      "comment" : "Desert sound",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desert"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Çöl"
+          }
+        }
+      }
+    },
+    "sound_desert_desc" : {
+      "comment" : "Desert sound description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desert"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Çöl rüzgarı"
+          }
+        }
+      }
+    },
+    "sound_fire" : {
+      "comment" : "Fire sound",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fire"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Ateş"
+          }
+        }
+      }
+    },
+    "sound_fire_desc" : {
+      "comment" : "Fire sound description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fire"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Yumuşak ateş sesi"
+          }
+        }
+      }
+    },
+    "sound_fireplace" : {
+      "comment" : "Fireplace sound",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fireplace"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Şömine"
+          }
+        }
+      }
+    },
+    "sound_fireplace_desc" : {
+      "comment" : "Fireplace sound description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fireplace"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Çatırdayan şömine"
+          }
+        }
+      }
+    },
+    "sound_forest" : {
+      "comment" : "Forest sound",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forest"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Orman"
+          }
+        }
+      }
+    },
+    "sound_forest_desc" : {
+      "comment" : "Forest sound description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forest"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Doğanın huzur verici sesleri"
+          }
+        }
+      }
+    },
+    "sound_mountain" : {
+      "comment" : "Mountain sound",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mountain"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Dağ"
+          }
+        }
+      }
+    },
+    "sound_mountain_desc" : {
+      "comment" : "Mountain sound description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mountain"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Dağ esintisi"
+          }
+        }
+      }
+    },
+    "sound_night" : {
+      "comment" : "Night sound",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Night"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Gece"
+          }
+        }
+      }
+    },
+    "sound_night_desc" : {
+      "comment" : "Night sound description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Night"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Cırcır böcekleri ve gece sesleri"
+          }
+        }
+      }
+    },
+    "sound_ocean" : {
+      "comment" : "Ocean sound",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ocean"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Okyanus"
+          }
+        }
+      }
+    },
+    "sound_ocean_desc" : {
+      "comment" : "Ocean sound description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ocean"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Dinlendirici dalga sesleri"
+          }
+        }
+      }
+    },
+    "sound_rain" : {
+      "comment" : "Rain sound",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rain"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Yağmur"
+          }
+        }
+      }
+    },
+    "sound_rain_desc" : {
+      "comment" : "Rain sound description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rain"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Sakinleştirici yağmur sesi"
+          }
+        }
+      }
+    },
+    "sound_river" : {
+      "comment" : "River sound",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "River"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Dere"
+          }
+        }
+      }
+    },
+    "sound_river_desc" : {
+      "comment" : "River sound description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "River"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Akıp giden dere suyu"
+          }
+        }
+      }
+    },
+    "sound_silent" : {
+      "comment" : "Silent sound option",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Silent"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Sessiz"
+          }
+        }
+      }
+    },
+    "sound_silent_desc" : {
+      "comment" : "No background sound",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No background sound"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Arka plan sesi yok"
+          }
+        }
+      }
+    },
+    "sound_singing_bowl" : {
+      "comment" : "Singing bowl sound",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Singing bowl"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Tibet Çanı"
+          }
+        }
+      }
+    },
+    "sound_singing_bowl_desc" : {
+      "comment" : "Singing bowl sound description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Singing bowl"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Tibet çanak sesi"
+          }
+        }
+      }
+    },
+    "sound_thunderstorm" : {
+      "comment" : "Thunderstorm sound",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thunderstorm"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Fırtına"
+          }
+        }
+      }
+    },
+    "sound_thunderstorm_desc" : {
+      "comment" : "Thunderstorm sound description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thunderstorm"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Gök gürültülü yağmur"
+          }
+        }
+      }
+    },
+    "sound_waterfall" : {
+      "comment" : "Waterfall sound",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Waterfall"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Şelale"
+          }
+        }
+      }
+    },
+    "sound_waterfall_desc" : {
+      "comment" : "Waterfall sound description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Waterfall"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Güçlü şelale sesi"
+          }
+        }
+      }
+    },
+    "sound_wind" : {
+      "comment" : "Wind sound",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wind"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Rüzgar"
+          }
+        }
+      }
+    },
+    "sound_wind_chimes" : {
+      "comment" : "Wind chimes sound",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wind chimes"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Rüzgar Çanı"
+          }
+        }
+      }
+    },
+    "sound_wind_chimes_desc" : {
+      "comment" : "Wind chimes sound description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wind chimes"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Rüzgar çanları"
+          }
+        }
+      }
+    },
+    "sound_wind_desc" : {
+      "comment" : "Wind sound description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wind"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Ağaçlarda esen rüzgar"
+          }
+        }
+      }
+    },
+    "stats_all_time" : {
+      "comment" : "All time stats title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All time"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Tüm Zamanlar"
+          }
+        }
+      }
+    },
+    "stats_all_types" : {
+      "comment" : "All exercise types",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All exercise types"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Tüm Türler"
+          }
+        }
+      }
+    },
+    "stats_average" : {
+      "comment" : "Average",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Average"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Ortalama"
+          }
+        }
+      }
+    },
+    "stats_avg_session_duration" : {
+      "comment" : "Average session duration label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Average session duration"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Ortalama Seans Süresi"
+          }
+        }
+      }
+    },
+    "stats_chart_day" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Day"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Gün"
+          }
+        }
+      }
+    },
+    "stats_chart_minutes" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Minute"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Dakika"
+          }
+        }
+      }
+    },
+    "stats_current_streak" : {
+      "comment" : "Current streak label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Current streak"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Mevcut Seri"
+          }
+        }
+      }
+    },
+    "stats_last_4_weeks" : {
+      "comment" : "Last 4 weeks activity title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last 4 weeks activity"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Son 4 Hafta Aktivite"
+          }
+        }
+      }
+    },
+    "stats_last_7_days" : {
+      "comment" : "Last 7 days title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last 7 days"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Son 7 Gün"
+          }
+        }
+      }
+    },
+    "stats_legend_less" : {
+      "comment" : "Less activity",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Less"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Az"
+          }
+        }
+      }
+    },
+    "stats_legend_more" : {
+      "comment" : "More activity",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "More"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Çok"
+          }
+        }
+      }
+    },
+    "stats_longest" : {
+      "comment" : "Longest",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Longest"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "En Uzun"
+          }
+        }
+      }
+    },
+    "stats_longest_single_session" : {
+      "comment" : "Longest single session label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Longest single session"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "En Uzun Tek Seans"
+          }
+        }
+      }
+    },
+    "stats_longest_streak" : {
+      "comment" : "Longest streak label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Longest streak"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "En Uzun Seri"
+          }
+        }
+      }
+    },
+    "stats_monthly_summary" : {
+      "comment" : "Monthly summary title",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monthly summary"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Bu Ay Özeti"
+          }
+        }
+      }
+    },
+    "stats_most_used_type" : {
+      "comment" : "Most used type label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Most used type"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "En Çok Kullanılan Tür"
+          }
+        }
+      }
+    },
+    "stats_this_month" : {
+      "comment" : "This month",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This month"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Bu Ay"
+          }
+        }
+      }
+    },
+    "stats_this_week" : {
+      "comment" : "This week",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This week"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Bu Hafta"
+          }
+        }
+      }
+    },
+    "stats_total_focus_sessions" : {
+      "comment" : "Total focus sessions label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total focus sessions"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Toplam Odaklanma Seansı"
+          }
+        }
+      }
+    },
+    "stats_total_meditation_time" : {
+      "comment" : "Total meditation time label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total meditation time"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Toplam Meditasyon Süresi"
+          }
+        }
+      }
+    },
+    "stats_total_sessions" : {
+      "comment" : "Total sessions label",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total sessions"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Toplam Seans Sayısı"
           }
         }
       }
@@ -4882,6 +6906,132 @@
         }
       }
     },
+    "time_remaining_hours" : {
+      "comment" : "Time remaining in hours",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld hour"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%lld saat"
+          }
+        }
+      }
+    },
+    "time_remaining_hours_minutes" : {
+      "comment" : "Time remaining in hours and minutes",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld hour %2$lld minute"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld saat %2$lld dakika"
+          }
+        }
+      }
+    },
+    "time_remaining_minutes" : {
+      "comment" : "Time remaining in minutes",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld minutes"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%lld dakika"
+          }
+        }
+      }
+    },
+    "timer_state_completed" : {
+      "comment" : "Timer completed status",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Completed"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Tamamlandı"
+          }
+        }
+      }
+    },
+    "timer_state_pause" : {
+      "comment" : "Timer pause button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pause"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Duraklat"
+          }
+        }
+      }
+    },
+    "timer_state_resume" : {
+      "comment" : "Timer resume button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resume"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Devam Et"
+          }
+        }
+      }
+    },
+    "timer_state_start" : {
+      "comment" : "Timer start button",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Başla"
+          }
+        }
+      }
+    },
     "Toplam Odaklanma Seansı" : {
       "comment" : "Total focus sessions label",
       "localizations" : {
@@ -4911,6 +7061,60 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Total Duration"
+          }
+        }
+      }
+    },
+    "total_time_hours" : {
+      "comment" : "Total time in hours",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld hours"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%lld saat"
+          }
+        }
+      }
+    },
+    "total_time_hours_minutes" : {
+      "comment" : "Total time in hours and minutes",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld hour %2$lld minutes"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld saat %2$lld dakika"
+          }
+        }
+      }
+    },
+    "total_time_minutes" : {
+      "comment" : "Total time in minutes",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld min"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%lld dakika"
           }
         }
       }
@@ -5129,12 +7333,72 @@
         }
       }
     },
-    "Tüm Zamanlar" : {
+    "unit_days" : {
+      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "All Time"
+            "value" : "day"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "gün"
+          }
+        }
+      }
+    },
+    "unit_hour_short" : {
+      "comment" : "Hours short symbol",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "h"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "s"
+          }
+        }
+      }
+    },
+    "unit_min_short" : {
+      "comment" : "Minutes short symbol\nMinutes short unit",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "min"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "d"
+          }
+        }
+      }
+    },
+    "unit_minutes" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "min"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "dakika"
           }
         }
       }
@@ -5196,6 +7460,132 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cumartesi"
+          }
+        }
+      }
+    },
+    "weekday_short_fri" : {
+      "comment" : "Friday short",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fri"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Cum"
+          }
+        }
+      }
+    },
+    "weekday_short_mon" : {
+      "comment" : "Monday short",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mon"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Pzt"
+          }
+        }
+      }
+    },
+    "weekday_short_sat" : {
+      "comment" : "Saturday short",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sat"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Cmt"
+          }
+        }
+      }
+    },
+    "weekday_short_sun" : {
+      "comment" : "Sunday short",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sun"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Paz"
+          }
+        }
+      }
+    },
+    "weekday_short_thu" : {
+      "comment" : "Thursday short",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thu"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Per"
+          }
+        }
+      }
+    },
+    "weekday_short_tue" : {
+      "comment" : "Tuesday short",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tue"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Sal"
+          }
+        }
+      }
+    },
+    "weekday_short_wed" : {
+      "comment" : "Wednesday short",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wed"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Çar"
           }
         }
       }
@@ -6260,6 +8650,186 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Yolculuğunda sana eşlik etmekten onur duyuyorum."
+          }
+        }
+      }
+    },
+    "zen_quote_daily_0" : {
+      "comment" : "Daily quote 0",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Every day is a new beginning"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Her gün yeni bir başlangıç"
+          }
+        }
+      }
+    },
+    "zen_quote_daily_1" : {
+      "comment" : "Daily quote 1",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calmness is power"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Sakinlik güçtür"
+          }
+        }
+      }
+    },
+    "zen_quote_daily_2" : {
+      "comment" : "Daily quote 2",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Breathe, let go, be"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Nefes al, bırak, var ol"
+          }
+        }
+      }
+    },
+    "zen_quote_daily_3" : {
+      "comment" : "Daily quote 3",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The only reality right now"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Şu an tek gerçeklik"
+          }
+        }
+      }
+    },
+    "zen_quote_daily_4" : {
+      "comment" : "Daily quote 4",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inner peace is an external reflection"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "İç huzur dış yansımadır"
+          }
+        }
+      }
+    },
+    "zen_quote_daily_5" : {
+      "comment" : "Daily quote 5",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Patience is wisdom"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Sabır bilgeliktir"
+          }
+        }
+      }
+    },
+    "zen_quote_daily_6" : {
+      "comment" : "Daily quote 6",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Find meaning in silence"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Sessizlikte anlam bul"
+          }
+        }
+      }
+    },
+    "zen_quote_daily_7" : {
+      "comment" : "Daily quote 7",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Every step is a journey"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Her adım yolculuktur"
+          }
+        }
+      }
+    },
+    "zen_quote_daily_8" : {
+      "comment" : "Daily quote 8",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Take care of yourself today"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Bugün kendine iyi bak"
+          }
+        }
+      }
+    },
+    "zen_quote_daily_9" : {
+      "comment" : "Daily quote 9",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thoughts pass like clouds"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Düşünceler bulutlar gibi geçer"
           }
         }
       }

@@ -1,5 +1,5 @@
 //
-//  ZenGardenView.swift - OLD
+//  ZenGardenView.swift
 //  ZenFlow
 //
 //  Created by Cem Kaya on 11/16/25.
@@ -122,26 +122,25 @@ struct ZenGardenView: View {
     @State private var starTwinkleTimer: Timer?
 
     // MARK: - Daily Quote Data
-    private let zenQuotes: [(tr: String, en: String)] = [
-        ("Her gün yeni bir başlangıç", "Every day is a new beginning"),
-        ("Sakinlik güçtür", "Calmness is power"),
-        ("Nefes al, bırak, var ol", "Breathe in, let go, exist"),
-        ("Şu an tek gerçeklik", "Now is the only reality"),
-        ("İç huzur dış yansımadır", "Inner peace reflects outward"),
-        ("Sabır bilgeliktir", "Patience is wisdom"),
-        ("Sessizlikte anlam bul", "Find meaning in silence"),
-        ("Her adım yolculuktur", "Every step is a journey"),
-        ("Bugün kendine iyi bak", "Take care of yourself today"),
-        ("Düşünceler bulutlar gibi geçer", "Thoughts pass like clouds")
-    ]
-
+    
     private var dailyQuote: String {
         let dayOfYear = Calendar.current.ordinality(of: .day, in: .year, for: Date()) ?? 1
-        let quote = zenQuotes[dayOfYear % zenQuotes.count]
-        let languageCode = Locale.current.language.languageCode?.identifier
-        return languageCode == "en" ? quote.en : quote.tr
+        let index = dayOfYear % 10
+        
+        // Localized quotes using standard system
+        switch index {
+        case 0: return String(localized: "zen_quote_daily_0", defaultValue: "Her gün yeni bir başlangıç", comment: "Daily quote 0")
+        case 1: return String(localized: "zen_quote_daily_1", defaultValue: "Sakinlik güçtür", comment: "Daily quote 1")
+        case 2: return String(localized: "zen_quote_daily_2", defaultValue: "Nefes al, bırak, var ol", comment: "Daily quote 2")
+        case 3: return String(localized: "zen_quote_daily_3", defaultValue: "Şu an tek gerçeklik", comment: "Daily quote 3")
+        case 4: return String(localized: "zen_quote_daily_4", defaultValue: "İç huzur dış yansımadır", comment: "Daily quote 4")
+        case 5: return String(localized: "zen_quote_daily_5", defaultValue: "Sabır bilgeliktir", comment: "Daily quote 5")
+        case 6: return String(localized: "zen_quote_daily_6", defaultValue: "Sessizlikte anlam bul", comment: "Daily quote 6")
+        case 7: return String(localized: "zen_quote_daily_7", defaultValue: "Her adım yolculuktur", comment: "Daily quote 7")
+        case 8: return String(localized: "zen_quote_daily_8", defaultValue: "Bugün kendine iyi bak", comment: "Daily quote 8")
+        default: return String(localized: "zen_quote_daily_9", defaultValue: "Düşünceler bulutlar gibi geçer", comment: "Daily quote 9")
+        }
     }
-
 
     // MARK: - Body
 

@@ -59,8 +59,10 @@ struct BreathingPhaseConfig: Identifiable, Codable {
     let instructionKey: String // Localization key for instruction
 
     var instruction: String {
-        // Use the localization key to fetch the instruction, with a fallback to the key itself
-        NSLocalizedString(instructionKey, value: "\(instructionKey)", comment: "")
+        // Use the localization key to fetch the instruction
+        // Note: We use NSLocalizedString here as instructionKey comes from data/JSON usually
+        let localized = NSLocalizedString(instructionKey, comment: "")
+        return localized != instructionKey ? localized : instructionKey
     }
 
     init(phase: BreathingPhaseType, duration: TimeInterval, instructionKey: String) {
@@ -153,75 +155,89 @@ struct BreathingExercise: Identifiable, Codable {
 
     // Localized computed properties
     var localizedName: String {
-        NSLocalizedString("exercise_\(exerciseType)_name", value: "\(getDefaultName())", comment: "")
+        getDefaultName()
     }
 
     var localizedDescription: String {
-        NSLocalizedString("exercise_\(exerciseType)_description", value: "\(getDefaultDescription())", comment: "")
+        getDefaultDescription()
     }
 
     var localizedBenefits: [String] {
         (0..<4).map { index in
-            NSLocalizedString("exercise_\(exerciseType)_benefit_\(index)", value: "\(getDefaultBenefit(at: index))", comment: "")
+            getDefaultBenefit(at: index)
         }
     }
 
-    // Default values for when localization is not available
+    // Default values using String(localized:) for automatic extraction and fallback
     private func getDefaultName() -> String {
         switch exerciseType {
-        case "box": return "Kutu Nefesi"
-        case "478": return "4-7-8 Tekniği"
-        case "calming": return "Sakinleştirici Nefes"
-        case "energy": return "Enerji Nefesi"
-        case "deep": return "Derin Gevşeme"
-        default: return exerciseType
+        case "box":
+            return String(localized: "exercise_box_name", defaultValue: "Kutu Nefesi", comment: "Box Breathing Name")
+        case "478":
+            return String(localized: "exercise_478_name", defaultValue: "4-7-8 Tekniği", comment: "4-7-8 Technique Name")
+        case "calming":
+            return String(localized: "exercise_calming_name", defaultValue: "Sakinleştirici Nefes", comment: "Calming Breath Name")
+        case "energy":
+            return String(localized: "exercise_energy_name", defaultValue: "Enerji Nefesi", comment: "Energy Breath Name")
+        case "deep":
+            return String(localized: "exercise_deep_name", defaultValue: "Derin Gevşeme", comment: "Deep Relaxation Name")
+        default:
+            return exerciseType
         }
     }
 
     private func getDefaultDescription() -> String {
         switch exerciseType {
-        case "box": return "Dengeli ve düzenli bir nefes egzersizi. Zihinsel netlik ve sakinlik için idealdir."
-        case "478": return "Uykuya dalmayı kolaylaştıran ve derin rahatlama sağlayan teknik. Dr. Andrew Weil tarafından geliştirilmiştir."
-        case "calming": return "Basit ve etkili bir sakinleşme tekniği. Uzun nefes vermeler sinir sistemini sakinleştirir."
-        case "energy": return "Enerji ve canlılık kazandıran hızlı tempo nefes egzersizi. Sabah rutini için mükemmeldir."
-        case "deep": return "Yavaş ve derin nefes alıp vermelerle tam bir rahatlama hali. Meditasyon ve yoga sonrası idealdir."
-        default: return exerciseType
+        case "box":
+            return String(localized: "exercise_box_description", defaultValue: "Dengeli ve düzenli bir nefes egzersizi. Zihinsel netlik ve sakinlik için idealdir.", comment: "Box Breathing Description")
+        case "478":
+            return String(localized: "exercise_478_description", defaultValue: "Uykuya dalmayı kolaylaştıran ve derin rahatlama sağlayan teknik. Dr. Andrew Weil tarafından geliştirilmiştir.", comment: "4-7-8 Technique Description")
+        case "calming":
+            return String(localized: "exercise_calming_description", defaultValue: "Basit ve etkili bir sakinleşme tekniği. Uzun nefes vermeler sinir sistemini sakinleştirir.", comment: "Calming Breath Description")
+        case "energy":
+            return String(localized: "exercise_energy_description", defaultValue: "Enerji ve canlılık kazandıran hızlı tempo nefes egzersizi. Sabah rutini için mükemmeldir.", comment: "Energy Breath Description")
+        case "deep":
+            return String(localized: "exercise_deep_description", defaultValue: "Yavaş ve derin nefes alıp vermelerle tam bir rahatlama hali. Meditasyon ve yoga sonrası idealdir.", comment: "Deep Relaxation Description")
+        default:
+            return exerciseType
         }
     }
 
     private func getDefaultBenefit(at index: Int) -> String {
+        // Dictionary values wrapped in String(localized:) to enable key extraction
         let benefits: [String: [String]] = [
             "box": [
-                "Stresi azaltır",
-                "Odaklanmayı artırır",
-                "Zihinsel netlik sağlar",
-                "Anksiyeteyi azaltır"
+                String(localized: "exercise_box_benefit_0", defaultValue: "Stresi azaltır", comment: "Box benefit 1"),
+                String(localized: "exercise_box_benefit_1", defaultValue: "Odaklanmayı artırır", comment: "Box benefit 2"),
+                String(localized: "exercise_box_benefit_2", defaultValue: "Zihinsel netlik sağlar", comment: "Box benefit 3"),
+                String(localized: "exercise_box_benefit_3", defaultValue: "Anksiyeteyi azaltır", comment: "Box benefit 4")
             ],
             "478": [
-                "Uykuya dalmayı kolaylaştırır",
-                "Anksiyeteyi azaltır",
-                "Kan basıncını düşürür",
-                "Derin rahatlama sağlar"
+                String(localized: "exercise_478_benefit_0", defaultValue: "Uykuya dalmayı kolaylaştırır", comment: "478 benefit 1"),
+                String(localized: "exercise_478_benefit_1", defaultValue: "Anksiyeteyi azaltır", comment: "478 benefit 2"),
+                String(localized: "exercise_478_benefit_2", defaultValue: "Kan basıncını düşürür", comment: "478 benefit 3"),
+                String(localized: "exercise_478_benefit_3", defaultValue: "Derin rahatlama sağlar", comment: "478 benefit 4")
             ],
             "calming": [
-                "Hızlı sakinleşme sağlar",
-                "Stresi azaltır",
-                "Kalp atış hızını düzenler",
-                "Kolayca uygulanabilir"
+                String(localized: "exercise_calming_benefit_0", defaultValue: "Hızlı sakinleşme sağlar", comment: "Calming benefit 1"),
+                String(localized: "exercise_calming_benefit_1", defaultValue: "Stresi azaltır", comment: "Calming benefit 2"),
+                String(localized: "exercise_calming_benefit_2", defaultValue: "Kalp atış hızını düzenler", comment: "Calming benefit 3"),
+                String(localized: "exercise_calming_benefit_3", defaultValue: "Kolayca uygulanabilir", comment: "Calming benefit 4")
             ],
             "energy": [
-                "Enerji seviyesini yükseltir",
-                "Zihinsel uyanıklığı artırır",
-                "Kan dolaşımını hızlandırır",
-                "Güne dinç başlamanızı sağlar"
+                String(localized: "exercise_energy_benefit_0", defaultValue: "Enerji seviyesini yükseltir", comment: "Energy benefit 1"),
+                String(localized: "exercise_energy_benefit_1", defaultValue: "Zihinsel uyanıklığı artırır", comment: "Energy benefit 2"),
+                String(localized: "exercise_energy_benefit_2", defaultValue: "Kan dolaşımını hızlandırır", comment: "Energy benefit 3"),
+                String(localized: "exercise_energy_benefit_3", defaultValue: "Güne dinç başlamanızı sağlar", comment: "Energy benefit 4")
             ],
             "deep": [
-                "Derin rahatlama sağlar",
-                "Meditasyonu derinleştirir",
-                "Kalp hızını yavaşlatır",
-                "İç huzur verir"
+                String(localized: "exercise_deep_benefit_0", defaultValue: "Derin rahatlama sağlar", comment: "Deep benefit 1"),
+                String(localized: "exercise_deep_benefit_1", defaultValue: "Meditasyonu derinleştirir", comment: "Deep benefit 2"),
+                String(localized: "exercise_deep_benefit_2", defaultValue: "Kalp hızını yavaşlatır", comment: "Deep benefit 3"),
+                String(localized: "exercise_deep_benefit_3", defaultValue: "İç huzur verir", comment: "Deep benefit 4")
             ]
         ]
+        
         guard let typeBenefits = benefits[exerciseType],
               index >= 0 && index < typeBenefits.count else {
             return ""

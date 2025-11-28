@@ -41,11 +41,11 @@ enum FocusMode: String, Codable, CaseIterable {
     var displayName: String {
         switch self {
         case .work:
-            return "Odaklanma"
+            return String(localized: "focus_mode_work", defaultValue: "Odaklanma", comment: "Focus mode display name")
         case .shortBreak:
-            return "Kısa Mola"
+            return String(localized: "focus_mode_short_break", defaultValue: "Kısa Mola", comment: "Short break mode display name")
         case .longBreak:
-            return "Uzun Mola"
+            return String(localized: "focus_mode_long_break", defaultValue: "Uzun Mola", comment: "Long break mode display name")
         }
     }
 
@@ -53,11 +53,11 @@ enum FocusMode: String, Codable, CaseIterable {
     var description: String {
         switch self {
         case .work:
-            return "\(durationMinutes) dakika odaklanma zamanı"
+            return String(localized: "focus_mode_work_desc", defaultValue: "\(durationMinutes) dakika odaklanma zamanı", comment: "Focus mode description")
         case .shortBreak:
-            return "\(durationMinutes) dakika kısa mola"
+            return String(localized: "focus_mode_short_break_desc", defaultValue: "\(durationMinutes) dakika kısa mola", comment: "Short break mode description")
         case .longBreak:
-            return "\(durationMinutes) dakika uzun mola"
+            return String(localized: "focus_mode_long_break_desc", defaultValue: "\(durationMinutes) dakika uzun mola", comment: "Long break mode description")
         }
     }
 
@@ -144,13 +144,13 @@ enum FocusTimerState: Equatable {
     var displayText: String {
         switch self {
         case .idle:
-            return "Başla"
+            return String(localized: "timer_state_start", defaultValue: "Başla", comment: "Timer start button")
         case .running:
-            return "Duraklat"
+            return String(localized: "timer_state_pause", defaultValue: "Duraklat", comment: "Timer pause button")
         case .paused:
-            return "Devam Et"
+            return String(localized: "timer_state_resume", defaultValue: "Devam Et", comment: "Timer resume button")
         case .completed:
-            return "Tamamlandı"
+            return String(localized: "timer_state_completed", defaultValue: "Tamamlandı", comment: "Timer completed status")
         }
     }
 

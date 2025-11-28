@@ -68,7 +68,7 @@ struct StatsView: View {
 
     private var weeklyActivityGrid: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Son 4 Hafta Aktivite")
+            Text(String(localized: "stats_last_4_weeks", defaultValue: "Son 4 Hafta Aktivite", comment: "Last 4 weeks activity title"))
                 .font(.title2)
                 .fontWeight(.bold)
                 .foregroundColor(.white)
@@ -76,7 +76,18 @@ struct StatsView: View {
             VStack(alignment: .leading, spacing: 8) {
                 // Gün başlıkları
                 HStack(spacing: 6) {
-                    ForEach(["Pzt", "Sal", "Çar", "Per", "Cum", "Cmt", "Paz"], id: \.self) { day in
+                    // Gün isimlerini lokalize ediyoruz
+                    let days = [
+                        String(localized: "weekday_short_mon", defaultValue: "Pzt", comment: "Monday short"),
+                        String(localized: "weekday_short_tue", defaultValue: "Sal", comment: "Tuesday short"),
+                        String(localized: "weekday_short_wed", defaultValue: "Çar", comment: "Wednesday short"),
+                        String(localized: "weekday_short_thu", defaultValue: "Per", comment: "Thursday short"),
+                        String(localized: "weekday_short_fri", defaultValue: "Cum", comment: "Friday short"),
+                        String(localized: "weekday_short_sat", defaultValue: "Cmt", comment: "Saturday short"),
+                        String(localized: "weekday_short_sun", defaultValue: "Paz", comment: "Sunday short")
+                    ]
+                    
+                    ForEach(days, id: \.self) { day in
                         Text(day)
                             .font(.caption2)
                             .foregroundColor(.white.opacity(0.6))
@@ -100,7 +111,7 @@ struct StatsView: View {
                                                 .font(.caption2)
                                                 .fontWeight(.bold)
                                                 .foregroundColor(.white)
-                                            Text("dk")
+                                            Text(String(localized: "unit_min_short", defaultValue: "dk", comment: "Minutes short unit"))
                                                 .font(.system(size: 8))
                                                 .foregroundColor(.white.opacity(0.8))
                                         }
@@ -113,7 +124,7 @@ struct StatsView: View {
                 // Renk açıklaması
                 HStack(spacing: 12) {
                     Spacer()
-                    Text("Az")
+                    Text(String(localized: "stats_legend_less", defaultValue: "Az", comment: "Less activity"))
                         .font(.caption2)
                         .foregroundColor(.white.opacity(0.6))
 
@@ -125,7 +136,7 @@ struct StatsView: View {
                         }
                     }
 
-                    Text("Çok")
+                    Text(String(localized: "stats_legend_more", defaultValue: "Çok", comment: "More activity"))
                         .font(.caption2)
                         .foregroundColor(.white.opacity(0.6))
                 }
@@ -147,7 +158,7 @@ struct StatsView: View {
 
     private var monthlySummaryCards: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Bu Ay Özeti")
+            Text(String(localized: "stats_monthly_summary", defaultValue: "Bu Ay Özeti", comment: "Monthly summary title"))
                 .font(.title2)
                 .fontWeight(.bold)
                 .foregroundColor(.white)
@@ -155,15 +166,15 @@ struct StatsView: View {
             HStack(spacing: 12) {
                 SummaryCard(
                     icon: "calendar",
-                    title: "Bu Ay",
-                    value: "\(thisMonthMinutes) dk",
+                    title: String(localized: "stats_this_month", defaultValue: "Bu Ay", comment: "This month"),
+                    value: "\(thisMonthMinutes) \(String(localized: "unit_min_short", defaultValue: "dk"))",
                     color: ZenTheme.calmBlue
                 )
 
                 SummaryCard(
                     icon: "calendar.badge.clock",
-                    title: "Bu Hafta",
-                    value: "\(thisWeekMinutes) dk",
+                    title: String(localized: "stats_this_week", defaultValue: "Bu Hafta", comment: "This week"),
+                    value: "\(thisWeekMinutes) \(String(localized: "unit_min_short", defaultValue: "dk"))",
                     color: ZenTheme.serenePurple
                 )
             }
@@ -171,15 +182,15 @@ struct StatsView: View {
             HStack(spacing: 12) {
                 SummaryCard(
                     icon: "chart.line.uptrend.xyaxis",
-                    title: "Ortalama",
-                    value: "\(averageSessionMinutes) dk",
+                    title: String(localized: "stats_average", defaultValue: "Ortalama", comment: "Average"),
+                    value: "\(averageSessionMinutes) \(String(localized: "unit_min_short", defaultValue: "dk"))",
                     color: ZenTheme.deepSage
                 )
 
                 SummaryCard(
                     icon: "star.fill",
-                    title: "En Uzun",
-                    value: "\(longestSessionMinutes) dk",
+                    title: String(localized: "stats_longest", defaultValue: "En Uzun", comment: "Longest"),
+                    value: "\(longestSessionMinutes) \(String(localized: "unit_min_short", defaultValue: "dk"))",
                     color: ZenTheme.mysticalViolet
                 )
             }
@@ -190,7 +201,7 @@ struct StatsView: View {
 
     private var last7DaysChart: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Son 7 Gün")
+            Text(String(localized: "stats_last_7_days", defaultValue: "Son 7 Gün", comment: "Last 7 days title"))
                 .font(.title2)
                 .fontWeight(.bold)
                 .foregroundColor(.white)
@@ -211,8 +222,8 @@ struct StatsView: View {
             Chart {
                 ForEach(last7DaysData, id: \.date) { data in
                     BarMark(
-                        x: .value("Gün", data.dayName),
-                        y: .value("Dakika", data.minutes)
+                        x: .value(String(localized: "stats_chart_day", defaultValue: "Gün"), data.dayName),
+                        y: .value(String(localized: "stats_chart_minutes", defaultValue: "Dakika"), data.minutes)
                     )
                     .foregroundStyle(
                         LinearGradient(
@@ -298,7 +309,7 @@ struct StatsView: View {
 
     private var detailedMetrics: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Tüm Zamanlar")
+            Text(String(localized: "stats_all_time", defaultValue: "Tüm Zamanlar", comment: "All time stats title"))
                 .font(.title2)
                 .fontWeight(.bold)
                 .foregroundColor(.white)
@@ -306,56 +317,56 @@ struct StatsView: View {
             VStack(spacing: 12) {
                 MetricRow(
                     icon: "figure.mind.and.body",
-                    title: "Toplam Meditasyon Süresi",
+                    title: String(localized: "stats_total_meditation_time", defaultValue: "Toplam Meditasyon Süresi", comment: "Total meditation time label"),
                     value: formatTotalDuration(dataManager.totalMinutes),
                     color: ZenTheme.calmBlue
                 )
 
                 MetricRow(
                     icon: "number",
-                    title: "Toplam Seans Sayısı",
+                    title: String(localized: "stats_total_sessions", defaultValue: "Toplam Seans Sayısı", comment: "Total sessions label"),
                     value: "\(dataManager.totalSessions)",
                     color: ZenTheme.serenePurple
                 )
 
                 MetricRow(
                     icon: "flame.fill",
-                    title: "Mevcut Seri",
-                    value: "\(dataManager.currentStreak) gün",
+                    title: String(localized: "stats_current_streak", defaultValue: "Mevcut Seri", comment: "Current streak label"),
+                    value: "\(dataManager.currentStreak) \(String(localized: "unit_days", defaultValue: "gün"))",
                     color: .orange
                 )
 
                 MetricRow(
                     icon: "trophy.fill",
-                    title: "En Uzun Seri",
-                    value: "\(dataManager.longestStreak) gün",
+                    title: String(localized: "stats_longest_streak", defaultValue: "En Uzun Seri", comment: "Longest streak label"),
+                    value: "\(dataManager.longestStreak) \(String(localized: "unit_days", defaultValue: "gün"))",
                     color: .yellow
                 )
 
                 MetricRow(
                     icon: "chart.line.uptrend.xyaxis",
-                    title: "Ortalama Seans Süresi",
-                    value: "\(averageSessionMinutes) dakika",
+                    title: String(localized: "stats_avg_session_duration", defaultValue: "Ortalama Seans Süresi", comment: "Average session duration label"),
+                    value: "\(averageSessionMinutes) \(String(localized: "unit_minutes", defaultValue: "dakika"))",
                     color: ZenTheme.deepSage
                 )
 
                 MetricRow(
                     icon: "star.fill",
-                    title: "En Uzun Tek Seans",
-                    value: "\(longestSessionMinutes) dakika",
+                    title: String(localized: "stats_longest_single_session", defaultValue: "En Uzun Tek Seans", comment: "Longest single session label"),
+                    value: "\(longestSessionMinutes) \(String(localized: "unit_minutes", defaultValue: "dakika"))",
                     color: ZenTheme.mysticalViolet
                 )
 
                 MetricRow(
                     icon: "brain.head.profile",
-                    title: "En Çok Kullanılan Tür",
+                    title: String(localized: "stats_most_used_type", defaultValue: "En Çok Kullanılan Tür", comment: "Most used type label"),
                     value: mostUsedExerciseType,
                     color: .cyan
                 )
 
                 MetricRow(
                     icon: "clock.fill",
-                    title: "Toplam Odaklanma Seansı",
+                    title: String(localized: "stats_total_focus_sessions", defaultValue: "Toplam Odaklanma Seansı", comment: "Total focus sessions label"),
                     value: "\(dataManager.totalFocusSessions)",
                     color: .mint
                 )
@@ -419,7 +430,8 @@ struct StatsView: View {
             let totalMinutes = sessions.reduce(0) { $0 + $1.durationMinutes }
 
             let formatter = DateFormatter()
-            formatter.locale = Locale(identifier: "tr_TR")
+            // DÜZELTME: Sabit tr_TR yerine cihazın mevcut locale'i kullanılıyor
+            formatter.locale = Locale.autoupdatingCurrent
             formatter.dateFormat = "EEE"
             let dayName = formatter.string(from: date)
 
@@ -457,18 +469,21 @@ struct StatsView: View {
 
     private var mostUsedExerciseType: String {
         // LocalDataManager'da egzersiz türü bilgisi saklanmıyor
-        // Gelecekte eklenebilir, şimdilik "N/A" döndürüyoruz
-        return "Tüm Türler"
+        // Gelecekte eklenebilir, şimdilik varsayılan değer döndürüyoruz
+        return String(localized: "stats_all_types", defaultValue: "Tüm Türler", comment: "All exercise types")
     }
 
     private func formatTotalDuration(_ minutes: Int) -> String {
         let hours = minutes / 60
         let mins = minutes % 60
 
+        let hourShort = String(localized: "unit_hour_short", defaultValue: "s", comment: "Hours short symbol")
+        let minShort = String(localized: "unit_min_short", defaultValue: "d", comment: "Minutes short symbol")
+
         if hours > 0 {
-            return "\(hours)s \(mins)d"
+            return "\(hours)\(hourShort) \(mins)\(minShort)"
         } else {
-            return "\(mins) dakika"
+            return "\(mins) \(String(localized: "unit_minutes", defaultValue: "dakika"))"
         }
     }
 }
