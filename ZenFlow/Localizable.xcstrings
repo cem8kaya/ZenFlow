@@ -41,7 +41,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "%1$@ • %2$@"
           }
         }
@@ -77,7 +77,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "%1$lld / %2$lld"
           }
         }
@@ -137,7 +137,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "%1$lld/%2$lld"
           }
         }
@@ -340,7 +340,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "4-7-8 Tekniği"
           }
         }
@@ -357,7 +357,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Nefes Egzersizi Başlat"
           }
         }
@@ -374,7 +374,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Zen Bahçeni Gör"
           }
         }
@@ -391,7 +391,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Meditasyon Öğren"
           }
         }
@@ -408,7 +408,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Pomodoro Başlat"
           }
         }
@@ -425,7 +425,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "İlerlemeni Gör"
           }
         }
@@ -511,7 +511,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Yolculuğunun başındasın. Zen yolu sabır ve süreklilik gerektirir. Her gün küçük bir adım at - nefes al, otur, gözlemle. Mükemmellik arayışında olma, sadece var ol."
           }
         }
@@ -529,7 +529,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Meditasyon yolculuğun güzel ilerliyor. Bazen zihin dağınık olacak, bazen sessiz. Her ikisi de doğaldır. Önemli olan, yargılamadan gözlemlemek. Sen düşüncen değilsin, düşüncelerin gözlemcisisin."
           }
         }
@@ -547,7 +547,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "%lld seans tamamladın. Meditasyon artık yaşamının bir parçası. Ancak asıl dönüşüm yastığın dışında gerçekleşir. Günlük yaşamda ne kadar uyanıksın? Her an bir uygulama fırsatıdır."
           }
         }
@@ -565,7 +565,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Bir süredir meditasyon yapmadın. Bu normaldir - hayat bazen bizleri meşgul eder. Ama unutma: Yolculuk bin bir millik yoldan başlar. Bugün küçük bir nefesle başla. Yeniden başlamak, başarısızlık değil, cesaret işaretidir."
           }
         }
@@ -583,7 +583,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "%lld günlük seride harikasın! Ancak unutma: Zen'de hedef, seriyi korumak değil, her anı tam yaşamaktır. Seri kırılırsa da sorun değil - önemli olan şimdiki nefes."
           }
         }
@@ -642,7 +642,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Toplam 300 dakika meditasyon tamamladın!"
           }
         }
@@ -660,7 +660,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "5 Saat Ustalık"
           }
         }
@@ -678,7 +678,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "7 gün üst üste meditasyon yaptın!"
           }
         }
@@ -696,7 +696,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "7 Gün Serisi"
           }
         }
@@ -714,7 +714,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "30 gün üst üste meditasyon yaptın! İnanılmaz bir disiplin!"
           }
         }
@@ -732,7 +732,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "30 Gün Serisi"
           }
         }
@@ -750,7 +750,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Toplam 60 dakika meditasyon tamamladın!"
           }
         }
@@ -768,7 +768,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "İlk Saat"
           }
         }
@@ -786,7 +786,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "İlk odaklanma seansını tamamladın!"
           }
         }
@@ -804,7 +804,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "İlk Pomodoro"
           }
         }
@@ -822,7 +822,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "10 odaklanma seansı tamamladın! Harika bir konsantrasyon!"
           }
         }
@@ -840,7 +840,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Odaklanma Ustası"
           }
         }
@@ -858,7 +858,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Tek günde 8 odaklanma seansı tamamladın! İnanılmaz bir disiplin!"
           }
         }
@@ -876,7 +876,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Maraton"
           }
         }
@@ -894,7 +894,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Toplam 1000 dakika meditasyon tamamladın! Gerçek bir usta!"
           }
         }
@@ -912,7 +912,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Zen Ustası"
           }
         }
@@ -1652,7 +1652,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Atmosfer"
           }
         }
@@ -1670,7 +1670,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Doğa"
           }
         }
@@ -1960,7 +1960,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Su"
           }
         }
@@ -2175,7 +2175,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Uykuya dalmayı kolaylaştırır"
           }
         }
@@ -2193,7 +2193,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Anksiyeteyi azaltır"
           }
         }
@@ -2211,7 +2211,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Kan basıncını düşürür"
           }
         }
@@ -2229,7 +2229,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Derin rahatlama sağlar"
           }
         }
@@ -2247,7 +2247,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Uykuya dalmayı kolaylaştıran ve derin rahatlama sağlayan teknik. Dr. Andrew Weil tarafından geliştirilmiştir."
           }
         }
@@ -2265,7 +2265,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "4-7-8 Tekniği"
           }
         }
@@ -2283,7 +2283,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Stresi azaltır"
           }
         }
@@ -2301,7 +2301,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Odaklanmayı artırır"
           }
         }
@@ -2319,7 +2319,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Zihinsel netlik sağlar"
           }
         }
@@ -2337,7 +2337,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Anksiyeteyi azaltır"
           }
         }
@@ -2355,7 +2355,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Dengeli ve düzenli bir nefes egzersizi. Zihinsel netlik ve sakinlik için idealdir."
           }
         }
@@ -2373,7 +2373,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Kutu Nefesi"
           }
         }
@@ -2391,7 +2391,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Hızlı sakinleşme sağlar"
           }
         }
@@ -2409,7 +2409,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Stresi azaltır"
           }
         }
@@ -2427,7 +2427,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Kalp atış hızını düzenler"
           }
         }
@@ -2445,7 +2445,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Kolayca uygulanabilir"
           }
         }
@@ -2463,7 +2463,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Basit ve etkili bir sakinleşme tekniği. Uzun nefes vermeler sinir sistemini sakinleştirir."
           }
         }
@@ -2481,7 +2481,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Sakinleştirici Nefes"
           }
         }
@@ -2550,7 +2550,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Derin rahatlama sağlar"
           }
         }
@@ -2568,7 +2568,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Meditasyonu derinleştirir"
           }
         }
@@ -2586,7 +2586,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Kalp hızını yavaşlatır"
           }
         }
@@ -2604,7 +2604,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "İç huzur verir"
           }
         }
@@ -2622,7 +2622,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Yavaş ve derin nefes alıp vermelerle tam bir rahatlama hali. Meditasyon ve yoga sonrası idealdir."
           }
         }
@@ -2640,7 +2640,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Derin Gevşeme"
           }
         }
@@ -2658,7 +2658,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Enerji seviyesini yükseltir"
           }
         }
@@ -2676,7 +2676,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Zihinsel uyanıklığı artırır"
           }
         }
@@ -2694,7 +2694,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Kan dolaşımını hızlandırır"
           }
         }
@@ -2712,7 +2712,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Güne dinç başlamanızı sağlar"
           }
         }
@@ -2730,7 +2730,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Enerji ve canlılık kazandıran hızlı tempo nefes egzersizi. Sabah rutini için mükemmeldir."
           }
         }
@@ -2748,7 +2748,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Enerji Nefesi"
           }
         }
@@ -2935,7 +2935,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Uzun Mola"
           }
         }
@@ -2953,7 +2953,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "%lld dakika uzun mola"
           }
         }
@@ -2971,7 +2971,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Kısa Mola"
           }
         }
@@ -2989,7 +2989,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "%lld dakika kısa mola"
           }
         }
@@ -3007,7 +3007,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Odaklanma"
           }
         }
@@ -3025,7 +3025,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "%lld dakika odaklanma zamanı"
           }
         }
@@ -4461,7 +4461,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Odaklanma Seansı"
           }
         }
@@ -4479,7 +4479,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Günlük Odaklanma Seansı"
           }
         }
@@ -4497,7 +4497,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Seri"
           }
         }
@@ -4515,7 +4515,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Toplam Dakika"
           }
         }
@@ -4552,7 +4552,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Sayfa %1$lld / %2$lld"
           }
         }
@@ -4569,7 +4569,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Sayfa %1$lld / %2$lld. %3$@"
           }
         }
@@ -5691,7 +5691,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Kamp Ateşi"
           }
         }
@@ -5709,7 +5709,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Kamp ateşi çatırtısı"
           }
         }
@@ -5727,7 +5727,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Çöl"
           }
         }
@@ -5745,7 +5745,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Çöl rüzgarı"
           }
         }
@@ -5763,7 +5763,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Ateş"
           }
         }
@@ -5781,7 +5781,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Yumuşak ateş sesi"
           }
         }
@@ -5799,7 +5799,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Şömine"
           }
         }
@@ -5817,7 +5817,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Çatırdayan şömine"
           }
         }
@@ -5835,7 +5835,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Orman"
           }
         }
@@ -5853,7 +5853,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Doğanın huzur verici sesleri"
           }
         }
@@ -5871,7 +5871,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Dağ"
           }
         }
@@ -5889,7 +5889,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Dağ esintisi"
           }
         }
@@ -5907,7 +5907,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Gece"
           }
         }
@@ -5925,7 +5925,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Cırcır böcekleri ve gece sesleri"
           }
         }
@@ -5943,7 +5943,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Okyanus"
           }
         }
@@ -5961,7 +5961,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Dinlendirici dalga sesleri"
           }
         }
@@ -5979,7 +5979,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Yağmur"
           }
         }
@@ -5997,7 +5997,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Sakinleştirici yağmur sesi"
           }
         }
@@ -6015,7 +6015,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Dere"
           }
         }
@@ -6033,7 +6033,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Akıp giden dere suyu"
           }
         }
@@ -6051,7 +6051,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Sessiz"
           }
         }
@@ -6069,7 +6069,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Arka plan sesi yok"
           }
         }
@@ -6087,7 +6087,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Tibet Çanı"
           }
         }
@@ -6105,7 +6105,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Tibet çanak sesi"
           }
         }
@@ -6123,7 +6123,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Fırtına"
           }
         }
@@ -6141,7 +6141,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Gök gürültülü yağmur"
           }
         }
@@ -6159,7 +6159,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Şelale"
           }
         }
@@ -6177,7 +6177,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Güçlü şelale sesi"
           }
         }
@@ -6195,7 +6195,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Rüzgar"
           }
         }
@@ -6213,7 +6213,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Rüzgar Çanı"
           }
         }
@@ -6231,7 +6231,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Rüzgar çanları"
           }
         }
@@ -6249,7 +6249,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Ağaçlarda esen rüzgar"
           }
         }
@@ -6267,7 +6267,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Tüm Zamanlar"
           }
         }
@@ -6285,7 +6285,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Tüm Türler"
           }
         }
@@ -6303,7 +6303,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Ortalama"
           }
         }
@@ -6321,7 +6321,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Ortalama Seans Süresi"
           }
         }
@@ -6338,7 +6338,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Gün"
           }
         }
@@ -6355,7 +6355,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Dakika"
           }
         }
@@ -6373,7 +6373,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Mevcut Seri"
           }
         }
@@ -6391,7 +6391,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Son 4 Hafta Aktivite"
           }
         }
@@ -6409,7 +6409,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Son 7 Gün"
           }
         }
@@ -6427,7 +6427,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Az"
           }
         }
@@ -6445,7 +6445,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Çok"
           }
         }
@@ -6463,7 +6463,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "En Uzun"
           }
         }
@@ -6481,7 +6481,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "En Uzun Tek Seans"
           }
         }
@@ -6499,7 +6499,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "En Uzun Seri"
           }
         }
@@ -6517,7 +6517,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Bu Ay Özeti"
           }
         }
@@ -6535,7 +6535,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "En Çok Kullanılan Tür"
           }
         }
@@ -6553,7 +6553,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Bu Ay"
           }
         }
@@ -6571,7 +6571,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Bu Hafta"
           }
         }
@@ -6589,7 +6589,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Toplam Odaklanma Seansı"
           }
         }
@@ -6607,7 +6607,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Toplam Meditasyon Süresi"
           }
         }
@@ -6625,7 +6625,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Toplam Seans Sayısı"
           }
         }
@@ -6918,7 +6918,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "%lld saat"
           }
         }
@@ -6936,7 +6936,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "%1$lld saat %2$lld dakika"
           }
         }
@@ -6954,7 +6954,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "%lld dakika"
           }
         }
@@ -6972,7 +6972,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Tamamlandı"
           }
         }
@@ -6990,7 +6990,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Duraklat"
           }
         }
@@ -7008,7 +7008,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Devam Et"
           }
         }
@@ -7026,7 +7026,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Başla"
           }
         }
@@ -7077,7 +7077,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "%lld saat"
           }
         }
@@ -7095,7 +7095,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "%1$lld saat %2$lld dakika"
           }
         }
@@ -7113,7 +7113,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "%lld dakika"
           }
         }
@@ -7344,7 +7344,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "gün"
           }
         }
@@ -7362,7 +7362,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "s"
           }
         }
@@ -7380,7 +7380,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "d"
           }
         }
@@ -7397,7 +7397,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "dakika"
           }
         }
@@ -7476,7 +7476,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Cum"
           }
         }
@@ -7494,7 +7494,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Pzt"
           }
         }
@@ -7512,7 +7512,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Cmt"
           }
         }
@@ -7530,7 +7530,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Paz"
           }
         }
@@ -7548,7 +7548,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Per"
           }
         }
@@ -7566,7 +7566,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Sal"
           }
         }
@@ -7584,7 +7584,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Çar"
           }
         }
@@ -7670,7 +7670,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "\"Şimdiki an, sahip olduğun tek andır.\""
           }
         }
@@ -7688,7 +7688,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "\"Su akıştır, rüzgar esintir, akış ritmini bulmaktır.\""
           }
         }
@@ -7706,7 +7706,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "\"Şimdiki an, sahip olduğun tek andır. Onu kucakla.\""
           }
         }
@@ -7724,7 +7724,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "\"Zihin sakinleştiğinde, ruhun güzelliği parlar.\""
           }
         }
@@ -7742,7 +7742,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "\"Her nefes, yeni bir başlangıçtır.\""
           }
         }
@@ -7760,7 +7760,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "\"Sessizlik, tüm cevapları içerir.\""
           }
         }
@@ -7778,7 +7778,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "\"Aydınlanma, uzaktaki bir hedef değil, her adımdaki farkındalıktır.\""
           }
         }
@@ -7796,7 +7796,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "\"Düşünce bulutları gelir ve geçer. Sen gökyüzüsün.\""
           }
         }
@@ -7814,7 +7814,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "\"Tam burada, tam şimdi - sonsuzluk bu anda gizli.\""
           }
         }
@@ -7832,7 +7832,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "\"Boş bir zihin, her şeyin mümkün olduğu yerdir.\""
           }
         }
@@ -7850,7 +7850,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "\"Barış dışarıda aranmaz, içeride keşfedilir.\""
           }
         }
@@ -7868,7 +7868,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "\"Nefes, beden ve zihin arasındaki köprüdür.\""
           }
         }
@@ -7886,7 +7886,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "\"Gel, gör, kabul et. Bu Zen'in yoludur.\""
           }
         }
@@ -7904,7 +7904,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "\"Düşüşte bile zarafet vardır. Kalk ve devam et.\""
           }
         }
@@ -7922,7 +7922,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "\"Sabır, bilgeliğin meyveleridir.\""
           }
         }
@@ -7940,7 +7940,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "\"Her an meditasyon fırsatıdır.\""
           }
         }
@@ -8298,7 +8298,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Seni anlıyorum."
           }
         }
@@ -8486,7 +8486,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Seni tüm kalbimle duyuyorum ve anlıyorum."
           }
         }
@@ -8504,7 +8504,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Bunu benimle paylaştığın için teşekkür ederim, yalnız değilsin."
           }
         }
@@ -8522,7 +8522,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Bu duyguyu hissetmen çok insani, çözüm için yanındayım."
           }
         }
@@ -8540,7 +8540,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Derin bir nefes alalım; hissettiklerin geçici, senin özün ise kalıcı."
           }
         }
@@ -8558,7 +8558,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Seni anlıyorum. Bazen zihin gürültülü olabilir, ama sessizlik hep orada."
           }
         }
@@ -8576,7 +8576,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Farkındalığın için seni tebrik ederim, bu ilk ve en önemli adım."
           }
         }
@@ -8594,7 +8594,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Bazen sadece durup hissetmek gerekir. Seni yargısızca dinliyorum."
           }
         }
@@ -8612,7 +8612,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Zihnin söylediklerini bir kenara bırakıp, kalbinin sesine kulak verelim."
           }
         }
@@ -8630,7 +8630,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Şu an hissettiğin her neyse, ona yer aç. Geçip gitmesine izin ver."
           }
         }
@@ -8648,7 +8648,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Yolculuğunda sana eşlik etmekten onur duyuyorum."
           }
         }
@@ -8666,7 +8666,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Her gün yeni bir başlangıç"
           }
         }
@@ -8684,7 +8684,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Sakinlik güçtür"
           }
         }
@@ -8702,7 +8702,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Nefes al, bırak, var ol"
           }
         }
@@ -8720,7 +8720,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Şu an tek gerçeklik"
           }
         }
@@ -8738,7 +8738,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "İç huzur dış yansımadır"
           }
         }
@@ -8756,7 +8756,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Sabır bilgeliktir"
           }
         }
@@ -8774,7 +8774,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Sessizlikte anlam bul"
           }
         }
@@ -8792,7 +8792,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Her adım yolculuktur"
           }
         }
@@ -8810,7 +8810,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Bugün kendine iyi bak"
           }
         }
@@ -8828,7 +8828,7 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Düşünceler bulutlar gibi geçer"
           }
         }
