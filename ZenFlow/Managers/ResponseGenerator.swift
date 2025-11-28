@@ -54,40 +54,45 @@ class ResponseGenerator {
     // MARK: - Empathetic Openings (Geliştirilmiş Açılışlar)
     
     /// Kullanıcıyı anladığımızı hissettiren zenginleştirilmiş açılış mesajları
-    private let empatheticOpenings = [
-        "Seni tüm kalbimle duyuyorum ve anlıyorum.",
-        "Bunu benimle paylaştığın için teşekkür ederim, yalnız değilsin.",
-        "Bu duyguyu hissetmen çok insani, çözüm için yanındayım.",
-        "Derin bir nefes alalım; hissettiklerin geçici, senin özün ise kalıcı.",
-        "Seni anlıyorum. Bazen zihin gürültülü olabilir, ama sessizlik hep orada.",
-        "Farkındalığın için seni tebrik ederim, bu ilk ve en önemli adım.",
-        "Bazen sadece durup hissetmek gerekir. Seni yargısızca dinliyorum.",
-        "Zihnin söylediklerini bir kenara bırakıp, kalbinin sesine kulak verelim.",
-        "Şu an hissettiğin her neyse, ona yer aç. Geçip gitmesine izin ver.",
-        "Yolculuğunda sana eşlik etmekten onur duyuyorum."
-    ]
+    /// Localized computed property to ensure correct language is fetched at runtime
+    private var empatheticOpenings: [String] {
+        [
+            String(localized: "zen_opening_0", defaultValue: "Seni tüm kalbimle duyuyorum ve anlıyorum.", comment: "Empathetic opening 0"),
+            String(localized: "zen_opening_1", defaultValue: "Bunu benimle paylaştığın için teşekkür ederim, yalnız değilsin.", comment: "Empathetic opening 1"),
+            String(localized: "zen_opening_2", defaultValue: "Bu duyguyu hissetmen çok insani, çözüm için yanındayım.", comment: "Empathetic opening 2"),
+            String(localized: "zen_opening_3", defaultValue: "Derin bir nefes alalım; hissettiklerin geçici, senin özün ise kalıcı.", comment: "Empathetic opening 3"),
+            String(localized: "zen_opening_4", defaultValue: "Seni anlıyorum. Bazen zihin gürültülü olabilir, ama sessizlik hep orada.", comment: "Empathetic opening 4"),
+            String(localized: "zen_opening_5", defaultValue: "Farkındalığın için seni tebrik ederim, bu ilk ve en önemli adım.", comment: "Empathetic opening 5"),
+            String(localized: "zen_opening_6", defaultValue: "Bazen sadece durup hissetmek gerekir. Seni yargısızca dinliyorum.", comment: "Empathetic opening 6"),
+            String(localized: "zen_opening_7", defaultValue: "Zihnin söylediklerini bir kenara bırakıp, kalbinin sesine kulak verelim.", comment: "Empathetic opening 7"),
+            String(localized: "zen_opening_8", defaultValue: "Şu an hissettiğin her neyse, ona yer aç. Geçip gitmesine izin ver.", comment: "Empathetic opening 8"),
+            String(localized: "zen_opening_9", defaultValue: "Yolculuğunda sana eşlik etmekten onur duyuyorum.", comment: "Empathetic opening 9")
+        ]
+    }
     
     // MARK: - Backup Zen Quotes (Yedek Alıntı Havuzu)
     
     /// Eğer Localizable.xcstrings'ten veri çekilemezse kullanılacak yedek havuz.
-    /// Bu sayede asla "tek bir cümleye" sıkışıp kalmayız.
-    private let backupZenQuotes = [
-        "\"Su akıştır, rüzgar esintir, akış ritmini bulmaktır.\"",
-        "\"Şimdiki an, sahip olduğun tek andır. Onu kucakla.\"",
-        "\"Zihin sakinleştiğinde, ruhun güzelliği parlar.\"",
-        "\"Her nefes, yeni bir başlangıçtır.\"",
-        "\"Sessizlik, tüm cevapları içerir.\"",
-        "\"Aydınlanma, uzaktaki bir hedef değil, her adımdaki farkındalıktır.\"",
-        "\"Düşünce bulutları gelir ve geçer. Sen gökyüzüsün.\"",
-        "\"Tam burada, tam şimdi - sonsuzluk bu anda gizli.\"",
-        "\"Boş bir zihin, her şeyin mümkün olduğu yerdir.\"",
-        "\"Barış dışarıda aranmaz, içeride keşfedilir.\"",
-        "\"Nefes, beden ve zihin arasındaki köprüdür.\"",
-        "\"Gel, gör, kabul et. Bu Zen'in yoludur.\"",
-        "\"Düşüşte bile zarafet vardır. Kalk ve devam et.\"",
-        "\"Sabır, bilgeliğin meyveleridir.\"",
-        "\"Her an meditasyon fırsatıdır.\""
-    ]
+    /// Localized computed property
+    private var backupZenQuotes: [String] {
+        [
+            String(localized: "zen_backup_quote_0", defaultValue: "\"Su akıştır, rüzgar esintir, akış ritmini bulmaktır.\"", comment: "Backup Zen quote 0"),
+            String(localized: "zen_backup_quote_1", defaultValue: "\"Şimdiki an, sahip olduğun tek andır. Onu kucakla.\"", comment: "Backup Zen quote 1"),
+            String(localized: "zen_backup_quote_2", defaultValue: "\"Zihin sakinleştiğinde, ruhun güzelliği parlar.\"", comment: "Backup Zen quote 2"),
+            String(localized: "zen_backup_quote_3", defaultValue: "\"Her nefes, yeni bir başlangıçtır.\"", comment: "Backup Zen quote 3"),
+            String(localized: "zen_backup_quote_4", defaultValue: "\"Sessizlik, tüm cevapları içerir.\"", comment: "Backup Zen quote 4"),
+            String(localized: "zen_backup_quote_5", defaultValue: "\"Aydınlanma, uzaktaki bir hedef değil, her adımdaki farkındalıktır.\"", comment: "Backup Zen quote 5"),
+            String(localized: "zen_backup_quote_6", defaultValue: "\"Düşünce bulutları gelir ve geçer. Sen gökyüzüsün.\"", comment: "Backup Zen quote 6"),
+            String(localized: "zen_backup_quote_7", defaultValue: "\"Tam burada, tam şimdi - sonsuzluk bu anda gizli.\"", comment: "Backup Zen quote 7"),
+            String(localized: "zen_backup_quote_8", defaultValue: "\"Boş bir zihin, her şeyin mümkün olduğu yerdir.\"", comment: "Backup Zen quote 8"),
+            String(localized: "zen_backup_quote_9", defaultValue: "\"Barış dışarıda aranmaz, içeride keşfedilir.\"", comment: "Backup Zen quote 9"),
+            String(localized: "zen_backup_quote_10", defaultValue: "\"Nefes, beden ve zihin arasındaki köprüdür.\"", comment: "Backup Zen quote 10"),
+            String(localized: "zen_backup_quote_11", defaultValue: "\"Gel, gör, kabul et. Bu Zen'in yoludur.\"", comment: "Backup Zen quote 11"),
+            String(localized: "zen_backup_quote_12", defaultValue: "\"Düşüşte bile zarafet vardır. Kalk ve devam et.\"", comment: "Backup Zen quote 12"),
+            String(localized: "zen_backup_quote_13", defaultValue: "\"Sabır, bilgeliğin meyveleridir.\"", comment: "Backup Zen quote 13"),
+            String(localized: "zen_backup_quote_14", defaultValue: "\"Her an meditasyon fırsatıdır.\"", comment: "Backup Zen quote 14")
+        ]
+    }
     
     // MARK: - Response Generation
     
@@ -144,12 +149,13 @@ class ResponseGenerator {
         let randomIndex = Int.random(in: 0..<zenQuoteCount)
         let key = "zen_quote_\(randomIndex)"
         
+        // NSLocalizedString kullanarak çeviriyi al
         let quote = NSLocalizedString(key, comment: "")
         
         // Eğer NSLocalizedString anahtarın kendisini dönerse (çeviri yoksa),
-        // statik tek bir cümle yerine 'backupZenQuotes' dizisinden rastgele seç.
+        // yedek havuzdan rastgele bir söz seç.
         if quote == key {
-            return backupZenQuotes.randomElement() ?? "\"Şimdiki an, sahip olduğun tek andır.\""
+            return backupZenQuotes.randomElement() ?? String(localized: "zen_backup_default", defaultValue: "\"Şimdiki an, sahip olduğun tek andır.\"", comment: "Default backup quote")
         }
         
         return quote
@@ -171,19 +177,24 @@ class ResponseGenerator {
     private func getResponseTemplate(for intent: UserIntent, sentiment: MessageSentiment) -> String {
         let count = responseTemplateCount[intent]?[sentiment] ?? 0
         
+        // Varsayılan fallback mesajı
+        let defaultFallback = String(localized: "zen_fallback_understanding", defaultValue: "Seni anlıyorum.", comment: "Default fallback response")
+        
         guard count > 0 else {
-            return empatheticOpenings.randomElement() ?? "Seni anlıyorum."
+            return empatheticOpenings.randomElement() ?? defaultFallback
         }
         
         let randomIndex = Int.random(in: 0..<count)
         let key = "response_\(intent.rawValue)_\(sentiment.rawValue)_\(randomIndex)"
         
+        // NSLocalizedString ile dinamik anahtarı çek
         let localizedString = NSLocalizedString(key, comment: "")
         
-        // Çeviri bulunamazsa, zenginleştirilmiş açılış cümlelerinden birini dön
+        // Çeviri bulunamazsa (anahtarın kendisi dönerse),
+        // zenginleştirilmiş açılış cümlelerinden birini veya fallback'i dön
         if localizedString == key {
             print("⚠️ Missing translation for key: \(key)")
-            return empatheticOpenings.randomElement() ?? "Seni anlıyorum."
+            return empatheticOpenings.randomElement() ?? defaultFallback
         }
         
         return localizedString
@@ -200,6 +211,7 @@ class ResponseGenerator {
             let key = "personalization_streak"
             let template = NSLocalizedString(key, comment: "")
             
+            // Çeviri varsa ekle
             if template != key {
                 let streakMessage = "\n\n\(String(format: template, stats.currentStreak))"
                 // Cevap çok uzun değilse ekle
@@ -230,9 +242,12 @@ class ResponseGenerator {
     // MARK: - Action Buttons
     
     private func getActionButton(for intent: UserIntent) -> (text: String?, url: String?) {
+        // Helper to safely get localized string or fallback
+        // Fix: Using NSLocalizedString instead of String(localized:) for dynamic keys to avoid ambiguity
         func loc(_ key: String, defaultVal: String) -> String {
-            let res = NSLocalizedString(key, comment: "")
-            return res == key ? defaultVal : res
+            let value = NSLocalizedString(key, comment: "")
+            // If key is returned, it means no translation found, use defaultVal
+            return value != key ? value : defaultVal
         }
         
         switch intent {
