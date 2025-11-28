@@ -71,11 +71,11 @@ class ZenCoachManager: ObservableObject {
             let sentiment = self.intentClassifier.analyzeSentiment(from: trimmedText)
 
             // Generate response
-            let userStats = UserStats.fromLocalData()
+            let ZenUserStats = ZenUserStats.fromLocalData()
             let response = self.responseGenerator.generateResponse(
                 for: intent,
                 sentiment: sentiment,
-                userStats: userStats
+                userStats: ZenUserStats
             )
 
             // Create coach message

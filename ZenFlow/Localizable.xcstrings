@@ -176,6 +176,7 @@
     },
     "action_button_478" : {
       "comment" : "4-7-8 Technique",
+      "extractionState" : "stale",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
@@ -187,6 +188,7 @@
     },
     "action_button_breathing" : {
       "comment" : "Start breathing exercise",
+      "extractionState" : "stale",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
@@ -198,6 +200,7 @@
     },
     "action_button_garden" : {
       "comment" : "View Zen Garden",
+      "extractionState" : "stale",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
@@ -209,6 +212,7 @@
     },
     "action_button_meditation" : {
       "comment" : "Learn meditation",
+      "extractionState" : "stale",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
@@ -220,6 +224,7 @@
     },
     "action_button_pomodoro" : {
       "comment" : "Start Pomodoro",
+      "extractionState" : "stale",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
@@ -231,6 +236,7 @@
     },
     "action_button_progress" : {
       "comment" : "View progress",
+      "extractionState" : "stale",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
@@ -2570,6 +2576,7 @@
     },
     "personalization_milestone" : {
       "comment" : "Milestone message",
+      "extractionState" : "stale",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
@@ -2581,6 +2588,7 @@
     },
     "personalization_streak" : {
       "comment" : "Streak message",
+      "extractionState" : "stale",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
@@ -2925,6 +2933,7 @@
     },
     "response_fallback" : {
       "comment" : "Fallback response",
+      "extractionState" : "stale",
       "localizations" : {
         "tr" : {
           "stringUnit" : {

@@ -11,153 +11,11 @@
 
 import Foundation
 
-// MARK: - Response Generator
-
-/// Singleton class for generating contextual responses with Zen wisdom
-class ResponseGenerator {
-    
-    // MARK: - Singleton
-    
-    static let shared = ResponseGenerator()
-    
-    private init() {}
-    
-    // MARK: - Response Generation
-    
-    /// Generates a contextual response based on intent and sentiment
-    /// - Parameters:
-    ///   - intent: Classified user intent
-    ///   - sentiment: Analyzed sentiment
-    ///   - userStats: User's meditation statistics (optional)
-    /// - Returns: Generated response with action
-    func generateResponse(
-        for intent: UserIntent,
-        sentiment: MessageSentiment,
-        userStats: UserStats? = nil
-    ) -> ZenCoachResponse {
-        // Get base response template with possible Zen quote
-        let responseText = getResponseTemplate(for: intent, sentiment: sentiment)
-        
-        // Add personalization if user stats available
-        let personalizedText = addPersonalization(to: responseText, with: userStats)
-        
-        // Get action text and URL
-        let (actionText, actionURL) = getActionButton(for: intent)
-        
-        return ZenCoachResponse(
-            text: personalizedText,
-            intent: intent,
-            sentiment: sentiment,
-            actionText: actionText,
-            actionURL: actionURL
-        )
-    }
-    
-    // MARK: - Zen Quotes
-    
-    /// Total number of available Zen quotes
-    private let zenQuoteCount = 20
-    
-    /// Gets a random Zen quote (localized)
-    private func getRandomZenQuote() -> String {
-        let randomIndex = Int.random(in: 0..<zenQuoteCount)
-        // DÜZELTME 1: Foundation ile uyumlu NSLocalizedString kullanıldı
-        return NSLocalizedString("zen_quote_\(randomIndex)", comment: "Zen quote")
-    }
-    
-    // MARK: - Response Templates
-    
-    /// Number of response templates per intent-sentiment combination
-    private let responseTemplateCount: [UserIntent: [MessageSentiment: Int]] = [
-        .stress: [.negative: 3, .neutral: 3, .positive: 3],
-        .focus: [.negative: 3, .neutral: 3, .positive: 3],
-        .sleep: [.negative: 3, .neutral: 3, .positive: 3],
-        .breathing: [.negative: 3, .neutral: 3, .positive: 3],
-        .motivation: [.negative: 3, .neutral: 3, .positive: 3],
-        .meditation: [.negative: 3, .neutral: 3, .positive: 3],
-        .progress: [.negative: 3, .neutral: 3, .positive: 3],
-        .general: [.negative: 3, .neutral: 3, .positive: 3]
-    ]
-    
-    /// Gets response template based on intent and sentiment (localized)
-    private func getResponseTemplate(for intent: UserIntent, sentiment: MessageSentiment) -> String {
-        let count = responseTemplateCount[intent]?[sentiment] ?? 0
-        
-        guard count > 0 else {
-            // Fallback
-            return String(localized: "response_fallback", defaultValue: "Anlıyorum. Sana nasıl yardımcı olabilirim?", comment: "Fallback response")
-        }
-        
-        let randomIndex = Int.random(in: 0..<count)
-        let key = "response_\(intent.rawValue)_\(sentiment.rawValue)_\(randomIndex)"
-        
-        // String(localized:) kullanarak ve defaultValue ekleyerek güvenli hale getirme
-        // Not: Dinamik key'ler için defaultValue vermek zordur, ancak en azından String kataloğunu zorlarız.
-        let localizedString = String(localized: String.LocalizationValue(key))
-        
-        // Eğer dönen değer key ile aynıysa (çeviri bulunamadıysa), genel bir mesaj göster
-        if localizedString == key {
-            return "Anlıyorum. Devam edelim." // Acil durum cümlesi
-        }
-        
-        return localizedString
-    }
-    
-    
-    // MARK: - Personalization
-    
-    /// Adds personalization to response based on user statistics
-    private func addPersonalization(to response: String, with userStats: UserStats?) -> String {
-        guard let stats = userStats else {
-            return response
-        }
-        
-        var personalizedResponse = response
-        
-        // Add streak information
-        if stats.currentStreak > 0 {
-            let streakTemplate = String(localized: "personalization_streak", defaultValue: "🔥 Bu arada, %d günlük serin devam ediyor! Harika bir disiplin.", comment: "Streak message")
-            let streakMessage = "\n\n\(String(format: streakTemplate, stats.currentStreak))"
-            personalizedResponse += streakMessage
-        }
-
-        // Add milestone celebration
-        if stats.totalMinutes >= 300 && stats.totalMinutes % 100 < 10 {
-            let milestoneTemplate = String(localized: "personalization_milestone", defaultValue: "🎉 %d dakikayı geçtin! Bu muazzam bir başarı!", comment: "Milestone message")
-            let milestoneMessage = "\n\n\(String(format: milestoneTemplate, stats.totalMinutes))"
-            personalizedResponse += milestoneMessage
-        }
-        
-        return personalizedResponse
-    }
-    
-    // MARK: - Action Buttons
-    
-    /// Gets action button text and URL for intent
-    private func getActionButton(for intent: UserIntent) -> (text: String?, url: String?) {
-        switch intent {
-        case .stress, .breathing:
-            return (String(localized: "action_button_breathing", defaultValue: "Nefes Egzersizi Başlat", comment: "Start breathing exercise"), intent.deepLinkURL)
-        case .focus:
-            return (String(localized: "action_button_pomodoro", defaultValue: "Pomodoro Başlat", comment: "Start Pomodoro"), intent.deepLinkURL)
-        case .sleep:
-            return (String(localized: "action_button_478", defaultValue: "4-7-8 Tekniği", comment: "4-7-8 Technique"), intent.deepLinkURL)
-        case .motivation:
-            return (String(localized: "action_button_garden", defaultValue: "Zen Bahçeni Gör", comment: "View Zen Garden"), intent.deepLinkURL)
-        case .meditation:
-            return (String(localized: "action_button_meditation", defaultValue: "Meditasyon Öğren", comment: "Learn meditation"), intent.deepLinkURL)
-        case .progress:
-            return (String(localized: "action_button_progress", defaultValue: "İlerlemeni Gör", comment: "View progress"), intent.deepLinkURL)
-        case .general:
-            return (nil, nil)
-        }
-    }
-}
-
-// MARK: - User Stats
+// MARK: - Zen User Stats (Moved to Global Scope)
 
 /// User statistics for personalization
-struct UserStats {
+/// Renamed to avoid conflicts with other definitions and moved to top level
+struct ZenUserStats {
     let totalMinutes: Int
     let totalSessions: Int
     let currentStreak: Int
@@ -170,14 +28,228 @@ struct UserStats {
         self.longestStreak = longestStreak
     }
     
-    /// Creates UserStats from LocalDataManager
-    static func fromLocalData() -> UserStats {
+    /// Creates ZenUserStats from LocalDataManager
+    static func fromLocalData() -> ZenUserStats {
         let manager = LocalDataManager.shared
-        return UserStats(
+        return ZenUserStats(
             totalMinutes: manager.totalMinutes,
             totalSessions: manager.totalSessions,
             currentStreak: manager.currentStreak,
             longestStreak: manager.longestStreak
         )
+    }
+}
+
+// MARK: - Response Generator
+
+/// Singleton class for generating contextual responses with Zen wisdom
+class ResponseGenerator {
+    
+    // MARK: - Singleton
+    
+    static let shared = ResponseGenerator()
+    
+    private init() {}
+    
+    // MARK: - Empathetic Openings (Geliştirilmiş Açılışlar)
+    
+    /// Kullanıcıyı anladığımızı hissettiren zenginleştirilmiş açılış mesajları
+    private let empatheticOpenings = [
+        "Seni tüm kalbimle duyuyorum ve anlıyorum.",
+        "Bunu benimle paylaştığın için teşekkür ederim, yalnız değilsin.",
+        "Bu duyguyu hissetmen çok insani, çözüm için yanındayım.",
+        "Derin bir nefes alalım; hissettiklerin geçici, senin özün ise kalıcı.",
+        "Seni anlıyorum. Bazen zihin gürültülü olabilir, ama sessizlik hep orada.",
+        "Farkındalığın için seni tebrik ederim, bu ilk ve en önemli adım.",
+        "Bazen sadece durup hissetmek gerekir. Seni yargısızca dinliyorum.",
+        "Zihnin söylediklerini bir kenara bırakıp, kalbinin sesine kulak verelim.",
+        "Şu an hissettiğin her neyse, ona yer aç. Geçip gitmesine izin ver.",
+        "Yolculuğunda sana eşlik etmekten onur duyuyorum."
+    ]
+    
+    // MARK: - Backup Zen Quotes (Yedek Alıntı Havuzu)
+    
+    /// Eğer Localizable.xcstrings'ten veri çekilemezse kullanılacak yedek havuz.
+    /// Bu sayede asla "tek bir cümleye" sıkışıp kalmayız.
+    private let backupZenQuotes = [
+        "\"Su akıştır, rüzgar esintir, akış ritmini bulmaktır.\"",
+        "\"Şimdiki an, sahip olduğun tek andır. Onu kucakla.\"",
+        "\"Zihin sakinleştiğinde, ruhun güzelliği parlar.\"",
+        "\"Her nefes, yeni bir başlangıçtır.\"",
+        "\"Sessizlik, tüm cevapları içerir.\"",
+        "\"Aydınlanma, uzaktaki bir hedef değil, her adımdaki farkındalıktır.\"",
+        "\"Düşünce bulutları gelir ve geçer. Sen gökyüzüsün.\"",
+        "\"Tam burada, tam şimdi - sonsuzluk bu anda gizli.\"",
+        "\"Boş bir zihin, her şeyin mümkün olduğu yerdir.\"",
+        "\"Barış dışarıda aranmaz, içeride keşfedilir.\"",
+        "\"Nefes, beden ve zihin arasındaki köprüdür.\"",
+        "\"Gel, gör, kabul et. Bu Zen'in yoludur.\"",
+        "\"Düşüşte bile zarafet vardır. Kalk ve devam et.\"",
+        "\"Sabır, bilgeliğin meyveleridir.\"",
+        "\"Her an meditasyon fırsatıdır.\""
+    ]
+    
+    // MARK: - Response Generation
+    
+    func generateResponse(
+        for intent: UserIntent,
+        sentiment: MessageSentiment,
+        userStats: ZenUserStats? = nil
+    ) -> ZenCoachResponse {
+        
+        // 1. Ana şablonu al
+        var responseText = getResponseTemplate(for: intent, sentiment: sentiment)
+        
+        // 2. Zen Sözü Ekleme Mantığı
+        // Cevap bir fallback (açılış cümlesi) ise MUTLAKA bir söz ekle.
+        // Normal bir cevap ise %40 ihtimalle ekle (sürpriz faktörü).
+        let isFallbackResponse = empatheticOpenings.contains(responseText)
+        let shouldAddQuote = isFallbackResponse || Bool.random()
+        
+        if shouldAddQuote {
+            var attempts = 0
+            var randomQuote = ""
+            
+            // Cevabın içinde zaten geçen bir sözü tekrar eklememek için kontrol
+            repeat {
+                randomQuote = getRandomZenQuote()
+                attempts += 1
+            } while responseText.contains(randomQuote) && attempts < 3
+            
+            if !responseText.contains(randomQuote) {
+                responseText += "\n\n\(randomQuote)"
+            }
+        }
+        
+        // 3. Kişiselleştirme (Streak, İsim vb.)
+        let personalizedText = addPersonalization(to: responseText, with: userStats)
+        
+        // 4. Aksiyon Butonu
+        let (actionText, actionURL) = getActionButton(for: intent)
+        
+        return ZenCoachResponse(
+            text: personalizedText,
+            intent: intent,
+            sentiment: sentiment,
+            actionText: actionText,
+            actionURL: actionURL
+        )
+    }
+    
+    // MARK: - Zen Quotes Helper
+    
+    private let zenQuoteCount = 20
+    
+    private func getRandomZenQuote() -> String {
+        let randomIndex = Int.random(in: 0..<zenQuoteCount)
+        let key = "zen_quote_\(randomIndex)"
+        
+        let quote = NSLocalizedString(key, comment: "")
+        
+        // Eğer NSLocalizedString anahtarın kendisini dönerse (çeviri yoksa),
+        // statik tek bir cümle yerine 'backupZenQuotes' dizisinden rastgele seç.
+        if quote == key {
+            return backupZenQuotes.randomElement() ?? "\"Şimdiki an, sahip olduğun tek andır.\""
+        }
+        
+        return quote
+    }
+    
+    // MARK: - Response Templates
+    
+    private let responseTemplateCount: [UserIntent: [MessageSentiment: Int]] = [
+        .stress: [.negative: 3, .neutral: 3, .positive: 3],
+        .focus: [.negative: 3, .neutral: 3, .positive: 3],
+        .sleep: [.negative: 3, .neutral: 3, .positive: 3],
+        .breathing: [.negative: 3, .neutral: 3, .positive: 3],
+        .motivation: [.negative: 3, .neutral: 3, .positive: 3],
+        .meditation: [.negative: 3, .neutral: 3, .positive: 3],
+        .progress: [.negative: 3, .neutral: 3, .positive: 3],
+        .general: [.negative: 3, .neutral: 3, .positive: 3]
+    ]
+    
+    private func getResponseTemplate(for intent: UserIntent, sentiment: MessageSentiment) -> String {
+        let count = responseTemplateCount[intent]?[sentiment] ?? 0
+        
+        guard count > 0 else {
+            return empatheticOpenings.randomElement() ?? "Seni anlıyorum."
+        }
+        
+        let randomIndex = Int.random(in: 0..<count)
+        let key = "response_\(intent.rawValue)_\(sentiment.rawValue)_\(randomIndex)"
+        
+        let localizedString = NSLocalizedString(key, comment: "")
+        
+        // Çeviri bulunamazsa, zenginleştirilmiş açılış cümlelerinden birini dön
+        if localizedString == key {
+            print("⚠️ Missing translation for key: \(key)")
+            return empatheticOpenings.randomElement() ?? "Seni anlıyorum."
+        }
+        
+        return localizedString
+    }
+    
+    // MARK: - Personalization
+    
+    private func addPersonalization(to response: String, with userStats: ZenUserStats?) -> String {
+        guard let stats = userStats else { return response }
+        var personalizedResponse = response
+        
+        // Streak mesajı (sadece anlamlıysa ve %30 ihtimalle, çok sıkmamak için)
+        if stats.currentStreak > 2 && Int.random(in: 1...10) > 7 {
+            let key = "personalization_streak"
+            let template = NSLocalizedString(key, comment: "")
+            
+            if template != key {
+                let streakMessage = "\n\n\(String(format: template, stats.currentStreak))"
+                // Cevap çok uzun değilse ekle
+                if personalizedResponse.count < 250 {
+                    personalizedResponse += streakMessage
+                }
+            }
+        }
+
+        // Milestone kutlaması (100, 200, 300. dakikalarda)
+        if stats.totalMinutes >= 60 && stats.totalMinutes % 100 < 15 {
+             // Sadece milestone'a çok yakınsa göster
+            let key = "personalization_milestone"
+            let template = NSLocalizedString(key, comment: "")
+            
+            if template != key {
+                let milestoneMessage = "\n\n\(String(format: template, stats.totalMinutes))"
+                // Milestone mesajı varsa streak mesajını ezmesin diye sadece bunu ekle
+                if !personalizedResponse.contains(milestoneMessage) {
+                     personalizedResponse += milestoneMessage
+                }
+            }
+        }
+        
+        return personalizedResponse
+    }
+    
+    // MARK: - Action Buttons
+    
+    private func getActionButton(for intent: UserIntent) -> (text: String?, url: String?) {
+        func loc(_ key: String, defaultVal: String) -> String {
+            let res = NSLocalizedString(key, comment: "")
+            return res == key ? defaultVal : res
+        }
+        
+        switch intent {
+        case .stress, .breathing:
+            return (loc("action_button_breathing", defaultVal: "Nefes Egzersizi Başlat"), intent.deepLinkURL)
+        case .focus:
+            return (loc("action_button_pomodoro", defaultVal: "Pomodoro Başlat"), intent.deepLinkURL)
+        case .sleep:
+            return (loc("action_button_478", defaultVal: "4-7-8 Tekniği"), intent.deepLinkURL)
+        case .motivation:
+            return (loc("action_button_garden", defaultVal: "Zen Bahçeni Gör"), intent.deepLinkURL)
+        case .meditation:
+            return (loc("action_button_meditation", defaultVal: "Meditasyon Öğren"), intent.deepLinkURL)
+        case .progress:
+            return (loc("action_button_progress", defaultVal: "İlerlemeni Gör"), intent.deepLinkURL)
+        case .general:
+            return (nil, nil)
+        }
     }
 }
