@@ -37,10 +37,26 @@
       }
     },
     "%lld dakika" : {
-      "comment" : "Minutes only format"
+      "comment" : "Minutes only format",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld dakika"
+          }
+        }
+      }
     },
     "%lld gün" : {
-      "comment" : "Days count"
+      "comment" : "Days count",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld gün"
+          }
+        }
+      }
     },
     "%lld yüzde" : {
 
@@ -63,7 +79,7 @@
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "%1$llds %2$lldd"
           }
         }
@@ -83,11 +99,10 @@
     },
     "accessibility_exercise_changed" : {
       "comment" : "Exercise changed announcement",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "%@ egzersizine geçildi"
           }
         }
@@ -95,11 +110,10 @@
     },
     "accessibility_exercise_started" : {
       "comment" : "Exercise started announcement",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "%1$@ egzersizi başladı. %2$lld dakika."
           }
         }
@@ -107,11 +121,10 @@
     },
     "accessibility_meditation_completed" : {
       "comment" : "Meditation completed announcement",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Meditasyon tamamlandı. %lld dakika."
           }
         }
@@ -119,11 +132,10 @@
     },
     "accessibility_meditation_paused" : {
       "comment" : "Meditation paused announcement",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Meditasyon duraklatıldı"
           }
         }
@@ -131,11 +143,10 @@
     },
     "accessibility_meditation_resumed" : {
       "comment" : "Meditation resumed announcement",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Meditasyon devam ediyor"
           }
         }
@@ -288,13 +299,188 @@
     "Az" : {
 
     },
-    "badges_close" : {
-      "comment" : "Close badge detail button",
-      "extractionState" : "extracted_with_value",
+    "badge_5_hour_mastery_desc" : {
+      "extractionState" : "stale",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
+            "value" : "Toplam 300 dakika meditasyon tamamladın!"
+          }
+        }
+      }
+    },
+    "badge_5_hour_mastery_name" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5 Saat Ustalık"
+          }
+        }
+      }
+    },
+    "badge_7_day_streak_desc" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "7 gün üst üste meditasyon yaptın!"
+          }
+        }
+      }
+    },
+    "badge_7_day_streak_name" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "7 Gün Serisi"
+          }
+        }
+      }
+    },
+    "badge_30_day_streak_desc" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "30 gün üst üste meditasyon yaptın! İnanılmaz bir disiplin!"
+          }
+        }
+      }
+    },
+    "badge_30_day_streak_name" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "30 Gün Serisi"
+          }
+        }
+      }
+    },
+    "badge_first_hour_desc" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toplam 60 dakika meditasyon tamamladın!"
+          }
+        }
+      }
+    },
+    "badge_first_hour_name" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İlk Saat"
+          }
+        }
+      }
+    },
+    "badge_first_pomodoro_desc" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İlk odaklanma seansını tamamladın!"
+          }
+        }
+      }
+    },
+    "badge_first_pomodoro_name" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İlk Pomodoro"
+          }
+        }
+      }
+    },
+    "badge_focus_master_desc" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "10 odaklanma seansı tamamladın! Harika bir konsantrasyon!"
+          }
+        }
+      }
+    },
+    "badge_focus_master_name" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odaklanma Ustası"
+          }
+        }
+      }
+    },
+    "badge_marathon_desc" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tek günde 8 odaklanma seansı tamamladın! İnanılmaz bir disiplin!"
+          }
+        }
+      }
+    },
+    "badge_marathon_name" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maraton"
+          }
+        }
+      }
+    },
+    "badge_zen_master_desc" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toplam 1000 dakika meditasyon tamamladın! Gerçek bir usta!"
+          }
+        }
+      }
+    },
+    "badge_zen_master_name" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zen Ustası"
+          }
+        }
+      }
+    },
+    "badges_close" : {
+      "comment" : "Close badge detail button",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
             "value" : "Kapat"
           }
         }
@@ -302,11 +488,10 @@
     },
     "badges_earned_date" : {
       "comment" : "Badge earned date label",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Kazanılma Tarihi"
           }
         }
@@ -314,11 +499,10 @@
     },
     "badges_progress" : {
       "comment" : "Progress label",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "İlerleme"
           }
         }
@@ -326,11 +510,10 @@
     },
     "badges_progress_completed" : {
       "comment" : "Progress percentage completed",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "%@%% Tamamlandı"
           }
         }
@@ -338,11 +521,10 @@
     },
     "badges_title" : {
       "comment" : "Badges page title",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Rozetler"
           }
         }
@@ -695,11 +877,10 @@
     },
     "button_next" : {
       "comment" : "Next button",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "İleri"
           }
         }
@@ -707,11 +888,10 @@
     },
     "button_next_page" : {
       "comment" : "Next page button",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Sonraki sayfa"
           }
         }
@@ -719,11 +899,10 @@
     },
     "button_not_now" : {
       "comment" : "Not now button\nNot now notification button",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Şimdi Değil"
           }
         }
@@ -731,11 +910,10 @@
     },
     "button_previous_page" : {
       "comment" : "Previous page accessibility",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Önceki sayfa"
           }
         }
@@ -743,11 +921,10 @@
     },
     "button_start" : {
       "comment" : "Start button",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Başla"
           }
         }
@@ -988,11 +1165,10 @@
     },
     "error_healthkit_not_available" : {
       "comment" : "HealthKit not available error message",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "HealthKit bu cihazda kullanılamıyor"
           }
         }
@@ -1000,11 +1176,10 @@
     },
     "error_invalid_date_range" : {
       "comment" : "Invalid date range error message",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Geçersiz tarih aralığı: Başlangıç zamanı bitiş zamanından sonra olamaz"
           }
         }
@@ -1012,11 +1187,10 @@
     },
     "error_mindful_session_type_not_available" : {
       "comment" : "Mindful session type not available error message",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Mindful Session veri tipi alınamadı"
           }
         }
@@ -1024,11 +1198,10 @@
     },
     "error_not_authorized" : {
       "comment" : "HealthKit not authorized error message",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "HealthKit izni verilmedi. Lütfen Ayarlar'dan izin verin"
           }
         }
@@ -1036,11 +1209,10 @@
     },
     "error_save_failed" : {
       "comment" : "Save failed error message",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Veri kaydedilemedi: %@"
           }
         }
@@ -1348,11 +1520,10 @@
     },
     "exercise_card_accessibility" : {
       "comment" : "Exercise card accessibility label",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "%1$@, %2$@ seviye"
           }
         }
@@ -1360,11 +1531,10 @@
     },
     "exercise_card_selected" : {
       "comment" : "Selected hint",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Seçili"
           }
         }
@@ -1372,11 +1542,10 @@
     },
     "exercise_card_tap_to_select" : {
       "comment" : "Tap to select hint",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Seçmek için dokunun"
           }
         }
@@ -1571,11 +1740,10 @@
     },
     "exercise_selected_announcement" : {
       "comment" : "Exercise selected announcement",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Egzersiz seçildi: %@"
           }
         }
@@ -1583,11 +1751,10 @@
     },
     "exercise_selection_accessibility" : {
       "comment" : "Exercise selection screen accessibility label",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Nefes egzersizi seçim ekranı"
           }
         }
@@ -1595,11 +1762,10 @@
     },
     "exercise_selection_benefits" : {
       "comment" : "Exercise benefits section title",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Faydaları:"
           }
         }
@@ -1607,11 +1773,10 @@
     },
     "exercise_selection_cancel" : {
       "comment" : "Cancel button",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "İptal"
           }
         }
@@ -1619,11 +1784,10 @@
     },
     "exercise_selection_select" : {
       "comment" : "Select exercise button",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Seç"
           }
         }
@@ -1631,11 +1795,10 @@
     },
     "exercise_selection_subtitle" : {
       "comment" : "Exercise selection page subtitle",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Size uygun bir egzersiz seçin"
           }
         }
@@ -1643,11 +1806,10 @@
     },
     "exercise_selection_title" : {
       "comment" : "Exercise selection page title",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Nefes Egzersizi Seç"
           }
         }
@@ -1670,11 +1832,10 @@
     },
     "focus_timer_break_time" : {
       "comment" : "Break time title",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Mola Zamanı"
           }
         }
@@ -1682,11 +1843,10 @@
     },
     "focus_timer_breathing_question" : {
       "comment" : "Breathing exercise question",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Nefes egzersizi yapmak ister misin?"
           }
         }
@@ -1694,11 +1854,10 @@
     },
     "focus_timer_continue" : {
       "comment" : "Continue button",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Devam Et"
           }
         }
@@ -1706,11 +1865,10 @@
     },
     "focus_timer_great_work" : {
       "comment" : "Great work celebration",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Harika İş!"
           }
         }
@@ -1718,11 +1876,10 @@
     },
     "focus_timer_lets_start" : {
       "comment" : "Let's start button",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Hadi Başlayalım"
           }
         }
@@ -1730,11 +1887,10 @@
     },
     "focus_timer_not_now" : {
       "comment" : "Not now button",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Şimdi Değil"
           }
         }
@@ -1742,11 +1898,10 @@
     },
     "focus_timer_notification_break" : {
       "comment" : "Break time notification body",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Harika iş! Mola zamanı. %lld dakika dinlen."
           }
         }
@@ -1754,11 +1909,10 @@
     },
     "focus_timer_notification_break_over" : {
       "comment" : "Break over notification title",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Mola Bitti! ⏰"
           }
         }
@@ -1766,11 +1920,10 @@
     },
     "focus_timer_notification_completed" : {
       "comment" : "Focus completed notification title",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Odaklanma Tamamlandı! 🎉"
           }
         }
@@ -1778,11 +1931,10 @@
     },
     "focus_timer_notification_ready" : {
       "comment" : "Ready for focus notification body",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Tekrar odaklanma zamanı. Hazır mısın?"
           }
         }
@@ -1790,11 +1942,10 @@
     },
     "focus_timer_session_completed" : {
       "comment" : "Session completed message",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Bir %@ oturumu tamamladın"
           }
         }
@@ -1802,11 +1953,10 @@
     },
     "focus_timer_sound_accessibility" : {
       "comment" : "Sound selection accessibility",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Ses seçimi"
           }
         }
@@ -1814,11 +1964,10 @@
     },
     "focus_timer_sound_hint" : {
       "comment" : "Sound selection hint",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Arka plan sesi seçmek için dokunun"
           }
         }
@@ -1826,11 +1975,10 @@
     },
     "focus_timer_sound_label" : {
       "comment" : "Sound label",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Ses"
           }
         }
@@ -1838,11 +1986,10 @@
     },
     "focus_timer_sound_silent" : {
       "comment" : "Silent option",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Sessiz"
           }
         }
@@ -1850,11 +1997,10 @@
     },
     "focus_timer_title" : {
       "comment" : "Focus timer title",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Pomodoro Zamanlayıcı"
           }
         }
@@ -1862,11 +2008,10 @@
     },
     "focus_timer_today_sessions" : {
       "comment" : "Today's session count",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Bugün: %lld oturum"
           }
         }
@@ -1892,11 +2037,10 @@
     },
     "healthkit_allow" : {
       "comment" : "Allow HealthKit permission button\nHealthKit allow button",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "İzin Ver"
           }
         }
@@ -1904,11 +2048,10 @@
     },
     "healthkit_benefit_data_secure" : {
       "comment" : "HealthKit benefit: data is secure",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Verileriniz güvende"
           }
         }
@@ -1916,11 +2059,10 @@
     },
     "healthkit_benefit_track_progress" : {
       "comment" : "HealthKit benefit: track progress",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "İlerlemenizi takip edin"
           }
         }
@@ -1928,11 +2070,10 @@
     },
     "healthkit_benefit_view_hours" : {
       "comment" : "HealthKit benefit: view hours",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Meditasyon saatlerinizi görün"
           }
         }
@@ -1940,11 +2081,10 @@
     },
     "healthkit_onboarding_description" : {
       "comment" : "HealthKit onboarding description",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Meditasyon sürenizi Apple Sağlık uygulamasına kaydetmek istiyor musunuz?"
           }
         }
@@ -1952,11 +2092,10 @@
     },
     "healthkit_onboarding_title" : {
       "comment" : "HealthKit onboarding title",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Apple Sağlık Entegrasyonu"
           }
         }
@@ -1964,11 +2103,10 @@
     },
     "healthkit_permission_failed" : {
       "comment" : "HealthKit permission failed message",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "İzin verilemedi. Lütfen tekrar deneyin."
           }
         }
@@ -1976,11 +2114,10 @@
     },
     "healthkit_permission_granted" : {
       "comment" : "HealthKit permission granted announcement",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "HealthKit izni verildi"
           }
         }
@@ -1988,11 +2125,10 @@
     },
     "healthkit_requesting" : {
       "comment" : "HealthKit requesting permission",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "İzin İsteniyor..."
           }
         }
@@ -2112,11 +2248,10 @@
     },
     "notifications_allow" : {
       "comment" : "Allow notification permission button",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "İzin Ver"
           }
         }
@@ -2127,11 +2262,10 @@
     },
     "onboarding_complete_hint" : {
       "comment" : "Complete onboarding hint",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Onboarding'i tamamla ve uygulamaya geç"
           }
         }
@@ -2139,11 +2273,10 @@
     },
     "onboarding_completion_subtitle" : {
       "comment" : "Onboarding completion subtitle",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "ZenFlow yolculuğuna başlamaya hazırsın"
           }
         }
@@ -2151,11 +2284,10 @@
     },
     "onboarding_completion_title" : {
       "comment" : "Onboarding completion title",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Harika!"
           }
         }
@@ -2163,11 +2295,10 @@
     },
     "onboarding_explore_app" : {
       "comment" : "Explore app button",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Uygulamayı Keşfet"
           }
         }
@@ -2175,11 +2306,10 @@
     },
     "onboarding_healthkit_description" : {
       "comment" : "HealthKit permission description",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Meditasyon seanslarını Apple Health'e kaydetmek için izin verin. Verileriniz güvende ve yalnızca sizin kontrolünüzde."
           }
         }
@@ -2187,11 +2317,10 @@
     },
     "onboarding_healthkit_title" : {
       "comment" : "HealthKit integration title",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "HealthKit Entegrasyonu"
           }
         }
@@ -2199,11 +2328,10 @@
     },
     "onboarding_next_hint" : {
       "comment" : "Go to next page hint",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Sonraki sayfaya git"
           }
         }
@@ -2211,11 +2339,10 @@
     },
     "onboarding_notifications_description" : {
       "comment" : "Notification permission description",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Düzenli meditasyon alışkanlığı kazanmak için günlük hatırlatmalar almak ister misiniz?"
           }
         }
@@ -2223,11 +2350,10 @@
     },
     "onboarding_notifications_title" : {
       "comment" : "Daily reminders title",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Günlük Hatırlatmalar"
           }
         }
@@ -2345,11 +2471,10 @@
     },
     "onboarding_skip_accessibility_hint" : {
       "comment" : "Skip onboarding accessibility hint",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Doğrudan uygulamaya git"
           }
         }
@@ -2357,11 +2482,10 @@
     },
     "onboarding_skip_accessibility_label" : {
       "comment" : "Skip onboarding accessibility label",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Tanıtımı atla"
           }
         }
@@ -2369,11 +2493,10 @@
     },
     "onboarding_start_first_session" : {
       "comment" : "Start first meditation button",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "İlk Meditasyonuna Başla"
           }
         }
@@ -2381,11 +2504,10 @@
     },
     "particle_breathe_in" : {
       "comment" : "Breathe in button",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Nefes Al"
           }
         }
@@ -2393,11 +2515,10 @@
     },
     "particle_breathe_out" : {
       "comment" : "Breathe out button",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Nefes Ver"
           }
         }
@@ -2405,11 +2526,10 @@
     },
     "particle_color_theme" : {
       "comment" : "Color theme picker label",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Renk Teması"
           }
         }
@@ -2417,11 +2537,10 @@
     },
     "particle_intensity" : {
       "comment" : "Particle intensity picker label",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Yoğunluk"
           }
         }
@@ -2429,11 +2548,10 @@
     },
     "particle_start" : {
       "comment" : "Start animation button",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Başlat"
           }
         }
@@ -2441,11 +2559,10 @@
     },
     "particle_stop" : {
       "comment" : "Stop animation button",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Durdur"
           }
         }
@@ -2522,11 +2639,10 @@
     },
     "reminder_cancel" : {
       "comment" : "Cancel button",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "İptal"
           }
         }
@@ -2534,11 +2650,10 @@
     },
     "reminder_daily_toggle" : {
       "comment" : "Daily reminder toggle",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Günlük Hatırlatıcı"
           }
         }
@@ -2546,11 +2661,10 @@
     },
     "reminder_days_footer" : {
       "comment" : "Reminder days footer",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Hangi günler hatırlatıcı almak istediğini seç."
           }
         }
@@ -2558,11 +2672,10 @@
     },
     "reminder_days_header" : {
       "comment" : "Reminder days section header",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Hatırlatıcı Günleri"
           }
         }
@@ -2570,11 +2683,10 @@
     },
     "reminder_go_to_settings" : {
       "comment" : "Go to settings button",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Ayarlara Git"
           }
         }
@@ -2582,11 +2694,10 @@
     },
     "reminder_meditation_footer" : {
       "comment" : "Meditation reminder footer",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Belirlediğin saatte günlük meditasyon hatırlatıcısı alacaksın."
           }
         }
@@ -2594,11 +2705,10 @@
     },
     "reminder_meditation_header" : {
       "comment" : "Meditation reminder section header",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Meditasyon Hatırlatıcısı"
           }
         }
@@ -2606,11 +2716,10 @@
     },
     "reminder_motivation_header" : {
       "comment" : "Motivation messages section header",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Motivasyon Mesajları"
           }
         }
@@ -2618,11 +2727,10 @@
     },
     "reminder_permission_message" : {
       "comment" : "Notification permission message",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Hatırlatıcı almak için ZenFlow'a bildirim izni vermelisin. Ayarlar'dan izni etkinleştirebilirsin."
           }
         }
@@ -2630,11 +2738,10 @@
     },
     "reminder_permission_title" : {
       "comment" : "Notification permission required alert title",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Bildirim İzni Gerekli"
           }
         }
@@ -2642,11 +2749,10 @@
     },
     "reminder_sample_messages" : {
       "comment" : "Sample messages label",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Örnek Mesajlar:"
           }
         }
@@ -2654,11 +2760,10 @@
     },
     "reminder_streak_footer" : {
       "comment" : "Streak reminder footer",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Her akşam saat 20:00'de meditasyon yapmadıysan hatırlatıcı alacaksın."
           }
         }
@@ -2666,11 +2771,10 @@
     },
     "reminder_streak_header" : {
       "comment" : "Streak protection section header",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Streak Koruması"
           }
         }
@@ -2678,11 +2782,10 @@
     },
     "reminder_streak_toggle" : {
       "comment" : "Streak reminder toggle",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Streak Hatırlatıcısı"
           }
         }
@@ -2690,11 +2793,10 @@
     },
     "reminder_test_footer" : {
       "comment" : "Test notification footer",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Bildirim ayarlarını test etmek için bir deneme bildirimi gönder."
           }
         }
@@ -2702,11 +2804,10 @@
     },
     "reminder_test_notification" : {
       "comment" : "Send test notification button",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Test Bildirimi Gönder"
           }
         }
@@ -2714,11 +2815,10 @@
     },
     "reminder_time_picker" : {
       "comment" : "Time picker label",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Saat"
           }
         }
@@ -3601,7 +3701,7 @@
       }
     },
     "Ses Ayarları" : {
-      "comment" : "Audio settings section header"
+
     },
     "Ses Kaynakları" : {
 
@@ -3613,7 +3713,7 @@
 
     },
     "Ses Seviyesi" : {
-      "comment" : "Volume label"
+
     },
     "session_complete_congratulations" : {
       "comment" : "Congratulations message",
@@ -3672,11 +3772,10 @@
     },
     "settings_about_section" : {
       "comment" : "About section header",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Hakkında"
           }
         }
@@ -3684,11 +3783,10 @@
     },
     "settings_achievements_section" : {
       "comment" : "Achievements and statistics section header",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Başarılar & İstatistikler"
           }
         }
@@ -3696,11 +3794,10 @@
     },
     "settings_active_status" : {
       "comment" : "Active status",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Aktif"
           }
         }
@@ -3708,11 +3805,10 @@
     },
     "settings_ambient_sounds" : {
       "comment" : "Ambient sounds setting",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Ortam Sesleri"
           }
         }
@@ -3720,11 +3816,10 @@
     },
     "settings_audio_footer" : {
       "comment" : "Audio settings footer",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Meditasyon sırasında çalacak ortam seslerini yönet."
           }
         }
@@ -3732,11 +3827,10 @@
     },
     "settings_audio_section" : {
       "comment" : "Audio settings section header",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Ses Ayarları"
           }
         }
@@ -3744,11 +3838,10 @@
     },
     "settings_badges" : {
       "comment" : "Badges section",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Rozetler"
           }
         }
@@ -3756,11 +3849,10 @@
     },
     "settings_broken_status" : {
       "comment" : "Broken status",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Kırıldı"
           }
         }
@@ -3768,11 +3860,10 @@
     },
     "settings_cancel" : {
       "comment" : "Cancel button",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "İptal"
           }
         }
@@ -3780,11 +3871,10 @@
     },
     "settings_contact_channels_section" : {
       "comment" : "Contact channels section header",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "İletişim Kanalları"
           }
         }
@@ -3792,11 +3882,10 @@
     },
     "settings_contact_feedback" : {
       "comment" : "Contact and feedback menu item",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "İletişim & Geri Bildirim"
           }
         }
@@ -3804,11 +3893,10 @@
     },
     "settings_contact_title" : {
       "comment" : "Contact page title",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "İletişim"
           }
         }
@@ -3816,11 +3904,10 @@
     },
     "settings_data_deleted_title" : {
       "comment" : "Data deleted alert title",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Veriler Silindi"
           }
         }
@@ -3828,11 +3915,10 @@
     },
     "settings_data_management_section" : {
       "comment" : "Data management section header",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Veri Yönetimi"
           }
         }
@@ -3840,11 +3926,10 @@
     },
     "settings_data_reset_success" : {
       "comment" : "Data reset success message",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Tüm veriler başarıyla sıfırlandı."
           }
         }
@@ -3852,11 +3937,10 @@
     },
     "settings_delete" : {
       "comment" : "Delete button",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Sil"
           }
         }
@@ -3864,11 +3948,10 @@
     },
     "settings_delete_all_data_title" : {
       "comment" : "Delete all data alert title",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Tüm Verileri Sil"
           }
         }
@@ -3876,11 +3959,10 @@
     },
     "settings_delete_confirmation" : {
       "comment" : "Delete all data confirmation message",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Bu işlem tüm meditasyon geçmişini, streak'leri, odaklanma seanslarını ve ayarları kalıcı olarak silecek. Devam etmek istediğinden emin misin?"
           }
         }
@@ -3888,11 +3970,10 @@
     },
     "settings_email" : {
       "comment" : "Email contact option",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "E-posta"
           }
         }
@@ -3900,11 +3981,10 @@
     },
     "settings_feedback_description" : {
       "comment" : "Feedback description text",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "ZenFlow'u daha iyi hale getirmemize yardımcı olun. Önerileriniz, hata raporlarınız veya genel geri bildirimlerinizi bizimle paylaşın."
           }
         }
@@ -3912,11 +3992,10 @@
     },
     "settings_feedback_footer" : {
       "comment" : "Feedback footer text",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Geri bildiriminiz doğrudan geliştirme ekibine iletilecektir."
           }
         }
@@ -3924,11 +4003,10 @@
     },
     "settings_feedback_section" : {
       "comment" : "Feedback section header",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Geri Bildirim"
           }
         }
@@ -3936,11 +4014,10 @@
     },
     "settings_feedback_success_message" : {
       "comment" : "Feedback success message",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Geri bildiriminiz başarıyla gönderildi. Katkınız için teşekkür ederiz!"
           }
         }
@@ -3948,11 +4025,10 @@
     },
     "settings_haptic_feedback" : {
       "comment" : "Haptic feedback setting",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Dokunsal Geri Bildirim"
           }
         }
@@ -3960,11 +4036,10 @@
     },
     "settings_haptic_not_supported" : {
       "comment" : "Haptic not supported message",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Bu cihaz dokunsal geri bildirimi desteklemiyor."
           }
         }
@@ -3972,11 +4047,10 @@
     },
     "settings_haptic_section" : {
       "comment" : "Haptic settings section header",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Dokunsal Ayarlar"
           }
         }
@@ -3984,11 +4058,10 @@
     },
     "settings_meditation_statistics_section" : {
       "comment" : "Meditation statistics section header",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Meditasyon İstatistikleri"
           }
         }
@@ -3996,11 +4069,10 @@
     },
     "settings_notifications_section" : {
       "comment" : "Notifications section header",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Bildirimler"
           }
         }
@@ -4008,11 +4080,10 @@
     },
     "settings_ok" : {
       "comment" : "OK button",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Tamam"
           }
         }
@@ -4020,11 +4091,10 @@
     },
     "settings_pomodoro_statistics_section" : {
       "comment" : "Pomodoro statistics section header",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Pomodoro İstatistikleri"
           }
         }
@@ -4032,11 +4102,10 @@
     },
     "settings_reminders" : {
       "comment" : "Reminders page title\nReminders setting",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Hatırlatıcılar"
           }
         }
@@ -4044,11 +4113,10 @@
     },
     "settings_reset_all_data" : {
       "comment" : "Reset all data button",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Tüm Verileri Sıfırla"
           }
         }
@@ -4056,11 +4124,10 @@
     },
     "settings_reset_data_footer" : {
       "comment" : "Reset data footer warning",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Bu işlem tüm meditasyon geçmişini, streak'leri ve ayarları siler. Bu işlem geri alınamaz."
           }
         }
@@ -4068,11 +4135,10 @@
     },
     "settings_send" : {
       "comment" : "Send feedback button",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Gönder"
           }
         }
@@ -4080,11 +4146,10 @@
     },
     "settings_statistics" : {
       "comment" : "Statistics section",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "İstatistikler"
           }
         }
@@ -4092,11 +4157,10 @@
     },
     "settings_statistics_title" : {
       "comment" : "Statistics page title",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "İstatistikler"
           }
         }
@@ -4104,11 +4168,10 @@
     },
     "settings_status_section" : {
       "comment" : "Status section header",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Durum"
           }
         }
@@ -4116,11 +4179,10 @@
     },
     "settings_streak_status" : {
       "comment" : "Streak status label",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Seri Durumu"
           }
         }
@@ -4128,11 +4190,10 @@
     },
     "settings_thank_you_title" : {
       "comment" : "Thank you alert title",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Teşekkürler!"
           }
         }
@@ -4140,11 +4201,10 @@
     },
     "settings_title" : {
       "comment" : "Settings tab bar item",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Ayarlar"
           }
         }
@@ -4152,11 +4212,10 @@
     },
     "settings_twitter" : {
       "comment" : "Twitter contact option",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Twitter"
           }
         }
@@ -4164,11 +4223,10 @@
     },
     "settings_version" : {
       "comment" : "Version label",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Versiyon"
           }
         }
@@ -4176,11 +4234,10 @@
     },
     "settings_volume" : {
       "comment" : "Volume label",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Ses Seviyesi"
           }
         }
@@ -4188,11 +4245,10 @@
     },
     "settings_website" : {
       "comment" : "Website link label",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Website"
           }
         }
@@ -4200,18 +4256,17 @@
     },
     "settings_your_feedback_title" : {
       "comment" : "Your feedback section title",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Geri Bildiriminiz"
           }
         }
       }
     },
     "settings.haptic.disabled.description" : {
-      "extractionState" : "manual",
+      "comment" : "Haptic disabled description",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -4228,7 +4283,7 @@
       }
     },
     "settings.haptic.enabled.description" : {
-      "extractionState" : "manual",
+      "comment" : "Haptic enabled description",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -4245,7 +4300,7 @@
       }
     },
     "settings.haptic.intensity" : {
-      "extractionState" : "manual",
+      "comment" : "Haptic intensity label",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -4262,7 +4317,7 @@
       }
     },
     "settings.haptic.intensity.light" : {
-      "extractionState" : "manual",
+      "comment" : "Light intensity label",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -4279,7 +4334,7 @@
       }
     },
     "settings.haptic.intensity.medium" : {
-      "extractionState" : "manual",
+      "comment" : "Medium intensity label",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -4296,7 +4351,7 @@
       }
     },
     "settings.haptic.intensity.strong" : {
-      "extractionState" : "manual",
+      "comment" : "Strong intensity label",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -4320,6 +4375,61 @@
     },
     "Son Meditasyon" : {
       "comment" : "Last meditation label"
+    },
+    "stats_average" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ortalama"
+          }
+        }
+      }
+    },
+    "stats_longest" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En Uzun"
+          }
+        }
+      }
+    },
+    "stats_most_used_type" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En Çok Kullanılan Tür"
+          }
+        }
+      }
+    },
+    "stats_this_month" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu Ay"
+          }
+        }
+      }
+    },
+    "stats_this_week" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu Hafta"
+          }
+        }
+      }
     },
     "Style" : {
 
@@ -4490,7 +4600,7 @@
       }
     },
     "Tamam" : {
-      "comment" : "OK button"
+
     },
     "Toplam Odaklanma Seansı" : {
       "comment" : "Total focus sessions label"
@@ -4642,6 +4752,17 @@
     "Use Xcode's Image Renderer to export" : {
 
     },
+    "weekday_fri" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cum"
+          }
+        }
+      }
+    },
     "weekday_friday" : {
       "comment" : "Friday",
       "localizations" : {
@@ -4649,6 +4770,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cuma"
+          }
+        }
+      }
+    },
+    "weekday_mon" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pzt"
           }
         }
       }
@@ -4664,6 +4796,17 @@
         }
       }
     },
+    "weekday_sat" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cmt"
+          }
+        }
+      }
+    },
     "weekday_saturday" : {
       "comment" : "Saturday",
       "localizations" : {
@@ -4671,6 +4814,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cumartesi"
+          }
+        }
+      }
+    },
+    "weekday_sun" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paz"
           }
         }
       }
@@ -4686,6 +4840,17 @@
         }
       }
     },
+    "weekday_thu" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Per"
+          }
+        }
+      }
+    },
     "weekday_thursday" : {
       "comment" : "Thursday",
       "localizations" : {
@@ -4697,6 +4862,17 @@
         }
       }
     },
+    "weekday_tue" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sal"
+          }
+        }
+      }
+    },
     "weekday_tuesday" : {
       "comment" : "Tuesday",
       "localizations" : {
@@ -4704,6 +4880,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Salı"
+          }
+        }
+      }
+    },
+    "weekday_wed" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çar"
           }
         }
       }
@@ -4831,11 +5018,10 @@
     },
     "zen_coach_cancel" : {
       "comment" : "Cancel button",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "İptal"
           }
         }
@@ -4843,11 +5029,10 @@
     },
     "zen_coach_clear" : {
       "comment" : "Clear button",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Temizle"
           }
         }
@@ -4855,11 +5040,10 @@
     },
     "zen_coach_clear_history_message" : {
       "comment" : "Clear history confirmation message",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Tüm sohbet geçmişi silinecek. Emin misiniz?"
           }
         }
@@ -4867,11 +5051,10 @@
     },
     "zen_coach_clear_history_title" : {
       "comment" : "Clear history alert title",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Geçmişi Temizle"
           }
         }
@@ -4879,11 +5062,10 @@
     },
     "zen_coach_close" : {
       "comment" : "Close button",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Kapat"
           }
         }
@@ -4891,11 +5073,10 @@
     },
     "zen_coach_daily_teaching" : {
       "comment" : "Daily teaching section title",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Günün Öğretisi"
           }
         }
@@ -4914,11 +5095,10 @@
     },
     "zen_coach_master_title" : {
       "comment" : "Zen Master header title",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Zen Master"
           }
         }
@@ -4937,11 +5117,10 @@
     },
     "zen_coach_personalized_advice" : {
       "comment" : "Personalized advice section title",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Sana Özel Tavsiye"
           }
         }
@@ -4949,11 +5128,10 @@
     },
     "zen_coach_practice" : {
       "comment" : "Practice section title",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Uygulama"
           }
         }
@@ -4972,11 +5150,10 @@
     },
     "zen_coach_read_more" : {
       "comment" : "Read more button",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Devamını Oku"
           }
         }
@@ -4995,11 +5172,10 @@
     },
     "zen_coach_teaching_detail_title" : {
       "comment" : "Zen teaching detail page title",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Zen Öğretisi"
           }
         }
@@ -5007,11 +5183,10 @@
     },
     "zen_coach_teachings" : {
       "comment" : "Zen teachings section title",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Zen Öğretileri"
           }
         }
@@ -5030,11 +5205,10 @@
     },
     "zen_coach_todays_practice" : {
       "comment" : "Today's practice section title",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Bugünün Uygulaması"
           }
         }
@@ -5053,11 +5227,10 @@
     },
     "zen_coach_welcome_message" : {
       "comment" : "Zen Master welcome message",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Bilgelik yolculuğuna hoş geldin"
           }
         }
@@ -5065,11 +5238,10 @@
     },
     "zen_garden_legendary_journey" : {
       "comment" : "Legendary journey completed",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Efsanevi bir yolculuk tamamladın!"
           }
         }
@@ -5077,121 +5249,17 @@
     },
     "zen_garden_max_level" : {
       "comment" : "Maximum level reached",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Maksimum Seviye!"
-          }
-        }
-      }
-    },
-    "zen_garden_new_stage" : {
-      "comment" : "New stage celebration",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Yeni Aşama!"
-          }
-        }
-      }
-    },
-    "zen_garden_next_stage" : {
-      "comment" : "Next stage label",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Sonraki Aşamaya"
-          }
-        }
-      }
-    },
-    "zen_garden_title" : {
-      "comment" : "Zen Garden title",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Zen Bahçem"
-          }
-        }
-      }
-    },
-    "zen_garden_total_minutes" : {
-      "comment" : "Total minutes",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Toplam: %lld dk"
-          }
-        }
-      }
-    },
-    "zen_garden_streak_days" : {
-      "comment" : "Streak days label",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "day streak"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "gün"
-          }
-        }
-      }
-    },
-    "zen_garden_next_stage_tooltip" : {
-      "comment" : "Next stage label",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Next: %@"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Sonraki: %@"
-          }
-        }
-      }
-    },
-    "zen_garden_minutes_remaining" : {
-      "comment" : "Minutes remaining",
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld min remaining"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%lld dk kaldı"
           }
         }
       }
     },
     "zen_garden_max_level_tooltip" : {
       "comment" : "Max level reached",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -5201,8 +5269,103 @@
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "Maksimum seviye!"
+          }
+        }
+      }
+    },
+    "zen_garden_minutes_remaining" : {
+      "comment" : "Minutes remaining",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld min remaining"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld dk kaldı"
+          }
+        }
+      }
+    },
+    "zen_garden_new_stage" : {
+      "comment" : "New stage celebration",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yeni Aşama!"
+          }
+        }
+      }
+    },
+    "zen_garden_next_stage" : {
+      "comment" : "Next stage label",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sonraki Aşamaya"
+          }
+        }
+      }
+    },
+    "zen_garden_next_stage_tooltip" : {
+      "comment" : "Next stage label",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next: %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sonraki: %@"
+          }
+        }
+      }
+    },
+    "zen_garden_streak_days" : {
+      "comment" : "Streak days label",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "day streak"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "gün"
+          }
+        }
+      }
+    },
+    "zen_garden_title" : {
+      "comment" : "Zen Garden title",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zen Bahçem"
+          }
+        }
+      }
+    },
+    "zen_garden_total_minutes" : {
+      "comment" : "Total minutes",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toplam: %lld dk"
           }
         }
       }
