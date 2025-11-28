@@ -1,9 +1,0 @@
-/*
-  InfoPlist.strings
-  ZenFlow Widget
-
-  Turkish localization for widget display name
-*/
-
-CFBundleDisplayName = "ZenFlow Widget";
-CFBundleName = "ZenFlow Widget";
