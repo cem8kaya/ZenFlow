@@ -21,7 +21,6 @@
 
 /* Begin PBXFileReference section */
 		8775A7292EC9EBD1002EF46A /* ZenFlow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZenFlow.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		87832CC12ED3B93300B60D16 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		87832CC32ED3B93300B60D16 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -77,7 +76,6 @@
 		87832CC02ED3B93300B60D16 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				87832CC12ED3B93300B60D16 /* WidgetKit.framework */,
 				87832CC32ED3B93300B60D16 /* SwiftUI.framework */,
 			);
 			name = Frameworks;

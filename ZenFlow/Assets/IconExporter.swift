@@ -13,7 +13,7 @@ internal import UIKit
 
 // MARK: - Icon Size Configuration
 
-struct IconExportConfig {
+struct IconExportConfig: Sendable { // Explicitly mark as Sendable
     let name: String
     let size: CGFloat
     let scale: CGFloat
@@ -34,7 +34,8 @@ struct IconExportConfig {
 // MARK: - Icon Sizes
 
 struct IconSizes {
-    nonisolated(unsafe) static let all: [IconExportConfig] = [
+    // Mark as nonisolated to allow access from any context
+    nonisolated static let all: [IconExportConfig] = [
         // iPhone
         IconExportConfig(name: "iPhone Notification", size: 20, scale: 2),
         IconExportConfig(name: "iPhone Notification", size: 20, scale: 3),
@@ -60,7 +61,7 @@ struct IconSizes {
         IconExportConfig(name: "App Store", size: 1024, scale: 1),
     ]
 
-    nonisolated(unsafe) static let recommended: [IconExportConfig] = [
+    nonisolated static let recommended: [IconExportConfig] = [
         IconExportConfig(name: "iPhone App", size: 60, scale: 3),     // 180x180
         IconExportConfig(name: "iPhone App", size: 60, scale: 2),     // 120x120
         IconExportConfig(name: "iPad App", size: 76, scale: 2),       // 152x152

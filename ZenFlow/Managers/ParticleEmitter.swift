@@ -179,21 +179,20 @@ class ParticleEmitter: ObservableObject {
 
     /// Adjust particle count based on device performance
     func adjustForDevicePerformance() {
-        #if os(iOS)
-        let processInfo = ProcessInfo.processInfo
-        let physicalMemory = processInfo.physicalMemory
+            // Removed #if os(iOS) check as it is redundant in this scope
+            let processInfo = ProcessInfo.processInfo
+            let physicalMemory = processInfo.physicalMemory
 
-        // Reduce particle count on devices with less than 4GB RAM
-        if physicalMemory < 4_000_000_000 {
-            switch intensity {
-            case .high:
-                intensity = .medium
-            case .medium:
-                intensity = .low
-            case .low:
-                break
+            // Reduce particle count on devices with less than 4GB RAM
+            if physicalMemory < 4_000_000_000 {
+                switch intensity {
+                case .high:
+                    intensity = .medium
+                case .medium:
+                    intensity = .low
+                case .low:
+                    break
+                }
             }
         }
-        #endif
-    }
 }

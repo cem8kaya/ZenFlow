@@ -195,92 +195,103 @@ struct StatsView: View {
                 .fontWeight(.bold)
                 .foregroundColor(.white)
 
-            VStack(spacing: 8) {
+            Group {
                 if #available(iOS 16.0, *) {
-                    Chart {
-                        ForEach(last7DaysData, id: \.date) { data in
-                            BarMark(
-                                x: .value("Gün", data.dayName),
-                                y: .value("Dakika", data.minutes)
-                            )
-                            .foregroundStyle(
-                                LinearGradient(
-                                    gradient: Gradient(colors: [ZenTheme.calmBlue, ZenTheme.serenePurple]),
-                                    startPoint: .bottom,
-                                    endPoint: .top
-                                )
-                            )
-                            .cornerRadius(6)
-                        }
-                    }
-                    .chartYAxis {
-                        AxisMarks(position: .leading) { value in
-                            AxisGridLine(stroke: StrokeStyle(lineWidth: 0.5))
-                                .foregroundStyle(Color.white.opacity(0.1))
-                            AxisValueLabel()
-                                .foregroundStyle(Color.white.opacity(0.6))
-                                .font(.caption)
-                        }
-                    }
-                    .chartXAxis {
-                        AxisMarks { value in
-                            AxisValueLabel()
-                                .foregroundStyle(Color.white.opacity(0.8))
-                                .font(.caption)
-                        }
-                    }
-                    .frame(height: 200)
-                    .padding()
-                    .background(
-                        RoundedRectangle(cornerRadius: 16)
-                            .fill(Color.white.opacity(0.05))
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 16)
-                                    .stroke(Color.white.opacity(0.1), lineWidth: 1)
-                            )
-                    )
+                    chartView
                 } else {
-                    // iOS 16 öncesi için basit bar görünümü
-                    VStack(spacing: 8) {
-                        ForEach(last7DaysData, id: \.date) { data in
-                            HStack {
-                                Text(data.dayName)
-                                    .font(.caption)
-                                    .foregroundColor(.white.opacity(0.8))
-                                    .frame(width: 40, alignment: .leading)
-
-                                GeometryReader { geo in
-                                    RoundedRectangle(cornerRadius: 4)
-                                        .fill(
-                                            LinearGradient(
-                                                gradient: Gradient(colors: [ZenTheme.calmBlue, ZenTheme.serenePurple]),
-                                                startPoint: .leading,
-                                                endPoint: .trailing
-                                            )
-                                        )
-                                        .frame(width: CGFloat(data.minutes) / CGFloat(max(last7DaysData.map(\.minutes).max() ?? 1, 1)) * geo.size.width)
-                                }
-                                .frame(height: 20)
-
-                                Text("\(data.minutes)")
-                                    .font(.caption)
-                                    .foregroundColor(.white.opacity(0.8))
-                                    .frame(width: 40, alignment: .trailing)
-                            }
-                        }
-                    }
-                    .padding()
-                    .background(
-                        RoundedRectangle(cornerRadius: 16)
-                            .fill(Color.white.opacity(0.05))
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 16)
-                                    .stroke(Color.white.opacity(0.1), lineWidth: 1)
-                            )
-                    )
+                    fallbackChartView
                 }
             }
         }
+    }
+    
+    @available(iOS 16.0, *)
+    private var chartView: some View {
+        VStack(spacing: 8) {
+            Chart {
+                ForEach(last7DaysData, id: \.date) { data in
+                    BarMark(
+                        x: .value("Gün", data.dayName),
+                        y: .value("Dakika", data.minutes)
+                    )
+                    .foregroundStyle(
+                        LinearGradient(
+                            gradient: Gradient(colors: [ZenTheme.calmBlue, ZenTheme.serenePurple]),
+                            startPoint: .bottom,
+                            endPoint: .top
+                        )
+                    )
+                    .cornerRadius(6)
+                }
+            }
+            .chartYAxis {
+                AxisMarks(position: .leading) { value in
+                    AxisGridLine(stroke: StrokeStyle(lineWidth: 0.5))
+                        .foregroundStyle(Color.white.opacity(0.1))
+                    AxisValueLabel()
+                        .foregroundStyle(Color.white.opacity(0.6))
+                        .font(.caption)
+                }
+            }
+            .chartXAxis {
+                AxisMarks { value in
+                    AxisValueLabel()
+                        .foregroundStyle(Color.white.opacity(0.8))
+                        .font(.caption)
+                }
+            }
+            .frame(height: 200)
+            .padding()
+            .background(
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(Color.white.opacity(0.05))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 16)
+                            .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                    )
+            )
+        }
+    }
+
+    private var fallbackChartView: some View {
+        // iOS 16 öncesi için basit bar görünümü
+        VStack(spacing: 8) {
+            ForEach(last7DaysData, id: \.date) { data in
+                HStack {
+                    Text(data.dayName)
+                        .font(.caption)
+                        .foregroundColor(.white.opacity(0.8))
+                        .frame(width: 40, alignment: .leading)
+
+                    GeometryReader { geo in
+                        RoundedRectangle(cornerRadius: 4)
+                            .fill(
+                                LinearGradient(
+                                    gradient: Gradient(colors: [ZenTheme.calmBlue, ZenTheme.serenePurple]),
+                                    startPoint: .leading,
+                                    endPoint: .trailing
+                                )
+                            )
+                            .frame(width: CGFloat(data.minutes) / CGFloat(max(last7DaysData.map(\.minutes).max() ?? 1, 1)) * geo.size.width)
+                    }
+                    .frame(height: 20)
+
+                    Text("\(data.minutes)")
+                        .font(.caption)
+                        .foregroundColor(.white.opacity(0.8))
+                        .frame(width: 40, alignment: .trailing)
+                }
+            }
+        }
+        .padding()
+        .background(
+            RoundedRectangle(cornerRadius: 16)
+                .fill(Color.white.opacity(0.05))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                )
+        )
     }
 
     // MARK: - Detaylı Metrikler

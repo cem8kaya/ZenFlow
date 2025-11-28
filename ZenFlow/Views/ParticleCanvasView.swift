@@ -47,29 +47,26 @@ struct ParticleCanvasView: View {
         GeometryReader { geometry in
             if #available(iOS 17.0, *) {
                 TimelineView(.animation(minimumInterval: 1.0/60.0, paused: !isAnimating)) { timeline in
-                    if #available(iOS 17.0, *) {
-                        Canvas { context, size in
-                            // Update emitter screen bounds
-                            if emitter.screenBounds != CGRect(origin: .zero, size: size) {
-                                emitter.screenBounds = CGRect(origin: .zero, size: size)
-                            }
-                            
-                            // Draw all particles
-                            for particle in emitter.particles {
-                                drawParticle(particle, in: context, size: size)
-                            }
+                    // İçteki gereksiz if #available kontrolü kaldırıldı
+                    Canvas { context, size in
+                        // Update emitter screen bounds
+                        if emitter.screenBounds != CGRect(origin: .zero, size: size) {
+                            emitter.screenBounds = CGRect(origin: .zero, size: size)
                         }
-                        .onChange(of: timeline.date) { _, newDate in
-                            // Update particles with delta time
-                            let deltaTime = newDate.timeIntervalSince(lastUpdate)
-                            lastUpdate = newDate
-                            
-                            if isAnimating {
-                                emitter.update(deltaTime: deltaTime)
-                            }
+                        
+                        // Draw all particles
+                        for particle in emitter.particles {
+                            drawParticle(particle, in: context, size: size)
                         }
-                    } else {
-                        // Fallback on earlier versions
+                    }
+                    .onChange(of: timeline.date) { _, newDate in
+                        // Update particles with delta time
+                        let deltaTime = newDate.timeIntervalSince(lastUpdate)
+                        lastUpdate = newDate
+                        
+                        if isAnimating {
+                            emitter.update(deltaTime: deltaTime)
+                        }
                     }
                 }
                 .onAppear {
