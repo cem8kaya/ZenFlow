@@ -24,6 +24,8 @@ struct SettingsView: View {
     @AppStorage("hapticIntensity") private var hapticIntensity = 0.7
     @State private var showResetAlert = false
     @State private var showResetSuccess = false
+    @State private var showPaywall = false
+    @StateObject private var storeManager = StoreManager.shared
 
     // MARK: - Computed Properties
 
@@ -43,6 +45,78 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             List {
+                // MARK: - Premium Section
+
+                Section {
+                    if storeManager.isPremiumUnlocked {
+                        // Premium unlocked
+                        HStack {
+                            Image(systemName: "checkmark.seal.fill")
+                                .foregroundColor(.green)
+                                .frame(width: 28)
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text(String(localized: "premium.unlocked", defaultValue: "Premium Aktif", comment: "Premium unlocked"))
+                                    .font(.system(size: 17, weight: .semibold))
+                                Text(String(localized: "premium.thankyou", defaultValue: "Desteğiniz için teşekkürler!", comment: "Thank you message"))
+                                    .font(.system(size: 13))
+                                    .foregroundColor(.secondary)
+                            }
+                            Spacer()
+                            Image(systemName: "crown.fill")
+                                .foregroundColor(ZenTheme.mysticalViolet)
+                                .font(.system(size: 24))
+                        }
+                        .padding(.vertical, 4)
+                    } else {
+                        // Premium locked
+                        Button(action: {
+                            HapticManager.shared.playImpact(style: .light)
+                            showPaywall = true
+                        }) {
+                            HStack {
+                                Image(systemName: "crown.fill")
+                                    .foregroundColor(ZenTheme.mysticalViolet)
+                                    .frame(width: 28)
+                                VStack(alignment: .leading, spacing: 4) {
+                                    Text(String(localized: "premium.upgrade", defaultValue: "Premium'a Geç", comment: "Upgrade to premium"))
+                                        .font(.system(size: 17, weight: .semibold))
+                                        .foregroundColor(.primary)
+                                    Text(String(localized: "premium.upgrade.desc", defaultValue: "Tüm özelliklerin kilidini aç", comment: "Unlock all features"))
+                                        .font(.system(size: 13))
+                                        .foregroundColor(.secondary)
+                                }
+                                Spacer()
+                                Image(systemName: "chevron.right")
+                                    .foregroundColor(.secondary)
+                                    .font(.system(size: 14))
+                            }
+                            .padding(.vertical, 4)
+                        }
+                    }
+
+                    // Restore purchases (always visible)
+                    Button(action: {
+                        Task {
+                            await storeManager.restorePurchases()
+                        }
+                    }) {
+                        HStack {
+                            Image(systemName: "arrow.clockwise")
+                                .foregroundColor(ZenTheme.calmBlue)
+                                .frame(width: 28)
+                            Text(String(localized: "premium.restore.purchases", defaultValue: "Satın Alımları Geri Yükle", comment: "Restore purchases"))
+                            if storeManager.isLoading {
+                                Spacer()
+                                ProgressView()
+                                    .scaleEffect(0.8)
+                            }
+                        }
+                    }
+                    .disabled(storeManager.isLoading)
+                } header: {
+                    Text(String(localized: "settings_premium_section", defaultValue: "Premium", comment: "Premium section header"))
+                }
+
                 // MARK: - Notifications Section
 
                 Section {
@@ -258,6 +332,9 @@ struct SettingsView: View {
             } message: {
                 Text(String(localized: "settings_data_reset_success", defaultValue: "Tüm veriler başarıyla sıfırlandı.", comment: "Data reset success message"))
             }
+        }
+        .sheet(isPresented: $showPaywall) {
+            PremiumPaywallView()
         }
     }
 

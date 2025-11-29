@@ -20,6 +20,8 @@ struct AmbientSoundPicker: View {
     var onSoundToggle: ((AmbientSound) -> Void)?
 
     @State private var selectedCategory: AmbientCategory? = nil
+    @State private var showPaywall = false
+    @StateObject private var storeManager = StoreManager.shared
 
     // MARK: - Available Sounds
 
@@ -110,6 +112,9 @@ struct AmbientSoundPicker: View {
                 .padding(.horizontal, 20)
             }
         }
+        .sheet(isPresented: $showPaywall) {
+            PremiumPaywallView()
+        }
     }
 
     // MARK: - Helper Methods
@@ -133,6 +138,13 @@ struct AmbientSoundPicker: View {
     }
 
     private func toggleSound(_ sound: AmbientSound) {
+        // Check premium status for premium sounds
+        if sound.isPremium && !storeManager.isPremiumUnlocked {
+            HapticManager.shared.playNotification(type: .warning)
+            showPaywall = true
+            return
+        }
+
         HapticManager.shared.playImpact(style: .light)
 
         // Handle "Sessiz" (none) selection
@@ -206,6 +218,8 @@ private struct SoundCard: View {
     let isDisabled: Bool
     let action: () -> Void
 
+    @StateObject private var storeManager = StoreManager.shared
+
     var body: some View {
         Button(action: action) {
             VStack(spacing: 12) {
@@ -225,8 +239,18 @@ private struct SoundCard: View {
                                 )
                         )
 
-                    // Checkmark for selected
-                    if isSelected {
+                    // Premium lock or checkmark
+                    if sound.isPremium && !storeManager.isPremiumUnlocked {
+                        Image(systemName: "lock.fill")
+                            .font(.system(size: 16))
+                            .foregroundColor(.white)
+                            .padding(6)
+                            .background(
+                                Circle()
+                                    .fill(ZenTheme.mysticalViolet)
+                            )
+                            .offset(x: 4, y: -4)
+                    } else if isSelected {
                         Image(systemName: "checkmark.circle.fill")
                             .font(.system(size: 20))
                             .foregroundColor(sound.category.color)
