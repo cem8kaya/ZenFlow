@@ -3733,13 +3733,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "You are ready to start your ZenFlow journey"
+            "value" : "You are ready to start your MyZenFlow journey"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ZenFlow yolculuğuna başlamaya hazırsın"
+            "value" : "MyZenFlow yolculuğuna başlamaya hazırsın"
           }
         }
       }
@@ -4236,13 +4236,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "You need to allow notifications for ZenFlow to receive reminders. You can enable them in Settings."
+            "value" : "You need to allow notifications for MyZenFlow to receive reminders. You can enable them in Settings."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hatırlatıcı almak için ZenFlow'a bildirim izni vermelisin. Ayarlar'dan izni etkinleştirebilirsin."
+            "value" : "Hatırlatıcı almak için MyZenFlow'a bildirim izni vermelisin. Ayarlar'dan izni etkinleştirebilirsin."
           }
         }
       }
@@ -5060,13 +5060,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Help us make ZenFlow better. Share your suggestions, bug reports, or general feedback with us."
+            "value" : "Help us make MyZenFlow better. Share your suggestions, bug reports, or general feedback with us."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ZenFlow'u daha iyi hale getirmemize yardımcı olun. Önerileriniz, hata raporlarınız veya genel geri bildirimlerinizi bizimle paylaşın."
+            "value" : "MyZenFlow'u daha iyi hale getirmemize yardımcı olun. Önerileriniz, hata raporlarınız veya genel geri bildirimlerinizi bizimle paylaşın."
           }
         }
       }
@@ -8658,13 +8658,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ZenFlow"
+            "value" : "MyZenFlow"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ZenFlow"
+            "value" : "MyZenFlow"
           }
         }
       }
@@ -8674,13 +8674,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ZenFlow App Icon Exporter"
+            "value" : "MyZenFlow App Icon Exporter"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ZenFlow App Icon Exporter"
+            "value" : "MyZenFlow App Icon Exporter"
           }
         }
       }
@@ -8690,13 +8690,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ZenFlow Icons"
+            "value" : "MyZenFlow Icons"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ZenFlow Icons"
+            "value" : "MyZenFlow Icons"
           }
         }
       }
@@ -8706,13 +8706,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sources and license information for ambient sounds used in ZenFlow"
+            "value" : "Sources and license information for ambient sounds used in MyZenFlow"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ZenFlow'da kullanılan ortam seslerinin kaynakları ve lisans bilgileri"
+            "value" : "MyZenFlow'da kullanılan ortam seslerinin kaynakları ve lisans bilgileri"
           }
         }
       }
@@ -8722,13 +8722,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "All ambient sounds used in ZenFlow are licensed under CC0 (Public Domain) or Pixabay License and do not require attribution."
+            "value" : "All ambient sounds used in MyZenFlow are licensed under CC0 (Public Domain) or Pixabay License and do not require attribution."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ZenFlow'da kullanılan tüm ortam sesleri CC0 (Public Domain) veya Pixabay Lisansı ile lisanslanmıştır ve atıf gerektirmez."
+            "value" : "MyZenFlow'da kullanılan tüm ortam sesleri CC0 (Public Domain) veya Pixabay Lisansı ile lisanslanmıştır ve atıf gerektirmez."
           }
         }
       }
@@ -8739,13 +8739,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ZenFlow Premium"
+            "value" : "MyZenFlow Premium"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ZenFlow Premium"
+            "value" : "MyZenFlow Premium"
           }
         }
       }

@@ -1,10 +1,10 @@
 /* InfoPlist.strings
-  ZenFlow
+  MyZenFlow
   English localization
 */
 
-CFBundleDisplayName = "ZenFlow";
-CFBundleName = "ZenFlow";
-NSUserNotificationsUsageDescription = "ZenFlow needs permission to send meditation reminders.";
-NSHealthShareUsageDescription = "ZenFlow would like to read your mindfulness data from Health.";
-NSHealthUpdateUsageDescription = "ZenFlow would like to save your meditation sessions to Health.";
+CFBundleDisplayName = "MyZenFlow";
+CFBundleName = "MyZenFlow";
+NSUserNotificationsUsageDescription = "MyZenFlow needs permission to send meditation reminders.";
+NSHealthShareUsageDescription = "MyZenFlow would like to read your mindfulness data from Health.";
+NSHealthUpdateUsageDescription = "MyZenFlow would like to save your meditation sessions to Health.";

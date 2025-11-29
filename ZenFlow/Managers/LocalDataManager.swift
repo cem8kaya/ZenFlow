@@ -324,7 +324,7 @@ class LocalDataManager: ObservableObject {
 
     /// İstatistikleri yazdır
     func printStatistics() {
-        print("📊 === ZenFlow İstatistikler ===")
+        print("📊 === MyZenFlow İstatistikler ===")
         print("📊 Toplam Seans: \(totalSessions)")
         print("📊 Toplam Süre: \(totalMinutes) dakika (\(totalMinutes / 60) saat)")
         print("📊 Mevcut Seri: \(currentStreak) gün")

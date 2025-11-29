@@ -102,7 +102,7 @@ struct IconGeneratorView: View {
 
                 Spacer()
             }
-            .navigationTitle("ZenFlow Icons")
+            .navigationTitle("MyZenFlow Icons")
         }
     }
 

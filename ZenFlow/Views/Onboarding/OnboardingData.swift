@@ -41,7 +41,7 @@ struct OnboardingPage: Identifiable, Equatable {
 
     private func getDefaultTitle() -> String {
         switch id {
-        case 0: return "Hoş Geldin ZenFlow'a"
+        case 0: return "Hoş Geldin MyZenFlow'a"
         case 1: return "Nefes Alın, Rahatlayın"
         case 2: return "İlerlemenizi Görün"
         case 3: return "Odaklanın, Üretin"

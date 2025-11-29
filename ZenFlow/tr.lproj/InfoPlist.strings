@@ -1,12 +1,12 @@
 /*
   InfoPlist.strings
-  ZenFlow
+  MyZenFlow
 
   Turkish localization for app display name and permissions
 */
 
-CFBundleDisplayName = "ZenFlow";
-CFBundleName = "ZenFlow";
-NSUserNotificationsUsageDescription = "ZenFlow meditasyon hatırlatıcıları göndermek için bildirim izni gerekiyor.";
-NSHealthShareUsageDescription = "ZenFlow, Sağlık uygulamasından farkındalık verilerinizi okumak istiyor.";
-NSHealthUpdateUsageDescription = "ZenFlow, meditasyon seanslarınızı Sağlık uygulamasına farkındalık seansı olarak kaydetmek istiyor.";
+CFBundleDisplayName = "MyZenFlow";
+CFBundleName = "MyZenFlow";
+NSUserNotificationsUsageDescription = "MyZenFlow meditasyon hatırlatıcıları göndermek için bildirim izni gerekiyor.";
+NSHealthShareUsageDescription = "MyZenFlow, Sağlık uygulamasından farkındalık verilerinizi okumak istiyor.";
+NSHealthUpdateUsageDescription = "MyZenFlow, meditasyon seanslarınızı Sağlık uygulamasına farkındalık seansı olarak kaydetmek istiyor.";
