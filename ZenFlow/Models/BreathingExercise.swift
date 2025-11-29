@@ -152,6 +152,7 @@ struct BreathingExercise: Identifiable, Codable {
     let iconName: String
     let difficulty: ExerciseDifficulty
     let recommendedTime: RecommendedTime
+    let isPremium: Bool
 
     // Localized computed properties
     var localizedName: String {
@@ -256,7 +257,8 @@ struct BreathingExercise: Identifiable, Codable {
         recommendedDuration: Int = 5,
         iconName: String,
         difficulty: ExerciseDifficulty,
-        recommendedTime: RecommendedTime
+        recommendedTime: RecommendedTime,
+        isPremium: Bool = false
     ) {
         self.id = UUID()
         self.exerciseType = exerciseType
@@ -266,6 +268,7 @@ struct BreathingExercise: Identifiable, Codable {
         self.iconName = iconName
         self.difficulty = difficulty
         self.recommendedTime = recommendedTime
+        self.isPremium = isPremium
     }
 }
 
@@ -284,7 +287,7 @@ class BreathingExerciseManager: ObservableObject {
 
     /// All available breathing exercises (static for performance - created once and shared)
     static let allExercises: [BreathingExercise] = [
-        // 1. Box Breathing
+        // 1. Box Breathing - FREE
         BreathingExercise(
             exerciseType: "box",
             phases: [
@@ -312,10 +315,11 @@ class BreathingExerciseManager: ObservableObject {
             recommendedDuration: 5,
             iconName: "square.fill",
             difficulty: .beginner,
-            recommendedTime: .anytime
+            recommendedTime: .anytime,
+            isPremium: false // FREE
         ),
 
-        // 2. 4-7-8 Technique
+        // 2. 4-7-8 Technique - PREMIUM
         BreathingExercise(
             exerciseType: "478",
             phases: [
@@ -338,10 +342,11 @@ class BreathingExerciseManager: ObservableObject {
             recommendedDuration: 5,
             iconName: "bed.double.fill",
             difficulty: .intermediate,
-            recommendedTime: .evening
+            recommendedTime: .evening,
+            isPremium: true // PREMIUM
         ),
 
-        // 3. Calming Breath
+        // 3. Calming Breath - PREMIUM
         BreathingExercise(
             exerciseType: "calming",
             phases: [
@@ -359,10 +364,11 @@ class BreathingExerciseManager: ObservableObject {
             recommendedDuration: 5,
             iconName: "leaf.fill",
             difficulty: .beginner,
-            recommendedTime: .stressful
+            recommendedTime: .stressful,
+            isPremium: true // PREMIUM
         ),
 
-        // 4. Energy Breath
+        // 4. Energy Breath - PREMIUM
         BreathingExercise(
             exerciseType: "energy",
             phases: [
@@ -380,10 +386,11 @@ class BreathingExerciseManager: ObservableObject {
             recommendedDuration: 3,
             iconName: "bolt.fill",
             difficulty: .intermediate,
-            recommendedTime: .morning
+            recommendedTime: .morning,
+            isPremium: true // PREMIUM
         ),
 
-        // 5. Deep Relaxation
+        // 5. Deep Relaxation - PREMIUM
         BreathingExercise(
             exerciseType: "deep",
             phases: [
@@ -406,7 +413,8 @@ class BreathingExerciseManager: ObservableObject {
             recommendedDuration: 10,
             iconName: "wind",
             difficulty: .advanced,
-            recommendedTime: .evening
+            recommendedTime: .evening,
+            isPremium: true // PREMIUM
         )
     ]
 

@@ -17,6 +17,8 @@ struct ExerciseSelectionView: View {
     // MARK: - Environment Objects (Performance Optimization)
     @EnvironmentObject var exerciseManager: BreathingExerciseManager
     @State private var selectedExercise: BreathingExercise
+    @State private var showPaywall = false
+    @StateObject private var storeManager = StoreManager.shared
 
     var onExerciseSelected: ((BreathingExercise) -> Void)?
 
@@ -80,6 +82,9 @@ struct ExerciseSelectionView: View {
             }
         }
         .preferredColorScheme(.dark)
+        .sheet(isPresented: $showPaywall) {
+            PremiumPaywallView()
+        }
     }
 
     // MARK: - Header View
@@ -227,6 +232,13 @@ struct ExerciseSelectionView: View {
     // MARK: - Actions
 
     private func selectExercise(_ exercise: BreathingExercise) {
+        // Check premium status for premium exercises
+        if exercise.isPremium && !storeManager.isPremiumUnlocked {
+            HapticManager.shared.playNotification(type: .warning)
+            showPaywall = true
+            return
+        }
+
         withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
             selectedExercise = exercise
         }
@@ -234,6 +246,13 @@ struct ExerciseSelectionView: View {
     }
 
     private func confirmSelection() {
+        // Double-check premium status before confirming
+        if selectedExercise.isPremium && !storeManager.isPremiumUnlocked {
+            HapticManager.shared.playNotification(type: .warning)
+            showPaywall = true
+            return
+        }
+
         HapticManager.shared.playImpact(style: .heavy)
         exerciseManager.selectExercise(selectedExercise)
         onExerciseSelected?(selectedExercise)
@@ -256,10 +275,12 @@ struct ExerciseCard: View {
     let isSelected: Bool
     let onTap: () -> Void
 
+    @StateObject private var storeManager = StoreManager.shared
+
     var body: some View {
         VStack(spacing: 16) {
             // Icon
-            ZStack {
+            ZStack(alignment: .topTrailing) {
                 Circle()
                     .fill(
                         LinearGradient(
@@ -276,6 +297,19 @@ struct ExerciseCard: View {
                 Image(systemName: exercise.iconName)
                     .font(.system(size: 32, weight: .semibold))
                     .foregroundColor(.white)
+
+                // Premium lock indicator
+                if exercise.isPremium && !storeManager.isPremiumUnlocked {
+                    Image(systemName: "lock.fill")
+                        .font(.system(size: 14))
+                        .foregroundColor(.white)
+                        .padding(6)
+                        .background(
+                            Circle()
+                                .fill(ZenTheme.mysticalViolet)
+                        )
+                        .offset(x: 8, y: -8)
+                }
             }
 
             // Name
