@@ -22,15 +22,8 @@ class StoreManager: ObservableObject {
 
     // MARK: - Product IDs
 
-    //    private let premiumProductID = "com.zenflow.premium.lifetime"
+    private let premiumProductID = "com.myzenflow.premium.lifetime"
 
-    #if DEBUG
-    private let premiumProductID = "com.zenflow.premium.lifetime" // Sandbox'ta aynı ID kullanılır
-    private let isTestMode = true
-    #else
-    private let premiumProductID = "com.zenflow.premium.lifetime"
-    private let isTestMode = false
-    #endif
     
     // MARK: - Published Properties
 

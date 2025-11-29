@@ -8,6 +8,12 @@
             "state" : "translated",
             "value" : "— %@"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "— %@"
+          }
         }
       }
     },
@@ -18,12 +24,24 @@
             "state" : "translated",
             "value" : "@zenflowapp"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "@zenflowapp"
+          }
         }
       }
     },
     "/%lld" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "/%lld"
+          }
+        },
+        "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "/%lld"
@@ -54,12 +72,24 @@
             "state" : "translated",
             "value" : "%@ sound"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ sesi"
+          }
         }
       }
     },
     "%lld" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
+        },
+        "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%lld"
@@ -124,6 +154,12 @@
             "state" : "translated",
             "value" : "%lld percent"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld yüzde"
+          }
         }
       }
     },
@@ -146,6 +182,12 @@
     "%lld%%" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld%%"
+          }
+        },
+        "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%lld%%"
@@ -177,12 +219,24 @@
             "state" : "translated",
             "value" : "🌱"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🌱"
+          }
         }
       }
     },
     "🎉" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🎉"
+          }
+        },
+        "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "🎉"
@@ -197,12 +251,24 @@
             "state" : "translated",
             "value" : "🧘"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🧘"
+          }
         }
       }
     },
     "1.0.0" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1.0.0"
+          }
+        },
+        "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "1.0.0"
@@ -585,6 +651,12 @@
             "state" : "translated",
             "value" : "App Icon Preview"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Icon Preview"
+          }
         }
       }
     },
@@ -594,6 +666,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Background Sound"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arka Plan Sesi"
           }
         }
       }
@@ -605,6 +683,12 @@
             "state" : "translated",
             "value" : "Background Sounds"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arka Plan Sesleri"
+          }
         }
       }
     },
@@ -615,6 +699,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Skip"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atla"
           }
         }
       }
@@ -983,12 +1073,24 @@
             "state" : "translated",
             "value" : "Pick a question to start"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Başlamak için bir soru seç:"
+          }
         }
       }
     },
     "Breathing Circles Design" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Breathing Circles Design"
+          }
+        },
+        "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Breathing Circles Design"
@@ -1514,6 +1616,12 @@
             "state" : "translated",
             "value" : "Spare 5 mins today for yourself"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugün kendine 5 dakika ayır 🧘"
+          }
         }
       }
     },
@@ -1524,6 +1632,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Today's sessions"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugünkü Seanslar"
           }
         }
       }
@@ -1943,6 +2057,12 @@
             "state" : "translated",
             "value" : "contact@zenflow.app"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "contact@zenflow.app"
+          }
         }
       }
     },
@@ -1953,12 +2073,24 @@
             "state" : "translated",
             "value" : "Try - 30 sec"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dene - 30 saniye"
+          }
         }
       }
     },
     "Designed for iOS 17+ • 1024x1024px" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Designed for iOS 17+ • 1024x1024px"
+          }
+        },
+        "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Designed for iOS 17+ • 1024x1024px"
@@ -1972,6 +2104,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Out"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Devre Dışı"
           }
         }
       }
@@ -2034,6 +2172,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Longest streak"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En Uzun Seri"
           }
         }
       }
@@ -2123,12 +2267,137 @@
         }
       }
     },
+    "error.product.notfound" : {
+      "comment" : "Product not found",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Product not found"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ürün bulunamadı"
+          }
+        }
+      }
+    },
+    "error.products.failed" : {
+      "comment" : "Products failed to load",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to load products"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ürünler yüklenemedi"
+          }
+        }
+      }
+    },
+    "error.purchase.failed" : {
+      "comment" : "Purchase failed",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Purchase failed"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Satın alma başarısız"
+          }
+        }
+      }
+    },
+    "error.purchase.pending" : {
+      "comment" : "Purchase pending",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Purchase pending approval"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Satın alma onay bekliyor"
+          }
+        }
+      }
+    },
+    "error.purchase.unknown" : {
+      "comment" : "Unknown error",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unknown error"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bilinmeyen hata"
+          }
+        }
+      }
+    },
+    "error.restore.failed" : {
+      "comment" : "Restore failed",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restore failed"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geri yükleme başarısız"
+          }
+        }
+      }
+    },
+    "error.restore.notfound" : {
+      "comment" : "No purchases to restore",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No purchases found to restore"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geri yüklenecek satın alma bulunamadı"
+          }
+        }
+      }
+    },
     "Etkin" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Active"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Etkin"
           }
         }
       }
@@ -2820,12 +3089,24 @@
             "state" : "translated",
             "value" : "Export All Icons"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export All Icons"
+          }
         }
       }
     },
     "Export All Sizes" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export All Sizes"
+          }
+        },
+        "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Export All Sizes"
@@ -2840,6 +3121,12 @@
             "state" : "translated",
             "value" : "Export Icons"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export Icons"
+          }
         }
       }
     },
@@ -2850,12 +3137,24 @@
             "state" : "translated",
             "value" : "Export Recommended Sizes"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export Recommended Sizes"
+          }
         }
       }
     },
     "Exporting..." : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exporting..."
+          }
+        },
+        "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Exporting..."
@@ -3262,6 +3561,12 @@
             "state" : "translated",
             "value" : "Required: %lld minutes total meditation"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gereken: %lld dakika toplam meditasyon"
+          }
         }
       }
     },
@@ -3272,6 +3577,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Required: %lld days consecutive meditation"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gereken: %lld gün ardışık meditasyon"
           }
         }
       }
@@ -3284,6 +3595,12 @@
             "state" : "translated",
             "value" : "Required: %lld focus sessions"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gereken: %lld odaklanma seansı"
+          }
         }
       }
     },
@@ -3295,6 +3612,12 @@
             "state" : "translated",
             "value" : "Required: %lld focus sessions in a single day"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gereken: Tek günde %lld odaklanma seansı"
+          }
         }
       }
     },
@@ -3305,6 +3628,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Back"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geri"
           }
         }
       }
@@ -3470,6 +3799,12 @@
             "state" : "translated",
             "value" : "A short break for a peaceful day ☮️"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Huzurlu bir gün için kısa bir mola ☮️"
+          }
         }
       }
     },
@@ -3480,12 +3815,24 @@
             "state" : "translated",
             "value" : "A peaceful journey..."
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Huzurlu bir yolculuk..."
+          }
         }
       }
     },
     "Icon Style" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Icon Style"
+          }
+        },
+        "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Icon Style"
@@ -3636,6 +3983,12 @@
             "state" : "translated",
             "value" : "View Source"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaynağı Görüntüle"
+          }
         }
       }
     },
@@ -3646,6 +3999,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Earned Badges"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kazanılan Rozetler"
           }
         }
       }
@@ -3658,6 +4017,12 @@
             "state" : "translated",
             "value" : "Locked Badges"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kilitli Rozetler"
+          }
         }
       }
     },
@@ -3669,6 +4034,60 @@
             "state" : "translated",
             "value" : "Current Streak"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mevcut Seri"
+          }
+        }
+      }
+    },
+    "MyZenFlow" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        }
+      }
+    },
+    "MyZenFlow App Icon Exporter" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow App Icon Exporter"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow App Icon Exporter"
+          }
+        }
+      }
+    },
+    "MyZenFlow Icons" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow Icons"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow Icons"
+          }
         }
       }
     },
@@ -3679,6 +4098,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Don't forget to breathe, keep your streak alive! 🔥"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nefes almayı unutma, streak'in devam etsin! 🔥"
           }
         }
       }
@@ -3706,6 +4131,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Focus..."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odaklan..."
           }
         }
       }
@@ -4016,9 +4447,355 @@
         }
       }
     },
+    "premium.close" : {
+      "comment" : "Close button",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kapat"
+          }
+        }
+      }
+    },
+    "premium.features.advancedStats" : {
+      "comment" : "Advanced stats feature",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Advanced Statistics"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gelişmiş İstatistikler"
+          }
+        }
+      }
+    },
+    "premium.features.advancedStats.desc" : {
+      "comment" : "Advanced stats description",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Detailed analysis and streak tracking"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Detaylı analiz ve streak takibi"
+          }
+        }
+      }
+    },
+    "premium.features.allExercises" : {
+      "comment" : "All exercises feature",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All Breathing Exercises"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tüm Nefes Egzersizleri"
+          }
+        }
+      }
+    },
+    "premium.features.allExercises.desc" : {
+      "comment" : "All exercises description",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4-7-8, Calming and more"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4-7-8, Sakinleştirici ve daha fazlası"
+          }
+        }
+      }
+    },
+    "premium.features.allSounds" : {
+      "comment" : "All sounds feature",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All Ambient Sounds"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tüm Ambient Sesler"
+          }
+        }
+      }
+    },
+    "premium.features.allSounds.desc" : {
+      "comment" : "All sounds description",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ocean, forest, fireplace and 10+ sounds"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Okyanus, orman, şömine ve 10+ ses"
+          }
+        }
+      }
+    },
+    "premium.features.premiumThemes" : {
+      "comment" : "Premium themes feature",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Premium Themes"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Premium Temalar"
+          }
+        }
+      }
+    },
+    "premium.features.premiumThemes.desc" : {
+      "comment" : "Premium themes description",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Special color palettes"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Özel renk paletleri"
+          }
+        }
+      }
+    },
+    "premium.price.lifetime" : {
+      "comment" : "Lifetime access label",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lifetime Access"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ömür Boyu Erişim"
+          }
+        }
+      }
+    },
+    "premium.price.onetime" : {
+      "comment" : "One-time payment label",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "One-Time Payment"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tek Seferlik Ödeme"
+          }
+        }
+      }
+    },
+    "premium.purchase" : {
+      "comment" : "Purchase button",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upgrade to Premium"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Premium'a Geç"
+          }
+        }
+      }
+    },
+    "premium.restore" : {
+      "comment" : "Restore button",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restore Purchases"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Satın Alımları Geri Yükle"
+          }
+        }
+      }
+    },
+    "premium.restore.purchases" : {
+      "comment" : "Restore purchases",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restore Purchases"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Satın Alımları Geri Yükle"
+          }
+        }
+      }
+    },
+    "premium.subtitle" : {
+      "comment" : "Premium subtitle",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unlock all features"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tüm özelliklerin kilidini aç"
+          }
+        }
+      }
+    },
+    "premium.thankyou" : {
+      "comment" : "Thank you message",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thank you for your support!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desteğiniz için teşekkürler!"
+          }
+        }
+      }
+    },
+    "premium.title" : {
+      "comment" : "Premium title",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow Premium"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow Premium"
+          }
+        }
+      }
+    },
+    "premium.unlocked" : {
+      "comment" : "Premium unlocked",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Premium Active"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Premium Aktif"
+          }
+        }
+      }
+    },
+    "premium.upgrade" : {
+      "comment" : "Upgrade to premium",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upgrade to Premium"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Premium'a Geç"
+          }
+        }
+      }
+    },
+    "premium.upgrade.desc" : {
+      "comment" : "Unlock all features",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unlock all features"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tüm özelliklerin kilidini aç"
+          }
+        }
+      }
+    },
     "Ready to export 18 icon sizes" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ready to export 18 icon sizes"
+          }
+        },
+        "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ready to export 18 icon sizes"
@@ -4458,6 +5235,12 @@
             "state" : "translated",
             "value" : "Badge Unlocked!"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rozet Kazanıldı!"
+          }
         }
       }
     },
@@ -4467,6 +5250,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "seconds"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "saniye"
           }
         }
       }
@@ -4512,6 +5301,12 @@
             "state" : "translated",
             "value" : "Selected sounds will play in the background during meditation. You can select up to 2 sounds at once."
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seçili sesler meditasyon sırasında arka planda çalacak. En fazla 2 ses aynı anda seçebilirsiniz."
+          }
         }
       }
     },
@@ -4521,6 +5316,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Selected, tap to remove"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seçili, kaldırmak için dokunun"
           }
         }
       }
@@ -4532,12 +5333,24 @@
             "state" : "translated",
             "value" : "Tap to select"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seçmek için dokunun"
+          }
         }
       }
     },
     "Select Icon Style" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select Icon Style"
+          }
+        },
+        "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Select Icon Style"
@@ -4603,6 +5416,12 @@
             "state" : "translated",
             "value" : "Sound Settings"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ses Ayarları"
+          }
         }
       }
     },
@@ -4612,6 +5431,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sound Sources"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ses Kaynakları"
           }
         }
       }
@@ -4623,6 +5448,12 @@
             "state" : "translated",
             "value" : "Sound Credits"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ses Kredileri"
+          }
         }
       }
     },
@@ -4633,6 +5464,12 @@
             "state" : "translated",
             "value" : "Volume"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ses seviyesi"
+          }
         }
       }
     },
@@ -4642,6 +5479,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Volume"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ses Seviyesi"
           }
         }
       }
@@ -5241,6 +6084,23 @@
         }
       }
     },
+    "settings_premium_section" : {
+      "comment" : "Premium section header",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Premium"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Premium"
+          }
+        }
+      }
+    },
     "settings_reminders" : {
       "comment" : "Reminders page title\nReminders setting",
       "localizations" : {
@@ -5605,6 +6465,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Last Meditation"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Son Meditasyon"
           }
         }
       }
@@ -6515,6 +7381,12 @@
             "state" : "translated",
             "value" : "Style"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Style"
+          }
         }
       }
     },
@@ -6780,6 +7652,12 @@
             "state" : "translated",
             "value" : "OK"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamam"
+          }
         }
       }
     },
@@ -6910,6 +7788,12 @@
             "state" : "translated",
             "value" : "Total Focus Sessions"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toplam Odaklanma Seansı"
+          }
         }
       }
     },
@@ -6921,6 +7805,12 @@
             "state" : "translated",
             "value" : "Total Sessions"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toplam Seans"
+          }
         }
       }
     },
@@ -6931,6 +7821,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Total Duration"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toplam Süre"
           }
         }
       }
@@ -7197,6 +8093,12 @@
             "state" : "translated",
             "value" : "All sounds are free to use"
           }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tüm sesler ücretsiz kullanım lisansına sahip"
+          }
         }
       }
     },
@@ -7269,6 +8171,12 @@
     "Use Xcode's Image Renderer to export" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use Xcode's Image Renderer to export"
+          }
+        },
+        "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Use Xcode's Image Renderer to export"
@@ -8653,54 +9561,6 @@
         }
       }
     },
-    "ZenFlow" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "MyZenFlow"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "MyZenFlow"
-          }
-        }
-      }
-    },
-    "ZenFlow App Icon Exporter" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "MyZenFlow App Icon Exporter"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "MyZenFlow App Icon Exporter"
-          }
-        }
-      }
-    },
-    "ZenFlow Icons" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "MyZenFlow Icons"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "MyZenFlow Icons"
-          }
-        }
-      }
-    },
     "ZenFlow'da kullanılan ortam seslerinin kaynakları ve lisans bilgileri" : {
       "localizations" : {
         "en" : {
@@ -8729,482 +9589,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "MyZenFlow'da kullanılan tüm ortam sesleri CC0 (Public Domain) veya Pixabay Lisansı ile lisanslanmıştır ve atıf gerektirmez."
-          }
-        }
-      }
-    },
-    "premium.title" : {
-      "comment" : "Premium title",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "MyZenFlow Premium"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "MyZenFlow Premium"
-          }
-        }
-      }
-    },
-    "premium.subtitle" : {
-      "comment" : "Premium subtitle",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Unlock all features"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tüm özelliklerin kilidini aç"
-          }
-        }
-      }
-    },
-    "premium.features.allExercises" : {
-      "comment" : "All exercises feature",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "All Breathing Exercises"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tüm Nefes Egzersizleri"
-          }
-        }
-      }
-    },
-    "premium.features.allExercises.desc" : {
-      "comment" : "All exercises description",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "4-7-8, Calming and more"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "4-7-8, Sakinleştirici ve daha fazlası"
-          }
-        }
-      }
-    },
-    "premium.features.allSounds" : {
-      "comment" : "All sounds feature",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "All Ambient Sounds"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tüm Ambient Sesler"
-          }
-        }
-      }
-    },
-    "premium.features.allSounds.desc" : {
-      "comment" : "All sounds description",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ocean, forest, fireplace and 10+ sounds"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Okyanus, orman, şömine ve 10+ ses"
-          }
-        }
-      }
-    },
-    "premium.features.advancedStats" : {
-      "comment" : "Advanced stats feature",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Advanced Statistics"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gelişmiş İstatistikler"
-          }
-        }
-      }
-    },
-    "premium.features.advancedStats.desc" : {
-      "comment" : "Advanced stats description",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Detailed analysis and streak tracking"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Detaylı analiz ve streak takibi"
-          }
-        }
-      }
-    },
-    "premium.features.premiumThemes" : {
-      "comment" : "Premium themes feature",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Premium Themes"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Premium Temalar"
-          }
-        }
-      }
-    },
-    "premium.features.premiumThemes.desc" : {
-      "comment" : "Premium themes description",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Special color palettes"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Özel renk paletleri"
-          }
-        }
-      }
-    },
-    "premium.price.onetime" : {
-      "comment" : "One-time payment label",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "One-Time Payment"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tek Seferlik Ödeme"
-          }
-        }
-      }
-    },
-    "premium.price.lifetime" : {
-      "comment" : "Lifetime access label",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lifetime Access"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ömür Boyu Erişim"
-          }
-        }
-      }
-    },
-    "premium.purchase" : {
-      "comment" : "Purchase button",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Upgrade to Premium"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Premium'a Geç"
-          }
-        }
-      }
-    },
-    "premium.restore" : {
-      "comment" : "Restore button",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Restore Purchases"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Satın Alımları Geri Yükle"
-          }
-        }
-      }
-    },
-    "premium.close" : {
-      "comment" : "Close button",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Close"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kapat"
-          }
-        }
-      }
-    },
-    "premium.unlocked" : {
-      "comment" : "Premium unlocked",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Premium Active"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Premium Aktif"
-          }
-        }
-      }
-    },
-    "premium.thankyou" : {
-      "comment" : "Thank you message",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Thank you for your support!"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Desteğiniz için teşekkürler!"
-          }
-        }
-      }
-    },
-    "premium.upgrade" : {
-      "comment" : "Upgrade to premium",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Upgrade to Premium"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Premium'a Geç"
-          }
-        }
-      }
-    },
-    "premium.upgrade.desc" : {
-      "comment" : "Unlock all features",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Unlock all features"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tüm özelliklerin kilidini aç"
-          }
-        }
-      }
-    },
-    "premium.restore.purchases" : {
-      "comment" : "Restore purchases",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Restore Purchases"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Satın Alımları Geri Yükle"
-          }
-        }
-      }
-    },
-    "settings_premium_section" : {
-      "comment" : "Premium section header",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Premium"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Premium"
-          }
-        }
-      }
-    },
-    "error.products.failed" : {
-      "comment" : "Products failed to load",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Failed to load products"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ürünler yüklenemedi"
-          }
-        }
-      }
-    },
-    "error.product.notfound" : {
-      "comment" : "Product not found",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Product not found"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ürün bulunamadı"
-          }
-        }
-      }
-    },
-    "error.purchase.failed" : {
-      "comment" : "Purchase failed",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Purchase failed"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Satın alma başarısız"
-          }
-        }
-      }
-    },
-    "error.purchase.pending" : {
-      "comment" : "Purchase pending",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Purchase pending approval"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Satın alma onay bekliyor"
-          }
-        }
-      }
-    },
-    "error.purchase.unknown" : {
-      "comment" : "Unknown error",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Unknown error"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bilinmeyen hata"
-          }
-        }
-      }
-    },
-    "error.restore.failed" : {
-      "comment" : "Restore failed",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Restore failed"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Geri yükleme başarısız"
-          }
-        }
-      }
-    },
-    "error.restore.notfound" : {
-      "comment" : "No purchases to restore",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No purchases found to restore"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Geri yüklenecek satın alma bulunamadı"
           }
         }
       }

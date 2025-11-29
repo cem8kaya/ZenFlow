@@ -30,8 +30,7 @@
           "locale" : "tr"
         }
       ],
-      "productID" : "com.zenflow.premium.lifetime",
-      "promotionalImageID" : "7ABBE079",
+      "productID" : "com.myzenflow.premium.lifetime",
       "referenceName" : "Premium Lifetime",
       "type" : "NonConsumable"
     }
