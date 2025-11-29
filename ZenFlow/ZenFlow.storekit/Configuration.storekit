@@ -21,12 +21,12 @@
       "localizations" : [
         {
           "description" : "Unlock all breathing exercises, ambient sounds, advanced statistics, and premium themes with a one-time lifetime purchase.",
-          "displayName" : "ZenFlow Premium",
+          "displayName" : "MyZenFlow Premium",
           "locale" : "en_US"
         },
         {
           "description" : "Tüm nefes egzersizlerini, ortam seslerini, gelişmiş istatistikleri ve premium temaları tek seferlik ömür boyu satın alma ile kilidi açın.",
-          "displayName" : "ZenFlow Premium",
+          "displayName" : "MyZenFlow Premium",
           "locale" : "tr"
         }
       ],

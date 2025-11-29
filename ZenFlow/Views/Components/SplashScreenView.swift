@@ -63,7 +63,7 @@ struct SplashScreenView: View {
                 .scaleEffect(scale)
 
                 // App Name
-                Text("ZenFlow")
+                Text("MyZenFlow")
                     .font(.system(size: 48, weight: .light))
                     .foregroundStyle(
                         LinearGradient(

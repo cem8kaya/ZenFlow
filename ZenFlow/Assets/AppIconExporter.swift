@@ -79,7 +79,7 @@ class AppIconExporter {
 
     // Export all icon sizes
     static func exportAllIcons(to outputURL: URL) async throws {
-        print("🎨 ZenFlow App Icon Exporter")
+        print("🎨 MyZenFlow App Icon Exporter")
         print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
         print("📱 Generating iOS app icons...")
         print("🎯 Design: Breathing Circles")
@@ -286,7 +286,7 @@ struct AppIconExporterView: View {
 
     var body: some View {
         VStack(spacing: 30) {
-            Text("ZenFlow App Icon Exporter")
+            Text("MyZenFlow App Icon Exporter")
                 .font(.title)
                 .fontWeight(.bold)
 

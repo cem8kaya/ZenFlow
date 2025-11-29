@@ -222,7 +222,7 @@ struct ReminderSettingsView: View {
 
     private func sendTestNotification() {
         notificationManager.sendImmediateNotification(
-            title: "ZenFlow Test 🧘",
+            title: "MyZenFlow Test 🧘",
             body: "Harika! Bildirimler çalışıyor. Artık meditasyonlarını kaçırmayacaksın."
         )
 

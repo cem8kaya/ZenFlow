@@ -233,7 +233,7 @@ class NotificationManager: ObservableObject {
             dateComponents.weekday = day
 
             let content = UNMutableNotificationContent()
-            content.title = "🧘‍♂️ Günlük ZenFlow Zamanı"
+            content.title = "🧘‍♂️ Günlük MyZenFlow Zamanı"
 
             // Get current streak
             let currentStreak = LocalDataManager.shared.currentStreak
@@ -378,7 +378,7 @@ class NotificationManager: ObservableObject {
         }
 
         let content = UNMutableNotificationContent()
-        content.title = "🧘‍♂️ Günlük ZenFlow Zamanı"
+        content.title = "🧘‍♂️ Günlük MyZenFlow Zamanı"
         content.body = motivationalMessages.randomElement() ?? "Meditasyon zamanı! 🧘"
         content.sound = .default
 
