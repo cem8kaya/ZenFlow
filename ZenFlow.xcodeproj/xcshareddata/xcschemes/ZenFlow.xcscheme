@@ -50,6 +50,9 @@
             ReferencedContainer = "container:ZenFlow.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <StoreKitConfigurationFileReference
+         identifier = "../../ZenFlow/ZenFlow.storekit/Configuration.storekit">
+      </StoreKitConfigurationFileReference>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

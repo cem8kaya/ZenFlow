@@ -330,7 +330,6 @@
       }
     },
     "action_button_478" : {
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -347,7 +346,6 @@
       }
     },
     "action_button_breathing" : {
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -364,7 +362,6 @@
       }
     },
     "action_button_garden" : {
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -381,7 +378,6 @@
       }
     },
     "action_button_meditation" : {
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -398,7 +394,6 @@
       }
     },
     "action_button_pomodoro" : {
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -415,7 +410,6 @@
       }
     },
     "action_button_progress" : {
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -501,7 +495,6 @@
     },
     "advice_beginner_start" : {
       "comment" : "Beginner advice for new users",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -519,7 +512,6 @@
     },
     "advice_general_encouragement" : {
       "comment" : "General advice",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -537,7 +529,6 @@
     },
     "advice_mastery_progress" : {
       "comment" : "Advice for experienced users",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -555,7 +546,6 @@
     },
     "advice_returning_user" : {
       "comment" : "Advice for returning users",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -573,7 +563,6 @@
     },
     "advice_streak_maintenance" : {
       "comment" : "Advice for users with a streak",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -632,7 +621,6 @@
     },
     "badge_5_hour_mastery_desc" : {
       "comment" : "5 Hour Mastery Badge Description",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -650,7 +638,6 @@
     },
     "badge_5_hour_mastery_title" : {
       "comment" : "5 Hour Mastery Badge Title",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -668,7 +655,6 @@
     },
     "badge_7_day_streak_desc" : {
       "comment" : "7 Day Streak Badge Description",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -686,7 +672,6 @@
     },
     "badge_7_day_streak_title" : {
       "comment" : "7 Day Streak Badge Title",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -704,7 +689,6 @@
     },
     "badge_30_day_streak_desc" : {
       "comment" : "30 Day Streak Badge Description",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -722,7 +706,6 @@
     },
     "badge_30_day_streak_title" : {
       "comment" : "30 Day Streak Badge Title",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -740,7 +723,6 @@
     },
     "badge_first_hour_desc" : {
       "comment" : "First Hour Badge Description",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -758,7 +740,6 @@
     },
     "badge_first_hour_title" : {
       "comment" : "First Hour Badge Title",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -776,7 +757,6 @@
     },
     "badge_first_pomodoro_desc" : {
       "comment" : "First Pomodoro Badge Description",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -794,7 +774,6 @@
     },
     "badge_first_pomodoro_title" : {
       "comment" : "First Pomodoro Badge Title",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -812,7 +791,6 @@
     },
     "badge_focus_master_desc" : {
       "comment" : "Focus Master Badge Description",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -830,7 +808,6 @@
     },
     "badge_focus_master_title" : {
       "comment" : "Focus Master Badge Title",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -848,7 +825,6 @@
     },
     "badge_marathon_desc" : {
       "comment" : "Marathon Badge Description",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -866,7 +842,6 @@
     },
     "badge_marathon_title" : {
       "comment" : "Marathon Badge Title",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -884,7 +859,6 @@
     },
     "badge_zen_master_desc" : {
       "comment" : "Zen Master Badge Description",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -902,7 +876,6 @@
     },
     "badge_zen_master_title" : {
       "comment" : "Zen Master Badge Title",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1642,7 +1615,6 @@
     },
     "category_atmosphere" : {
       "comment" : "Atmosphere sound category",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1660,7 +1632,6 @@
     },
     "category_nature" : {
       "comment" : "Nature sound category",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1950,7 +1921,6 @@
     },
     "category_water" : {
       "comment" : "Water sound category",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2165,7 +2135,6 @@
     },
     "exercise_478_benefit_0" : {
       "comment" : "478 benefit 1",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2183,7 +2152,6 @@
     },
     "exercise_478_benefit_1" : {
       "comment" : "478 benefit 2",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2201,7 +2169,6 @@
     },
     "exercise_478_benefit_2" : {
       "comment" : "478 benefit 3",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2219,7 +2186,6 @@
     },
     "exercise_478_benefit_3" : {
       "comment" : "478 benefit 4",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2237,7 +2203,6 @@
     },
     "exercise_478_description" : {
       "comment" : "4-7-8 Technique Description",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2255,7 +2220,6 @@
     },
     "exercise_478_name" : {
       "comment" : "4-7-8 Technique Name",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2273,7 +2237,6 @@
     },
     "exercise_box_benefit_0" : {
       "comment" : "Box benefit 1",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2291,7 +2254,6 @@
     },
     "exercise_box_benefit_1" : {
       "comment" : "Box benefit 2",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2309,7 +2271,6 @@
     },
     "exercise_box_benefit_2" : {
       "comment" : "Box benefit 3",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2327,7 +2288,6 @@
     },
     "exercise_box_benefit_3" : {
       "comment" : "Box benefit 4",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2345,7 +2305,6 @@
     },
     "exercise_box_description" : {
       "comment" : "Box Breathing Description",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2363,7 +2322,6 @@
     },
     "exercise_box_name" : {
       "comment" : "Box Breathing Name",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2381,7 +2339,6 @@
     },
     "exercise_calming_benefit_0" : {
       "comment" : "Calming benefit 1",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2399,7 +2356,6 @@
     },
     "exercise_calming_benefit_1" : {
       "comment" : "Calming benefit 2",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2417,7 +2373,6 @@
     },
     "exercise_calming_benefit_2" : {
       "comment" : "Calming benefit 3",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2435,7 +2390,6 @@
     },
     "exercise_calming_benefit_3" : {
       "comment" : "Calming benefit 4",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2453,7 +2407,6 @@
     },
     "exercise_calming_description" : {
       "comment" : "Calming Breath Description",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2471,7 +2424,6 @@
     },
     "exercise_calming_name" : {
       "comment" : "Calming Breath Name",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2540,7 +2492,6 @@
     },
     "exercise_deep_benefit_0" : {
       "comment" : "Deep benefit 1",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2558,7 +2509,6 @@
     },
     "exercise_deep_benefit_1" : {
       "comment" : "Deep benefit 2",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2576,7 +2526,6 @@
     },
     "exercise_deep_benefit_2" : {
       "comment" : "Deep benefit 3",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2594,7 +2543,6 @@
     },
     "exercise_deep_benefit_3" : {
       "comment" : "Deep benefit 4",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2612,7 +2560,6 @@
     },
     "exercise_deep_description" : {
       "comment" : "Deep Relaxation Description",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2630,7 +2577,6 @@
     },
     "exercise_deep_name" : {
       "comment" : "Deep Relaxation Name",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2648,7 +2594,6 @@
     },
     "exercise_energy_benefit_0" : {
       "comment" : "Energy benefit 1",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2666,7 +2611,6 @@
     },
     "exercise_energy_benefit_1" : {
       "comment" : "Energy benefit 2",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2684,7 +2628,6 @@
     },
     "exercise_energy_benefit_2" : {
       "comment" : "Energy benefit 3",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2702,7 +2645,6 @@
     },
     "exercise_energy_benefit_3" : {
       "comment" : "Energy benefit 4",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2720,7 +2662,6 @@
     },
     "exercise_energy_description" : {
       "comment" : "Energy Breath Description",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2738,7 +2679,6 @@
     },
     "exercise_energy_name" : {
       "comment" : "Energy Breath Name",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2925,7 +2865,6 @@
     },
     "focus_mode_long_break" : {
       "comment" : "Long break mode display name",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2943,7 +2882,6 @@
     },
     "focus_mode_long_break_desc" : {
       "comment" : "Long break mode description",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2961,7 +2899,6 @@
     },
     "focus_mode_short_break" : {
       "comment" : "Short break mode display name",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2979,7 +2916,6 @@
     },
     "focus_mode_short_break_desc" : {
       "comment" : "Short break mode description",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2997,7 +2933,6 @@
     },
     "focus_mode_work" : {
       "comment" : "Focus mode display name",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3015,7 +2950,6 @@
     },
     "focus_mode_work_desc" : {
       "comment" : "Focus mode description",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -4451,7 +4385,6 @@
     },
     "requirement_type_focus_sessions" : {
       "comment" : "Focus sessions requirement",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -4469,7 +4402,6 @@
     },
     "requirement_type_focus_sessions_daily" : {
       "comment" : "Daily focus sessions requirement",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -4487,7 +4419,6 @@
     },
     "requirement_type_streak" : {
       "comment" : "Streak requirement",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -4505,7 +4436,6 @@
     },
     "requirement_type_total_minutes" : {
       "comment" : "Total minutes requirement",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -5681,7 +5611,6 @@
     },
     "sound_campfire" : {
       "comment" : "Campfire sound",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -5699,7 +5628,6 @@
     },
     "sound_campfire_desc" : {
       "comment" : "Campfire sound description",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -5717,7 +5645,6 @@
     },
     "sound_desert" : {
       "comment" : "Desert sound",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -5735,7 +5662,6 @@
     },
     "sound_desert_desc" : {
       "comment" : "Desert sound description",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -5753,7 +5679,6 @@
     },
     "sound_fire" : {
       "comment" : "Fire sound",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -5771,7 +5696,6 @@
     },
     "sound_fire_desc" : {
       "comment" : "Fire sound description",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -5789,7 +5713,6 @@
     },
     "sound_fireplace" : {
       "comment" : "Fireplace sound",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -5807,7 +5730,6 @@
     },
     "sound_fireplace_desc" : {
       "comment" : "Fireplace sound description",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -5825,7 +5747,6 @@
     },
     "sound_forest" : {
       "comment" : "Forest sound",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -5843,7 +5764,6 @@
     },
     "sound_forest_desc" : {
       "comment" : "Forest sound description",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -5861,7 +5781,6 @@
     },
     "sound_mountain" : {
       "comment" : "Mountain sound",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -5879,7 +5798,6 @@
     },
     "sound_mountain_desc" : {
       "comment" : "Mountain sound description",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -5897,7 +5815,6 @@
     },
     "sound_night" : {
       "comment" : "Night sound",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -5915,7 +5832,6 @@
     },
     "sound_night_desc" : {
       "comment" : "Night sound description",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -5933,7 +5849,6 @@
     },
     "sound_ocean" : {
       "comment" : "Ocean sound",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -5951,7 +5866,6 @@
     },
     "sound_ocean_desc" : {
       "comment" : "Ocean sound description",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -5969,7 +5883,6 @@
     },
     "sound_rain" : {
       "comment" : "Rain sound",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -5987,7 +5900,6 @@
     },
     "sound_rain_desc" : {
       "comment" : "Rain sound description",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6005,7 +5917,6 @@
     },
     "sound_river" : {
       "comment" : "River sound",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6023,7 +5934,6 @@
     },
     "sound_river_desc" : {
       "comment" : "River sound description",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6041,7 +5951,6 @@
     },
     "sound_silent" : {
       "comment" : "Silent sound option",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6059,7 +5968,6 @@
     },
     "sound_silent_desc" : {
       "comment" : "No background sound",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6077,7 +5985,6 @@
     },
     "sound_singing_bowl" : {
       "comment" : "Singing bowl sound",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6095,7 +6002,6 @@
     },
     "sound_singing_bowl_desc" : {
       "comment" : "Singing bowl sound description",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6113,7 +6019,6 @@
     },
     "sound_thunderstorm" : {
       "comment" : "Thunderstorm sound",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6131,7 +6036,6 @@
     },
     "sound_thunderstorm_desc" : {
       "comment" : "Thunderstorm sound description",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6149,7 +6053,6 @@
     },
     "sound_waterfall" : {
       "comment" : "Waterfall sound",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6167,7 +6070,6 @@
     },
     "sound_waterfall_desc" : {
       "comment" : "Waterfall sound description",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6185,7 +6087,6 @@
     },
     "sound_wind" : {
       "comment" : "Wind sound",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6203,7 +6104,6 @@
     },
     "sound_wind_chimes" : {
       "comment" : "Wind chimes sound",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6221,7 +6121,6 @@
     },
     "sound_wind_chimes_desc" : {
       "comment" : "Wind chimes sound description",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6239,7 +6138,6 @@
     },
     "sound_wind_desc" : {
       "comment" : "Wind sound description",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6257,7 +6155,6 @@
     },
     "stats_all_time" : {
       "comment" : "All time stats title",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6275,7 +6172,6 @@
     },
     "stats_all_types" : {
       "comment" : "All exercise types",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6293,7 +6189,6 @@
     },
     "stats_average" : {
       "comment" : "Average",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6311,7 +6206,6 @@
     },
     "stats_avg_session_duration" : {
       "comment" : "Average session duration label",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6328,7 +6222,6 @@
       }
     },
     "stats_chart_day" : {
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6345,7 +6238,6 @@
       }
     },
     "stats_chart_minutes" : {
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6363,7 +6255,6 @@
     },
     "stats_current_streak" : {
       "comment" : "Current streak label",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6381,7 +6272,6 @@
     },
     "stats_last_4_weeks" : {
       "comment" : "Last 4 weeks activity title",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6399,7 +6289,6 @@
     },
     "stats_last_7_days" : {
       "comment" : "Last 7 days title",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6417,7 +6306,6 @@
     },
     "stats_legend_less" : {
       "comment" : "Less activity",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6435,7 +6323,6 @@
     },
     "stats_legend_more" : {
       "comment" : "More activity",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6453,7 +6340,6 @@
     },
     "stats_longest" : {
       "comment" : "Longest",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6471,7 +6357,6 @@
     },
     "stats_longest_single_session" : {
       "comment" : "Longest single session label",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6489,7 +6374,6 @@
     },
     "stats_longest_streak" : {
       "comment" : "Longest streak label",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6507,7 +6391,6 @@
     },
     "stats_monthly_summary" : {
       "comment" : "Monthly summary title",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6525,7 +6408,6 @@
     },
     "stats_most_used_type" : {
       "comment" : "Most used type label",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6543,7 +6425,6 @@
     },
     "stats_this_month" : {
       "comment" : "This month",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6561,7 +6442,6 @@
     },
     "stats_this_week" : {
       "comment" : "This week",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6579,7 +6459,6 @@
     },
     "stats_total_focus_sessions" : {
       "comment" : "Total focus sessions label",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6597,7 +6476,6 @@
     },
     "stats_total_meditation_time" : {
       "comment" : "Total meditation time label",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6615,7 +6493,6 @@
     },
     "stats_total_sessions" : {
       "comment" : "Total sessions label",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6908,7 +6785,6 @@
     },
     "time_remaining_hours" : {
       "comment" : "Time remaining in hours",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6926,7 +6802,6 @@
     },
     "time_remaining_hours_minutes" : {
       "comment" : "Time remaining in hours and minutes",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6944,7 +6819,6 @@
     },
     "time_remaining_minutes" : {
       "comment" : "Time remaining in minutes",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6962,7 +6836,6 @@
     },
     "timer_state_completed" : {
       "comment" : "Timer completed status",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6980,7 +6853,6 @@
     },
     "timer_state_pause" : {
       "comment" : "Timer pause button",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -6998,7 +6870,6 @@
     },
     "timer_state_resume" : {
       "comment" : "Timer resume button",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -7016,7 +6887,6 @@
     },
     "timer_state_start" : {
       "comment" : "Timer start button",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -7067,7 +6937,6 @@
     },
     "total_time_hours" : {
       "comment" : "Total time in hours",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -7085,7 +6954,6 @@
     },
     "total_time_hours_minutes" : {
       "comment" : "Total time in hours and minutes",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -7103,7 +6971,6 @@
     },
     "total_time_minutes" : {
       "comment" : "Total time in minutes",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -7334,7 +7201,6 @@
       }
     },
     "unit_days" : {
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -7352,7 +7218,6 @@
     },
     "unit_hour_short" : {
       "comment" : "Hours short symbol",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -7370,7 +7235,6 @@
     },
     "unit_min_short" : {
       "comment" : "Minutes short symbol\nMinutes short unit",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -7387,7 +7251,6 @@
       }
     },
     "unit_minutes" : {
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -7466,7 +7329,6 @@
     },
     "weekday_short_fri" : {
       "comment" : "Friday short",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -7484,7 +7346,6 @@
     },
     "weekday_short_mon" : {
       "comment" : "Monday short",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -7502,7 +7363,6 @@
     },
     "weekday_short_sat" : {
       "comment" : "Saturday short",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -7520,7 +7380,6 @@
     },
     "weekday_short_sun" : {
       "comment" : "Sunday short",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -7538,7 +7397,6 @@
     },
     "weekday_short_thu" : {
       "comment" : "Thursday short",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -7556,7 +7414,6 @@
     },
     "weekday_short_tue" : {
       "comment" : "Tuesday short",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -7574,7 +7431,6 @@
     },
     "weekday_short_wed" : {
       "comment" : "Wednesday short",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -7660,7 +7516,6 @@
     },
     "zen_backup_default" : {
       "comment" : "Default backup quote",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -7678,7 +7533,6 @@
     },
     "zen_backup_quote_0" : {
       "comment" : "Backup Zen quote 0",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -7696,7 +7550,6 @@
     },
     "zen_backup_quote_1" : {
       "comment" : "Backup Zen quote 1",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -7714,7 +7567,6 @@
     },
     "zen_backup_quote_2" : {
       "comment" : "Backup Zen quote 2",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -7732,7 +7584,6 @@
     },
     "zen_backup_quote_3" : {
       "comment" : "Backup Zen quote 3",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -7750,7 +7601,6 @@
     },
     "zen_backup_quote_4" : {
       "comment" : "Backup Zen quote 4",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -7768,7 +7618,6 @@
     },
     "zen_backup_quote_5" : {
       "comment" : "Backup Zen quote 5",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -7786,7 +7635,6 @@
     },
     "zen_backup_quote_6" : {
       "comment" : "Backup Zen quote 6",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -7804,7 +7652,6 @@
     },
     "zen_backup_quote_7" : {
       "comment" : "Backup Zen quote 7",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -7822,7 +7669,6 @@
     },
     "zen_backup_quote_8" : {
       "comment" : "Backup Zen quote 8",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -7840,7 +7686,6 @@
     },
     "zen_backup_quote_9" : {
       "comment" : "Backup Zen quote 9",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -7858,7 +7703,6 @@
     },
     "zen_backup_quote_10" : {
       "comment" : "Backup Zen quote 10",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -7876,7 +7720,6 @@
     },
     "zen_backup_quote_11" : {
       "comment" : "Backup Zen quote 11",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -7894,7 +7737,6 @@
     },
     "zen_backup_quote_12" : {
       "comment" : "Backup Zen quote 12",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -7912,7 +7754,6 @@
     },
     "zen_backup_quote_13" : {
       "comment" : "Backup Zen quote 13",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -7930,7 +7771,6 @@
     },
     "zen_backup_quote_14" : {
       "comment" : "Backup Zen quote 14",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -8288,7 +8128,6 @@
     },
     "zen_fallback_understanding" : {
       "comment" : "Default fallback response",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -8476,7 +8315,6 @@
     },
     "zen_opening_0" : {
       "comment" : "Empathetic opening 0",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -8494,7 +8332,6 @@
     },
     "zen_opening_1" : {
       "comment" : "Empathetic opening 1",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -8512,7 +8349,6 @@
     },
     "zen_opening_2" : {
       "comment" : "Empathetic opening 2",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -8530,7 +8366,6 @@
     },
     "zen_opening_3" : {
       "comment" : "Empathetic opening 3",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -8548,7 +8383,6 @@
     },
     "zen_opening_4" : {
       "comment" : "Empathetic opening 4",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -8566,7 +8400,6 @@
     },
     "zen_opening_5" : {
       "comment" : "Empathetic opening 5",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -8584,7 +8417,6 @@
     },
     "zen_opening_6" : {
       "comment" : "Empathetic opening 6",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -8602,7 +8434,6 @@
     },
     "zen_opening_7" : {
       "comment" : "Empathetic opening 7",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -8620,7 +8451,6 @@
     },
     "zen_opening_8" : {
       "comment" : "Empathetic opening 8",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -8638,7 +8468,6 @@
     },
     "zen_opening_9" : {
       "comment" : "Empathetic opening 9",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -8656,7 +8485,6 @@
     },
     "zen_quote_daily_0" : {
       "comment" : "Daily quote 0",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -8674,7 +8502,6 @@
     },
     "zen_quote_daily_1" : {
       "comment" : "Daily quote 1",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -8692,7 +8519,6 @@
     },
     "zen_quote_daily_2" : {
       "comment" : "Daily quote 2",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -8710,7 +8536,6 @@
     },
     "zen_quote_daily_3" : {
       "comment" : "Daily quote 3",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -8728,7 +8553,6 @@
     },
     "zen_quote_daily_4" : {
       "comment" : "Daily quote 4",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -8746,7 +8570,6 @@
     },
     "zen_quote_daily_5" : {
       "comment" : "Daily quote 5",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -8764,7 +8587,6 @@
     },
     "zen_quote_daily_6" : {
       "comment" : "Daily quote 6",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -8782,7 +8604,6 @@
     },
     "zen_quote_daily_7" : {
       "comment" : "Daily quote 7",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -8800,7 +8621,6 @@
     },
     "zen_quote_daily_8" : {
       "comment" : "Daily quote 8",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -8818,7 +8638,6 @@
     },
     "zen_quote_daily_9" : {
       "comment" : "Daily quote 9",
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {

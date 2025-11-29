@@ -1,0 +1,60 @@
+{
+  "appPolicies" : {
+    "eula" : "",
+    "policies" : [
+      {
+        "locale" : "en_US",
+        "policyText" : "",
+        "policyURL" : ""
+      }
+    ]
+  },
+  "identifier" : "EE1E9501",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "0.99",
+      "familyShareable" : false,
+      "internalID" : "6C98E64C",
+      "localizations" : [
+        {
+          "description" : "Unlock all breathing exercises, ambient sounds, advanced statistics, and premium themes with a one-time lifetime purchase.",
+          "displayName" : "ZenFlow Premium",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "Tüm nefes egzersizlerini, ortam seslerini, gelişmiş istatistikleri ve premium temaları tek seferlik ömür boyu satın alma ile kilidi açın.",
+          "displayName" : "ZenFlow Premium",
+          "locale" : "tr"
+        }
+      ],
+      "productID" : "com.zenflow.premium.lifetime",
+      "promotionalImageID" : "7ABBE079",
+      "referenceName" : "Premium Lifetime",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_askToBuyEnabled" : false,
+    "_billingGracePeriodEnabled" : false,
+    "_billingIssuesEnabled" : false,
+    "_disableDialogs" : false,
+    "_failTransactionsEnabled" : false,
+    "_locale" : "en_US",
+    "_renewalBillingIssuesEnabled" : false,
+    "_storefront" : "USA",
+    "_storeKitErrors" : [
+
+    ],
+    "_timeRate" : 0
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 4,
+    "minor" : 0
+  }
+}

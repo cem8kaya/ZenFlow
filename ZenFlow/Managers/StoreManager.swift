@@ -10,6 +10,7 @@
 
 import SwiftUI
 import StoreKit
+import Combine
 
 /// Manager for in-app purchases and premium features
 @MainActor
@@ -21,8 +22,16 @@ class StoreManager: ObservableObject {
 
     // MARK: - Product IDs
 
-    private let premiumProductID = "com.zenflow.premium.lifetime"
+    //    private let premiumProductID = "com.zenflow.premium.lifetime"
 
+    #if DEBUG
+    private let premiumProductID = "com.zenflow.premium.lifetime" // Sandbox'ta aynı ID kullanılır
+    private let isTestMode = true
+    #else
+    private let premiumProductID = "com.zenflow.premium.lifetime"
+    private let isTestMode = false
+    #endif
+    
     // MARK: - Published Properties
 
     @Published private(set) var isPremiumUnlocked: Bool = false
@@ -203,7 +212,7 @@ class StoreManager: ObservableObject {
             // Iterate through any transactions that don't come from a direct call to `purchase()`
             for await result in Transaction.updates {
                 do {
-                    let transaction = try self.checkVerified(result)
+                    let transaction = try await self.checkVerified(result)
 
                     // Check if this unlocks premium
                     if transaction.productID == self.premiumProductID {
