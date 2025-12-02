@@ -256,7 +256,7 @@ class StoreManager: ObservableObject {
     /// Get formatted price for the premium product
     var premiumPrice: String {
         guard let product = products.first(where: { $0.id == premiumProductID }) else {
-            return "$4.99"
+            return "$2.99"
         }
         return product.displayPrice
     }
