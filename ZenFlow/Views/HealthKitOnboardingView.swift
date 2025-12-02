@@ -74,48 +74,31 @@ struct HealthKitOnboardingView: View {
                         .transition(.opacity)
                 }
 
-                // Buttons
-                VStack(spacing: 16) {
-                    // Allow button
-                    Button(action: requestAuthorization) {
-                        HStack {
-                            if isRequesting {
-                                ProgressView()
-                                    .progressViewStyle(CircularProgressViewStyle(tint: .white))
-                                    .scaleEffect(0.8)
-                            }
-                            Text(isRequesting ? String(localized: "healthkit_requesting", defaultValue: "İzin İsteniyor...", comment: "HealthKit requesting permission") : String(localized: "healthkit_allow", defaultValue: "İzin Ver", comment: "HealthKit allow button"))
-                                .font(.system(size: 18, weight: .semibold))
+                // Continue button
+                Button(action: requestAuthorization) {
+                    HStack {
+                        if isRequesting {
+                            ProgressView()
+                                .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                                .scaleEffect(0.8)
                         }
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 56)
-                        .background(
-                            LinearGradient(
-                                colors: [ZenTheme.lightLavender, ZenTheme.softPurple],
-                                startPoint: .leading,
-                                endPoint: .trailing
-                            )
+                        Text(isRequesting ? String(localized: "healthkit_requesting", defaultValue: "İzin İsteniyor...", comment: "HealthKit requesting permission") : String(localized: "button_continue", defaultValue: "Devam Et", comment: "Continue button"))
+                            .font(.system(size: 18, weight: .semibold))
+                    }
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 56)
+                    .background(
+                        LinearGradient(
+                            colors: [ZenTheme.lightLavender, ZenTheme.softPurple],
+                            startPoint: .leading,
+                            endPoint: .trailing
                         )
-                        .foregroundColor(.white)
-                        .cornerRadius(16)
-                    }
-                    .disabled(isRequesting)
-                    .padding(.horizontal, 40)
-
-                    // Skip button
-                    Button(action: {
-                        HapticManager.shared.playImpact(style: .light)
-                        isPresented = false
-                    }) {
-                        Text(String(localized: "button_not_now", defaultValue: "Şimdi Değil", comment: "Not now button"))
-                            .font(.system(size: 16, weight: .medium))
-                            .foregroundColor(ZenTheme.softPurple)
-                            .frame(maxWidth: .infinity)
-                            .frame(height: 48)
-                    }
-                    .disabled(isRequesting)
-                    .padding(.horizontal, 40)
+                    )
+                    .foregroundColor(.white)
+                    .cornerRadius(16)
                 }
+                .disabled(isRequesting)
+                .padding(.horizontal, 40)
                 .padding(.bottom, 60)
             }
         }
