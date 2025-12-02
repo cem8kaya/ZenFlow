@@ -330,41 +330,28 @@ private struct HealthKitPermissionView: View {
 
                 Spacer()
 
-                VStack(spacing: 16) {
-                    // Allow button
-                    Button(action: {
-                        HealthKitManager.shared.requestAuthorization { _,_  in
-                            isPresented = false
-                            onComplete()
-                        }
-                    }) {
-                        Text(String(localized: "healthkit_allow", defaultValue: "İzin Ver", comment: "Allow HealthKit permission button"))
-                            .font(.system(size: 17, weight: .semibold))
-                            .foregroundColor(.white)
-                            .frame(maxWidth: .infinity)
-                            .frame(height: 54)
-                            .background(
-                                RoundedRectangle(cornerRadius: 16)
-                                    .fill(
-                                        LinearGradient(
-                                            colors: [ZenTheme.calmBlue, ZenTheme.mysticalViolet],
-                                            startPoint: .leading,
-                                            endPoint: .trailing
-                                        )
-                                    )
-                            )
-                    }
-
-                    // Skip button
-                    Button(action: {
+                // Continue button
+                Button(action: {
+                    HealthKitManager.shared.requestAuthorization { _,_  in
                         isPresented = false
                         onComplete()
-                    }) {
-                        Text(String(localized: "button_not_now", defaultValue: "Şimdi Değil", comment: "Not now button"))
-                            .font(.system(size: 16, weight: .medium))
-                            .foregroundColor(ZenTheme.softPurple)
-                            .padding(.vertical, 12)
                     }
+                }) {
+                    Text(String(localized: "button_continue", defaultValue: "Devam Et", comment: "Continue button"))
+                        .font(.system(size: 17, weight: .semibold))
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 54)
+                        .background(
+                            RoundedRectangle(cornerRadius: 16)
+                                .fill(
+                                    LinearGradient(
+                                        colors: [ZenTheme.calmBlue, ZenTheme.mysticalViolet],
+                                        startPoint: .leading,
+                                        endPoint: .trailing
+                                    )
+                                )
+                        )
                 }
                 .padding(.horizontal, 32)
                 .padding(.bottom, 40)

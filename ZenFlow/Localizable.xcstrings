@@ -1710,6 +1710,23 @@
         }
       }
     },
+    "button_continue" : {
+      "comment" : "Continue button",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continue"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Devam Et"
+          }
+        }
+      }
+    },
     "button_start" : {
       "comment" : "Start button",
       "localizations" : {
