@@ -6,8 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		878193C12EDF72C3008C7347 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 878193C02EDF72C3008C7347 /* StoreKit.framework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		8775A7292EC9EBD1002EF46A /* ZenFlow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZenFlow.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		878193C02EDF72C3008C7347 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		87832CC32ED3B93300B60D16 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -37,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				878193C12EDF72C3008C7347 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +69,7 @@
 		87832CC02ED3B93300B60D16 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				878193C02EDF72C3008C7347 /* StoreKit.framework */,
 				87832CC32ED3B93300B60D16 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
@@ -286,10 +293,10 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ZenFlow/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = MyZenFlow;
+				INFOPLIST_KEY_CFBundleDisplayName = MyZenFlowApp;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
-				INFOPLIST_KEY_NSHealthShareUsageDescription = "MyZenFlow meditasyon seanslarınızı HealthKit'e kaydetmek için izninize ihtiyaç duyuyor.";
-				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "MyZenFlow meditasyon seanslarınızı HealthKit'e kaydetmek için izninize ihtiyaç duyuyor.";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "MyZenFlowApp meditasyon seanslarınızı HealthKit'e kaydetmek için izninize ihtiyaç duyuyor.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "MyZenFlowApp meditasyon seanslarınızı HealthKit'e kaydetmek için izninize ihtiyaç duyuyor.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -329,10 +336,10 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ZenFlow/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = MyZenFlow;
+				INFOPLIST_KEY_CFBundleDisplayName = MyZenFlowApp;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
-				INFOPLIST_KEY_NSHealthShareUsageDescription = "MyZenFlow meditasyon seanslarınızı HealthKit'e kaydetmek için izninize ihtiyaç duyuyor.";
-				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "MyZenFlow meditasyon seanslarınızı HealthKit'e kaydetmek için izninize ihtiyaç duyuyor.";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "MyZenFlowApp meditasyon seanslarınızı HealthKit'e kaydetmek için izninize ihtiyaç duyuyor.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "MyZenFlowApp meditasyon seanslarınızı HealthKit'e kaydetmek için izninize ihtiyaç duyuyor.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

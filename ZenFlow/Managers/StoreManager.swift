@@ -22,7 +22,7 @@ class StoreManager: ObservableObject {
 
     // MARK: - Product IDs
 
-    private let premiumProductID = "com.myzenflow.premium.lifetime"
+    private let premiumProductID = "com.oqza.myzenflowapp.premium.lifetime"
 
     
     // MARK: - Published Properties

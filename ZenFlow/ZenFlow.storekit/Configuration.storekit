@@ -30,7 +30,7 @@
           "locale" : "tr"
         }
       ],
-      "productID" : "com.myzenflow.premium.lifetime",
+      "productID" : "com.oqza.myzenflowapp.premium.lifetime",
       "referenceName" : "Premium Lifetime",
       "type" : "NonConsumable"
     }
