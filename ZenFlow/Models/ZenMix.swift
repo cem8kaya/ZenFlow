@@ -91,7 +91,9 @@ extension ZenMix {
             name: String(localized: "mix_storm_shelter_name", defaultValue: "Fırtına Sığınağı", comment: "Storm Shelter mix name"),
             iconName: "cloud.bolt.rain.fill",
             description: String(localized: "mix_storm_shelter_desc", defaultValue: "Gök gürültüsü ve sıcak şömine", comment: "Storm Shelter mix description"),
-            soundFileNames: ["thunderstorm", "fireplace"],
+            // Note: uses "campfire" because the "fireplace" catalog entry has no
+            // audio asset in Assets.xcassets/Sounds
+            soundFileNames: ["thunderstorm", "campfire"],
             accentColor: ZenTheme.mysticalViolet,
             isPremium: true
         )

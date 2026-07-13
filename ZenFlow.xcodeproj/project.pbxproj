@@ -10,8 +10,19 @@
 		878193C12EDF72C3008C7347 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 878193C02EDF72C3008C7347 /* StoreKit.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		D3C0FEE12F13AB0000000001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8775A7212EC9EBD1002EF46A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8775A7282EC9EBD1002EF46A;
+			remoteInfo = ZenFlow;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		8775A7292EC9EBD1002EF46A /* ZenFlow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZenFlow.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3C0FEE12F13AB0000000002 /* ZenFlowTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZenFlowTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		878193C02EDF72C3008C7347 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		87832CC32ED3B93300B60D16 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -35,6 +46,13 @@
 			path = ZenFlow;
 			sourceTree = "<group>";
 		};
+		D3C0FEE12F13AB0000000003 /* ZenFlowTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+			);
+			path = ZenFlowTests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +64,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D3C0FEE12F13AB0000000004 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -53,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				8775A72B2EC9EBD1002EF46A /* ZenFlow */,
+				D3C0FEE12F13AB0000000003 /* ZenFlowTests */,
 				87832CC02ED3B93300B60D16 /* Frameworks */,
 				8775A72A2EC9EBD1002EF46A /* Products */,
 			);
@@ -62,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				8775A7292EC9EBD1002EF46A /* ZenFlow.app */,
+				D3C0FEE12F13AB0000000002 /* ZenFlowTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -100,6 +127,29 @@
 			productReference = 8775A7292EC9EBD1002EF46A /* ZenFlow.app */;
 			productType = "com.apple.product-type.application";
 		};
+		D3C0FEE12F13AB0000000005 /* ZenFlowTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D3C0FEE12F13AB000000000A /* Build configuration list for PBXNativeTarget "ZenFlowTests" */;
+			buildPhases = (
+				D3C0FEE12F13AB0000000006 /* Sources */,
+				D3C0FEE12F13AB0000000004 /* Frameworks */,
+				D3C0FEE12F13AB0000000007 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D3C0FEE12F13AB0000000008 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				D3C0FEE12F13AB0000000003 /* ZenFlowTests */,
+			);
+			name = ZenFlowTests;
+			packageProductDependencies = (
+			);
+			productName = ZenFlowTests;
+			productReference = D3C0FEE12F13AB0000000002 /* ZenFlowTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -112,6 +162,10 @@
 				TargetAttributes = {
 					8775A7282EC9EBD1002EF46A = {
 						CreatedOnToolsVersion = 26.0.1;
+					};
+					D3C0FEE12F13AB0000000005 = {
+						CreatedOnToolsVersion = 26.0.1;
+						TestTargetID = 8775A7282EC9EBD1002EF46A;
 					};
 				};
 			};
@@ -133,12 +187,20 @@
 			projectRoot = "";
 			targets = (
 				8775A7282EC9EBD1002EF46A /* ZenFlow */,
+				D3C0FEE12F13AB0000000005 /* ZenFlowTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		8775A7272EC9EBD1002EF46A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3C0FEE12F13AB0000000007 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -155,7 +217,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D3C0FEE12F13AB0000000006 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D3C0FEE12F13AB0000000008 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8775A7282EC9EBD1002EF46A /* ZenFlow */;
+			targetProxy = D3C0FEE12F13AB0000000001 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		8775A7372EC9EBD3002EF46A /* Debug */ = {
@@ -365,6 +442,50 @@
 			};
 			name = Release;
 		};
+		D3C0FEE12F13AB0000000010 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5T896483H9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.oqza.MyZenFlowAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ZenFlow.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ZenFlow";
+			};
+			name = Debug;
+		};
+		D3C0FEE12F13AB0000000011 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5T896483H9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.oqza.MyZenFlowAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ZenFlow.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ZenFlow";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -382,6 +503,15 @@
 			buildConfigurations = (
 				8775A73A2EC9EBD3002EF46A /* Debug */,
 				8775A73B2EC9EBD3002EF46A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D3C0FEE12F13AB000000000A /* Build configuration list for PBXNativeTarget "ZenFlowTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3C0FEE12F13AB0000000010 /* Debug */,
+				D3C0FEE12F13AB0000000011 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

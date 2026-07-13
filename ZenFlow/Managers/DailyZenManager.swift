@@ -56,11 +56,19 @@ class DailyZenManager: ObservableObject {
     /// Deterministic teaching for today: rotates daily through the wisdom
     /// library so every user sees the same teaching all day long.
     var teachingOfTheDay: ZenTeaching {
-        let categories = ZenCategory.allCases
-        let daysSinceReference = Int(Calendar.current.startOfDay(for: Date()).timeIntervalSinceReferenceDate / 86400)
-        let index = ((daysSinceReference % categories.count) + categories.count) % categories.count
-        // ZenWisdomLibrary maps teaching index i to ZenCategory.allCases[i]
-        return ZenTeaching(teachingIndex: index, category: categories[index])
+        let library = ZenWisdomLibrary.shared
+        let index = Self.dailyRotationIndex(for: Date(), count: library.teachingCount)
+        return library.getTeaching(at: index) ?? library.getRandomTeaching()
+    }
+
+    /// Index into a collection of `count` items that changes once per calendar
+    /// day and is stable within the day. Uses the calendar's day ordinality so
+    /// DST transitions cannot repeat or skip an index.
+    static func dailyRotationIndex(for date: Date, count: Int, calendar: Calendar = .current) -> Int {
+        guard count > 0 else { return 0 }
+        let day = calendar.ordinality(of: .day, in: .era, for: date)
+            ?? Int(calendar.startOfDay(for: date).timeIntervalSinceReferenceDate / 86400)
+        return ((day % count) + count) % count
     }
 
     // MARK: - Gratitude Journal
@@ -98,11 +106,17 @@ class DailyZenManager: ObservableObject {
     /// Consecutive days with a gratitude entry, counting back from today
     /// (or from yesterday if today's entry hasn't been written yet)
     var currentStreak: Int {
-        let calendar = Calendar.current
-        let entryDays = Set(entries.map { calendar.startOfDay(for: $0.date) })
+        Self.computeStreak(entryDates: entries.map { $0.date }, today: Date())
+    }
+
+    /// Pure streak computation: consecutive days with at least one entry,
+    /// counting back from `today` (or from yesterday when `today` has no
+    /// entry yet, so an unbroken streak isn't shown as zero mid-day).
+    static func computeStreak(entryDates: [Date], today: Date, calendar: Calendar = .current) -> Int {
+        let entryDays = Set(entryDates.map { calendar.startOfDay(for: $0) })
         guard !entryDays.isEmpty else { return 0 }
 
-        var day = calendar.startOfDay(for: Date())
+        var day = calendar.startOfDay(for: today)
         if !entryDays.contains(day) {
             // Today not written yet - streak continues from yesterday
             guard let yesterday = calendar.date(byAdding: .day, value: -1, to: day) else { return 0 }
