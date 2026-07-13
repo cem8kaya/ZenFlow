@@ -25,6 +25,8 @@ struct ZenCoachView: View {
     @State private var showClearAlert: Bool = false
     @FocusState private var isInputFocused: Bool
     @State private var scrollProxy: ScrollViewProxy?
+    @State private var showDailyZenMoment: Bool = false
+    @ObservedObject private var dailyZen = DailyZenManager.shared
 
     // MARK: - Body
 
@@ -58,6 +60,9 @@ struct ZenCoachView: View {
                 } message: {
                     Text(String(localized: "zen_coach_clear_history_message", defaultValue: "Tüm sohbet geçmişi silinecek. Emin misiniz?", comment: "Clear history confirmation message"))
                 }
+        .sheet(isPresented: $showDailyZenMoment) {
+            DailyZenMomentView()
+        }
             }
 
     // MARK: - Header
@@ -123,6 +128,31 @@ struct ZenCoachView: View {
                         }
 
             Spacer()
+
+            // Daily Zen Moment button
+            Button(action: {
+                HapticManager.shared.playImpact(style: .light)
+                showDailyZenMoment = true
+            }) {
+                ZStack(alignment: .topTrailing) {
+                    Image(systemName: "sparkles")
+                        .font(.system(size: 18))
+                        .foregroundColor(ZenTheme.lightLavender)
+                        .frame(width: 36, height: 36)
+                        .background(
+                            Circle()
+                                .fill(Color.white.opacity(0.1))
+                        )
+
+                    // Attention dot until today's zen moment is completed
+                    if !dailyZen.hasCheckedInToday {
+                        Circle()
+                            .fill(Color.orange)
+                            .frame(width: 8, height: 8)
+                    }
+                }
+            }
+            .accessibilityLabel(String(localized: "daily_zen_button_accessibility", defaultValue: "Günün Zen Anı", comment: "Daily Zen Moment button accessibility"))
 
             // Clear history button
             if !manager.messages.isEmpty {

@@ -26,6 +26,10 @@ struct SoundPickerSheet: View {
 
                 ScrollView {
                     VStack(spacing: 24) {
+                        // Curated soundscape presets (Zen Mixes)
+                        ZenMixPicker()
+                            .padding(.top, 8)
+
                         // Sound Picker
                         AmbientSoundPicker(
                             selectedSounds: $soundManager.activeSounds,
