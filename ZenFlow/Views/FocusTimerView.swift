@@ -419,6 +419,9 @@ struct FocusTimerView: View {
         timerState = .running
         HapticManager.shared.playSessionStart()
 
+        // Start periodic mindfulness bell (if enabled in settings)
+        MindfulnessBellManager.shared.startBell()
+
         // Start ambient sounds with fade in
         if soundManager.isEnabled && !soundManager.activeSounds.isEmpty {
             for sound in soundManager.activeSounds where !sound.fileName.isEmpty {
@@ -456,6 +459,7 @@ struct FocusTimerView: View {
         timer = nil
         sessionEndTime = nil // Clear end time when paused
         HapticManager.shared.playImpact(style: .light)
+        MindfulnessBellManager.shared.pauseBell()
 
         // Reduce ambient sound volume to 50% when paused
         volumeBeforePause = soundManager.volume
@@ -493,6 +497,7 @@ struct FocusTimerView: View {
         timeRemaining = currentMode.durationSeconds
         sessionEndTime = nil
         HapticManager.shared.playImpact(style: .medium)
+        MindfulnessBellManager.shared.stopBell()
 
         // Stop ambient sounds with fade out
         soundManager.stopAllSounds(fadeOutDuration: 2.0)
@@ -501,6 +506,7 @@ struct FocusTimerView: View {
     private func timerCompleted() {
         stopTimer()
         timerState = .completed
+        MindfulnessBellManager.shared.stopBell()
 
         // Stop ambient sounds with fade out
         soundManager.stopAllSounds(fadeOutDuration: 2.0)
@@ -549,6 +555,7 @@ struct FocusTimerView: View {
     private func skipToNextMode() {
         stopTimer()
         HapticManager.shared.playImpact(style: .medium)
+        MindfulnessBellManager.shared.stopBell()
 
         // Don't count skipped sessions
         moveToNextMode()

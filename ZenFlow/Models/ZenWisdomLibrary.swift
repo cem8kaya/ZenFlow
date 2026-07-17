@@ -108,6 +108,17 @@ class ZenWisdomLibrary {
         return teachings.randomElement() ?? teachings[0]
     }
 
+    /// Sıra numarasına göre öğreti al (deterministik günlük rotasyon için)
+    func getTeaching(at index: Int) -> ZenTeaching? {
+        guard index >= 0 && index < teachings.count else { return nil }
+        return teachings[index]
+    }
+
+    /// Kütüphanedeki toplam öğreti sayısı
+    var teachingCount: Int {
+        return teachings.count
+    }
+
     /// Kullanıcı bağlamına göre uygun öğreti al
     func getTeachingForContext(sessionCount: Int, lastSessionDate: Date?, currentMood: String?) -> ZenTeaching {
         // Başlangıç kullanıcıları için

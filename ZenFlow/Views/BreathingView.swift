@@ -683,6 +683,9 @@ struct BreathingView: View {
         // Play session start haptic
         HapticManager.shared.playSessionStart()
 
+        // Start periodic mindfulness bell (if enabled in settings)
+        MindfulnessBellManager.shared.startBell()
+
         // Start session duration timer
         let durationInSeconds = TimeInterval(selectedDurationMinutes * 60)
         sessionStartTime = Date()
@@ -710,6 +713,9 @@ struct BreathingView: View {
         isPaused = false
         cleanupTimers() // Use centralized cleanup
         currentPhaseIndex = 0
+
+        // Stop mindfulness bell
+        MindfulnessBellManager.shared.stopBell()
 
         // Stop ambient sounds with fade out
         soundManager.stopAllSounds(fadeOutDuration: 3.0)
@@ -793,6 +799,9 @@ struct BreathingView: View {
         // Stop haptic engine when paused
         hapticManager.stopEngine()
 
+        // Pause mindfulness bell
+        MindfulnessBellManager.shared.pauseBell()
+
         // Accessibility announcement
         UIAccessibility.post(notification: .announcement, argument: String(localized: "accessibility_meditation_paused", defaultValue: "Meditasyon duraklatıldı", comment: "Meditation paused announcement"))
     }
@@ -813,6 +822,9 @@ struct BreathingView: View {
 
         // Restart haptic engine when resumed
         hapticManager.startEngine()
+
+        // Resume mindfulness bell
+        MindfulnessBellManager.shared.resumeBell()
 
         // Accessibility announcement
         UIAccessibility.post(notification: .announcement, argument: String(localized: "accessibility_meditation_resumed", defaultValue: "Meditasyon devam ediyor", comment: "Meditation resumed announcement"))

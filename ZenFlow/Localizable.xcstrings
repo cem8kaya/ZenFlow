@@ -9592,6 +9592,516 @@
           }
         }
       }
+    },
+    "zen_mixes_title" : {
+      "comment" : "Zen Mixes section title",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zen Mixes"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zen Karışımları"
+          }
+        }
+      }
+    },
+    "zen_mixes_subtitle" : {
+      "comment" : "Zen Mixes section subtitle",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ready-made atmospheres in one tap"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tek dokunuşla hazır atmosferler"
+          }
+        }
+      }
+    },
+    "mix_rainy_fireside_name" : {
+      "comment" : "Rainy Fireside mix name",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rainy Fireside"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yağmurlu Şömine"
+          }
+        }
+      }
+    },
+    "mix_rainy_fireside_desc" : {
+      "comment" : "Rainy Fireside mix description",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rain and a crackling fireplace"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yağmur ve çıtırdayan şömine"
+          }
+        }
+      }
+    },
+    "mix_forest_stream_name" : {
+      "comment" : "Forest Stream mix name",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forest Stream"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orman Deresi"
+          }
+        }
+      }
+    },
+    "mix_forest_stream_desc" : {
+      "comment" : "Forest Stream mix description",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forest sounds and a flowing stream"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orman sesleri ve akan dere"
+          }
+        }
+      }
+    },
+    "mix_ocean_breeze_name" : {
+      "comment" : "Ocean Breeze mix name",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ocean Breeze"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Okyanus Esintisi"
+          }
+        }
+      }
+    },
+    "mix_ocean_breeze_desc" : {
+      "comment" : "Ocean Breeze mix description",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Waves and a gentle wind"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dalgalar ve hafif rüzgar"
+          }
+        }
+      }
+    },
+    "mix_starry_night_name" : {
+      "comment" : "Starry Night mix name",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Starry Night"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yıldızlı Gece"
+          }
+        }
+      }
+    },
+    "mix_starry_night_desc" : {
+      "comment" : "Starry Night mix description",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Night sounds and a campfire"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gece sesleri ve kamp ateşi"
+          }
+        }
+      }
+    },
+    "mix_mountain_temple_name" : {
+      "comment" : "Mountain Temple mix name",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mountain Temple"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dağ Tapınağı"
+          }
+        }
+      }
+    },
+    "mix_mountain_temple_desc" : {
+      "comment" : "Mountain Temple mix description",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mountain breeze and wind chimes"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dağ esintisi ve rüzgar çanları"
+          }
+        }
+      }
+    },
+    "mix_storm_shelter_name" : {
+      "comment" : "Storm Shelter mix name",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Storm Shelter"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fırtına Sığınağı"
+          }
+        }
+      }
+    },
+    "mix_storm_shelter_desc" : {
+      "comment" : "Storm Shelter mix description",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thunder and a warm fireplace"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gök gürültüsü ve sıcak şömine"
+          }
+        }
+      }
+    },
+    "settings_mindfulness_bell" : {
+      "comment" : "Mindfulness bell setting",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mindfulness Bell"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Farkındalık Çanı"
+          }
+        }
+      }
+    },
+    "settings_bell_interval" : {
+      "comment" : "Bell interval label",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bell Interval"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çan Aralığı"
+          }
+        }
+      }
+    },
+    "settings_bell_preview" : {
+      "comment" : "Preview bell sound button",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preview Bell"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çanı Dinle"
+          }
+        }
+      }
+    },
+    "settings_bell_section" : {
+      "comment" : "Mindfulness bell section header",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mindfulness Bell"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Farkındalık Çanı"
+          }
+        }
+      }
+    },
+    "settings_bell_footer" : {
+      "comment" : "Mindfulness bell footer",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plays a soft Tibetan bowl chime at your chosen interval during meditation and focus sessions, gently returning your attention to the present moment."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meditasyon ve odaklanma oturumları sırasında seçtiğin aralıkla yumuşak bir Tibet çanı çalar. Dikkatin dağıldığında seni nazikçe şimdiki ana geri getirir."
+          }
+        }
+      }
+    },
+    "daily_zen_title" : {
+      "comment" : "Daily Zen Moment title",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daily Zen Moment"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Günün Zen Anı"
+          }
+        }
+      }
+    },
+    "daily_zen_done" : {
+      "comment" : "Done button",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamam"
+          }
+        }
+      }
+    },
+    "daily_zen_greeting" : {
+      "comment" : "Daily zen greeting",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pause for a moment today"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugün için bir an dur"
+          }
+        }
+      }
+    },
+    "daily_zen_streak_accessibility" : {
+      "comment" : "Gratitude streak accessibility",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gratitude streak: %lld days"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şükran serisi: %lld gün"
+          }
+        }
+      }
+    },
+    "daily_zen_gratitude_title" : {
+      "comment" : "Gratitude question",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What are you grateful for today?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugün ne için minnettarsın?"
+          }
+        }
+      }
+    },
+    "daily_zen_gratitude_placeholder" : {
+      "comment" : "Gratitude placeholder",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A single sentence is enough..."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tek bir cümle yeter..."
+          }
+        }
+      }
+    },
+    "daily_zen_gratitude_save" : {
+      "comment" : "Save gratitude button",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaydet"
+          }
+        }
+      }
+    },
+    "daily_zen_gratitude_saved" : {
+      "comment" : "Gratitude saved",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saved"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaydedildi"
+          }
+        }
+      }
+    },
+    "daily_zen_recent_title" : {
+      "comment" : "Recent gratitude notes title",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your Recent Notes"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Son Notların"
+          }
+        }
+      }
+    },
+    "daily_zen_button_accessibility" : {
+      "comment" : "Daily Zen Moment button accessibility",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daily Zen Moment"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Günün Zen Anı"
+          }
+        }
+      }
+    },
+    "bell_interval_minutes" : {
+      "comment" : "Bell interval in minutes",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld min"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld dk"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

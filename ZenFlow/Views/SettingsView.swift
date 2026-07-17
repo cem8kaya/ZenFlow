@@ -26,6 +26,7 @@ struct SettingsView: View {
     @State private var showResetSuccess = false
     @State private var showPaywall = false
     @StateObject private var storeManager = StoreManager.shared
+    @StateObject private var bellManager = MindfulnessBellManager.shared
 
     // MARK: - Computed Properties
 
@@ -175,6 +176,60 @@ struct SettingsView: View {
                     Text(String(localized: "settings_audio_section", defaultValue: "Ses Ayarları", comment: "Audio settings section header"))
                 } footer: {
                     Text(String(localized: "settings_audio_footer", defaultValue: "Meditasyon sırasında çalacak ortam seslerini yönet.", comment: "Audio settings footer"))
+                }
+
+                // MARK: - Mindfulness Bell Section
+
+                Section {
+                    if #available(iOS 17.0, *) {
+                        Toggle(isOn: $bellManager.isEnabled) {
+                            HStack {
+                                Image(systemName: "bell.fill")
+                                    .foregroundColor(ZenTheme.calmBlue)
+                                    .frame(width: 28)
+                                Text(String(localized: "settings_mindfulness_bell", defaultValue: "Farkındalık Çanı", comment: "Mindfulness bell setting"))
+                            }
+                        }
+                        .onChange(of: bellManager.isEnabled) { oldValue, newValue in
+                            HapticManager.shared.playImpact(style: .light)
+                        }
+                    } else {
+                        // Fallback on earlier versions
+                    }
+
+                    if bellManager.isEnabled {
+                        VStack(alignment: .leading, spacing: 8) {
+                            HStack {
+                                Image(systemName: "clock.fill")
+                                    .foregroundColor(ZenTheme.calmBlue)
+                                    .frame(width: 28)
+                                Text(String(localized: "settings_bell_interval", defaultValue: "Çan Aralığı", comment: "Bell interval label"))
+                            }
+
+                            Picker(String(localized: "settings_bell_interval", defaultValue: "Çan Aralığı", comment: "Bell interval label"), selection: $bellManager.interval) {
+                                ForEach(BellInterval.allCases) { interval in
+                                    Text(interval.displayName).tag(interval)
+                                }
+                            }
+                            .pickerStyle(.segmented)
+                        }
+
+                        Button(action: {
+                            bellManager.chime()
+                        }) {
+                            HStack {
+                                Image(systemName: "play.circle.fill")
+                                    .foregroundColor(ZenTheme.calmBlue)
+                                    .frame(width: 28)
+                                Text(String(localized: "settings_bell_preview", defaultValue: "Çanı Dinle", comment: "Preview bell sound button"))
+                                    .foregroundColor(.primary)
+                            }
+                        }
+                    }
+                } header: {
+                    Text(String(localized: "settings_bell_section", defaultValue: "Farkındalık Çanı", comment: "Mindfulness bell section header"))
+                } footer: {
+                    Text(String(localized: "settings_bell_footer", defaultValue: "Meditasyon ve odaklanma oturumları sırasında seçtiğin aralıkla yumuşak bir Tibet çanı çalar. Dikkatin dağıldığında seni nazikçe şimdiki ana geri getirir.", comment: "Mindfulness bell footer"))
                 }
 
                 // MARK: - Haptic Settings Section
