@@ -13,6 +13,7 @@
 #include "ui.h"
 #include "store.h"
 #include "hw.h"
+#include "sense.h"
 
 // ---- LVGL display plumbing -------------------------------------------------
 static const uint16_t SCR_W = 320;
@@ -86,6 +87,10 @@ void setup() {
     lv_indev_drv_register(&indevDrv);
 
     buildUI();
+
+    // Phase 7 — start BMI270 breath/stillness + SPM1423 acoustic sensing.
+    // Uses lv_timers on this thread, so it must come after lv_init().
+    zf::SenseManager::begin(/*enableMic=*/true);
 }
 
 void loop() {

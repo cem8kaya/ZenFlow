@@ -64,6 +64,10 @@ ZenFlowCore2/
     ├── coach_engine.{h,cpp} # offline Zen Coach (classifier + generator)
     ├── store.{h,cpp}        # NVS persistence (stats/streaks/selection)
     ├── hw.{h,cpp}           # vibration + SK6812 LED wrappers
+    ├── sense.{h,cpp}        # SenseManager: BMI270 + SPM1423 sampling (lv_timer)
+    ├── sense_imu.{h,cpp}    # breathing-rate/phase + stillness DSP (pure)
+    ├── sense_mic.{h,cpp}    # loudness/onset DSP (pure)
+    ├── tinyml.{h,cpp}       # classifier seam (heuristic + Edge Impulse drop-in)
     ├── ui.h / ui_common.cpp # palette + screen-builder declarations
     └── screen_*.cpp         # coach / breathing / focus / garden / settings
 ```
@@ -111,7 +115,59 @@ needed):
 | 4 | Ambient sounds (I²S/SD mixer) + mindfulness bell + daily Zen moment | pending |
 | 5 | Coach: wire action buttons → tab navigation; optional mic/IMU input | engine done; navigation pending |
 | 6 | Onboarding + themes + settings (brightness, volume, reminders via RTC) | pending |
-| 7 | TinyML: BMI270 breath/stillness + SPM1423 acoustic cues (Edge Impulse) | pending |
+| 7 | TinyML: BMI270 breath/stillness + SPM1423 acoustic cues (Edge Impulse) | **DSP pipeline done**; EI model = drop-in seam |
+
+## Sensing & TinyML (Phase 7)
+
+Real breath/stillness sensing from the **BMI270** and acoustic cues from the
+**SPM1423** — with a clean seam for an Edge Impulse model.
+
+```
+BMI270 ─┐                        ┌─ breathingRateBpm, breathPhase, stillness
+        ├─ SenseManager (lv_timer)┤
+SPM1423 ┘   sense_imu / sense_mic └─ loudnessDb, level01, acousticOnset
+                    │ Features
+                    ▼
+              tinyml.classifyActivity()   ← default heuristic
+                    │                         swap-in: Edge Impulse run_classifier()
+                    ▼
+        Breathing screen: live "Nefes N/dk · Sabitlik %  · Uyum %"
+        Focus screen:     live "Sabitlik %"
+```
+
+**Runs today, no training required.** Instead of shipping a model that would
+need labelled data, the default build uses deterministic DSP:
+
+- **Breathing** (`sense_imu.*`): gravity-tracked tilt angle → 0.1–0.6 Hz
+  band-pass → rising zero-crossings give breaths/min; the signal derivative
+  gives inhale/exhale phase. Best when the device shares the chest/abdomen
+  motion (rested on or held against it).
+- **Stillness** (`sense_imu.*`): EMA of gyro magnitude + linear-accel deviation
+  mapped to 0–100 — meditation-quality feedback in any pose.
+- **Acoustic** (`sense_mic.*`): block RMS → dBFS loudness + a short-vs-long
+  energy ratio for onset/anomaly detection.
+- **Coherence**: while a guided breathing session runs, the detected breath
+  phase is compared with the guide to score how well the user follows the pace.
+
+**Edge Impulse drop-in.** `tinyml.cpp` is the *only* file to touch:
+
+1. Train Still / Breathing / Moving at [studio.edgeimpulse.com](https://studio.edgeimpulse.com)
+   from IMU windows (optionally audio MFCC).
+2. Export the Arduino library and add it to `lib_deps`.
+3. Build with `-D ZF_USE_EDGE_IMPULSE`; the guarded `run_classifier()` path
+   compiles in and replaces the heuristic. Sensors and UI are untouched.
+
+**Caveats to verify on hardware** (in addition to the LED pin / vibration API):
+
+- **Mic ↔ speaker share I²S.** Only one is active at a time. When Phase 4
+  ambient audio plays through the speaker, call
+  `SenseManager::setMicEnabled(false)` first; IMU sensing is unaffected.
+- **IMU presence.** `SenseManager::begin()` checks `M5.Imu.begin()`; if the
+  unit reports no IMU the UI shows "IMU yok" and the app keeps working.
+- **`M5.Mic` API** (`config`/`record`/`isRecording`/`isEnabled`) is version-
+  sensitive like the vibration call — confirm against your M5Unified version.
+- **DSP thresholds** (`kAmpThreshold`, band-pass corners, stillness scale) are
+  tunable constants at the top of `sense_imu.h` — calibrate to your placement.
 
 ## Relationship to the iOS app
 

@@ -9,6 +9,7 @@
 #include "content.h"
 #include "store.h"
 #include "hw.h"
+#include "sense.h"
 
 namespace zf { namespace ui {
 
@@ -23,7 +24,9 @@ static lv_obj_t* s_phaseLbl  = nullptr;
 static lv_obj_t* s_titleLbl  = nullptr;
 static lv_obj_t* s_startBtn  = nullptr;
 static lv_obj_t* s_startLbl  = nullptr;
+static lv_obj_t* s_bioLbl    = nullptr;   // live BMI270 biofeedback readout
 static lv_timer_t* s_timer   = nullptr;
+static uint8_t   s_uiThrottle = 0;
 
 static const uint16_t CIRCLE_MIN = 90;
 static const uint16_t CIRCLE_MAX = 200;
@@ -73,8 +76,47 @@ static void enterPhase(uint8_t idx) {
     if (p == Phase::Inhale) hw::vibrate(140, 180); // gentle cue at each inhale
 }
 
+// Guided target for the SenseManager coherence score: +inhale, -exhale, 0 hold.
+static float guidedSignedFor(Phase p) {
+    switch (p) {
+        case Phase::Inhale: return 1.0f;
+        case Phase::Exhale: return -1.0f;
+        default:            return 0.0f;
+    }
+}
+
+static void updateBioLabel(const SenseState& st) {
+    if (!s_bioLbl) return;
+    char buf[96];
+    if (!st.imuAvailable) {
+        lv_label_set_text(s_bioLbl, "IMU yok");
+        return;
+    }
+    const int bpm   = (int)(st.breathingRateBpm + 0.5f);
+    const int still = (int)(st.stillness + 0.5f);
+    if (s_running) {
+        snprintf(buf, sizeof(buf), "Nefes %d/dk · Sabitlik %d%% · Uyum %d%%",
+                 bpm, still, (int)(st.coherence + 0.5f));
+    } else if (st.breathingDetected) {
+        snprintf(buf, sizeof(buf), "Nefes %d/dk · Sabitlik %d%%", bpm, still);
+    } else {
+        snprintf(buf, sizeof(buf), "Sabitlik %d%%", still);
+    }
+    lv_label_set_text(s_bioLbl, buf);
+}
+
 static void breathingTick(lv_timer_t*) {
-    if (!s_running || !s_ex) return;
+    // Live biofeedback (~4 Hz), shown whether or not a session is running.
+    if (++s_uiThrottle >= 8) {
+        s_uiThrottle = 0;
+        updateBioLabel(SenseManager::snapshot());
+    }
+
+    if (!s_running || !s_ex) {
+        SenseManager::setGuidedPhase(0.0f, false);
+        return;
+    }
+
     const BreathingPhase& ph = s_ex->phases[s_phaseIdx];
     uint32_t elapsed = millis() - s_phaseStart;
     uint32_t dur     = (uint32_t)ph.durationSec * 1000UL;
@@ -84,6 +126,9 @@ static void breathingTick(lv_timer_t*) {
     float from = phaseStartScale(ph.type);
     float to   = phaseTargetScale(ph.type);
     applyScale(from + (to - from) * t);
+
+    // Feed the guide so the IMU can score how well the user follows the pace.
+    SenseManager::setGuidedPhase(guidedSignedFor(ph.type), true);
 
     if (elapsed >= dur) {
         uint8_t next = (s_phaseIdx + 1) % s_ex->phaseCount;
@@ -118,6 +163,12 @@ void buildBreathing(lv_obj_t* parent) {
     lv_label_set_text(s_titleLbl, s_ex->nameTr);
     lv_obj_set_style_text_color(s_titleLbl, color::text(), 0);
     lv_obj_align(s_titleLbl, LV_ALIGN_TOP_MID, 0, 6);
+
+    // BMI270 biofeedback readout (breathing rate · stillness · coherence).
+    s_bioLbl = lv_label_create(parent);
+    lv_label_set_text(s_bioLbl, "Sabitlik --%");
+    lv_obj_set_style_text_color(s_bioLbl, color::muted(), 0);
+    lv_obj_align(s_bioLbl, LV_ALIGN_TOP_MID, 0, 28);
 
     // Breathing circle.
     s_circle = lv_obj_create(parent);

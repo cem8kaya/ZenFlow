@@ -8,6 +8,7 @@
 #include "content.h"
 #include "store.h"
 #include "hw.h"
+#include "sense.h"
 
 namespace zf { namespace ui {
 
@@ -15,6 +16,7 @@ static lv_obj_t*  f_arc      = nullptr;
 static lv_obj_t*  f_timeLbl  = nullptr;
 static lv_obj_t*  f_stateLbl = nullptr;
 static lv_obj_t*  f_btnLbl   = nullptr;
+static lv_obj_t*  f_stillLbl = nullptr;   // BMI270 stillness during focus
 static lv_timer_t* f_timer   = nullptr;
 
 static bool     f_running   = false;
@@ -44,6 +46,16 @@ static void startPhase(bool work) {
 }
 
 static void focusTick(lv_timer_t*) {
+    // Stillness feedback updates once per second, running or not.
+    if (f_stillLbl) {
+        SenseState st = SenseManager::snapshot();
+        if (st.imuAvailable) {
+            char b[24];
+            snprintf(b, sizeof(b), "Sabitlik %d%%", (int)(st.stillness + 0.5f));
+            lv_label_set_text(f_stillLbl, b);
+        }
+    }
+
     if (!f_running) return;
     if (f_remaining > 0) {
         f_remaining--;
@@ -75,6 +87,11 @@ void buildFocus(lv_obj_t* parent) {
     lv_label_set_text(f_stateLbl, "Odaklan");
     lv_obj_set_style_text_color(f_stateLbl, color::muted(), 0);
     lv_obj_align(f_stateLbl, LV_ALIGN_TOP_MID, 0, 6);
+
+    f_stillLbl = lv_label_create(parent);
+    lv_label_set_text(f_stillLbl, "Sabitlik --%");
+    lv_obj_set_style_text_color(f_stillLbl, color::muted(), 0);
+    lv_obj_align(f_stillLbl, LV_ALIGN_TOP_RIGHT, -6, 6);
 
     f_arc = lv_arc_create(parent);
     lv_obj_set_size(f_arc, 180, 180);
