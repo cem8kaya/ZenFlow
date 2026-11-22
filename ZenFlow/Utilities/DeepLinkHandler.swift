@@ -25,6 +25,27 @@ class DeepLinkHandler {
 
     static let switchToTabNotification = Notification.Name("SwitchToTab")
 
+    /// Posted when a link was queued (e.g. by a Siri Shortcut) and should be handled
+    static let pendingLinkNotification = Notification.Name("PendingDeepLink")
+
+    // MARK: - Pending link (Shortcuts / cold launch)
+
+    /// A link waiting until the app UI is ready (splash and onboarding done)
+    private(set) var pendingURLString: String?
+
+    /// Queue a link; the app root handles it as soon as the UI is ready
+    func enqueue(_ urlString: String) {
+        pendingURLString = urlString
+        NotificationCenter.default.post(name: Self.pendingLinkNotification, object: nil)
+    }
+
+    /// Handle and clear the queued link, if any
+    func consumePending() {
+        guard let link = pendingURLString else { return }
+        pendingURLString = nil
+        handle(link)
+    }
+
     private init() {}
 
     // MARK: - Deep Link Handling
@@ -60,6 +81,12 @@ class DeepLinkHandler {
         if host.lowercased() == "breathing" || host.lowercased() == "meditation",
            let exercise = queryParams["exercise"] {
             userInfo["exerciseType"] = exercise
+        }
+
+        // zenflow://report opens the weekly report (presented by the app root)
+        if host.lowercased() == "report" {
+            userInfo.removeValue(forKey: "tabIndex")
+            userInfo["openWeeklyReport"] = true
         }
 
         // zenflow://sleep opens Sleep Mode (hosted by the coach tab)
@@ -116,6 +143,11 @@ class DeepLinkHandler {
     /// Navigates to zen garden
     func navigateToGarden() {
         handle("zenflow://garden")
+    }
+
+    /// Opens the weekly report
+    func navigateToWeeklyReport() {
+        handle("zenflow://report")
     }
 
     /// Opens Sleep Mode

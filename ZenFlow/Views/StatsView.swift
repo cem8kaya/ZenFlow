@@ -16,12 +16,39 @@ import Combine
 struct StatsView: View {
     // MARK: - Environment Objects (Performance Optimization)
     @EnvironmentObject var dataManager: LocalDataManager
+    @State private var showWeeklyReport = false
 
     var body: some View {
         ScrollView {
             VStack(spacing: 24) {
                 // Haftalık hedef + seri koruma
                 WeeklyGoalCard()
+
+                // Haftalık Zen Raporu
+                Button {
+                    HapticManager.shared.playImpact(style: .light)
+                    showWeeklyReport = true
+                } label: {
+                    HStack {
+                        Image(systemName: "doc.text.fill")
+                            .foregroundColor(ZenTheme.calmBlue)
+                        Text(String(localized: "weekly_report_title", defaultValue: "Haftalık Zen Raporu", comment: "Weekly report title"))
+                            .foregroundColor(.white)
+                        Spacer()
+                        Image(systemName: "chevron.right")
+                            .font(.footnote)
+                            .foregroundColor(.white.opacity(0.5))
+                    }
+                    .padding(16)
+                    .background(
+                        RoundedRectangle(cornerRadius: 16)
+                            .fill(Color.white.opacity(0.06))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 16)
+                                    .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                            )
+                    )
+                }
 
                 // Ruh hali içgörüleri (özet ücretsiz, derin analiz premium)
                 MoodInsightsView()
@@ -39,6 +66,9 @@ struct StatsView: View {
                 detailedMetrics
             }
             .padding()
+        }
+        .sheet(isPresented: $showWeeklyReport) {
+            WeeklyReportView()
         }
         .refreshable {
             // Refresh data from LocalDataManager

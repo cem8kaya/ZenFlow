@@ -19,6 +19,7 @@ struct ReminderSettingsView: View {
     @State private var selectedDays: Set<Int>
     @State private var remindersEnabled: Bool
     @State private var streakReminderEnabled: Bool
+    @State private var weeklyReportEnabled: Bool
     @State private var showAuthorizationAlert = false
 
     // MARK: - Initialization
@@ -29,6 +30,7 @@ struct ReminderSettingsView: View {
         _selectedDays = State(initialValue: manager.reminderDays)
         _remindersEnabled = State(initialValue: manager.remindersEnabled)
         _streakReminderEnabled = State(initialValue: manager.streakReminderEnabled)
+        _weeklyReportEnabled = State(initialValue: manager.weeklyReportEnabled)
     }
 
     // MARK: - Body
@@ -115,6 +117,21 @@ struct ReminderSettingsView: View {
                 Text(String(localized: "reminder_streak_footer", defaultValue: "Her akşam saat 20:00'de meditasyon yapmadıysan hatırlatıcı alacaksın.", comment: "Streak reminder footer"))
             }
 
+            // MARK: - Weekly Report Section
+
+            Section {
+                Toggle(isOn: $weeklyReportEnabled) {
+                    Text(String(localized: "reminder_weekly_report_toggle", defaultValue: "Haftalık Zen Raporu", comment: "Weekly report toggle"))
+                }
+                .onChange(of: weeklyReportEnabled) { _, newValue in
+                    handleWeeklyReportToggle(newValue)
+                }
+            } header: {
+                Text(String(localized: "reminder_weekly_report_header", defaultValue: "Haftalık Özet", comment: "Weekly report section header"))
+            } footer: {
+                Text(String(localized: "reminder_weekly_report_footer", defaultValue: "Her pazar akşamı 19:00'da haftalık özetin hazır olduğunu hatırlatır.", comment: "Weekly report footer"))
+            }
+
             // MARK: - Preview Messages Section
 
             if remindersEnabled || streakReminderEnabled {
@@ -172,6 +189,7 @@ struct ReminderSettingsView: View {
             Button(role: .cancel) {
                 remindersEnabled = false
                 streakReminderEnabled = false
+                weeklyReportEnabled = false
             } label: {
                 Text(String(localized: "reminder_cancel", defaultValue: "İptal", comment: "Cancel button"))
             }
@@ -217,6 +235,21 @@ struct ReminderSettingsView: View {
             }
         } else {
             notificationManager.streakReminderEnabled = isEnabled
+        }
+    }
+
+    private func handleWeeklyReportToggle(_ isEnabled: Bool) {
+        if isEnabled && !notificationManager.isAuthorized {
+            notificationManager.requestAuthorization { granted in
+                if granted {
+                    notificationManager.weeklyReportEnabled = true
+                } else {
+                    weeklyReportEnabled = false
+                    showAuthorizationAlert = true
+                }
+            }
+        } else {
+            notificationManager.weeklyReportEnabled = isEnabled
         }
     }
 

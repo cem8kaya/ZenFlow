@@ -20,6 +20,8 @@ struct ZenFlowApp: App {
     @State private var showOnboarding: Bool = false
     @State private var showHealthKitOnboarding: Bool = false
     @State private var showSettings: Bool = false
+    @State private var showWeeklyReport: Bool = false
+    @Environment(\.scenePhase) private var scenePhase
     @StateObject private var onboardingManager = OnboardingManager.shared
     private let notificationDelegate = NotificationDelegate()
 
@@ -85,7 +87,25 @@ struct ZenFlowApp: App {
                     withAnimation {
                         showOnboarding = false
                     }
+                    consumePendingDeepLinkIfReady()
                 }
+            }
+            .onChange(of: scenePhase) { _, phase in
+                if phase == .active {
+                    consumePendingDeepLinkIfReady()
+                }
+            }
+            .onOpenURL { url in
+                // zenflow:// links from widgets, Live Activities and notifications
+                DeepLinkHandler.shared.enqueue(url.absoluteString)
+                consumePendingDeepLinkIfReady()
+            }
+            .onReceive(NotificationCenter.default.publisher(for: DeepLinkHandler.pendingLinkNotification)) { _ in
+                consumePendingDeepLinkIfReady()
+            }
+            .sheet(isPresented: $showWeeklyReport) {
+                WeeklyReportView()
+                    .environmentObject(dataManager)
             }
             .onReceive(NotificationCenter.default.publisher(for: DeepLinkHandler.switchToTabNotification)) { notification in
                 // Handle deep link tab switching
@@ -94,12 +114,23 @@ struct ZenFlowApp: App {
                         selectedTab = tabIndex
                     }
                 }
+                if notification.userInfo?["openWeeklyReport"] as? Bool == true {
+                    showWeeklyReport = true
+                }
             }
             .onAppear {
                 // Set notification delegate
                 UNUserNotificationCenter.current().delegate = notificationDelegate
             }
         }
+    }
+
+    // MARK: - Pending deep links
+
+    /// Handles a queued deep link once the splash and onboarding are out of the way
+    private func consumePendingDeepLinkIfReady() {
+        guard !showSplash, !showOnboarding, !onboardingManager.shouldShowOnboarding else { return }
+        DeepLinkHandler.shared.consumePending()
     }
 
     // MARK: - Onboarding Check
@@ -118,6 +149,9 @@ struct ZenFlowApp: App {
             // (for users who already have the app before onboarding was added)
             checkHealthKitAuthorization()
             checkNotificationAuthorization()
+
+            // A Shortcut or widget may have launched the app
+            consumePendingDeepLinkIfReady()
         }
     }
 

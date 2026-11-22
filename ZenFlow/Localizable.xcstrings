@@ -15803,6 +15803,431 @@
           }
         }
       }
+    },
+    "weekly_report_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weekly Zen Report"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haftalık Zen Raporu"
+          }
+        }
+      },
+      "comment" : "Weekly report title"
+    },
+    "weekly_report_this_week" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This week"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu hafta"
+          }
+        }
+      },
+      "comment" : "This week"
+    },
+    "weekly_report_last_week" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last week"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geçen hafta"
+          }
+        }
+      },
+      "comment" : "Last week"
+    },
+    "weekly_report_empty" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No sessions this week yet. Even a short breath is a beginning."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu hafta henüz seans yok. Kısa bir nefes bile bir başlangıçtır."
+          }
+        }
+      },
+      "comment" : "Weekly report empty state"
+    },
+    "weekly_report_range" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ – %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ – %@"
+          }
+        }
+      },
+      "comment" : "Week date range"
+    },
+    "weekly_report_goal_reached" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You reached your weekly goal 🎉"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haftalık hedefine ulaştın 🎉"
+          }
+        }
+      },
+      "comment" : "Goal reached headline"
+    },
+    "weekly_report_goal_progress" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Goal: %lld/%lld days"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hedefin: %lld/%lld gün"
+          }
+        }
+      },
+      "comment" : "Goal progress headline"
+    },
+    "weekly_report_minutes_value" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld min"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld dk"
+          }
+        }
+      },
+      "comment" : "Minutes value"
+    },
+    "weekly_report_minutes" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meditation"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meditasyon"
+          }
+        }
+      },
+      "comment" : "Meditation minutes tile"
+    },
+    "weekly_report_sessions" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sessions"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seans"
+          }
+        }
+      },
+      "comment" : "Sessions tile"
+    },
+    "weekly_report_focus" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Focus sessions"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odak seansı"
+          }
+        }
+      },
+      "comment" : "Focus sessions tile"
+    },
+    "weekly_report_active_days" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Active days"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktif gün"
+          }
+        }
+      },
+      "comment" : "Active days tile"
+    },
+    "weekly_report_more" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You meditated %@ more than last week."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geçen haftadan %@ daha fazla meditasyon yaptın."
+          }
+        }
+      },
+      "comment" : "More minutes than last week"
+    },
+    "weekly_report_less" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ less than last week. Small steps count too."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geçen haftadan %@ daha az. Küçük adımlar da sayılır."
+          }
+        }
+      },
+      "comment" : "Fewer minutes than last week"
+    },
+    "weekly_report_best_day" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Best day: %@ (%lld min)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En iyi gün: %@ (%lld dk)"
+          }
+        }
+      },
+      "comment" : "Best day of the week"
+    },
+    "weekly_report_mood" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Average mood: %@ %@/5"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ortalama ruh halin: %@ %@/5"
+          }
+        }
+      },
+      "comment" : "Average mood of the week"
+    },
+    "weekly_report_streak" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Current streak: %lld days"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Güncel serin: %lld gün"
+          }
+        }
+      },
+      "comment" : "Current streak"
+    },
+    "weekly_report_card_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "My Zen Week"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haftam Zen'de"
+          }
+        }
+      },
+      "comment" : "Share card title"
+    },
+    "weekly_report_card_minutes" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "minutes of meditation"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dakika meditasyon"
+          }
+        }
+      },
+      "comment" : "Share card minutes caption"
+    },
+    "weekly_report_card_mood" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mood"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ruh hali"
+          }
+        }
+      },
+      "comment" : "Mood caption"
+    },
+    "weekly_report_notification_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your weekly Zen report is ready 🌿"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haftalık Zen Raporun hazır 🌿"
+          }
+        }
+      },
+      "comment" : "Weekly report notification title"
+    },
+    "weekly_report_notification_body" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Take a look at how much you breathed this week."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu hafta ne kadar nefes aldığına bir göz at."
+          }
+        }
+      },
+      "comment" : "Weekly report notification body"
+    },
+    "reminder_weekly_report_toggle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weekly Zen Report"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haftalık Zen Raporu"
+          }
+        }
+      },
+      "comment" : "Weekly report toggle"
+    },
+    "reminder_weekly_report_header" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weekly Summary"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haftalık Özet"
+          }
+        }
+      },
+      "comment" : "Weekly report section header"
+    },
+    "reminder_weekly_report_footer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reminds you every Sunday at 7 PM that your weekly summary is ready."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Her pazar akşamı 19:00'da haftalık özetin hazır olduğunu hatırlatır."
+          }
+        }
+      },
+      "comment" : "Weekly report footer"
     }
   },
   "version" : "1.0"

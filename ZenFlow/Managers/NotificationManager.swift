@@ -24,6 +24,7 @@ class NotificationManager: ObservableObject {
         static let reminderTime = "zenflow_reminder_time"
         static let reminderDays = "zenflow_reminder_days"
         static let streakReminderEnabled = "zenflow_streak_reminder_enabled"
+        static let weeklyReportEnabled = "zenflow_weekly_report_enabled"
     }
 
     // MARK: - Properties
@@ -128,6 +129,25 @@ class NotificationManager: ObservableObject {
             }
 
             print("💾 Streak reminder enabled: \(newValue)")
+        }
+    }
+
+    /// Sunday-evening "your week in Zen" notification (opt-in)
+    var weeklyReportEnabled: Bool {
+        get {
+            return defaults.bool(forKey: Keys.weeklyReportEnabled)
+        }
+        set {
+            objectWillChange.send()
+            defaults.set(newValue, forKey: Keys.weeklyReportEnabled)
+
+            if newValue {
+                scheduleWeeklyReport()
+            } else {
+                cancelWeeklyReport()
+            }
+
+            print("💾 Weekly report enabled: \(newValue)")
         }
     }
 
@@ -338,6 +358,53 @@ class NotificationManager: ObservableObject {
         print("🗑️ Cancelled streak reminder")
     }
 
+    // MARK: - Weekly Report
+
+    /// Weekday (1 = Sunday) and time of the weekly report notification
+    static let weeklyReportWeekday = 1
+    static let weeklyReportHour = 19
+
+    func scheduleWeeklyReport() {
+        guard isAuthorized else {
+            print("⚠️ Cannot schedule weekly report - not authorized")
+            return
+        }
+
+        cancelWeeklyReport()
+
+        var dateComponents = DateComponents()
+        dateComponents.weekday = Self.weeklyReportWeekday
+        dateComponents.hour = Self.weeklyReportHour
+        dateComponents.minute = 0
+
+        // The text is static (a repeating trigger cannot carry fresh numbers);
+        // the report itself is computed live when the user opens it.
+        let content = UNMutableNotificationContent()
+        content.title = String(localized: "weekly_report_notification_title", defaultValue: "Haftalık Zen Raporun hazır 🌿", comment: "Weekly report notification title")
+        content.body = String(localized: "weekly_report_notification_body", defaultValue: "Bu hafta ne kadar nefes aldığına bir göz at.", comment: "Weekly report notification body")
+        content.sound = .default
+        content.userInfo = [
+            "type": "weekly_report",
+            "deepLink": "zenflow://report"
+        ]
+
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        let request = UNNotificationRequest(identifier: "weekly_report", content: content, trigger: trigger)
+
+        notificationCenter.add(request) { error in
+            if let error = error {
+                print("❌ Failed to schedule weekly report: \(error)")
+            } else {
+                print("✅ Scheduled weekly report for Sunday 19:00")
+            }
+        }
+    }
+
+    func cancelWeeklyReport() {
+        notificationCenter.removePendingNotificationRequests(withIdentifiers: ["weekly_report"])
+        print("🗑️ Cancelled weekly report")
+    }
+
     // MARK: - Immediate Notification
 
     func sendImmediateNotification(title: String, body: String) {
@@ -366,6 +433,7 @@ class NotificationManager: ObservableObject {
     func cancelAllReminders() {
         cancelDailyReminders()
         cancelStreakReminder()
+        cancelWeeklyReport()
         print("🗑️ Cancelled all reminders")
     }
 

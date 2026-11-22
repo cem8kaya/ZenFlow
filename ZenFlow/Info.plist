@@ -6,6 +6,19 @@
 	<array>
 		<string>audio</string>
 	</array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>CFBundleURLName</key>
+			<string>com.oqza.MyZenFlowApp.deeplink</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>zenflow</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleLocalizations</key>
 	<array>
 		<string>tr</string>
