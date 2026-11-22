@@ -108,6 +108,11 @@ struct FocusTimerView: View {
             .onAppear {
                 loadTodaysSessions()
                 requestNotificationPermission()
+
+                // Pick up changed focus lengths (Settings) while nothing is running
+                if timerState == .idle {
+                    timeRemaining = currentMode.durationSeconds
+                }
             }
             .onDisappear {
                 // PERFORMANCE OPTIMIZATION: Pause timer when tab is switched

@@ -21,15 +21,9 @@ enum FocusMode: String, Codable, CaseIterable {
     case longBreak
 
     /// Duration in minutes for each mode
+    /// (the classic 25/5/15 unless a Premium user customized it)
     var durationMinutes: Int {
-        switch self {
-        case .work:
-            return 25
-        case .shortBreak:
-            return 5
-        case .longBreak:
-            return 15
-        }
+        FocusSettingsStore.shared.effectiveSettings.minutes(for: self)
     }
 
     /// Duration in seconds for each mode
@@ -89,13 +83,8 @@ enum FocusMode: String, Codable, CaseIterable {
     /// - Parameter completedSessions: Number of completed work sessions
     /// - Returns: The next appropriate focus mode
     func nextMode(completedSessions: Int) -> FocusMode {
-        switch self {
-        case .work:
-            // After every 4 work sessions, take a long break
-            return (completedSessions % 4 == 0 && completedSessions > 0) ? .longBreak : .shortBreak
-        case .shortBreak, .longBreak:
-            return .work
-        }
+        // After every N work sessions (4 by default), take a long break
+        FocusSettingsStore.shared.effectiveSettings.nextMode(after: self, completedSessions: completedSessions)
     }
 }
 

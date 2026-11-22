@@ -313,6 +313,27 @@ struct SettingsView: View {
                     Text(String(localized: "settings_achievements_section", defaultValue: "Başarılar & İstatistikler", comment: "Achievements and statistics section header"))
                 }
 
+                // MARK: - Focus Section
+
+                Section {
+                    NavigationLink(destination: FocusSettingsView()) {
+                        HStack {
+                            Image(systemName: "timer")
+                                .foregroundColor(ZenTheme.calmBlue)
+                                .frame(width: 28)
+                            Text(String(localized: "settings_focus_lengths", defaultValue: "Odaklanma Süreleri", comment: "Focus lengths settings row"))
+                            Spacer()
+                            if !storeManager.isPremiumUnlocked {
+                                Image(systemName: "crown.fill")
+                                    .font(.footnote)
+                                    .foregroundColor(ZenTheme.lightLavender.opacity(0.7))
+                            }
+                        }
+                    }
+                } header: {
+                    Text(String(localized: "settings_focus_section", defaultValue: "Odaklanma", comment: "Focus settings section header"))
+                }
+
                 // MARK: - Data Management Section
 
                 Section {

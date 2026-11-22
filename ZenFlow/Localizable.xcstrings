@@ -17214,6 +17214,210 @@
         }
       },
       "comment" : "Entry subtitle for the custom exercise designer"
+    },
+    "settings_focus_lengths" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Focus Lengths"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odaklanma Süreleri"
+          }
+        }
+      },
+      "comment" : "Focus lengths settings row"
+    },
+    "settings_focus_section" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Focus"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odaklanma"
+          }
+        }
+      },
+      "comment" : "Focus settings section header"
+    },
+    "focus_settings_locked_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Customize the lengths"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Süreleri özelleştir"
+          }
+        }
+      },
+      "comment" : "Locked focus settings title"
+    },
+    "focus_settings_locked_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Change the classic 25/5/15 rhythm with Premium."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Klasik 25/5/15 ritmini Premium ile değiştirebilirsin."
+          }
+        }
+      },
+      "comment" : "Locked focus settings description"
+    },
+    "focus_settings_work" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Focus"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odaklanma"
+          }
+        }
+      },
+      "comment" : "Work length"
+    },
+    "focus_settings_short_break" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Short break"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kısa mola"
+          }
+        }
+      },
+      "comment" : "Short break length"
+    },
+    "focus_settings_long_break" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Long break"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uzun mola"
+          }
+        }
+      },
+      "comment" : "Long break length"
+    },
+    "focus_settings_sessions" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Before a long break"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uzun moladan önce"
+          }
+        }
+      },
+      "comment" : "Sessions before a long break"
+    },
+    "focus_settings_sessions_value" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld sessions"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld seans"
+          }
+        }
+      },
+      "comment" : "Number of sessions"
+    },
+    "focus_settings_lengths_header" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lengths (minutes)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Süreler (dakika)"
+          }
+        }
+      },
+      "comment" : "Lengths section header"
+    },
+    "focus_settings_footer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Changes apply from the next timer."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Değişiklikler bir sonraki zamanlayıcıdan itibaren geçerli olur."
+          }
+        }
+      },
+      "comment" : "Focus settings footer"
+    },
+    "focus_settings_reset" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Back to classic 25/5/15"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Klasik 25/5/15'e dön"
+          }
+        }
+      },
+      "comment" : "Reset focus lengths"
     }
   },
   "version" : "1.0"
