@@ -35,7 +35,14 @@ class StoreManager: ObservableObject {
     // MARK: - Private Properties
 
     private var updateListenerTask: Task<Void, Error>? = nil
-    private let userDefaultsKey = "zenflow_premium_unlocked"
+    private nonisolated static let premiumDefaultsKey = "zenflow_premium_unlocked"
+    private let userDefaultsKey = StoreManager.premiumDefaultsKey
+
+    /// Last known premium state, readable from anywhere without actor hops
+    /// (e.g. streak-freeze allowance in LocalDataManager).
+    nonisolated static var cachedPremiumStatus: Bool {
+        UserDefaults.standard.bool(forKey: premiumDefaultsKey)
+    }
 
     // MARK: - Initialization
 

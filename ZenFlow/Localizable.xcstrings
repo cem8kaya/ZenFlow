@@ -10221,6 +10221,176 @@
         }
       },
       "comment" : "Classic Zen theme description"
+    },
+    "weekly_goal_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weekly Goal"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haftalık Hedef"
+          }
+        }
+      },
+      "comment" : "Weekly goal card title"
+    },
+    "weekly_goal_progress" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld / %lld days"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld / %lld gün"
+          }
+        }
+      },
+      "comment" : "Weekly goal progress"
+    },
+    "weekly_goal_done" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You reached this week's goal! 🎉"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu haftaki hedefine ulaştın! 🎉"
+          }
+        }
+      },
+      "comment" : "Weekly goal reached"
+    },
+    "weekly_goal_remaining" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld days to go"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hedefe %lld gün kaldı"
+          }
+        }
+      },
+      "comment" : "Days remaining to reach weekly goal"
+    },
+    "weekly_goal_option" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld days"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld gün"
+          }
+        }
+      },
+      "comment" : "Weekly goal option in days"
+    },
+    "weekly_goal_change" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Change goal"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hedefi değiştir"
+          }
+        }
+      },
+      "comment" : "Change weekly goal"
+    },
+    "streak_freeze_used_yesterday" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You missed yesterday, but a streak freeze kept your streak safe."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dünü kaçırdın ama seri korumasıyla serin güvende."
+          }
+        }
+      },
+      "comment" : "Streak freeze was used yesterday"
+    },
+    "streak_freeze_remaining" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Streak freeze: %lld of %lld left this month"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seri koruması: bu ay %lld/%lld hak kaldı"
+          }
+        }
+      },
+      "comment" : "Streak freezes remaining this month"
+    },
+    "streak_freeze_none" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No streak freezes left this month"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu ayki seri koruma hakkın bitti"
+          }
+        }
+      },
+      "comment" : "No streak freezes left this month"
+    },
+    "streak_freeze_info" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If you miss a day, your streak is protected automatically."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bir günü kaçırırsan serin otomatik olarak korunur."
+          }
+        }
+      },
+      "comment" : "Streak freeze explanation"
     }
   },
   "version" : "1.0"

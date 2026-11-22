@@ -25,11 +25,16 @@ class LocalDataManager: ObservableObject {
         static let focusSessionHistory = "zenflow_focus_session_history"
         static let totalFocusSessions = "zenflow_total_focus_sessions"
         static let moodHistory = "zenflow_mood_history"
+        static let frozenDays = "zenflow_frozen_days"
+        static let weeklyGoalDays = "zenflow_weekly_goal_days"
     }
 
     // MARK: - Properties
 
-    private let defaults = UserDefaults.standard
+    private let defaults: UserDefaults
+
+    /// Whether the user currently has premium. Overridable for tests.
+    var isPremiumProvider: () -> Bool = { StoreManager.cachedPremiumStatus }
 
     // Cache for decoded session history to avoid repeated decoding
     private var cachedSessionHistory: [SessionData]?
@@ -37,8 +42,8 @@ class LocalDataManager: ObservableObject {
 
     // MARK: - Initialization
 
-    private init() {
-        // Widget desteği kaldırıldığı için standart UserDefaults kullanıyoruz.
+    init(defaults: UserDefaults = .standard) {
+        self.defaults = defaults
     }
 
     // MARK: - Session Data Model
@@ -258,54 +263,88 @@ class LocalDataManager: ObservableObject {
         case 1:
             // Ardışık gün - seri devam ediyor
             currentStreak += 1
+        case 2...:
+            // Bir veya daha fazla gün kaçırıldı: seri koruma hakkı varsa seriyi koru
+            let missedDays = Self.missedDays(between: lastDateDay, and: currentDateDay, calendar: calendar)
+            if canFreeze(missedDays) {
+                frozenDays = frozenDays + missedDays
+                currentStreak += 1
+                print("❄️ Streak freeze used for \(missedDays.count) day(s)")
+            } else {
+                currentStreak = 1
+            }
         default:
             // Seri kırıldı - yeni seri başlat
             currentStreak = 1
         }
     }
 
-    /// Seriyi manuel olarak yeniden hesapla (tüm geçmişe bakarak)
+    /// Seriyi manuel olarak yeniden hesapla (tüm geçmişe bakarak).
+    /// Seri koruma ile atlanan günler seriyi bozmaz.
     func recalculateStreak() {
         let calendar = Calendar.current
-        let sortedSessions = sessionHistory.sorted { $0.date > $1.date }
+        let sessionDays = Set(sessionHistory.map { calendar.startOfDay(for: $0.date) })
 
-        guard !sortedSessions.isEmpty else {
+        guard let latest = sessionDays.max() else {
             currentStreak = 0
             return
         }
 
-        var streak = 1
-        var previousDate = calendar.startOfDay(for: sortedSessions[0].date)
+        let frozen = Set(frozenDays.map { calendar.startOfDay(for: $0) })
+        let streak = Self.computeStreak(sessionDays: sessionDays, frozenDays: frozen, endingAt: latest, calendar: calendar)
 
-        for i in 1..<sortedSessions.count {
-            let currentDate = calendar.startOfDay(for: sortedSessions[i].date)
-            let daysDifference = calendar.dateComponents([.day], from: currentDate, to: previousDate).day ?? 0
-
-            if daysDifference == 1 {
-                streak += 1
-            } else if daysDifference > 1 {
-                break
-            }
-
-            previousDate = currentDate
-        }
-
-        // Bugün seans yapılmadıysa seri kırılmış olabilir
-        let today = calendar.startOfDay(for: Date())
-        let lastSessionDay = calendar.startOfDay(for: sortedSessions[0].date)
-        let daysSinceLastSession = calendar.dateComponents([.day], from: lastSessionDay, to: today).day ?? 0
-
-        if daysSinceLastSession > 1 {
-            currentStreak = 0
-        } else {
-            currentStreak = streak
-        }
+        // Bugün veya dün seans yapılmadıysa (ve koruma da yetmiyorsa) seri kırılmıştır
+        currentStreak = isStreakActive() ? streak : 0
 
         print("🔄 Streak recalculated: \(currentStreak) days")
     }
 
+    /// Counts the consecutive practice days ending at `endingAt`. A single
+    /// frozen day between two practice days keeps the run alive without
+    /// adding to the count.
+    static func computeStreak(
+        sessionDays: Set<Date>,
+        frozenDays: Set<Date>,
+        endingAt latest: Date,
+        calendar: Calendar = .current
+    ) -> Int {
+        guard sessionDays.contains(latest) else { return 0 }
+
+        var streak = 1
+        var cursor = latest
+
+        while true {
+            guard let previous = calendar.date(byAdding: .day, value: -1, to: cursor) else { break }
+
+            if sessionDays.contains(previous) {
+                streak += 1
+                cursor = previous
+                continue
+            }
+
+            // Walk back through a run of frozen days to the next practice day
+            var gapCursor = previous
+            var foundBridge = false
+            while frozenDays.contains(gapCursor),
+                  let beforeGap = calendar.date(byAdding: .day, value: -1, to: gapCursor) {
+                if sessionDays.contains(beforeGap) {
+                    streak += 1
+                    cursor = beforeGap
+                    foundBridge = true
+                    break
+                }
+                gapCursor = beforeGap
+            }
+
+            if !foundBridge { break }
+        }
+
+        return streak
+    }
+
     /// Seri durumunu kontrol et
-    /// - Returns: Seri hala geçerli mi?
+    /// - Returns: Seri hala geçerli mi? (Kaçırılan günler seri koruma ile
+    ///   karşılanabiliyorsa seri hala geçerli sayılır.)
     func isStreakActive() -> Bool {
         guard let lastDate = lastSessionDate else {
             return false
@@ -317,7 +356,134 @@ class LocalDataManager: ObservableObject {
 
         let daysDifference = calendar.dateComponents([.day], from: lastDateDay, to: today).day ?? 0
 
-        return daysDifference <= 1
+        if daysDifference <= 1 {
+            return true
+        }
+
+        // Kaçırılan günleri (bugün hariç) koruma hakkıyla karşılayabilir miyiz?
+        let missed = Self.missedDays(between: lastDateDay, and: today, calendar: calendar)
+        return canFreeze(missed)
+    }
+
+    // MARK: - Streak Freeze
+
+    /// Freezes granted per calendar month
+    static let freezesPerMonthFree = 1
+    static let freezesPerMonthPremium = 3
+
+    /// Monthly freeze allowance for the current user
+    var monthlyFreezeAllowance: Int {
+        isPremiumProvider() ? Self.freezesPerMonthPremium : Self.freezesPerMonthFree
+    }
+
+    /// Days (start-of-day) on which a streak freeze was consumed
+    var frozenDays: [Date] {
+        get {
+            guard let data = defaults.data(forKey: Keys.frozenDays),
+                  let days = try? JSONDecoder().decode([Date].self, from: data) else {
+                return []
+            }
+            return days
+        }
+        set {
+            objectWillChange.send()
+            let unique = Array(Set(newValue)).sorted()
+            if let data = try? JSONEncoder().encode(unique) {
+                defaults.set(data, forKey: Keys.frozenDays)
+            }
+        }
+    }
+
+    /// Freezes already used in the calendar month of `date`
+    func freezesUsed(inMonthOf date: Date = Date()) -> Int {
+        let calendar = Calendar.current
+        return frozenDays.filter {
+            calendar.isDate($0, equalTo: date, toGranularity: .month)
+        }.count
+    }
+
+    /// Freezes still available in the current calendar month
+    var freezesRemaining: Int {
+        max(0, monthlyFreezeAllowance - freezesUsed())
+    }
+
+    /// Whether yesterday's gap was covered by a freeze
+    var didUseFreezeYesterday: Bool {
+        let calendar = Calendar.current
+        guard let yesterday = calendar.date(byAdding: .day, value: -1, to: calendar.startOfDay(for: Date())) else {
+            return false
+        }
+        return frozenDays.contains { calendar.isDate($0, inSameDayAs: yesterday) }
+    }
+
+    /// Start-of-day dates strictly between `from` and `to`
+    static func missedDays(between from: Date, and to: Date, calendar: Calendar = .current) -> [Date] {
+        let diff = calendar.dateComponents([.day], from: from, to: to).day ?? 0
+        guard diff >= 2 else { return [] }
+        return (1..<diff).compactMap { calendar.date(byAdding: .day, value: $0, to: from) }
+    }
+
+    /// Whether the given missed days can all be covered by the remaining
+    /// monthly freezes (each month has its own allowance).
+    func canFreeze(_ missedDays: [Date]) -> Bool {
+        guard !missedDays.isEmpty else { return true }
+        let calendar = Calendar.current
+        let allowance = monthlyFreezeAllowance
+        var neededPerMonth: [DateComponents: Int] = [:]
+
+        for day in missedDays {
+            let key = calendar.dateComponents([.year, .month], from: day)
+            neededPerMonth[key, default: 0] += 1
+        }
+
+        for (key, needed) in neededPerMonth {
+            guard let monthDate = calendar.date(from: key) else { return false }
+            if freezesUsed(inMonthOf: monthDate) + needed > allowance {
+                return false
+            }
+        }
+        return true
+    }
+
+    // MARK: - Weekly Goal
+
+    /// Target number of active days per week (1...7)
+    var weeklyGoalDays: Int {
+        get {
+            let stored = defaults.integer(forKey: Keys.weeklyGoalDays)
+            return stored == 0 ? 5 : min(max(stored, 1), 7)
+        }
+        set {
+            objectWillChange.send()
+            defaults.set(min(max(newValue, 1), 7), forKey: Keys.weeklyGoalDays)
+        }
+    }
+
+    /// Start-of-day dates of all days with a meditation or completed focus session
+    private func practiceDays() -> Set<Date> {
+        let calendar = Calendar.current
+        var days = Set(sessionHistory.map { calendar.startOfDay(for: $0.date) })
+        for focus in focusSessionHistory where focus.mode == .work && focus.completed {
+            days.insert(calendar.startOfDay(for: focus.date))
+        }
+        return days
+    }
+
+    /// Practice days in the calendar week containing `date`, keyed by start-of-day
+    func practiceDaysInWeek(of date: Date = Date()) -> Set<Date> {
+        let calendar = Calendar.current
+        guard let week = calendar.dateInterval(of: .weekOfYear, for: date) else { return [] }
+        return practiceDays().filter { week.contains($0) }
+    }
+
+    /// Number of active days in the current week
+    var activeDaysThisWeek: Int {
+        practiceDaysInWeek().count
+    }
+
+    /// Progress towards the weekly goal, 0...1
+    var weeklyGoalProgress: Double {
+        min(1.0, Double(activeDaysThisWeek) / Double(weeklyGoalDays))
     }
 
     // MARK: - Statistics

@@ -20,6 +20,9 @@ struct StatsView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 24) {
+                // Haftalık hedef + seri koruma
+                WeeklyGoalCard()
+
                 // Haftalık Aktivite Grid
                 weeklyActivityGrid
 
