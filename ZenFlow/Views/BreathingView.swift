@@ -457,6 +457,9 @@ struct BreathingView: View {
                         if let mood = mood {
                             print("✅ User selected mood: \(mood.displayName) (\(mood.emoji))")
                         }
+
+                        // Good moment to ask for a rating (rate-limited inside)
+                        ReviewPromptManager.shared.requestIfAppropriate(after: mood)
                     }
                 }
             }
