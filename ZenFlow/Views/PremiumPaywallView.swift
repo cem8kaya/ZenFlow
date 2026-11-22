@@ -69,25 +69,25 @@ struct PremiumPaywallView: View {
                         PremiumFeatureRow(
                             icon: "wind",
                             title: String(localized: "premium.features.allExercises", defaultValue: "Tüm Nefes Egzersizleri", comment: "All exercises feature"),
-                            description: String(localized: "premium.features.allExercises.desc", defaultValue: "4-7-8, Sakinleştirici ve daha fazlası", comment: "All exercises description")
+                            description: String(localized: "premium.features.allExercises.desc", defaultValue: "4-7-8, Tutarlı Nefes, İç Çekiş ve daha fazlası", comment: "All exercises description")
                         )
 
                         PremiumFeatureRow(
                             icon: "speaker.wave.2.fill",
                             title: String(localized: "premium.features.allSounds", defaultValue: "Tüm Ambient Sesler", comment: "All sounds feature"),
-                            description: String(localized: "premium.features.allSounds.desc", defaultValue: "Okyanus, orman, şömine ve 10+ ses", comment: "All sounds description")
+                            description: String(localized: "premium.features.allSounds.desc", defaultValue: "Okyanus, orman, şömine, Zen Karışımları ve 10+ ses", comment: "All sounds description")
                         )
 
                         PremiumFeatureRow(
-                            icon: "chart.bar.fill",
-                            title: String(localized: "premium.features.advancedStats", defaultValue: "Gelişmiş İstatistikler", comment: "Advanced stats feature"),
-                            description: String(localized: "premium.features.advancedStats.desc", defaultValue: "Detaylı analiz ve streak takibi", comment: "Advanced stats description")
+                            icon: "heart.text.square.fill",
+                            title: String(localized: "premium.features.moodInsights", defaultValue: "Ruh Hali İçgörüleri", comment: "Mood insights feature"),
+                            description: String(localized: "premium.features.moodInsights.desc", defaultValue: "14 günlük grafik, seansların etkisi ve sana en iyi gelen egzersiz", comment: "Mood insights description")
                         )
 
                         PremiumFeatureRow(
-                            icon: "paintpalette.fill",
-                            title: String(localized: "premium.features.premiumThemes", defaultValue: "Premium Temalar", comment: "Premium themes feature"),
-                            description: String(localized: "premium.features.premiumThemes.desc", defaultValue: "Özel renk paletleri", comment: "Premium themes description")
+                            icon: "snowflake",
+                            title: String(localized: "premium.features.streakFreeze", defaultValue: "Seri Koruma", comment: "Streak freeze feature"),
+                            description: String(localized: "premium.features.streakFreeze.desc", defaultValue: "Ayda 3 koruma hakkı (ücretsiz: 1)", comment: "Streak freeze description")
                         )
                     }
                     .padding(.horizontal, 24)

@@ -4464,40 +4464,6 @@
         }
       }
     },
-    "premium.features.advancedStats" : {
-      "comment" : "Advanced stats feature",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Advanced Statistics"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gelişmiş İstatistikler"
-          }
-        }
-      }
-    },
-    "premium.features.advancedStats.desc" : {
-      "comment" : "Advanced stats description",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Detailed analysis and streak tracking"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Detaylı analiz ve streak takibi"
-          }
-        }
-      }
-    },
     "premium.features.allExercises" : {
       "comment" : "All exercises feature",
       "localizations" : {
@@ -4521,13 +4487,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "4-7-8, Calming and more"
+            "value" : "4-7-8, Coherent Breathing, Physiological Sigh and more"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "4-7-8, Sakinleştirici ve daha fazlası"
+            "value" : "4-7-8, Tutarlı Nefes, İç Çekiş ve daha fazlası"
           }
         }
       }
@@ -4555,47 +4521,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ocean, forest, fireplace and 10+ sounds"
+            "value" : "Ocean, forest, fireplace, Zen Mixes and 10+ sounds"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Okyanus, orman, şömine ve 10+ ses"
-          }
-        }
-      }
-    },
-    "premium.features.premiumThemes" : {
-      "comment" : "Premium themes feature",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Premium Themes"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Premium Temalar"
-          }
-        }
-      }
-    },
-    "premium.features.premiumThemes.desc" : {
-      "comment" : "Premium themes description",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Special color palettes"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Özel renk paletleri"
+            "value" : "Okyanus, orman, şömine, Zen Karışımları ve 10+ ses"
           }
         }
       }
@@ -15803,6 +15735,74 @@
         }
       },
       "comment" : "Sleep mode button accessibility"
+    },
+    "premium.features.moodInsights" : {
+      "comment" : "Mood insights feature",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mood Insights"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ruh Hali İçgörüleri"
+          }
+        }
+      }
+    },
+    "premium.features.moodInsights.desc" : {
+      "comment" : "Mood insights description",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "14-day chart, how sessions affect you and the exercise that works best for you"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "14 günlük grafik, seansların etkisi ve sana en iyi gelen egzersiz"
+          }
+        }
+      }
+    },
+    "premium.features.streakFreeze" : {
+      "comment" : "Streak freeze feature",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Streak Freeze"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seri Koruma"
+          }
+        }
+      }
+    },
+    "premium.features.streakFreeze.desc" : {
+      "comment" : "Streak freeze description",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3 freezes per month (free: 1)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayda 3 koruma hakkı (ücretsiz: 1)"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

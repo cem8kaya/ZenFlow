@@ -271,7 +271,7 @@ class StoreManager: ObservableObject {
     /// Check if a specific feature is available
     func isFeatureAvailable(_ feature: PremiumFeature) -> Bool {
         switch feature {
-        case .allBreathingExercises, .allAmbientSounds, .advancedStats, .premiumThemes:
+        case .allBreathingExercises, .allAmbientSounds, .moodInsights, .streakFreeze:
             return isPremiumUnlocked
         }
     }
@@ -283,8 +283,8 @@ class StoreManager: ObservableObject {
 enum PremiumFeature {
     case allBreathingExercises
     case allAmbientSounds
-    case advancedStats
-    case premiumThemes
+    case moodInsights
+    case streakFreeze
 }
 
 // MARK: - Store Error

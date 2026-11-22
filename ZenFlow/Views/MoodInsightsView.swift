@@ -240,11 +240,11 @@ struct MoodInsightsView: View {
     private func exerciseRanking(_ insights: MoodInsights) -> some View {
         if !insights.exerciseImpacts.isEmpty {
             VStack(alignment: .leading, spacing: 10) {
-                if let best = insights.bestExercise, let exercise = exercise(for: best.exerciseType) {
+                if let best = insights.bestExercise, let info = exerciseInfo(for: best.exerciseType) {
                     HStack(spacing: 8) {
                         Image(systemName: "sparkles")
                             .foregroundColor(ZenTheme.lightLavender)
-                        Text(String(localized: "mood_insights_best_title", defaultValue: "Sana en iyi gelen: \(exercise.name)", comment: "Best exercise for the user"))
+                        Text(String(localized: "mood_insights_best_title", defaultValue: "Sana en iyi gelen: \(info.name)", comment: "Best exercise for the user"))
                             .font(.subheadline.weight(.semibold))
                             .foregroundColor(.white)
                     }
@@ -262,15 +262,15 @@ struct MoodInsightsView: View {
     }
 
     private func exerciseRow(_ impact: MoodInsights.ExerciseImpact) -> some View {
-        let exercise = exercise(for: impact.exerciseType)
+        let info = exerciseInfo(for: impact.exerciseType)
 
         return HStack(spacing: 10) {
-            Image(systemName: exercise?.iconName ?? "wind")
+            Image(systemName: info?.iconName ?? "wind")
                 .frame(width: 24)
                 .foregroundColor(ZenTheme.calmBlue)
 
             VStack(alignment: .leading, spacing: 2) {
-                Text(exercise?.name ?? impact.exerciseType)
+                Text(info?.name ?? impact.exerciseType)
                     .font(.subheadline)
                     .foregroundColor(.white)
                 Text(String(localized: "mood_insights_sessions_count", defaultValue: "\(impact.sessions) kayıt", comment: "Number of mood check-ins"))
@@ -291,7 +291,7 @@ struct MoodInsightsView: View {
         }
     }
 
-    private func exercise(for type: String) -> BreathingExercise? {
+    private func exerciseInfo(for type: String) -> BreathingExercise? {
         BreathingExerciseManager.allExercises.first { $0.exerciseType == type }
     }
 }
