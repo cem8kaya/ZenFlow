@@ -16228,6 +16228,380 @@
         }
       },
       "comment" : "Weekly report footer"
+    },
+    "Breathing Exercise" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Breathing Exercise"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nefes Egzersizi"
+          }
+        }
+      },
+      "comment" : "App Intents"
+    },
+    "Box Breathing" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Box Breathing"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kutu Nefesi"
+          }
+        }
+      },
+      "comment" : "App Intents"
+    },
+    "Calming Breath" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calming Breath"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sakinleştirici Nefes"
+          }
+        }
+      },
+      "comment" : "App Intents"
+    },
+    "Energy Breath" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Energy Breath"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enerji Nefesi"
+          }
+        }
+      },
+      "comment" : "App Intents"
+    },
+    "Deep Relaxation" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deep Relaxation"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Derin Gevşeme"
+          }
+        }
+      },
+      "comment" : "App Intents"
+    },
+    "4-7-8 Technique" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4-7-8 Technique"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4-7-8 Tekniği"
+          }
+        }
+      },
+      "comment" : "App Intents"
+    },
+    "Coherent Breathing 5-5" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Coherent Breathing 5-5"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tutarlı Nefes 5-5"
+          }
+        }
+      },
+      "comment" : "App Intents"
+    },
+    "Physiological Sigh" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Physiological Sigh"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fizyolojik İç Çekiş"
+          }
+        }
+      },
+      "comment" : "App Intents"
+    },
+    "Triangle Breath" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Triangle Breath"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Üçgen Nefes"
+          }
+        }
+      },
+      "comment" : "App Intents"
+    },
+    "Start Breathing" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start Breathing"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nefes Egzersizi Başlat"
+          }
+        }
+      },
+      "comment" : "App Intents"
+    },
+    "Exercise" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exercise"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Egzersiz"
+          }
+        }
+      },
+      "comment" : "App Intents"
+    },
+    "Opens MyZenFlow and gets a breathing exercise ready." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opens MyZenFlow and gets a breathing exercise ready."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow'u açar ve bir nefes egzersizini hazırlar."
+          }
+        }
+      },
+      "comment" : "App Intents"
+    },
+    "Start Focus Session" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start Focus Session"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odaklanmayı Başlat"
+          }
+        }
+      },
+      "comment" : "App Intents"
+    },
+    "Opens the MyZenFlow focus timer." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opens the MyZenFlow focus timer."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow odak zamanlayıcısını açar."
+          }
+        }
+      },
+      "comment" : "App Intents"
+    },
+    "Start Sleep Mode" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start Sleep Mode"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uyku Modunu Başlat"
+          }
+        }
+      },
+      "comment" : "App Intents"
+    },
+    "Opens MyZenFlow Sleep Mode with calming sounds and a timer." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opens MyZenFlow Sleep Mode with calming sounds and a timer."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sakinleştirici sesler ve zamanlayıcıyla MyZenFlow Uyku Modu'nu açar."
+          }
+        }
+      },
+      "comment" : "App Intents"
+    },
+    "Show Weekly Zen Report" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show Weekly Zen Report"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haftalık Zen Raporunu Göster"
+          }
+        }
+      },
+      "comment" : "App Intents"
+    },
+    "Shows your meditation summary for the week." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shows your meditation summary for the week."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haftalık meditasyon özetini gösterir."
+          }
+        }
+      },
+      "comment" : "App Intents"
+    },
+    "Breathe" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Breathe"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nefes Al"
+          }
+        }
+      },
+      "comment" : "App Intents"
+    },
+    "Focus" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Focus"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odaklan"
+          }
+        }
+      },
+      "comment" : "App Intents"
+    },
+    "Sleep" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sleep"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uyku"
+          }
+        }
+      },
+      "comment" : "App Intents"
+    },
+    "Weekly Report" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weekly Report"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haftalık Rapor"
+          }
+        }
+      },
+      "comment" : "App Intents"
     }
   },
   "version" : "1.0"
