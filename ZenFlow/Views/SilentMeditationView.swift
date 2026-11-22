@@ -276,6 +276,13 @@ struct SilentMeditationView: View {
         }
         bell.startBell()
 
+        // Lock screen / Dynamic Island countdown (no-op until enabled)
+        SessionLiveActivityManager.shared.start(
+            kind: .meditation,
+            title: String(localized: "silent_title", defaultValue: "Sessiz Meditasyon", comment: "Silent meditation title"),
+            endDate: Date().addingTimeInterval(plan.durationSeconds)
+        )
+
         // The user's ambient selection plays, and is restored afterwards
         soundsBefore = soundManager.activeSounds
         if soundManager.isEnabled {
@@ -289,6 +296,7 @@ struct SilentMeditationView: View {
         let wasMeditating = stage == .meditating
 
         bell.stopBell()
+        SessionLiveActivityManager.shared.end()
         UIApplication.shared.isIdleTimerDisabled = false
         startedAt = nil
 

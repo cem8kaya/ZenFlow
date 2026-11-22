@@ -790,6 +790,13 @@ struct BreathingView: View {
         let durationInSeconds = TimeInterval(selectedDurationMinutes * 60)
         sessionStartTime = Date()
         pausedTimeRemaining = durationInSeconds
+
+        // Lock screen / Dynamic Island countdown (no-op until enabled)
+        SessionLiveActivityManager.shared.start(
+            kind: .breathing,
+            title: currentExercise.name,
+            endDate: Date().addingTimeInterval(durationInSeconds)
+        )
         sessionTimer = Timer.scheduledTimer(withTimeInterval: durationInSeconds, repeats: false) { [self] _ in
             // Session duration completed
             completeSessionAutomatically()
@@ -816,6 +823,7 @@ struct BreathingView: View {
 
         // Stop mindfulness bell
         MindfulnessBellManager.shared.stopBell()
+        SessionLiveActivityManager.shared.end()
 
         // Stop ambient sounds with fade out
         soundManager.stopAllSounds(fadeOutDuration: 3.0)
@@ -890,6 +898,7 @@ struct BreathingView: View {
             let elapsedTime = Date().timeIntervalSince(startTime)
             pausedTimeRemaining = max(0, pausedTimeRemaining - elapsedTime)
         }
+        SessionLiveActivityManager.shared.pause(remaining: pausedTimeRemaining)
 
         // Reduce ambient sound volume to 50% when paused
         volumeBeforePause = soundManager.volume
@@ -910,6 +919,7 @@ struct BreathingView: View {
     private func resumeAnimation() {
         // Resume session timer with remaining time
         sessionStartTime = Date()
+        SessionLiveActivityManager.shared.resume(endDate: Date().addingTimeInterval(pausedTimeRemaining))
         if pausedTimeRemaining > 0 {
             sessionTimer = Timer.scheduledTimer(withTimeInterval: pausedTimeRemaining, repeats: false) { [self] _ in
                 completeSessionAutomatically()

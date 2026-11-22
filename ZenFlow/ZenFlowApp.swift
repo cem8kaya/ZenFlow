@@ -94,6 +94,10 @@ struct ZenFlowApp: App {
                 if phase == .active {
                     consumePendingDeepLinkIfReady()
                 }
+                // Keep the widgets current whenever the app comes or goes
+                if phase == .active || phase == .background {
+                    WidgetSnapshotWriter.shared.refresh()
+                }
             }
             .onOpenURL { url in
                 // zenflow:// links from widgets, Live Activities and notifications
@@ -121,6 +125,9 @@ struct ZenFlowApp: App {
             .onAppear {
                 // Set notification delegate
                 UNUserNotificationCenter.current().delegate = notificationDelegate
+
+                // Start feeding the home/lock screen widgets
+                WidgetSnapshotWriter.shared.start()
             }
         }
     }

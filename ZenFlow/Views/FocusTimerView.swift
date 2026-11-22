@@ -432,6 +432,13 @@ struct FocusTimerView: View {
         // Set session end time for background-safe timing
         sessionEndTime = Date().addingTimeInterval(timeRemaining)
 
+        // Lock screen / Dynamic Island countdown; also moves it on resume (no-op until enabled)
+        SessionLiveActivityManager.shared.start(
+            kind: .focus,
+            title: currentMode.displayName,
+            endDate: Date().addingTimeInterval(timeRemaining)
+        )
+
         // DÜZELTME: [weak self] kaldırıldı. Struct olduğu için weak kullanılamaz.
         // Ayrıca 'guard let self = self' kontrolüne gerek yoktur.
         let newTimer = Timer(timeInterval: 1.0, repeats: true) { _ in
@@ -458,6 +465,7 @@ struct FocusTimerView: View {
         timer?.invalidate()
         timer = nil
         sessionEndTime = nil // Clear end time when paused
+        SessionLiveActivityManager.shared.pause(remaining: timeRemaining)
         HapticManager.shared.playImpact(style: .light)
         MindfulnessBellManager.shared.pauseBell()
 
@@ -498,6 +506,7 @@ struct FocusTimerView: View {
         sessionEndTime = nil
         HapticManager.shared.playImpact(style: .medium)
         MindfulnessBellManager.shared.stopBell()
+        SessionLiveActivityManager.shared.end()
 
         // Stop ambient sounds with fade out
         soundManager.stopAllSounds(fadeOutDuration: 2.0)
@@ -507,6 +516,7 @@ struct FocusTimerView: View {
         stopTimer()
         timerState = .completed
         MindfulnessBellManager.shared.stopBell()
+        SessionLiveActivityManager.shared.end()
 
         // Stop ambient sounds with fade out
         soundManager.stopAllSounds(fadeOutDuration: 2.0)
@@ -556,6 +566,7 @@ struct FocusTimerView: View {
         stopTimer()
         HapticManager.shared.playImpact(style: .medium)
         MindfulnessBellManager.shared.stopBell()
+        SessionLiveActivityManager.shared.end()
 
         // Don't count skipped sessions
         moveToNextMode()
