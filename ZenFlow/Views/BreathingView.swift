@@ -243,6 +243,8 @@ struct BreathingView: View {
     @State private var phaseTimeRemaining: TimeInterval = 0
     @State private var pulseScale: CGFloat = 1.0
     @State private var volumeBeforePause: Float = 0.0
+    @State private var preSessionMood: Mood?
+    @State private var completedExerciseType: String?
 
     // MARK: - Environment Objects (Performance Optimization)
     // Use @EnvironmentObject for singleton managers to avoid re-initialization
@@ -294,6 +296,10 @@ struct BreathingView: View {
                             .accessibilityHint(String(localized: "breathing_select_exercise_hint", defaultValue: "Farklı bir nefes egzersizi seçmek için dokunun", comment: "Tap to select different exercise"))
                             .opacity(isAnimating ? 0 : 1)
                             .allowsHitTesting(!isAnimating)
+
+                            preSessionMoodMenu
+                                .opacity(isAnimating ? 0 : 1)
+                                .allowsHitTesting(!isAnimating)
                             Spacer()
                         }
                         .frame(height: 50)
@@ -441,8 +447,13 @@ struct BreathingView: View {
 
                 // Session Complete Overlay
                 if showSessionComplete {
-                    SessionCompleteView(durationMinutes: completedDurationMinutes) { mood in
+                    SessionCompleteView(
+                        durationMinutes: completedDurationMinutes,
+                        preMood: preSessionMood,
+                        exerciseType: completedExerciseType
+                    ) { mood in
                         showSessionComplete = false
+                        preSessionMood = nil
                         if let mood = mood {
                             print("✅ User selected mood: \(mood.displayName) (\(mood.emoji))")
                         }
@@ -538,6 +549,51 @@ struct BreathingView: View {
             }
         }
     }
+    }
+
+    // MARK: - Pre-session Mood
+
+    /// Optional "how do you feel right now?" picker. Together with the mood
+    /// chosen after the session it powers the before/after mood insights.
+    private var preSessionMoodMenu: some View {
+        Menu {
+            ForEach(Mood.allCases) { mood in
+                Button {
+                    preSessionMood = mood
+                    HapticManager.shared.playImpact(style: .light)
+                } label: {
+                    Text("\(mood.emoji)  \(mood.displayName)")
+                }
+            }
+
+            if preSessionMood != nil {
+                Divider()
+                Button(role: .destructive) {
+                    preSessionMood = nil
+                } label: {
+                    Label(String(localized: "breathing_pre_mood_clear", defaultValue: "Temizle", comment: "Clear pre-session mood"), systemImage: "xmark")
+                }
+            }
+        } label: {
+            ZStack {
+                Circle()
+                    .fill(Color.white.opacity(0.1))
+                Circle()
+                    .stroke(ZenTheme.softPurple.opacity(0.3), lineWidth: 1)
+
+                if let mood = preSessionMood {
+                    Text(mood.emoji)
+                        .font(.system(size: 20))
+                } else {
+                    Image(systemName: "face.smiling")
+                        .font(.system(size: 16))
+                        .foregroundColor(ZenTheme.lightLavender)
+                }
+            }
+            .frame(width: 40, height: 40)
+        }
+        .accessibilityLabel(String(localized: "breathing_pre_mood_accessibility", defaultValue: "Başlamadan önce ruh halin (isteğe bağlı)", comment: "Pre-session mood accessibility label"))
+        .accessibilityValue(preSessionMood?.displayName ?? "")
     }
 
     // MARK: - Duration Picker View
@@ -730,6 +786,7 @@ struct BreathingView: View {
                 // Play session complete haptic
                 HapticManager.shared.playSessionComplete()
                 completedDurationMinutes = minutes
+                completedExerciseType = currentExercise.exerciseType
                 showSessionComplete = true
             } else {
                 // Play session cancel haptic for short sessions

@@ -23,6 +23,9 @@ struct StatsView: View {
                 // Haftalık hedef + seri koruma
                 WeeklyGoalCard()
 
+                // Ruh hali içgörüleri (özet ücretsiz, derin analiz premium)
+                MoodInsightsView()
+
                 // Haftalık Aktivite Grid
                 weeklyActivityGrid
 

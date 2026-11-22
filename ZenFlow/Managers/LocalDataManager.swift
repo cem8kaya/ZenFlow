@@ -640,8 +640,23 @@ class LocalDataManager: ObservableObject {
     /// - Parameters:
     ///   - mood: Kaydedilecek mood
     ///   - date: Mood tarihi (varsayılan: şu an)
-    func saveMood(_ mood: Mood, date: Date = Date()) {
-        let entry = MoodEntry(date: date, mood: mood)
+    ///   - preMood: Mood before the session, if the user recorded one
+    ///   - exerciseType: Breathing exercise identifier practiced in the session
+    ///   - durationMinutes: Session length in minutes
+    func saveMood(
+        _ mood: Mood,
+        preMood: Mood? = nil,
+        exerciseType: String? = nil,
+        durationMinutes: Int? = nil,
+        date: Date = Date()
+    ) {
+        let entry = MoodEntry(
+            date: date,
+            mood: mood,
+            preMood: preMood,
+            exerciseType: exerciseType,
+            durationMinutes: durationMinutes
+        )
         var history = moodHistory
         history.append(entry)
         moodHistory = history

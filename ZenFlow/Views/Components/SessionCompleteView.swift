@@ -17,6 +17,10 @@ import SwiftUI
 /// Session completion overlay with success animation and mood check-in
 struct SessionCompleteView: View {
     let durationMinutes: Int
+    /// Mood the user picked before the session (optional)
+    var preMood: Mood? = nil
+    /// `exerciseType` of the exercise just practiced (optional)
+    var exerciseType: String? = nil
     let onComplete: (Mood?) -> Void
 
     @State private var showSuccessAnimation = false
@@ -221,7 +225,12 @@ struct SessionCompleteView: View {
         }
 
         // Save mood to LocalDataManager
-        LocalDataManager.shared.saveMood(mood)
+        LocalDataManager.shared.saveMood(
+            mood,
+            preMood: preMood,
+            exerciseType: exerciseType,
+            durationMinutes: durationMinutes
+        )
 
         // Dismiss after a short delay
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {

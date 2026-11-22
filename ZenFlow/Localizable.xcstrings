@@ -11377,6 +11377,363 @@
         }
       },
       "comment" : "Triangle benefit 4"
+    },
+    "mood_insights_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mood Insights"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ruh Hali İçgörüleri"
+          }
+        }
+      },
+      "comment" : "Mood insights card title"
+    },
+    "mood_insights_empty" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Log your mood after sessions and your insights will appear here."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seans sonunda ruh halini kaydettiğinde içgörüler burada belirir."
+          }
+        }
+      },
+      "comment" : "Mood insights empty state"
+    },
+    "mood_insights_avg_7d" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "7-day average"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Son 7 gün ortalaması"
+          }
+        }
+      },
+      "comment" : "Average mood over the last 7 days"
+    },
+    "mood_insights_no_week_data" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No check-ins in the last 7 days."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Son 7 günde kayıt yok."
+          }
+        }
+      },
+      "comment" : "No mood check-ins in the last 7 days"
+    },
+    "mood_insights_trend_up" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Up compared to last week"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geçen haftaya göre yükselişte"
+          }
+        }
+      },
+      "comment" : "Mood trend up"
+    },
+    "mood_insights_trend_down" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Down compared to last week"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geçen haftaya göre düşüşte"
+          }
+        }
+      },
+      "comment" : "Mood trend down"
+    },
+    "mood_insights_trend_flat" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Same as last week"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geçen haftayla aynı seviyede"
+          }
+        }
+      },
+      "comment" : "Mood trend flat"
+    },
+    "mood_insights_locked_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Advanced insights"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gelişmiş içgörüler"
+          }
+        }
+      },
+      "comment" : "Locked mood insights title"
+    },
+    "mood_insights_locked_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The 14-day chart, how sessions affect your mood and the breathing exercise that works best for you unlock with Premium."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "14 günlük grafik, seansların ruh haline etkisi ve sana en iyi gelen nefes egzersizi Premium ile açılır."
+          }
+        }
+      },
+      "comment" : "Locked mood insights description"
+    },
+    "mood_insights_unlock" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Explore Premium"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Premium'u Keşfet"
+          }
+        }
+      },
+      "comment" : "Explore premium button"
+    },
+    "mood_insights_chart_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last 14 days"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Son 14 gün"
+          }
+        }
+      },
+      "comment" : "Mood chart title"
+    },
+    "mood_insights_impact_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Session impact"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seansların etkisi"
+          }
+        }
+      },
+      "comment" : "Session impact title"
+    },
+    "mood_insights_impact_hint" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Also pick your mood before a session (the 🙂 icon on the start screen) to see how sessions affect you here."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seans öncesi ruh halini de seçersen (başlangıç ekranındaki 🙂 simgesi) seansların etkisini burada görürsün."
+          }
+        }
+      },
+      "comment" : "Hint to record a before-session mood"
+    },
+    "mood_insights_impact_positive" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "After sessions your mood rises by %@ points on average."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seanslardan sonra ruh halin ortalama %@ puan yükseliyor."
+          }
+        }
+      },
+      "comment" : "Sessions lift mood"
+    },
+    "mood_insights_impact_negative" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "After sessions your mood drops by %@ points on average. You might want to try a different exercise."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seanslardan sonra ruh halin ortalama %@ puan düşüyor. Farklı bir egzersiz denemek isteyebilirsin."
+          }
+        }
+      },
+      "comment" : "Sessions lower mood"
+    },
+    "mood_insights_impact_neutral" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your mood is at a similar level before and after sessions."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seans öncesi ve sonrası ruh halin benzer seviyede."
+          }
+        }
+      },
+      "comment" : "Sessions keep mood stable"
+    },
+    "mood_insights_best_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Works best for you: %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sana en iyi gelen: %@"
+          }
+        }
+      },
+      "comment" : "Best exercise for the user"
+    },
+    "mood_insights_ranking_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "By exercise"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Egzersize göre"
+          }
+        }
+      },
+      "comment" : "By exercise title"
+    },
+    "mood_insights_sessions_count" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld check-ins"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld kayıt"
+          }
+        }
+      },
+      "comment" : "Number of mood check-ins"
+    },
+    "breathing_pre_mood_clear" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temizle"
+          }
+        }
+      },
+      "comment" : "Clear pre-session mood"
+    },
+    "breathing_pre_mood_accessibility" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your mood before starting (optional)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Başlamadan önce ruh halin (isteğe bağlı)"
+          }
+        }
+      },
+      "comment" : "Pre-session mood accessibility label"
     }
   },
   "version" : "1.0"

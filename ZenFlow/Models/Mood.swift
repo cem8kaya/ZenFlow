@@ -73,18 +73,49 @@ enum Mood: String, Codable, CaseIterable, Identifiable {
     }
 }
 
+extension Mood {
+    /// The mood closest to a 1...5 average (used to label chart axes and averages)
+    static func nearest(toValue value: Double) -> Mood {
+        let clamped = min(max(Int(value.rounded()), 1), 5)
+        return Mood.allCases.first { $0.value == clamped } ?? .neutral
+    }
+}
+
 // MARK: - Mood Entry Data
 
 /// Represents a saved mood check-in entry
 struct MoodEntry: Codable, Identifiable {
     let id: UUID
     let date: Date
+    /// Mood after the session
     let mood: Mood
+    /// Optional mood before the session (enables before/after insights)
+    let preMood: Mood?
+    /// `exerciseType` of the breathing exercise that was practiced, if any
+    let exerciseType: String?
+    /// Session length in minutes, if known
+    let durationMinutes: Int?
 
-    init(id: UUID = UUID(), date: Date = Date(), mood: Mood) {
+    init(
+        id: UUID = UUID(),
+        date: Date = Date(),
+        mood: Mood,
+        preMood: Mood? = nil,
+        exerciseType: String? = nil,
+        durationMinutes: Int? = nil
+    ) {
         self.id = id
         self.date = date
         self.mood = mood
+        self.preMood = preMood
+        self.exerciseType = exerciseType
+        self.durationMinutes = durationMinutes
+    }
+
+    /// Mood change over the session (after minus before), if a before-mood exists
+    var change: Int? {
+        guard let preMood else { return nil }
+        return mood.value - preMood.value
     }
 
     /// Formatted date string
