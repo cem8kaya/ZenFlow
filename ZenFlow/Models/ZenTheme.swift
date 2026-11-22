@@ -22,12 +22,12 @@ enum ThemeType: String, CaseIterable, Identifiable {
 
     /// Localized display name for the theme
     var displayName: String {
-        return "Klasik Zen"
+        return String(localized: "theme_classic_name", defaultValue: "Klasik Zen", comment: "Classic Zen theme name")
     }
 
     /// Description of the theme
     var description: String {
-        return "Derin mor ve mavi tonları ile klasik Zen teması"
+        return String(localized: "theme_classic_desc", defaultValue: "Derin mor ve mavi tonları ile klasik Zen teması", comment: "Classic Zen theme description")
     }
 
     /// Returns the PremiumTheme configuration for this theme type

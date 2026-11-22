@@ -10102,6 +10102,125 @@
           }
         }
       }
+    },
+    "mood_very_sad" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Very Sad"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çok Üzgün"
+          }
+        }
+      },
+      "comment" : "Mood: very sad"
+    },
+    "mood_sad" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sad"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Üzgün"
+          }
+        }
+      },
+      "comment" : "Mood: sad"
+    },
+    "mood_neutral" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neutral"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Normal"
+          }
+        }
+      },
+      "comment" : "Mood: neutral"
+    },
+    "mood_happy" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Happy"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mutlu"
+          }
+        }
+      },
+      "comment" : "Mood: happy"
+    },
+    "mood_very_happy" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Very Happy"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çok Mutlu"
+          }
+        }
+      },
+      "comment" : "Mood: very happy"
+    },
+    "theme_classic_name" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Classic Zen"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Klasik Zen"
+          }
+        }
+      },
+      "comment" : "Classic Zen theme name"
+    },
+    "theme_classic_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Classic Zen theme with deep purple and blue tones"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Derin mor ve mavi tonları ile klasik Zen teması"
+          }
+        }
+      },
+      "comment" : "Classic Zen theme description"
     }
   },
   "version" : "1.0"

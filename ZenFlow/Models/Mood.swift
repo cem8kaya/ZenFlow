@@ -40,19 +40,19 @@ enum Mood: String, Codable, CaseIterable, Identifiable {
         }
     }
 
-    /// Display name for the mood
+    /// Display name for the mood (localized)
     var displayName: String {
         switch self {
         case .verySad:
-            return "Çok Üzgün"
+            return String(localized: "mood_very_sad", defaultValue: "Çok Üzgün", comment: "Mood: very sad")
         case .sad:
-            return "Üzgün"
+            return String(localized: "mood_sad", defaultValue: "Üzgün", comment: "Mood: sad")
         case .neutral:
-            return "Normal"
+            return String(localized: "mood_neutral", defaultValue: "Normal", comment: "Mood: neutral")
         case .happy:
-            return "Mutlu"
+            return String(localized: "mood_happy", defaultValue: "Mutlu", comment: "Mood: happy")
         case .veryHappy:
-            return "Çok Mutlu"
+            return String(localized: "mood_very_happy", defaultValue: "Çok Mutlu", comment: "Mood: very happy")
         }
     }
 
