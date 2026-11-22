@@ -182,6 +182,12 @@ struct BreathingExercise: Identifiable, Codable {
             return String(localized: "exercise_energy_name", defaultValue: "Enerji Nefesi", comment: "Energy Breath Name")
         case "deep":
             return String(localized: "exercise_deep_name", defaultValue: "Derin Gevşeme", comment: "Deep Relaxation Name")
+        case "coherent":
+            return String(localized: "exercise_coherent_name", defaultValue: "Tutarlı Nefes 5-5", comment: "Coherent Breathing Name")
+        case "sigh":
+            return String(localized: "exercise_sigh_name", defaultValue: "Fizyolojik İç Çekiş", comment: "Physiological Sigh Name")
+        case "triangle":
+            return String(localized: "exercise_triangle_name", defaultValue: "Üçgen Nefes", comment: "Triangle Breathing Name")
         default:
             return exerciseType
         }
@@ -199,6 +205,12 @@ struct BreathingExercise: Identifiable, Codable {
             return String(localized: "exercise_energy_description", defaultValue: "Enerji ve canlılık kazandıran hızlı tempo nefes egzersizi. Sabah rutini için mükemmeldir.", comment: "Energy Breath Description")
         case "deep":
             return String(localized: "exercise_deep_description", defaultValue: "Yavaş ve derin nefes alıp vermelerle tam bir rahatlama hali. Meditasyon ve yoga sonrası idealdir.", comment: "Deep Relaxation Description")
+        case "coherent":
+            return String(localized: "exercise_coherent_description", defaultValue: "Dakikada yaklaşık 6 nefesle eşit uzunlukta nefes alıp verme. Kalp ritmini dengeler, gün boyu sakin bir odak sağlar.", comment: "Coherent Breathing Description")
+        case "sigh":
+            return String(localized: "exercise_sigh_description", defaultValue: "Burundan iki kısa nefes alıp ağızdan uzun nefes verme. Anlık stresi birkaç döngüde azaltmanın en hızlı yollarından biridir.", comment: "Physiological Sigh Description")
+        case "triangle":
+            return String(localized: "exercise_triangle_description", defaultValue: "Al, tut, ver: üç eşit adım. Kutu nefesine göre daha yumuşak, yeni başlayanlar için ideal bir ritim.", comment: "Triangle Breathing Description")
         default:
             return exerciseType
         }
@@ -230,6 +242,24 @@ struct BreathingExercise: Identifiable, Codable {
                 String(localized: "exercise_energy_benefit_1", defaultValue: "Zihinsel uyanıklığı artırır", comment: "Energy benefit 2"),
                 String(localized: "exercise_energy_benefit_2", defaultValue: "Kan dolaşımını hızlandırır", comment: "Energy benefit 3"),
                 String(localized: "exercise_energy_benefit_3", defaultValue: "Güne dinç başlamanızı sağlar", comment: "Energy benefit 4")
+            ],
+            "coherent": [
+                String(localized: "exercise_coherent_benefit_0", defaultValue: "Kalp ritmini dengeler", comment: "Coherent benefit 1"),
+                String(localized: "exercise_coherent_benefit_1", defaultValue: "Gün boyu sakin odak sağlar", comment: "Coherent benefit 2"),
+                String(localized: "exercise_coherent_benefit_2", defaultValue: "Stres tepkisini yumuşatır", comment: "Coherent benefit 3"),
+                String(localized: "exercise_coherent_benefit_3", defaultValue: "Uzun seanslar için uygundur", comment: "Coherent benefit 4")
+            ],
+            "sigh": [
+                String(localized: "exercise_sigh_benefit_0", defaultValue: "Anlık stresi hızla düşürür", comment: "Sigh benefit 1"),
+                String(localized: "exercise_sigh_benefit_1", defaultValue: "Sadece 1-3 dakikada etkili olur", comment: "Sigh benefit 2"),
+                String(localized: "exercise_sigh_benefit_2", defaultValue: "Gergin omuz ve göğsü gevşetir", comment: "Sigh benefit 3"),
+                String(localized: "exercise_sigh_benefit_3", defaultValue: "Her yerde sessizce uygulanabilir", comment: "Sigh benefit 4")
+            ],
+            "triangle": [
+                String(localized: "exercise_triangle_benefit_0", defaultValue: "Yeni başlayanlar için kolaydır", comment: "Triangle benefit 1"),
+                String(localized: "exercise_triangle_benefit_1", defaultValue: "Zihni sakinleştirir", comment: "Triangle benefit 2"),
+                String(localized: "exercise_triangle_benefit_2", defaultValue: "Nefes kontrolünü geliştirir", comment: "Triangle benefit 3"),
+                String(localized: "exercise_triangle_benefit_3", defaultValue: "Kısa molalar için uygundur", comment: "Triangle benefit 4")
             ],
             "deep": [
                 String(localized: "exercise_deep_benefit_0", defaultValue: "Derin rahatlama sağlar", comment: "Deep benefit 1"),
@@ -415,14 +445,92 @@ class BreathingExerciseManager: ObservableObject {
             difficulty: .advanced,
             recommendedTime: .evening,
             isPremium: true // PREMIUM
+        ),
+
+        // 6. Coherent Breathing 5-5 - PREMIUM
+        BreathingExercise(
+            exerciseType: "coherent",
+            phases: [
+                BreathingPhaseConfig(
+                    phase: .inhale,
+                    duration: 5,
+                    instructionKey: "exercise_coherent_phase_0_instruction"
+                ),
+                BreathingPhaseConfig(
+                    phase: .exhale,
+                    duration: 5,
+                    instructionKey: "exercise_coherent_phase_1_instruction"
+                )
+            ],
+            recommendedDuration: 10,
+            iconName: "waveform.path",
+            difficulty: .beginner,
+            recommendedTime: .anytime,
+            isPremium: true // PREMIUM
+        ),
+
+        // 7. Physiological Sigh (double inhale, long exhale) - PREMIUM
+        BreathingExercise(
+            exerciseType: "sigh",
+            phases: [
+                BreathingPhaseConfig(
+                    phase: .inhale,
+                    duration: 2,
+                    instructionKey: "exercise_sigh_phase_0_instruction"
+                ),
+                BreathingPhaseConfig(
+                    phase: .inhale,
+                    duration: 1,
+                    instructionKey: "exercise_sigh_phase_1_instruction"
+                ),
+                BreathingPhaseConfig(
+                    phase: .exhale,
+                    duration: 6,
+                    instructionKey: "exercise_sigh_phase_2_instruction"
+                )
+            ],
+            recommendedDuration: 3,
+            iconName: "lungs.fill",
+            difficulty: .beginner,
+            recommendedTime: .stressful,
+            isPremium: true // PREMIUM
+        ),
+
+        // 8. Triangle Breathing 4-4-4 - PREMIUM
+        BreathingExercise(
+            exerciseType: "triangle",
+            phases: [
+                BreathingPhaseConfig(
+                    phase: .inhale,
+                    duration: 4,
+                    instructionKey: "exercise_triangle_phase_0_instruction"
+                ),
+                BreathingPhaseConfig(
+                    phase: .hold,
+                    duration: 4,
+                    instructionKey: "exercise_triangle_phase_1_instruction"
+                ),
+                BreathingPhaseConfig(
+                    phase: .exhale,
+                    duration: 4,
+                    instructionKey: "exercise_triangle_phase_2_instruction"
+                )
+            ],
+            recommendedDuration: 5,
+            iconName: "triangle.fill",
+            difficulty: .beginner,
+            recommendedTime: .anytime,
+            isPremium: true // PREMIUM
         )
     ]
 
     private init() {
+        // Exercise `id`s are generated at launch, so selection and favorites are
+        // persisted by the stable `exerciseType` identifier instead.
+
         // Load selected exercise from UserDefaults
-        if let savedExerciseID = UserDefaults.standard.string(forKey: selectedExerciseKey),
-           let uuid = UUID(uuidString: savedExerciseID),
-           let exercise = Self.allExercises.first(where: { $0.id == uuid }) {
+        if let savedType = UserDefaults.standard.string(forKey: selectedExerciseKey),
+           let exercise = Self.allExercises.first(where: { $0.exerciseType == savedType }) {
             self.selectedExercise = exercise
         } else {
             // Default to Box Breathing
@@ -431,7 +539,12 @@ class BreathingExerciseManager: ObservableObject {
 
         // Load favorite exercises from UserDefaults
         if let savedFavorites = UserDefaults.standard.array(forKey: favoriteExercisesKey) as? [String] {
-            self.favoriteExerciseIDs = Set(savedFavorites.compactMap { UUID(uuidString: $0) })
+            let favoriteTypes = Set(savedFavorites)
+            self.favoriteExerciseIDs = Set(
+                Self.allExercises
+                    .filter { favoriteTypes.contains($0.exerciseType) }
+                    .map { $0.id }
+            )
         }
     }
 
@@ -443,7 +556,7 @@ class BreathingExerciseManager: ObservableObject {
     /// Select an exercise
     func selectExercise(_ exercise: BreathingExercise) {
         selectedExercise = exercise
-        UserDefaults.standard.set(exercise.id.uuidString, forKey: selectedExerciseKey)
+        UserDefaults.standard.set(exercise.exerciseType, forKey: selectedExerciseKey)
     }
 
     /// Toggle favorite status for an exercise
@@ -468,24 +581,18 @@ class BreathingExerciseManager: ObservableObject {
 
     /// Save favorites to UserDefaults
     private func saveFavorites() {
-        let favoriteStrings = favoriteExerciseIDs.map { $0.uuidString }
-        UserDefaults.standard.set(favoriteStrings, forKey: favoriteExercisesKey)
+        let favoriteTypes = Self.allExercises
+            .filter { favoriteExerciseIDs.contains($0.id) }
+            .map { $0.exerciseType }
+        UserDefaults.standard.set(favoriteTypes, forKey: favoriteExercisesKey)
     }
 
     /// Select exercise by type identifier from deep link
     /// - Parameter type: Exercise type identifier (e.g., "box", "478", "calming")
     func selectExerciseByType(_ type: String) {
-        let typeMap: [String: Int] = [
-            "box": 0,           // Kutu Nefesi (Box Breathing)
-            "478": 1,           // 4-7-8 Tekniği
-            "calming": 2,       // Sakinleştirici Nefes
-            "energy": 3,        // Enerji Nefesi
-            "deep": 4           // Derin Gevşeme
-        ]
-
-        if let index = typeMap[type.lowercased()], index < Self.allExercises.count {
-            selectExercise(Self.allExercises[index])
-            print("✅ Selected exercise via deep link: \(Self.allExercises[index].name)")
+        if let exercise = Self.allExercises.first(where: { $0.exerciseType == type.lowercased() }) {
+            selectExercise(exercise)
+            print("✅ Selected exercise via deep link: \(exercise.name)")
         } else {
             print("⚠️ Unknown exercise type: \(type), keeping current selection")
         }

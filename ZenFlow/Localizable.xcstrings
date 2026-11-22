@@ -11071,6 +11071,312 @@
         }
       },
       "comment" : "Badge requirement: mood check-ins"
+    },
+    "exercise_coherent_name" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Coherent Breathing 5-5"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tutarlı Nefes 5-5"
+          }
+        }
+      },
+      "comment" : "Coherent Breathing Name"
+    },
+    "exercise_sigh_name" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Physiological Sigh"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fizyolojik İç Çekiş"
+          }
+        }
+      },
+      "comment" : "Physiological Sigh Name"
+    },
+    "exercise_triangle_name" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Triangle Breath"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Üçgen Nefes"
+          }
+        }
+      },
+      "comment" : "Triangle Breathing Name"
+    },
+    "exercise_coherent_description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Equal-length inhales and exhales at about 6 breaths per minute. Balances your heart rhythm and supports calm focus throughout the day."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dakikada yaklaşık 6 nefesle eşit uzunlukta nefes alıp verme. Kalp ritmini dengeler, gün boyu sakin bir odak sağlar."
+          }
+        }
+      },
+      "comment" : "Coherent Breathing Description"
+    },
+    "exercise_sigh_description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Two short inhales through the nose followed by a long exhale through the mouth. One of the fastest ways to ease acute stress in just a few cycles."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Burundan iki kısa nefes alıp ağızdan uzun nefes verme. Anlık stresi birkaç döngüde azaltmanın en hızlı yollarından biridir."
+          }
+        }
+      },
+      "comment" : "Physiological Sigh Description"
+    },
+    "exercise_triangle_description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inhale, hold, exhale: three equal steps. A gentler rhythm than box breathing, ideal for beginners."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Al, tut, ver: üç eşit adım. Kutu nefesine göre daha yumuşak, yeni başlayanlar için ideal bir ritim."
+          }
+        }
+      },
+      "comment" : "Triangle Breathing Description"
+    },
+    "exercise_coherent_benefit_0" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Balances heart rhythm"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kalp ritmini dengeler"
+          }
+        }
+      },
+      "comment" : "Coherent benefit 1"
+    },
+    "exercise_coherent_benefit_1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supports calm focus all day"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gün boyu sakin odak sağlar"
+          }
+        }
+      },
+      "comment" : "Coherent benefit 2"
+    },
+    "exercise_coherent_benefit_2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Softens the stress response"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stres tepkisini yumuşatır"
+          }
+        }
+      },
+      "comment" : "Coherent benefit 3"
+    },
+    "exercise_coherent_benefit_3" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Great for longer sessions"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uzun seanslar için uygundur"
+          }
+        }
+      },
+      "comment" : "Coherent benefit 4"
+    },
+    "exercise_sigh_benefit_0" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quickly lowers acute stress"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anlık stresi hızla düşürür"
+          }
+        }
+      },
+      "comment" : "Sigh benefit 1"
+    },
+    "exercise_sigh_benefit_1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Works in just 1-3 minutes"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sadece 1-3 dakikada etkili olur"
+          }
+        }
+      },
+      "comment" : "Sigh benefit 2"
+    },
+    "exercise_sigh_benefit_2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loosens tense shoulders and chest"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gergin omuz ve göğsü gevşetir"
+          }
+        }
+      },
+      "comment" : "Sigh benefit 3"
+    },
+    "exercise_sigh_benefit_3" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Can be practiced quietly anywhere"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Her yerde sessizce uygulanabilir"
+          }
+        }
+      },
+      "comment" : "Sigh benefit 4"
+    },
+    "exercise_triangle_benefit_0" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Easy for beginners"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yeni başlayanlar için kolaydır"
+          }
+        }
+      },
+      "comment" : "Triangle benefit 1"
+    },
+    "exercise_triangle_benefit_1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calms the mind"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zihni sakinleştirir"
+          }
+        }
+      },
+      "comment" : "Triangle benefit 2"
+    },
+    "exercise_triangle_benefit_2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Builds breath control"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nefes kontrolünü geliştirir"
+          }
+        }
+      },
+      "comment" : "Triangle benefit 3"
+    },
+    "exercise_triangle_benefit_3" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suited to short breaks"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kısa molalar için uygundur"
+          }
+        }
+      },
+      "comment" : "Triangle benefit 4"
     }
   },
   "version" : "1.0"
