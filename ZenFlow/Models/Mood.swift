@@ -91,6 +91,9 @@ struct MoodEntry: Codable, Identifiable {
     let mood: Mood
     /// Optional mood before the session (enables before/after insights)
     let preMood: Mood?
+    /// `exerciseType` used for sessions without a breathing exercise (silent meditation)
+    static let silentMeditationType = "silent"
+
     /// `exerciseType` of the breathing exercise that was practiced, if any
     let exerciseType: String?
     /// Session length in minutes, if known

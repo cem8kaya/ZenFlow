@@ -18,6 +18,7 @@ struct ExerciseSelectionView: View {
     @EnvironmentObject var exerciseManager: BreathingExerciseManager
     @State private var selectedExercise: BreathingExercise
     @State private var showPaywall = false
+    @State private var showSilentMeditation = false
     @StateObject private var storeManager = StoreManager.shared
 
     var onExerciseSelected: ((BreathingExercise) -> Void)?
@@ -40,6 +41,8 @@ struct ExerciseSelectionView: View {
                         // Başlık (Sheet tutamacından kurtarmak için üst boşluk artırıldı)
                         headerView
                             .padding(.top, 32)
+
+                        silentMeditationButton
                         
                         // Exercise carousel
                         ScrollView(.horizontal, showsIndicators: false) {
@@ -84,6 +87,44 @@ struct ExerciseSelectionView: View {
         .preferredColorScheme(.dark)
         .sheet(isPresented: $showPaywall) {
             PremiumPaywallView()
+        }
+        .fullScreenCover(isPresented: $showSilentMeditation) {
+            SilentMeditationView()
+        }
+    }
+
+    // MARK: - Silent Meditation
+
+    /// Entry to unguided meditation (timer + gong, no breathing guide)
+    private var silentMeditationButton: some View {
+        Button {
+            HapticManager.shared.playImpact(style: .light)
+            showSilentMeditation = true
+        } label: {
+            HStack(spacing: 12) {
+                Image(systemName: "figure.mind.and.body")
+                    .font(.system(size: 22))
+                    .foregroundColor(ZenTheme.lightLavender)
+
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(String(localized: "silent_title", defaultValue: "Sessiz Meditasyon", comment: "Silent meditation title"))
+                        .font(.system(size: 16, weight: .semibold))
+                        .foregroundColor(ZenTheme.lightLavender)
+                    Text(String(localized: "silent_entry_subtitle", defaultValue: "Nefes rehberi olmadan, sadece zaman ve çan", comment: "Silent meditation entry subtitle"))
+                        .font(.system(size: 13))
+                        .foregroundColor(ZenTheme.softPurple)
+                }
+
+                Spacer()
+
+                Image(systemName: "chevron.right")
+                    .font(.system(size: 13, weight: .semibold))
+                    .foregroundColor(ZenTheme.softPurple)
+            }
+            .padding(14)
+            .background(RoundedRectangle(cornerRadius: 14).fill(Color.white.opacity(0.08)))
+            .overlay(RoundedRectangle(cornerRadius: 14).stroke(ZenTheme.softPurple.opacity(0.3), lineWidth: 1))
+            .padding(.horizontal, 24)
         }
     }
 

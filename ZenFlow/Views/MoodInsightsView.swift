@@ -240,7 +240,8 @@ struct MoodInsightsView: View {
     private func exerciseRanking(_ insights: MoodInsights) -> some View {
         if !insights.exerciseImpacts.isEmpty {
             VStack(alignment: .leading, spacing: 10) {
-                if let best = insights.bestExercise, let info = exerciseInfo(for: best.exerciseType) {
+                if let best = insights.bestExercise {
+                    let info = displayInfo(for: best.exerciseType)
                     HStack(spacing: 8) {
                         Image(systemName: "sparkles")
                             .foregroundColor(ZenTheme.lightLavender)
@@ -262,15 +263,15 @@ struct MoodInsightsView: View {
     }
 
     private func exerciseRow(_ impact: MoodInsights.ExerciseImpact) -> some View {
-        let info = exerciseInfo(for: impact.exerciseType)
+        let info = displayInfo(for: impact.exerciseType)
 
         return HStack(spacing: 10) {
-            Image(systemName: info?.iconName ?? "wind")
+            Image(systemName: info.icon)
                 .frame(width: 24)
                 .foregroundColor(ZenTheme.calmBlue)
 
             VStack(alignment: .leading, spacing: 2) {
-                Text(info?.name ?? impact.exerciseType)
+                Text(info.name)
                     .font(.subheadline)
                     .foregroundColor(.white)
                 Text(String(localized: "mood_insights_sessions_count", defaultValue: "\(impact.sessions) kayıt", comment: "Number of mood check-ins"))
@@ -289,6 +290,15 @@ struct MoodInsightsView: View {
             Text(Mood.nearest(toValue: impact.averageAfter).emoji)
                 .font(.title3)
         }
+    }
+
+    /// Display name and icon for an exercise type; "silent" is unguided meditation
+    private func displayInfo(for type: String) -> (name: String, icon: String) {
+        if type == MoodEntry.silentMeditationType {
+            return (String(localized: "silent_title", defaultValue: "Sessiz Meditasyon", comment: "Silent meditation title"), "figure.mind.and.body")
+        }
+        let exercise = exerciseInfo(for: type)
+        return (exercise?.name ?? type, exercise?.iconName ?? "wind")
     }
 
     private func exerciseInfo(for type: String) -> BreathingExercise? {

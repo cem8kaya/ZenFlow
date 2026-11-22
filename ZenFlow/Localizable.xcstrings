@@ -16602,6 +16602,210 @@
         }
       },
       "comment" : "App Intents"
+    },
+    "silent_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Silent Meditation"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sessiz Meditasyon"
+          }
+        }
+      },
+      "comment" : "Silent meditation title"
+    },
+    "silent_subtitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unguided sitting: just time, a bell and you."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rehbersiz oturuş: yalnızca zaman, bir çan ve sen."
+          }
+        }
+      },
+      "comment" : "Silent meditation subtitle"
+    },
+    "silent_entry_subtitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No breathing guide, just time and a bell"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nefes rehberi olmadan, sadece zaman ve çan"
+          }
+        }
+      },
+      "comment" : "Silent meditation entry subtitle"
+    },
+    "silent_start" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Begin"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Başla"
+          }
+        }
+      },
+      "comment" : "Start silent meditation"
+    },
+    "silent_duration_picker" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meditation length"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meditasyon süresi"
+          }
+        }
+      },
+      "comment" : "Silent meditation duration picker"
+    },
+    "silent_prep" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "10-second preparation"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "10 saniyelik hazırlık"
+          }
+        }
+      },
+      "comment" : "Preparation countdown toggle"
+    },
+    "silent_gongs" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opening and closing bell"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Başlangıç ve bitiş çanı"
+          }
+        }
+      },
+      "comment" : "Opening and closing gong toggle"
+    },
+    "silent_bell_note" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your mindfulness bell will ring every %lld minutes."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Farkındalık çanın her %lld dakikada bir çalacak."
+          }
+        }
+      },
+      "comment" : "Interval bell note"
+    },
+    "silent_get_ready" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settle in and close your eyes"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yerleş ve gözlerini kapat"
+          }
+        }
+      },
+      "comment" : "Get comfortable message"
+    },
+    "silent_remaining_accessibility" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Time remaining %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kalan süre %@"
+          }
+        }
+      },
+      "comment" : "Remaining time accessibility"
+    },
+    "breathing_duration_custom_accessibility" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose a custom duration"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Özel süre seç"
+          }
+        }
+      },
+      "comment" : "Choose a custom duration"
+    },
+    "custom_duration_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Custom Duration"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Özel Süre"
+          }
+        }
+      },
+      "comment" : "Custom duration sheet title"
     }
   },
   "version" : "1.0"

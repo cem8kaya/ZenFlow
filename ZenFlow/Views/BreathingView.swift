@@ -244,6 +244,7 @@ struct BreathingView: View {
     @State private var pulseScale: CGFloat = 1.0
     @State private var volumeBeforePause: Float = 0.0
     @State private var preSessionMood: Mood?
+    @State private var showCustomDuration = false
     @State private var completedExerciseType: String?
 
     // MARK: - Environment Objects (Performance Optimization)
@@ -603,8 +604,8 @@ struct BreathingView: View {
 
     private var durationPickerView: some View {
         VStack(spacing: 12) {
-            HStack(spacing: 16) {
-                ForEach([5, 10, 15, 30], id: \.self) { duration in
+            HStack(spacing: 10) {
+                ForEach(Self.presetDurations, id: \.self) { duration in
                     Button(action: {
                         selectedDurationMinutes = duration
                         HapticManager.shared.playImpact(style: .light)
@@ -612,7 +613,7 @@ struct BreathingView: View {
                         Text(String(localized: "breathing_duration_minutes", defaultValue: "\(duration) dk", comment: "Duration in minutes"))
                             .font(.system(size: 16, weight: .semibold))
                             .foregroundColor(selectedDurationMinutes == duration ? .white : ZenTheme.softPurple)
-                            .frame(width: 70, height: 44)
+                            .frame(width: 60, height: 44)
                             .background(
                                 RoundedRectangle(cornerRadius: 12)
                                     .fill(selectedDurationMinutes == duration ?
@@ -629,8 +630,48 @@ struct BreathingView: View {
                     .accessibilityLabel(String(localized: "breathing_duration_accessibility", defaultValue: "\(duration) dakika seans", comment: "Duration accessibility"))
                     .accessibilityHint(selectedDurationMinutes == duration ? String(localized: "breathing_duration_selected", defaultValue: "Seçili", comment: "Selected") : String(localized: "breathing_duration_tap_to_select", defaultValue: "Seçmek için dokunun", comment: "Tap to select"))
                 }
+
+                customDurationChip
             }
         }
+        .sheet(isPresented: $showCustomDuration) {
+            CustomDurationSheet(minutes: $selectedDurationMinutes)
+                .presentationDetents([.height(320)])
+        }
+    }
+
+    /// Durations offered as one-tap presets; anything else is a custom length
+    private static let presetDurations = [5, 10, 15, 30]
+
+    /// Fifth chip: opens a wheel for any length, shows the value when custom
+    private var customDurationChip: some View {
+        let isCustomSelected = !Self.presetDurations.contains(selectedDurationMinutes)
+
+        return Button(action: {
+            HapticManager.shared.playImpact(style: .light)
+            showCustomDuration = true
+        }) {
+            Group {
+                if isCustomSelected {
+                    Text(String(localized: "breathing_duration_minutes", defaultValue: "\(selectedDurationMinutes) dk", comment: "Duration in minutes"))
+                        .font(.system(size: 16, weight: .semibold))
+                } else {
+                    Image(systemName: "slider.horizontal.3")
+                        .font(.system(size: 16, weight: .semibold))
+                }
+            }
+            .foregroundColor(isCustomSelected ? .white : ZenTheme.softPurple)
+            .frame(width: 60, height: 44)
+            .background(
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(isCustomSelected ? ZenTheme.lightLavender.opacity(0.3) : Color.white.opacity(0.1))
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 12)
+                    .stroke(isCustomSelected ? ZenTheme.lightLavender : Color.clear, lineWidth: 2)
+            )
+        }
+        .accessibilityLabel(String(localized: "breathing_duration_custom_accessibility", defaultValue: "Özel süre seç", comment: "Choose a custom duration"))
     }
 
     // MARK: - Compact Sound Selector
