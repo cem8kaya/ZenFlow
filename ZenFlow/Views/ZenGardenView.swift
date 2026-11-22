@@ -112,6 +112,7 @@ struct ZenGardenView: View {
     @State private var showWaterEffect: Bool = false
     @State private var lastTapTime: Date = Date()
     @State private var showProgressTooltip = false
+    @State private var showGardenCollection = false
 
     // Haptic feedback
     private let impactFeedback = UIImpactFeedbackGenerator(style: .medium)
@@ -239,7 +240,29 @@ struct ZenGardenView: View {
                                 .padding(.top, 60)
                                 .padding(.trailing, 20)
                         }
+                        .overlay(alignment: .topLeading) {
+                            Button {
+                                HapticManager.shared.playImpact(style: .light)
+                                showGardenCollection = true
+                            } label: {
+                                Image(systemName: "square.grid.2x2.fill")
+                                    .font(.system(size: 14))
+                                    .foregroundColor(ZenTheme.earthBrown)
+                                    .frame(width: 34, height: 34)
+                                    .background(
+                                        Circle()
+                                            .fill(Color.white.opacity(0.35))
+                                            .overlay(Circle().stroke(ZenTheme.earthBrown.opacity(0.25), lineWidth: 1))
+                                    )
+                            }
+                            .accessibilityLabel(String(localized: "garden_collection_title", defaultValue: "Bahçe Koleksiyonu", comment: "Garden collection title"))
+                            .padding(.top, 58)
+                            .padding(.leading, 20)
+                        }
                     }
+                }
+                .sheet(isPresented: $showGardenCollection) {
+                    GardenCollectionView()
                 }
                 .onAppear {
                     isViewActive = true

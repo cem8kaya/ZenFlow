@@ -17656,6 +17656,159 @@
         }
       },
       "comment" : "Customization description"
+    },
+    "garden_deco_stones" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zen Stones"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zen Taşları"
+          }
+        }
+      },
+      "comment" : "Garden decoration: stones"
+    },
+    "garden_deco_bamboo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bamboo"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bambu"
+          }
+        }
+      },
+      "comment" : "Garden decoration: bamboo"
+    },
+    "garden_deco_lantern" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stone Lantern"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taş Fener"
+          }
+        }
+      },
+      "comment" : "Garden decoration: stone lantern"
+    },
+    "garden_deco_pond" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Koi Pond"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Koi Gölü"
+          }
+        }
+      },
+      "comment" : "Garden decoration: koi pond"
+    },
+    "garden_req_sessions" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Complete %lld meditation sessions"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld meditasyon seansı tamamla"
+          }
+        }
+      },
+      "comment" : "Garden requirement: sessions"
+    },
+    "garden_req_minutes" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meditate for %lld minutes in total"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toplam %lld dakika meditasyon yap"
+          }
+        }
+      },
+      "comment" : "Garden requirement: minutes"
+    },
+    "garden_req_streak" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reach a %lld-day streak"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld günlük seriye ulaş"
+          }
+        }
+      },
+      "comment" : "Garden requirement: streak"
+    },
+    "garden_collection_intro" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regular practice beautifies your garden. Each object appears once you reach its goal."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Düzenli pratik bahçeni güzelleştirir. Her nesne belli bir hedefe ulaşınca bahçende belirir."
+          }
+        }
+      },
+      "comment" : "Garden collection intro"
+    },
+    "garden_collection_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Garden Collection"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bahçe Koleksiyonu"
+          }
+        }
+      },
+      "comment" : "Garden collection title"
     }
   },
   "version" : "1.0"

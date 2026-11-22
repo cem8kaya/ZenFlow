@@ -12,6 +12,7 @@ import Combine
 // MARK: - Minimal Zen Garden View
 struct WatercolorZenGardenView: View {
     @ObservedObject var gardenManager: ZenGardenManager
+    @ObservedObject private var dataManager = LocalDataManager.shared
     @Environment(\.accessibilityReduceMotion) var reduceMotion
 
     // Animation states
@@ -33,6 +34,14 @@ struct WatercolorZenGardenView: View {
                     zenSandCircle(in: geometry.size)
                         .offset(y: geometry.size.height * 0.15)
                     
+                    // Decorations unlocked by practice (same center as the sand circle)
+                    GardenDecorationsView(unlocked: GardenDecoration.unlocked(in: GardenStats(
+                        totalSessions: dataManager.totalSessions,
+                        totalMinutes: dataManager.totalMinutes,
+                        longestStreak: dataManager.longestStreak
+                    )))
+                        .offset(y: geometry.size.height * 0.15)
+
                     // Tree (drawn with Canvas based on growth stage)
                     treeView(in: geometry.size)
                         .offset(y: geometry.size.height * 0.1)
