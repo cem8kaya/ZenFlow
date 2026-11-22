@@ -132,6 +132,12 @@ class DailyZenManager: ObservableObject {
         return streak
     }
 
+    /// Replace all gratitude notes (backup restore) or clear them (reset)
+    func replaceEntries(_ newEntries: [GratitudeEntry]) {
+        entries = newEntries
+        persistEntries()
+    }
+
     // MARK: - Persistence
 
     private func persistEntries() {

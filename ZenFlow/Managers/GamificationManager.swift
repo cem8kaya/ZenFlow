@@ -230,6 +230,12 @@ class GamificationManager: ObservableObject {
     }
 
     /// Rozetleri sıfırla (debug amaçlı)
+    /// Restore saved badge state (backup), merged with the current catalog
+    func restoreBadges(_ saved: [Badge]) {
+        badges = Badge.merge(saved: saved, with: Badge.getAllBadges())
+        saveBadges()
+    }
+
     func resetAllBadges() {
         badges = Badge.getAllBadges()
         saveBadges()

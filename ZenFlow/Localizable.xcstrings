@@ -17809,6 +17809,346 @@
         }
       },
       "comment" : "Garden collection title"
+    },
+    "backup_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Back Up & Restore"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yedekle ve Geri Yükle"
+          }
+        }
+      },
+      "comment" : "Backup screen title"
+    },
+    "backup_create" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create Backup"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yedek Oluştur"
+          }
+        }
+      },
+      "comment" : "Create backup button"
+    },
+    "backup_share" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save or Share Backup"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yedeği Kaydet veya Paylaş"
+          }
+        }
+      },
+      "comment" : "Share backup button"
+    },
+    "backup_ready" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Backup ready: %lld sessions, %lld minutes."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yedek hazır: %lld seans, %lld dakika."
+          }
+        }
+      },
+      "comment" : "Backup ready message"
+    },
+    "backup_section_create" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Back Up"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yedekle"
+          }
+        }
+      },
+      "comment" : "Backup section header"
+    },
+    "backup_create_footer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keeps your sessions, streak, badges, mood entries and customizations in a single file. You can save it to iCloud Drive."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seanslarını, serini, rozetlerini, ruh hali kayıtlarını ve özelleştirmelerini tek bir dosyada saklar. Dosyayı iCloud Drive'a kaydedebilirsin."
+          }
+        }
+      },
+      "comment" : "Backup create footer"
+    },
+    "backup_restore" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restore from Backup"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yedekten Geri Yükle"
+          }
+        }
+      },
+      "comment" : "Restore backup button"
+    },
+    "backup_section_restore" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restore"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geri Yükle"
+          }
+        }
+      },
+      "comment" : "Restore section header"
+    },
+    "backup_restore_footer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restoring replaces the data currently on this device. Your purchases are not affected; you can restore those from the Premium screen."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geri yükleme, bu cihazdaki mevcut verilerin yerine geçer. Satın alımların etkilenmez; onları Premium ekranından geri yükleyebilirsin."
+          }
+        }
+      },
+      "comment" : "Backup restore footer"
+    },
+    "backup_confirm_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restore this backup?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yedek geri yüklensin mi?"
+          }
+        }
+      },
+      "comment" : "Restore confirmation title"
+    },
+    "backup_confirm_restore" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restore"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geri Yükle"
+          }
+        }
+      },
+      "comment" : "Confirm restore button"
+    },
+    "backup_confirm_message" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The backup from %@ has %lld sessions and %lld minutes. It will replace the data currently on this device."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ tarihli yedekte %lld seans ve %lld dakika var. Bu cihazdaki mevcut verilerin yerine geçecek."
+          }
+        }
+      },
+      "comment" : "Restore confirmation message"
+    },
+    "backup_error_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Could not restore"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geri yüklenemedi"
+          }
+        }
+      },
+      "comment" : "Restore error title"
+    },
+    "backup_error_write" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The backup file could not be created."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yedek dosyası oluşturulamadı."
+          }
+        }
+      },
+      "comment" : "Backup file could not be written"
+    },
+    "backup_error_read" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The file could not be read."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dosya okunamadı."
+          }
+        }
+      },
+      "comment" : "File could not be read"
+    },
+    "backup_error_newer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This backup was made with a newer version of the app. Update the app first."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu yedek uygulamanın daha yeni bir sürümüyle oluşturulmuş. Önce uygulamayı güncelle."
+          }
+        }
+      },
+      "comment" : "Backup is from a newer app version"
+    },
+    "backup_error_corrupted" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The backup file looks corrupted."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yedek dosyası bozuk görünüyor."
+          }
+        }
+      },
+      "comment" : "Backup file is corrupted"
+    },
+    "backup_error_invalid" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This file is not a MyZenFlow backup."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu dosya bir MyZenFlow yedeği değil."
+          }
+        }
+      },
+      "comment" : "File is not a backup"
+    },
+    "backup_done_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restored"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geri yüklendi"
+          }
+        }
+      },
+      "comment" : "Restore success title"
+    },
+    "backup_done_message" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your data was restored from the backup."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verilerin yedekten geri yüklendi."
+          }
+        }
+      },
+      "comment" : "Restore success message"
     }
   },
   "version" : "1.0"

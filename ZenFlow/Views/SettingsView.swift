@@ -355,6 +355,15 @@ struct SettingsView: View {
                 // MARK: - Data Management Section
 
                 Section {
+                    NavigationLink(destination: BackupView()) {
+                        HStack {
+                            Image(systemName: "externaldrive.fill.badge.icloud")
+                                .foregroundColor(ZenTheme.calmBlue)
+                                .frame(width: 28)
+                            Text(String(localized: "backup_title", defaultValue: "Yedekle ve Geri Yükle", comment: "Backup screen title"))
+                        }
+                    }
+
                     Button(role: .destructive, action: { showResetAlert = true }) {
                         HStack {
                             Image(systemName: "trash.fill")
@@ -505,6 +514,9 @@ struct SettingsView: View {
     private func resetAllData() {
         // Reset LocalDataManager
         LocalDataManager.shared.resetAllData()
+        GamificationManager.shared.resetAllBadges()
+        DailyZenManager.shared.replaceEntries([])
+        WidgetSnapshotWriter.shared.refresh()
 
         // Reset NotificationManager settings
         NotificationManager.shared.remindersEnabled = false

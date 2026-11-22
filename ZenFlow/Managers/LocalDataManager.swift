@@ -227,6 +227,12 @@ class LocalDataManager: ObservableObject {
         currentStreak = 0
         longestStreak = 0
         sessionHistory = []
+        frozenDays = []
+
+        // Focus and mood history belong to the same "all data"
+        focusSessionHistory = []
+        totalFocusSessions = 0
+        moodHistory = []
 
         print("🗑️ All data has been reset")
     }
