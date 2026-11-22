@@ -20250,6 +20250,23 @@
         }
       },
       "comment" : "On-device AI footer"
+    },
+    "zen_coach_disclaimer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zen Coach is not a therapist and does not replace professional support. In an emergency, call your local emergency number."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zen Coach bir terapist değildir ve profesyonel desteğin yerini tutmaz. Acil bir durumdaysan 112'yi ara."
+          }
+        }
+      },
+      "comment" : "Zen Coach disclaimer"
     }
   },
   "version" : "1.0"

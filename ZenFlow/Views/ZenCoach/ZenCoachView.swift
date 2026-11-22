@@ -252,6 +252,14 @@ struct ZenCoachView: View {
                         .italic()
                         .multilineTextAlignment(.center)
                         .padding(.top, 4)
+
+                    // Not a therapist: say so where people start typing
+                    Text(String(localized: "zen_coach_disclaimer", defaultValue: "Zen Coach bir terapist değildir ve profesyonel desteğin yerini tutmaz. Acil bir durumdaysan 112'yi ara.", comment: "Zen Coach disclaimer"))
+                        .font(.system(size: 12))
+                        .foregroundColor(ZenTheme.lightLavender.opacity(0.5))
+                        .multilineTextAlignment(.center)
+                        .padding(.top, 8)
+                        .padding(.horizontal, 12)
                 }
 
                 Spacer()
