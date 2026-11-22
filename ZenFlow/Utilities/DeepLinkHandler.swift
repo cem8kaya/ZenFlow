@@ -62,6 +62,11 @@ class DeepLinkHandler {
             userInfo["exerciseType"] = exercise
         }
 
+        // zenflow://sleep opens Sleep Mode (hosted by the coach tab)
+        if host.lowercased() == "sleep" {
+            userInfo["openSleepMode"] = true
+        }
+
         // Post notification to switch tabs
         NotificationCenter.default.post(
             name: DeepLinkHandler.switchToTabNotification,
@@ -77,8 +82,8 @@ class DeepLinkHandler {
     /// - Returns: Tab index
     private func getTabIndex(for host: String) -> Int {
         switch host.lowercased() {
-        case "coach", "zencoach":
-            return 0 // Zen Coach tab
+        case "coach", "zencoach", "sleep":
+            return 0 // Zen Coach tab (also hosts Sleep Mode)
         case "breathing", "meditation":
             return 1 // Meditasyon tab
         case "focus", "pomodoro":
@@ -111,6 +116,11 @@ class DeepLinkHandler {
     /// Navigates to zen garden
     func navigateToGarden() {
         handle("zenflow://garden")
+    }
+
+    /// Opens Sleep Mode
+    func navigateToSleepMode() {
+        handle("zenflow://sleep")
     }
 
     /// Navigates to zen coach

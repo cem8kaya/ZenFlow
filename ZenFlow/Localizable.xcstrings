@@ -15531,6 +15531,278 @@
         }
       },
       "comment" : "Share today's teaching"
+    },
+    "sleep_mode_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sleep Mode"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uyku Modu"
+          }
+        }
+      },
+      "comment" : "Sleep mode title"
+    },
+    "sleep_mode_subtitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pick a sound and a time. The screen dims and the sound fades out gently."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bir ses ve süre seç. Ekran kararır, ses yavaşça kısılarak kapanır."
+          }
+        }
+      },
+      "comment" : "Sleep mode subtitle"
+    },
+    "sleep_mode_close" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kapat"
+          }
+        }
+      },
+      "comment" : "Close sleep mode"
+    },
+    "sleep_mode_sound" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sound"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ses"
+          }
+        }
+      },
+      "comment" : "Sleep mode sound section"
+    },
+    "sleep_mode_sounds_off" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ambient sounds are off. Tap to turn them on."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ortam sesleri kapalı. Açmak için dokun."
+          }
+        }
+      },
+      "comment" : "Ambient sounds are turned off"
+    },
+    "sleep_mode_silence" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Silent"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sessiz"
+          }
+        }
+      },
+      "comment" : "No sound option"
+    },
+    "sleep_mode_timer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Timer"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Süre"
+          }
+        }
+      },
+      "comment" : "Sleep mode timer section"
+    },
+    "sleep_mode_minutes_short" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld min"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld dk"
+          }
+        }
+      },
+      "comment" : "Minutes, short"
+    },
+    "sleep_mode_guide" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4-7-8 breathing light"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4-7-8 nefes ışığı"
+          }
+        }
+      },
+      "comment" : "Sleep mode breathing guide toggle"
+    },
+    "sleep_mode_guide_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A soft light that swells and fades in the dark helps you slow your breathing."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Karanlıkta yumuşakça büyüyüp küçülen bir ışık, nefesini yavaşlatmana yardım eder."
+          }
+        }
+      },
+      "comment" : "Sleep mode breathing guide description"
+    },
+    "sleep_mode_start" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fall Asleep"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uykuya Dal"
+          }
+        }
+      },
+      "comment" : "Start sleep mode"
+    },
+    "sleep_mode_stop" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "End"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bitir"
+          }
+        }
+      },
+      "comment" : "End sleep mode"
+    },
+    "sleep_mode_running_accessibility" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sleep mode is running. %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uyku modu çalışıyor. %@"
+          }
+        }
+      },
+      "comment" : "Sleep mode running accessibility"
+    },
+    "sleep_mode_remaining" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld min left"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld dk kaldı"
+          }
+        }
+      },
+      "comment" : "Minutes remaining in sleep mode"
+    },
+    "sleep_mode_good_night" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Good night"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İyi geceler"
+          }
+        }
+      },
+      "comment" : "Good night message"
+    },
+    "sleep_mode_button_accessibility" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sleep mode"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uyku modu"
+          }
+        }
+      },
+      "comment" : "Sleep mode button accessibility"
     }
   },
   "version" : "1.0"
