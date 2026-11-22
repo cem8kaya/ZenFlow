@@ -165,6 +165,10 @@ struct BadgesView: View {
             return LocalDataManager.shared.totalFocusSessions
         case .focusSessionsDaily:
             return LocalDataManager.shared.todayFocusSessions
+        case .sessions:
+            return LocalDataManager.shared.totalSessions
+        case .moodCheckIns:
+            return LocalDataManager.shared.moodHistory.count
         }
     }
 }
@@ -490,6 +494,10 @@ struct BadgeDetailView: View {
             return String(localized: "Gereken: \(badge.requiredValue) odaklanma seansı", comment: "Badge requirement: focus sessions")
         case .focusSessionsDaily:
             return String(localized: "Gereken: Tek günde \(badge.requiredValue) odaklanma seansı", comment: "Badge requirement: daily focus sessions")
+        case .sessions:
+            return String(localized: "Gereken: \(badge.requiredValue) meditasyon seansı", comment: "Badge requirement: meditation sessions")
+        case .moodCheckIns:
+            return String(localized: "Gereken: \(badge.requiredValue) ruh hali kaydı", comment: "Badge requirement: mood check-ins")
         }
     }
 }

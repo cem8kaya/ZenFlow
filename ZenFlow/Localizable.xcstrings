@@ -10391,6 +10391,686 @@
         }
       },
       "comment" : "Streak freeze explanation"
+    },
+    "badge_3_day_streak_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3-Day Streak"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3 Gün Serisi"
+          }
+        }
+      },
+      "comment" : "3-Day Streak Badge Title"
+    },
+    "badge_3_day_streak_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3 days of meditation in a row. A habit is sprouting!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3 gün üst üste meditasyon yaptın. Alışkanlık filizleniyor!"
+          }
+        }
+      },
+      "comment" : "3-Day Streak Badge Description"
+    },
+    "badge_14_day_streak_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Two Weeks"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İki Hafta"
+          }
+        }
+      },
+      "comment" : "Two Weeks Badge Title"
+    },
+    "badge_14_day_streak_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "14 days of meditation in a row!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "14 gün üst üste meditasyon yaptın!"
+          }
+        }
+      },
+      "comment" : "Two Weeks Badge Description"
+    },
+    "badge_60_day_streak_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "60-Day Streak"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "60 Gün Serisi"
+          }
+        }
+      },
+      "comment" : "60-Day Streak Badge Title"
+    },
+    "badge_60_day_streak_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "60 days of meditation in a row! This is now a way of life."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "60 gün üst üste meditasyon yaptın! Bu artık bir yaşam tarzı."
+          }
+        }
+      },
+      "comment" : "60-Day Streak Badge Description"
+    },
+    "badge_100_day_streak_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "100-Day Streak"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "100 Gün Serisi"
+          }
+        }
+      },
+      "comment" : "100-Day Streak Badge Title"
+    },
+    "badge_100_day_streak_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "100 days of meditation in a row! Legendary dedication."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "100 gün üst üste meditasyon yaptın! Efsanevi bir bağlılık."
+          }
+        }
+      },
+      "comment" : "100-Day Streak Badge Description"
+    },
+    "badge_first_steps_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "First Steps"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İlk Adımlar"
+          }
+        }
+      },
+      "comment" : "First Steps Badge Title"
+    },
+    "badge_first_steps_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You completed 15 minutes of meditation in total."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toplam 15 dakika meditasyon tamamladın."
+          }
+        }
+      },
+      "comment" : "First Steps Badge Description"
+    },
+    "badge_two_hours_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Two Hours"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İki Saat"
+          }
+        }
+      },
+      "comment" : "Two Hours Badge Title"
+    },
+    "badge_two_hours_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You completed 120 minutes of meditation in total!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toplam 120 dakika meditasyon tamamladın!"
+          }
+        }
+      },
+      "comment" : "Two Hours Badge Description"
+    },
+    "badge_ten_hours_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "10 Hours of Calm"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "10 Saat Sükûnet"
+          }
+        }
+      },
+      "comment" : "10 Hours of Calm Badge Title"
+    },
+    "badge_ten_hours_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You completed 600 minutes of meditation in total!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toplam 600 dakika meditasyon tamamladın!"
+          }
+        }
+      },
+      "comment" : "10 Hours of Calm Badge Description"
+    },
+    "badge_zen_sage_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zen Sage"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zen Bilgesi"
+          }
+        }
+      },
+      "comment" : "Zen Sage Badge Title"
+    },
+    "badge_zen_sage_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You completed 2000 minutes of meditation in total. A true sage!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toplam 2000 dakika meditasyon tamamladın. Gerçek bir bilge!"
+          }
+        }
+      },
+      "comment" : "Zen Sage Badge Description"
+    },
+    "badge_first_session_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "First Session"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İlk Seans"
+          }
+        }
+      },
+      "comment" : "First Session Badge Title"
+    },
+    "badge_first_session_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You completed your first meditation session."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İlk meditasyon seansını tamamladın."
+          }
+        }
+      },
+      "comment" : "First Session Badge Description"
+    },
+    "badge_ten_sessions_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ten Sessions"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "On Seans"
+          }
+        }
+      },
+      "comment" : "Ten Sessions Badge Title"
+    },
+    "badge_ten_sessions_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You completed 10 meditation sessions!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "10 meditasyon seansı tamamladın!"
+          }
+        }
+      },
+      "comment" : "Ten Sessions Badge Description"
+    },
+    "badge_fifty_sessions_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "50 Sessions"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "50 Seans"
+          }
+        }
+      },
+      "comment" : "50 Sessions Badge Title"
+    },
+    "badge_fifty_sessions_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You completed 50 meditation sessions!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "50 meditasyon seansı tamamladın!"
+          }
+        }
+      },
+      "comment" : "50 Sessions Badge Description"
+    },
+    "badge_hundred_sessions_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "100 Sessions"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "100 Seans"
+          }
+        }
+      },
+      "comment" : "100 Sessions Badge Title"
+    },
+    "badge_hundred_sessions_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You completed 100 meditation sessions! Perseverance pays off."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "100 meditasyon seansı tamamladın! Sebat kazanır."
+          }
+        }
+      },
+      "comment" : "100 Sessions Badge Description"
+    },
+    "badge_focus_beginner_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Focus Beginner"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odak Başlangıcı"
+          }
+        }
+      },
+      "comment" : "Focus Beginner Badge Title"
+    },
+    "badge_focus_beginner_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You completed 5 focus sessions!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5 odaklanma seansı tamamladın!"
+          }
+        }
+      },
+      "comment" : "Focus Beginner Badge Description"
+    },
+    "badge_deep_focus_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deep Focus"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Derin Odak"
+          }
+        }
+      },
+      "comment" : "Deep Focus Badge Title"
+    },
+    "badge_deep_focus_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You completed 25 focus sessions!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "25 odaklanma seansı tamamladın!"
+          }
+        }
+      },
+      "comment" : "Deep Focus Badge Description"
+    },
+    "badge_focus_sage_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Focus Sage"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odak Efendisi"
+          }
+        }
+      },
+      "comment" : "Focus Sage Badge Title"
+    },
+    "badge_focus_sage_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You completed 50 focus sessions! Superb concentration."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "50 odaklanma seansı tamamladın! Muhteşem bir konsantrasyon."
+          }
+        }
+      },
+      "comment" : "Focus Sage Badge Description"
+    },
+    "badge_productive_day_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Productive Day"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verimli Gün"
+          }
+        }
+      },
+      "comment" : "Productive Day Badge Title"
+    },
+    "badge_productive_day_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You completed 4 focus sessions in a single day!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tek günde 4 odaklanma seansı tamamladın!"
+          }
+        }
+      },
+      "comment" : "Productive Day Badge Description"
+    },
+    "badge_check_in_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check In"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kendini Dinle"
+          }
+        }
+      },
+      "comment" : "Check In Badge Title"
+    },
+    "badge_check_in_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You logged your mood 7 times."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "7 kez ruh halini kaydettin."
+          }
+        }
+      },
+      "comment" : "Check In Badge Description"
+    },
+    "badge_mood_observer_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mood Observer"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Duygu Gözlemcisi"
+          }
+        }
+      },
+      "comment" : "Mood Observer Badge Title"
+    },
+    "badge_mood_observer_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You logged your mood 30 times. You know yourself well!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "30 kez ruh halini kaydettin. Kendini tanıyorsun!"
+          }
+        }
+      },
+      "comment" : "Mood Observer Badge Description"
+    },
+    "requirement_type_sessions" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sessions"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seans"
+          }
+        }
+      },
+      "comment" : "Sessions requirement"
+    },
+    "requirement_type_mood_checkins" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mood Check-ins"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ruh Hali Kaydı"
+          }
+        }
+      },
+      "comment" : "Mood check-ins requirement"
+    },
+    "Gereken: %lld meditasyon seansı" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Required: %lld meditation sessions"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gereken: %lld meditasyon seansı"
+          }
+        }
+      },
+      "comment" : "Badge requirement: meditation sessions"
+    },
+    "Gereken: %lld ruh hali kaydı" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Required: %lld mood check-ins"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gereken: %lld ruh hali kaydı"
+          }
+        }
+      },
+      "comment" : "Badge requirement: mood check-ins"
     }
   },
   "version" : "1.0"

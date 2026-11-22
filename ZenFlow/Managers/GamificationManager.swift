@@ -61,7 +61,9 @@ class GamificationManager: ObservableObject {
     private func loadBadges() {
         if let data = defaults.data(forKey: Keys.badges),
            let savedBadges = try? JSONDecoder().decode([Badge].self, from: data) {
-            self.badges = savedBadges
+            // Merge so badges added in app updates reach existing users
+            self.badges = Badge.merge(saved: savedBadges, with: Badge.getAllBadges())
+            if self.badges != savedBadges { saveBadges() }
             print("🏆 Badges loaded: \(badges.count) total, \(badges.filter { $0.isUnlocked }.count) unlocked")
         } else {
             // İlk çalıştırma - önceden tanımlı rozetleri yükle
@@ -127,6 +129,10 @@ class GamificationManager: ObservableObject {
             return localDataManager.totalFocusSessions
         case .focusSessionsDaily:
             return localDataManager.todayFocusSessions
+        case .sessions:
+            return localDataManager.totalSessions
+        case .moodCheckIns:
+            return localDataManager.moodHistory.count
         }
     }
 
