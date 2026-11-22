@@ -17,12 +17,14 @@ import SwiftUI
 /// Represents the classified intent of a user's message
 enum UserIntent: String, Codable, CaseIterable, Identifiable {
     case stress
+    case anger
     case focus
     case sleep
     case breathing
     case motivation
     case meditation
     case progress
+    case gratitude
     case general
 
     var id: String { rawValue }
@@ -32,6 +34,10 @@ enum UserIntent: String, Codable, CaseIterable, Identifiable {
         switch self {
         case .stress:
             return String(localized: "intent_stress", defaultValue: "Stres Yönetimi", comment: "Stress Management")
+        case .anger:
+            return String(localized: "intent_anger", defaultValue: "Öfke", comment: "Anger")
+        case .gratitude:
+            return String(localized: "intent_gratitude", defaultValue: "Şükran", comment: "Gratitude")
         case .focus:
             return String(localized: "intent_focus", defaultValue: "Odaklanma", comment: "Focus")
         case .sleep:
@@ -54,6 +60,10 @@ enum UserIntent: String, Codable, CaseIterable, Identifiable {
         switch self {
         case .stress:
             return "heart.circle.fill"
+        case .anger:
+            return "flame.fill"
+        case .gratitude:
+            return "heart.text.square.fill"
         case .focus:
             return "target"
         case .sleep:
@@ -78,14 +88,28 @@ enum UserIntent: String, Codable, CaseIterable, Identifiable {
         case .stress:
             return [
                 // Türkçe
-                "stres", "kaygı", "endişe", "gergin", "huzursuz", "sinirli", "tedirgin", "panik", "korku", "kaygılan", "stresli", "sıkıntı", "bunalım", "daraldım",
+                "stres", "kaygı", "endişe", "gergin", "huzursuz", "tedirgin", "zihinsel", "zihnim", "panik", "korku", "kaygılan", "stresli", "sıkıntı", "bunalım", "daraldım",
                 // English
-                "stress", "anxiety", "worry", "nervous", "restless", "angry", "panic", "fear", "scared", "overwhelmed", "tension", "upset", "help"
+                "stress", "anxiety", "worry", "nervous", "restless", "panic", "mental", "mentally", "fear", "scared", "overwhelmed", "tension", "upset", "help"
+            ]
+        case .anger:
+            return [
+                // Türkçe
+                "öfke", "kızgın", "kızdım", "sinir", "sinirli", "bağır", "çıldır", "nefret", "tepem attı", "deliriyorum", "hırs",
+                // English
+                "anger", "angry", "furious", "rage", "irritated", "mad at", "annoyed", "frustrated", "frustration"
+            ]
+        case .gratitude:
+            return [
+                // Türkçe
+                "şükran", "şükret", "minnettar", "minnet", "müteşekkir", "şükür",
+                // English
+                "gratitude", "grateful", "thankful", "appreciate", "blessed"
             ]
         case .focus:
             return [
                 // Türkçe
-                "odak", "dikkat", "konsantrasyon", "dağınık", "çalış", "verim", "iş", "ders", "pomodoro", "odaklan", "çalışma", "konsantre", "zihin dağınıklığı",
+                "odak", "dikkat", "konsantrasyon", "dağınık", "çalış", "verim", "ders", "pomodoro", "odaklan", "çalışma", "konsantre", "zihin dağınıklığı",
                 // English
                 "focus", "attention", "concentrate", "concentration", "distracted", "distraction", "work", "study", "productive", "pomodoro", "efficiency"
             ]
@@ -115,14 +139,14 @@ enum UserIntent: String, Codable, CaseIterable, Identifiable {
                 // Türkçe
                 "meditasyon", "mindfulness", "farkındalık", "meditasyon yap", "nasıl", "öğren", "meditasyon öğren", "başlangıç", "sakinleş", "huzur",
                 // English
-                "meditation", "mindfulness", "awareness", "meditate", "how to", "learn", "beginner", "start", "calm", "peace"
+                "meditation", "mindfulness", "awareness", "meditate", "meditat", "how to", "learn", "beginner", "start", "calm", "peace"
             ]
         case .progress:
             return [
                 // Türkçe
-                "ilerleme", "gelişim", "istatistik", "rozet", "başarı", "seri", "gelişme", "streak", "stats", "durum", "skor", "puan",
+                "ilerleme", "gelişim", "istatistik", "rozet", "başarı", "seri", "gelişme", "streak", "stats", "durum", "skor", "puan", "hafta", "haftalık", "rapor", "nasıl gidiyorum", "kaç dakika",
                 // English
-                "progress", "improvement", "stats", "statistics", "badge", "achievement", "streak", "score", "status"
+                "progress", "improvement", "stats", "statistics", "badge", "achievement", "streak", "score", "status", "week", "weekly", "report", "how am i doing", "how many minutes"
             ]
         case .general:
             return []
@@ -137,9 +161,14 @@ enum UserIntent: String, Codable, CaseIterable, Identifiable {
             return "zenflow://breathing?exercise=box"
         case .focus:
             return "zenflow://focus"
+        case .anger:
+            // Calming Breath: a long exhale (premium falls back to Box Breathing)
+            return "zenflow://breathing?exercise=calming"
         case .sleep:
-            // 4-7-8 Technique - ideal for sleep
-            return "zenflow://breathing?exercise=478"
+            // Sleep Mode: soft sound, timer and a dimmed screen (free)
+            return "zenflow://sleep"
+        case .gratitude:
+            return "zenflow://dailyzen"
         case .motivation:
             // Motivasyon intent'i Zen Bahçesi'ne yönlendiriyor
             return "zenflow://garden"
@@ -147,7 +176,7 @@ enum UserIntent: String, Codable, CaseIterable, Identifiable {
             // Calming Breath (Sakinleştirici Nefes) - ideal for meditation
             return "zenflow://breathing?exercise=calming"
         case .progress:
-            return "zenflow://badges"
+            return "zenflow://report"
         case .general:
             return nil
         }

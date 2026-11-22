@@ -72,6 +72,10 @@ struct ZenCoachView: View {
             if notification.userInfo?["openSleepMode"] as? Bool == true {
                 showSleepMode = true
             }
+            // zenflow://dailyzen opens the Daily Zen Moment
+            if notification.userInfo?["openDailyZen"] as? Bool == true {
+                showDailyZenMoment = true
+            }
         }
             }
 
@@ -258,16 +262,7 @@ struct ZenCoachView: View {
                     prompts: manager.getSuggestedPrompts(),
                     onPromptTapped: { prompt in
                         // Remove emoji from prompt before sending
-                        let cleanPrompt = prompt.replacingOccurrences(of: "🌸 ", with: "")
-                            .replacingOccurrences(of: "💭 ", with: "")
-                            .replacingOccurrences(of: "⚡ ", with: "")
-                            .replacingOccurrences(of: "😴 ", with: "")
-                            .replacingOccurrences(of: "🎯 ", with: "")
-                            .replacingOccurrences(of: "🫁 ", with: "")
-                            .replacingOccurrences(of: "📈 ", with: "")
-                            .replacingOccurrences(of: "🧘 ", with: "")
-                            .replacingOccurrences(of: "💆 ", with: "")
-                            .replacingOccurrences(of: "✨ ", with: "")
+                        let cleanPrompt = ZenCoachManager.cleanPrompt(prompt)
                         inputText = cleanPrompt
                         sendMessage()
                     }
@@ -315,16 +310,7 @@ struct ZenCoachView: View {
                                     prompts: manager.getSuggestedPrompts(),
                                     onPromptTapped: { prompt in
                                         // Remove emoji from prompt before sending
-                                        let cleanPrompt = prompt.replacingOccurrences(of: "🌸 ", with: "")
-                                            .replacingOccurrences(of: "💭 ", with: "")
-                                            .replacingOccurrences(of: "⚡ ", with: "")
-                                            .replacingOccurrences(of: "😴 ", with: "")
-                                            .replacingOccurrences(of: "🎯 ", with: "")
-                                            .replacingOccurrences(of: "🫁 ", with: "")
-                                            .replacingOccurrences(of: "📈 ", with: "")
-                                            .replacingOccurrences(of: "🧘 ", with: "")
-                                            .replacingOccurrences(of: "💆 ", with: "")
-                                            .replacingOccurrences(of: "✨ ", with: "")
+                                        let cleanPrompt = ZenCoachManager.cleanPrompt(prompt)
                                         inputText = cleanPrompt
                                         sendMessage()
                                     }

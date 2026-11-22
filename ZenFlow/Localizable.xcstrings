@@ -18149,6 +18149,2107 @@
         }
       },
       "comment" : "Restore success message"
+    },
+    "coach_open_negative_0" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I hear you. This feeling will pass, and I'm right here. 🤍"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seni duyuyorum. Bu his geçecek, ben de buradayım. 🤍"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_open_negative_1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thank you for sharing that; you're not alone."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bunu paylaştığın için teşekkürler; yalnız değilsin."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_open_negative_2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "That sounds like a hard moment. Let's slow down together."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zor bir an gibi görünüyor. Birlikte yavaşlayalım."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_open_negative_3" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What you feel is valid. Let's take a breath first."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hissettiklerin geçerli. Önce bir nefes alalım."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_open_neutral_0" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I see."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anlıyorum."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_open_neutral_1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alright, let's see."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamam, bakalım."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_open_neutral_2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I'm listening."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seni dinliyorum."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_open_positive_0" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "That's lovely, I like this energy! ✨"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ne güzel, bu enerjiyi sevdim! ✨"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_open_positive_1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wonderful! Moments like this are worth using."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Harika! Böyle anları değerlendirmek çok değerli."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_open_positive_2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Great! Let's build on that together."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çok iyi! Bunu birlikte güçlendirelim."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_open_positive_3" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Great, keep going! 🌱"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Süper, devam! 🌱"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_body_stress_0" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stress is your mind's “danger” alarm, and slowing your breath is one of the quickest ways to quiet it."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stres, zihnin “tehlike var” alarmıdır; nefesini yavaşlatmak bu alarmı sakinleştirmenin en hızlı yollarından biridir."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_body_stress_1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In a storm of thoughts, the breath is an anchor. A few slow cycles are often a good start."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Düşüncelerin fırtınasında nefes bir çapa gibidir. Birkaç yavaş döngü çoğu zaman iyi bir başlangıçtır."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_body_stress_2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You are not your thoughts, you are the one watching them. Let's return to your body: shoulders, jaw, breath."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sen düşüncelerin değilsin, onları izleyensin. Şimdi bedenine dönelim: omuzların, çenen, nefesin."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_body_anger_0" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anger is also a message, but your body has to settle before you can hear it. A long exhale helps."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öfke de bir mesajdır; ama onu duyabilmek için önce bedenin sakinleşmeli. Uzun nefes vermek buna yardım eder."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_body_anger_1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You don't have to suppress anger or be swept away by it. You can open a breath-sized gap in between."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öfkeyi bastırmak ya da ona kapılmak zorunda değilsin. Arada bir nefeslik alan açabilirsin."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_body_anger_2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Decisions made in anger can be costly. Breath first, decision after."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kızgınken verilen kararlar pahalıya patlayabilir. Önce nefes, sonra karar."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_body_focus_0" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Attention is like a muscle; it grows with short, clear stretches of work. That's what Pomodoro is for."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dikkat bir kas gibidir; kısa ve net aralıklarla çalışınca güçlenir. Pomodoro tam bunun için."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_body_focus_1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scattered is normal. Pick one task, start the timer, and let the rest wait."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dağınıklık normal. Önce tek bir iş seç, sonra zamanlayıcıyı başlat; gerisi beklesin."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_body_focus_2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A short breathing pause before you focus helps gather the mind."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odaklanmadan önce kısa bir nefes molası zihni toparlamaya yardım eder."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_body_sleep_0" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Slowing the mind and body before bed matters. Sleep Mode keeps you company with soft sounds and a dimmed screen."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uyumadan önce zihni ve bedeni yavaşlatmak önemli. Uyku Modu yumuşak sesler ve kararan bir ekranla buna eşlik eder."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_body_sleep_1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forcing sleep doesn't work; letting go does. Slow breathing and a calm sound are a good start."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uykuya zorlamak işe yaramaz; bırakmak yarar. Yavaş nefes ve sakin bir ses iyi bir başlangıç."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_body_sleep_2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If your mind wanders at night, give it one job: just your breath and a sound."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zihnin geceleri dolaşıyorsa ona tek bir iş ver: sadece nefesin ve bir ses."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_body_breathing_0" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Breath is the bridge between body and mind. Each exercise serves a different purpose: calming, focusing, sleeping."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nefes, beden ile zihin arasındaki köprüdür. Her egzersiz farklı bir amaca hizmet eder: sakinleşmek, odaklanmak, uyumak."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_body_breathing_1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Even a short breathing practice can make a difference. We can start with the simplest."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kısa bir nefes çalışması bile fark yaratabilir. İstersen en basitinden başlayalım."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_body_breathing_2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paying attention to the breath is the oldest doorway into meditation."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nefese dikkat etmek, meditasyonun en eski kapısıdır."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_body_motivation_0" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Motivation comes and goes like a wave; small steps build consistency."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Motivasyon dalga gibi gelir gider; sürekliliği küçük adımlar kurar."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_body_motivation_1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The hardest part is starting. Two minutes is enough; the rest follows."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En zor kısım başlamak. İki dakika bile yeter; gerisi kendiliğinden gelir."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_body_motivation_2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You don't have to be perfect today, just show up."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugün mükemmel olmak zorunda değilsin, sadece görünür ol."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_body_meditation_0" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "There is no “wrong” way to meditate. Sit comfortably, watch your breath, and gently return when you drift."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meditasyonun “yanlış” yapılma şekli yok. Rahat otur, nefesine bak, dağıldığında nazikçe geri dön."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_body_meditation_1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3–5 minutes is ideal to begin. Regularity matters more than length."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Başlangıç için 3-5 dakika ideal. Düzenlilik, uzunluktan daha önemli."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_body_meditation_2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meditation is a skill; every session is a repetition. Be patient."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meditasyon bir beceri; her seans bir tekrar. Sabırlı ol."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_body_general_0" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stress, sleep, focus, or just a chat: what would feel good?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stres, uyku, odaklanma ya da sadece bir sohbet; hangisi iyi gelir?"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_body_general_1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How are you feeling today? We can try something together if you like."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugün nasıl hissediyorsun? İstersen birlikte bir şeyler deneyelim."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_body_general_2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I'm here. What's on your mind?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buradayım. Aklında ne var?"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_body_gratitude_0" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gratitude turns our attention from what's missing to what we have. In today's Zen Moment you can do it in one sentence."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şükran, dikkatimizi eksikten sahip olduklarımıza çevirir. Günün Zen Anı'nda bunu tek cümleyle yapabilirsin."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_body_gratitude_1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feeling thankful for small things softens the mind."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Küçük şeyler için minnet duymak zihni yumuşatır."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_body_gratitude_2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Writing down one thing you're grateful for today is a lovely ritual."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugün için minnettar olduğun bir şeyi yazmak güzel bir ritüel."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_close_breathing_0" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shall we breathe slowly together?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Birlikte yavaşça nefes alalım mı?"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_close_breathing_1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start whenever you're ready."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hazırsan başlayalım."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_close_focus_0" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shall we start the timer?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zamanlayıcıyı başlatalım mı?"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_close_focus_1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Focus time whenever you're ready."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hazırsan odaklanma zamanı."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_close_sleep_0" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shall I open Sleep Mode?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uyku Modu'nu açayım mı?"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_close_sleep_1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pick a sound and a time when you're ready."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hazırsan bir ses ve süre seç."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_close_garden_0" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shall we look at your Zen garden?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zen bahçene bakalım mı?"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_close_garden_1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your garden is waiting. 🌳"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bahçen seni bekliyor. 🌳"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_close_gratitude_0" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shall we open today's Zen Moment?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Günün Zen Anı'nı açalım mı?"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_close_gratitude_1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "One sentence is enough."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bir cümle yeter."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_close_report_0" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can open your weekly report."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haftalık raporunu açabilirsin."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_close_report_1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The details are in the report."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayrıntılar raporda."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_greeting_morning" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Good morning! ☀️"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Günaydın! ☀️"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_greeting_afternoon" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hello! 🌿"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Merhaba! 🌿"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_greeting_evening" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Good evening! 🌙"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İyi akşamlar! 🌙"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_greeting_night" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hello, it's getting late. 🌙"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Merhaba, saat geç oldu. 🌙"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_greeting_followup" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How are you feeling today?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugün nasıl hissediyorsun?"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_thanks_0" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You're welcome, I'm here. 🌸"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rica ederim, buradayım. 🌸"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_thanks_1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Of course! I'm here if you need me."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ne demek! İhtiyacın olursa yanındayım."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_followup_yes_0" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Great! Tap the button below when you're ready."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Harika! Hazır olduğunda aşağıdaki butona dokun."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_followup_yes_1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Good call. Tap the button to begin."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Güzel karar. Butona dokunarak başlayabilirsin."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_followup_yes_noaction" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gladly! Where shall we start: stress, sleep, focus?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Memnuniyetle! Nereden başlayalım: stres, uyku, odaklanma?"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_followup_no_0" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No problem, no rush. We can just talk if you like."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sorun değil, acele yok. İstersen sadece konuşabiliriz."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_followup_no_1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I understand. I'm here when you feel ready."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anlıyorum. Hazır hissettiğinde buradayım."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_crisis" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thank you for telling me; what you wrote matters and you are not alone.\n\nIf you are thinking about harming yourself or ending your life, please don't stay alone right now: call your local emergency number or crisis line straight away (US: 988, UK: 116 123, Türkiye: 112). Tell someone you trust, too. You can find helplines for your country at findahelpline.com.\n\nTalking with a mental health professional can help a great deal. I'm a breathing and mindfulness companion and can't replace professional support. 🤍"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bunu benimle paylaştığın için teşekkür ederim; yazdıkların çok önemli ve yalnız değilsin.\n\nKendine zarar verme ya da yaşamına son verme düşüncelerin varsa lütfen şu an yalnız kalma: hemen 112'yi ara (Türkiye) ya da bulunduğun ülkedeki acil yardım hattına ulaş (ABD: 988, Birleşik Krallık: 116 123). Yakınındaki güvendiğin birine de bunu söyleyebilirsin. Bulunduğun ülkedeki destek hatlarını findahelpline.com adresinde bulabilirsin.\n\nBir ruh sağlığı uzmanıyla konuşmak çok değerli. Ben bir nefes ve farkındalık arkadaşıyım; profesyonel destek yerine geçemem. 🤍"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_ctx_low_mood" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I noticed you've marked a low mood in recent days. Be gentle with yourself; talking to someone you trust or a professional can help too. 🤍"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Son günlerde ruh halini düşük işaretlediğini fark ettim. Kendine nazik ol; gerekirse güvendiğin biriyle ya da bir uzmanla konuşmak da iyi gelebilir. 🤍"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_ctx_streak_risk" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🔥 You have a %lld-day streak; a short session today keeps it going."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🔥 %lld günlük serin var; bugün kısa bir seansla koruyabilirsin."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_ctx_first_time" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A 3-minute Box Breathing session is a lovely first step."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İlk seansın için 3 dakikalık Kutu Nefesi güzel bir başlangıç olur."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_ctx_goal_close" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Only %lld day(s) left to reach your weekly goal!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haftalık hedefine sadece %lld gün kaldı!"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_ctx_best_exercise" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Based on your data, the exercise that works best for you: %@."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verilerine göre sana en iyi gelen egzersiz: %@."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_ctx_streak_celebrate" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🎉 You've kept going for %lld days in a row, wonderful!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🎉 %lld gündür aralıksız devam ediyorsun, harika!"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_ctx_focus_length" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your focus length is currently %lld minutes; you can change it in Settings."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odaklanma süren şu an %lld dakika; Ayarlar'dan değiştirebilirsin."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_progress_summary" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📊 This week: %lld/%lld active days, %lld min of meditation, %lld focus sessions."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📊 Bu hafta: %lld/%lld gün pratik, %lld dk meditasyon, %lld odak seansı."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_progress_streak" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🔥 Streak: %lld days."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🔥 Serin: %lld gün."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_progress_more" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ more than last week!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geçen haftadan %@ daha fazla!"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_progress_less" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ less than last week; small steps count too."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geçen haftadan %@ daha az; küçük adımlar da sayılır."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_progress_goal_reached" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🎉 You reached your weekly goal!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🎉 Haftalık hedefine ulaştın!"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_progress_empty" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No sessions yet this week. Even a 3-minute breath is a lovely start."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu hafta henüz seans yok. 3 dakikalık bir nefes bile güzel bir başlangıç."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_progress_best_day" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your best day: %@ (%lld min)."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En iyi günün: %@ (%lld dk)."
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_action_breathing" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ başlat"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_action_sleep" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Sleep Mode"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uyku Modu'nu Aç"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_action_focus" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start Focus"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odaklanmayı Başlat"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_action_garden" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "See Your Zen Garden"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zen Bahçeni Gör"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_action_gratitude" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daily Zen Moment"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Günün Zen Anı"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_action_report" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Weekly Report"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haftalık Raporu Aç"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_quote_0" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“Water flows, wind breezes; the flow is finding your rhythm. 🌊”"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“Su akıştır, rüzgar esintir, akış ritmini bulmaktır. 🌊”"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_quote_1" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“The present moment is the only one you have. Embrace it. 🌸”"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“Şimdiki an, sahip olduğun tek andır. Onu kucakla. 🌸”"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_quote_2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“When the mind calms, the beauty of the spirit shines. ✨”"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“Zihin sakinleştiğinde, ruhun güzelliği parlar. ✨”"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_quote_3" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“Every breath is a new beginning. 🫁”"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“Her nefes, yeni bir başlangıçtır. 🫁”"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_quote_4" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“Silence holds all the answers. 🤫”"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“Sessizlik, tüm cevapları içerir. 🤫”"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_quote_5" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“Awakening is not a distant goal, it is awareness in every step. 👣”"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“Aydınlanma, uzaktaki bir hedef değil, her adımdaki farkındalıktır. 👣”"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_quote_6" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“Thought clouds come and go. You are the sky. ☁️”"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“Düşünce bulutları gelir ve geçer. Sen gökyüzüsün. ☁️”"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_quote_7" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“Right here, right now: eternity is hidden in this moment. ⏰”"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“Tam burada, tam şimdi - sonsuzluk bu anda gizli. ⏰”"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_quote_8" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“An empty mind is where everything is possible. 🌌”"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“Boş bir zihin, her şeyin mümkün olduğu yerdir. 🌌”"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_quote_9" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“Peace is not found outside, it is discovered within. 🕊️”"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“Barış dışarıda aranmaz, içeride keşfedilir. 🕊️”"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_quote_10" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“The breath is the bridge between body and mind. 🌉”"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“Nefes, beden ve zihin arasındaki köprüdür. 🌉”"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_quote_11" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“Come, see, accept. This is the way of Zen. 🛤️”"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“Gel, gör, kabul et. Bu Zen'in yoludur. 🛤️”"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_quote_12" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“There is grace even in falling. Get up and carry on. 🍂”"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“Düşüşte bile zarafet vardır. Kalk ve devam et. 🍂”"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_quote_13" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“Patience is the fruit of wisdom. 🌳”"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“Sabır, bilgeliğin meyveleridir. 🌳”"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_quote_14" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“Every moment is a chance to meditate. 🧘”"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“Her an meditasyon fırsatıdır. 🧘”"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_quote_15" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“When the waves of the mind settle, reality appears. 🌊”"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“Zihnin dalgaları dindiğinde, gerçeklik ortaya çıkar. 🌊”"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_quote_16" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“The journey matters more than the destination. 🗺️”"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“Yolculuk varış noktasından daha önemlidir. 🗺️”"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_quote_17" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“Be an observer, not a judge. 👁️”"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“Gözlemci ol, yargılayıcı değil. 👁️”"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_quote_18" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“Life is lived now, not yesterday, not tomorrow. 🌅”"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“Hayat şimdi yaşanır, dün değil, yarın değil. 🌅”"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_quote_19" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“Be simple, just be. 🪷”"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“Basit ol, sadece ol. 🪷”"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_prompt_meditation" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🌸 How do I start meditating?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🌸 Meditasyona nasıl başlarım?"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_prompt_tired" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "💭 I'm mentally tired, help me"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "💭 Zihinsel olarak yorgunum, yardım et"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_prompt_focus" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚡ How can I improve my focus?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚡ Odaklanmamı nasıl artırabilirim?"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_prompt_sleep" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "😴 I can't sleep well at night"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "😴 Gece rahat uyuyamıyorum"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_prompt_motivation" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🎯 I need motivation today"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🎯 Bugün için motivasyon lazım"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_prompt_weekly" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📊 How am I doing this week?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📊 Bu hafta nasıl gidiyorum?"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_prompt_streak" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🔥 How do I protect my streak?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🔥 Serimi nasıl korurum?"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_prompt_gratitude" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🙏 I'm grateful for today"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🙏 Bugün için minnettarım"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "coach_prompt_anger" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "😤 I'm really angry"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "😤 Çok sinirliyim"
+          }
+        }
+      },
+      "comment" : "Zen Coach",
+      "extractionState" : "manual"
+    },
+    "intent_anger" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anger"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öfke"
+          }
+        }
+      },
+      "comment" : "Anger"
+    },
+    "intent_gratitude" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gratitude"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şükran"
+          }
+        }
+      },
+      "comment" : "Gratitude"
+    },
+    "settings_coach_ai" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Natural replies"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Doğal yanıtlar"
+          }
+        }
+      },
+      "comment" : "On-device AI toggle for Zen Coach"
+    },
+    "settings_coach_section" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zen Coach"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zen Coach"
+          }
+        }
+      },
+      "comment" : "Zen Coach settings section header"
+    },
+    "settings_coach_ai_footer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zen Coach's replies are phrased more naturally with Apple's on-device intelligence. Nothing leaves your device. Zen Coach is not a therapist and does not replace professional support."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zen Coach'un yanıtları cihazındaki Apple yapay zekâsıyla daha doğal ifade edilir. Hiçbir şey cihazından çıkmaz. Zen Coach bir terapist değildir ve profesyonel desteğin yerini tutmaz."
+          }
+        }
+      },
+      "comment" : "On-device AI footer"
     }
   },
   "version" : "1.0"

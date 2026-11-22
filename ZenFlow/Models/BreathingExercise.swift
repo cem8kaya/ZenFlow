@@ -673,6 +673,16 @@ class BreathingExerciseManager: ObservableObject {
         UserDefaults.standard.set(favoriteTypes, forKey: favoriteExercisesKey)
     }
 
+    /// The exercise a link or Shortcut may start: premium (and custom) exercises
+    /// only with premium, Box Breathing for everything unknown or locked.
+    static func allowedExerciseType(_ type: String, isPremium: Bool) -> String {
+        let all = Self.allExercises + shared.customExercises
+        guard let exercise = all.first(where: { $0.exerciseType.lowercased() == type.lowercased() }) else {
+            return "box"
+        }
+        return (!exercise.isPremium || isPremium) ? exercise.exerciseType : "box"
+    }
+
     /// Select exercise by type identifier from deep link
     /// - Parameter type: Exercise type identifier (e.g., "box", "478", "calming")
     func selectExerciseByType(_ type: String) {

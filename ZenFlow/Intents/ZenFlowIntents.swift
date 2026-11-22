@@ -62,10 +62,7 @@ nonisolated struct StartBreathingIntent: AppIntent {
     /// The exercise a user may start via Shortcuts: premium ones only with premium
     @MainActor
     static func allowedExerciseType(_ type: String, isPremium: Bool) -> String {
-        guard let exercise = BreathingExerciseManager.allExercises.first(where: { $0.exerciseType == type }) else {
-            return "box"
-        }
-        return (!exercise.isPremium || isPremium) ? exercise.exerciseType : "box"
+        BreathingExerciseManager.allowedExerciseType(type, isPremium: isPremium)
     }
 }
 

@@ -34,13 +34,20 @@ class ZenCoachManager: ObservableObject {
 
     // MARK: - Dependencies
 
-    private let intentClassifier = IntentClassifier.shared
-    private let responseGenerator = ResponseGenerator.shared
+    private var engine = ZenCoachEngine()
+    private var engineState = CoachConversationState()
+    private let assistant = OnDeviceCoachAssistant.shared
 
     // MARK: - Initialization
 
     private init() {
         loadConversationHistory()
+
+        // After a restart "yes" should still mean the last suggestion
+        if let last = messages.last(where: { !$0.isUser }) {
+            engineState.lastActionText = last.actionText
+            engineState.lastActionURL = last.actionURL
+        }
     }
 
     // MARK: - Message Handling
@@ -62,88 +69,79 @@ class ZenCoachManager: ObservableObject {
         // Show processing indicator
         isProcessing = true
 
-        // Simulate processing delay for better UX
+        // Short pause so the reply does not feel instant
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
             guard let self = self else { return }
 
-            // Classify intent and sentiment
-            let intent = self.intentClassifier.classifyIntent(from: trimmedText)
-            let sentiment = self.intentClassifier.analyzeSentiment(from: trimmedText)
+            let context = CoachContext.current()
+            let response = self.engine.reply(to: trimmedText, context: context, state: &self.engineState)
 
-            // Generate response
-            let ZenUserStats = ZenUserStats.fromLocalData()
-            let response = self.responseGenerator.generateResponse(
-                for: intent,
-                sentiment: sentiment,
-                userStats: ZenUserStats
-            )
-
-            // Create coach message
-            let coachMessage = response.toChatMessage()
-
-            // Add action URL to message if available (stored in a custom way)
-            // We'll pass this through the UI via the response
-            self.messages.append(coachMessage)
-
-            // Store the last response for action button handling
-            self.lastResponse = response
-
-            // Hide processing indicator
-            self.isProcessing = false
-
-            // Save conversation history
-            self.saveConversationHistory()
-
-            print("💬 Message processed: \(intent.displayName) - \(sentiment.displayName)")
+            // Optionally let the on-device model rephrase (never for safety replies)
+            if self.assistant.isActive, !response.isCrisis {
+                Task { @MainActor in
+                    let rewritten = await self.assistant.rewrite(userText: trimmedText, draft: response)
+                    self.deliver(rewritten.map { response.replacingText($0) } ?? response)
+                }
+            } else {
+                self.deliver(response)
+            }
         }
+    }
+
+    /// Adds the coach's reply to the conversation
+    private func deliver(_ response: ZenCoachResponse) {
+        messages.append(response.toChatMessage())
+        lastResponse = response
+        isProcessing = false
+        saveConversationHistory()
+
+        print("💬 Message processed: \(response.intent.displayName) - \(response.sentiment.displayName) (\(response.kind))")
     }
 
     // MARK: - Last Response
 
-    /// Stores the last response for action button handling
+    /// Stores the last response
     private(set) var lastResponse: ZenCoachResponse?
 
-    /// Gets action for a specific message ID
+    /// The action button of a coach message
     func getAction(for messageId: UUID) -> (text: String, url: String)? {
-        // Find the message
         guard let message = messages.first(where: { $0.id == messageId }),
               !message.isUser else {
             return nil
         }
 
-        // Check if this is the last coach message
-        if message.id == messages.filter({ !$0.isUser }).last?.id,
-           let response = lastResponse,
-           let actionText = response.actionText,
-           let actionURL = response.actionURL {
-            return (actionText, actionURL)
+        // Replies carry their own action
+        if let text = message.actionText, let url = message.actionURL {
+            return (text, url)
         }
 
-        // For older messages, regenerate action based on intent
+        // History saved before replies carried actions: derive one from the intent
         if let intent = message.intent,
            let url = intent.deepLinkURL {
             let actionText = getActionText(for: intent)
-            return (actionText, url)
+            return actionText.isEmpty ? nil : (actionText, url)
         }
 
         return nil
     }
 
-    /// Gets action text for intent
+    /// Button text for messages saved by older versions
     private func getActionText(for intent: UserIntent) -> String {
         switch intent {
-        case .stress, .breathing:
+        case .stress, .anger, .breathing:
             return String(localized: "action_breathing", defaultValue: "Nefes Egzersizi", comment: "Breathing Exercise")
         case .focus:
             return String(localized: "action_pomodoro", defaultValue: "Pomodoro", comment: "Pomodoro")
         case .sleep:
-            return String(localized: "action_478", defaultValue: "4-7-8 Tekniği", comment: "4-7-8 Technique")
+            return CoachStrings.text("coach_action_sleep")
         case .motivation:
             return String(localized: "action_garden", defaultValue: "Zen Bahçesi", comment: "Zen Garden")
         case .meditation:
             return String(localized: "action_meditation", defaultValue: "Meditasyon", comment: "Meditation")
         case .progress:
-            return String(localized: "action_progress", defaultValue: "İlerlemem", comment: "My Progress")
+            return CoachStrings.text("coach_action_report")
+        case .gratitude:
+            return CoachStrings.text("coach_action_gratitude")
         case .general:
             return ""
         }
@@ -197,21 +195,22 @@ class ZenCoachManager: ObservableObject {
     func clearHistory() {
         messages.removeAll()
         lastResponse = nil
+        engineState = CoachConversationState()
         UserDefaults.standard.removeObject(forKey: conversationHistoryKey)
         print("🗑️ Conversation history cleared")
     }
 
-    // MARK: - Suggested Prompts (Enhanced)
+    // MARK: - Suggested Prompts
 
-    /// Returns suggested prompts for quick access - limited to 5 for better UX
+    /// Quick prompts that fit the moment (time of day, streak, new or returning user)
     func getSuggestedPrompts() -> [String] {
-        return [
-            String(localized: "suggested_prompt_0", defaultValue: "🌸 Meditasyona nasıl başlarım?", comment: "How to start meditation"),
-            String(localized: "suggested_prompt_1", defaultValue: "💭 Zihinsel olarak yorgunum, yardım et", comment: "Mentally tired, need help"),
-            String(localized: "suggested_prompt_2", defaultValue: "⚡ Odaklanmamı nasıl artırabilirim?", comment: "How to improve focus"),
-            String(localized: "suggested_prompt_3", defaultValue: "😴 Gece rahat uyuyamıyorum", comment: "Can't sleep well at night"),
-            String(localized: "suggested_prompt_4", defaultValue: "🎯 Bugün için motivasyon lazım", comment: "Need motivation today")
-        ]
+        ZenCoachEngine.suggestedPrompts(for: CoachContext.current()).map { $0.text }
+    }
+
+    /// A tapped prompt without its leading emoji, ready to be sent as a message
+    static func cleanPrompt(_ prompt: String) -> String {
+        String(prompt.drop(while: { !$0.isLetter && !$0.isNumber }))
+            .trimmingCharacters(in: .whitespaces)
     }
 
     /// Returns category-specific suggested prompts

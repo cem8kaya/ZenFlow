@@ -20,6 +20,9 @@ struct ZenCoachMessage: Codable, Identifiable, Equatable {
     let timestamp: Date
     let intent: UserIntent?
     let sentiment: MessageSentiment?
+    /// Action button of a coach reply (nil for user messages and older history)
+    let actionText: String?
+    let actionURL: String?
 
     init(
         id: UUID = UUID(),
@@ -27,7 +30,9 @@ struct ZenCoachMessage: Codable, Identifiable, Equatable {
         isUser: Bool,
         timestamp: Date = Date(),
         intent: UserIntent? = nil,
-        sentiment: MessageSentiment? = nil
+        sentiment: MessageSentiment? = nil,
+        actionText: String? = nil,
+        actionURL: String? = nil
     ) {
         self.id = id
         self.text = text
@@ -35,6 +40,8 @@ struct ZenCoachMessage: Codable, Identifiable, Equatable {
         self.timestamp = timestamp
         self.intent = intent
         self.sentiment = sentiment
+        self.actionText = actionText
+        self.actionURL = actionURL
     }
 
     /// Formatted timestamp string

@@ -28,6 +28,7 @@ struct SettingsView: View {
     @StateObject private var storeManager = StoreManager.shared
     @StateObject private var bellManager = MindfulnessBellManager.shared
     @ObservedObject private var featureFlag = FeatureFlag.shared
+    @AppStorage(OnDeviceCoachAssistant.enabledKey) private var coachOnDeviceAI = false
 
     // MARK: - Computed Properties
 
@@ -350,6 +351,25 @@ struct SettingsView: View {
                     }
                 } header: {
                     Text(String(localized: "settings_focus_section", defaultValue: "Odaklanma", comment: "Focus settings section header"))
+                }
+
+                // MARK: - Zen Coach Section (only when on-device AI is built in and available)
+
+                if OnDeviceCoachAssistant.isCompiledIn && OnDeviceCoachAssistant.shared.isModelAvailable {
+                    Section {
+                        Toggle(isOn: $coachOnDeviceAI) {
+                            HStack {
+                                Image(systemName: "sparkles")
+                                    .foregroundColor(ZenTheme.calmBlue)
+                                    .frame(width: 28)
+                                Text(String(localized: "settings_coach_ai", defaultValue: "Doğal yanıtlar", comment: "On-device AI toggle for Zen Coach"))
+                            }
+                        }
+                    } header: {
+                        Text(String(localized: "settings_coach_section", defaultValue: "Zen Coach", comment: "Zen Coach settings section header"))
+                    } footer: {
+                        Text(String(localized: "settings_coach_ai_footer", defaultValue: "Zen Coach'un yanıtları cihazındaki Apple yapay zekâsıyla daha doğal ifade edilir. Hiçbir şey cihazından çıkmaz. Zen Coach bir terapist değildir ve profesyonel desteğin yerini tutmaz.", comment: "On-device AI footer"))
+                    }
                 }
 
                 // MARK: - Data Management Section

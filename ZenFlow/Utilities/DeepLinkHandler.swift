@@ -80,7 +80,18 @@ class DeepLinkHandler {
         // Handle breathing exercise parameter
         if host.lowercased() == "breathing" || host.lowercased() == "meditation",
            let exercise = queryParams["exercise"] {
-            userInfo["exerciseType"] = exercise
+            // Premium exercises stay behind the paywall for every link (coach, Shortcuts, widgets)
+            let allowed = BreathingExerciseManager.allowedExerciseType(exercise, isPremium: StoreManager.cachedPremiumStatus)
+            userInfo["exerciseType"] = allowed
+
+            // Select right away: the meditation tab is created lazily and may
+            // not be listening yet when this link arrives
+            BreathingExerciseManager.shared.selectExerciseByType(allowed)
+        }
+
+        // zenflow://dailyzen opens the Daily Zen Moment (hosted by the coach tab)
+        if host.lowercased() == "dailyzen" {
+            userInfo["openDailyZen"] = true
         }
 
         // zenflow://report opens the weekly report (presented by the app root)
@@ -109,7 +120,7 @@ class DeepLinkHandler {
     /// - Returns: Tab index
     private func getTabIndex(for host: String) -> Int {
         switch host.lowercased() {
-        case "coach", "zencoach", "sleep":
+        case "coach", "zencoach", "sleep", "dailyzen":
             return 0 // Zen Coach tab (also hosts Sleep Mode)
         case "breathing", "meditation":
             return 1 // Meditasyon tab

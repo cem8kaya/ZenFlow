@@ -29,16 +29,10 @@ class IntentClassifier {
     /// - Parameter text: User's message text
     /// - Returns: Classified intent (defaults to .general if no match)
     func classifyIntent(from text: String) -> UserIntent {
-        let lowercasedText = text.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
-
-        // Primary method: Keyword matching
-        for intent in UserIntent.allCases {
-            for keyword in intent.keywords {
-                if lowercasedText.contains(keyword) {
-                    print("🎯 Intent classified: \(intent.displayName) (keyword: \(keyword))")
-                    return intent
-                }
-            }
+        // Primary method: weighted keyword scoring (case/diacritic-insensitive, whole words)
+        if let intent = CoachIntentScorer.bestIntent(for: text) {
+            print("🎯 Intent classified: \(intent.displayName) (keyword score)")
+            return intent
         }
 
         // Fallback method: NLP-based matching
