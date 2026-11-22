@@ -336,7 +336,8 @@ final class ZenCoachEngineTests: XCTestCase {
             $0.currentStreak = 4
             $0.totalSessions = 0
         }
-        let text = reply("Motivasyon lazım", context: crowded).text
+        // Meditation questions qualify for all three lines
+        let text = reply("Meditasyona nasıl başlarım?", context: crowded).text
         XCTAssertTrue(text.contains(CoachStrings.text("coach_ctx_low_mood")))
         XCTAssertFalse(text.contains(CoachStrings.format("coach_ctx_streak_risk", 4)))
         XCTAssertFalse(text.contains(CoachStrings.text("coach_ctx_first_time")))
