@@ -19,6 +19,7 @@ struct ExerciseSelectionView: View {
     @State private var selectedExercise: BreathingExercise
     @State private var showPaywall = false
     @State private var showSilentMeditation = false
+    @State private var showCustomExercises = false
     @StateObject private var storeManager = StoreManager.shared
 
     var onExerciseSelected: ((BreathingExercise) -> Void)?
@@ -43,6 +44,8 @@ struct ExerciseSelectionView: View {
                             .padding(.top, 32)
 
                         silentMeditationButton
+
+                        customExerciseButton
                         
                         // Exercise carousel
                         ScrollView(.horizontal, showsIndicators: false) {
@@ -90,6 +93,48 @@ struct ExerciseSelectionView: View {
         }
         .fullScreenCover(isPresented: $showSilentMeditation) {
             SilentMeditationView()
+        }
+        .sheet(isPresented: $showCustomExercises) {
+            CustomBreathingListView()
+        }
+    }
+
+    // MARK: - Custom Exercises
+
+    /// Entry to the premium exercise designer (paywall for free users)
+    private var customExerciseButton: some View {
+        Button {
+            HapticManager.shared.playImpact(style: .light)
+            if storeManager.isPremiumUnlocked {
+                showCustomExercises = true
+            } else {
+                showPaywall = true
+            }
+        } label: {
+            HStack(spacing: 12) {
+                Image(systemName: "slider.horizontal.3")
+                    .font(.system(size: 22))
+                    .foregroundColor(ZenTheme.lightLavender)
+
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(String(localized: "custom_exercise_entry_title", defaultValue: "Kendi Egzersizini Oluştur", comment: "Entry title for the custom exercise designer"))
+                        .font(.system(size: 16, weight: .semibold))
+                        .foregroundColor(ZenTheme.lightLavender)
+                    Text(String(localized: "custom_exercise_entry_subtitle", defaultValue: "Al, tut, ver sürelerini sen belirle", comment: "Entry subtitle for the custom exercise designer"))
+                        .font(.system(size: 13))
+                        .foregroundColor(ZenTheme.softPurple)
+                }
+
+                Spacer()
+
+                Image(systemName: storeManager.isPremiumUnlocked ? "chevron.right" : "lock.fill")
+                    .font(.system(size: 13, weight: .semibold))
+                    .foregroundColor(ZenTheme.softPurple)
+            }
+            .padding(14)
+            .background(RoundedRectangle(cornerRadius: 14).fill(Color.white.opacity(0.08)))
+            .overlay(RoundedRectangle(cornerRadius: 14).stroke(ZenTheme.softPurple.opacity(0.3), lineWidth: 1))
+            .padding(.horizontal, 24)
         }
     }
 

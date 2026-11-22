@@ -153,20 +153,29 @@ struct BreathingExercise: Identifiable, Codable {
     let difficulty: ExerciseDifficulty
     let recommendedTime: RecommendedTime
     let isPremium: Bool
+    /// Name of a user-designed exercise (nil for the built-in ones)
+    let customName: String?
+
+    /// Whether this is a user-designed exercise
+    var isCustom: Bool { customName != nil }
 
     // Localized computed properties
     var localizedName: String {
-        getDefaultName()
+        customName ?? getDefaultName()
     }
 
     var localizedDescription: String {
-        getDefaultDescription()
+        if isCustom {
+            return String(localized: "custom_exercise_description", defaultValue: "Kendi tasarladığın nefes ritmi.", comment: "Description of a custom breathing exercise")
+        }
+        return getDefaultDescription()
     }
 
     var localizedBenefits: [String] {
+        // Custom exercises have no canned benefits; drop empty rows
         (0..<4).map { index in
             getDefaultBenefit(at: index)
-        }
+        }.filter { !$0.isEmpty }
     }
 
     // Default values using String(localized:) for automatic extraction and fallback
@@ -288,9 +297,12 @@ struct BreathingExercise: Identifiable, Codable {
         iconName: String,
         difficulty: ExerciseDifficulty,
         recommendedTime: RecommendedTime,
-        isPremium: Bool = false
+        isPremium: Bool = false,
+        customName: String? = nil,
+        id: UUID = UUID()
     ) {
-        self.id = UUID()
+        self.id = id
+        self.customName = customName
         self.exerciseType = exerciseType
         self.phases = phases
         self.totalCycleDuration = phases.reduce(0) { $0 + $1.duration }
@@ -312,8 +324,16 @@ class BreathingExerciseManager: ObservableObject {
     private let selectedExerciseKey = "selectedBreathingExercise"
     private let favoriteExercisesKey = "favoriteBreathingExercises"
 
+    private let customPatternsKey = "customBreathingPatterns"
+
     @Published var selectedExercise: BreathingExercise
     @Published var favoriteExerciseIDs: Set<UUID> = []
+
+    /// Patterns the user designed (premium)
+    @Published private(set) var customPatterns: [CustomBreathingPattern] = []
+    /// Playable exercises for `customPatterns`. Rebuilt only when patterns change,
+    /// so the exercise ids stay stable between reads.
+    @Published private(set) var customExercises: [BreathingExercise] = []
 
     /// All available breathing exercises (static for performance - created once and shared)
     static let allExercises: [BreathingExercise] = [
@@ -525,12 +545,23 @@ class BreathingExerciseManager: ObservableObject {
     ]
 
     private init() {
-        // Exercise `id`s are generated at launch, so selection and favorites are
-        // persisted by the stable `exerciseType` identifier instead.
+        // Exercise `id`s of the built-in exercises are generated at launch, so
+        // selection and favorites are persisted by the stable `exerciseType`.
+
+        // Custom exercises first, so they can be restored as selection/favorites
+        var patterns: [CustomBreathingPattern] = []
+        if let data = UserDefaults.standard.data(forKey: customPatternsKey),
+           let decoded = try? JSONDecoder().decode([CustomBreathingPattern].self, from: data) {
+            patterns = decoded.map { $0.sanitized() }
+        }
+        let customs = patterns.map { $0.makeExercise() }
+        self.customPatterns = patterns
+        self.customExercises = customs
+        let everything = Self.allExercises + customs
 
         // Load selected exercise from UserDefaults
         if let savedType = UserDefaults.standard.string(forKey: selectedExerciseKey),
-           let exercise = Self.allExercises.first(where: { $0.exerciseType == savedType }) {
+           let exercise = everything.first(where: { $0.exerciseType == savedType }) {
             self.selectedExercise = exercise
         } else {
             // Default to Box Breathing
@@ -541,16 +572,71 @@ class BreathingExerciseManager: ObservableObject {
         if let savedFavorites = UserDefaults.standard.array(forKey: favoriteExercisesKey) as? [String] {
             let favoriteTypes = Set(savedFavorites)
             self.favoriteExerciseIDs = Set(
-                Self.allExercises
+                everything
                     .filter { favoriteTypes.contains($0.exerciseType) }
                     .map { $0.id }
             )
         }
     }
 
-    /// Instance property for backward compatibility
+    /// Built-in exercises followed by the user's own
     var allExercises: [BreathingExercise] {
-        Self.allExercises
+        Self.allExercises + customExercises
+    }
+
+    // MARK: - Custom exercises
+
+    var canAddCustomPattern: Bool {
+        customPatterns.count < CustomBreathingPattern.maxPatterns
+    }
+
+    /// Add a new pattern (or replace one with the same id). Returns false when
+    /// the maximum number of patterns is reached.
+    @discardableResult
+    func saveCustomPattern(_ pattern: CustomBreathingPattern) -> Bool {
+        let clean = pattern.sanitized()
+
+        if let index = customPatterns.firstIndex(where: { $0.id == clean.id }) {
+            customPatterns[index] = clean
+        } else {
+            guard canAddCustomPattern else { return false }
+            customPatterns.append(clean)
+        }
+        customPatternsChanged()
+
+        // Keep the selection pointing at the edited exercise
+        if selectedExercise.id == clean.id, let updated = customExercises.first(where: { $0.id == clean.id }) {
+            selectedExercise = updated
+        }
+        return true
+    }
+
+    func deleteCustomPattern(id: UUID) {
+        customPatterns.removeAll { $0.id == id }
+        favoriteExerciseIDs.remove(id)
+        saveFavorites()
+        customPatternsChanged()
+
+        // Falling back to the default if the selected exercise was deleted
+        if selectedExercise.id == id {
+            selectExercise(Self.allExercises[0])
+        }
+    }
+
+    /// Replace all patterns (used when restoring a backup)
+    func replaceCustomPatterns(_ patterns: [CustomBreathingPattern]) {
+        customPatterns = Array(patterns.map { $0.sanitized() }.prefix(CustomBreathingPattern.maxPatterns))
+        customPatternsChanged()
+        if selectedExercise.isCustom, !customExercises.contains(where: { $0.id == selectedExercise.id }) {
+            selectExercise(Self.allExercises[0])
+        }
+    }
+
+    private func customPatternsChanged() {
+        customExercises = customPatterns.map { $0.makeExercise() }
+        if let data = try? JSONEncoder().encode(customPatterns) {
+            UserDefaults.standard.set(data, forKey: customPatternsKey)
+        }
     }
 
     /// Select an exercise
@@ -576,12 +662,12 @@ class BreathingExerciseManager: ObservableObject {
 
     /// Get favorite exercises
     var favoriteExercises: [BreathingExercise] {
-        return Self.allExercises.filter { favoriteExerciseIDs.contains($0.id) }
+        return allExercises.filter { favoriteExerciseIDs.contains($0.id) }
     }
 
     /// Save favorites to UserDefaults
     private func saveFavorites() {
-        let favoriteTypes = Self.allExercises
+        let favoriteTypes = allExercises
             .filter { favoriteExerciseIDs.contains($0.id) }
             .map { $0.exerciseType }
         UserDefaults.standard.set(favoriteTypes, forKey: favoriteExercisesKey)
@@ -590,7 +676,7 @@ class BreathingExerciseManager: ObservableObject {
     /// Select exercise by type identifier from deep link
     /// - Parameter type: Exercise type identifier (e.g., "box", "478", "calming")
     func selectExerciseByType(_ type: String) {
-        if let exercise = Self.allExercises.first(where: { $0.exerciseType == type.lowercased() }) {
+        if let exercise = allExercises.first(where: { $0.exerciseType.lowercased() == type.lowercased() }) {
             selectExercise(exercise)
             print("✅ Selected exercise via deep link: \(exercise.name)")
         } else {

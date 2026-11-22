@@ -298,11 +298,15 @@ struct MoodInsightsView: View {
             return (String(localized: "silent_title", defaultValue: "Sessiz Meditasyon", comment: "Silent meditation title"), "figure.mind.and.body")
         }
         let exercise = exerciseInfo(for: type)
+        if exercise == nil, type.hasPrefix(CustomBreathingPattern.exerciseTypePrefix) {
+            // A custom exercise that has since been deleted
+            return (String(localized: "custom_exercise_deleted", defaultValue: "Özel egzersiz", comment: "Name for a deleted custom exercise"), "slider.horizontal.3")
+        }
         return (exercise?.name ?? type, exercise?.iconName ?? "wind")
     }
 
     private func exerciseInfo(for type: String) -> BreathingExercise? {
-        BreathingExerciseManager.allExercises.first { $0.exerciseType == type }
+        BreathingExerciseManager.shared.allExercises.first { $0.exerciseType == type }
     }
 }
 
