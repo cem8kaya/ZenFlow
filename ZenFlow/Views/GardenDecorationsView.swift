@@ -89,7 +89,7 @@ struct GardenDecorationsView: View {
                 var node = Path()
                 node.move(to: CGPoint(x: x - 3.5, y: y))
                 node.addLine(to: CGPoint(x: x + 3.5, y: y))
-                context.stroke(node, with: .color(green.opacity(0.55).mix(with: .black, by: 0.3)), lineWidth: 1.2)
+                context.stroke(node, with: .color(green.opacity(0.55).mix(with: Color(red: 0, green: 0, blue: 0), by: 0.3)), lineWidth: 1.2)
                 y -= 18
             }
 
@@ -197,7 +197,8 @@ struct GardenDecorationsView: View {
 }
 
 private extension Color {
-    /// Blend toward another color (used only for small shading tweaks)
+    /// Blend toward another color (used only for small shading tweaks).
+    /// Pass an RGB color: Color.lerp ignores grayscale ones such as .black.
     func mix(with other: Color, by amount: CGFloat) -> Color {
         lerp(to: other, progress: amount)
     }
