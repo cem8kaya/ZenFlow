@@ -144,14 +144,15 @@ final class WeeklyReportTests: XCTestCase {
 
 final class DeepLinkQueueTests: XCTestCase {
 
-    func testEnqueueStoresAndConsumeClears() {
-        let handler = DeepLinkHandler.shared
-        handler.enqueue("zenflow://report")
-        XCTAssertEqual(handler.pendingURLString, "zenflow://report")
-
+    func testEnqueuedLinkIsHandledAndCleared() {
+        // The app root may consume a queued link as soon as it is enqueued
+        // (when the UI is ready), so assert on the outcome, not on the timing.
         let expectation = expectation(forNotification: DeepLinkHandler.switchToTabNotification, object: nil) { notification in
             notification.userInfo?["openWeeklyReport"] as? Bool == true
         }
+
+        let handler = DeepLinkHandler.shared
+        handler.enqueue("zenflow://report")
         handler.consumePending()
         wait(for: [expectation], timeout: 1)
 
