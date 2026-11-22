@@ -11734,6 +11734,3803 @@
         }
       },
       "comment" : "Pre-session mood accessibility label"
+    },
+    "zen_teaching_0_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Power of the Present Moment"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şimdiki Anın Gücü"
+          }
+        }
+      },
+      "comment" : "Teaching title",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_0_content" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In Zen, the past and the future are illusions. Only the present moment is real. Every breath, every step, every moment is whole and complete. When we occupy the mind with regrets about the past or worries about the future, we drift away from the reality of life.\n\nA Zen master says: \"When you drink tea, just drink tea. When you walk, just walk.\" Deep wisdom hides in this simplicity. Doing every action with full attention turns life into meditation."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zen'de geçmiş ve gelecek birer illüzyondur. Yalnızca şimdiki an gerçektir. Her nefes, her adım, her an tam ve eksiksizdir. Geçmişin pişmanlıklarıyla ya da geleceğin kaygılarıyla zihnimizi meşgul ettiğimizde, hayatın gerçekliğinden uzaklaşırız.\n\nBir Zen ustası şöyle der: \"Çay içerken sadece çay iç. Yürürken sadece yürü.\" Bu sadelikte derin bir bilgelik gizlidir. Her eylemi tam bir dikkatle yapmak, yaşamı bir meditasyon haline getirir."
+          }
+        }
+      },
+      "comment" : "Teaching content",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_0_quote" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "When walking, just walk; when sitting, just sit. Above all, don't wobble."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yürürken sadece yürü, otururken sadece otur. Her ne yaparsan yap, sallanma."
+          }
+        }
+      },
+      "comment" : "Teaching quote",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_0_author" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zen Proverb"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zen Atasözü"
+          }
+        }
+      },
+      "comment" : "Teaching author",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_0_advice" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pick an activity today (eating, brushing your teeth, walking) and do it with full attention. When your mind wanders, gently bring it back to the present."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugün bir aktivite seç (yemek yeme, diş fırçalama, yürüyüş) ve onu tam bir dikkatle yap. Zihnin başka yerlere gittiğinde, nazikçe şimdiki ana geri getir."
+          }
+        }
+      },
+      "comment" : "Practical advice",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_1_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Embracing Impermanence"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kalıcısızlığı Kucaklamak"
+          }
+        }
+      },
+      "comment" : "Teaching title",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_1_content" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Everything changes, nothing is permanent; this is one of the core teachings of Zen. Flowers fade, seasons change, emotions come and go. Accepting this truth is the key not to suffering but to freedom.\n\nResisting impermanence leads to pain. Accepting change in its natural flow brings peace. The Japanese describe this beauty as 'mono no aware' (a gentle sadness at the passing of things)."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Her şey değişir, hiçbir şey kalıcı değildir - bu Zen'in temel öğretilerinden biridir. Çiçekler solar, mevsimler değişir, duygular gelip geçer. Bu gerçeği kabul etmek, acının değil, özgürlüğün anahtarıdır.\n\nKalıcısızlığa direnmek acıya yol açar. Değişimi doğal akışında kabul etmek ise huzuru getirir. Japon'lar bu güzelliği 'mono no aware' (şeylerin geçiciliğine duyulan hüzün) olarak tanımlar."
+          }
+        }
+      },
+      "comment" : "Teaching content",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_1_quote" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thoughts are like clouds: they come, change shape and pass. You are the sky."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Düşünceler bulutlar gibidir - gelir, şeklini değiştirir ve geçer. Sen ise gökyüzüsün."
+          }
+        }
+      },
+      "comment" : "Teaching quote",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_1_author" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zen Teaching"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zen Öğretisi"
+          }
+        }
+      },
+      "comment" : "Teaching author",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_1_advice" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Observe a thought or a feeling. Without trying to change it, just watch. Notice how it comes and goes. You are their observer, not the thoughts themselves."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bir düşünceyi ya da duyguyu gözlemle. Onu değiştirmeye çalışmadan sadece izle. Nasıl gelip gittiğini fark et. Sen onların gözlemcisisin, onların kendisi değil."
+          }
+        }
+      },
+      "comment" : "Practical advice",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_2_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seeing Reality As It Is"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gerçekliği Olduğu Gibi Görmek"
+          }
+        }
+      },
+      "comment" : "Teaching title",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_2_content" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In Zen, the concept of 'suchness' (tathātā) means accepting everything as it is. Without judging, without trying to change it, simply observing. If it is raining, it is raining; if the sun is out, the sun is out.\n\nMost of our suffering comes from wishing reality were different. Thoughts like \"it shouldn't be this way\" or \"it would be better if...\" cloud the mind. Acceptance is surrender, and surrender is the greatest strength."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zen'de 'suchness' (tathātā) kavramı, her şeyi olduğu gibi kabul etmektir. Yargılamadan, değiştirmeye çalışmadan, sadece gözlemlemek. Yağmur yağıyorsa yağmur yağıyor, güneş açıyorsa güneş açıyor.\n\nÇoğu acımız, gerçekliğin farklı olmasını istemekten kaynaklanır. \"Böyle olmamalıydı\", \"şöyle olsaydı daha iyi olurdu\" gibi düşünceler zihnimizi bulandırır. Kabul, teslimiyettir. Teslimiyet ise en büyük güçtür."
+          }
+        }
+      },
+      "comment" : "Teaching content",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_2_quote" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The obstacle becomes the path, and the path becomes the obstacle."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Engel yol olur, yol engel olur."
+          }
+        }
+      },
+      "comment" : "Teaching quote",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_2_author" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zen Proverb"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zen Atasözü"
+          }
+        }
+      },
+      "comment" : "Teaching author",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_2_advice" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In a difficult situation today, first take a deep breath. Say 'this is how it is right now.' Accept it. Then act if you need to. Acceptance is not inaction; it is clear sight."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugün karşılaştığın zorlu bir durumda, önce derin bir nefes al. 'Bu şu an böyle' de. Kabul et. Sonra gerekirse hareket et. Kabul, hareketsizlik değildir - net görüştür."
+          }
+        }
+      },
+      "comment" : "Practical advice",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_3_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perfection in Simplicity"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sadelikte Mükemmellik"
+          }
+        }
+      },
+      "comment" : "Teaching title",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_3_content" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Why are Zen gardens so striking? Because there is nothing superfluous. Every stone, every plant, every empty space serves a purpose. Simplicity is not poverty; it is letting go of the unnecessary.\n\nThe mind works the same way. The more thoughts, worries and desires pile up, the more complicated it becomes. Zen meditation is about erasing this excess to reveal the mind's natural clarity."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zen bahçeleri neden bu kadar etkileyicidir? Çünkü fazlalık yoktur. Her taş, her bitki, her boşluk bir amaca hizmet eder. Sadelik, yoksulluk değildir - gereksizi atmaktır.\n\nZihnimiz de aynı şekilde işler. Ne kadar çok düşünce, kaygı, arzu birikirse, o kadar karmaşık hale gelir. Zen meditasyonu bu fazlalıkları silmek, zihnin doğal berraklığını ortaya çıkarmak içindir."
+          }
+        }
+      },
+      "comment" : "Teaching content",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_3_quote" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wisdom is not adding something more, but removing what is unnecessary."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bilgelik başka bir şey eklemek değil, gereksizi çıkarmaktır."
+          }
+        }
+      },
+      "comment" : "Teaching quote",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_3_author" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zen Teaching"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zen Öğretisi"
+          }
+        }
+      },
+      "comment" : "Teaching author",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_3_advice" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Simplify one area today (physical or mental). Throw away something unneeded, or let go of an unnecessary worry. Feel the ease that emptiness brings."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugün bir alanı (fiziksel ya da zihinsel) sadeleştir. Gereksiz bir eşyayı at, ya da gereksiz bir endişeden vazgeç. Boşluğun getirdiği rahatlığı hisset."
+          }
+        }
+      },
+      "comment" : "Practical advice",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_4_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Richness of Beginner's Mind"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Başlangıç Zihninin Zenginliği"
+          }
+        }
+      },
+      "comment" : "Teaching title",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_4_content" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shunryu Suzuki's famous words: \"In the beginner's mind there are many possibilities, but in the expert's there are few.\" This is a teaching at the heart of Zen.\n\nEverything we think we know is really a mold that limits the freedom of our mind. Remember a child's curiosity and wonder the first time they do something. That is the mind we need. Every breath is new, every meditation is the first."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shunryu Suzuki'nin ünlü sözü: \"Başlangıç zihninde birçok olasılık vardır, uzman zihninde ise çok azdır.\" Bu, Zen'in kalbinde yatan bir öğretidir.\n\nBildiğimizi sandığımız her şey, aslında zihnimizin özgürlüğünü kısıtlayan bir kalıptır. Bir şeyi ilk kez yapan bir çocuğun merakını, şaşkınlığını hatırla. İşte o zihne ihtiyacımız var. Her nefes yeni, her meditasyon ilk."
+          }
+        }
+      },
+      "comment" : "Teaching content",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_4_quote" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In the expert's mind there are few possibilities; in the beginner's mind, endless ones."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uzman zihninde çok az olasılık vardır, başlangıç zihninde sonsuz olasılık."
+          }
+        }
+      },
+      "comment" : "Teaching quote",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_4_author" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shunryu Suzuki"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shunryu Suzuki"
+          }
+        }
+      },
+      "comment" : "Teaching author",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_4_advice" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Examine something ordinary today as if you were seeing it for the first time: a leaf, your hands, the sky. What assumptions do you make? What sparks your curiosity?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugün sıradan bir şeyi ilk kez görüyormuşsun gibi incele. Bir ağaç yaprağı, ellerin, gökyüzü. Ne varsayımlar yapabilirsin? Ne merak uyandırır?"
+          }
+        }
+      },
+      "comment" : "Practical advice",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_5_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Awakening in Sitting - Zazen"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oturuşta Uyanış - Zazen"
+          }
+        }
+      },
+      "comment" : "Teaching title",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_5_content" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zazen is the heart of Zen meditation. 'Za' means sitting, 'zen' means meditation. But zazen is not a technique, it is a posture, a way of being.\n\nIn zazen we do not try to reach a goal. We do not seek enlightenment. We simply sit. Shikantaza: \"just sitting.\" This paradox is the deepest teaching: when you are not trying to get anything, you already have everything."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zazen, Zen meditasyonunun kalbidir. 'Za' oturmak, 'zen' meditasyon demektir. Ama Zazen bir teknik değil, bir duruştur, bir varoluş biçimidir.\n\nZazen'de bir hedefe ulaşmaya çalışmayız. Aydınlanma aramayız. Sadece otururuz. Shikantaza - \"sadece oturmak\". Bu paradoks, aslında en derin öğretidir: Hiçbir şey elde etmeye çalışmadığında, her şeyi zaten elde etmişsin."
+          }
+        }
+      },
+      "comment" : "Teaching content",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_5_quote" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If you have no goal in meditation, it is already perfect."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meditasyon amacınız yoksa, o zaten mükemmeldir."
+          }
+        }
+      },
+      "comment" : "Teaching quote",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_5_author" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dogen Zenji"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dogen Zenji"
+          }
+        }
+      },
+      "comment" : "Teaching author",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_5_advice" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sit today without expecting anything from your meditation. Don't try to relax, don't try to concentrate. Just sit. Be as you are."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meditasyonunda bugün hiçbir şey beklemeden otur. Rahatlamaya çalışma, konsantre olmaya çalışma. Sadece otur. Olduğun gibi ol."
+          }
+        }
+      },
+      "comment" : "Practical advice",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_6_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Breath - Gateway of Life"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nefes - Hayatın Kapısı"
+          }
+        }
+      },
+      "comment" : "Teaching title",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_6_content" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The breath is the most fundamental rhythm of life. It begins with birth and ends with death. In every breath there is a life, in every breath a death. The breath is the bridge back to the present moment.\n\nIn Zen, attending to the breath is the simplest yet deepest practice of the mind. The breath cannot be thought; it can only be lived. That is why breath meditation is the gateway from the world of thought to the world of experience."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nefes, hayatın en temel ritmidir. Doğumla başlar, ölümle son bulur. Her nefeste bir hayat, her nefeste bir ölüm vardır. Nefes, şimdiki ana dönen köprüdür.\n\nZen'de nefese dikkat etmek, zihnin en basit ama en derin uygulamasıdır. Nefes düşünülemez, sadece yaşanır. Bu yüzden nefes meditasyonu, düşünce dünyasından deneyim dünyasına geçişin kapısıdır."
+          }
+        }
+      },
+      "comment" : "Teaching content",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_6_quote" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The breath goes, the breath comes. Let it go, let it come."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nefes gider, nefes gelir. Bırak gitsin, bırak gelsin."
+          }
+        }
+      },
+      "comment" : "Teaching quote",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_6_author" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thich Nhat Hanh"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thich Nhat Hanh"
+          }
+        }
+      },
+      "comment" : "Teaching author",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_6_advice" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Take three deep breaths now. The first with your chest, the second with your belly, the third with your whole body. Feel the miracle of life in every breath."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şimdi üç derin nefes al. İlkini göğsünle, ikincisini karnınla, üçüncüsünü tüm bedenle al. Her nefeste hayatın mucizesini hisset."
+          }
+        }
+      },
+      "comment" : "Practical advice",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_7_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lessons from Nature"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Doğanın Öğretileri"
+          }
+        }
+      },
+      "comment" : "Teaching title",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_7_content" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zen is not separate from nature. Mountains, rivers, trees: all are Zen teachers. A pine tree never tries to be a rose. A rock never wishes to be a cloud. Everything is perfect in its own nature.\n\nPeople, on the other hand, constantly try to be something else. This is the root of suffering. By looking at nature, we can learn to return to our own nature."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zen, doğadan ayrı değildir. Dağlar, nehirler, ağaçlar - hepsi Zen öğretmenleridir. Bir çam ağacı hiçbir zaman gül olmaya çalışmaz. Bir kaya hiçbir zaman bulut olmayı istemez. Her şey kendi doğasında mükemmeldir.\n\nİnsanlar ise sürekli başka bir şey olmaya çalışır. Bu, acının köküdür. Doğaya bakarak, kendi doğamıza dönmeyi öğrenebiliriz."
+          }
+        }
+      },
+      "comment" : "Teaching content",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_7_quote" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bamboo bends but does not break; the pine stands tall without strain. Each is perfect in its own way."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bambu eğilir ama kırılmaz, çam dik durur ama zorlanmaz. Her biri kendi yolunda mükemmeldir."
+          }
+        }
+      },
+      "comment" : "Teaching quote",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_7_author" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zen Proverb"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zen Atasözü"
+          }
+        }
+      },
+      "comment" : "Teaching author",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_7_advice" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Observe one thing in nature closely today: a tree, a stone, the sky. What can you learn from it? How does it simply exist?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugün doğada bir şeyi dikkatle gözlemle. Bir ağaç, bir taş, gökyüzü. Ondan ne öğrenebilirsin? O nasıl var oluyor?"
+          }
+        }
+      },
+      "comment" : "Practical advice",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_8_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Sound of Silence"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sessizliğin Sesi"
+          }
+        }
+      },
+      "comment" : "Teaching title",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_8_content" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "One of Zen's most famous koans: \"What is the sound of one hand clapping?\" This question cannot be answered with logic. It can only be understood in silence, beyond thought.\n\nSilence is not the absence of sound. Silence is the settled state of the mind. In this silence everything is heard: the heartbeat, the breath, life itself. Speech is outside; silence is within."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zen'in en ünlü koanlarından biri: \"Tek elin çırdığı sesi nasıldır?\" Bu soru mantıkla cevaplanamaz. Sadece sessizlikte, düşüncenin ötesinde anlaşılabilir.\n\nSessizlik, sesin yokluğu değildir. Sessizlik, zihnin durulmuş halidir. Bu sessizlikte her şey duyulur - kalbin atışı, nefes, hayatın kendisi. Konuşma dışarıdadır, sessizlik içeridedir."
+          }
+        }
+      },
+      "comment" : "Teaching content",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_8_quote" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In silence there are answers; in noise, only echoes."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sessizlikte cevaplar vardır, gürültüde sadece yankılar."
+          }
+        }
+      },
+      "comment" : "Teaching quote",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_8_author" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zen Teaching"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zen Öğretisi"
+          }
+        }
+      },
+      "comment" : "Teaching author",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_8_advice" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stay completely silent for 5 minutes today. No talking, no music, no sounds. What do you hear within the silence?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugün 5 dakika tamamen sessiz kal. Konuşma, müzik dinleme, hiçbir ses çıkarma. Sessizliğin içinde ne duyuyorsun?"
+          }
+        }
+      },
+      "comment" : "Practical advice",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_9_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Middle Way Between Extremes"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İki Uç Arasında Orta Yol"
+          }
+        }
+      },
+      "comment" : "Teaching title",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_9_content" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The middle way the Buddha taught is also the foundation of Zen. Neither excessive discipline nor excessive comfort. Neither escaping the world nor drowning in it. Balance is not a static point but a dynamic dance.\n\nLike a scale, it needs constant adjusting. Sometimes weight to one side, sometimes the other. But there is always the intention to return to the center. This intention is the compass of the Zen journey."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buddha'nın öğrettiği orta yol, Zen'in de temelidir. Ne aşırı disiplin, ne de aşırı rahatlık. Ne dünyadan kaçış, ne de dünyaya boğulma. Denge, statik bir nokta değil, dinamik bir danstır.\n\nBir terazide olduğu gibi, sürekli ayarlama gerekir. Bazen bir tarafa ağırlık vermek, bazen diğer tarafa. Ama her zaman merkeze dönme niyeti vardır. Bu niyet, Zen yolculuğunun pusuladır."
+          }
+        }
+      },
+      "comment" : "Teaching content",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_9_quote" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Strings too tight snap, strings too loose make no sound. Tuned just right, they make music."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çok gergin teller koparır, çok gevşek teller ses çıkarmaz. Orta gerilim müziği yaratır."
+          }
+        }
+      },
+      "comment" : "Teaching quote",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_9_author" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buddha"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buddha"
+          }
+        }
+      },
+      "comment" : "Teaching author",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_9_advice" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Is there an area of your life where you feel out of balance? Are you too tight or too loose? Make a small adjustment today, toward the middle way."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hayatında dengesiz hissettiğin bir alan var mı? Çok mu sıkısın, yoksa çok mu gevşek? Bugün küçük bir ayarlama yap - orta yola doğru."
+          }
+        }
+      },
+      "comment" : "Practical advice",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_10_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "As Near as One Breath"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tek Bir Nefes Kadar Yakın"
+          }
+        }
+      },
+      "comment" : "Teaching title",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_10_content" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The present moment is never far away; it is only one breath from you. Whenever the mind runs off to the past or the future, the breath brings you back here."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şimdiki an hiçbir zaman uzakta değildir; bir nefes kadar yakındır. Zihin geçmişe ya da geleceğe kaçtığında, nefes seni her seferinde buraya geri getirir."
+          }
+        }
+      },
+      "comment" : "Teaching content",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_10_quote" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The path to now is the next breath."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şimdiye giden yol, bir sonraki nefestir."
+          }
+        }
+      },
+      "comment" : "Teaching quote",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_10_author" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        }
+      },
+      "comment" : "Teaching author",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_10_advice" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pause three times today and follow a single breath from start to finish. Only that."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gün içinde üç kez dur ve tek bir nefesi baştan sona izle. Sadece onu."
+          }
+        }
+      },
+      "comment" : "Practical advice",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_11_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Everything Flows"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Her Şey Akar"
+          }
+        }
+      },
+      "comment" : "Teaching title",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_11_content" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A river is never the same from one moment to the next; its water keeps renewing itself. Our lives are like this too: hard days are not permanent and good days cannot be held. Trusting the flow is lighter than gripping tightly."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nehir hiçbir an aynı değildir; içine giren su sürekli yenilenir. Hayatımız da böyledir: zor günler kalıcı değil, güzel günler de tutulamaz. Akışa güvenmek, sıkı tutmaktan daha hafiftir."
+          }
+        }
+      },
+      "comment" : "Teaching content",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_11_quote" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The river flows, and you are part of the flow."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nehir akar; sen de akışın parçasısın."
+          }
+        }
+      },
+      "comment" : "Teaching quote",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_11_author" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        }
+      },
+      "comment" : "Teaching author",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_11_advice" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Think of something that is weighing on you today and remind yourself: this will flow on too."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugün seni zorlayan bir şeyi düşün ve kendine hatırlat: Bu da akıp gidecek."
+          }
+        }
+      },
+      "comment" : "Practical advice",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_12_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Letting Go of Resistance"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Direnci Bırakmak"
+          }
+        }
+      },
+      "comment" : "Teaching title",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_12_content" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Much of our pain comes not from what is, but from fighting what is. Acceptance is not giving up; it is seeing the ground clearly. You can only start walking from where your feet are."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acının büyük kısmı olana değil, olana karşı koymamızdan gelir. Kabul etmek pes etmek değildir; zemini net görmektir. Ayakların nerede duruyorsa oradan yürümeye başlayabilirsin."
+          }
+        }
+      },
+      "comment" : "Teaching content",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_12_quote" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What you accept, you can transform."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kabul ettiğin şeyi dönüştürebilirsin."
+          }
+        }
+      },
+      "comment" : "Teaching quote",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_12_author" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        }
+      },
+      "comment" : "Teaching author",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_12_advice" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pick a situation you are resisting today. First just say 'This is how it is right now' and breathe out."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugün direndiğin bir durumu seç. Önce sadece 'Şu an böyle' de ve bir nefes ver."
+          }
+        }
+      },
+      "comment" : "Practical advice",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_13_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "One Thing at a Time"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tek Bir Şey"
+          }
+        }
+      },
+      "comment" : "Teaching title",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_13_content" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trying to do everything at once means doing nothing fully. In Zen, when you do a task, there is only that task. Attention given to one thing rests both the work and the mind."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aynı anda her şeyi yapmaya çalışmak, hiçbirini tam yapamamaktır. Zen'de bir iş yapılırken yalnızca o iş vardır. Tek şeye verilen dikkat, işi de zihni de dinlendirir."
+          }
+        }
+      },
+      "comment" : "Teaching content",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_13_quote" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "When you do one thing, do only that."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bir işi yaparken, yalnızca o işi yap."
+          }
+        }
+      },
+      "comment" : "Teaching quote",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_13_author" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        }
+      },
+      "comment" : "Teaching author",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_13_advice" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Do one task from start to finish today with no phone, no music, nothing else."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugün bir işi telefon, müzik ya da başka bir şey olmadan baştan sona tek başına yap."
+          }
+        }
+      },
+      "comment" : "Practical advice",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_14_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Freedom of Not Knowing"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bilmemenin Özgürlüğü"
+          }
+        }
+      },
+      "comment" : "Teaching title",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_14_content" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saying 'I know' closes the door; saying 'I don't know' opens it. Not knowing is not weakness, it is where learning begins. A curious mind sees everything for the first time."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "'Biliyorum' demek kapıyı kapatır, 'bilmiyorum' demek açar. Bilmemek zayıflık değil, öğrenmenin başlangıcıdır. Meraklı zihin her şeyi ilk kez görür."
+          }
+        }
+      },
+      "comment" : "Teaching content",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_14_quote" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "'I don't know' is the door that opens onto learning."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bilmiyorum demek, öğrenmeye açılan kapıdır."
+          }
+        }
+      },
+      "comment" : "Teaching quote",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_14_author" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        }
+      },
+      "comment" : "Teaching author",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_14_advice" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In a conversation today, instead of answering right away, ask a question out of real curiosity."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugün bir konuşmada hemen cevap vermek yerine gerçekten merak ederek bir soru sor."
+          }
+        }
+      },
+      "comment" : "Practical advice",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_15_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thoughts Are Guests"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Düşünceler Misafirdir"
+          }
+        }
+      },
+      "comment" : "Teaching title",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_15_content" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thoughts will arrive in meditation; that is not a mistake, it is the nature of the mind. Rather than chasing them from the door, welcome them like guests, offer tea and let them leave. You are the house, not the guests."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meditasyonda düşünceler gelecek; bu bir hata değil, zihnin doğasıdır. Onları kapıdan kovmak yerine misafir gibi karşıla, çayını ver ve gitmelerine izin ver. Sen evsin; misafirler değil."
+          }
+        }
+      },
+      "comment" : "Teaching content",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_15_quote" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Greet your thoughts, but do not move in with them."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Düşünceleri karşıla, ama onlara yerleşme."
+          }
+        }
+      },
+      "comment" : "Teaching quote",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_15_author" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        }
+      },
+      "comment" : "Teaching author",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_15_advice" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "When a thought arrives as you sit, silently say 'a guest has come' and return to the breath."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oturduğunda bir düşünce gelirse içinden 'misafir geldi' de ve nefese dön."
+          }
+        }
+      },
+      "comment" : "Practical advice",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_16_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Release on the Exhale"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nefes Verirken Bırak"
+          }
+        }
+      },
+      "comment" : "Teaching title",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_16_content" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We fill up as we breathe in and let go as we breathe out. A long exhale sends the nervous system the message 'you are safe'. Relaxing is often not doing something but releasing something."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nefes alırken dolarız, nefes verirken bırakırız. Uzun bir nefes verme, sinir sistemine 'güvendesin' mesajı gönderir. Rahatlamak çoğu zaman bir şeyi yapmak değil, bırakmaktır."
+          }
+        }
+      },
+      "comment" : "Teaching content",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_16_quote" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "With each exhale, set something down."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Her nefes verişte bir şeyi bırak."
+          }
+        }
+      },
+      "comment" : "Teaching quote",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_16_author" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        }
+      },
+      "comment" : "Teaching author",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_16_advice" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "For three breaths, make your exhale a little longer than your inhale and soften your shoulders."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Üç nefes boyunca nefes verişini alışından biraz daha uzun tut ve omuzlarını gevşet."
+          }
+        }
+      },
+      "comment" : "Practical advice",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_17_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Be Like Water"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Su Gibi Olmak"
+          }
+        }
+      },
+      "comment" : "Teaching title",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_17_content" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Water flows around a stone and finds its way past obstacles. It seems weak, yet over time it shapes even rock. Flexibility is stronger than resistance."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Su taşın etrafından dolaşır, engele çarpıp yönünü bulur. Zayıf görünür ama zamanla kayayı bile şekillendirir. Esneklik, direnmekten daha güçlüdür."
+          }
+        }
+      },
+      "comment" : "Teaching content",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_17_quote" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Water does not fight the obstacle; it finds its way."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Su, engelle kavga etmez; yolunu bulur."
+          }
+        }
+      },
+      "comment" : "Teaching quote",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_17_author" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        }
+      },
+      "comment" : "Teaching author",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_17_advice" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "When you meet an obstacle today, instead of tightening up ask: 'How can I flow around this?'"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugün bir engelle karşılaşınca sertleşmek yerine 'Buradan nasıl akabilirim?' diye sor."
+          }
+        }
+      },
+      "comment" : "Practical advice",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_18_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quiet Intervals"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sessiz Aralıklar"
+          }
+        }
+      },
+      "comment" : "Teaching title",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_18_content" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Music is made not only of notes but of the silence between them. Your day needs quiet intervals too: a breath between two tasks, a pause between two sentences."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Müzik notalardan değil, notalar arasındaki sessizlikten de oluşur. Günün de sessiz aralıklara ihtiyacı var: iki iş arasında bir nefes, iki cümle arasında bir duraklama."
+          }
+        }
+      },
+      "comment" : "Teaching content",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_18_quote" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Silence is the half of life that lives between the notes."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sessizlik, hayatın notalar arasındaki yarısıdır."
+          }
+        }
+      },
+      "comment" : "Teaching quote",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_18_author" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        }
+      },
+      "comment" : "Teaching author",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_18_advice" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Between two activities today, stop for one minute and do nothing at all."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugün iki etkinlik arasında bir dakika hiçbir şey yapmadan dur."
+          }
+        }
+      },
+      "comment" : "Practical advice",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_19_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rest Is Part of the Work"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dinlenmek de Çalışmaktır"
+          }
+        }
+      },
+      "comment" : "Teaching title",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_19_content" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A bow kept constantly taut loses its strength. Rest is not the enemy of productivity but its partner. The wise know when to stop as well as when to work."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yay sürekli gergin kalırsa gevşer. Dinlenme, üretkenliğin düşmanı değil, ortağıdır. Bilge olan, ne zaman çalışacağını bildiği kadar ne zaman duracağını da bilir."
+          }
+        }
+      },
+      "comment" : "Teaching content",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_19_quote" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A bow that never rests cannot hit its mark."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dinlenmeyen yay, hedefi vuramaz."
+          }
+        }
+      },
+      "comment" : "Teaching quote",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_19_author" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        }
+      },
+      "comment" : "Teaching author",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_19_advice" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Take ten minutes of real rest today without feeling guilty."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugün kendine suçluluk duymadan on dakika gerçek bir mola ver."
+          }
+        }
+      },
+      "comment" : "Practical advice",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_20_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "While Washing Dishes"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bulaşık Yıkarken"
+          }
+        }
+      },
+      "comment" : "Teaching title",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_20_content" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thich Nhat Hanh turns even washing dishes into meditation: feel the warm water, the soap, the surface of the plate. Ordinary chores, done with full attention, become doors to peace."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thich Nhat Hanh bulaşık yıkamayı bile meditasyon yapar: sıcak suyu, sabunu, tabağın yüzeyini hisset. Sıradan işler, tam dikkatle yapıldığında, huzurun kapısı olur."
+          }
+        }
+      },
+      "comment" : "Teaching content",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_20_quote" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "When you wash the dishes, wash the dishes."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bulaşığı yıkarken bulaşığı yıka."
+          }
+        }
+      },
+      "comment" : "Teaching quote",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_20_author" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        }
+      },
+      "comment" : "Teaching author",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_20_advice" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "While doing an ordinary chore today, notice your senses: touch, sound, smell."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugün sıradan bir ev işini yaparken duyularına dikkat et: dokunuş, ses, koku."
+          }
+        }
+      },
+      "comment" : "Practical advice",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_21_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Like the Seasons"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mevsimler Gibi"
+          }
+        }
+      },
+      "comment" : "Teaching title",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_21_content" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Winter does not last forever, and neither does summer. The seasons of the mind pass too: calm follows an anxious stretch. Live through your current season without judging it."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kış sonsuza dek sürmez, yaz da. Zihnimizin mevsimleri de geçer: kaygılı bir dönemin ardından sakinlik gelir. Şu anki mevsimini yargılamadan yaşa."
+          }
+        }
+      },
+      "comment" : "Teaching content",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_21_quote" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Every season brings its own teaching."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Her mevsim kendi öğretisini getirir."
+          }
+        }
+      },
+      "comment" : "Teaching quote",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_21_author" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        }
+      },
+      "comment" : "Teaching author",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_21_advice" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name in one word which season you are in right now and be gentle with it."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şu an içinde hangi mevsimin olduğunu bir kelimeyle adlandır ve ona nazik ol."
+          }
+        }
+      },
+      "comment" : "Practical advice",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_22_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kindness to Yourself"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kendine Şefkat"
+          }
+        }
+      },
+      "comment" : "Teaching title",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_22_content" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You may be saying things to yourself that you would never say to a friend. Self-compassion is not indulgence; it creates a safe ground to grow from."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bir arkadaşına söyleyemeyeceğin sertlikte sözleri kendine söylüyor olabilirsin. Kendine şefkat, şımartmak değil, gelişmek için güvenli bir zemin yaratmaktır."
+          }
+        }
+      },
+      "comment" : "Teaching content",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_22_quote" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Treat yourself the way you treat someone you love."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kendine, sevdiğin birine davrandığın gibi davran."
+          }
+        }
+      },
+      "comment" : "Teaching quote",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_22_author" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        }
+      },
+      "comment" : "Teaching author",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_22_advice" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "When you hear a critical inner voice today, ask whether you would say that sentence to a friend."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugün kendine eleştirel bir ses duyduğunda, aynı cümleyi bir dostuna söyleyip söylemeyeceğini sor."
+          }
+        }
+      },
+      "comment" : "Practical advice",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_23_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enough"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yeterlilik"
+          }
+        }
+      },
+      "comment" : "Teaching title",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_23_content" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A mind that always wants more never feels full. Remembering the word 'enough' pauses the search for a moment. Looking at what you have is lighter than looking at what is missing."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daha fazlasını isteyen zihin hiç doyuma ulaşmaz. 'Yeterli' kelimesini hatırlamak, bir an için arayışı durdurur. Sahip olduklarına bakmak, eksiklere bakmaktan daha hafiftir."
+          }
+        }
+      },
+      "comment" : "Teaching content",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_23_quote" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Being able to say 'enough' is the beginning of wealth."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yeter diyebilmek, zenginliğin başlangıcıdır."
+          }
+        }
+      },
+      "comment" : "Teaching quote",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_23_author" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        }
+      },
+      "comment" : "Teaching author",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_23_advice" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notice three things you have today and, just for a moment, say 'enough'."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugün sahip olduğun üç şeyi fark et ve bir an için sadece 'yeterli' de."
+          }
+        }
+      },
+      "comment" : "Practical advice",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_24_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beginning Again Each Morning"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Her Sabah Yeniden"
+          }
+        }
+      },
+      "comment" : "Teaching title",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_24_content" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Every morning brings a fresh page, free of yesterday's mistakes. Failure is also a starting point. In Zen, beginning again is not a shortcoming but the practice itself."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Her sabah, dünün hatalarından bağımsız yeni bir sayfa getirir. Başarısızlık da bir başlangıç noktasıdır. Yeniden başlamak, Zen'de bir eksiklik değil, uygulamanın kendisidir."
+          }
+        }
+      },
+      "comment" : "Teaching content",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_24_quote" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beginning again is the path itself."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yeniden başlamak, yolun kendisidir."
+          }
+        }
+      },
+      "comment" : "Teaching quote",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_24_author" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        }
+      },
+      "comment" : "Teaching author",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_24_advice" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Begin something again today, even a small thing, as if you had never tried it."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugün bir şeye, küçük de olsa, sanki hiç denememişsin gibi yeniden başla."
+          }
+        }
+      },
+      "comment" : "Practical advice",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_25_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calling the Mind Home"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dağılan Zihni Geri Çağırmak"
+          }
+        }
+      },
+      "comment" : "Teaching title",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_25_content" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If the mind wanders fifty times, you bring it back fifty times, gently. Meditation is not never wandering; it is noticing and returning. Each return strengthens attention like a muscle."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zihin elli kez dağılırsa, elli kez nazikçe geri getirirsin. Meditasyon dağılmamak değil, dağıldığını fark edip dönebilmektir. Her dönüş, bir kas gibi, dikkati güçlendirir."
+          }
+        }
+      },
+      "comment" : "Teaching content",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_25_quote" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Every return is a repetition; every repetition builds strength."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Her dönüş bir tekrardır; her tekrar bir güçtür."
+          }
+        }
+      },
+      "comment" : "Teaching quote",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_25_author" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        }
+      },
+      "comment" : "Teaching author",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_25_advice" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "When you sit today, do not count how often you wander; just return gently each time."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugün oturduğunda kaç kez dağıldığını sayma; sadece her seferinde nazikçe dön."
+          }
+        }
+      },
+      "comment" : "Practical advice",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_26_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Wave in Your Belly"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Karnındaki Dalga"
+          }
+        }
+      },
+      "comment" : "Teaching title",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_26_content" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A deep breath starts in the belly, not the chest. Place a hand on your belly and feel it rise and fall like a wave with each breath. Even this simple movement gives the body permission to calm down."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Derin nefes göğüste değil, karında başlar. Elini karnına koy ve nefesle birlikte dalga gibi yükselip alçalışını hisset. Bu basit hareket bile bedene sakin olma izni verir."
+          }
+        }
+      },
+      "comment" : "Teaching content",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_26_quote" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The breath is a wave swelling and settling within the body."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nefes, bedenin içinde kabarıp inen bir dalgadır."
+          }
+        }
+      },
+      "comment" : "Teaching quote",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_26_author" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        }
+      },
+      "comment" : "Teaching author",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_26_advice" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Place a hand on your belly and feel the wave for five breaths."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elini karnına koy ve beş nefes boyunca dalgayı hisset."
+          }
+        }
+      },
+      "comment" : "Practical advice",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_27_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Sound of Rain"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yağmurun Sesi"
+          }
+        }
+      },
+      "comment" : "Teaching title",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_27_content" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rain asks nothing of anyone; it simply falls. Listening to it, the mind slowly settles. The rhythm of nature reminds us of our own."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yağmur kimseden bir şey istemez; sadece yağar. Sesini dinlerken zihin yavaş yavaş sakinleşir. Doğanın ritmi, kendi ritmimizi hatırlatır."
+          }
+        }
+      },
+      "comment" : "Teaching content",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_27_quote" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "When the rain falls, just listen to the rain."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yağmur yağarken sadece yağmuru dinle."
+          }
+        }
+      },
+      "comment" : "Teaching quote",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_27_author" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        }
+      },
+      "comment" : "Teaching author",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_27_advice" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Listen to one natural sound today (rain, wind, birds) with full attention for two minutes."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugün bir doğa sesini (yağmur, rüzgâr, kuşlar) iki dakika boyunca tam dikkatle dinle."
+          }
+        }
+      },
+      "comment" : "Practical advice",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_28_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Listening Without Answering"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cevap Beklemeden Dinlemek"
+          }
+        }
+      },
+      "comment" : "Teaching title",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_28_content" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Often, while someone speaks, we are preparing our reply. True listening is being able to rest quietly inside what is said. Silent listening is a kind of gift."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çoğu zaman karşımızdakini dinlerken cevabımızı hazırlarız. Gerçek dinleme, söylenenin içinde sessizce durabilmektir. Sessiz dinlemek bir tür hediyedir."
+          }
+        }
+      },
+      "comment" : "Teaching content",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_28_quote" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Listening is the deepest form of speaking."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dinlemek, konuşmanın en derin biçimidir."
+          }
+        }
+      },
+      "comment" : "Teaching quote",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_28_author" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        }
+      },
+      "comment" : "Teaching author",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_28_advice" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In a conversation today, try just listening without preparing your answer."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugün bir sohbette cevabını hazırlamadan, sadece dinlemeyi dene."
+          }
+        }
+      },
+      "comment" : "Practical advice",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_29_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Setting Down the Load"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ağırlıkları Paylaşmak"
+          }
+        }
+      },
+      "comment" : "Teaching title",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_29_content" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You do not have to carry everything alone. Some loads need to be put down and some shared. Balance is not strength, it is choosing to carry what is right."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taşıdığın her şeyi tek başına taşımak zorunda değilsin. Bazı yükleri bırakmak, bazılarını paylaşmak gerekir. Denge, gücü değil, doğru olanı taşımayı seçmektir."
+          }
+        }
+      },
+      "comment" : "Teaching content",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_29_quote" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Carrying everything is not strength; choosing is wisdom."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Her şeyi taşımak güç değil, seçmek bilgeliktir."
+          }
+        }
+      },
+      "comment" : "Teaching quote",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_29_author" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        }
+      },
+      "comment" : "Teaching author",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_29_advice" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name one load on your shoulders today; tell someone or write it on paper."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugün omuzlarındaki bir yükü adlandır; birine anlat ya da bir kâğıda yaz."
+          }
+        }
+      },
+      "comment" : "Practical advice",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_30_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Walking Step by Step"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adım Adım Yürüyüş"
+          }
+        }
+      },
+      "comment" : "Teaching title",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_30_content" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In walking meditation there is nowhere to arrive; the step itself is the destination. Feel your foot touching the ground and your weight shifting from one foot to the other."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yürüyüş meditasyonunda varılacak bir yer yoktur; adım zaten varış noktasıdır. Ayağın yere değişini, ağırlığın bir ayaktan diğerine geçişini hisset."
+          }
+        }
+      },
+      "comment" : "Teaching content",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_30_quote" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Every step is already an arrival."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Her adım, varılmış bir yerdir."
+          }
+        }
+      },
+      "comment" : "Teaching quote",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_30_author" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        }
+      },
+      "comment" : "Teaching author",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_30_advice" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Walk slowly for five minutes today without trying to get anywhere."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugün beş dakika, hiçbir yere yetişmeye çalışmadan ağır ağır yürü."
+          }
+        }
+      },
+      "comment" : "Practical advice",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_31_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feelings Are Waves"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Duygular Dalga Gibi"
+          }
+        }
+      },
+      "comment" : "Teaching title",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_31_content" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A feeling rises like a wave, peaks and falls. If you do not resist it, its intensity usually eases within minutes. You are not the feeling; it is weather passing through you."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bir duygu, bir dalga gibi yükselir, zirve yapar ve alçalır. Ona direnmezsen genellikle birkaç dakika içinde şiddeti azalır. Duygu sen değilsin; senden geçen bir hava durumudur."
+          }
+        }
+      },
+      "comment" : "Teaching content",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_31_quote" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A feeling is weather; you are the sky."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Duygu bir hava durumudur, sen gökyüzüsün."
+          }
+        }
+      },
+      "comment" : "Teaching quote",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_31_author" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        }
+      },
+      "comment" : "Teaching author",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_31_advice" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "When a strong feeling arises, name it ('this is anger', 'this is worry') and watch the wave as you exhale."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Güçlü bir duygu hissettiğinde adını koy ('Bu öfke', 'Bu kaygı') ve nefes vererek dalgayı izle."
+          }
+        }
+      },
+      "comment" : "Practical advice",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_32_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mistakes Are Teachers"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hatalar da Öğretmendir"
+          }
+        }
+      },
+      "comment" : "Teaching title",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_32_content" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Making mistakes is an unavoidable part of learning. Looking at them with curiosity rather than punishing ourselves turns a mistake into a teacher. Falling is not leaving the path; it is part of it."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hata yapmak, öğrenmenin kaçınılmaz bir parçasıdır. Kendimizi cezalandırmak yerine merakla bakmak, hatayı bir öğretmene dönüştürür. Düşmek yoldan çıkmak değil, yolun parçasıdır."
+          }
+        }
+      },
+      "comment" : "Teaching content",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_32_quote" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A mistake is not a stone in the road but a step."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hata, yolda bir taş değil, bir basamaktır."
+          }
+        }
+      },
+      "comment" : "Teaching quote",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_32_author" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        }
+      },
+      "comment" : "Teaching author",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_32_advice" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Think of a recent mistake, learn one thing from it, and then let it go."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yakın zamanda yaptığın bir hatayı düşün ve ondan tek bir şey öğren; sonra bırak."
+          }
+        }
+      },
+      "comment" : "Practical advice",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_33_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Less, but Deeper"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Az Ama Derin"
+          }
+        }
+      },
+      "comment" : "Teaching title",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_33_content" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reading one book deeply teaches more than reading a hundred halfway. A deep relationship with a few things is more nourishing than a shallow one with many."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yüz kitabı yarım okumak yerine bir kitabı derinlemesine okumak daha çok şey öğretir. Az şeyle derin ilişki kurmak, çok şeyle yüzeysel ilişkiden daha doyurucudur."
+          }
+        }
+      },
+      "comment" : "Teaching content",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_33_quote" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Depth nourishes more than breadth."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Derinlik, genişlikten daha çok doyurur."
+          }
+        }
+      },
+      "comment" : "Teaching quote",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_33_author" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        }
+      },
+      "comment" : "Teaching author",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_33_advice" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Give one thing, one person or one task more time and attention than usual today."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugün bir şeye, bir kişiye ya da bir işe alışılandan daha fazla zaman ve dikkat ver."
+          }
+        }
+      },
+      "comment" : "Practical advice",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_34_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A New Day, a Blank Page"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yeni Bir Gün, Boş Bir Sayfa"
+          }
+        }
+      },
+      "comment" : "Teaching title",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_34_content" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Whatever happened yesterday, today is a page not yet written. Be gentle with yourself as you write the first sentence. You do not need to be perfect; you only need to begin."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dün ne olursa olsun, bugün yazılmamış bir sayfadır. İlk cümleyi yazarken kendine nazik ol. Mükemmel olmak gerekmez; sadece başlamak gerekir."
+          }
+        }
+      },
+      "comment" : "Teaching content",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_34_quote" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Today is a page not yet written."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugün henüz yazılmamış bir sayfadır."
+          }
+        }
+      },
+      "comment" : "Teaching quote",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_34_author" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        }
+      },
+      "comment" : "Teaching author",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_34_advice" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set one intention for today and say it to yourself, aloud or silently."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugün için tek bir niyet belirle ve onu kendine yüksek sesle ya da içinden söyle."
+          }
+        }
+      },
+      "comment" : "Practical advice",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_35_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Patient Sitting"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sabırlı Oturuş"
+          }
+        }
+      },
+      "comment" : "Teaching title",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_35_content" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expecting a sprout the moment you plant a seed only slows the tree. Meditation is the same: results ripen quietly over days and weeks. Patience is part of the practice."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tohum ekip hemen filiz beklemek, ağacı da yavaşlatır. Meditasyon da böyledir: sonuçlar sessizce, günler ve haftalar içinde olgunlaşır. Sabır, uygulamanın bir parçasıdır."
+          }
+        }
+      },
+      "comment" : "Teaching content",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_35_quote" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The seed grows in silence; patience is its soil."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tohum sessizce büyür; sabır onun toprağıdır."
+          }
+        }
+      },
+      "comment" : "Teaching quote",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_35_author" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        }
+      },
+      "comment" : "Teaching author",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_35_advice" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Today, do not expect an immediate result from meditation; just complete your time."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugün meditasyondan hemen bir sonuç beklemeden, sadece zamanını tamamla."
+          }
+        }
+      },
+      "comment" : "Practical advice",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_36_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A Three-Breath Pause"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Üç Nefeslik Mola"
+          }
+        }
+      },
+      "comment" : "Teaching title",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_36_content" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Even in a rush you can take a three-breath pause. Three breaths will not reset the mind completely, but they are enough to change its direction. Even the smallest pause creates a choice."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Telaşlı bir anda bile üç nefeslik bir mola alabilirsin. Üç nefes, zihni tamamen sıfırlamaz ama yönünü değiştirmeye yeter. En küçük duraklama bile bir seçenek yaratır."
+          }
+        }
+      },
+      "comment" : "Teaching content",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_36_quote" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Three breaths can change a day."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Üç nefes, bir günü değiştirebilir."
+          }
+        }
+      },
+      "comment" : "Teaching quote",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_36_author" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        }
+      },
+      "comment" : "Teaching author",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_36_advice" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In the next tense moment, take three slow breaths before you respond."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bir sonraki zorlu anda cevap vermeden önce üç yavaş nefes al."
+          }
+        }
+      },
+      "comment" : "Practical advice",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_37_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Sky Is Always There"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gökyüzü Hep Orada"
+          }
+        }
+      },
+      "comment" : "Teaching title",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_37_content" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Even when clouds are thick, the sky is always there. Thoughts and feelings are clouds; your awareness is as vast as the sky. Even lifting your head is a reminder."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bulutlar yoğun olsa da gökyüzü hep oradadır. Düşünceler ve duygular bulutlardır; farkındalığın ise gökyüzü gibi geniştir. Başını kaldırmak bile bir hatırlatmadır."
+          }
+        }
+      },
+      "comment" : "Teaching content",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_37_quote" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clouds come and go; the sky remains."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bulutlar gelir geçer; gökyüzü kalır."
+          }
+        }
+      },
+      "comment" : "Teaching quote",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_37_author" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        }
+      },
+      "comment" : "Teaching author",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_37_advice" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Look up at the sky for a minute today and feel its vastness."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugün başını kaldırıp gökyüzüne bir dakika bak ve genişliğini hisset."
+          }
+        }
+      },
+      "comment" : "Practical advice",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_38_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inner Quiet"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İç Sessizlik"
+          }
+        }
+      },
+      "comment" : "Teaching title",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_38_content" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Even when the outside is noisy, there is a quiet place within. You can return to it with every breath. Inner quiet is not escaping the world but being able to rest in the middle of it."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dışarısı gürültülü olsa da içeride sessiz bir yer vardır. Bu yere her nefeste dönebilirsin. İç sessizlik, dünyadan kaçmak değil, dünyanın ortasında dinlenebilmektir."
+          }
+        }
+      },
+      "comment" : "Teaching content",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_38_quote" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The quietest room is within you."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En sessiz oda, içindedir."
+          }
+        }
+      },
+      "comment" : "Teaching quote",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_38_author" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        }
+      },
+      "comment" : "Teaching author",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_38_advice" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Even in a noisy place today, give one breath to the quiet place inside you."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugün gürültülü bir ortamda bile bir nefes boyunca içindeki sessiz yere dikkat et."
+          }
+        }
+      },
+      "comment" : "Practical advice",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_39_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "At Day's End"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gün Batarken"
+          }
+        }
+      },
+      "comment" : "Teaching title",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_39_content" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Looking back as the day ends is not for judging yourself but for gratitude. Noticing what went well today balances the mind. A night met with rest is the ground of tomorrow."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gün biterken geriye bakmak, kendini yargılamak için değil, şükran için bir fırsattır. Bugün neyin iyi geçtiğini fark etmek, zihni dengeler. Dinlenerek karşılanan gece, yarının zeminidir."
+          }
+        }
+      },
+      "comment" : "Teaching content",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_39_quote" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A day closed with gratitude opens with peace."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gün, şükranla kapanınca huzurla uyanır."
+          }
+        }
+      },
+      "comment" : "Teaching quote",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_39_author" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyZenFlow"
+          }
+        }
+      },
+      "comment" : "Teaching author",
+      "extractionState" : "manual"
+    },
+    "zen_teaching_39_advice" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This evening before sleep, recall one good thing that happened today."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu akşam uyumadan önce bugün olan iyi bir şeyi hatırla."
+          }
+        }
+      },
+      "comment" : "Practical advice",
+      "extractionState" : "manual"
+    },
+    "zen_category_mindfulness" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Present Moment"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şimdiki An"
+          }
+        }
+      },
+      "comment" : "Zen category",
+      "extractionState" : "manual"
+    },
+    "zen_category_impermanence" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impermanence"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kalıcısızlık"
+          }
+        }
+      },
+      "comment" : "Zen category",
+      "extractionState" : "manual"
+    },
+    "zen_category_acceptance" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acceptance"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kabul"
+          }
+        }
+      },
+      "comment" : "Zen category",
+      "extractionState" : "manual"
+    },
+    "zen_category_simplicity" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Simplicity"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sadelik"
+          }
+        }
+      },
+      "comment" : "Zen category",
+      "extractionState" : "manual"
+    },
+    "zen_category_beginner" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beginner's Mind"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Başlangıç Zihni"
+          }
+        }
+      },
+      "comment" : "Zen category",
+      "extractionState" : "manual"
+    },
+    "zen_category_meditation" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meditation"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meditasyon"
+          }
+        }
+      },
+      "comment" : "Zen category",
+      "extractionState" : "manual"
+    },
+    "zen_category_breath" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Breath"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nefes"
+          }
+        }
+      },
+      "comment" : "Zen category",
+      "extractionState" : "manual"
+    },
+    "zen_category_nature" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nature"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Doğa"
+          }
+        }
+      },
+      "comment" : "Zen category",
+      "extractionState" : "manual"
+    },
+    "zen_category_silence" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Silence"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sessizlik"
+          }
+        }
+      },
+      "comment" : "Zen category",
+      "extractionState" : "manual"
+    },
+    "zen_category_balance" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Balance"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Denge"
+          }
+        }
+      },
+      "comment" : "Zen category",
+      "extractionState" : "manual"
+    },
+    "daily_zen_share" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share teaching"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öğretiyi paylaş"
+          }
+        }
+      },
+      "comment" : "Share today's teaching"
     }
   },
   "version" : "1.0"

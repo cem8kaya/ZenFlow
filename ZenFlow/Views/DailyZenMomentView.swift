@@ -19,6 +19,7 @@ struct DailyZenMomentView: View {
     @State private var gratitudeText: String = ""
     @State private var showSavedConfirmation = false
     @FocusState private var isGratitudeFocused: Bool
+    @State private var shareImage: Image?
 
     private var teaching: ZenTeaching {
         dailyZen.teachingOfTheDay
@@ -60,6 +61,19 @@ struct DailyZenMomentView: View {
             .navigationTitle(String(localized: "daily_zen_title", defaultValue: "Günün Zen Anı", comment: "Daily Zen Moment title"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    if let shareImage {
+                        ShareLink(
+                            item: shareImage,
+                            preview: SharePreview(teaching.title, image: shareImage)
+                        ) {
+                            Image(systemName: "square.and.arrow.up")
+                        }
+                        .foregroundColor(ZenTheme.lightLavender)
+                        .accessibilityLabel(String(localized: "daily_zen_share", defaultValue: "Öğretiyi paylaş", comment: "Share today's teaching"))
+                    }
+                }
+
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(String(localized: "daily_zen_done", defaultValue: "Tamam", comment: "Done button")) {
                         dismiss()
@@ -69,9 +83,23 @@ struct DailyZenMomentView: View {
             }
             .onAppear {
                 gratitudeText = dailyZen.todayEntry?.text ?? ""
+                renderShareImage()
             }
         }
         .preferredColorScheme(.dark)
+    }
+
+    // MARK: - Sharing
+
+    /// Renders today's teaching as an image card for ShareLink
+    private func renderShareImage() {
+        let renderer = ImageRenderer(
+            content: ZenShareCardView(teaching: teaching, category: teachingCategory)
+        )
+        renderer.scale = 3
+        if let uiImage = renderer.uiImage {
+            shareImage = Image(uiImage: uiImage)
+        }
     }
 
     // MARK: - Header

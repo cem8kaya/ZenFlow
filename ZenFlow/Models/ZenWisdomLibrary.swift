@@ -75,6 +75,9 @@ struct ZenTeaching: Identifiable, Codable {
 class ZenWisdomLibrary {
     static let shared = ZenWisdomLibrary()
 
+    /// Number of teachings shipped in the app (texts: zen_teaching_0 ... N-1)
+    static let totalTeachings = 40
+
     private var teachings: [ZenTeaching] = []
 
     private init() {
@@ -94,6 +97,15 @@ class ZenWisdomLibrary {
             ZenTeaching(teachingIndex: 8, category: .silence),
             ZenTeaching(teachingIndex: 9, category: .balance)
         ]
+
+        // Teachings 10..<totalTeachings cycle through the categories in order,
+        // so every category has the same number of teachings. Their texts live in
+        // Localizable.xcstrings under zen_teaching_<index>_<field> (marked
+        // "manual" there because the keys are built dynamically).
+        let categories = ZenCategory.allCases
+        for index in 10..<Self.totalTeachings {
+            teachings.append(ZenTeaching(teachingIndex: index, category: categories[(index - 10) % categories.count]))
+        }
     }
 
     // MARK: - Public Methods
