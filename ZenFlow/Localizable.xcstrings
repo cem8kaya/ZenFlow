@@ -17418,6 +17418,244 @@
         }
       },
       "comment" : "Reset focus lengths"
+    },
+    "palette_serene_name" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Serene"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sakin"
+          }
+        }
+      },
+      "comment" : "Serene palette name"
+    },
+    "palette_forest_name" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forest"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orman"
+          }
+        }
+      },
+      "comment" : "Forest palette name"
+    },
+    "palette_sunset_name" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sunset"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gün Batımı"
+          }
+        }
+      },
+      "comment" : "Sunset palette name"
+    },
+    "palette_midnight_name" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Midnight"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gece Yarısı"
+          }
+        }
+      },
+      "comment" : "Midnight palette name"
+    },
+    "palette_serene_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Peaceful blue and purple tones"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Huzurlu mavi ve mor tonları"
+          }
+        }
+      },
+      "comment" : "Serene palette description"
+    },
+    "palette_forest_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soothing green and blue tones"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dinlendirici yeşil ve mavi tonları"
+          }
+        }
+      },
+      "comment" : "Forest palette description"
+    },
+    "palette_sunset_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warm orange and pink tones"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sıcak turuncu ve pembe tonları"
+          }
+        }
+      },
+      "comment" : "Sunset palette description"
+    },
+    "palette_midnight_desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deep dark blue and black tones"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Derin koyu mavi ve siyah tonları"
+          }
+        }
+      },
+      "comment" : "Midnight palette description"
+    },
+    "settings_appearance_section" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Breathing Theme"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nefes Teması"
+          }
+        }
+      },
+      "comment" : "Breathing theme section header"
+    },
+    "settings_appearance_footer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose the background colors of the meditation screen. The Serene theme is free."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meditasyon ekranının arka plan renklerini seç. Sakin tema ücretsizdir."
+          }
+        }
+      },
+      "comment" : "Breathing theme footer"
+    },
+    "premium.features.breathingThemes" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Breathing Themes"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nefes Temaları"
+          }
+        }
+      },
+      "comment" : "Breathing themes feature"
+    },
+    "premium.features.breathingThemes.desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forest, sunset and midnight colors"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orman, gün batımı ve gece yarısı renkleri"
+          }
+        }
+      },
+      "comment" : "Breathing themes description"
+    },
+    "premium.features.customize" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your Own Rhythm"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kendi Ritmin"
+          }
+        }
+      },
+      "comment" : "Customization feature"
+    },
+    "premium.features.customize.desc" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Custom breathing exercises and focus lengths"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Özel nefes egzersizleri ve odaklanma süreleri"
+          }
+        }
+      },
+      "comment" : "Customization description"
     }
   },
   "version" : "1.0"

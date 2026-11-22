@@ -465,8 +465,12 @@ struct BreathingView: View {
                 }
             }
             .background(
-                // Static gradient - optimized for all devices, no edge shifting
-                ZenTheme.backgroundGradient
+                // Static gradient - optimized for all devices, no edge shifting.
+                // The palette is the user's choice (Settings > Appearance); premium
+                // palettes fall back to the classic look without premium.
+                featureFlag.breathingGradientPalette
+                    .effective(isPremiumUser: StoreManager.cachedPremiumStatus)
+                    .backgroundGradient
                     .ignoresSafeArea()
             )
         }

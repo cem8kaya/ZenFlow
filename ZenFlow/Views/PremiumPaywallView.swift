@@ -85,6 +85,18 @@ struct PremiumPaywallView: View {
                         )
 
                         PremiumFeatureRow(
+                            icon: "paintpalette.fill",
+                            title: String(localized: "premium.features.breathingThemes", defaultValue: "Nefes Temaları", comment: "Breathing themes feature"),
+                            description: String(localized: "premium.features.breathingThemes.desc", defaultValue: "Orman, gün batımı ve gece yarısı renkleri", comment: "Breathing themes description")
+                        )
+
+                        PremiumFeatureRow(
+                            icon: "slider.horizontal.3",
+                            title: String(localized: "premium.features.customize", defaultValue: "Kendi Ritmin", comment: "Customization feature"),
+                            description: String(localized: "premium.features.customize.desc", defaultValue: "Özel nefes egzersizleri ve odaklanma süreleri", comment: "Customization description")
+                        )
+
+                        PremiumFeatureRow(
                             icon: "snowflake",
                             title: String(localized: "premium.features.streakFreeze", defaultValue: "Seri Koruma", comment: "Streak freeze feature"),
                             description: String(localized: "premium.features.streakFreeze.desc", defaultValue: "Ayda 3 koruma hakkı (ücretsiz: 1)", comment: "Streak freeze description")

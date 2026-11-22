@@ -27,6 +27,7 @@ struct SettingsView: View {
     @State private var showPaywall = false
     @StateObject private var storeManager = StoreManager.shared
     @StateObject private var bellManager = MindfulnessBellManager.shared
+    @ObservedObject private var featureFlag = FeatureFlag.shared
 
     // MARK: - Computed Properties
 
@@ -176,6 +177,23 @@ struct SettingsView: View {
                     Text(String(localized: "settings_audio_section", defaultValue: "Ses Ayarları", comment: "Audio settings section header"))
                 } footer: {
                     Text(String(localized: "settings_audio_footer", defaultValue: "Meditasyon sırasında çalacak ortam seslerini yönet.", comment: "Audio settings footer"))
+                }
+
+                // MARK: - Appearance Section
+
+                Section {
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 12) {
+                            ForEach(ZenColorPalette.allCases) { palette in
+                                paletteSwatch(palette)
+                            }
+                        }
+                        .padding(.vertical, 4)
+                    }
+                } header: {
+                    Text(String(localized: "settings_appearance_section", defaultValue: "Nefes Teması", comment: "Breathing theme section header"))
+                } footer: {
+                    Text(String(localized: "settings_appearance_footer", defaultValue: "Meditasyon ekranının arka plan renklerini seç. Sakin tema ücretsizdir.", comment: "Breathing theme footer"))
                 }
 
                 // MARK: - Mindfulness Bell Section
@@ -412,6 +430,57 @@ struct SettingsView: View {
         .sheet(isPresented: $showPaywall) {
             PremiumPaywallView()
         }
+    }
+
+    // MARK: - Palette Swatch
+
+    private func paletteSwatch(_ palette: ZenColorPalette) -> some View {
+        let isLocked = palette.isPremium && !storeManager.isPremiumUnlocked
+        let isSelected = featureFlag.breathingGradientPalette.effective(isPremiumUser: storeManager.isPremiumUnlocked) == palette
+
+        return Button {
+            HapticManager.shared.playImpact(style: .light)
+            if isLocked {
+                showPaywall = true
+            } else {
+                featureFlag.breathingGradientPalette = palette
+            }
+        } label: {
+            VStack(spacing: 6) {
+                ZStack(alignment: .topTrailing) {
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(palette.backgroundGradient)
+                        .frame(width: 72, height: 96)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 12)
+                                .stroke(isSelected ? ZenTheme.lightLavender : Color.white.opacity(0.15), lineWidth: isSelected ? 2 : 1)
+                        )
+
+                    if isLocked {
+                        Image(systemName: "lock.fill")
+                            .font(.system(size: 10, weight: .bold))
+                            .foregroundColor(.white)
+                            .padding(5)
+                            .background(Circle().fill(Color.black.opacity(0.6)))
+                            .padding(4)
+                    } else if isSelected {
+                        Image(systemName: "checkmark.circle.fill")
+                            .font(.system(size: 16))
+                            .foregroundColor(ZenTheme.lightLavender)
+                            .padding(4)
+                    }
+                }
+
+                Text(palette.displayName)
+                    .font(.system(size: 12, weight: .medium))
+                    .foregroundColor(.primary)
+                    .lineLimit(1)
+            }
+            .frame(width: 80)
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel(palette.displayName)
+        .accessibilityAddTraits(isSelected ? .isSelected : [])
     }
 
     // MARK: - Helper Methods

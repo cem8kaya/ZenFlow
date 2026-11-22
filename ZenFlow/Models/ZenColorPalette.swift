@@ -105,13 +105,13 @@ enum ZenColorPalette: String, CaseIterable, Identifiable {
     var displayName: String {
         switch self {
         case .serene:
-            return "Sakin (Mavi-Mor)"
+            return String(localized: "palette_serene_name", defaultValue: "Sakin", comment: "Serene palette name")
         case .forest:
-            return "Orman (Yeşil-Mavi)"
+            return String(localized: "palette_forest_name", defaultValue: "Orman", comment: "Forest palette name")
         case .sunset:
-            return "Gün Batımı (Turuncu-Pembe)"
+            return String(localized: "palette_sunset_name", defaultValue: "Gün Batımı", comment: "Sunset palette name")
         case .midnight:
-            return "Gece Yarısı (Koyu Mavi-Siyah)"
+            return String(localized: "palette_midnight_name", defaultValue: "Gece Yarısı", comment: "Midnight palette name")
         }
     }
 
@@ -119,13 +119,45 @@ enum ZenColorPalette: String, CaseIterable, Identifiable {
     var description: String {
         switch self {
         case .serene:
-            return "Huzurlu mavi ve mor tonları"
+            return String(localized: "palette_serene_desc", defaultValue: "Huzurlu mavi ve mor tonları", comment: "Serene palette description")
         case .forest:
-            return "Dinlendirici yeşil ve mavi tonları"
+            return String(localized: "palette_forest_desc", defaultValue: "Dinlendirici yeşil ve mavi tonları", comment: "Forest palette description")
         case .sunset:
-            return "Sıcak turuncu ve pembe tonları"
+            return String(localized: "palette_sunset_desc", defaultValue: "Sıcak turuncu ve pembe tonları", comment: "Sunset palette description")
         case .midnight:
-            return "Derin koyu mavi ve siyah tonları"
+            return String(localized: "palette_midnight_desc", defaultValue: "Derin koyu mavi ve siyah tonları", comment: "Midnight palette description")
+        }
+    }
+
+    /// Only the classic palette is free
+    var isPremium: Bool {
+        self != .serene
+    }
+
+    /// The palette a user may actually see: premium ones fall back to the classic look
+    func effective(isPremiumUser: Bool) -> ZenColorPalette {
+        (isPremium && !isPremiumUser) ? .serene : self
+    }
+
+    /// Static background for the breathing screen. The classic palette keeps
+    /// the app's original look exactly; the others tint it with their colors.
+    var backgroundGradient: LinearGradient {
+        switch self {
+        case .serene:
+            return ZenTheme.backgroundGradient
+        default:
+            let tones = colors
+            // Explicit RGB black: Color.lerp needs RGB components, and .black is grayscale
+            let rgbBlack = Color(red: 0, green: 0, blue: 0)
+            return LinearGradient(
+                colors: [
+                    tones[0].lerp(to: rgbBlack, progress: 0.45),
+                    tones[2].lerp(to: rgbBlack, progress: 0.70),
+                    rgbBlack
+                ],
+                startPoint: .top,
+                endPoint: .bottom
+            )
         }
     }
 
